@@ -1,0 +1,327 @@
+- Shape A: Text-based presentation of language:
+    Pedagogical justification: Here the idea is that language is contextualized and introduced
+      using a reading or listening text briefly first (but this is not the main aim)
+      and then language from the text is highlighted and clarified (checking meaning,
+      form and pronunciation) before doing further practice. The overall main lesson
+      aim might be: By the end of the lesson, learners will be better able to use the
+      affirmative and negative forms of the past simple in the context of verbally
+      describing their childhood memories.
+    Example lesson plan:
+      Header: <b>Life Elementary – Unit 10B – How well can you remember</b><br><b>Aim</b><br>By
+        the end of the lesson, learners will have had practice using the affirmative,
+        negative, interrogative and short answer forms of the present perfect and
+        the past simple in the context of their life experiences.<br><b>Systems</b><br>Grammar
+      Lesson-Content:
+      - header: Lead-in
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          1,To lead-in,"- Mini WB quiz about Nelson Dellis, the memory athlete.- 1 mini WB per student. Ss negotiate and agree on the answers. Everybody writes.
+             Award points.",3,T-Ss
+      - header: Clarifying target language – present perfect and simple past
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          2,To clarifying target language – present perfect and simple past,"- Meaning (guided discovery): draw Ss attention to the marker
+            sentences from the listening text on PP. In pairs, Ss work together to answer
+            the questions on PP. 1 min. Feedback.- Form: Ss change pairs and tell each
+            other the form of both the present perfect and the simple past. 1 min. Feedback.- Phonology: Model the marker sentences clearly and naturally. Drill Ss chorally and individually. In pairs, Ss work together on sentence
+            stress, connected speech and weak forms. 1 min. Feedback. Drill again.",5,Ss-Ss
+      - header: Controlled practice + CA
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          3,To controlled practice + ca,"- Page 167. Exercise 2. Elicit from Ss what they have to do (choose
+            the correct option to complete the conversations). 5 min.- Ss swap and
+            check scores. Collect scores.",8,T-Ss
+      - header: Freer practice – Liar! Liar!
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          4,To freer practice – liar! liar!,"- Divide Ss into A-B. A makes questions using the present perfect.
+            B has to say “yes, I have” to all the questions. A asks follow up questions
+            using the simple past to find out if B is lying. 5 questions each. Then,
+            swap. Demo. 8 min.- Content feedback > error correction",10,T-Ss
+- Shape B: Language Practice:
+    Pedagogical justification: This is connected to/follows on from lesson shape A
+      or C. This lesson may follow a previous one where the teacher would have clarified
+      the target language but decided that the students need more practice. It will
+      involve different practice stages, e.g. controlled written practice, controlled
+      oral practice, less controlled written/speaking practice and freer written/oral
+      practice. The overall lesson aim might be: By the end of the lesson, learners
+      will have had an opportunity to practice using going to and will be better able
+      to talk about their plans for the weekend. Remember to try to have a variety
+      of task types and focuses, moving from more controlled to freer. Remember that
+      this lesson is the second part of the previous lesson, so if you use a lead-in,
+      keep the same context, if possible. This type of lesson may need some student
+      preparation, e.g. pre-teaching vocab, group discussion, role preparation. Feedback
+      stages are also important.
+    Example lesson plan:
+      Header: <b>Lesson 2</b><br><b>Reported Speech – Further Practice</b><br><b>Aim</b><br>By
+        the end of the lesson, learners will have had further form-focused and freer
+        practice in using reported speech in the context of giving advice in a range
+        of different situations.<br><b>Assessment</b><br>n/a<br><b>Systems</b><br>Grammar<br><b>Page
+        Numbers</b><br>n/a
+      Lesson-Content:
+      - header: Lead-in
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          1,To lead-in,"- Tell your partner everything you remember about reported speech.
+            Why we use it, how do we make it (form)? Examples? 2 min.- Feedback.",3,Ss-Ss
+      - header: Controlled oral practice.
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          2,To controlled oral practice.,"- Prepare slips of paper that Ss can use as notes.- Ss write
+            a short note (prompts on PP) to someone on their team and give to someone
+            else.- That person reports what’s in the note using reported speech. Repeat
+            3x (note writing, reporting). 7 min.- Language feedback if necessary.",8,T-Ss
+      - header: Semi-controlled oral practice
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          3,To semi-controlled oral practice,"- Divide Ss into A-B. A looks at the TV, B looks at the picture
+            and make a sentence (This person said/told me...). A has to guess the situation.-
+            4 sets of pictures for each student. How many can B guess correctly?-
+            3 min. Swap. 3 min.- Language feedback if necessary.",8,T-Ss
+      - header: Freer oral practice
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          4,To freer oral practice,"- In pairs, Ss tell each other 2 reasons why each of the people
+            in the slides argue/fight. 2 min. Feedback.- Gallery walk – Pair Ss up. A-B.
+            Ss visit each picture. A reports 5 things said during the argument
+            and asks for advice. B gives advice. Swap for the next picture and so on.-
+            Demo. 1.30 min in each picture.- Content and language feedback.",12,Ss-Ss
+- Shape C: Test-Teach-Test Presentation of Language:
+    Pedagogical justification: Here the idea is that learners are tested on their
+      knowledge of the language before moving on to clarification. The teach monitors
+      the task carefully to see what problems the students have and then clarifies
+      (checking meaning, form and pronunciation) as necessary – i.e. any new language
+      or items the students had problems with. In other words, if there are 15 pieces
+      of vocabulary in the test, the teacher would most likely not clarify every item
+      – only problematic ones. This is followed by further practice. The main aim
+      here will usually reflect the clarification and practice aims reflected in the
+      previous two lesson types.
+    Example lesson plan:
+      Header: <b>Lesson 2</b><br><b>Unit 7C – Part 2 – Collocations with ‘do’
+        and ‘make’</b><br><b>Aim</b><br>By the end of the lesson, learners will
+        be better able to use collocations with ‘do’ and ‘make’ + nouns in a range
+        of everyday contexts.<br><b>Assessment</b><br>n/a<br><b>Systems</b><br>Vocabulary<br><b>Page
+        Numbers</b><br>SB: 86
+      Lesson-Content:
+      - header: Lead-in
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          1,To lead-in,"- Pairs students up and set them to tell each other 3 things
+            they remember about yesterday’s test. 2 min. Feedback.- Change pairs.
+            Tell Ss to imagine that they prefer the city and tell an interesting thing
+            about being a modern cowboy ie. 2 min.- Then, tell Ss to work in teams
+            and decide on an answer. 2 min. Feedback.",7,Ss-Ss
+      - header: Isolating TL
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          2,To isolating tl,"- Tell Ss that now we’re going to study some language from the
+            text: collocations with ‘do’ and ‘make’.- Display the following marker
+            sentence on PP: “It’s difficult to define a twenty-first century cowboy.
+            Surely it can’t be the big cattle owners who do business with a seventy-billion
+            dollar beef industry.”- Erase ‘do’. Elicit from Ss which verb they would
+            use, ‘do’ or ‘make’.",2,T-Ss
+      - header: Test 1 – diagnostic
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          3,To test 1 – diagnostic,"- Tell Ss to open their book to page 86 and draw their attention
+            to exercise 6.- Pairs students up and set them to match the verbs with
+            make or do. Then find and highlight the verb + noun combination in the
+            article to check.- Demo with the first one. 2 min.- Pair check. Whole-class
+            feedback on IWB.",4,Ss-Ss
+      - header: Test 2 – diagnostic
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          4,To test 2 – diagnostic,"- Tell Ss to close their books. Draw students’ attention to
+            exercise 7 using the IWB.- Elicit what they have to do (complete the phrases
+            with make or do).- Tell Ss to write the answers down on their WB’s. Let
+            them to seat on the floor behind their desks and do the task. 2 min.-
+            Pair check (swap chairs). Whole-class feedback on IWB.",4,Ss-Ss
+      - header: Teach – clarifying
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          5,To teach – clarifying,"- Meaning/Usage: elicit from Ss when we should use do/make +
+            noun. Get some ideas and then display the following guideline on power
+            point:- We use ‘do’ when someone performs and action and the words that
+            come from ‘do the shopping/most type of work (do homework).- We use ‘make’
+            to talk about constructing and creating... [truncated]",4,T-Ss
+- Shape D: Situational Presentation (PPP):
+    Pedagogical justification: Here the idea is that the teacher introduces a context
+      in which new language is to be taught. Having done this, the teacher then presents
+      the target language (checking meaning, form and pronunciation) before providing
+      controlled practice. When presenting pronunciation, specific features of the
+      form should be modeled, and phonemic script should be included to highlight
+      difficulties, especially for students from specific linguistic backgrounds (e.g.,
+      Thai students). In this stage, the teacher monitors the task very carefully
+      to see what problems the students are having, correct errors and ensure correct
+      use of the TL. Finally, there is a freer practice (production) in which the learners
+      use the TL productively and with a communicative end, with more fluent use of
+      the TL encouraged.
+    Example lesson plan:
+      Header: <b>Aim</b><br>Ss will be better able to identify and say animal vocabulary
+        in the context of being at a zoo.<br><b>Systems</b><br>Vocabulary
+      Lesson-Content:
+      - header: Lead In
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          1,To lead in,"- Ss come and sit at the board in their teams.- Set Ss to close
+            their eyes and listen. Say they will listen and guess what animal is making
+            the sound.- Elicit responses from the Ss and write them down on a mini
+            whiteboard.- Feedback the animals they heard and see how many they guessed
+            correctly.",0,T-Ss
+      - header: Presentation of Vocab (Meaning & Pron)
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          2,To presentation of vocab (meaning & pron),"- Use the PPT to present new vocabulary using the required format: word /phonemic/: Context sentence. Thai translation.- lizard /ˈlɪz.əd/: The green lizard is on the wall. กิ้งก่าสีเขียวอยู่บนผนัง.- cockroach /ˈkɒk.rəʊtʃ/: I saw a cockroach in the kitchen. ฉันเห็นแมลงสาบในครัว.- mosquito /məˈskiː.təʊ/: Mosquitos bite at night. ยุงกัดตอนกลางคืน.- Drill and enunciate clearly.",0,T-Ss
+      - header: Speaking Practice (Pron)
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          3,To speaking practice (pron),"- Press the chicken buzzer to get Ss to sit in circles.- Hand
+            out the A3 finger slaps game.- Elicit the animals from each group.- Ss
+            have to say the animal name, the other Ss race to touch with their finger.-
+            The first student to touch the animal will get a point and become the teacher.-
+            Monitor and assist.- Feedback on output from the Ss.",0,Ss-Ss
+      - header: Picture Dictionary (Form)
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          4,To picture dictionary (form),"- Hand out the worksheets.- Tell Ss they are in a zoo.-
+            They have to guess what the animal names. The animal names are hidden behind
+            paper cages.- Ss will go around the classroom filling in their worksheets.-
+            Fast finishers can work on their spelling ‘finger-cover, spelling’.- Feedback
+            answers. Ss check their own work in pairs with a colour pen.- Ss stick
+            their worksheet in their green picture dictionaries.",0,T-Ss
+      - header: Look and Identify and Write (Assess if lesson aims have been met)
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          5,To look and identify and write (assess if lesson aims have been met),"- Ss will come to the board.- Use the PPT to present a crossword. Use the PPT to explain how to complete a crossword.- If they can’t spel... [truncated]",0,T-Ss
+- Shape E: Receptive Skills – listening or reading:
+    Pedagogical justification: 'Here the focus is not on language but on practicing
+      receptive skills and helping learners process written and audio text. The overall
+      aims might be: By the end of the lesson, learners will have practiced and developed
+      the sub-skills of listening for gist and detailed comprehension. You should also
+      include the context as part of the aim, e.g. … in the context of a radio programme
+      on fashion.'
+    Example lesson plan:
+      Header: <b>Lesson 1</b><br><b>Unit 9c – Saving Languages</b><br><b>Aim</b><br>By
+        the end of the lesson, learners will have practiced and developed the sub-skills
+        of reading for detail and specific information and to identify facts and
+        opinions in the context of an article about saving languages.<br><b>Assessment</b><br><br><b>Skills</b><br>Reading<br><b>Page
+        Numbers</b><br>SB: 110 and 111
+      Lesson-Content:
+      - header: Lead-in
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          1,To lead-in,"- Part 1 – Mini WB. 1 per student. Ss work in teams to answer
+            the question “How many languages are spoken in the world?” (approximately
+            7,000). Tell Ss that the team that gets the closest answer will get 1 dojo.
+            1 min. Feedback.- Part 2 – Display the following sentence on PP. “By the
+            end of the century, 3,500 will have disappeared”. In pairs, Ss decide if
+            the sentence is true or false and why (it’s true). 1 min. Feedback. In
+            new pairs, Ss tell each other 3 reasons why this is a bad thing. 2 min.
+            Feedback.- Part 3 – Display a picture/painting of native Americans and
+            Europeans on PP. In new pairs, Ss tell each other what they know about
+            what happened when the Europeans came to America, especially relate to
+            language. 1 min. Feedback.",6,Ss-Ss
+      - header: Reading for detail and specific information
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          2,To reading for detail and specific information,"- Jigsaw reading – 4 paragraphs. Each table is assigned 1 paragraph.
+            Ss read write what their paragraph says in 2 sentences. 3 min. Then, rearrange
+            the tables so that each team has 1 of the 4 paragraphs. Ss work together
+            to get the summarized info of the other paragraphs. 8 min.- Reading for
+            detail + CA – tell ss to open their books to page 111. Hand out the worksheet.
+            Tell Ss to read the text again to decide if the sentences are true or false
+            and to correct the false ones. Tell Ss that this will be a CA. Elicit
+            rules. 8 min. Then, Ss swap worksheets and check each other’s score. Collect
+            scores.",22,Ss-Ss
+      - header: Post-reading speaking task
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          3,To post-reading speaking task,"- In pairs, Ss tell each other if they agree that the languages
+            of Native American Tribes should be saved and passed on to the next generation
+            and why. 2 min. Content + language feedback.",2,Ss-Ss
+- Shape F: Productive Skills – speaking or writing:
+    Pedagogical justification: 'Here the focus in on helping learners practice their
+      speaking or writing skills. The overall lesson aim here will usually be something
+      like: By the end of the lesson, learners will be better able to give their opinions
+      on the topic of holiday destinations. By the end of the lesson, the learners
+      will be better able to write a personal email on their everyday routines. The
+      lesson can usually be divided into preparation for speaking/writing and speaking/writing
+      task stages. Possible stages here are (choose as necessary):'
+    Example lesson plan:
+      Header: <b>Lesson 2</b><br><b>Unit 8d – An argument for technology – Part
+        2</b><br><b>Aim</b><br>By the end of the lesson, learners will have written
+        a paragraph on a type of technology and why it’s useful using topic and
+        supporting sentences and connecting words (firstly, for example, furthermore,
+        in other words, on the other hand, however and as a result).<br><b>Assessment</b><br>Writing
+        CA<br><b>Skills</b><br>Writing<br><b>Page Numbers</b><br>n/a
+      Lesson-Content:
+      - header: Lead-in
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          1,To lead-in,"- Elicit from Ss what they learned yesterday (connecting words, topic and supporting sentences).- Tell Ss that today we will follow-up on this topic.- Ss work in teams. 1 mini WB per student. Tell them that yesterday they studied 7 connecting words.- They have 1 minute to come up with as many connecting words as possible and that the number of words they get correct will be number of dojos they get. 1 min.- Feedback. Award points.",4,Ss-Ss
+      - header: Writing task (process writing) – CA – Display Work -
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          2,To writing task (process writing) – ca – display work -,"**First draft**<br>- Ss choose one type of technology on PP or any other type they’d like and write a paragraph on why it’s useful.- Emphasize that they have to use connecting words, 1 main argument (topic sentence) and at least 3 supporting ideas.- Their paragraph must have at least 50 words.- Ss carry out the writing task. 15 min.- Peer editing (criteria on PP). 3 min.<br>**Final draft**<br>- Ss incorporate their partners’ feedback and prepare the final version for display work.- Hand out the writing worksheet. 10 min. Collect the worksheet.- Then, Ss get the scissors and cut up their speech bubble for display work. 3 min.",30,S
+- Shape G: Task-Based Learning/Teaching (TBL/TBT):
+    Pedagogical justification: In TBL, the idea is that the learners first carry out
+      a task in pairs or small groups, focusing on communication and completing the
+      task, not worrying about using pre-selected language or grammatical accuracy.
+      They then report how this was accomplished to the class, before going on to
+      analyze relevant language or features of a text. Finally, they practice this
+new language through some controlled practice activities or, ideally, repeating a
+      similar task and incorporating that language into it. The overall main lesson
+      aim might be: By the end of the lesson, the learners will have completed a speaking/writing
+      task about and be better able to talk/write about films they’ve seen recently.
+      They will also be better able to use functional language used for recommending.
+    Example lesson plan:
+      Header: <b>TBL</b><br><b>Things I’d Hate to be without – B1 (Intermediate)</b><br><b>Aim</b><br>Main
+        aim: by the end of the lesson, learners will have completed a task about
+        and will be better able to talk about things they’d hate to be without.
+        <br>Subsidiary aim: learners will also have practiced and developed the sub-skills
+        of listening for specific information and detail in the context of a recording
+        about things people would hate to be without.<br><b>Skills</b><br>Speaking<br>Listening
+      Lesson-Content:
+      - header: Pre-task (lead-in)
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          1,To pre-task (lead-in,"- Tell Ss that today we’ll talk about things we can’t live without.-
+            Display pictures of things and objects on PP. In pairs, Ss tell each other
+            how important are those things in their life. 3 min.- Feedback.",4,Ss-Ss
+      - header: Pre-task (listening for specific information and detail)
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          2,To pre-task (listening for specific information and detail),"- Teacher tells ss that they will listen to 5 people talking
+            about things they would hate to be without and that they have to complete
+            their worksheet with the following information: the object and how the
+            person describes it.- Hand out the worksheet.- Play the recording pausing
+            so that Ss can write their answers. 3:40 seconds.- Pair check. Play it
+            again if necessary. Whole-class feedback on PP.",8,T-Ss
+      - header: Task Cycle
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          3,To task cycle,"- Making the list: teacher tells students that now they are
+            going to make their own list of 5 things they’d hate to be without. Display
+            some suggestions on PP. 3 min.- Preparing arguments: Teacher tells students
+            to think about and make notes on how they can describe all things on their
+            lists and why they are important to them. Display prompts on PP. 5 min.-
+            Reporting: In pairs, Ss tell each other what their objects are and why
+            they are important to them. 5 min.",13,Ss-Ss
+      - header: Planning
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          4,To planning,"- Now, Ss work in teams to find out the most common object chosen
+            and decide which was the most unusual object and why. 3 min.",3,Ss-Ss
+      - header: Report
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          5,To report,"- Rearrange the teams so that there is a student from each team
+            sitting together (assign numbers).- In the new teams, Ss tell each other
+            what their team decided (most common and most unusual object) 4 min.",4,Ss-Ss
+      - header: Analysis
+        csv: |
+          Stage,Aim,Procedure,Time,Interaction
+          6,To analysis,"- T praises good language use and then highlights mistakes and
+            emphasizes the language that students could have used in the task, especially
+            language used to: introduce objects, describe objects and say why it’s
+            imp... [truncated]",4,T-Ss
