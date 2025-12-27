@@ -31,7 +31,94 @@ Follow the rules in [`knowledge_base/slide-design-principles.md`](file:///c:/PRO
 | **Two font families max** | Use consistent typography |
 | **Accessibility** | Test contrast ratios (WCAG 4.5:1) |
 
+## Slide Content Rules
+
+### Answer Slides
+Each answer to a question must appear on its **own slide** containing:
+- The answer (highlighted/emphasized)
+- A brief explanation
+- A supporting snippet from the reading/transcript (where appropriate)
+
+### Vocabulary Slides
+Each pre-taught vocabulary item must appear on its **own slide** containing:
+- An image illustrating the word (generated or sourced)
+- The mandated pattern:
+  ```
+  word /phonemic script/: Thai translation
+  English context sentence with word **highlighted**
+  Thai context sentence with word **highlighted**
+  ```
+
+### Image Usage
+Be judicious with images. Include them when they serve to illustrate a concept. Do not add images purely for decoration.
+
+**Image Generation Rules:**
+1. **No text on illustrations** — Generate images only, without embedded text, unless explicitly requested
+2. **Cover images** — Must be photorealistic, summarizing the entire lesson theme. Target audience: Thai middle-schoolers
+3. **Vocabulary images** — Simple, clear illustrations showing the concept (no text)
+4. **Educational style** — Clean, age-appropriate visuals suitable for ESL classroom
+
+### Workflow: User Review Before Generation
+
+Before generating images and creating slides, present a **markdown table** for user approval:
+
+| Slide # | Section | Title | Content Summary | Image Needed | Image Description |
+|---------|---------|-------|-----------------|--------------|-------------------|
+| 1 | Title | Lesson Title | ... | Yes | Photorealistic cover: [description] |
+| 2 | Vocab | word | Pattern + sentences | Yes | Illustration: [concept] |
+| ... | ... | ... | ... | ... | ... |
+
+**Wait for user OK** before proceeding with image generation and slide creation.
+
+---
+
+## Batch API Pattern (Critical for Performance)
+
+> [!IMPORTANT]
+> Always use batch operations. Individual API calls are slow and trigger rate limits.
+
+### Anti-Pattern (Slow)
+```python
+# ❌ BAD: Each call is a separate network request
+slides_service.presentations().batchUpdate(...).execute()  # request 1
+slides_service.presentations().batchUpdate(...).execute()  # request 2
+# ... 100+ requests = 3-4 minutes
+```
+
+### Correct Pattern (Fast)
+```python
+# ✅ GOOD: Accumulate requests, execute once
+all_requests = []
+
+for slide_data in slides:
+    slide_id = _generate_id()
+    all_requests.extend(get_create_slide_requests(slide_id))
+    all_requests.extend(get_content_requests(slide_id, slide_data))
+
+# Single API call with all requests
+slides_service.presentations().batchUpdate(
+    presentationId=presentation_id,
+    body={'requests': all_requests}
+).execute()  # 1 request = ~30 seconds
+```
+
+### Helper Function Pattern
+Functions should **return request dicts**, not execute them:
+
+```python
+def get_header_bar_requests(slide_id, title, color):
+    """Returns list of request dicts (does NOT execute)."""
+    return [
+        {'createShape': {...}},
+        {'insertText': {...}},
+        {'updateShapeProperties': {...}},
+    ]
+```
+
+---
+
 ### 1. Authenticate
+
 
 ```python
 from scripts.authenticate_google import authenticate_slides

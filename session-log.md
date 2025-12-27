@@ -379,3 +379,40 @@ Regenerated lesson plan to match Shape E model structure:
 
 ### Final Output
 - [27-12-25-LP B1-Politeness-Reading-Shape E Receptive-v3](https://docs.google.com/document/d/1kuhsdSkX3SNCqNOeA0N1YWwaFzGncW9hwHvF3J3Sjw0/edit)
+
+---
+
+## 2025-12-27 (Evening) | Slideshow Development from Lesson Plan
+
+### Objective
+Develop a complete Google Slides presentation from the B1 Politeness Reading lesson plan.
+
+### Actions Completed
+
+1. **Initial Slideshow Script** — Created `create_politeness_slideshow.py` with all slide content
+2. **API Efficiency Refactor** — Rewrote to batch API pattern after user feedback:
+   - Changed from 100+ individual API calls to single batchUpdate call
+   - Reduced execution time from 3-4 minutes to ~30 seconds
+3. **Themed Slideshow** — Created `create_slideshow_themed.py` with:
+   - Color-coded headers: Vocabulary (teal), Answer (green), Activity (orange), Discussion (purple), Video (red)
+   - Spotlight answer layout with highlight box, snippet, and explanation
+   - Video placeholder with play button (API doesn't support embedding)
+4. **Cover Slide Fix** — Fixed logo paths and layout:
+   - Changed `LOGO_DIR` from `skills/.../images` to `images/` at project root
+   - Used Bell.png instead of Bell.svg for reliable rendering
+   - Matched layout to original template (centered logos in header)
+
+### Key Learnings
+- **Batch API is essential** — Google Slides API should always use accumulated requests + single batchUpdate
+- **No video embedding** — Slides API does not support YouTube embedding; must be manual
+- **Logo paths matter** — Logos stored in `images/` at project root, not skill folder
+- **PNG over SVG** — PNG logos render more reliably than SVG in Slides API
+
+### Files Created/Modified
+- `skills/designing-slides/create_politeness_slideshow.py` (initial version)
+- `skills/designing-slides/create_slideshow_optimized.py` (batch API)
+- `skills/designing-slides/create_slideshow_themed.py` (final themed version)
+- `skills/designing-slides/SKILL.md` (added image rules, workflow, batch patterns)
+
+### Final Output
+- [27-12-25-Politeness-Reading-B1-THEMED](https://docs.google.com/presentation/d/1-JNl-rJXH65aXNGVz2mV8QpguaY_hKueBs8KKn8_8-4/edit)

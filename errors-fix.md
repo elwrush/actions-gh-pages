@@ -78,3 +78,37 @@ This session proceeded without errors requiring fixes. The `writing-lesson-plans
   3. Use **borders** on paragraphs for emphasis (not background shading)
   4. Let content flow as natural text
 - **Result**: Much easier to edit in Google Docs.
+
+---
+
+## 2025-12-27 (Evening) | Slideshow Development
+
+### API Efficiency Issues
+- **Issue**: Initial slideshow script made 100+ individual API calls, taking 3-4 minutes
+- **Cause**: Each slide element (create, style, format) was a separate batchUpdate call
+- **Fix**: Refactored to accumulate all requests and send single batchUpdate (34 seconds)
+
+### Rate Limiting (429 Too Many Requests)
+- **Issue**: Script crashed with quota error during slide creation
+- **Cause**: Too many sequential API calls triggered Google's rate limit
+- **Fix**: Batch all requests (reduces call count from 100+ to 1-3)
+
+### Logo Path Not Found
+- **Issue**: Bell and ACT logos not appearing on cover slide
+- **Cause**: Script looked in `skills/designing-slides/images/` but logos are in `images/` at project root
+- **Fix**: Changed `LOGO_DIR` to `os.path.join(PROJECT_ROOT, "images")`
+
+### SVG Logo Rendering (Repeated)
+- **Issue**: Bell.svg caused rendering issues in some cases
+- **Fix**: Use Bell.png instead (more reliable across Slides API)
+
+### Cover Slide Layout Issues
+- **Issue**: Text overlapping image, logos misplaced
+- **Cause**: Positioned elements based on guesswork instead of template measurements
+- **Fix**: Copied exact layout from `update_template.py` (header_height, logo_y, center_x, gap calculations)
+
+### YouTube Video Embedding
+- **Issue**: User asked if YouTube videos could be embedded
+- **Cause**: Google Slides API does NOT support video embedding
+- **Fix**: Created video placeholder slide with play button icon and clickable URL. Videos must be inserted manually.
+
