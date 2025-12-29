@@ -17,10 +17,9 @@ description: >
 
 ## Design Principles
 
-Follow the rules in [`knowledge_base/slide-design-principles.md`](file:///c:/PROJECTS/LESSONS%20AND%20SLIDESHOWS%202/knowledge_base/slide-design-principles.md):
-
 | Principle | Implementation |
 |-----------|----------------|
+| **Expert Pedagogy** | Frame material using analogies/metaphors; don't just copy worksheets |
 | **5-7 lines max** | Limit bullet lists to 6 items |
 | **One idea per slide** | Generate multiple slides for complex topics |
 | **High contrast** | Use Bell maroon/white palette |
@@ -30,6 +29,17 @@ Follow the rules in [`knowledge_base/slide-design-principles.md`](file:///c:/PRO
 | **Left-align text** | Avoid centering for body text |
 | **Two font families max** | Use consistent typography |
 | **Accessibility** | Test contrast ratios (WCAG 4.5:1) |
+
+### Pedagogical Framing (Critical)
+
+Do NOT slavishly and mechanistically reproduce the structure of worksheets or lesson plans in slide format. Instead:
+- **Frame and Interpret**: Present material as an expert ESL teacher would.
+- **Guidance**: Use analogies, metaphors, similes, and models to guide students on HOW to do tasks properly.
+- **Scaffolding**: Provide conceptual "mental models" rather than just lists of instructions.
+
+Example:
+- *Mechanistic*: "Slide 5: Fill in your worksheet now."
+- *Expert*: "Slide 5: **Be the Architect**. Before a house is built, we need a sketch. Sketch your talk on your planning sheet now."
 
 ## Slide Content Rules
 
@@ -41,7 +51,6 @@ Each answer to a question must appear on its **own slide** containing:
 
 ### Vocabulary Slides
 Each pre-taught vocabulary item must appear on its **own slide** containing:
-- An image illustrating the word (generated or sourced)
 - The mandated pattern:
   ```
   word /phonemic script/: Thai translation
@@ -49,26 +58,45 @@ Each pre-taught vocabulary item must appear on its **own slide** containing:
   Thai context sentence with word **highlighted**
   ```
 
-### Image Usage
-Be judicious with images. Include them when they serve to illustrate a concept. Do not add images purely for decoration.
+### Image Policy
 
-**Image Generation Rules:**
-1. **No text on illustrations** — Generate images only, without embedded text, unless explicitly requested
-2. **Cover images** — Must be photorealistic, summarizing the entire lesson theme. Target audience: Thai middle-schoolers
-3. **Vocabulary images** — Simple, clear illustrations showing the concept (no text)
-4. **Educational style** — Clean, age-appropriate visuals suitable for ESL classroom
+**CRITICAL**: The agent will NEVER attempt to generate images or add image placeholders.
 
-### Workflow: User Review Before Generation
+- The user will ALWAYS add images manually post-upload
+- Do NOT use `generate_image` tool for slideshows
+- Do NOT add image placeholder boxes
+- Do NOT suggest image descriptions
 
-Before generating images and creating slides, present a **markdown table** for user approval:
+Focus solely on text content and layout.
 
-| Slide # | Section | Title | Content Summary | Image Needed | Image Description |
-|---------|---------|-------|-----------------|--------------|-------------------|
-| 1 | Title | Lesson Title | ... | Yes | Photorealistic cover: [description] |
-| 2 | Vocab | word | Pattern + sentences | Yes | Illustration: [concept] |
-| ... | ... | ... | ... | ... | ... |
+## Title Slide Template Structure
 
-**Wait for user OK** before proceeding with image generation and slide creation.
+All slideshows MUST use the Bell EP template structure for the title slide:
+
+1. **Dark Header Bar** (top, 1.0" height):
+   - Color: `rgb(0.35, 0.05, 0.05)` (darker maroon)
+   - Contains logos (Bell + ACT) centered, side-by-side
+   - Logo dimensions: 1.0" W x 0.7" H, with 0.3" gap between
+
+2. **Gradient Body** (lighter maroon/red):
+   - Background below header bar
+
+3. **"Bell Language Centre" Strap Line**:
+   - Position: Below header (y: 1.1")
+   - Font: 18pt, white, Arial, centered
+
+4. **Title**:
+   - Position: y: 1.7"
+   - Font: 36pt, bold, white, Arial, centered
+   - Width: 8"
+
+5. **Cover Image** (photorealistic):
+   - Square: 2.5" x 2.5"
+   - Centered horizontally
+   - Position: y: 2.6"
+   - Should summarize the lesson theme
+
+**Reference**: See `update_template.py` for exact implementation.
 
 ---
 

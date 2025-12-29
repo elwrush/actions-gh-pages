@@ -112,3 +112,41 @@ This session proceeded without errors requiring fixes. The `writing-lesson-plans
 - **Cause**: Google Slides API does NOT support video embedding
 - **Fix**: Created video placeholder slide with play button icon and clickable URL. Videos must be inserted manually.
 
+---
+
+## 2025-12-29
+
+### Scope Creep: Script-Writing Instead of Simple Edits
+- **Issue**: User asked to edit a lesson plan hook. Agent launched into writing new Python slideshow scripts.
+- **Cause**: Misinterpreted "create the slideshow" as "write a generation script" instead of understanding user wanted simple HTML edits + GDocs push.
+- **Fix**: When editing existing materials, stick to: **Edit HTML → Open in browser → Push to GDocs**. Do NOT write new scripts unless explicitly requested.
+
+### Missing Duration Prompt
+- **Issue**: Lesson plan created with default "50 minutes" instead of correct "46 minutes".
+- **Cause**: Agent did not ask user for lesson duration before generating plan.
+- **Fix**: The `developing-bespoke-materials` skill MUST prompt for duration before generating any plan.
+
+### Intrusive Browser Automation
+- **Issue**: Agent repeatedly used browser_subagent to "verify" files, taking over user's browser.
+- **Cause**: Over-verification; agent assumed it needed to visually confirm every change.
+- **Fix**: Use `Start-Process` to open files in user's default browser. Only use browser_subagent when user explicitly requests browser interaction.
+
+### Premature Workflow Advancement
+- **Issue**: Agent created lesson plan before worksheet was approved; attempted slideshow before lesson plan was finalized.
+- **Cause**: Anticipating next steps instead of waiting for explicit user approval.
+- **Fix**: Strict sequential workflow: Material → User Approval → Lesson Plan → User Approval → Slideshow. Never skip ahead.
+
+### Skipped Slideshow Browser Review
+- **Issue**: Agent successfully generated slides but notified user of "completion" instead of opening for review.
+- **Cause**: Regression on the "No-Automated-Verification" vs "Manual-Review-Opening" logic. I prioritized finishing over the review step.
+- **Fix**: ALWAYS use `Start-Process [link]` and wait for explicit approval before finalizing any walkthrough or moving to next steps.
+
+### Not Following Skill Requirements (Slideshow)
+- **Issue**: Created slideshow without reading `designing-slides` skill. Violated: (1) Didn't use Bell EP template, (2) Didn't attempt image generation, (3) Lazy placeholder boxes.
+- **Cause**: Agent skipped the critical step of ingesting the skill's image generation rules and template requirements.
+- **Fix**: ALWAYS re-read the skill file BEFORE executing any skill-based task. Follow the template ID for title slides, attempt image generation FIRST (with fallback to prompts only if generation fails).
+
+### Incorrect Title Slide Template Structure
+- **Issue**: Second attempt at title slide still wrong - used simple maroon background + logos instead of the Bell EP template structure (dark header bar, gradient body, "Bell Language Centre" strap line, centered image).
+- **Cause**: Didn't reference the actual template file (`update_template.py`) which shows the exact structure: header bar (rgb 0.35, 0.05, 0.05), logos in header (centered, side-by-side), strap line (18pt, centered), title (36pt, bold, white), square image placeholder (2.5" centered).
+- **Fix**: Study `update_template.py` before creating title slides. The template has specific positioning, colors, and structure that must be replicated exactly.
