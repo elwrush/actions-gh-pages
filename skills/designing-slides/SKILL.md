@@ -110,22 +110,59 @@ Each answer to a question must appear on its **own slide** immediately after the
 
 **Critical**: Answer slides must be **interleaved** with question slides in the pedagogical flow, not grouped at the end of the presentation.
 
-### Narrative Transitions (Signposting)
-To create a cohesive story, you must insert **Transition Slides** between major lesson stages. Do not jump abruptly from one activity to another.
+### Narrative Transitions (MANDATORY Checkpoints)
 
-**Format**:
-- Use `MAIN_POINT` or `SECTION_HEADER` layout.
-- **Narrative Voice**: Use friendly, guiding text (e.g., "Now let's look at the rules...", "Time to practice...", "And now for the challenge...").
-- **Purpose**: Act as a "mental break" and reset the context for the next stage.
+Transition slides **MUST** be inserted at these structural checkpoints:
+
+| Checkpoint | Insert transition BEFORE... |
+|------------|----------------------------|
+| 1 | Vocabulary section |
+| 2 | Main reading/listening/challenge |
+| 3 | Hero Tool or solution reveal |
+| 4 | Student practice/task |
+| 5 | Reflection/wrap-up |
+
+**Requirements**:
+- Each transition = single slide with friendly guiding phrase
+- Phrases must be **creative and lesson-specific** (NOT deterministic/copied)
+- Purpose: Mental reset, not just labeling sections
+
+**Anti-pattern** (robotic): "Now we will learn vocabulary."
+**Good pattern** (engaging): "Before we dive in, let's arm ourselves with some key words..."
  
 ### Vocabulary Slides
-Each pre-taught vocabulary item must appear on its **own slide** containing:
-- The mandated pattern:
-  ```
-  word /phonemic script/: Thai translation
-  English context sentence with word **highlighted**
-  Thai context sentence with word **highlighted**
-  ```
+
+Each pre-taught vocabulary item must appear on its **own slide** containing the mandated pattern:
+
+```
+word /phonemic script/: ภาษาไทย (actual Thai script, NOT English transliteration)
+
+English context sentence with **target word** bolded.
+
+ประโยคภาษาไทยที่มี **คำเป้าหมาย** เป็นตัวหนา
+```
+
+**Example**:
+```
+hikikomori /ˌhɪkiˈkɒməri/: คนที่หลบหนีสังคม
+
+Toshi had such extreme **hikikomori** that he had not left his room for a week.
+
+โทชิมีอาการ **ฮิกิโกะโมริ** อย่างรุนแรงจนไม่ได้ออกจากห้องมาหนึ่งสัปดาห์
+```
+
+> [!CRITICAL]
+> - Thai translations MUST use Thai script (ภาษาไทย), NOT English phonetic transliteration
+> - Target word must be **bolded** in BOTH English and Thai sentences
+> - Do NOT use HTML tags - use markdown-style bold for outline, API handles styling
+> - Context sentences must **ILLUSTRATE THE MEANING** of the word, not just use it
+>
+> **Anti-pattern** (doesn't contextualize):
+> "School should not be a **popularity contest**."
+>
+> **Good pattern** (illustrates meaning):
+> "Instagram has become a **popularity contest** where people compete for likes and followers."
+
 
 ### Image Policy
 

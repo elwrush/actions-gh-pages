@@ -42,20 +42,28 @@ class SlideOutlineValidator:
         return slides
     
     def _is_question_slide(self, slide):
-        """Detect if a slide poses a question or task."""
+        """Detect if a slide poses an explicit task requiring student answers."""
         title_lower = slide['title'].lower()
         content_text = ' '.join(slide['content']).lower()
         
-        # Question indicators
-        question_words = ['?', 'question', 'task', 'your turn', 'what', 'how', 'why', 'which']
-        task_phrases = ['work with', 'practice', 'try', 'find', 'decide', 'write']
+        # Exclude transition slides (short slides with 1-2 bullets)
+        if len(slide['content']) <= 2 and all(len(b) < 60 for b in slide['content']):
+            return False
         
-        for word in question_words:
-            if word in title_lower or word in content_text:
-                return True
+        # Explicit task indicators (requires answer slide)
+        task_phrases = [
+            'your turn',
+            'task:',
+            'exercise:',
+            'practice:',
+            'complete the',
+            'fill in the',
+            'match the',
+            'find the answer'
+        ]
         
         for phrase in task_phrases:
-            if phrase in content_text:
+            if phrase in title_lower or phrase in content_text:
                 return True
         
         return False
@@ -73,6 +81,32 @@ class SlideOutlineValidator:
         
         return False
     
+    def _is_transition_slide(self, slide):
+        """Detect if a slide is a transition/signpost slide."""
+        title_lower = slide['title'].lower()
+        
+        transition_indicators = [
+            'transition',
+            "let's",
+            "time to",
+            "now for",
+            "here's your",
+            "your turn",
+            "before we",
+            "let us"
+        ]
+        
+        # Check if title contains transition indicators
+        for indicator in transition_indicators:
+            if indicator in title_lower:
+                return True
+        
+        # Also check if it's a short slide with just one bullet (likely a transition)
+        if len(slide['content']) == 1 and len(slide['content'][0]) < 80:
+            return True
+        
+        return False
+    
     def validate(self):
         """Run all validation checks."""
         self._check_interleaving()
@@ -81,8 +115,21 @@ class SlideOutlineValidator:
         self._check_vocabulary_format()
         self._check_image_policy()
         self._check_mechanistic_language()
+        self._check_transition_slides()
         
         return len(self.errors) == 0
+    
+    def _check_transition_slides(self):
+        """Check for mandatory transition slides at checkpoints."""
+        transition_slides = [s for s in self.slides if self._is_transition_slide(s)]
+        
+        # Should have at least 3 transition slides for a typical lesson
+        if len(transition_slides) < 3:
+            self.warnings.append(
+                f"⚠️ Only {len(transition_slides)} transition slides detected. "
+                f"Per skill requirements, insert transitions BEFORE: vocabulary, challenge, "
+                f"hero tool, practice, and reflection sections."
+            )
     
     def _check_interleaving(self):
         """Verify answer slides immediately follow question slides."""
@@ -128,7 +175,7 @@ class SlideOutlineValidator:
                 )
     
     def _check_vocabulary_format(self):
-        """Check vocabulary slides follow the required format."""
+        """Check vocabulary slides follow the required format with actual Thai script."""
         for slide in self.slides:
             title_lower = slide['title'].lower()
             if 'vocab' in title_lower or 'vocabulary' in title_lower:
@@ -140,6 +187,29 @@ class SlideOutlineValidator:
                         f"❌ Slide {slide['number']} (\"{slide['title']}\") is marked as vocabulary "
                         f"but doesn't follow required format: word /phonemic/: Thai translation"
                     )
+                
+                # Check for actual Thai script (Unicode range for Thai: \u0E00-\u0E7F)
+                if not re.search(r'[\u0E00-\u0E7F]', content_text):
+                    self.errors.append(
+                        f"❌ Slide {slide['number']} (\"{slide['title']}\") vocabulary slide "
+                        f"must contain actual Thai script, not English transliteration."
+                    )
+                
+                # Check context sentence length (short sentences often don't contextualize well)
+                # Find sentences with the bolded word
+                context_sentences = [b for b in slide['content'] if '**' in b or len(b) > 30]
+                for sentence in context_sentences:
+                    # Remove phonemic notation and Thai
+                    if '/' in sentence and ':' in sentence:
+                        continue  # This is the definition line
+                    if re.search(r'[\u0E00-\u0E7F]', sentence):
+                        continue  # Skip Thai sentences
+                    # Check if English context sentence is too short
+                    if len(sentence) < 50 and '**' in sentence:
+                        self.warnings.append(
+                            f"⚠️ Slide {slide['number']} (\"{slide['title']}\") has a short context sentence. "
+                            f"Context sentences should ILLUSTRATE meaning, not just use the word."
+                        )
     
     def _check_image_policy(self):
         """Enforce NO image placeholders policy."""
