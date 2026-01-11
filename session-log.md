@@ -609,8 +609,46 @@ Create a programmatic system for generating and publishing Bell/Intensive worksh
 
 
 ### 2026-01-06 | WeasyPrint & Worksheet Refinement
-- **PDF Engine Switch**: Migrated from Playwright to **WeasyPrint** in uild_worksheet.py for more reliable CSS page-break handling.
+- **PDF Engine Switch**: Migrated from Playwright to **WeasyPrint** in build_worksheet.py for more reliable CSS page-break handling.
 - **Header Duplication Fix**: Removed hardcoded header image from reading worksheet fragment as the master template already provides it.
 - **Page Break Logic**: Reduced manual page breaks. Only a hard break before the Answer Key is now mandatory.
 - **Skill Update**: Updated generating-worksheets/SKILL.md to reflect the move to WeasyPrint.
-- **Output**: Generated and uploaded  5-01-26-Social-Media-Reading-Intensive-v4.pdf.
+- **Output**: Generated and uploaded  5-01-26-Social-Media-Reading-Intensive-v4.pdf.
+
+---
+
+## 2026-01-11 | GDocs Workflow Standardization & Grammar Repair
+
+### Objective
+Finalize the "Grammar Repair Shop" lesson materials and permanently standardize the lesson plan workflow to Google Docs HTML.
+
+### Actions Completed
+
+1. **Lesson Plan Finalization** — Created the "Grammar Repair Shop" plan:
+   - Used `Shape H` (SCR Receptive Skills) structure.
+   - Integrated detailed differentiation for mid-B1 students based on ERRANT feedback.
+   - Implemented GDocs-compatible HTML with base64 image embedding.
+   - Pushed to GDocs: [11-01-2026-B1-Grammar-Repair-Lesson-Plan](https://docs.google.com/document/d/1TYd9kg2CznXOJtd97rtGTdLGIOefHHmk1eGRmQWkrDI/edit).
+
+2. **Skill Mandate Update**:
+   - Updated `writing-lesson-plans/SKILL.md` to exclusively require the HTML/GDocs workflow.
+   - Mandated use of the `Shape H` table-based template as the gold standard for layout.
+
+3. **Branded Slideshow Creation**:
+   - Designed 16-slide presentation with "Mechanic/Workshop" metaphor.
+   - Strictly followed Bell EP branding: dark header, centered logos, gradient body.
+   - Implemented transition slides to improve pedagogical "segueing".
+   - Batch API execution successful: [11-01-2026-B1-Grammar-Repair-Shop-Slides](https://docs.google.com/presentation/d/1-ZHhOBk-agPrODrvpPGSqHfRy3QyxTFhS2ZvgcxMKaY/edit).
+
+4. **Authentication Hardening**:
+   - Refactored `authenticate_google.py` for increased resiliency.
+   - Expanded scopes to full `drive` for ADC compatibility.
+   - Added Unicode-safe console logging for Windows terminal support.
+
+### Files Created/Modified
+- `inputs/12 Jan 26 Writing feedback/11-01-2026-B1-Grammar-Repair-Lesson-Plan.html`
+- `inputs/12 Jan 26 Writing feedback/create_grammar_repair_slides.py`
+- `skills/writing-lesson-plans/SKILL.md`
+- `skills/designing-slides/scripts/authenticate_google.py`
+- `errors-fix.md`
+- `session-log.md`

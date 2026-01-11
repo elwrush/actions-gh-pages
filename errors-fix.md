@@ -338,3 +338,30 @@ This session proceeded without errors requiring fixes. The `writing-lesson-plans
 - **Fix**: Restored `LOGO_DIR` to global scope at the top of the script.
 - **Lesson**: When refactoring script structures, verify that all global constants used in helper functions remain accessible.
 
+---
+
+## 2026-01-11 | GDocs Lesson Plans & Slideshow Scaling
+
+### GDocs Lesson Plan Logo Missing
+- **Issue**: Header logo didn't appear in Google Docs after upload.
+- **Cause**: Incorrect relative path in HTML; `push_to_gdocs.py` couldn't resolve the local image for base64 embedding.
+- **Fix**: Corrected path to `../../images/bell-header.jpg` (relative to the HTML file in `inputs/[subfolder]`).
+
+### Slideshow Outline Validation Failure
+- **Issue**: `validate_slideshow_outline.py` flagged the outline because of `[IMAGE: ...]` placeholders.
+- **Cause**: Strict rule in `designing-slides/SKILL.md` forbidding image placeholders in outlines (since images are added manually post-upload).
+- **Fix**: Removed all image placeholder lines from the markdown outline.
+
+### Authentication Scope & Token Expiry
+- **Issue**: Slideshow script failed with `invalid_scope` or `RefreshError`.
+- **Cause**: ADC token had restrictive `drive.file` scopes, and `token.json` was expired/revoked.
+- **Fix**: Updated `authenticate_google.py` to:
+  1. Use broader `https://www.googleapis.com/auth/drive` scope.
+  2. Implement a multi-token fallback (ADC → gdocs-token → legacy token).
+  3. Provide clear instructions for `gcloud auth application-default login` if all fail.
+
+### UnicodeEncodeError: 'charmap' on Windows
+- **Issue**: `authenticate_google.py` crashed when printing `✓` or `⚠` to a Windows terminal file redirection.
+- **Cause**: Windows CP1252 encoding doesn't support these symbols.
+- **Fix**: Replaced special symbols with ASCII-safe text: `[OK]` and `[WARN]`.
+

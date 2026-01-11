@@ -10,6 +10,12 @@ description: >
 ## Description
 Uploads PDF worksheets to a specific Google Drive folder for distribution.
 
+## Authentication (ADC)
+This skill uses **Application Default Credentials (ADC)** as the primary authentication method. 
+- Ensure you have run `gcloud auth application-default login` on your system.
+- The script will automatically detect these credentials.
+- Fallback to legacy OAuth (`token.json`) is supported but discouraged.
+
 ## Setup
 Ensure dependencies are installed:
 ```bash

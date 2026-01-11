@@ -10,10 +10,11 @@ from googleapiclient.errors import HttpError
 
 # Scopes
 SCOPES = [
-    'https://www.googleapis.com/auth/drive.file'
+    'https://www.googleapis.com/auth/drive'
 ]
 
 DEFAULT_FOLDER_ID = '1_n11w9BRN6sd0uaXlqEXjqZuZ74zFiOl'
+
 
 def authenticate():
     """Authenticate and return the Drive API service."""
@@ -22,6 +23,26 @@ def authenticate():
     # Ideally script is run from project root
     token_path = '.credentials/token.json'
     credentials_path = '.credentials/credentials.json'
+
+    # Strategy 1: Try Application Default Credentials (ADC)
+    from pathlib import Path
+    adc_path = Path(os.environ.get('APPDATA', '')) / 'gcloud' / 'application_default_credentials.json'
+    
+    if adc_path.exists():
+        try:
+            creds = Credentials.from_authorized_user_file(str(adc_path), SCOPES)
+            if creds and creds.valid:
+                print("✓ Using Application Default Credentials (ADC)")
+                return build('drive', 'v3', credentials=creds)
+            elif creds and creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+                print("✓ Using Application Default Credentials (ADC) [refreshed]")
+                return build('drive', 'v3', credentials=creds)
+        except Exception as e:
+            print(f"⚠ ADC found but failed to load: {e}")
+
+    # Strategy 2: Legacy OAuth flow (fallback)
+    print("⚠ ADC not configured, falling back to legacy OAuth...")
     
     if os.path.exists(token_path):
         creds = Credentials.from_authorized_user_file(token_path, SCOPES)
@@ -41,6 +62,7 @@ def authenticate():
         with open(token_path, 'w') as token:
             token.write(creds.to_json())
     
+    print("✓ Using legacy OAuth credentials")
     return build('drive', 'v3', credentials=creds)
 
 def main():

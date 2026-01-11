@@ -1,101 +1,58 @@
 ---
 name: generating-worksheets
 description: >
-  Generates branded, print-ready PDF worksheets (Intensive or Bell styles) from a master HTML template.
-  Use when the user requests worksheet creation, PDF generation for lesson materials, or mentions printable worksheets.
+  Generates professional, branded PDF worksheets using Typst.
+  Use when the user requests worksheet creation, especially for grammar or skill-based activities.
 ---
 
 # Generating Worksheets Skill
 
 ## Description
-Generates branded, print-ready PDF worksheets ("Intensive" or "Bell" styles) from a master HTML template using **WeasyPrint** for reliable paged-media CSS support.
+Generates high-quality, print-ready PDF worksheets using **Typst**. This workflow replaces the legacy HTML/WeasyPrint method, offering superior layout control, precise pagination, and "printer-safe" margins.
 
-## Setup
-```bash
-pip install jinja2 weasyprint
-```
+## Prerequisites
+- **Typst CLI** must be installed and accessible in the terminal.
+- **Bell/ACT Logos** must be present in the project root `/images/` directory.
 
-## Usage
+## Reference Material
+- **Gold Standard Template**: `knowledge_base/templates/grammar_repair_worksheet_gold.typ`
+  - *Use this as the source of truth for all new worksheets.*
+  - *Features: Integrated "Strap" header, 14pt left-aligned title, 15-line writing limit, zero spillover.*
 
-### Command Line
-```bash
-python skills/generating-worksheets/scripts/build_worksheet.py --brand <brand> --content <content-file> --output <path>
-```
+## Workflow
 
-### Arguments
-- `--brand`: `intensive` (default) or `bell`. Determines the header style.
-- `--content`: Path to HTML content fragment file to inject into the template.
-- `--output`: Path to save the final PDF.
-- `--header-title`: (Bell brand only) Main header text - appears BELOW the "Bell Language Centre" strap line. **Do NOT include "Bell Language Centre" in this parameter.**
-- `--quote`: (Optional) Subheader quote with compass icon. If omitted, quote section will not appear.
-- `--debug`: Keep temporary HTML file for inspection.
+1. **Source the Template**:
+   - Copy the gold standard template from `knowledge_base/templates/grammar_repair_worksheet_gold.typ`.
+   - Save it to `skills/generating-worksheets/templates/[new_worksheet_name].typ`.
 
-### Example
-```bash
-python skills/generating-worksheets/scripts/build_worksheet.py \
-  --brand bell \
-  --content "inputs/02-Useful Language/useful-language-content.html" \
-  --output "inputs/02-Useful Language/worksheet.pdf" \
-  --header-title "Useful Language for Presentations"
-```
+2. **Customize Content**:
+   - **Header**: Update the title in the integrated strap (separated by `|` from "BELL LANGUAGE CENTRE").
+   - **Diagnostic Section (Page 1)**: Customize the "Repair Targets" or introductory activity.
+   - **Tasks (Pages 2-4)**: 
+     - Update the `task_card` function calls with specific prompts, contexts, and constraints.
+     - **Constraint**: Maintain the **15-line limit** for writing areas to ensure zero spillover.
+     - **Pagination**: Keep strict `#pagebreak()` calls between levels (A2/B1/B2).
 
----
-
-## Workflow (GATED)
-
-> [!IMPORTANT]
-> **Step 2 validates, Step 4 is a USER GATE.** You MUST validate AND get user approval before publishing.
-
-1. **Create Content HTML**: Write your material sections using the content fragment format.
-
-2. **🔍 RUN VALIDATOR**: Check content HTML for compliance
-   ```bash
-   python skills/generating-worksheets/scripts/validate_worksheet.py <content.html>
+3. **Compile PDF**:
+   - Compiling follows a strict naming convention: `DD-MM-YYYY-[CEFR LEVEL]-[DESCRIPTION].pdf`.
+   - Run the Typst initialization command from the project root:
+   ```powershell
+   typst compile "skills/generating-worksheets/templates/[template].typ" "inputs/[Folder]/DD-MM-YYYY-[CEFR_LEVEL]-[DESCRIPTION].pdf" --root "."
    ```
-   - **Checks performed**:
-     - ❌ Single-column text (no 2-column CSS)
-     - ❌ Page break before Answer Key
-     - ⚠️ Orphan prevention CSS present
-     - ❌ No duplicate headers in fragment
-   - **Fix ALL errors** before proceeding
+   - *Example: `11-01-2026-A2-B2-Grammar-Repair-Shop.pdf`*
 
-3. **Generate PDF**: Run `build_worksheet.py` with appropriate parameters.
+4. **🚦 Verify**:
+   - Check for **printer safety**: Are headers inside the margins?
+   - Check for **logo visibility**: Are the SVG/PNG logos rendering correctly?
+   - Check for **spillover**: Does every page fit perfectly without content bleeding to the next?
 
-4. **🚦 USER REVIEW GATE**: Open the generated PDF locally and **wait for user feedback**.
-   - Use `Start-Process <path-to-pdf>` to open the file.
-   - If user requests changes, edit HTML and go back to step 2.
-   - **DO NOT proceed to Step 5 until user explicitly approves.**
+## Template Structure
+The Typst template uses a functional component approach:
+- `#integrated_header()`: The maroon strap with logos and title.
+- `#task_card()`: Boxed prompt with level and context.
+- `#radar_box()`: Self-correction checklist.
+- `#writing_lines(count: 15)`: Fixed-height writing area.
 
-5. **Publish to Google Drive**: Only after approval, run the publishing script.
-
-
----
-
-## Layout Best Practices (Orphan/Whitespace Prevention)
-
-Include these CSS rules in content fragments to prevent layout issues:
-
-```css
-/* Prevent orphaned table headers */
-table { break-inside: auto; }
-tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-
-/* Keep titles with their content */
-h1, h2, h3 { break-after: avoid; }
-p { orphans: 2; widows: 2; }
-
-/* Explicit page breaks */
-.page-break { page-break-before: always; break-before: page; display: block; }
-```
-
-### When to Use Manual Page Breaks
-- **ALWAYS**: Before the Answer Key.
-- **RECOMMENDED**: Before major activity shifts (e.g., "Task: Use your Hero Tool").
-- **AVOID**: Mid-paragraph or mid-table (rely on CSS `break-inside: avoid` instead).
-
----
-
-## Architecture
-- **Template:** `templates/worksheet-master.html` (Jinja2 with logical switches).
-- **Builder:** `scripts/build_worksheet.py` (Orchestrates rendering + WeasyPrint PDF conversion).
+## Legacy Methods (Deprecated)
+- *HTML/WeasyPrint*: Do not use.
+- *Playwright PDF*: Do not use.

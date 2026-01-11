@@ -42,9 +42,34 @@ A4_HEIGHT_PT = 841.89  # 297mm
 MARGIN_2CM_PT = 56.7  # 2cm
 
 
+
 def get_credentials():
     """Authenticates and returns Google API credentials."""
     creds = None
+    
+    # Strategy 1: Try Application Default Credentials (ADC)
+    # Windows-specific path as per user OS settings
+    # Note: We import Path inside function or at top level if already imported. 
+    # Based on file imports, we need to ensure Path is imported or use os.path
+    # The file currently uses os, let's stick to os logic or add pathlib
+    from pathlib import Path
+    adc_path = Path(os.environ.get('APPDATA', '')) / 'gcloud' / 'application_default_credentials.json'
+    
+    if adc_path.exists():
+        try:
+            creds = Credentials.from_authorized_user_file(str(adc_path), SCOPES)
+            if creds and creds.valid:
+                print("✓ Using Application Default Credentials (ADC)")
+                return creds
+            elif creds and creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+                print("✓ Using Application Default Credentials (ADC) [refreshed]")
+                return creds
+        except Exception as e:
+            print(f"⚠ ADC found but failed to load: {e}")
+            
+    # Strategy 2: Legacy OAuth flow (fallback)
+    print("⚠ ADC not configured, falling back to legacy OAuth...")
     
     if os.path.exists(TOKEN_PATH):
         creds = Credentials.from_authorized_user_file(TOKEN_PATH, SCOPES)
@@ -59,6 +84,7 @@ def get_credentials():
         with open(TOKEN_PATH, 'w') as token:
             token.write(creds.to_json())
     
+    print("✓ Using legacy OAuth credentials")
     return creds
 
 

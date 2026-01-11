@@ -20,11 +20,33 @@ SCOPES = [
     'https://www.googleapis.com/auth/drive.file'
 ]
 
+
 def authenticate():
     """Authenticate and return the Slides API service."""
     creds = None
     token_path = '.credentials/token.json'
     credentials_path = '.credentials/credentials.json'
+    
+    # Strategy 1: Try Application Default Credentials (ADC)
+    import os
+    from pathlib import Path
+    adc_path = Path(os.environ.get('APPDATA', '')) / 'gcloud' / 'application_default_credentials.json'
+    
+    if adc_path.exists():
+        try:
+            creds = Credentials.from_authorized_user_file(str(adc_path), SCOPES)
+            if creds and creds.valid:
+                print("✓ Using Application Default Credentials (ADC)")
+                return build('slides', 'v1', credentials=creds)
+            elif creds and creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+                print("✓ Using Application Default Credentials (ADC) [refreshed]")
+                return build('slides', 'v1', credentials=creds)
+        except Exception as e:
+            print(f"⚠ ADC found but failed to load: {e}")
+
+    # Strategy 2: Legacy OAuth flow (fallback)
+    print("⚠ ADC not configured, falling back to legacy OAuth...")
     
     # Check if we have valid credentials saved
     if os.path.exists(token_path):
@@ -46,6 +68,7 @@ def authenticate():
             token.write(creds.to_json())
         print(f"Credentials saved to {token_path}")
     
+    print("✓ Using legacy OAuth credentials")
     return build('slides', 'v1', credentials=creds)
 
 def create_test_presentation(service):

@@ -2,76 +2,104 @@
 Google API Authentication Module
 
 Handles OAuth 2.0 authentication for Google Slides and Docs APIs.
+Prioritizes Application Default Credentials (ADC) over manual token management.
 """
 
-import os.path
+import os
+from pathlib import Path
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
 # Scopes for Google APIs
+# Using broader 'drive' scope instead of 'drive.file' for better compatibility with existing ADC tokens
 SLIDES_SCOPES = [
     'https://www.googleapis.com/auth/presentations',
-    'https://www.googleapis.com/auth/drive.file'
+    'https://www.googleapis.com/auth/drive',
+    'https://www.googleapis.com/auth/documents'
 ]
 
-DOCS_SCOPES = [
-    'https://www.googleapis.com/auth/documents',
-    'https://www.googleapis.com/auth/drive.file'
-]
+DOCS_SCOPES = SLIDES_SCOPES
+
+# Legacy paths
+CREDENTIALS_DIR = Path(".credentials")
+CLIENT_SECRET_FILE = CREDENTIALS_DIR / "credentials.json"
+TOKEN_FILE = CREDENTIALS_DIR / "token.json"
+GDOCS_TOKEN_FILE = CREDENTIALS_DIR / "gdocs-token.json"
 
 def _get_credentials(scopes):
-    """Internal function to get or refresh credentials."""
+    """
+    Internal function to get or refresh credentials.
+    Prioritizes ADC, falls back to gdocs-token.json, then token.json.
+    """
     creds = None
-    token_path = '.credentials/token.json'
-    credentials_path = '.credentials/credentials.json'
     
-    # Load existing credentials
-    if os.path.exists(token_path):
-        creds = Credentials.from_authorized_user_file(token_path, scopes)
+    # Strategy 1: Try Application Default Credentials (ADC)
+    adc_path = Path(os.environ.get('APPDATA', '')) / 'gcloud' / 'application_default_credentials.json'
     
-    # Refresh or create new credentials
+    if adc_path.exists():
+        try:
+            creds = Credentials.from_authorized_user_file(str(adc_path), scopes)
+            if creds and creds.valid:
+                print("[OK] Using Application Default Credentials (ADC)")
+                return creds
+            elif creds and creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+                print("[OK] Using Application Default Credentials (ADC) [refreshed]")
+                return creds
+        except Exception as e:
+            print(f"[WARN] ADC Scope/Refresh Issue: {e}")
+
+    # Strategy 2: Try gdocs-token.json (often more recent)
+    if GDOCS_TOKEN_FILE.exists():
+        try:
+            creds = Credentials.from_authorized_user_file(str(GDOCS_TOKEN_FILE), scopes)
+            if creds and creds.valid:
+                print("[OK] Using gdocs-token.json")
+                return creds
+            elif creds and creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+                print("[OK] Using gdocs-token.json [refreshed]")
+                return creds
+        except Exception as e:
+            print(f"[WARN] gdocs-token issue: {e}")
+
+    # Strategy 3: Legacy token.json
+    if TOKEN_FILE.exists():
+        try:
+            creds = Credentials.from_authorized_user_file(str(TOKEN_FILE), scopes)
+            if creds and creds.valid:
+                print("[OK] Using token.json")
+                return creds
+            elif creds and creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+                print("[OK] Using token.json [refreshed]")
+                return creds
+        except Exception as e:
+            print(f"[WARN] token.json issue: {e}")
+
     if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                credentials_path, scopes)
-            creds = flow.run_local_server(port=0)
+        print(f"\n❌ AUTHENTICATION FAILED")
+        print("Please refresh your credentials by running:")
+        print("gcloud auth application-default login --scopes=\"https://www.googleapis.com/auth/presentations,https://www.googleapis.com/auth/drive,https://www.googleapis.com/auth/documents\"")
         
-        # Save credentials
-        with open(token_path, 'w') as token:
-            token.write(creds.to_json())
-    
+        # We don't run flow.run_local_server here because it hangs in agent mode
+        raise Exception("Authentication required. Please run the gcloud command above.")
+
     return creds
 
 def authenticate_slides():
-    """
-    Authenticate and return Google Slides API service.
-    
-    Returns:
-        googleapiclient.discovery.Resource: Slides API service object
-    """
+    """Authenticate and return Google Slides API service."""
     creds = _get_credentials(SLIDES_SCOPES)
     return build('slides', 'v1', credentials=creds)
 
 def authenticate_docs():
-    """
-    Authenticate and return Google Docs API service.
-    
-    Returns:
-        googleapiclient.discovery.Resource: Docs API service object
-    """
+    """Authenticate and return Google Docs API service."""
     creds = _get_credentials(DOCS_SCOPES)
     return build('docs', 'v1', credentials=creds)
 
 def authenticate_drive():
-    """
-    Authenticate and return Google Drive API service.
-    
-    Returns:
-        googleapiclient.discovery.Resource: Drive API service object
-    """
-    creds = _get_credentials(SLIDES_SCOPES + DOCS_SCOPES)
+    """Authenticate and return Google Drive API service."""
+    creds = _get_credentials(SLIDES_SCOPES)
     return build('drive', 'v3', credentials=creds)

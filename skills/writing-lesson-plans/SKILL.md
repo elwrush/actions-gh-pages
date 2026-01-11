@@ -124,20 +124,23 @@ Wait for user approval before proceeding.
 > - *Mechanistic*: "Step 3: Fill in the worksheet now."
 > - *Interpretative*: "Step 3: **Detective Work**. Like detectives searching for clues, scan the text for ONLY the information you need. You don't need to understand every word—just find the answer to solve the case."
 
-### Step 7: Write Lesson Plan (HTML)
+### Step 7: Write Lesson Plan (HTML for GDocs)
 
-Generate the lesson plan **directly in HTML format** (not markdown).
+Generate the lesson plan **directly in HTML format** for native Google Docs editing. 
+
+> [!IMPORTANT]
+> **Gold Standard Template**: Use `inputs/05-Social-Media-Reading/06-01-26-LP B1-Social-Media-Reading-Shape H.html` as the structural and styling reference.
+> - Use 1-cell tables for colored boxes (e.g. Differentiation).
+> - Use standard HTML tables for lesson stages.
+> - Ensure all styles are **inline** (`style="..."`).
+> - Use **relative paths** for images to ensure correct base64 embedding during push (`../../images/...`).
 
 #### File Naming Convention
 Store in the **source folder** (same as materials) with this format:
 ```
-DD-MM-YY-LP [CEFR]-[topic]-[skill or system]-[Shape]
+DD-MM-YYYY-LP [CEFR]-[topic]-[skill or system]-[Shape]
 ```
-
-**Examples:**
-- `27-12-25-LP B1-Politeness-Reading-Shape E Receptive.html`
-- `15-01-25-LP A2-Food-Vocabulary-Shape A Text-based.html`
-- `20-03-25-LP B2-Environment-Writing-Shape F Productive.html`
+*(Note: Use 4-digit year as per latest user request)*
 
 #### HTML Structure
 
@@ -335,12 +338,11 @@ Using your phone during class is not **acceptable**.
 การใช้โทรศัพท์ในระหว่างเรียนไม่**ยอมรับได้**
 ```
 
-### Step 8: Export Prompt
+### Step 8: Export via ADC to GDocs
 
-Once lesson plan is approved, ask:
-> "Ready to convert to HTML and upload to Google Docs?"
-
-This triggers the `uploading-to-google-docs` skill.
+Once the lesson plan is approved, use the **`push_to_gdocs`** tool.
+- Ensure the push operation uses the **ADC (Application Default Credentials)** method.
+- The tool will automatically embed local images as base64.
 
 ---
 
