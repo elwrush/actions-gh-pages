@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>B1 Writing: The 20/20 Tech Article</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/monokai.min.css">
+
+    <style>
+        :root {
+            --r-main-color: #f8fafc;
+            --r-heading-color: #fff;
+            --r-link-color: #00f2ff;
+            --r-selection-background-color: #8b1538;
+            --r-background-color: #0f172a;
+            --maroon: #8b1538;
+            --cyber-blue: #00f2ff;
+        }
+
+        .reveal .slides {
+            text-align: left;
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(139, 21, 56, 0.7);
+        }
+
+        .reveal h1 {
+            color: var(--maroon);
+            border-left: 5px solid var(--maroon);
+            padding-left: 20px;
+        }
+
+        .glow-maroon {
+            color: var(--maroon);
+            text-shadow: 0 0 15px var(--maroon);
+        }
+
+        .glow-blue {
+            color: var(--cyber-blue);
+            text-shadow: 0 0 15px var(--cyber-blue);
+        }
+
+        .code-box {
+            background: rgba(15, 23, 42, 0.9);
+            border: 2px solid var(--maroon);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            box-shadow: 0 0 20px rgba(139, 21, 56, 0.3);
+        }
+
+        .glitch-text {
+            animation: glitch 1s linear infinite;
+        }
+
+        @keyframes glitch {
+
+            2%,
+            64% {
+                transform: translate(2px, 0) skew(0deg);
+            }
+
+            4%,
+            60% {
+                transform: translate(-2px, 0) skew(0deg);
+            }
+
+            62% {
+                transform: translate(0, 0) skew(5deg);
+            }
+        }
+
+        .stage-badge {
+            background: var(--maroon);
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.8em;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .background-dim {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- TITLE SLIDE -->
+            <section data-background-image="images/title_hud.png" data-background-opacity="0.3">
+                <div class="stage-badge">SESSION START</div>
+                <h1 class="glow-maroon">THE ART OF STRUCTURE</h1>
+                <h3 class="glow-blue">The 20/20 Tech Article</h3>
+                <p>B1 PET Writing | Intensive Course</p>
+                <p style="font-size: 0.6em; margin-top: 50px; color: #64748b;">[PRESS SPACE TO START]</p>
+            </section>
+
+            <!-- STAGE 1: SPAGHETTI CODE -->
+            <section data-background-image="images/spaghetti.png" data-background-opacity="0.2">
+                <div class="stage-badge">STAGE 1: THE GLITCH</div>
+                <h2 class="glow-maroon">The 'Messy Room' Problem</h2>
+                <div class="code-box">
+                    <p style="color: #ef4444;">// UNSTRUCTURED DRAFT</p>
+                    <p>"I use AI for homework. It is fast. It helps me. Sometimes it is wrong. But I like it."</p>
+                </div>
+                <ul style="margin-top: 30px;">
+                    <li class="fragment">Estimated Score: <span class="glow-maroon">3/5</span></li>
+                    <li class="fragment">Diagnosis: <span class="glow-blue">Spaghetti Thinking</span></li>
+                    <li class="fragment">Problem: Like cooking without a recipe - messy and confusing.</li>
+                </ul>
+            </section>
+
+            <!-- SEGUE 1: THE BRIDGE TO ANALYSIS -->
+            <section data-background-color="#0f172a">
+                <h3 class="glow-maroon">YOU CAN'T BUILD ON SAND</h3>
+                <p>We cannot build a great essay on a weak foundation.</p>
+                <p class="fragment" style="color: #00f2ff; margin-top: 30px;">
+                    <span style="border: 1px solid #00f2ff; padding: 10px;">ACTION REQUIRED:</span><br><br>
+                    Look at a high-performance model (20/20) to see how it's built.
+                </p>
+            </section>
+
+            <!-- STAGE 2: REVERSE ENGINEERING -->
+            <section>
+                <div class="stage-badge">STAGE 2: REVERSE ENGINEERING</div>
+                <h2>Analyzing a Masterpiece</h2>
+                <p>This article scored <span class="glow-blue">20/20</span>. Let's look at the blueprint:</p>
+                <div class="code-box" style="font-size: 0.7em;">
+                    <p><span class="glow-maroon">[SITU]</span> I love to watch comedies a lot because it makes me
+                        laugh...</p>
+                    <p class="fragment"><span class="glow-maroon">[COMP]</span> In the show, famous actors must overcome
+                        challenging quests, such as...</p>
+                    <p class="fragment"><span class="glow-maroon">[RESO]</span> Laughing can help us release stress...
+                        It may also make us...</p>
+                </div>
+            </section>
+
+            <!-- SEGUE 2: EXTRACTION COMPLETE -->
+            <section data-background-color="#0f172a">
+                <h3 class="glow-blue">ANALYSIS COMPLETE</h3>
+                <p>We have identified the best parts.</p>
+                <div class="fragment" style="margin-top: 40px; border: 2px dashed var(--maroon); padding: 20px;">
+                    <p style="color: var(--maroon);">GATHERING THE TOOLS...</p>
+                    <p style="font-family: monospace;">> CHECKING THE BLUEPRINT...</p>
+                </div>
+            </section>
+
+            <!-- STAGE 3: CODE SNIPPETS -->
+            <section data-background-image="images/blueprint.png" data-background-opacity="0.2">
+                <div class="stage-badge">STAGE 3: TOOLS</div>
+                <h2>Tools for your Kit</h2>
+                <p>Use these to strengthen your writing:</p>
+                <div class="code-box">
+                    <p class="fragment glow-blue">TOOL 1: The 'Best-Of' Intro</p>
+                    <p class="fragment" style="margin-bottom: 20px;">"The [App] I use the most is..."</p>
+
+                    <p class="fragment glow-blue">TOOL 2: The 'Challenge' Detail</p>
+                    <p class="fragment" style="margin-bottom: 20px;">"Users must overcome complex issues, such as..."
+                    </p>
+
+                    <p class="fragment glow-blue">TOOL 3: The 'Two-Sided' View</p>
+                    <p class="fragment">"It allows us to X, but it may also make us Y too!"</p>
+                </div>
+            </section>
+
+            <!-- SEGUE 3: READY TO BUILD -->
+            <section data-background-color="#0f172a">
+                <h3 class="glow-maroon">TOOLS READY</h3>
+                <p>You now have the necessary components.</p>
+                <div class="fragment" style="margin-top: 30px;">
+                    <p style="color: var(--cyber-blue);">STARTING THE BLUEPRINT...</p>
+                    <p style="font-size: 0.7em; color: #64748b;">(Remember: Don't start building without a plan.)</p>
+                </div>
+            </section>
+
+            <!-- STAGE 4: SYSTEM ARCHITECTURE -->
+            <section>
+                <div class="stage-badge">STAGE 4: THE BLUEPRINT</div>
+                <h2>Dot-Dash Planning</h2>
+                <p>Draft your Complication/Challenge block:</p>
+                <div style="display: flex; gap: 40px;">
+                    <div style="flex: 1;">
+                        <h4 class="glow-blue">DOT: Main Point</h4>
+                        <p>"AI is powerful but risky."</p>
+                    </div>
+                    <div style="flex: 1;" class="fragment">
+                        <h4 class="glow-maroon">DASH: Details</h4>
+                        <ul>
+                            <li>Fast essay generation</li>
+                            <li>Facts can be hallucinations</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            </section>
+
+            <!-- SEGUE 4: BLUEPRINT -->
+            <section data-background-color="#0f172a">
+                <h3 class="glow-blue">VISUALIZING THE PLAN</h3>
+                <p>Checking the plan...</p>
+            </section>
+
+            <!-- FLOWCHART SLIDE -->
+            <section data-background-image="images/flowchart.png" data-background-opacity="0.9"
+                data-background-size="contain">
+            </section>
+
+            <!-- STAGE 5: THE MISSION -->
+            <section data-background-color="#8b1538">
+                <div class="stage-badge" style="background: #0f172a;">FINAL DRAFT</div>
+                <h2 style="color: white; border-left-color: white;">TASK: TECHNOLOGY AND YOU</h2>
+                <div class="background-dim">
+                    <p style="font-weight: bold; color: #00f2ff; margin-bottom: 20px;">NOW WRITE YOUR ARTICLE:</p>
+                    <ul style="font-size: 0.9em;">
+                        <li>Which website or app do you like most?</li>
+                        <li>How often do you use it?</li>
+                        <li>Is it important for teenagers to have a computer? Why?</li>
+                    </ul>
+                </div>
+                <p class="fragment glow-blue"
+                    style="text-align: center; margin-top: 40px; font-weight: bold; font-size: 1.2em; border: 2px solid white; padding: 10px;">
+                    START WRITING NOW! <br> [TIME LIMIT: 20 MINS]
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/notes/notes.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            transition: 'convex',
+            backgroundTransition: 'zoom'
+        });
+    </script>
+</body>
+
+</html>
