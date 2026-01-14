@@ -26,12 +26,6 @@ Creates custom educational materials tailored to CEFR levels and skill types:
 - GDocs-compatible HTML output
 - Image generation with fallback protocol
 
-#### `reading-visual-content`
-Extracts text from images and PDFs using Gemini's multimodal vision:
-- JPEG, PNG, and PDF support
-- Honesty protocol (anti-hallucination safeguards)
-- Requires Gemini 3 Flash confirmation
-- Structured markdown output
 
 
 #### `generating-worksheets`
@@ -61,12 +55,13 @@ Uploads HTML content to Google Drive and converts to Google Docs:
 - Drive + Docs API integration
 - Formatted paragraph preference over tables
 
-#### `committing-to-github`
+#### `committing-to-github` (Global)
 Git workflow automation:
 - Staging and committing
 - Automatic `desktop.ini` exclusion (Google Drive sync)
 - Commit message conventions
 - Push confirmation
+- Triggered with `/commit`
 
 ### 📚 Lesson Shapes
 
@@ -86,7 +81,6 @@ Git workflow automation:
 .
 ├── skills/                    # Modular skills (Skills architecture)
 │   ├── writing-lesson-plans/
-│   └── committing-to-github/
 ├── knowledge_base/            # Reference data
 │   ├── lesson_shapes.yaml
 │   └── slide-design-principles.md
