@@ -76,3 +76,81 @@ Quick reference for the 7 lesson shapes. Full details in [lesson_shapes.yaml](fi
 ### Answer Key (Footer)
 
 **Exercise 2 (p.167)**: 1. have visited, 2. went, 3. has lived, 4. moved, 5. have never been
+
+---
+
+## HTML Template <a name="html-template"></a>
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>[Lesson Title]</title>
+</head>
+<body style="font-family: Arial, sans-serif; font-size: 11pt; color: #333; line-height: 1.15;">
+    
+    <!-- Header Image -->
+    <p style="text-align: center;">
+        <img src="../../images/intensive-header.jpg" width="600" style="margin-bottom: 20pt;">
+        <!-- OR: <img src="../../images/bell-header.jpg" width="600"> for regular Bell lessons -->
+    </p>
+    
+    <!-- Lesson Metadata Header -->
+    <div style="line-height: 1.15;">
+        <h1 style="font-size: 16pt; color: #A62D26; border-bottom: 3pt solid #A62D26; padding-bottom: 5pt;">[Unit Title]</h1>
+        <p><strong>Objective:</strong> [Objective]</p>
+        <p><strong>Date:</strong> [DD-MM-YYYY]</p>
+        <p><strong>Systems/Skills:</strong> [Systems/Skills]</p>
+        <p><strong>CEFR Level:</strong> [Level]</p>
+        <p><strong>Teacher:</strong> Ed Rush</p>
+        <p><strong>Duration:</strong> [Duration] min</p>
+        <p><strong>Materials:</strong> [Description]</p>
+        <p><strong>Assessment:</strong> [Type]</p>
+    </div>
+    
+    <hr style="margin: 20pt 0; border: none; border-top: 1pt solid #ddd;">
+    
+    <!-- Lesson Stages Table -->
+    <h2 style="color: #A62D26; font-size: 14pt; margin-top: 20pt;">Lesson Stages</h2>
+    
+    <table border="1" style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #A62D26; color: white;">
+                <th style="padding: 8pt; width: 8%;">Stage</th>
+                <th style="padding: 8pt; width: 20%;">Aim</th>
+                <th style="padding: 8pt; width: 52%;">Procedure</th>
+                <th style="padding: 8pt; width: 10%;">Time</th>
+                <th style="padding: 8pt; width: 10%;">Interaction</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background-color: #cb5c55; color: white;">
+                <td colspan="5" style="padding: 8pt; font-weight: bold; text-align: center;">
+                    STAGE ONE: [Lead-in]
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 8pt; text-align: center;">1</td>
+                <td style="padding: 8pt;">To engage Ss</td>
+                <td style="padding: 8pt;">
+                    <strong>[Title]</strong>
+                    <ul style="margin: 5pt 0 0 0; padding-left: 20px;">
+                        <li>Step...</li>
+                    </ul>
+                </td>
+                <td style="padding: 8pt; text-align: center;">5</td>
+                <td style="padding: 8pt; text-align: center;">T-Ss</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p style="margin-top: 15pt; font-style: italic; color: #7f8c8d;"><strong>Total Time:</strong> [Total] minutes</p>
+    
+    <!-- Answer Key Section -->
+    <hr style="margin: 30pt 0; border: none; border-top: 2pt solid #A62D26;">
+    <h2 style="color: #A62D26; font-size: 16pt; border-bottom: 2pt solid #A62D26; padding-bottom: 5pt;">Answer Key</h2>
+    
+</body>
+</html>
+```

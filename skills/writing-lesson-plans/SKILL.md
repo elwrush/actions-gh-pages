@@ -145,122 +145,28 @@ DD-MM-YYYY-LP [CEFR]-[topic]-[skill or system]-[Shape]
 
 #### HTML Structure
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>[Lesson Title]</title>
-</head>
-<body style="font-family: Arial, sans-serif; font-size: 11pt; color: #333; line-height: 1.15;">
-    
-    <!-- Header Image -->
-    <p style="text-align: center;">
-        <img src="../../images/intensive-header.jpg" width="600" style="margin-bottom: 20pt;">
-        <!-- OR: <img src="../../images/bell-header.jpg" width="600"> for regular Bell lessons -->
-    </p>
-    
-    <!-- Lesson Metadata Header (1.15 line spacing) -->
-    <div style="line-height: 1.15;">
-        <h1 style="font-size: 16pt; color: #A62D26; border-bottom: 3pt solid #A62D26; padding-bottom: 5pt;">[Unit Title]</h1>
-        <p><strong>Objective:</strong> [Objective from Step 7]</p>
-        <p><strong>Date:</strong> [DD-MM-YYYY format]</p>
-        <p><strong>Systems/Skills:</strong> [From Step 2]</p>
-        <p><strong>CEFR Level:</strong> [From Step 2]</p>
-        <p><strong>Teacher:</strong> [From Step 2]</p>
-        <p><strong>Duration:</strong> [From Step 2]</p>
-        <p><strong>Materials:</strong> [Meaningful description of resources]</p>
-        <p><strong>Assessment:</strong> [From Step 2]</p>
-    </div>
-    
-    <hr style="margin: 20pt 0; border: none; border-top: 1pt solid #ddd;">
-    
-    <!-- Lesson Stages Table -->
-    <h2 style="color: #A62D26; font-size: 14pt; margin-top: 20pt;">Lesson Stages</h2>
-    
-    <table border="1" style="width: 100%; border-collapse: collapse;">
-        <thead>
-            <tr style="background-color: #A62D26; color: white;">
-                <th style="padding: 8pt; width: 8%;">Stage</th>
-                <th style="padding: 8pt; width: 20%;">Aim</th>
-                <th style="padding: 8pt; width: 52%;">Procedure</th>
-                <th style="padding: 8pt; width: 10%;">Time</th>
-                <th style="padding: 8pt; width: 10%;">Interaction</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Stage Header Row (colored, spanning all columns) -->
-            <tr style="background-color: #cb5c55; color: white;">
-                <td colspan="5" style="padding: 8pt; font-weight: bold; text-align: center;">
-                    STAGE ONE: [Stage Name from Lesson Shape]
-                </td>
-            </tr>
-            <!-- Individual steps within this stage -->
-            <tr>
-                <td style="padding: 8pt; text-align: center;">1</td>
-                <td style="padding: 8pt;">To [specific aim]</td>
-                <td style="padding: 8pt;">
-                    <strong>[Activity Name]</strong>
-                    <ul style="margin: 5pt 0 0 0; padding-left: 20px;">
-                        <li>First step of procedure</li>
-                        <li>Second step of procedure</li>
-                        <li>Pair check / feedback step</li>
-                    </ul>
-                </td>
-                <td style="padding: 8pt; text-align: center;">5</td>
-                <td style="padding: 8pt; text-align: center;">T-Ss</td>
-            </tr>
-            <!-- Alternating row background -->
-            <tr style="background-color: #fceceb;">
-                <td style="padding: 8pt; text-align: center;">2</td>
-                <td style="padding: 8pt;">To [specific aim]</td>
-                <td style="padding: 8pt;">[Use <ul><li> for procedures]</td>
-                <td style="padding: 8pt; text-align: center;">5</td>
-                <td style="padding: 8pt; text-align: center;">Ss-Ss</td>
-            </tr>
-            
-            <!-- Next Stage Header Row -->
-            <tr style="background-color: #cb5c55; color: white;">
-                <td colspan="5" style="padding: 8pt; font-weight: bold; text-align: center;">
-                    STAGE TWO: [Next Stage Name]
-                </td>
-            </tr>
-            <!-- More rows... -->
-        </tbody>
-    </table>
-    
-    <p style="margin-top: 15pt; font-style: italic; color: #7f8c8d;"><strong>Total Time:</strong> [sum of all stage times] minutes</p>
-    
-    <hr style="margin: 30pt 0; border: none; border-top: 2pt solid #A62D26;">
-    
-    <!-- Answer Key (if applicable) -->
-    <h2 style="color: #A62D26; font-size: 16pt; border-bottom: 2pt solid #A62D26; padding-bottom: 5pt;">Answer Key</h2>
-    
-    <!-- Transcript (Shape E Listening ONLY) -->
-    
-</body>
-</html>
-```
+> [!IMPORTANT]
+> **See [REFERENCE.md#html-template](REFERENCE.md#html-template)** for the complete HTML boilerplate.
+>
+> - **Gold Standard**: `inputs/05-Social-Media-Reading/06-01-26-LP B1-Social-Media-Reading-Shape H.html`
+> - Use 1-cell tables for colored boxes (e.g., Differentiation).
+> - Use standard HTML tables for lesson stages.
+> - Ensure all styles are **inline** (`style="..."`).
+> - Use **relative paths** for images: `../../images/...`
+
+#### Color Scheme (ACT Maroon Branding)
+- Title: `#A62D26` | Table header: `#A62D26` | Stage rows: `#cb5c55` | Alternating row: `#fceceb`
 
 #### McKinsey Logic Checks (MANDATORY)
 
-Before finalizing, run these two tests on your lesson/slides structure:
-1. **Horizontal Flow (The Story)**: Can you understand the lesson's narrative path by reading ONLY the stage headers (or slide titles)? They should form a cohesive SCR story.
-2. **Vertical Flow (The Proof)**: Does every activity (Dash) explicitly support the lesson objective or Stage Aim (Dot)? If an activity is just "fun" but doesn't prove the goal, it is "waste" and should be refined.
+Before finalizing:
+1. **Horizontal Flow (The Story)**: Can you understand the lesson's narrative path by reading ONLY the stage headers?
+2. **Vertical Flow (The Proof)**: Does every activity explicitly support the lesson objective or Stage Aim?
 
-#### Formatting Guidelines
-
-**Color Scheme (ACT Maroon Branding):**
-- Title heading: `#A62D26` (maroon)
-- Table header: `#A62D26` (maroon)
-- Stage header rows: `#cb5c55` (lighter maroon)
-- Alternating row background: `#fceceb` (light pink tint)
-- Answer Key/dividers: `#A62D26` (maroon)
-
-**Bullet Points (Google Docs Compatible):**
-- Use proper HTML lists `<ul>` and `<li>` in the Procedure column
-- Do NOT use manual dashes with `<br>` tags
+#### Bullet Points (Google Docs Compatible)
+- Use proper HTML lists `<ul>` and `<li>` in the Procedure column.
 - Apply margin styling: `<ul style="margin: 5pt 0 0 0; padding-left: 20px;">`
+
 
 **Line Spacing:**
 - All text: `line-height: 1.15` (set on body tag)

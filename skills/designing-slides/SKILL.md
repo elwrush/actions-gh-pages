@@ -225,134 +225,20 @@ All slideshows MUST use the Bell EP template structure for the title slide:
 
 ---
 
-### 1. Authenticate
+## API Usage & Code Examples
 
-```python
-import sys
-import os
+For authentication, slide creation, formatting, and batch operations, see [REFERENCE.md](REFERENCE.md).
 
-# Add skill scripts to path
-# Adjust relative path as needed based on where you run the script from
-SCRIPT_DIR = os.path.join(os.path.dirname(__file__), '../../skills/designing-slides/scripts')
-sys.path.append(os.path.abspath(SCRIPT_DIR))
+**Key Scripts:**
+- `scripts/authenticate_google.py` – OAuth authentication
+- `scripts/create_presentation.py` – Create new presentations
+- `scripts/add_slide_content.py` – Add content to slides
+- `scripts/format_slides.py` – Apply styling and formatting
+- `scripts/validate_slideshow_outline.py` – Validate outlines before generation
 
-from authenticate_google import authenticate_slides
+**External Documentation:**
+- [Google Slides API](https://developers.google.com/slides/api)
 
-service = authenticate_slides()
-```
-
-### 2. Create a New Presentation
-
-```python
-from scripts.create_presentation import create_presentation
-
-presentation_id = create_presentation(
-    service=service,
-    title="My Lesson Slideshow"
-)
-```
-
-### 3. Add Content to Slides
-
-```python
-from scripts.add_slide_content import (
-    add_title_slide,
-    add_content_slide,
-    add_image_slide,
-    add_table_slide
-)
-
-# Add title slide
-add_title_slide(
-    service=service,
-    presentation_id=presentation_id,
-    title="Unit 3: Past Progressive",
-    subtitle="Bell English Program - M2/4A"
-)
-
-# Add content slide with bullet points
-add_content_slide(
-    service=service,
-    presentation_id=presentation_id,
-    title="Learning Objectives",
-    bullets=[
-        "Understand when to use past progressive",
-        "Form affirmative and negative sentences",
-        "Practice with interactive exercises"
-    ]
-)
-
-# Add image slide
-add_image_slide(
-    service=service,
-    presentation_id=presentation_id,
-    title="Visual Example",
-    image_path="images/example.jpg"
-)
-```
-
-## Workflow
-
-### Basic Workflow
-1. **Authenticate** → Get API service
-2. **Create presentation** → Get presentation ID
-3. **Add slides** → Title, content, images, tables
-4. **Format slides** → Apply styling, colors, fonts
-5. **Share** → Get shareable link
-
-### Integration with Lesson Plans
-1. Read lesson plan from `writing-lesson-plans` skill output
-2. Extract key sections (objectives, activities, materials)
-3. Generate slides automatically based on lesson structure
-4. Upload presentation to Google Slides
-5. Return shareable link
-
-## Scripts
-
-### Core Scripts
-- `scripts/authenticate_google.py` - OAuth authentication
-- `scripts/create_presentation.py` - Create new presentations
-- `scripts/add_slide_content.py` - Add content to slides
-- `scripts/format_slides.py` - Apply styling and formatting
-- `scripts/upload_images.py` - Upload and position images
-
-### Utility Scripts
-- `scripts/get_presentation.py` - Retrieve existing presentation
-- `scripts/list_slides.py` - List all slides in presentation
-- `scripts/delete_slide.py` - Remove specific slides
-
-## Common Operations
-
-### Get Presentation URL
-```python
-presentation_id = "abc123xyz"
-url = f"https://docs.google.com/presentation/d/{presentation_id}/edit"
-```
-
-### Apply Template Styling
-```python
-# Note: Theme application is usually handled within individual slide creation 
-# or by explicitly setting backgrounds on specific slides.
-# See scripts/format_slides.py for set_slide_background()
-```
-
-### Batch Create Slides from Lesson Plan
-```python
-from scripts.generate_from_lesson import generate_slideshow
-
-generate_slideshow(
-    lesson_plan_path="outputs/lesson-plan-unit3.md",
-    output_title="Unit 3 Slideshow",
-    include_images=True,
-    apply_theme="bell"
-)
-```
-
-## API Reference
-
-- [Google Slides API Documentation](https://developers.google.com/slides/api)
-- [Python Quickstart](https://developers.google.com/slides/api/quickstart/python)
-- [API Reference](https://developers.google.com/slides/api/reference/rest)
 
 ## Notes
 
