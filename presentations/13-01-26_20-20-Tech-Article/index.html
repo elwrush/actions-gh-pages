@@ -176,6 +176,28 @@
             background: rgba(0, 0, 0, 0.5);
             display: inline-block;
         }
+
+        /* AUDIO PLAYER */
+        .audio-player {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--cyan);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+            width: fit-content;
+        }
+
+        .listen-label {
+            font-family: 'Courier Prime', monospace;
+            color: var(--cyan);
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 0.8em;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 
@@ -185,7 +207,10 @@
 
             <!-- SLIDE 1: TITLE -->
             <section data-background-image="images/cyber_bg.png" data-background-opacity="0.2">
-                <div class="header-strap">BELL LANGUAGE CENTRE | 2026</div>
+                <!-- LOGO ONLY - NO STRAP -->
+                <img src="../../../images/ACT_transparent.png"
+                    style="position: absolute; top: 30px; left: 30px; height: 80px; z-index: 10;">
+
                 <div class="row-container" style="height: 500px;"> <!-- Explicit Container Height -->
                     <div class="col-40">
                         <img src="images/hero_v3.png" class="constrained-media"
@@ -392,6 +417,7 @@
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin/plugin/mermaid/mermaid.js"></script>
     <script>
         Reveal.initialize({
             hash: true,
@@ -404,7 +430,19 @@
             progress: true,
             center: true,
             transition: 'convex', // REQUESTED: COOL TRANSITION
-            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+            mermaid: {
+                theme: 'dark',
+                themeVariables: {
+                    darkMode: true,
+                    background: '#050811',
+                    primaryColor: '#00F2FF',
+                    primaryTextColor: '#fff',
+                    lineColor: '#ff0055',
+                    mainBkg: '#050811',
+                    nodeBorder: '#00F2FF'
+                }
+            },
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid]
         });
 
         // TIMER LOGIC
