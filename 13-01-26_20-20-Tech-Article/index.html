@@ -208,11 +208,9 @@
             <!-- SLIDE 1: TITLE -->
             <section data-background-image="images/cyber_bg.png" data-background-opacity="0.2"
                 style="position: relative;">
-                <!-- LOGO - TOP RIGHT OF THIS SLIDE ONLY -->
-                <div style="position: absolute; top: 0; right: 0; left: 0; bottom: 0; pointer-events: none;">
-                    <img src="images/ACT_transparent.png"
-                        style="position: absolute; top: 10px; right: 10px; height: 85px;">
-                </div>
+                <!-- LOGO - TOP RIGHT -->
+                <img src="images/ACT_transparent.png"
+                    style="position: absolute; top: 10px; right: 10px; height: 85px; z-index: 100;">
                 <div class="row-container" style="height: 500px;"> <!-- Explicit Container Height -->
                     <div class="col-40">
                         <img src="images/hero_v3.png" class="constrained-media"
@@ -446,6 +444,17 @@
             },
             plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid]
         });
+
+        // LOGO VISIBILITY: Only show on first slide
+        const logoOverlay = document.getElementById('logo-overlay');
+        function updateLogoVisibility() {
+            const currentSlide = Reveal.getIndices().h;
+            if (logoOverlay) {
+                logoOverlay.style.display = (currentSlide === 0) ? 'block' : 'none';
+            }
+        }
+        Reveal.on('slidechanged', updateLogoVisibility);
+        Reveal.on('ready', updateLogoVisibility);
 
         // TIMER LOGIC
         let timeLeft = 20 * 60;
