@@ -95,10 +95,12 @@
         .flex-wrapper {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            /* Center horizontally */
             gap: 2rem;
             width: 100%;
-            height: 100%;
+            height: 550px;
+            /* FIXED HEIGHT within 700px slide limit */
         }
 
         .flex-col {
@@ -106,13 +108,22 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            height: 100%;
+            /* Fill the 550px wrapper */
+        }
+
+        /* MEDIA CONSTRAINTS */
+        .flex-col img,
+        .flex-col iframe {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
 
         /* UTILITY: FOOTER */
         .footer-branding {
-            position: absolute;
-            bottom: -5%;
-            left: 0;
+            margin-top: 10px;
+            /* Flow naturally */
             width: 100%;
             text-align: center;
             font-size: 0.5em;
@@ -178,9 +189,9 @@
                         </div>
                     </div>
                     <div class="flex-col">
-                        <!-- r-stretch enables Reveal to size this to available space -->
-                        <iframe class="r-stretch" data-src="https://www.youtube.com/embed/Mh4f9AYRCZY" width="100%"
-                            height="400" frameborder="0" allowfullscreen></iframe>
+                        <!-- Removed r-stretch: handled by flex-col styles now -->
+                        <iframe data-src="https://www.youtube.com/embed/Mh4f9AYRCZY" width="100%" height="400"
+                            frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="footer-branding">BELL LANGUAGE CENTRE</div>
@@ -214,7 +225,8 @@
                 <div class="flex-wrapper">
                     <div class="flex-col glass-box" style="font-family: 'Courier New'; font-size: 0.7em;">
                         <p><span style="background:yellow; color:black;">[Q1]</span> "I love comedies... especially
-                            <strong>Chinese Running Man</strong>."</p>
+                            <strong>Chinese Running Man</strong>."
+                        </p>
                         <br>
                         <p><span style="background:yellow; color:black;">[Q2]</span> "Actors <strong>overcome
                                 quests</strong>... tickle my funny bone!"</p>
@@ -257,7 +269,7 @@
                         </div>
                     </div>
                     <div class="flex-col">
-                        <img src="images/structure.png" class="r-stretch"
+                        <img src="images/structure.png"
                             style="border: 3px solid white; box-shadow: 8px 8px 0 var(--cyan);">
                     </div>
                 </div>
@@ -304,8 +316,7 @@
                 <div class="stage-badge" style="background: black; color: white;">TASK 3: WRITING</div>
                 <div class="flex-wrapper">
                     <div class="flex-col">
-                        <img src="images/mission.png" class="r-stretch"
-                            style="border: 3px solid black; box-shadow: 10px 10px 0 black;">
+                        <img src="images/mission.png" style="border: 3px solid black; box-shadow: 10px 10px 0 black;">
                     </div>
                     <div class="flex-col glass-box"
                         style="background: rgba(0,0,0,0.6); border: none; box-shadow: none;">
