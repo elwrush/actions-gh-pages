@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>B1 Writing: The 20/20 Tech Article</title>
+
+    <!-- REVEAL.JS CORE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css?v=3.1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css?v=3.1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css?v=3.1" id="theme">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+
+    <!-- CYBER-GAMER THEME & LAYOUT ENGINE -->
+    <style>
+        :root {
+            --maroon: #ff0055;
+            --cyan: #00F2FF;
+            --navy: #050811;
+            --glass: rgba(10, 10, 20, 0.95);
+            --neon-border: #00F2FF;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--navy);
+        }
+
+        /* TYPOGRAPHY */
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            text-transform: uppercase;
+            font-weight: 800;
+            margin: 0 0 20px 0;
+        }
+
+        .reveal h1 {
+            color: white;
+            text-shadow: 4px 4px 0px var(--maroon);
+        }
+
+        .reveal h2 {
+            color: var(--cyan);
+        }
+
+        .reveal h3 {
+            color: yellow;
+        }
+
+        /* LAYOUT UTILITIES (FIXED CANVAS APPROACH) */
+        .slide-canvas {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Explicit Row Containers - NO percentages that resolve to 0 */
+        .row-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            /* Vertical center alignment */
+            gap: 40px;
+            width: 900px;
+            /* Safe width */
+        }
+
+        /* Flex Columns with explicit Basis */
+        .col-40 {
+            flex: 0 0 40%;
+            max-width: 40%;
+        }
+
+        .col-50 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .col-60 {
+            flex: 0 0 60%;
+            max-width: 60%;
+        }
+
+        /* COMPONENTS */
+        .glass-box {
+            background: var(--glass);
+            border: 2px solid var(--neon-border);
+            padding: 25px;
+            box-shadow: 6px 6px 0px rgba(0, 242, 255, 0.2);
+            text-align: left;
+        }
+
+        .stage-badge {
+            background: var(--cyan);
+            color: black;
+            padding: 5px 15px;
+            font-weight: 800;
+            transform: skew(-10deg);
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 0.6em;
+        }
+
+        /* HEADER STRAP (Cyber Pill Design) */
+        .header-strap {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(5, 8, 17, 0.9);
+            border: 1px solid var(--cyan);
+            border-radius: 50px;
+            /* Pill shape */
+            padding: 8px 25px;
+            text-align: center;
+            font-family: 'Courier Prime', monospace;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 14px;
+            color: var(--cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+            z-index: 10;
+        }
+
+        .teacher-tip {
+            border: 2px dashed var(--maroon);
+            background: black;
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 0.7em;
+            color: white;
+        }
+
+        /* MEDIA HANDLING */
+        img.constrained-media,
+        iframe.constrained-media {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* SEGUE TITLE */
+        .segue-title {
+            /* font-size removed to allow r-fit-text to work */
+            line-height: 1.1;
+            color: yellow;
+            text-transform: uppercase;
+            transform: rotate(-3deg) skew(-10deg);
+            /* Angled "Pop" */
+            text-shadow: 6px 6px 0px var(--maroon), 0 0 20px var(--cyan);
+            /* Cyber Glow */
+            margin: 0;
+            padding: 20px;
+            /* Add padding to prevent clipping of rotation */
+            position: relative;
+            z-index: 2;
+        }
+
+        /* TIMER */
+        .timer-display {
+            font-family: 'Courier Prime', monospace;
+            font-size: 2em;
+            color: white;
+            border: 1px solid var(--cyan);
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            display: inline-block;
+        }
+
+        /* AUDIO PLAYER */
+        .audio-player {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--cyan);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+            width: fit-content;
+        }
+
+        .listen-label {
+            font-family: 'Courier Prime', monospace;
+            color: var(--cyan);
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 0.8em;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- SLIDE 1: TITLE -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.2">
+                <!-- LOGO ONLY - NO STRAP -->
+                <img src="../../../images/ACT_transparent.png"
+                    style="position: absolute; top: 30px; left: 30px; height: 80px; z-index: 10;">
+
+                <div class="row-container" style="height: 500px;"> <!-- Explicit Container Height -->
+                    <div class="col-40">
+                        <img src="images/hero_v3.png" class="constrained-media"
+                            style="max-height: 400px; transform: rotate(-2deg); border: 3px solid var(--cyan); box-shadow: 0 0 30px rgba(0,242,255,0.3);">
+                    </div>
+                    <div class="col-60" style="text-align: left; padding-left: 20px;">
+                        <div class="stage-badge">LEVEL UP: WRITING</div>
+                        <h1 class="r-fit-text">THE 20/20<br>TECH WRITER</h1>
+                        <p><span
+                                style="background: var(--maroon); padding: 5px 15px; font-weight: 800; transform: skew(-10deg); display: inline-block;">CRACK
+                                THE CODE</span></p>
+                    </div>
+                </div>
+                <aside class="notes">
+                    TEACHER NOTES:
+                    - Welcome class.
+                    - Routine Check: Phones away.
+                    - Today's Goal: Writing the PERFECT Tech Article.
+                </aside>
+            </section>
+
+            <!-- SLIDE 2: SEGUE -->
+            <section data-background-gradient="radial-gradient(circle, #2a0a18 0%, #050811 100%)">
+                <h1 class="r-fit-text segue-title">PHASE 1:<br>WHAT MAKES A VIRAL MOMENT TICK?</h1>
+            </section>
+
+            <!-- SLIDE 3: WARM UP (Fixed Aspect Ratio Video) -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <div class="stage-badge">WARM UP</div>
+                <h2 class="r-fit-text">The Office Interruption</h2>
+
+                <div class="row-container" style="align-items: flex-start;">
+                    <div class="col-50 glass-box">
+                        <p style="font-size: 28px;"><strong>"A live world news interview. A serious topic."</strong></p>
+                        <p style="color: var(--cyan); margin: 15px 0; font-size: 28px;">And then... the chaos begins.
+                        </p>
+                        <div class="teacher-tip">
+                            <strong>WHY IT WENT VIRAL:</strong> It's the <strong>CLASH</strong>—serious suit vs. dancing
+                            kid.
+                        </div>
+                    </div>
+                    <div class="col-50">
+                        <!-- Aspect Ratio lock for Youtube -->
+                        <div
+                            style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 2px solid var(--cyan);">
+                            <iframe src="https://www.youtube.com/embed/Mh4f9AYRCZY"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    - Play the video (it's short).
+                    - Ask: "Why is this funny?"
+                    - Elicit: The CONTRAST between the serious BBC news and the chaotic kids.
+                </aside>
+            </section>
+
+            <!-- SLIDE 4: SEGUE -->
+            <section data-background-gradient="radial-gradient(circle, #2a0a18 0%, #050811 100%)">
+                <h1 class="r-fit-text segue-title">PHASE 2:<br>DECODING THE BOSS LEVEL</h1>
+            </section>
+
+            <!-- SLIDE 5: TASK 1 (Centered Box) -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <div class="stage-badge">TASK 1: ANALYSIS</div>
+                <h2>The Challenge</h2>
+                <div class="glass-box" style="width: 800px; margin: 0 auto; text-align: center;">
+                    <h3 style="color: yellow; font-size: 40px;">WHAT MAKES YOU LAUGH?</h3>
+                    <p style="font-size: 30px;">Write an article telling us <strong>what makes you laugh and
+                            why</strong>.</p>
+                    <p style="font-size: 30px;">Is it <strong>important for people to laugh</strong>?</p>
+                    <div class="teacher-tip" style="text-align: left;">
+                        <strong>PRO TIP:</strong> Check those 3 bold questions. Miss one and it's GAME OVER.
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 6: MODEL -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <div class="stage-badge">TASK 1: ANALYSIS</div>
+                <h2>The Perfect 20/20</h2>
+                <div class="row-container">
+                    <div class="col-50 glass-box" style="font-family: 'Courier Prime', monospace; font-size: 22px;">
+                        <p><span style="background:yellow; color:black;">[Q1]</span> "I love comedies... especially
+                            <strong>Chinese Running Man</strong>."
+                        </p>
+                        <br>
+                        <p><span style="background:yellow; color:black;">[Q2]</span> "Actors <strong>overcome
+                                quests</strong>... tickles my funny bone!"</p>
+                        <br>
+                        <p><span style="background:yellow; color:black;">[Q3]</span> "Laughing <strong>releases
+                                stress</strong>... more attractive too!"</p>
+                    </div>
+                    <div class="col-50" style="text-align: left;">
+                        <h3 style="background: black; padding: 10px; transform: rotate(-2deg); display: inline-block;">
+                            WHY IT WINS:</h3>
+                        <ul style="font-size: 28px; list-style: none;">
+                            <li style="margin-bottom: 10px;">✅ Hits all 3 targets.</li>
+                            <li style="margin-bottom: 10px;">✅ Real details.</li>
+                            <li style="margin-bottom: 10px;">✅ Strong opinions.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 7: SEGUE -->
+            <section data-background-gradient="radial-gradient(circle, #2a0a18 0%, #050811 100%)">
+                <h1 class="r-fit-text segue-title">PHASE 3:<br>THE BLUEPRINT</h1>
+            </section>
+
+            <!-- SLIDE 8: LOGIC FLOW -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <div class="stage-badge">TASK 2: PLANNING</div>
+                <h2>The Logic Flow</h2>
+                <div class="row-container">
+                    <div class="col-40 glass-box">
+                        <div style="margin-bottom: 30px;">
+                            <span style="background: var(--cyan); color: black; padding: 2px 5px; font-weight: bold;">1.
+                                HEADLINE</span>
+                            <p style="font-size: 24px;">Your assertion.<br>"Computers are essential."</p>
+                        </div>
+                        <div>
+                            <span style="background: yellow; color: black; padding: 2px 5px; font-weight: bold;">2.
+                                EVIDENCE</span>
+                            <p style="font-size: 24px;">The proof.<br>"For example, students..."</p>
+                        </div>
+                    </div>
+                    <div class="col-60">
+                        <img src="images/structure.png" class="constrained-media"
+                            style="max-height: 400px; border: 3px solid white;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 9: SEGUE -->
+            <section data-background-gradient="radial-gradient(circle, #2a0a18 0%, #050811 100%)">
+                <h1 class="r-fit-text segue-title">PHASE 4:<br>THE LOADOUT</h1>
+            </section>
+
+            <!-- SLIDE 10: VOCABULARY GRID -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <div class="stage-badge">TASK 3: TOOLBOX</div>
+                <h2>Vocabulary Weapons</h2>
+                <div class="glass-box" style="width: 900px; margin: 0 auto;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <!-- Cell 1 -->
+                        <div>
+                            <p style="color: var(--cyan); font-weight: 800; font-size: 24px;">PREFERENCE:</p>
+                            <p style="font-size: 22px; margin-top: 5px;">"The app I use most frequently is..."</p>
+                        </div>
+                        <!-- Cell 2 -->
+                        <div>
+                            <p style="color: var(--cyan); font-weight: 800; font-size: 24px;">PROOF:</p>
+                            <p style="font-size: 22px; margin-top: 5px;">"Furthermore, they allow us to..."</p>
+                        </div>
+                        <!-- Cell 3 -->
+                        <div>
+                            <p style="color: var(--cyan); font-weight: 800; font-size: 24px;">OPINION:</p>
+                            <p style="font-size: 22px; margin-top: 5px;">"In my view, computers are..."</p>
+                        </div>
+                        <!-- Cell 4 -->
+                        <div>
+                            <p style="color: var(--cyan); font-weight: 800; font-size: 24px;">POSSIBILITY:</p>
+                            <p style="font-size: 22px; margin-top: 5px;">"It might make us..."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 11: SEGUE -->
+            <section data-background-gradient="radial-gradient(circle, #2a0a18 0%, #050811 100%)">
+                <h1 class="r-fit-text segue-title">PHASE 5:<br>GO TIME</h1>
+            </section>
+
+            <!-- SLIDE 12: FINAL MISSION (Timer) -->
+            <section data-background-color="var(--maroon)">
+                <div class="stage-badge" style="background: black; color: white;">TASK 3: WRITING</div>
+
+                <div class="row-container" style="align-items: flex-start;">
+                    <div class="col-50">
+                        <img src="images/mission.png" class="constrained-media"
+                            style="max-height: 350px; border: 3px solid black; box-shadow: 10px 10px 0 black;">
+                    </div>
+                    <div class="col-50 glass-box" style="background: rgba(0,0,0,0.6); border: none; box-shadow: none;">
+                        <h3>TECHNOLOGY AND YOU</h3>
+                        <p style="font-size: 20px;">Write about your favorite app and if teenagers need computers.</p>
+
+                        <div style="text-align: center; margin-top: 30px;">
+                            <div id="countdown" class="timer-display">20:00</div>
+                            <br>
+                            <button id="timer-btn" onclick="toggleTimer()"
+                                style="padding: 10px 20px; font-weight: bold; background: var(--cyan); border: none; cursor: pointer; margin-top: 15px;">START</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin/plugin/mermaid/mermaid.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            width: 960,
+            height: 700,
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 2.0,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'convex', // REQUESTED: COOL TRANSITION
+            mermaid: {
+                theme: 'dark',
+                themeVariables: {
+                    darkMode: true,
+                    background: '#050811',
+                    primaryColor: '#00F2FF',
+                    primaryTextColor: '#fff',
+                    lineColor: '#ff0055',
+                    mainBkg: '#050811',
+                    nodeBorder: '#00F2FF'
+                }
+            },
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid]
+        });
+
+        // TIMER LOGIC
+        let timeLeft = 20 * 60;
+        let timerInterval;
+        let isRunning = false;
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('countdown').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+        function toggleTimer() {
+            const btn = document.getElementById('timer-btn');
+            if (isRunning) {
+                clearInterval(timerInterval);
+                btn.textContent = 'RESUME';
+                isRunning = false;
+            } else {
+                isRunning = true;
+                btn.textContent = 'PAUSE';
+                timerInterval = setInterval(() => {
+                    if (timeLeft > 0) { timeLeft--; updateTimerDisplay(); }
+                    else { clearInterval(timerInterval); btn.disabled = true; }
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+
+</html>
