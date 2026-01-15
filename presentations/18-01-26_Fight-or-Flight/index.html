@@ -16,12 +16,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
 
-    <!-- ADRENALINE / PRIMAL THEME & LAYOUT ENGINE -->
+    <!-- ADRENALINE / PRIMAL THEME -->
     <style>
         :root {
-            --maroon: #A62D26; /* Bell Brand */
-            --amber: #FFC107;  /* Warning/Instinct */
-            --black: #0A0A0A;  /* Deep Black */
+            --maroon: #A62D26;
+            --amber: #FFC107;
+            --black: #0A0A0A;
             --glass: rgba(166, 45, 38, 0.2);
             --border: #FFC107;
         }
@@ -29,6 +29,19 @@
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--black);
+        }
+
+        /* HAZARD STRIPE PATTERN (CSS GENERATED) */
+        .hazard-stripes {
+            background: repeating-linear-gradient(45deg,
+                    #000,
+                    #000 10px,
+                    var(--amber) 10px,
+                    var(--amber) 20px);
+            height: 20px;
+            width: 100%;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
         }
 
         /* TYPOGRAPHY */
@@ -53,17 +66,12 @@
             color: white;
         }
 
-        /* LAYOUT UTILITIES (FIXED CANVAS APPROACH) */
+        /* LAYOUT (FIXED CANVAS 960x700) */
         .slide-canvas {
             width: 100%;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
         }
 
-        /* Explicit Row Containers */
         .row-container {
             display: flex;
             flex-direction: row;
@@ -73,12 +81,22 @@
             width: 900px;
         }
 
-        /* Flex Columns */
-        .col-40 { flex: 0 0 40%; max-width: 40%; }
-        .col-50 { flex: 0 0 50%; max-width: 50%; }
-        .col-60 { flex: 0 0 60%; max-width: 60%; }
+        .col-40 {
+            flex: 0 0 40%;
+            max-width: 40%;
+        }
 
-        /* COMPONENTS */
+        .col-50 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .col-60 {
+            flex: 0 0 60%;
+            max-width: 60%;
+        }
+
+        /* BOXES */
         .glass-box {
             background: var(--glass);
             border: 2px solid var(--border);
@@ -98,25 +116,6 @@
             font-size: 0.6em;
         }
 
-        /* HEADER STRAP */
-        .header-strap {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(10, 10, 10, 0.9);
-            border: 1px solid var(--maroon);
-            border-radius: 50px;
-            padding: 8px 25px;
-            text-align: center;
-            font-family: 'Courier Prime', monospace;
-            font-weight: 700;
-            letter-spacing: 2px;
-            font-size: 14px;
-            color: var(--maroon);
-            box-shadow: 0 0 15px rgba(166, 45, 38, 0.3);
-            z-index: 10;
-        }
-
         .teacher-tip {
             border: 2px dashed var(--amber);
             background: black;
@@ -126,59 +125,25 @@
             color: white;
         }
 
-        /* MEDIA HANDLING */
-        img.constrained-media,
-        iframe.constrained-media {
+        img.constrained-media {
             max-width: 100%;
             height: auto;
-            display: block;
             margin: 0 auto;
+            display: block;
         }
 
         /* SEGUE TITLE */
         .segue-title {
             line-height: 1.1;
             color: var(--amber);
-            text-transform: uppercase;
             transform: rotate(-3deg) skew(-10deg);
             text-shadow: 6px 6px 0px var(--maroon), 0 0 20px var(--amber);
             margin: 0;
             padding: 20px;
-            position: relative;
             z-index: 2;
         }
 
-        /* AUDIO PLAYER */
-        .audio-player {
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid var(--amber);
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            margin-top: 20px;
-            box-shadow: 0 0 15px rgba(255, 193, 7, 0.2);
-            width: fit-content;
-        }
-
-        .listen-label {
-            font-family: 'Courier Prime', monospace;
-            color: var(--amber);
-            font-weight: bold;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            font-size: 0.8em;
-            letter-spacing: 1px;
-        }
-        
-        /* EKG EFFECT */
-        .ekg-line {
-            height: 2px;
-            background: var(--maroon);
-            width: 100%;
-            margin-bottom: 30px;
-            box-shadow: 0 0 10px var(--maroon);
-        }
-        
+        /* TIMER & AUDIO */
         .timer-display {
             font-family: 'Courier Prime', monospace;
             font-size: 2em;
@@ -189,6 +154,27 @@
             display: inline-block;
         }
 
+        .audio-player {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--amber);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(255, 193, 7, 0.2);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .listen-label {
+            font-family: 'Courier Prime', monospace;
+            color: var(--amber);
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 0.8em;
+        }
     </style>
 </head>
 
@@ -196,16 +182,13 @@
     <div class="reveal">
         <div class="slides">
 
-            <!-- SLIDE 1: TITLE -->
+            <!-- SLIDE 1: TITLE (NO BELL LOGO) -->
             <section data-background-color="var(--black)">
-                <!-- LOGO ONLY -->
-                <img src="../../images/Bell.png"
-                    style="position: absolute; top: 30px; left: 30px; height: 80px; z-index: 10;">
-
                 <div class="row-container" style="height: 500px;">
                     <div class="col-40">
-                         <!-- Placeholder for Hero - using generative fallback if no file -->
-                        <img src="https://placehold.co/400x500/0A0A0A/A62D26?text=Eye+of+Fear" class="constrained-media"
+                        <!-- HERO IMAGE: REPLACED BELL LOGO -->
+                        <img src="https://placehold.co/400x500/0A0A0A/A62D26?text=SPRINTER+IMAGE"
+                            class="constrained-media"
                             style="max-height: 400px; border: 3px solid var(--maroon); box-shadow: 0 0 30px rgba(166,45,38,0.3);">
                     </div>
                     <div class="col-60" style="text-align: left; padding-left: 20px;">
@@ -214,122 +197,152 @@
                         <p><span
                                 style="background: var(--maroon); color: white; padding: 5px 15px; font-weight: 800; transform: skew(-10deg); display: inline-block;">THE
                                 BIOLOGY OF FEAR</span></p>
+                        <div class="hazard-stripes"></div>
                     </div>
                 </div>
             </section>
 
-            <!-- SLIDE 2: SEGUE -->
+            <!-- SLIDE 2: SEGUE (EXPLANATORY TEXT) -->
             <section data-background-gradient="linear-gradient(to bottom, #A62D26, #0A0A0A)">
                 <h1 class="r-fit-text segue-title">STAGE 1:<br>THE SIGNAL</h1>
-                <p style="color: white; font-family: 'Courier Prime'; font-size: 1.5em;">What happens when you are scared?</p>
+                <p style="color: white; font-family: 'Courier Prime'; font-size: 1.5em; margin-top: 20px;">What happens
+                    inside your body when you feel fear?</p>
             </section>
 
-            <!-- SLIDE 3: SYMPTOMS CHECK -->
+            <!-- SLIDE 3: SYMPTOMS CHECK (FIXED LAYOUT - NO FRAGMENTS) -->
             <section data-background-color="var(--black)">
                 <div class="stage-badge">ACTIVATION</div>
                 <h2>SYMPTOMS CHECK</h2>
-                <div class="ekg-line"></div>
-                
+                <div class="hazard-stripes"></div>
+
                 <div class="row-container">
-                     <div class="col-50" style="text-align: left;">
-                         <div class="fragment fade-up glass-box" style="margin-bottom: 20px;">
+                    <div class="col-50" style="text-align: left;">
+                        <!-- ALL TEXT VISIBLE IMMEDIATELY -->
+                        <div class="glass-box" style="margin-bottom: 20px;">
                             <h3 style="margin:0; font-size: 1em; color: var(--amber);">1. HEART</h3>
                             <p>Beating Fast (Palpitations)</p>
-                         </div>
-                         <div class="fragment fade-up glass-box" style="margin-bottom: 20px;">
+                        </div>
+                        <div class="glass-box" style="margin-bottom: 20px;">
                             <h3 style="margin:0; font-size: 1em; color: white;">2. LUNGS</h3>
                             <p>Breathing Quickly (Hyperventilation)</p>
-                         </div>
-                         <div class="fragment fade-up glass-box">
-                            <h3 style="margin:0; font-size: 1em; color: var(--cyan);">3. SKIN</h3>
+                        </div>
+                        <div class="glass-box">
+                            <h3 style="margin:0; font-size: 1em; color: var(--maroon);">3. SKIN</h3>
                             <p>Feeling Cold / Pale</p>
-                         </div>
-                     </div>
-                     <div class="col-50">
-                        <img src="https://placehold.co/400x400/0A0A0A/FFC107?text=Panic+Mode" class="constrained-media" style="border: 2px solid var(--amber);">
-                     </div>
+                        </div>
+                    </div>
+                    <div class="col-50">
+                        <!-- FULL IMAGE NO PLACEHOLDER BOX -->
+                        <img src="https://placehold.co/400x500/0A0A0A/FFC107?text=PANIC+IMG" class="constrained-media"
+                            style="border: 2px solid var(--amber);">
+                    </div>
                 </div>
             </section>
-            
+
             <!-- SLIDE 4: DEFINITION - INSTINCT -->
             <section data-background-color="var(--black)">
                 <div class="stage-badge">KEY CONCEPT</div>
                 <h1 class="r-fit-text">INSTINCT</h1>
-                 <div class="glass-box" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <div class="glass-box" style="text-align: center; max-width: 800px; margin: 0 auto;">
                     <p style="font-size: 1.5em; color: var(--amber);">"Not learned. Just known."</p>
                     <hr style="border-color: var(--maroon);">
                     <p>Animals migrate. Bears hibernate. Humans flinch.</p>
-                    <div class="teacher-tip">
-                        <strong>TASK:</strong> Name one other instinct in animals or humans.
-                    </div>
-                 </div>
-            </section>
-
-            <!-- SLIDE 5: TASK 1 - PERSONALIZATION -->
-            <section data-background-color="var(--black)">
-                <div class="stage-badge">TASK 1</div>
-                <h2>YOUR FEARS</h2>
-                
-                <div class="glass-box" style="max-width: 800px; margin: 0 auto;">
-                     <h3 style="color: var(--amber);">DISCUSS IN PAIRS (4 MINS)</h3>
-                     <ul style="font-size: 1.2em; line-height: 1.5;">
-                         <li>What specific things are <strong>you</strong> afraid of?</li>
-                         <li>What are your <strong>family members</strong> afraid of?</li>
-                         <li>How does your body react?</li>
-                     </ul>
                 </div>
             </section>
 
-            <!-- SLIDE 6: SEGUE STAGE 2 -->
-            <section data-background-gradient="linear-gradient(to bottom, #000000, #331100)">
-                 <h1 class="r-fit-text segue-title">STAGE 2:<br>CHOOSE YOUR LEVEL</h1>
+            <!-- SLIDE 5: TASK 1 - PERSONALIZATION (WITH TIMER) -->
+            <section data-background-color="var(--black)">
+                <div class="stage-badge">TASK 1</div>
+                <h2>YOUR FEARS</h2>
+
+                <div class="row-container">
+                    <div class="col-60 glass-box">
+                        <h3 style="color: var(--amber);">DISCUSS IN PAIRS</h3>
+                        <ul style="font-size: 1.2em; line-height: 1.5;">
+                            <li>What specific things are <strong>you</strong> afraid of?</li>
+                            <li>What are your <strong>family members</strong> afraid of?</li>
+                            <li>How does your body react?</li>
+                        </ul>
+                    </div>
+                    <div class="col-40" style="text-align: center;">
+                        <div id="countdown-1" class="timer-display">04:00</div>
+                        <br>
+                        <button onclick="startTimer('countdown-1', 4*60)"
+                            style="margin-top:20px; padding:10px 20px; font-weight:bold; background:var(--amber); border:none; cursor:pointer;">START</button>
+                    </div>
+                </div>
             </section>
-            
-             <!-- SLIDE 7: LEVEL 1 -->
+
+            <!-- SLIDE 6: SEGUE STAGE 2 (WITH EXPLANATION) -->
+            <section data-background-gradient="linear-gradient(to bottom, #000000, #331100)">
+                <h1 class="r-fit-text segue-title">STAGE 2:<br>CHOOSE YOUR LEVEL</h1>
+                <p style="color: white; font-family: 'Courier Prime'; font-size: 1.2em; margin-top:20px;">
+                    Read the samples. Trust your instinct. Choosing the right level is key to learning.
+                </p>
+            </section>
+
+            <!-- SLIDE 7: LEVEL 1 (EXTENDED TEXT) -->
             <section data-background-color="var(--black)">
                 <h2 style="color: white;">LEVEL 1 (B1)</h2>
-                <div class="glass-box" style="font-family: 'Courier Prime'; padding: 40px; border-color: white;">
-                    "Fear is a natural reaction. Everyone feels it sometimes..."
+                <div class="glass-box"
+                    style="font-family: 'Courier Prime'; padding: 30px; border-color: white; font-size: 0.8em;">
+                    "Fear is a natural reaction. Everyone feels it sometimes. When we see danger, our body gets ready to
+                    run or fight. This is called the 'Fight or Flight' response. It helps us stay safe."
                 </div>
                 <p style="margin-top: 20px; color: var(--amber);">Is this comfortable for you?</p>
             </section>
 
-            <!-- SLIDE 8: LEVEL 2 -->
+            <!-- SLIDE 8: LEVEL 2 (EXTENDED TEXT) -->
             <section data-background-color="var(--black)">
                 <h2 style="color: var(--amber);">LEVEL 2 (B1+)</h2>
-                <div class="glass-box" style="font-family: 'Courier Prime'; padding: 40px;">
-                    "The fight or flight response is an automatic physiological reaction to an event that is perceived as stressful or frightening..."
+                <div class="glass-box" style="font-family: 'Courier Prime'; padding: 30px; font-size: 0.8em;">
+                    "The fight or flight response is an automatic physiological reaction to an event that is perceived
+                    as stressful or frightening. The perception of threat activates the sympathetic nervous system and
+                    triggers an acute stress response that prepares the body to fight or flee."
                 </div>
                 <p style="margin-top: 20px; color: var(--amber);">Is this a good challenge?</p>
             </section>
 
-             <!-- SLIDE 9: LEVEL 3 -->
+            <!-- SLIDE 9: LEVEL 3 (EXTENDED TEXT) -->
             <section data-background-color="var(--black)">
                 <h2 style="color: var(--maroon);">LEVEL 3 (B2)</h2>
-                <div class="glass-box" style="font-family: 'Courier Prime'; padding: 40px; border-color: var(--maroon);">
-                    "The sympathetic nervous system originates in the spinal cord and its main function is to activate the physiological changes..."
+                <div class="glass-box"
+                    style="font-family: 'Courier Prime'; padding: 30px; border-color: var(--maroon); font-size: 0.8em;">
+                    "The sympathetic nervous system originates in the spinal cord and its main function is to activate
+                    the physiological changes that occur during the fight-or-flight response. This component of the
+                    autonomic nervous system utilizes and activates the release of norepinephrine in the reaction."
                 </div>
                 <p style="margin-top: 20px; color: var(--amber);">Are you an expert?</p>
             </section>
 
-            <!-- SLIDE 10: SEGUE STAGE 3 -->
+            <!-- SLIDE 10: SEGUE STAGE 3 (WITH EXPLANATION) -->
             <section data-background-gradient="linear-gradient(to bottom, #A62D26, #0A0A0A)">
                 <h1 class="r-fit-text segue-title">STAGE 3:<br>VOCABULARY WEAPONS</h1>
+                <p style="color: white; font-family: 'Courier Prime'; font-size: 1.2em; margin-top:20px;">
+                    Unlock the biological terms you need to understand the text.
+                </p>
             </section>
 
+            <!-- VOCAB SLIDES (ALL WITH IMAGES) -->
             <!-- SLIDE 11: INSTINCT -->
             <section data-background-color="var(--black)">
                 <div class="stage-badge">VOCABULARY</div>
                 <h2>Instinct /'ɪnstɪŋkt/</h2>
                 <h3>สัญชาตญาณ</h3>
-
-                <div class="glass-box" style="width: 800px; margin: 30px auto; text-align: center;">
-                    <p style="font-size: 26px;">"We are born with the <strong>instinct</strong> to breathe; nobody needs to teach us how to do it."</p>
-                    <p style="font-size: 26px; color: var(--amber);">"เราเกิดมาพร้อมกับ <strong>สัญชาตญาณ</strong> ในการหายใจ ไม่มีใครต้องสอนเรา"</p>
-
-                    <div class="audio-player" style="margin: 30px auto;">
-                        <p class="listen-label">🔊 Listen to the word!</p>
-                        <audio controls src="instinct.wav"></audio>
+                <div class="row-container">
+                    <div class="col-50 glass-box">
+                        <p style="font-size: 24px;">"We are born with the <strong>instinct</strong> to breathe; nobody
+                            needs to teach us how to do it."</p>
+                        <p style="font-size: 24px; color: var(--amber);">"เราเกิดมาพร้อมกับ <strong>สัญชาตญาณ</strong>
+                            ในการหายใจ"</p>
+                        <div class="audio-player">
+                            <p class="listen-label">🔊 Listen</p>
+                            <audio controls src="instinct.wav"></audio>
+                        </div>
+                    </div>
+                    <div class="col-50">
+                        <img src="https://placehold.co/400x400/0A0A0A/FFC107?text=BIRD+MIGRATION"
+                            class="constrained-media" style="border: 2px solid var(--amber);">
                     </div>
                 </div>
             </section>
@@ -339,14 +352,20 @@
                 <div class="stage-badge">VOCABULARY</div>
                 <h2>Hormones /'hɔːməʊnz/</h2>
                 <h3>ฮอร์โมน</h3>
-
-                <div class="glass-box" style="width: 800px; margin: 30px auto; text-align: center;">
-                    <p style="font-size: 26px;">"Our brain releases <strong>hormones</strong> which travel through the blood to tell our body how to feel."</p>
-                    <p style="font-size: 26px; color: var(--amber);">"สมองของเราหลั่ง <strong>ฮอร์โมน</strong> เดินทางผ่านเลือด"</p>
-
-                    <div class="audio-player" style="margin: 30px auto;">
-                        <p class="listen-label">🔊 Listen to the word!</p>
-                        <audio controls src="hormones.wav"></audio>
+                <div class="row-container">
+                    <div class="col-50 glass-box">
+                        <p style="font-size: 24px;">"Our brain releases <strong>hormones</strong> which travel through
+                            the blood to tell our body how to feel."</p>
+                        <p style="font-size: 24px; color: var(--amber);">"สมองของเราหลั่ง <strong>ฮอร์โมน</strong>
+                            เดินทางผ่านเลือด"</p>
+                        <div class="audio-player">
+                            <p class="listen-label">🔊 Listen</p>
+                            <audio controls src="hormones.wav"></audio>
+                        </div>
+                    </div>
+                    <div class="col-50">
+                        <img src="https://placehold.co/400x400/0A0A0A/FFC107?text=MOLECULE+STRUCTURE"
+                            class="constrained-media" style="border: 2px solid var(--amber);">
                     </div>
                 </div>
             </section>
@@ -356,14 +375,20 @@
                 <div class="stage-badge">VOCABULARY</div>
                 <h2>Adrenaline /ə'drenəlɪn/</h2>
                 <h3>อะดรีนาลีน</h3>
-
-                <div class="glass-box" style="width: 800px; margin: 30px auto; text-align: center;">
-                    <p style="font-size: 26px;">"When I was scared, my body released <strong>adrenaline</strong> and I suddenly had energy."</p>
-                    <p style="font-size: 26px; color: var(--amber);">"ร่างกายหลั่ง <strong>อะดรีนาลีน</strong> มีพลังงานทันที"</p>
-
-                    <div class="audio-player" style="margin: 30px auto;">
-                        <p class="listen-label">🔊 Listen to the word!</p>
-                        <audio controls src="adrenaline.wav"></audio>
+                <div class="row-container">
+                    <div class="col-50 glass-box">
+                        <p style="font-size: 24px;">"When I was scared, my body released <strong>adrenaline</strong> and
+                            I suddenly had energy."</p>
+                        <p style="font-size: 24px; color: var(--amber);">"ร่างกายหลั่ง <strong>อะดรีนาลีน</strong>
+                            มีพลังงานทันที"</p>
+                        <div class="audio-player">
+                            <p class="listen-label">🔊 Listen</p>
+                            <audio controls src="adrenaline.wav"></audio>
+                        </div>
+                    </div>
+                    <div class="col-50">
+                        <img src="https://placehold.co/400x400/0A0A0A/FFC107?text=SPRINTER/SPEED"
+                            class="constrained-media" style="border: 2px solid var(--amber);">
                     </div>
                 </div>
             </section>
@@ -373,14 +398,20 @@
                 <div class="stage-badge">VOCABULARY</div>
                 <h2>Glucose /'ɡluːkəʊs/</h2>
                 <h3>กลูโคส</h3>
-
-                <div class="glass-box" style="width: 800px; margin: 30px auto; text-align: center;">
-                    <p style="font-size: 26px;">"After eating sugar, your body produces <strong>glucose</strong> to give your muscles power."</p>
-                    <p style="font-size: 26px; color: var(--amber);">"ร่างกายผลิต <strong>กลูโคส</strong> เพื่อให้พลังงานกล้ามเนื้อ"</p>
-
-                    <div class="audio-player" style="margin: 30px auto;">
-                        <p class="listen-label">🔊 Listen to the word!</p>
-                        <audio controls src="glucose.wav"></audio>
+                <div class="row-container">
+                    <div class="col-50 glass-box">
+                        <p style="font-size: 24px;">"After eating sugar, your body produces <strong>glucose</strong> to
+                            give your muscles power."</p>
+                        <p style="font-size: 24px; color: var(--amber);">"ร่างกายผลิต <strong>กลูโคส</strong>
+                            เพื่อให้พลังงาน"</p>
+                        <div class="audio-player">
+                            <p class="listen-label">🔊 Listen</p>
+                            <audio controls src="glucose.wav"></audio>
+                        </div>
+                    </div>
+                    <div class="col-50">
+                        <img src="https://placehold.co/400x400/0A0A0A/FFC107?text=SUGAR/ENERGY"
+                            class="constrained-media" style="border: 2px solid var(--amber);">
                     </div>
                 </div>
             </section>
@@ -390,14 +421,20 @@
                 <div class="stage-badge">VOCABULARY</div>
                 <h2>Organs /'ɔːɡənz/</h2>
                 <h3>อวัยวะ</h3>
-
-                <div class="glass-box" style="width: 800px; margin: 30px auto; text-align: center;">
-                    <p style="font-size: 26px;">"Doctors check the health of your <strong>organs</strong>, like heart and lungs."</p>
-                    <p style="font-size: 26px; color: var(--amber);">"แพทย์ตรวจสอบสุขภาพของ <strong>อวัยวะ</strong> เช่น หัวใจและปอด"</p>
-
-                    <div class="audio-player" style="margin: 30px auto;">
-                        <p class="listen-label">🔊 Listen to the word!</p>
-                        <audio controls src="organs.wav"></audio>
+                <div class="row-container">
+                    <div class="col-50 glass-box">
+                        <p style="font-size: 24px;">"Doctors check the health of your <strong>organs</strong>, like
+                            heart and lungs."</p>
+                        <p style="font-size: 24px; color: var(--amber);">"แพทย์ตรวจสอบสุขภาพของ <strong>อวัยวะ</strong>
+                            เช่น หัวใจ"</p>
+                        <div class="audio-player">
+                            <p class="listen-label">🔊 Listen</p>
+                            <audio controls src="organs.wav"></audio>
+                        </div>
+                    </div>
+                    <div class="col-50">
+                        <img src="https://placehold.co/400x400/0A0A0A/FFC107?text=XRAY+TORSO" class="constrained-media"
+                            style="border: 2px solid var(--amber);">
                     </div>
                 </div>
             </section>
@@ -407,69 +444,169 @@
                 <h1 class="r-fit-text segue-title" style="color: black; text-shadow: none;">STAGE 4:<br>DEEP DIVE</h1>
             </section>
 
-            <!-- SLIDE 17: TASK 2 INSTRUCTIONS -->
+            <!-- SLIDE 17: TASK 2 INSTRUCTIONS (WITH TIMER) -->
             <section data-background-color="var(--black)">
                 <div class="stage-badge">TASK 2: SCANNING</div>
                 <h2>SCAN THE TEXT</h2>
-                <div class="glass-box" style="text-align: center; max-width: 800px; margin: 0 auto;">
-                     <p style="font-size: 1.5em; margin-bottom: 20px;">Find which paragraphs contain the specific facts.</p>
-                     <p style="font-size: 1.2em; color: var(--amber);">You have 6 Minutes. GO.</p>
+                <div class="row-container">
+                    <div class="col-60 glass-box">
+                        <p style="font-size: 1.5em; margin-bottom: 20px;">Find which paragraphs contain the specific
+                            facts.</p>
+                        <div class="hazard-stripes"></div>
+                    </div>
+                    <div class="col-40" style="text-align: center;">
+                        <div id="countdown-2" class="timer-display">06:00</div>
+                        <br>
+                        <button onclick="startTimer('countdown-2', 6*60)"
+                            style="margin-top:20px; padding:10px 20px; font-weight:bold; background:var(--amber); border:none; cursor:pointer;">START</button>
+                    </div>
                 </div>
             </section>
 
-            <!-- SLIDE 18-20: TASK 2 ANSWERS -->
+            <!-- TASK 2 ANSWERS (SPLIT INTO 7 SLIDES) -->
+            <!-- Answer 1 -->
             <section data-background-color="var(--black)">
-                <div class="stage-badge">TASK 2: ANSWERS</div>
-                <h2>CHECK YOUR SCANNING</h2>
-                <div class="row-container">
-                     <div class="col-50 glass-box">
-                         <ol style="font-size: 0.8em; line-height: 1.8;">
-                             <li>The physical effects of fear: <strong>Para 4</strong></li>
-                             <li>Fear of failure: <strong>Para 6</strong></li>
-                             <li>Definition of Fight or Flight: <strong>Para 2</strong></li>
-                             <li>Modern vs Ancient Stress: <strong>Para 7</strong></li>
-                         </ol>
-                     </div>
-                     <div class="col-50 glass-box">
-                         <ol start="5" style="font-size: 0.8em; line-height: 1.8;">
-                             <li>The amygdala's role: <strong>Para 3</strong></li>
-                             <li>Panic attacks: <strong>Para 8</strong></li>
-                             <li>The signal path: <strong>Para 5</strong></li>
-                         </ol>
-                     </div>
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>1. Physical effects of fear</h2>
+                <h1 style="color: var(--amber); font-size: 4em;">PARA 4</h1>
+                <div class="glass-box">
+                    <p><em>"...the body undergoes a series of drastic changes... heart rate increases..."</em></p>
+                    <hr>
+                    <p style="font-size: 0.8em; color: gray;">PROOF: Paragraph 4 lists the physical symptoms.</p>
+                </div>
+            </section>
+
+            <!-- Answer 2 -->
+            <section data-background-color="var(--black)">
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>2. Fear of failure</h2>
+                <h1 style="color: var(--amber); font-size: 4em;">PARA 6</h1>
+                <div class="glass-box">
+                    <p><em>"...psychological fears, such as the fear of failing an exam..."</em></p>
+                    <hr>
+                    <p style="font-size: 0.8em; color: gray;">PROOF: Paragraph 6 discusses non-physical threats.</p>
+                </div>
+            </section>
+
+            <!-- Answer 3 -->
+            <section data-background-color="var(--black)">
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>3. Definition of Fight or Flight</h2>
+                <h1 style="color: var(--amber); font-size: 4em;">PARA 2</h1>
+                <div class="glass-box">
+                    <p><em>"...known as the acute stress response... a physiological reaction..."</em></p>
+                    <hr>
+                    <p style="font-size: 0.8em; color: gray;">PROOF: Paragraph 2 defines the term scientifically.</p>
+                </div>
+            </section>
+
+            <!-- Answer 4 -->
+            <section data-background-color="var(--black)">
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>4. Modern vs Ancient Stress</h2>
+                <h1 style="color: var(--amber); font-size: 4em;">PARA 7</h1>
+                <div class="glass-box">
+                    <p><em>"...our ancestors faced saber-toothed tigers... today we face deadlines..."</em></p>
+                    <hr>
+                    <p style="font-size: 0.8em; color: gray;">PROOF: Paragraph 7 contrasts the threats of the past and
+                        present.</p>
+                </div>
+            </section>
+
+            <!-- Answer 5 -->
+            <section data-background-color="var(--black)">
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>5. The Amygdala's Role</h2>
+                <h1 style="color: var(--amber); font-size: 4em;">PARA 3</h1>
+                <div class="glass-box">
+                    <p><em>"...sends a distress signal to the hypothalamus..."</em></p>
+                    <hr>
+                    <p style="font-size: 0.8em; color: gray;">PROOF: Paragraph 3 explains the brain's signaling process.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Answer 6 -->
+            <section data-background-color="var(--black)">
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>6. Panic Attacks</h2>
+                <h1 style="color: var(--amber); font-size: 4em;">PARA 8</h1>
+                <div class="glass-box">
+                    <p><em>"...can result in confusing the body... leading to panic attacks..."</em></p>
+                    <hr>
+                    <p style="font-size: 0.8em; color: gray;">PROOF: Paragraph 8 describes when the response
+                        malfunctions.</p>
+                </div>
+            </section>
+
+            <!-- Answer 7 -->
+            <section data-background-color="var(--black)">
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>7. The Signal Path</h2>
+                <h1 style="color: var(--amber); font-size: 4em;">PARA 5</h1>
+                <div class="glass-box">
+                    <p><em>"...hypothalamus activates the sympathetic nervous system..."</em></p>
+                    <hr>
+                    <p style="font-size: 0.8em; color: gray;">PROOF: Paragraph 5 details the nerve pathway.</p>
                 </div>
             </section>
 
             <!-- SLIDE 21: TASK 3 INSTRUCTIONS -->
             <section data-background-color="var(--black)">
-                 <div class="stage-badge">TASK 3: VOCAB</div>
-                 <h2>MATCH THE MEANING</h2>
-                 <p>Use the context to find the words.</p>
-                 <img src="https://placehold.co/600x200/0A0A0A/A62D26?text=Puzzle+Locked" class="constrained-media" style="border: 2px dashed var(--maroon);">
+                <div class="stage-badge">TASK 3: VOCAB</div>
+                <h2>MATCH THE MEANING</h2>
+                <p>Use the context to find the words. (8 Minutes)</p>
+                <div id="countdown-3" class="timer-display">08:00</div>
+                <br>
+                <button onclick="startTimer('countdown-3', 8*60)"
+                    style="margin-top:20px; padding:10px 20px; font-weight:bold; background:var(--amber); border:none; cursor:pointer;">START</button>
             </section>
 
-            <!-- SLIDE 22: TASK 3 ANSWERS -->
+            <!-- TASK 3 ANSWERS (SPLIT INTO 6 SLIDES) -->
             <section data-background-color="var(--black)">
-                <div class="stage-badge">TASK 3: ANSWERS</div>
-                <div class="glass-box" style="width: 800px; margin: 0 auto;">
-                    <ol style="font-size: 1em; line-height: 2;">
-                        <li><span style="color:var(--amber);">self-defense</span> (protecting yourself)</li>
-                        <li><span style="color:var(--amber);">fight or flight instinct</span> (natural reaction)</li>
-                        <li><span style="color:var(--amber);">physical abilities</span> (what body can do)</li>
-                        <li><span style="color:var(--amber);">adrenaline</span> (energy hormone)</li>
-                        <li><span style="color:var(--amber);">glucose</span> (sugar energy)</li>
-                        <li><span style="color:var(--amber);">organs</span> (body parts)</li>
-                    </ol>
-                </div>
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>1. Protecting yourself</h2>
+                <h1 style="color: var(--amber); font-size: 3em;">SELF-DEFENSE</h1>
+            </section>
+
+            <section data-background-color="var(--black)">
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>2. Natural reaction</h2>
+                <h1 style="color: var(--amber); font-size: 3em;">FIGHT OR FLIGHT INSTINCT</h1>
+            </section>
+
+            <section data-background-color="var(--black)">
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>3. What the body can do</h2>
+                <h1 style="color: var(--amber); font-size: 3em;">PHYSICAL ABILITIES</h1>
+            </section>
+
+            <section data-background-color="var(--black)">
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>4. Energy Hormone</h2>
+                <h1 style="color: var(--amber); font-size: 3em;">ADRENALINE</h1>
+            </section>
+
+            <section data-background-color="var(--black)">
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>5. Sugar Energy</h2>
+                <h1 style="color: var(--amber); font-size: 3em;">GLUCOSE</h1>
+            </section>
+
+            <section data-background-color="var(--black)">
+                <div class="stage-badge">ANSWER KEY</div>
+                <h2>6. Body Parts</h2>
+                <h1 style="color: var(--amber); font-size: 3em;">ORGANS</h1>
             </section>
 
             <!-- SLIDE 23: SEGUE STAGE 5 -->
             <section data-background-color="white">
-                <h1 class="r-fit-text segue-title" style="color: black; text-shadow: none;">STAGE 5:<br>CRITICAL THINKING</h1>
+                <h1 class="r-fit-text segue-title" style="color: black; text-shadow: none;">STAGE 5:<br>CRITICAL
+                    THINKING</h1>
             </section>
 
-            <!-- SLIDE 24: WRITING TASK -->
-             <section data-background-color="var(--maroon)">
+            <!-- SLIDE 24: WRITING TASK (WITH TIMER) -->
+            <section data-background-color="var(--maroon)">
                 <div class="stage-badge" style="background: black; color: white;">TASK 4: WRITING</div>
                 <h2>CHOOSE ONE QUESTION</h2>
 
@@ -484,10 +621,11 @@
                         </div>
                     </div>
                     <div class="col-50" style="text-align: center;">
-                         <div id="countdown" class="timer-display">07:00</div>
-                         <br>
-                         <button id="timer-btn" onclick="toggleTimer()"
-                            style="padding: 10px 20px; font-weight: bold; background: var(--amber); border: none; cursor: pointer; margin-top: 15px;">START TIMER</button>
+                        <div id="countdown-4" class="timer-display">07:00</div>
+                        <br>
+                        <button onclick="startTimer('countdown-4', 7*60)"
+                            style="margin-top:20px; padding:10px 20px; font-weight:bold; background:var(--amber); border:none; cursor:pointer;">START
+                            TIMER</button>
                     </div>
                 </div>
             </section>
@@ -521,29 +659,27 @@
             plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
         });
 
-        // TIMER LOGIC
-        let timeLeft = 7 * 60;
-        let timerInterval;
-        let isRunning = false;
-        function updateTimerDisplay() {
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            document.getElementById('countdown').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-        }
-        function toggleTimer() {
-            const btn = document.getElementById('timer-btn');
-            if (isRunning) {
-                clearInterval(timerInterval);
-                btn.textContent = 'RESUME';
-                isRunning = false;
-            } else {
-                isRunning = true;
-                btn.textContent = 'PAUSE';
-                timerInterval = setInterval(() => {
-                    if (timeLeft > 0) { timeLeft--; updateTimerDisplay(); }
-                    else { clearInterval(timerInterval); btn.disabled = true; }
-                }, 1000);
-            }
+        // GLOBAL TIMER LOGIC
+        let activeInterval;
+
+        function startTimer(id, validSeconds) {
+            // Stop any running timer
+            if (activeInterval) clearInterval(activeInterval);
+
+            let timeLeft = validSeconds;
+            const display = document.getElementById(id);
+
+            activeInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    display.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                } else {
+                    clearInterval(activeInterval);
+                    display.style.color = "red";
+                }
+            }, 1000);
         }
     </script>
 </body>
