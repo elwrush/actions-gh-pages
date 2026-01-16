@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Global Logistics: Relative Clauses</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --navy-deep: #0a192f;
+            --gold: #ffd700;
+            --slate: #8892b0;
+            --white: #e6f1ff;
+            --glass: rgba(10, 25, 47, 0.85);
+            --border-gold: 2px solid #ffd700;
+        }
+
+        /* -----------------------------------------------------------
+           SECTION: STANDARD UTILITY CLASSES (MANDATORY BOILERPLATE)
+           Ref: REFERENCE.md
+        ----------------------------------------------------------- */
+
+        /* TYPOGRAPHY */
+        .text-hero {
+            font-size: 4em;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .text-xl {
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        .text-lg {
+            font-size: 1.4em;
+        }
+
+        .text-md {
+            font-size: 1.2em;
+        }
+
+        .text-sm {
+            font-size: 0.8em;
+            font-style: italic;
+            color: #8892b0;
+        }
+
+        .symbol-lg {
+            font-size: 3em;
+            color: var(--gold);
+        }
+
+        /* MEDIA SAFETY */
+        .constrained-media {
+            max-width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            border: var(--border-gold);
+        }
+
+        /* LAYOUT UTILS */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .mt-40 {
+            margin-top: 40px;
+        }
+
+        .mt-50 {
+            margin-top: 50px;
+        }
+
+        /* -----------------------------------------------------------
+           END BOILERPLATE
+        ----------------------------------------------------------- */
+
+        .reveal {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--navy-deep);
+            color: var(--white);
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .reveal h1 {
+            color: var(--gold);
+        }
+
+        .reveal h2 {
+            color: var(--white);
+            border-bottom: 4px solid var(--gold);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .reveal h3 {
+            color: var(--slate);
+            font-size: 1.2em;
+        }
+
+        /* FIXED CANVAS MAPPING */
+        .slide-canvas {
+            width: 960px;
+            height: 700px;
+            padding: 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .row-container {
+            display: flex;
+            width: 900px;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .col-40 {
+            flex: 0 0 40%;
+            text-align: left;
+        }
+
+        .col-50 {
+            flex: 0 0 50%;
+        }
+
+        .col-60 {
+            flex: 0 0 60%;
+            text-align: left;
+        }
+
+        .glass-box {
+            background: var(--glass);
+            border: var(--border-gold);
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+        }
+
+        .stage-badge {
+            background: var(--gold);
+            color: var(--navy-deep);
+            padding: 5px 15px;
+            font-weight: 900;
+            font-size: 0.7em;
+            letter-spacing: 2px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .answer-badge {
+            background: #22c55e;
+            color: white;
+            padding: 5px 15px;
+            font-weight: 900;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .link-symbol {
+            color: var(--gold);
+            vertical-align: middle;
+            font-size: 1.2em;
+        }
+
+        /* Special case kept relevant to text context */
+        .arrow-symbol {
+            color: var(--gold);
+            margin: 0 5px;
+        }
+
+        .timer {
+            font-family: 'Montserrat', monospace;
+            font-size: 2em;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            padding: 10px 20px;
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        .snippet {
+            font-style: italic;
+            color: var(--slate);
+            margin-top: 20px;
+            border-left: 3px solid var(--gold);
+            padding-left: 20px;
+        }
+
+        .teacher-tip {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 5px solid var(--gold);
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.9em;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- SLIDE 1: TITLE -->
+            <section data-background-image="images/container_ship.jpg" data-background-color="#0a192f"
+                data-background-opacity="0.4">
+                <div class="glass-box text-center" style="display: inline-block;">
+                    <h1 class="r-fit-text">GLOBAL LOGISTICS</h1>
+                    <h3>RELATIVE CLAUSES</h3>
+                    <p class="highlight">CONNECTING IDEAS & INFORMATION</p>
+                </div>
+            </section>
+
+            <!-- SLIDE 2: MOTIVATION -->
+            <section>
+                <div class="slide-canvas">
+                    <h2>THE ACADEMIC GATEWAY</h2>
+                    <div class="row-container mt-40">
+                        <div class="col-50">
+                            <img src="presentation-images/cefr_university_hierarchy.png" class="constrained-media"
+                                style="border:none;">
+                        </div>
+                        <div class="col-50 glass-box">
+                            <p>Using and controlling relative clauses will send you to university.</p>
+                            <p class="highlight mt-20">ACHIEVING B2+ PROFICIENCY</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 3: CONTEXT -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="stage-badge">CONTEXT</div>
+                    <h2>SOURCE & DESTINATION</h2>
+                    <div class="row-container mt-40">
+                        <div class="col-50">
+                            <img src="images/global_map_vector.jpg" class="constrained-media">
+                            <p>GLOBAL SUPPLY</p>
+                        </div>
+                        <div class="col-50">
+                            <img src="images/supermarket.jpg" class="constrained-media">
+                            <p>LOCAL ACCESS</p>
+                        </div>
+                    </div>
+                    <div class="glass-box text-center mt-40" style="width: 800px;">
+                        <p>Where does your food come from?</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 4: THE CONNECTION -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="stage-badge">LEAD-IN</div>
+                    <h2>THE LOGISTICS LINK</h2>
+                    <div class="row-container mt-50">
+                        <div class="col-40 glass-box text-center">
+                            <p>DATA A</p>
+                            <p class="highlight">"I like pizza."</p>
+                        </div>
+                        <div class="symbol-lg">+</div>
+                        <div class="col-40 glass-box text-center">
+                            <p>DATA B</p>
+                            <p class="highlight">"Pizza is Italian."</p>
+                        </div>
+                    </div>
+                    <div class="symbol-lg mt-20">⬇</div>
+                    <div class="glass-box text-center" style="width: 800px;">
+                        <p class="text-xl">"I like pizza, <span class="highlight">which</span> is Italian."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 5: MEANING -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="stage-badge">MEANING</div>
+                    <h2>CARGO TYPES</h2>
+                    <div class="row-container mt-40" style="align-items: stretch;">
+                        <div class="col-50 glass-box">
+                            <h3 class="highlight">1. DEFINING</h3>
+                            <p>Essential Information.</p>
+                            <p>"Farmers <span class="highlight">who</span> sell in local markets earn more."</p>
+                            <div class="teacher-tip">Which farmers? ONLY the ones who sell locally.</div>
+                        </div>
+                        <div class="col-50 glass-box" style="border-style: dashed;">
+                            <h3 class="highlight">2. NON-DEFINING</h3>
+                            <p>Extra Information.</p>
+                            <p>"Pomegranates, <span class="highlight">which</span> are delicious, are healthy."</p>
+                            <div class="teacher-tip">Can we remove it? Yes. It's just a luxury detail.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 6: FORM -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="stage-badge">FORM</div>
+                    <h2>THE MANIFEST</h2>
+                    <div class="glass-box mt-40" style="width: 800px;">
+                        <table class="text-lg" style="width: 100%;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--gold);">
+                                    <th style="padding: 20px;">PRONOUN</th>
+                                    <th>OBJECT</th>
+                                    <th>ICON</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 20px;"><span class="highlight">WHO</span></td>
+                                    <td>PEOPLE</td>
+                                    <td>👤</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 20px;"><span class="highlight">WHICH / THAT</span></td>
+                                    <td>THINGS</td>
+                                    <td>📦</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 20px;"><span class="highlight">WHERE</span></td>
+                                    <td>PLACES</td>
+                                    <td>📍</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 7: THE THAT RULE -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="stage-badge">GRAMMAR ALERT</div>
+                    <h2>THE 'THAT' RULE</h2>
+                    <div class="row-container mt-50">
+                        <div class="col-50 glass-box">
+                            <h3>🟢 DEFINING</h3>
+                            <p>"The car <span class="highlight">which/that</span> I bought..."</p>
+                            <p>Both are correct!</p>
+                        </div>
+                        <div class="col-50 glass-box" style="border-color: #ef4444;">
+                            <h3>🔴 NON-DEFINING</h3>
+                            <p>"The car, <span style="color: #ef4444; text-decoration: line-through;">that</span> I
+                                bought, ..."</p>
+                            <p>Never use <span class="highlight">THAT</span> after a comma.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 8: PRONUNCIATION -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="stage-badge">PRONUNCIATION</div>
+                    <h2>SOUND COHESION</h2>
+                    <div class="glass-box text-lg text-md" style="width: 900px; line-height: 2;">
+                        <p>1. FARMers who <span class="highlight">SELL<span class="link-symbol">‿</span>in</span> LOcal
+                            MARkets <span class="arrow-symbol">↘</span> OFten<span class="link-symbol">‿</span>EARN
+                            MORE.</p>
+                        <p>2. POMegranates, <span class="arrow-symbol">↘</span> <span class="highlight">which<span
+                                    class="link-symbol">‿</span>are</span> deLIcious, <span
+                                class="arrow-symbol">↘</span> are <span class="highlight">RICH<span
+                                    class="link-symbol">‿</span>in</span> VItamins.</p>
+                        <p>3. The TOWN <span class="highlight">where<span class="link-symbol">‿</span>I</span> <span
+                                class="highlight">LIVED<span class="link-symbol">‿</span>as<span
+                                    class="link-symbol">‿</span>a</span> TEENager <span class="arrow-symbol">↘</span> is
+                            FAmous...</p>
+                    </div>
+                    <div class="teacher-tip" style="width: 900px;">Follow the gold symbols for smooth linking!</div>
+                </div>
+            </section>
+
+            <!-- TASK 1 START -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="stage-badge">PRACTICE</div>
+                    <h2>TASK 1: IDENTIFY & CLASSIFY</h2>
+                    <div class="glass-box mt-50 text-center">
+                        <p>1. Underline the relative clause.</p>
+                        <p>2. Label it: <span class="highlight">D</span> (Defining) or <span class="highlight">ND</span>
+                            (Non-Defining).</p>
+                    </div>
+                    <div class="timer" id="timer1">04:00</div>
+                </div>
+            </section>
+
+            <!-- TASK 1 ANSWERS -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 1.1</div>
+                    <h2 class="highlight">...WHICH / THAT ARE GROWN IN THIS COUNTRY...</h2>
+                    <div class="glass-box" style="width: 800px;">
+                        <p class="snippet">"Common foods [which are grown in this country] include wheat..."</p>
+                        <p class="mt-20">Type: <span class="highlight">DEFINING</span> (Essential info)</p>
+                        <div class="teacher-tip">Tells us WHICH foods. 'That' is also correct.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 1.2</div>
+                    <h2 class="highlight">...WHO / THAT SELL IN THE LOCAL MARKET...</h2>
+                    <div class="glass-box" style="width: 800px;">
+                        <p class="snippet">"Farmers [who sell in the local market] always sell seasonal crops."</p>
+                        <p class="mt-20">Type: <span class="highlight">DEFINING</span> (Essential info)</p>
+                        <div class="teacher-tip">'That' can replace 'who', but 'who' is more natural for people.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 1.3</div>
+                    <h2 class="highlight">, WHICH IS AN ENGLISH DESSERT,</h2>
+                    <div class="glass-box" style="width: 800px;">
+                        <p class="snippet">"Crumble, [which is an English dessert], is made from fruit..."</p>
+                        <p class="mt-20">Type: <span class="highlight" style="color:#8892b0;">NON-DEFINING</span> (Extra
+                            info)</p>
+                        <div class="teacher-tip">We already know it's Crumble. Commas required. <span
+                                style="color:#ef4444;">NO THAT.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 1.4</div>
+                    <h2 class="highlight">, WHERE MANY FARMERS ARE BASED,</h2>
+                    <div class="glass-box" style="width: 800px;">
+                        <p class="snippet">"The area on the coast, [where many farmers are based], is good..."</p>
+                        <p class="mt-20">Type: <span class="highlight" style="color:#8892b0;">NON-DEFINING</span> (Extra
+                            info)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 1.5</div>
+                    <h2 class="highlight">, WHO WORK IN THIS AREA,</h2>
+                    <div class="glass-box" style="width: 800px;">
+                        <p class="snippet">"The food stall owners, [who work in this area], must have a license."</p>
+                        <p class="mt-20">Type: <span class="highlight" style="color:#8892b0;">NON-DEFINING</span> (Extra
+                            info)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 1.6</div>
+                    <h2 class="highlight">WHERE I LIVED AS A TEENAGER</h2>
+                    <div class="glass-box" style="width: 800px;">
+                        <p class="snippet">"The town [where I lived as a teenager] is famous for its spicy food."</p>
+                        <p class="mt-20">Type: <span class="highlight">DEFINING</span> (Essential info)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TASK 2 START -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="stage-badge">CONTROLLED</div>
+                    <h2>TASK 2: FILL THE GAPS</h2>
+                    <div class="glass-box mt-50">
+                        <p class="text-xl text-center">Supply the Pronoun:</p>
+                        <h3 class="highlight text-center">WHO • WHICH • WHERE</h3>
+                    </div>
+                    <div class="timer" id="timer2">04:00</div>
+                </div>
+            </section>
+
+            <!-- TASK 2 ANSWERS -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 2.1</div>
+                    <h1 class="answer-hero">WHO</h1>
+                    <div class="glass-box" style="width: 800px;">
+                        <p class="snippet">"People [who] lived in the countryside..."</p>
+                        <p class="mt-20">Reason: <span class="highlight">PEOPLE</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 2.2</div>
+                    <h1 class="answer-hero">WHERE</h1>
+                    <div class="glass-box" style="width: 800px;">
+                        <p class="snippet">"People lived [where] it was easy to grow food."</p>
+                        <p class="mt-20">Reason: <span class="highlight">PLACE</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 2.3</div>
+                    <h1 class="answer-hero">WHICH / THAT</h1>
+                    <div class="glass-box" style="width: 800px;">
+                        <p class="snippet">"The new kinds of food [which/that] are popular..."</p>
+                        <p class="mt-20">Reason: <span class="highlight">THINGS</span> (Defining)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 2.4</div>
+                    <h1 class="answer-hero">WHICH / THAT</h1>
+                    <div class="glass-box" style="width: 800px;">
+                        <p class="snippet">"The food [which/that] we eat is usually imported."</p>
+                        <p class="mt-20">Reason: <span class="highlight">THINGS</span> (Defining)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 2.5</div>
+                    <h1 class="answer-hero">WHERE</h1>
+                    <div class="glass-box" style="width: 800px;">
+                        <p class="snippet">"In hot and dry places [where] there is little rain..."</p>
+                        <p class="mt-20">Reason: <span class="highlight">PLACE</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 2.6</div>
+                    <h1 class="answer-hero">WHO</h1>
+                    <div class="glass-box" style="width: 800px;">
+                        <p class="snippet">"People living in the city, [who] are usually richer..."</p>
+                        <p class="mt-20">Reason: <span class="highlight">PEOPLE</span> (Non-Defining)</p>
+                        <div class="teacher-tip">Look at the comma! That means <span style="color:#ef4444;">NO
+                                THAT.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TASK 3 START -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="stage-badge">SEMI-CONTROLLED</div>
+                    <h2>TASK 3: MERGING DATA</h2>
+                    <div class="glass-box mt-50" style="width: 800px;">
+                        <p>Join the sentences after the subject.</p>
+                        <div class="text-center mt-20">
+                            <p class="text-xs" style="color: var(--slate);">MODEL:</p>
+                            <p>"People eat fish." + "They live on islands."</p>
+                            <p class="highlight">"People who live on islands eat fish."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TASK 3 ANSWERS -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 3.1</div>
+                    <div class="glass-box" style="width: 900px;">
+                        <p class="text-xl" style="line-height: 1.6;">"The people <span class="highlight">who</span> live
+                            on small islands mostly eat fish."</p>
+                    </div>
+                    <div class="teacher-tip">No commas needed (Defining).</div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 3.2</div>
+                    <div class="glass-box" style="width: 900px;">
+                        <p class="text-xl" style="line-height: 1.6;">"Bottled water, <span
+                                class="highlight">which</span> comes from other countries, is more expensive than gas."
+                        </p>
+                    </div>
+                    <div class="teacher-tip">Commas needed! This is extra info about bottled water.</div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 3.3</div>
+                    <div class="glass-box" style="width: 900px;">
+                        <p class="text-xl" style="line-height: 1.6;">"The dish, <span class="highlight">which</span> is
+                            made from rice, fish, herbs, and spices, comes from the north."</p>
+                    </div>
+                    <div class="teacher-tip">Commas because we already mentioned "The Dish" (Non-defining).</div>
+                </div>
+            </section>
+
+            <section>
+                <div class="slide-canvas">
+                    <div class="answer-badge">ANSWER 3.4</div>
+                    <div class="glass-box" style="width: 900px;">
+                        <p class="text-xl" style="line-height: 1.6;">"The places <span
+                                class="highlight">which/that</span> are in the center of the country eat more meat."</p>
+                    </div>
+                    <div class="teacher-tip">No commas (Defining).</div>
+                </div>
+            </section>
+
+            <!-- TASK 4 -->
+            <section data-background-image="images/supermarket.jpg" data-background-color="#0a192f"
+                data-background-opacity="0.2">
+                <div class="slide-canvas">
+                    <div class="stage-badge">PRODUCTION</div>
+                    <h2>TASK 4: FINAL TRADING REPORT</h2>
+                    <div class="glass-box mt-40" style="width: 800px;">
+                        <p>Write 50-70 words about your favourite food.</p>
+                        <ul class="mt-20" style="line-height: 1.6;">
+                            <li>Where does it come from?</li>
+                            <li>Why do you like it?</li>
+                            <li><span class="highlight">CRITICAL: Use 2+ Relative Clauses.</span></li>
+                        </ul>
+                    </div>
+                    <div class="timer" id="timer4">06:00</div>
+                </div>
+            </section>
+
+            <!-- CLOSING -->
+            <section data-background-image="images/container_ship.jpg" data-background-color="#0a192f"
+                data-background-opacity="0.4">
+                <div class="glass-box text-center" style="display: inline-block;">
+                    <h1 class="r-fit-text">AUDIT COMPLETE</h1>
+                    <p class="highlight">GRAMMAR UNLOCKED: B1 ACHIEVED</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            width: 960,
+            height: 700,
+            transition: 'slide',
+            backgroundTransition: 'fade',
+            center: false
+        });
+
+        // Simple Timer Functionality
+        function startTimer(duration, displayId) {
+            let timer = duration, minutes, seconds;
+            const display = document.getElementById(displayId);
+            const interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    display.style.color = "#ef4444";
+                }
+            }, 1000);
+        }
+
+        // Trigger timers on slide change
+        Reveal.on('slidechanged', event => {
+            const currentSlide = event.currentSlide;
+            const timerElement = currentSlide.querySelector('.timer');
+            if (timerElement) {
+                const id = timerElement.id;
+                if (id === 'timer1' || id === 'timer2') startTimer(240, id);
+                if (id === 'timer4') startTimer(360, id);
+            }
+        });
+    </script>
+</body>
+
+</html>
