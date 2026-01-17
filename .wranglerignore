@@ -1,0 +1,41 @@
+# Git
+.git/
+.gitignore
+
+# Dependencies
+node_modules/
+
+# Environment & Config
+.env
+.credentials/
+.cache/
+.agent/
+.gemini/
+.vscode/
+.idea/
+.firebase/
+.firebaserc
+firebase.json
+wrangler.jsonc
+package.json
+package-lock.json
+
+# Backend & Source Assets (Not for distribution)
+scripts/
+skills/
+knowledge_base/
+templates/
+text-data/
+inputs/
+outputs/
+
+# Logs & Docs
+*.log
+session-log.md
+errors-fix.md
+README.md
+CRITICAL-MEMORY-RULES.md
+
+# Python
+*.py
+__pycache__/
