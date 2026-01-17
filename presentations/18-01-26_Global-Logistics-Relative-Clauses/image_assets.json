@@ -1,0 +1,30 @@
+[
+    {
+        "filename": "sprinter_hero.png",
+        "prompt": "A high-contrast cinematic shot of a sprinter exploding from the starting block, motion blur, red and amber lighting, adrenaline theme. Minimalist, dark background, 8k resolution, photorealistic."
+    },
+    {
+        "filename": "panic_mode.png",
+        "prompt": "A split composition. Left side: calm medical illustration of heart and lungs. Right side: chaotic, blurry, red-tinted double exposure of a person in panic. High contrast, cinematic lighting."
+    },
+    {
+        "filename": "bird_migration.png",
+        "prompt": "A cinematic macro shot of a bird in flight during migration, biological theme, deep black background with glowing amber data overlays showing wind patterns. 'Instinct' concept."
+    },
+    {
+        "filename": "hormone_molecule.png",
+        "prompt": "A glowing molecular structure of adrenaline floating in a dark void, medical visualization style, red and amber neon lighting, shallow depth of field, 3D render."
+    },
+    {
+        "filename": "adrenaline_rush.png",
+        "prompt": "An abstract representation of an adrenaline rush. A burst of amber and maroon energy lines radiating from a center point, dark background, electric feel."
+    },
+    {
+        "filename": "glucose_energy.png",
+        "prompt": "Sugar crystals glowing with intense amber light, dissolving into pure energy streams. Dark background, macro photography style, biological power concept."
+    },
+    {
+        "filename": "organs_xray.png",
+        "prompt": "A stylized digital X-ray of a human torso showing the heart and lungs glowing in neon amber and maroon against a deep black background. Cyber-medical HUD interface style."
+    }
+]

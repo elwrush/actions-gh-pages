@@ -1,0 +1,232 @@
+{
+  "count": 290,
+  "previous": null,
+  "next": "https://freesound.org/apiv2/search/?&query=ticking%20tick&filter=duration:[*%20TO%202.0]&weights=&page=2&fields=id,name,username,duration,license,url,num_downloads,previews",
+  "results": [
+    {
+      "id": 349453,
+      "url": "https://freesound.org/people/LilMati/sounds/349453/",
+      "name": "Ticking Clock 60 Sec Hit Mark.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 1.00515,
+      "username": "LilMati",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/349/349453_6142149-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/349/349453_6142149-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/349/349453_6142149-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/349/349453_6142149-lq.ogg"
+      },
+      "num_downloads": 292
+    },
+    {
+      "id": 417792,
+      "url": "https://freesound.org/people/LorenzoTheGreat/sounds/417792/",
+      "name": "Menu Tick.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "duration": 1.85095,
+      "username": "LorenzoTheGreat",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/417/417792_8305364-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/417/417792_8305364-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/417/417792_8305364-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/417/417792_8305364-lq.ogg"
+      },
+      "num_downloads": 507
+    },
+    {
+      "id": 254316,
+      "url": "https://freesound.org/people/Jagadamba/sounds/254316/",
+      "name": "Clock Tick",
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "duration": 0.110896,
+      "username": "Jagadamba",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/254/254316_4062622-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/254/254316_4062622-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/254/254316_4062622-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/254/254316_4062622-lq.ogg"
+      },
+      "num_downloads": 2380
+    },
+    {
+      "id": 117279,
+      "url": "https://freesound.org/people/Alexsani/sounds/117279/",
+      "name": "back tick.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 0.5,
+      "username": "Alexsani",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/117/117279_1440889-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/117/117279_1440889-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/117/117279_1440889-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/117/117279_1440889-lq.ogg"
+      },
+      "num_downloads": 1049
+    },
+    {
+      "id": 117280,
+      "url": "https://freesound.org/people/Alexsani/sounds/117280/",
+      "name": "front tick.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 0.499977,
+      "username": "Alexsani",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/117/117280_1440889-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/117/117280_1440889-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/117/117280_1440889-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/117/117280_1440889-lq.ogg"
+      },
+      "num_downloads": 2215
+    },
+    {
+      "id": 254315,
+      "url": "https://freesound.org/people/Jagadamba/sounds/254315/",
+      "name": "Clock Tick",
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "duration": 0.133083,
+      "username": "Jagadamba",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/254/254315_4062622-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/254/254315_4062622-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/254/254315_4062622-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/254/254315_4062622-lq.ogg"
+      },
+      "num_downloads": 2460
+    },
+    {
+      "id": 547305,
+      "url": "https://freesound.org/people/StarNinjas37/sounds/547305/",
+      "name": "Tick Tock",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 0.848792,
+      "username": "StarNinjas37",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/547/547305_10936067-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/547/547305_10936067-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/547/547305_10936067-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/547/547305_10936067-lq.ogg"
+      },
+      "num_downloads": 576
+    },
+    {
+      "id": 668355,
+      "url": "https://freesound.org/people/DeltaCode/sounds/668355/",
+      "name": "single-tick.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 0.0792708,
+      "username": "DeltaCode",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/668/668355_3271378-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/668/668355_3271378-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/668/668355_3271378-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/668/668355_3271378-lq.ogg"
+      },
+      "num_downloads": 248
+    },
+    {
+      "id": 57211,
+      "url": "https://freesound.org/people/mab/sounds/57211/",
+      "name": "mab-clock-tick-1-20080713.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "duration": 0.253646,
+      "username": "mab",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/57/57211_127220-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/57/57211_127220-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/57/57211_127220-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/57/57211_127220-lq.ogg"
+      },
+      "num_downloads": 1902
+    },
+    {
+      "id": 575561,
+      "url": "https://freesound.org/people/keerotic/sounds/575561/",
+      "name": "tick tock",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 1.0,
+      "username": "keerotic",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/575/575561_9287275-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/575/575561_9287275-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/575/575561_9287275-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/575/575561_9287275-lq.ogg"
+      },
+      "num_downloads": 451
+    },
+    {
+      "id": 96152,
+      "url": "https://freesound.org/people/BMacZero/sounds/96152/",
+      "name": "TickLoop_amp.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 1.2234,
+      "username": "BMacZero",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/96/96152_1554918-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/96/96152_1554918-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/96/96152_1554918-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/96/96152_1554918-lq.ogg"
+      },
+      "num_downloads": 370
+    },
+    {
+      "id": 103995,
+      "url": "https://freesound.org/people/RutgerMuller/sounds/103995/",
+      "name": "Bassdrum_Shell_Ticks.aif",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 1.375,
+      "username": "RutgerMuller",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/103/103995_179538-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/103/103995_179538-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/103/103995_179538-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/103/103995_179538-lq.ogg"
+      },
+      "num_downloads": 1374
+    },
+    {
+      "id": 264498,
+      "url": "https://freesound.org/people/FoolBoyMedia/sounds/264498/",
+      "name": "Tick Tock",
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "duration": 1.81701,
+      "username": "FoolBoyMedia",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/264/264498_4019029-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/264/264498_4019029-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/264/264498_4019029-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/264/264498_4019029-lq.ogg"
+      },
+      "num_downloads": 27720
+    },
+    {
+      "id": 817323,
+      "url": "https://freesound.org/people/Cat-Fox_Alex/sounds/817323/",
+      "name": "Clock Ticking",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 0.927891,
+      "username": "Cat-Fox_Alex",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/817/817323_17675683-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/817/817323_17675683-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/817/817323_17675683-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/817/817323_17675683-lq.ogg"
+      },
+      "num_downloads": 102
+    },
+    {
+      "id": 645239,
+      "url": "https://freesound.org/people/Duisterwho/sounds/645239/",
+      "name": "Swiss ARMY Knife - scrape click.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 1.625,
+      "username": "Duisterwho",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/645/645239_13590673-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/645/645239_13590673-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/645/645239_13590673-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/645/645239_13590673-lq.ogg"
+      },
+      "num_downloads": 24
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "count": 1,
+  "previous": null,
+  "next": null,
+  "results": [
+    {
+      "id": 388847,
+      "url": "https://freesound.org/people/thatjeffcarter/sounds/388847/",
+      "name": "Thirty Seven Seconds.wav",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "duration": 3.1456,
+      "username": "thatjeffcarter",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/388/388847_1306869-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/388/388847_1306869-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/388/388847_1306869-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/388/388847_1306869-lq.ogg"
+      },
+      "num_downloads": 61
+    }
+  ]
+}

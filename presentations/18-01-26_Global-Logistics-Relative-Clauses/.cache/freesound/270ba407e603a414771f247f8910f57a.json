@@ -1,0 +1,232 @@
+{
+  "count": 335,
+  "previous": null,
+  "next": "https://freesound.org/apiv2/search/?&query=bell%20chime&filter=duration:[*%20TO%205.0]&weights=&page=2&fields=id,name,username,duration,license,url,num_downloads,previews",
+  "results": [
+    {
+      "id": 826314,
+      "url": "https://freesound.org/people/akelley6/sounds/826314/",
+      "name": "Bell Motif",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "duration": 1.43329,
+      "username": "akelley6",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/826/826314_9415332-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/826/826314_9415332-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/826/826314_9415332-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/826/826314_9415332-lq.ogg"
+      },
+      "num_downloads": 9
+    },
+    {
+      "id": 826317,
+      "url": "https://freesound.org/people/akelley6/sounds/826317/",
+      "name": "Ghost Bell",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "duration": 1.43329,
+      "username": "akelley6",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/826/826317_9415332-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/826/826317_9415332-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/826/826317_9415332-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/826/826317_9415332-lq.ogg"
+      },
+      "num_downloads": 15
+    },
+    {
+      "id": 333696,
+      "url": "https://freesound.org/people/Khrinx/sounds/333696/",
+      "name": "Thin bell ding 1",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 2.07819,
+      "username": "Khrinx",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/333/333696_1187042-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/333/333696_1187042-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/333/333696_1187042-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/333/333696_1187042-lq.ogg"
+      },
+      "num_downloads": 486
+    },
+    {
+      "id": 333693,
+      "url": "https://freesound.org/people/Khrinx/sounds/333693/",
+      "name": "Thin bell ding 4",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 2.31619,
+      "username": "Khrinx",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/333/333693_1187042-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/333/333693_1187042-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/333/333693_1187042-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/333/333693_1187042-lq.ogg"
+      },
+      "num_downloads": 989
+    },
+    {
+      "id": 419493,
+      "url": "https://freesound.org/people/plasterbrain/sounds/419493/",
+      "name": "Bell Chime Alert",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 0.666644,
+      "username": "plasterbrain",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/419/419493_4284968-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/419/419493_4284968-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/419/419493_4284968-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/419/419493_4284968-lq.ogg"
+      },
+      "num_downloads": 2803
+    },
+    {
+      "id": 333694,
+      "url": "https://freesound.org/people/Khrinx/sounds/333694/",
+      "name": "Thin bell ding 3",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 1.8576,
+      "username": "Khrinx",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/333/333694_1187042-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/333/333694_1187042-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/333/333694_1187042-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/333/333694_1187042-lq.ogg"
+      },
+      "num_downloads": 766
+    },
+    {
+      "id": 333695,
+      "url": "https://freesound.org/people/Khrinx/sounds/333695/",
+      "name": "Thin bell ding 2",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 1.43964,
+      "username": "Khrinx",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/333/333695_1187042-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/333/333695_1187042-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/333/333695_1187042-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/333/333695_1187042-lq.ogg"
+      },
+      "num_downloads": 942
+    },
+    {
+      "id": 534263,
+      "url": "https://freesound.org/people/patchytherat/sounds/534263/",
+      "name": "bell 6.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 4.58129,
+      "username": "patchytherat",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/534/534263_5911297-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/534/534263_5911297-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/534/534263_5911297-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/534/534263_5911297-lq.ogg"
+      },
+      "num_downloads": 259
+    },
+    {
+      "id": 173000,
+      "url": "https://freesound.org/people/KeyKrusher/sounds/173000/",
+      "name": "Bicycle bell 2.wav",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "duration": 1.33465,
+      "username": "KeyKrusher",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/173/173000_2193194-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/173/173000_2193194-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/173/173000_2193194-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/173/173000_2193194-lq.ogg"
+      },
+      "num_downloads": 4800
+    },
+    {
+      "id": 386027,
+      "url": "https://freesound.org/people/TaraMG/sounds/386027/",
+      "name": "Bell001.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "duration": 1.23526,
+      "username": "TaraMG",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/386/386027_5761370-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/386/386027_5761370-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/386/386027_5761370-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/386/386027_5761370-lq.ogg"
+      },
+      "num_downloads": 198
+    },
+    {
+      "id": 442923,
+      "url": "https://freesound.org/people/Asteroiderer/sounds/442923/",
+      "name": "chime_ping.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 1.24147,
+      "username": "Asteroiderer",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/442/442923_7346113-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/442/442923_7346113-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/442/442923_7346113-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/442/442923_7346113-lq.ogg"
+      },
+      "num_downloads": 131
+    },
+    {
+      "id": 826320,
+      "url": "https://freesound.org/people/akelley6/sounds/826320/",
+      "name": "Xmas Miracle",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "duration": 1.43329,
+      "username": "akelley6",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/826/826320_9415332-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/826/826320_9415332-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/826/826320_9415332-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/826/826320_9415332-lq.ogg"
+      },
+      "num_downloads": 24
+    },
+    {
+      "id": 724058,
+      "url": "https://freesound.org/people/chungus43A/sounds/724058/",
+      "name": "Prague Metro Line A Chime",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 2.04054,
+      "username": "chungus43A",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/724/724058_12024110-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/724/724058_12024110-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/724/724058_12024110-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/724/724058_12024110-lq.ogg"
+      },
+      "num_downloads": 287
+    },
+    {
+      "id": 803272,
+      "url": "https://freesound.org/people/Logicogonist/sounds/803272/",
+      "name": "alien bassride 2",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 0.387188,
+      "username": "Logicogonist",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/803/803272_3797507-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/803/803272_3797507-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/803/803272_3797507-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/803/803272_3797507-lq.ogg"
+      },
+      "num_downloads": 12
+    },
+    {
+      "id": 803271,
+      "url": "https://freesound.org/people/Logicogonist/sounds/803271/",
+      "name": "alien bassride 1 very long",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "duration": 4.098,
+      "username": "Logicogonist",
+      "previews": {
+        "preview-hq-mp3": "https://cdn.freesound.org/previews/803/803271_3797507-hq.mp3",
+        "preview-hq-ogg": "https://cdn.freesound.org/previews/803/803271_3797507-hq.ogg",
+        "preview-lq-mp3": "https://cdn.freesound.org/previews/803/803271_3797507-lq.mp3",
+        "preview-lq-ogg": "https://cdn.freesound.org/previews/803/803271_3797507-lq.ogg"
+      },
+      "num_downloads": 11
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+graph TD
+    subgraph "Slide 1: Title"
+        Title[Hero Image + Title]
+    end
+
+    subgraph "Slide 8: Task 1"
+        T1[Task Instructions + Timer]
+    end
+
+    subgraph "Slide 9: Task 1 ANSWER KEY"
+        A1[Interleaved Answers]
+    end
+
+    subgraph "Slide 10: Task 2"
+        T2[Task Instructions + Timer]
+    end
+
+    subgraph "Slide 11: Task 2 ANSWER KEY"
+        A2[Interleaved Answers]
+    end
+    
+    subgraph "Slide 12: Task 3"
+        T3[Task Instructions]
+    end
+
+    subgraph "Slide 13: Task 3 ANSWER KEY"
+        A3[Interleaved Answers]
+    end
+
+    Title --> T1
+    T1 --> A1
+    A1 --> T2
+    T2 --> A2
+    A2 --> T3
+    T3 --> A3
