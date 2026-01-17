@@ -216,3 +216,12 @@
     - **Script**: `scripts/build_dist.js` now builds a clean `dist/` folder containing *only* the specific presentation content and shared assets.
     - **CI**: Configured `package.json` (`postinstall`) and `wrangler.jsonc` to deploy this clean `dist/` folder.
 - **Status**: **SUCCESS**. Presentation is live and fully functional at the worker URL.
+
+### 2026-01-18 (Continued): Worksheet Fixes
+- **Issue 1**: Intensive worksheets displayed legacy text strap instead of the mandatory `intensive-header.jpg`.
+- **Fix 1**: Updated `intensive_worksheet_template.typ` and `15-01-26...Intensive.typ` to use the image header. Updated `generating-worksheets` skill to forbid text straps.
+- **Issue 2**: Excessive whitespace on Page 2 due to aggressive `#pagebreak()` after Task 1.
+- **Fix 2**: Removed forced page break. Verified cleaner layout.
+- **Feature**: Added modular `#gapfill_exercise` component to template.
+- **Fix 3**: Replaced text gaps in Task 2 with physical writing lines using the new component. Verified PDF.
+- **Housekeeping**: Moved misplaced "Fight or Flight" Lesson Plan and Worksheet source (`.typ`) to `inputs/QAD-Fight-or-Flight` for consolidation.

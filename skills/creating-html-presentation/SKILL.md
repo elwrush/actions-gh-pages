@@ -12,6 +12,7 @@ This skill generates vibrant, high-energy HTML presentations using **Reveal.js**
 Use this skill to create the visual backbone of a lesson. Slides must:
 - **Mirror the Lesson Plan**: Alignment with stages and materials is mandatory.
 - **High-Energy Stage Segues**: Use clear, high-energy transitions (Phases).
+- **Preferred Transition**: Use **`convex`** as the default Reveal.js transition for all presentations.
     - **Requirement**: Every segue slide MUST include a sub-headline (max 15 words) explaining the specific pedagogical goal of the upcoming phase.
 - **Interactive Timers (MANDATORY)**: Every timed exercise MUST have a visible, interactive countdown timer.
     - **Physics**: Must remain within the 960x700 artboard (no spill-off).
@@ -38,7 +39,7 @@ Use this skill to create the visual backbone of a lesson. Slides must:
 
 **GATE 2: Audience (MANDATORY - STOP HERE)**
 - **Ask**: "Is the audience **Middle School** or **High School**?"
-- **⚠️ CRITICAL**: **STOP** and wait for explicit user confirmation. Do NOT assume or default.
+- **⚠️ CRITICAL**: **STOP** and wait for explicit user confirmation. Do NOT assume, do NOT pre-fetch files, and do NOT read ahead to Step 0.5. Wait for the answer.
 - **Tone Logic**:
   - **Middle School**: "Pop & Verve"
     - **Language**: High energy, game-based metaphors (Boss Levels, Power Ups, Missions)
@@ -95,9 +96,11 @@ You MUST ask:
     3.  **Source**: **Pixabay First** (`searching-pixabay`).
     4.  **Fallback**: Internal Generation -> External Gemini API.
 -   **B. Sounds**:
-    1.  **Source**: **Freesound ONLY** (`searching-freesound`).
-    2.  **Process**: Present 3 candidates -> Wait for Approval -> Download.
-    3.  **Validation**: `validate_presentation.py` will fail/warn if `_attribution.txt` is missing.
+    1.  **Source**: **Freesound ONLY** (`searching-freesound`). **NO VOCABULARY AUDIO** (user explicitly removed requirement).
+    2.  **Process**: Present 3 candidates (for UI/Timer) -> Wait for Approval -> Download.
+    3.  **Optimization (MANDATORY)**: You MUST convert all `.wav` files to `.mp3` using `ffmpeg` to reduce file size.
+        -   *Command*: `ffmpeg -i input.wav -codec:a libmp3lame -qscale:a 2 output.mp3`
+        -   **Action**: Delete the original `.wav` after successful conversion.
 -   **C. Videos**:
     1.  Ask: "YouTube or Pixabay?"
     2.  **Source**: Pixabay (Download) or YouTube (Embed). **NO GENERATION**.
@@ -141,7 +144,9 @@ Now, write the `index.html`.
 - ✅ Confirm lesson plan specifies timer durations for tasks
 
 **CSS LOCKDOWN**:
-- 🛑 **NO INLINE STYLES** for `font-size` (use mandatory sizes from `COMPONENTS.md`)
+- 🛑 **NO INLINE STYLES** for `font-size` or `color` on high-contrast slides (use CSS classes from `COMPONENTS.md` or scoped CSS).
+- ✅ **CONTRAST RULE**: Yellow/White backgrounds (Level Selection, Task Subtitles) **MUST** use black text (`color: black !important`) for readability.
+- ✅ **IMAGE CLASS**: All <img> tags must use either `.inset-media` or `.constrained-media` to prevent layout explosions.
 - ✅ **USE DOCUMENTED CLASSES**: `.glass-box`, `.inset-media`, `.slide-table`, `<timer-pill>`
 - ✅ **COPY BOILERPLATE** from `REFERENCE_TEMPLATE.html`
 - 🛑 **DO NOT** invent custom classes (use `COMPONENTS.md` library)
@@ -149,6 +154,18 @@ Now, write the `index.html`.
 **Theme Adaptation**:
 - Modify `:root` CSS variables (`--maroon`, `--cyan`, `--navy`) to match **Approved Theme** (Step 1)
 - Do NOT break layout classes (`.row-container`, `.col-*`)
+
+### Step 5.3: Pedagogical Compliance
+**Goal**: Ensure students can use the vocabulary in practice.
+**Rules**:
+1.  **Vocabulary Context (MANDATORY)**: Every vocabulary slide MUST include a contextualizing sentence in English.
+    *   *Correct*: "If you face a dangerous situation, your **instinct** tells you to run."
+    *   *Incorrect*: "Instinct: A natural behavior."
+
+3.  **One Answer, One Slide (MANDATORY)**: Never put multiple answers on a single slide. Each answer must have its own slide containing:
+    *   **Title Format**: "Answer: Question N" (e.g. "Answer: Question 1").
+    *   **Snippet/Para**: Use the format "Para N" for the source reference (e.g. "Para 4").
+    *   A brief snippet from the source text and a clear explanation.
 
 ### Step 5.5: 🧪 Technical Validation (MANDATORY)
 **Action**: You MUST run the technical validator before proceeding.
@@ -181,23 +198,23 @@ Now, write the `index.html`.
 - **Why**: This prevents content hallucination and ensures strict adherence to the approved plan.
 - **Critical**: This is the **enforcement mechanism** that prevents the errors you just experienced.
 
-### Step 6: 🚀 Deployment & GDoc Link
+### Step 5.7: 🛑 Slide Approval Gate (MANDATORY)
+**Goal**: Ensure the user is satisfied with the visual and audio quality before making it live.
+**Action**:
+1.  Provide the path to the `index.html` and a summary of the media assets.
+2.  **STOP**. You MUST get explicit approval (e.g., "Approved" or "Go for deployment") from the user.
+3.  **DO NOT** push to Git or generate Google Doc links until this gate is cleared.
+
+### Step 6: 🚀 Deployment & Organization
 
 > [!CAUTION]
-> **Deploy to PROJECT ROOT, NOT `/presentations/`.**
-> The `/presentations/` folder is ONLY for the library index page. Live slideshows are served from the ROOT.
+> **STORAGE RULE**: Always keep the `index.html` and its `audio/images` folders in the **SAME FOLDER** as the worksheet (`*.typ`) and lesson plan. 
+> This ensures that all materials for a specific lesson are grouped together in the `inputs/` directory.
 
-1.  **Standardize**: Rename the folder to `DD-MM-YY_Name`.
-2.  **Deploy to ROOT**:
-    - Copy (or move) the folder to the **project root** (e.g., `c:\PROJECTS\LESSONS AND SLIDESHOWS 2\18-01-26_Global-Logistics\`).
+1.  **Organize**: Ensure the presentation files (`index.html`, `audio/`, `images/`) are inside the specific lesson folder (e.g., `inputs/QAD-Fight-or-Flight/`).
+2.  **Deployment (Optional)**: If a web-live version is needed:
     - Add an entry to `presentations/index.html` (library card).
     - Git Add / Commit / Push to trigger Cloudflare build.
-3.  **Live URL Pattern**:
-    - `https://lesson-plan-agent.pages.dev/[FOLDER_NAME]/`
-    - Example: `https://lesson-plan-agent.pages.dev/18-01-26_Global-Logistics/`
-4.  **Generate GDoc Link**:
-    - Create a `link.html` with a button pointing to the **absolute live URL** (including `index.html` suffix).
-    - **MANDATORY**: Run `python scripts/push_to_gdocs.py --file [link.html] --name [doc_name] --folder [folder_id]` to create a native Google Doc.
 
 ## Pedagogical & Thematic Standards (STRICT)
 
@@ -234,11 +251,10 @@ Now, write the `index.html`.
 - **Components**: Correct Answer + Snippet (Evidence) + Teacher Explanation.
 
 ### 5. Direct Vocabulary Instruction (The Legacy Standard)
-For **Bell** or **Vocabulary-Focused** lessons:
 - **One Word Per Slide**.
 - **MANDATORY Image**.
 - **Header**: Word + /phonemics/ + **Thai Definition**.
-- **Audio Enhancement**: Run `generate_vocab_audio.py`.
+- **NO AUDIO**: Audio players/listen badges are no longer used for vocabulary slides.
 
 ### 6. Pronunciation Drills (Sentences)
 - **Rule**: Use **COMPLETE SENTENCES** from the source text. No isolated phrases.

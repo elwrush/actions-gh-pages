@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fight or Flight</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Component Library -->
+    <script src="../../skills/creating-html-presentation/js/slide-components.js"></script>
+
+    <style>
+        :root {
+            /* Palette #8: Red Alert */
+            --primary: #EF5350;
+            /* Main Red */
+            --secondary: #FFD600;
+            /* Vibrant Yellow (Vivid) */
+            --bg-dark: #4a0000;
+            /* Dark Maroon */
+            --glass: rgba(30, 0, 0, 0.95);
+            --text-main: #FFFFFF;
+            --text-accent: #FFD600;
+            --danger: #FF0000;
+
+            --slide-width: 960px;
+            --slide-height: 700px;
+        }
+
+        .reveal {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Fixed Background */
+        .background-backer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.8) 100%),
+                linear-gradient(rgba(239, 83, 80, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(239, 83, 80, 0.05) 1px, transparent 1px),
+                linear-gradient(rgba(183, 28, 28, 0.2) 0%, rgba(10, 0, 0, 1) 100%);
+            background-size: 100% 100%, 40px 40px, 40px 40px, 100% 100%;
+        }
+
+        /* Contrast Fixes */
+        .title-subtitle span {
+            color: black !important;
+            font-weight: 900 !important;
+        }
+
+        .stage-badge {
+            color: black !important;
+            font-weight: 900 !important;
+        }
+
+        .text-lg {
+            font-size: 32px !important;
+        }
+
+        .text-md {
+            font-size: 28px !important;
+        }
+
+        .text-sm {
+            font-size: 24px !important;
+        }
+
+        .emoji-lg {
+            font-size: 50px;
+        }
+
+        .level-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .level-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px white;
+        }
+
+        .level-b1-text {
+            color: #81D4FA;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .level-b1plus-text {
+            color: #FFB74D;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .level-b2-text {
+            color: #f44336;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .glass-box {
+            background: var(--glass);
+            border-color: var(--primary);
+            color: white;
+            border-radius: 12px;
+        }
+
+        .highlight {
+            color: var(--secondary);
+            font-weight: 800;
+        }
+
+        .inset-media {
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            max-height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="background-backer"></div>
+        <div class="slides">
+
+            <!-- SLIDE 1: TITLE -->
+            <section>
+                <slide-title title="MISSION: FIGHT OR FLIGHT" badge="CYBER SCIENCE" subtitle="Survival of the Smartest">
+                    <img src="images/brain_alarm.png">
+                </slide-title>
+            </section>
+
+            <!-- SLIDE 2: SEGUE -->
+            <section>
+                <slide-segue title="PHASE 1: ACTIVATION"></slide-segue>
+            </section>
+
+            <!-- SLIDE 3: BODY SCAN -->
+            <section>
+                <slide-task title="THE BODY'S REACTION" badge="SCAN">
+                    <div class="row-container">
+                        <div class="col-40">
+                            <img src="images/body_scan.png" class="inset-media"
+                                style="filter: drop-shadow(0 0 15px var(--primary));">
+                        </div>
+                        <div class="col-60">
+                            <div class="glass-box">
+                                <p class="text-lg highlight">What do you feel when you are SCARED?</p>
+                                <ul style="margin-top: 30px;" class="text-md">
+                                    <li>❤️ Heart beating...?</li>
+                                    <li>🫁 Breathing...?</li>
+                                    <li>🌡️ Hands feeling...?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </slide-task>
+                <aside class="notes">Elicit: "Heart beating fast", "Breathing quickly", "Feeling cold".</aside>
+            </section>
+
+            <!-- SLIDE 4: INSTINCT -->
+            <section>
+                <slide-split title="WHAT IS AN INSTINCT?" badge="BIOLOGICAL DEFENSE">
+                    <img src="images/cat_alert.png">
+                    <p class="text-md">An <strong>INSTINCT</strong> is a behavior you are <strong>BORN</strong> with.
+                    </p>
+                    <p class="text-md mt-20">It is <span class="highlight">AUTOMATIC</span>. No one teaches you to
+                        breathe or stay safe.</p>
+                </slide-split>
+            </section>
+
+            <!-- SLIDE 5: MISSION 1 -->
+            <section>
+                <slide-task title="MISSION 1: FEAR CHECK" badge="TASK 1" timer="4">
+                    <div class="glass-box centered">
+                        <p class="text-lg">Discuss with your partner:</p>
+                        <hr style="opacity: 0.3; margin: 20px 0;">
+                        <p class="text-md">1. What scares you?</p>
+                        <p class="text-md">2. What scares your family?</p>
+                        <p class="text-md">3. How does your body react?</p>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- SLIDE 6: SEGUE -->
+            <section>
+                <slide-segue title="PHASE 2: INTEL SELECTION"></slide-segue>
+            </section>
+
+            <!-- SLIDE 7: LEVEL SELECT -->
+            <section>
+                <div class="slide-canvas">
+                    <h2 style="margin-bottom: 40px;">SELECT YOUR DIFFICULTY</h2>
+                    <div class="row-container">
+                        <div class="col-40">
+                            <img src="images/warning_lights.png" class="inset-media" style="max-height: 350px;">
+                        </div>
+                        <div class="col-60">
+                            <div class="glass-box" style="padding: 40px;">
+                                <div class="level-item">
+                                    <div class="level-dot" style="background:#81D4FA;"></div>
+                                    <p class="text-lg level-b1-text">B1 (CASUAL): Clear & Simple</p>
+                                </div>
+                                <div class="level-item">
+                                    <div class="level-dot" style="background:#FFB74D;"></div>
+                                    <p class="text-lg level-b1plus-text">B1+ (PRO): Standard Challenge</p>
+                                </div>
+                                <div class="level-item">
+                                    <div class="level-dot" style="background:#f44336;"></div>
+                                    <p class="text-lg level-b2-text">B2 (ELITE): Complex & Academic</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">Read the first paragraph of each level aloud or silently to decide.</aside>
+            </section>
+
+            <!-- SLIDE 8: B1 -->
+            <section>
+                <div class="slide-canvas">
+                    <div
+                        style="display:flex; align-items:center; gap:20px; margin-bottom: 20px; justify-content: center;">
+                        <span class="emoji-lg">🏃</span>
+                        <h2 style="margin:0;">LEVEL: B1 (CASUAL)</h2>
+                    </div>
+                    <div class="glass-box centered" style="border-color: #81D4FA; width: 900px;">
+                        <p class="text-md">"Most people think fear is a bad feeling, but it can actually be very
+                            positive for us. Fear is natural and we are all born with it. We have always needed it to
+                            keep us safe from danger. In a dangerous situation, we can often find extra strength and
+                            energy that we usually do not know we have..."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 9: B1+ -->
+            <section>
+                <div class="slide-canvas">
+                    <div
+                        style="display:flex; align-items:center; gap:20px; margin-bottom: 20px; justify-content: center;">
+                        <span class="emoji-lg">💪</span>
+                        <h2 style="margin:0;">LEVEL: B1+ (PRO)</h2>
+                    </div>
+                    <div class="glass-box centered" style="border-color: #FFB74D; width: 900px;">
+                        <p class="text-md">"Most people connect fear with negative feelings, but it can actually be very
+                            positive as well. Fear is natural and something we are born with. We have always needed it
+                            to keep us safe from danger. If we face a dangerous situation, we can find abilities that we
+                            often do not know we have..."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 10: B2 -->
+            <section>
+                <div class="slide-canvas">
+                    <div
+                        style="display:flex; align-items:center; gap:20px; margin-bottom: 20px; justify-content: center;">
+                        <span class="emoji-lg">🧠</span>
+                        <h2 style="margin:0;">LEVEL: B2 (ELITE)</h2>
+                    </div>
+                    <div class="glass-box centered" style="border-color: #f44336; width: 900px;">
+                        <p class="text-md">"While most individuals associate fear with negative emotional states, it can
+                            paradoxically serve as a positive force in our lives. Fear is an inherent biological
+                            mechanism that we are equipped with from birth, and it has always been indispensable for
+                            maintaining our safety in the face of environmental hazards..."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 11: SEGUE -->
+            <section>
+                <slide-segue title="PHASE 3: BIO-TERMINOLOGY"></slide-segue>
+            </section>
+
+            <!-- VOCAB SLIDES (CORRECT SENTENCES) -->
+            <section>
+                <slide-split title="INSTINCT" badge="[ 'ɪnstɪŋkt' ]">
+                    <img src="images/baby_bird_instinct.png">
+                    <h3 class="highlight">สัญชาตญาณ</h3>
+                    <p class="text-md">"We are born with the <strong>instinct</strong> to breathe; nobody needs to teach
+                        us how to do it."</p>
+                </slide-split>
+            </section>
+
+            <section>
+                <slide-split title="HORMONES" badge="[ 'hɔːməʊnz' ]">
+                    <img src="images/hormones_messengers.png">
+                    <h3 class="highlight">ฮอร์โมน</h3>
+                    <p class="text-md">"Our brain releases <strong>hormones</strong> which travel through the blood to
+                        tell our body how to feel."</p>
+                </slide-split>
+            </section>
+
+            <section>
+                <slide-split title="ADRENALINE" badge="[ ə'drenəlɪn ]">
+                    <img src="images/adrenaline_bolt.png">
+                    <h3 class="highlight">อะดรีนาลีน</h3>
+                    <p class="text-md">"When I was scared, my body released <strong>adrenaline</strong> and I suddenly
+                        had the energy to run very fast."</p>
+                </slide-split>
+            </section>
+
+            <section>
+                <slide-split title="GLUCOSE" badge="[ 'ɡluːkəʊs' ]">
+                    <img src="images/glucose_energy.png">
+                    <h3 class="highlight">กลูโคส</h3>
+                    <p class="text-md">"After eating sugar, your body produces <strong>glucose</strong> to give your
+                        muscles the power they need."</p>
+                </slide-split>
+            </section>
+
+            <section>
+                <slide-split title="ORGANS" badge="[ 'ɔːɡənz' ]">
+                    <img src="images/organs_blueprint.png">
+                    <h3 class="highlight">อวัยวะ</h3>
+                    <p class="text-md">"Doctors check the health of your <strong>organs</strong>, like your heart and
+                        lungs, to make sure your body is working correctly."</p>
+                </slide-split>
+            </section>
+
+            <!-- SLIDE 17: SEGUE -->
+            <section>
+                <slide-segue title="PHASE 4: INTEL SCANNING"></slide-segue>
+            </section>
+
+            <!-- SCANNING TASK -->
+            <section>
+                <slide-task title="TASK 2: INTEL SCAN" badge="DATA HUNT" timer="6">
+                    <div class="row-container">
+                        <div class="col-40"><img src="images/fact_hunt_scan.png" class="inset-media"></div>
+                        <div class="col-60">
+                            <div class="glass-box">
+                                <p class="text-lg highlight">Match the facts to paragraphs (1-8).</p>
+                                <hr>
+                                <p class="text-md">Look for keywords! <strong>DON'T READ EVERYTHING.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- SIMPLIFIED INDIVIDUAL ANSWERS -->
+            <section data-background-color="#003300">
+                <slide-answer title="Answer: Question 1">
+                    <div class="glass-box centered">
+                        <p class="text-lg highlight">Para 4</p>
+                        <hr>
+                        <p class="text-md">"Fear is a natural reaction... its goal is <strong>trying to stay
+                                calm</strong>."</p>
+                        <p class="text-sm mt-20" style="color: #FFEB3B;">The body reacts to stress specifically to
+                            return to a stable, calm state.</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="#003300">
+                <slide-answer title="Answer: Question 2">
+                    <div class="glass-box centered">
+                        <p class="text-lg highlight">Para 6</p>
+                        <hr>
+                        <p class="text-md">"Fear stops us from doing <strong>stupid things</strong>..."</p>
+                        <p class="text-sm mt-20" style="color: #FFEB3B;">It acts as a biological warning system to
+                            prevent unnecessary danger.</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="#003300">
+                <slide-answer title="Answer: Question 3">
+                    <div class="glass-box centered">
+                        <p class="text-lg highlight">Para 2</p>
+                        <hr>
+                        <p class="text-md">"The <strong>cuttlefish</strong> changes color and shape to hide from
+                            enemies."</p>
+                        <p class="text-sm mt-20" style="color: #FFEB3B;">Instinct is universal across species for
+                            survival.</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="#003300">
+                <slide-answer title="Answer: Question 4">
+                    <div class="glass-box centered">
+                        <p class="text-lg highlight">Para 7</p>
+                        <hr>
+                        <p class="text-md">"Fear makes us better at <strong>making decisions</strong>..."</p>
+                        <p class="text-sm mt-20" style="color: #FFEB3B;">Adrenaline sharpens focus, allowing for faster
+                            mental processing.</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="#003300">
+                <slide-answer title="Answer: Question 5">
+                    <div class="glass-box centered">
+                        <p class="text-lg highlight">Para 3</p>
+                        <hr>
+                        <p class="text-md">"Reactions become <strong>faster</strong>... and we become physically
+                            <strong>stronger</strong>."</p>
+                        <p class="text-sm mt-20" style="color: #FFEB3B;">The response provides an immediate physical
+                            upgrade for fighting or running.</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="#003300">
+                <slide-answer title="Answer: Question 6">
+                    <div class="glass-box centered">
+                        <p class="text-lg highlight">Para 8</p>
+                        <hr>
+                        <p class="text-md">"<strong>Training</strong> allows us to know exactly what to do and stay
+                            calm."</p>
+                        <p class="text-sm mt-20" style="color: #FFEB3B;">Knowledge and practice allow us to control the
+                            natural fear response.</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="#003300">
+                <slide-answer title="Answer: Question 7">
+                    <div class="glass-box centered">
+                        <p class="text-lg highlight">Para 5</p>
+                        <hr>
+                        <p class="text-md">"Our <strong>eyes change</strong> (pupils dilate) to let more light in."</p>
+                        <p class="text-sm mt-20" style="color: #FFEB3B;">Enhanced vision helps identify exits and
+                            threats more clearly.</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <!-- FINAL BOSS (FIXED PROMPTS) -->
+            <section>
+                <slide-task title="BOSS LEVEL: THE BRIEFING" badge="FINAL" timer="7">
+                    <div class="glass-box centered" style="width: 800px;">
+                        <p class="text-lg highlight">Write 70 Words.</p>
+                        <hr>
+                        <p class="text-md">Choose ONE mission:</p>
+                        <p class="text-md">1. <strong>"Avoid risk is a good or bad thing? Why?"</strong></p>
+                        <p class="text-md">2. <strong>"Does fear stop you from achieving what you want?"</strong></p>
+                        <p class="text-sm mt-20" style="color: #FFD600;">Reference Paragraph 6 (Fear of Failure).</p>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- FINAL MODEL -->
+            <section data-background-color="#003300">
+                <slide-answer title="MODEL RESPONSE">
+                    <div class="glass-box centered" style="width: 850px; font-style: italic;">
+                        "I believe avoiding risk is generally a <strong>bad thing</strong>. As explained in Paragraph 6,
+                        a fear of failure can stop us from achieving our goals. While our <strong>instinct</strong>
+                        tries to protect us by releasing <strong>adrenaline</strong>, we must learn to use that energy
+                        to face our fears. Overcoming risk is the only way to grow and succeed."
+                    </div>
+                </slide-answer>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- REVEAL INITIALIZATION -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            width: 960, height: 700,
+            margin: 0.05,
+            hash: true,
+            transition: 'convex',
+            backgroundTransition: 'fade',
+            center: true,
+            touch: true
+        });
+    </script>
+</body>
+
+</html>
