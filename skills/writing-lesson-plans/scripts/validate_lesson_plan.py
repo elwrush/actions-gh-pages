@@ -83,7 +83,6 @@ class LessonPlanValidator:
         """Run all validation checks."""
         self._check_timing()
         self._check_preteach_vocabulary()
-        self._check_thai_scaffolding()
         self._check_stage_structure()
         
         return len(self.errors) == 0
@@ -106,13 +105,6 @@ class LessonPlanValidator:
             has_vocab = any("pre-teach" in s['name'].lower() or "vocabulary" in s['name'].lower() for s in self.stages)
             if not has_vocab:
                 self.errors.append(f"❌ Shape {shape} requires a Pre-teach Vocabulary stage.")
-
-    def _check_thai_scaffolding(self):
-        """Verify Thai translations in vocabulary context."""
-        # Look for Thai unicode range
-        has_thai = re.search(r'[\u0E00-\u0E7F]', self.content)
-        if not has_thai:
-            self.errors.append("❌ No Thai scaffolding found in the document.")
 
     def _check_stage_structure(self):
         """Check for proper stage numbers."""

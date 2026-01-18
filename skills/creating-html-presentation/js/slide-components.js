@@ -357,7 +357,7 @@ class SlideSegue extends HTMLElement {
     connectedCallback() {
         const title = this.getAttribute('title') || 'SEGUE';
         const section = this.closest('section');
-        if (section) section.setAttribute('data-background-gradient', 'radial-gradient(circle, #2d3436 0%, #000000 100%)');
+        if (section) section.setAttribute('data-background-gradient', 'var(--grad-segue)');
 
         this.innerHTML = `
             <div class="slide-canvas">
@@ -615,13 +615,13 @@ class GrammarTransform extends HTMLElement {
         beforeSlide.setAttribute('data-auto-animate', '');
         beforeSlide.setAttribute('data-auto-animate-duration', '1.5');
         beforeSlide.setAttribute('data-auto-animate-easing', 'ease-in-out');
-        beforeSlide.setAttribute('data-background-gradient', 'radial-gradient(circle, #311B92 0%, #1A0F3E 100%)');
+        beforeSlide.setAttribute('data-background-gradient', 'var(--grad-main)');
 
         const afterSlide = document.createElement('section');
         afterSlide.setAttribute('data-auto-animate', '');
         afterSlide.setAttribute('data-auto-animate-duration', '1.5');
         afterSlide.setAttribute('data-auto-animate-easing', 'ease-in-out');
-        afterSlide.setAttribute('data-background-gradient', 'radial-gradient(circle, #311B92 0%, #1A0F3E 100%)');
+        afterSlide.setAttribute('data-background-gradient', 'var(--grad-main)');
 
         // Highlight the part to be removed in the before slide
         let beforeHTML = before;

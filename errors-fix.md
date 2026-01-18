@@ -544,3 +544,29 @@ This session proceeded without errors requiring fixes. The `writing-lesson-plans
 - **Issue**: Lead-in focused on Art (Mona Lisa), but Diagnostic test shifted to Bangkok Weather.
 - **Cause**: Generic diagnostic examples created "pedagogical whiplash," breaking the lesson's storyline.
 - **Fix**: Mandate **Thematic Consistency** in `writing-lesson-plans/SKILL.md`. All diagnostic and practice items must be linked to the core "Situation" or theme established in the Lead-in.
+
+---
+
+## 2026-01-18 (Midday) | Business Vocabulary: The Editorial Shift
+
+### Typst Underscore "Emphasis" Trap
+- **Issue**: Using `___` or `Task 1. ________` in Typst caused "unclosed delimiter" errors.
+- **Cause**: Typst interprets underscores as emphasis/italic markers, and long strings of them can break the parser if nested.
+- **Fix**: **FORBID underscores for gap fills**. Always use `#box(width: X, stroke: (bottom: 1pt + black))` for robust rendering.
+
+### Transformation Hallucinations
+- **Issue**: During "Rewrite the sentence" tasks, content drifted from source (e.g., "start a business" became "fly a plane").
+- **Fix**: Implemented **Strict Source Verification Gate** in `developing-bespoke-materials`. AI must now verify every sentence against the `raw_content.md` before finalizing.
+
+### Layout Density: "The Magazine Standard"
+- **Issue**: Initial versions had too much whitespace, pushing content to Page 5.
+- **Fix**:
+  - Adopted **2-column grid** for reading and tasks.
+  - Reduced `writing_lines` vertical spacing to **0.85cm**.
+  - Increased Gap Fill `leading` to **1.8em** to ensure vertical writing space within paragraphs.
+  - Used **Cinematic Headers** (full-width image + overlay) to save 2cm of vertical space compared to block-based headers.
+
+### Validator Logic Errors
+- **Issue**: `validate_lesson_plan.py` failed for lack of Thai scaffolding.
+- **Resolution**: Removed the mandatory Thai check as it's no longer required by the user, and updated the script to be more flexible.
+

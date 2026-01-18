@@ -292,3 +292,31 @@
 - **Fight or Flight Slideshow**: https://lesson-slideshows.pages.dev
 - **Presentations Dashboard**: https://lesson-plan-agent.pages.dev/presentations/
 
+---
+
+## 2026-01-18 (Midday) | Business Vocabulary: The Editorial Shift
+
+### Key Achievement: "Creative Editorial" Paradigm
+- **Problem**: Standard modular worksheets looked "poxy" and wasted whitespace, leading to 5+ page documents.
+- **Solution**: Shifted to a **Creative Editorial** (Magazine-style) approach:
+  - **High-Density Grids**: Switched from 1-column to 2-column grids for reading and exercises.
+  - **Cinematic Headers**: Full-width graphical banners with text overlays replaced blocky logos and titles, saving significant vertical space.
+  - **Immersive Frames**: Used specific UI metaphors (e.g., "Tablet UI" for financial text) to organize content thematically.
+- **Result**: Compact, professional 4+1 booklet layout that feels like a premium educational magazine.
+
+### Technical Refinement: Robust Handwriting Components
+- **Gap Fills**: Standardization of `#box`-based gap fills over legacy underscores to prevent Typst syntax errors.
+- **Padding Control**: Established **0.85cm** as the optimal vertical padding for handwriting lines in high-density layouts.
+- **Visibility**: Enforced **#404040** (Dark Grey) dotted lines to survive the "Photocopier Test."
+
+### Skill Evolution: `developing-bespoke-materials` V3
+- **Integrated Learnings**: The skill now mandates:
+  1. **Strict Source Verification** to prevent factual hallucinations during text transformations.
+  2. **Editorial Logic Gates**—evaluating "Density" and "Visual Metaphor" before coding.
+  3. **Standardized Typst Technicals** (Rules for `box` lines, padding, and leading).
+
+### Validation & Cleanup
+- **Script Update**: Updated `validate_lesson_plan.py` to remove the mandatory Thai scaffolding check.
+- **Compliance**: All files (Worksheet, Lesson Plan, and Script) validated and passing for **Ed Rush (Bell)**.
+
+

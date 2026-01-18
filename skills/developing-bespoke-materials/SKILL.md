@@ -34,15 +34,20 @@ Ask the user:
 >    If so, should the text **wrap around them** (using `meander`) or should they be placed in blocks?
 > 2. **Do you want to include a Name and Student ID block?** (Default is usually 'yes', but confirm).
 
-### Step 5: Design Proposal (Gated Step)
-Before proceeding to content development, **propose a specific design direction** to the user as a **single comprehensive package**. This is where you apply **Creative License**:
-- **Thematic Motifs**: Suggest graphic elements that evoke the subject matter (e.g., ECG lines for "Fight or Flight", organic shapes for nature, digital grids for technology).
-- **Title Design**: Propose a specific typographic treatment for the main header (e.g., "I'd like to design the header as a custom image to evoke a sense of speed/tension...").
-- **Asset Bundle**: Propose all motifs, icons, and title graphics as a group. **Do not generate images individually or repeatedly** without explicit user approval of the bundle to avoid rate-limiting.
-- **Font Selection**:
-    - **Display/Headers**: Suggest bold, evocative fonts or custom imagery.
-    - **Body/Reading**: **CRITICAL**: Always prioritize readability for the reading text. Suggest clean, widely-available fonts (Arial, Inter, Roboto).
-- **Wait for User Approval** of the design concept and asset bundle before moving to Step 6.
+### Step 5: Design Strategy
+Before proceeding to content development, define the visual strategy. 
+
+> [!NOTE]
+> Shift from **Modular/Functional** (boxing content) to **Creative/Editorial** (magazine style).
+
+1.  **Layout Density**:
+    *   Prioritize **High Density**. Eliminate "wasted" whitespace.
+    *   Use **2-Column Grids** for reading texts and exercises (`#grid(columns: (1fr, 1fr))`) to maximize content per page.
+    *   Avoid huge, empty headers. Use **Cinematic Titles** (full-width graphical banners with overlay text) that are compact (`height: 4cm`) but visually impactful.
+
+2.  **Visual Components**:
+    *   **Immersive Wrappers**: Use metaphor-driven containers (e.g., a "Tablet UI" frame for corporate profiles, a "Notepad" for informal texts) instead of generic line borders.
+    *   **Bespoke Helpers**: Use specific accent colors (e.g., Teal/Maroon) for "Language Help" boxes rather than generic "Info" styles.
 
 ### Step 5.5: 🧪 Validation (Delegated)
 **Note**: This orchestration skill delegates validation to its output skills:
@@ -59,12 +64,11 @@ You MUST run the appropriate validator after generating any output.
     -   **Regular/Bell**: ALWAYS use `../images/bell-header.jpg`.
     -   **Intensive**: ALWAYS use `../images/intensive-header.jpg`.
     -   *Do not* attempt to generate custom headers unless explicitly requested AND the standard headers are unsuitable.
-2.  **Image Generation**:
-    -   Use `generate_image` sparingly.
-    -   **Fallback**: If generation fails (e.g., 429 errors), immediately pivot to high-quality CSS design (colors, emojis, clear typography) or use existing assets. Do not loop retries.
-3.  **Lesson Planning**:
-    -   **NEVER** create the lesson plan before the worksheet/material is finalized and approved by the user.
-    -   **Sequence**: Design Material → User Review → User Approval → Create Lesson Plan.
+2.  **Input Verification**:
+    -   **Hallucination Check**: When rewriting sentences or transforming text, **strictly verify** the output against the source. Do not invent new facts (e.g., changing "start a business" to "fly a plane").
+3.  **Typst Technicals**:
+    -   **Gap Fills**: NEVER use underscores (`___`). Use `#box(width: 1.5cm, stroke: (bottom: 1pt + black))` for robust rendering.
+    -   **Writing Lines**: Use `0.85cm` vertical spacing for optimal compactness. Use `rgb("#404040")` (dark grey) dotted lines for visibility when photocopied.
 
 #### If Transforming Existing Materials:
 1. Suggest using **Gemini 3 Flash's multimodal image capabilities** to read source materials
@@ -169,7 +173,7 @@ To get started, please tell me:
 - **Pagination & Duplexing**:
     -   **Orphan Prevention**: Ensure task headers are never left alone at the bottom of a page. If a task header falls at the bottom, move it to the next page.
     -   **Booklet Logic (Groups of 4)**: Materials are printed 2-up Double Sided (4 pages per sheet). Text flows freely between Pages 1-2, 2-3, 3-4.
-    -   **Hard Breaks**: **CRITICAL**: Tasks MUST NOT break across the sheet boundary (e.g., Page 4 to 5, or 8 to 9). Students should not have to flip a physical sheet to finish a single task. Insert an explicit `#pagebreak()` if a task risks straddling this boundary.
+    -   **Hard Breaks**: **CRITICAL**. Tasks MUST NOT break across the sheet boundary (e.g., Page 4 to 5, or 8 to 9). Students should not have to flip a physical sheet to finish a single task. Insert an explicit `#pagebreak()` if a task risks straddling this boundary.
 - **Image Quality**:
     -   **No Gradients**: Images must be suitable for grayscale photocopying (solid colors, clear contrast).
     -   **Transparency**: Non-rectangular graphics must be **Transparent PNGs**.

@@ -89,8 +89,10 @@ Use this skill to create the visual backbone of a lesson. Slides must:
 
 **MANDATORY RULES (The Fixed Canvas):**
 -   **Segue Slides**: Must ALWAYS use a **vibrant dark radial gradient** and a **neon glow** on the title.
-    -   *Background Code*: `radial-gradient(circle, #2d3436 0%, #000000 100%)`
+    -   *Background Code*: `var(--grad-segue)`
     -   *Title Glow*: `text-shadow: 0 0 20px var(--text-accent), 0 0 40px var(--primary), 6px 6px 0px rgba(0,0,0,0.5);`
+-   **Warning/Constraint Slides**: Must use the **Boss Level gradient** (`var(--grad-boss)`) and include a visual hazard icon (e.g., road sign).
+    -   *Purpose*: Signals a negative grammar rule (e.g., "When NOT to use this").
     
 ### Step 1.5: 📦 Asset Strategy & Sourcing (MANDATORY GATE)
 **Goal**: Define and source the exact media assets needed.
@@ -108,7 +110,11 @@ You MUST ask:
     1.  Ask: "Photos, Illustrations, or Vectors?"
     2.  **Constraint**: Illustrations/Vectors **MUST** be transparent PNGs.
     3.  **Source**: **Pixabay First** (`searching-pixabay`).
-    4.  **Fallback**: Internal Generation -> External Gemini API.
+    4.  **Attribution (MANDATORY)**:
+        -   **Format**: "Image by [User] from Pixabay"
+        -   **Placement**: Static, centered, directly BENEATH the image (inside the column).
+        -   **Code**: `.attribution { position: static; text-align: center; font-size: 12px; margin-top: 8px; }`
+    5.  **Fallback**: Internal Generation -> External Gemini API.
 -   **B. Sounds**:
     1.  **Source**: **Freesound ONLY** (`searching-freesound`). **NO VOCABULARY AUDIO** (user explicitly removed requirement).
     2.  **Process**: Present 3 candidates (for UI/Timer) -> Wait for Approval -> Download.
@@ -202,7 +208,17 @@ Now, write the `index.html`.
 3.  **One Answer, One Slide (MANDATORY)**: Never put multiple answers on a single slide. Each answer must have its own slide containing:
     *   **Title Format**: "Answer: Question N" (e.g. "Answer: Question 1").
     *   **Snippet/Para**: Use the format "Para N" for the source reference (e.g. "Para 4").
-    *   A brief snippet from the source text and a clear explanation.
+    *   A brief snippet from the source text and a clear **Explanation Box** ("Why is this the answer?").
+    *   **Goal**: Ensure students digest the logic, not just the correct word.
+
+### Step 5.4: 🧱 The "Split-Anchor" Visual Standard
+**Goal**: Integrate images without cluttering explanations.
+**Rule**: Use the **40/60 Split Layout** for content slides with images.
+-   **Left Column (40%)**: The **Visual Anchor** (Image).
+    -   *Class*: `.col-40` containing `<img>` and `.attribution`.
+-   **Right Column (60%)**: The **Instructional Content**.
+    -   *Class*: `.col-60` containing `.glass-box`.
+**Why**: This prevents "wallpaper" images. The image becomes a distinct pedagogical tool.
 
 ### Step 5.5: 🧪 Technical Validation (MANDATORY)
 **Action**: You MUST run the technical validator before proceeding.
@@ -283,10 +299,14 @@ Now, write the `index.html`.
 - **Validation**: If the Lesson Plan does not explicitly list the questions/answers, you **MUST STOP** and ask the user for the source text. **NEVER invent/hallucinate questions or answers**.
 - **Quote-Based**: You must be able to point to the exact line in the source file for every activity.
 
-### 4. The Answer Key Golden Rule (REPEATED)
-- **Interleaving**: Answer slides must appear **immediately after** the relevant Question slide.
-- **Rule**: **One Answer Per Slide (STRICT)**. Do not group answers.
-- **Components**: Correct Answer + Snippet (Evidence) + Teacher Explanation.
+### 4. The Per-Question Answer Key Standard (STRICT GOLDEN RULE)
+- **Separate Slides**: NEVER present all answers on a single slide.
+- **Rule**: Create a distinct slide for **EACH** question's answer (e.g., Answer 1, Answer 2, Answer 3).
+- **Format**:
+    - **Header**: "Task X: Question Y"
+    - **Body**: The full sentence/answer with the key part highlighted.
+    - **Explanation**: A short "Why?" or explanation box below the answer.
+- **Interleaving**: These slides must appear sequentially after the Task slide.
 
 ### 5. Direct Vocabulary Instruction (The Legacy Standard)
 - **One Word Per Slide**.
@@ -332,9 +352,9 @@ Now, write the `index.html`.
 
 ### 🎨 Design Philosophy: "Vibrant Depth"
 - **NO IMAGE BACKERS**: Do not use photos as backgrounds.
-- **THE RADIAL BACKER**: Every slide must have a multi-layered CSS background.
-    - **Layer 1**: A vibrant radial gradient (e.g., `radial-gradient(circle, #311B92 0%, #1A0F3E 100%)`).
-    - **Layer 2**: A subtle vignette or glow.
+- **THE RADIAL BACKER**: Every slide must have a multi-layered CSS background driven by variables.
+    - **Main Gradient**: `var(--grad-main)` (e.g., `radial-gradient(circle, var(--bg-dark) 0%, #100630 100%)`)
+    - **Segue Gradient**: `var(--grad-segue)` (Fixed high-contrast dark: `radial-gradient(circle, #2d3436 0%, #000000 100%)`)
 - **GLOWING SEGUES**: Segue titles must use a multi-layered text shadow to create a "neon" effect.
 - **IMAGES AS INSETS**: Images must be focal points, wrapped in a frame (border + shadow).
 
