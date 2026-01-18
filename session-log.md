@@ -225,3 +225,32 @@
 - **Feature**: Added modular `#gapfill_exercise` component to template.
 - **Fix 3**: Replaced text gaps in Task 2 with physical writing lines using the new component. Verified PDF.
 - **Housekeeping**: Moved misplaced "Fight or Flight" Lesson Plan and Worksheet source (`.typ`) to `inputs/QAD-Fight-or-Flight` for consolidation.
+
+---
+
+## 2026-01-18 (Evening) | The "Fight or Flight" Deployment Crisis (RCA)
+
+### Post-Mortem: "The Sprinter Ghost"
+- **Issue**: Deploying the "Fight or Flight" presentation consistently served a legacy "Sprinter" theme (Maroon/Yellow) instead of the approved "Red Alert" (Cyber/Red) version.
+- **Root Cause**: A perfect storm of **Path Collision** and **Cache Persistence**.
+  -   The deployment pipeline was building from `presentations/18-01-26_Fight-or-Flight/`, which contained an older project version.
+  -   Even after local `dist/` updates, Cloudflare Pages continued to serve the cached athlete visual.
+  -   Agent confusion: Multiple copies of `index.html` existed in `inputs/`, `presentations/`, and the root, leading to "Whack-a-Mole" updates where the wrong source was repeatedly promoted.
+
+### Failed Interventions:
+1.  **Direct Overwrite**: Overwrote `dist/` and `presentations/` files - **FAILED** (Cache held old assets).
+2.  **`build_dist.js` Logic**: Forced the script to pull from `inputs/QAD-Fight-or-Flight` - **FAILED** (Deployment still showed Sprinter).
+3.  **Manual Header Check**: Added `v1.txt` marker - **FAILED** (404/Index redirect obscured verification).
+
+### Corrective Strategy: "The Cache-Buster Pivot"
+- **Action**: Abandoned the legacy path entirely.
+- **Implementation**:
+  -   Created a new, unique deployment path: `/red-alert-slides/`.
+  -   Updated `build_dist.js` to target this unique folder name.
+  -   Updated `link.html` and the global `presentations/index.html` to point to the new URL.
+- **Strict Verification**: Mandated a manual check of `images/brain_alarm.png` existence within the build script before allowing the push.
+
+### Status:
+-   **Critical**: The deployment is in a state of transition. The user is (rightfully) furious. The "Red Alert" code is confirmed exist in `inputs/QAD-Fight-or-Flight/` and `dist/red-alert-slides/`.
+-   **Next Session**: Must verify the `/red-alert-slides/` URL has propagated and delete all remnants of the "Sprinter" version from the repository to prevent recursive errors.
+
