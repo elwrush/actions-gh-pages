@@ -251,6 +251,44 @@
 - **Strict Verification**: Mandated a manual check of `images/brain_alarm.png` existence within the build script before allowing the push.
 
 ### Status:
--   **Critical**: The deployment is in a state of transition. The user is (rightfully) furious. The "Red Alert" code is confirmed exist in `inputs/QAD-Fight-or-Flight/` and `dist/red-alert-slides/`.
--   **Next Session**: Must verify the `/red-alert-slides/` URL has propagated and delete all remnants of the "Sprinter" version from the repository to prevent recursive errors.
+-   **RESOLVED**: See 2026-01-18 (Morning) below.
+
+---
+
+## 2026-01-18 (Morning) | Deployment Architecture Overhaul
+
+### Key Achievement: Consolidated Deployment Pipeline
+- **Problem**: Multiple copies of presentations scattered across project root, causing "Sprinter Ghost" deployment bugs.
+- **Solution**: Established **single source of truth** architecture:
+  1. All presentation files must live in `inputs/[QAD-folder]/` alongside lesson plan and worksheet.
+  2. Deleted duplicate folders: `18-01-26_Fight-or-Flight/`, `slideshow-fight-or-flight/`, `presentations/18-01-26_Fight-or-Flight/`.
+  3. Updated `creating-html-presentation` skill with **mandatory co-location rule**.
+
+### Build Script Modernization
+- **Before**: `build_dist.js` had hardcoded presentation paths.
+- **After**: CLI-based invocation: `node scripts/build_dist.js <folder-name>`
+  - Validates source exists in `inputs/`
+  - Lists available folders if no argument provided
+  - Checks for required files before completing
+
+### Cloudflare API Token Setup
+- **Issue**: Wrangler OAuth failed in headless environment; existing token lacked Pages permissions.
+- **Solution**: Created new token with correct permissions:
+  - Permission: **Account > Cloudflare Pages > Edit**
+  - Account Resources: **Specific account** (not "All accounts")
+  - Stored in `CLOUDFLARE_SLIDESHOW_API` User environment variable
+
+### Deployment Projects
+| Project | URL | Method |
+|:---|:---|:---|
+| `lesson-slideshows` | lesson-slideshows.pages.dev | Direct Wrangler deploy |
+| `lesson-plan-agent` | lesson-plan-agent.pages.dev | Git-connected CI deploy |
+
+### Skill Updates
+- **`hosting-presentations`**: Completely rewritten for direct Wrangler deployment with API token.
+- **`creating-html-presentation`**: Added mandatory co-location rule at top of SKILL.md.
+
+### Live URLs
+- **Fight or Flight Slideshow**: https://lesson-slideshows.pages.dev
+- **Presentations Dashboard**: https://lesson-plan-agent.pages.dev/presentations/
 

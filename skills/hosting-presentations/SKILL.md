@@ -1,57 +1,107 @@
 ---
 name: hosting-presentations
 description: >
-  Deploys HTML presentations to Cloudflare Pages using a strict Whitelist Build Strategy.
+  Deploys HTML presentations to Cloudflare Pages using direct API deployment.
   Use when the user wants to publish, host, or deploy a slideshow.
 ---
 
 # Skill: Hosting Presentations (`hosting-presentations`)
 
 ## Description
-This skill handles the publishing of HTML presentations to the **Cloudflare Pages Lesson Library**. It strictly enforces a **Whitelist Build Strategy** to prevent "Asset Too Large" errors and ensure only the active presentation is deployed.
+This skill deploys HTML presentations to **Cloudflare Pages** using direct Wrangler CLI deployment with API token authentication.
+
+## Prerequisites
+- **Environment Variable**: `CLOUDFLARE_SLIDESHOW_API` must be set as a User environment variable containing a valid Cloudflare API token with **Account > Cloudflare Pages > Edit** permission.
+- **Token Setup**: If missing, create at https://dash.cloudflare.com/profile/api-tokens with:
+  - Permission: Account > Cloudflare Pages > Edit
+  - Account Resources: Select your specific account (not "All accounts")
 
 ## Critical Rules
+
 > [!IMPORTANT]
 > **NEVER DEPLOY THE ROOT DIRECTORY (`.`)**.
-> You must ALWAYS build a clean `dist/` directory containing only the specific presentation files.
+> Always build a clean `dist/` directory first.
+
+> [!IMPORTANT]
+> **SOURCE LOCATION**: Presentations must exist in `inputs/[QAD-folder]/` alongside their lesson plan and worksheet.
 
 ## Workflow
 
-```mermaid
-graph TD
-    A[Start: Finished Presentation] --> B[Identify Active Presentation Folder]
-    B --> C[Update scripts/build_dist.js]
-    C --> D[Run Local Build Test 'node scripts/build_dist.js']
-    D --> E{Build Success?}
-    E -- No --> C
-    E -- Yes --> F[Git Add/Commit/Push]
-    F --> G[Cloudflare CI Runs 'npm run build']
-    G --> H[Live URL Generated]
-    H --> I[Update link.html confirmation]
-    I --> J[End]
+### 1. Build
+Run the build script with the presentation folder name:
+
+```powershell
+node scripts/build_dist.js <folder-name>
 ```
 
-### 1. Configuration
-1.  **Locate Active Folder**: Identify the specific subfolder containing the `index.html` presentation (e.g., `18-01-26_Global-Logistics...`).
-2.  **Update Build Script**:
-    - Open `scripts/build_dist.js`.
-    - Update `PRESENTATION_DIR` to point to the active folder.
-    - Ensure `INCLUDES` contains necessary shared assets (`js`, `images`, `audio`).
+**Example**:
+```powershell
+node scripts/build_dist.js QAD-Fight-or-Flight
+```
 
-### 2. Local Verification
-1.  **Run**: `node scripts/build_dist.js`
-2.  **Verify**: Check that the `dist/` folder contains:
-    - `index.html` (at the root)
-    - `images/`, `js/`, `audio/` (folders)
-    - **NO** hidden files (`.git`, `node_modules`).
+The script will:
+- Validate the folder exists in `inputs/`
+- Check for `index.html`
+- Copy files to `dist/`
+- Include shared JS components
 
-### 3. Deployment
-1.  **Commit**: Commit the updated `build_dist.js` and any presentation changes.
-    - `git add scripts/build_dist.js [presentation_folder]`
-    - `git commit -m "chore: target [presentation_name] for deployment"`
-    - `git push origin main`
-2.  **Wait**: Cloudflare will detect the commit, run `npm run build` (triggering your script), and deploy the `dist/` folder.
+### 2. Deploy
+Deploy using Wrangler with the API token:
 
-### 4. confirmation
-1.  Update the `link.html` or similar helper file to point to the live worker URL (e.g., `https://lesson-plan-agent.elwrushmel.workers.dev/`).
-2.  Provide this link to the user.
+```powershell
+$env:CLOUDFLARE_API_TOKEN = [Environment]::GetEnvironmentVariable('CLOUDFLARE_SLIDESHOW_API', 'User')
+npx wrangler pages deploy dist/
+```
+
+**First-time deployment**: You'll be prompted for:
+- Project name (e.g., `lesson-slideshows`)
+- Production branch (use `main`)
+
+### 3. Verify
+- **Production URL**: `https://<project-name>.pages.dev`
+- SSL certificates may take 1-2 minutes to provision for new projects
+
+### 4. Create Google Doc Link (MANDATORY)
+
+> [!CRITICAL]
+> You MUST create a **Google Doc** (not an HTML file) containing the slideshow link.
+> HTML files do NOT work in Google Drive for sharing - they must be converted to Google Docs format.
+
+1. Create a simple HTML file with the link:
+```html
+<h1>Slideshow Link</h1>
+<p><a href="https://lesson-slideshows.pages.dev">https://lesson-slideshows.pages.dev</a></p>
+```
+
+2. Push to Google Docs (this CONVERTS to GDoc format):
+```powershell
+$env:PYTHONIOENCODING='utf-8'
+python scripts/push_to_gdocs.py --file "path/to/link.html" --name "DD-MM-YY Slideshow Link"
+```
+
+3. Provide the Google Doc URL to the user.
+
+## One-Liner (Quick Deploy)
+
+```powershell
+node scripts/build_dist.js QAD-Fight-or-Flight; $env:CLOUDFLARE_API_TOKEN = [Environment]::GetEnvironmentVariable('CLOUDFLARE_SLIDESHOW_API', 'User'); npx wrangler pages deploy dist/
+```
+
+## Projects
+
+| Project | URL | Purpose |
+|:---|:---|:---|
+| `lesson-slideshows` | lesson-slideshows.pages.dev | Standalone presentations (direct deploy) |
+| `lesson-plan-agent` | lesson-plan-agent.pages.dev | Dashboard + Git-connected presentations |
+
+## Troubleshooting
+
+### Token Permission Errors
+If you see "missing permission", the token needs:
+1. **Account > Cloudflare Pages > Edit** permission
+2. **Account Resources** set to your specific account (not "All accounts")
+3. After editing permissions, **Roll** the token to get a new value
+
+### SSL Errors on New Deployments
+Wait 1-2 minutes for certificate provisioning. Use the production URL (without deployment hash).
+

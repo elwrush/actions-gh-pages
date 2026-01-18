@@ -494,3 +494,19 @@ This session proceeded without errors requiring fixes. The `writing-lesson-plans
   4.  Added `"postinstall": "npm run build"` to `package.json` for CI automation.
 - **Rule**: **NEVER deploy the project root (`.`)**. ALWAYS build a clean `dist/` folder containing only the production assets.
 
+### Cloudflare API Token Permission Errors
+- **Issue**: Wrangler deploy failed with "missing `Account:Cloudflare Pages:Read` permission".
+- **Cause**: API token was created with "All accounts" in Account Resources, which paradoxically grants no access.
+- **Fix**:
+  1. Edit the token at https://dash.cloudflare.com/profile/api-tokens
+  2. Set **Permission**: Account > Cloudflare Pages > Edit
+  3. Set **Account Resources**: Include > [Your specific account name] (NOT "All accounts")
+  4. **Roll** the token to regenerate the value after editing
+  5. Update the `CLOUDFLARE_SLIDESHOW_API` User environment variable with the new token
+- **Verification**: `curl "https://api.cloudflare.com/client/v4/accounts" -H "Authorization: Bearer <token>"` should return your account, not empty `result: []`.
+
+### SSL Certificate Provisioning Delay
+- **Issue**: New Cloudflare Pages deployment shows "ERR_SSL_VERSION_OR_CIPHER_MISMATCH".
+- **Cause**: SSL certificates take 1-2 minutes to provision for new projects.
+- **Fix**: Wait 1-2 minutes, or use the production URL (without deployment hash prefix).
+

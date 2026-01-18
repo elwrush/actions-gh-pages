@@ -8,6 +8,20 @@ description: Generates vibrant Reveal.js HTML presentations (slideshows) from le
 ## Description
 This skill generates vibrant, high-energy HTML presentations using **Reveal.js**. It transforms lesson plans into dynamic, web-based experiences with "pop and verve."
 
+## ⛔ MANDATORY CO-LOCATION RULE (READ FIRST)
+
+> [!CRITICAL]
+> **ALL presentation files (`index.html`, `images/`, `audio/`) MUST be created inside the SAME folder as the lesson plan and worksheet.**
+> 
+> **Canonical Location**: `inputs/[QAD-folder]/` (e.g., `inputs/QAD-Fight-or-Flight/`)
+> 
+> **NEVER create presentations in**:
+> - ❌ Project root (e.g., `18-01-26_Fight-or-Flight/`)
+> - ❌ `presentations/` folder (this is for deployment links only)
+> - ❌ Any folder that doesn't contain the `.typ` lesson plan file
+>
+> **Why**: This ensures all materials for a lesson are grouped, preventing version drift and deployment bugs.
+
 ## Context
 Use this skill to create the visual backbone of a lesson. Slides must:
 - **Mirror the Lesson Plan**: Alignment with stages and materials is mandatory.
