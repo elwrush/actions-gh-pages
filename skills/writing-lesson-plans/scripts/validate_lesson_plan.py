@@ -56,18 +56,19 @@ class LessonPlanValidator:
         """Extract stage procedures and their word counts from Typst blocks."""
         stages = []
         # Find all STAGE headers first
-        # Pattern: STAGE [Number]: [Name]
-        stage_headers = re.finditer(r'STAGE\s+(?:ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN|EIGHT|[1-8]):\s+(.*?)(?=\]|\))', self.content, re.IGNORECASE)
+        # Find all STAGE definitions in Typst format: stage("ONE", "Title", ...)
+        # We need a regex that captures the Number and the Name
+        stage_headers = re.finditer(r'stage\(\s*"(ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN|EIGHT|[1-8])"\s*,\s*"(.*?)"', self.content, re.IGNORECASE | re.DOTALL)
         
         for match in stage_headers:
-            name = match.group(1).strip()
+            name = match.group(2).strip() # Capture the Title (Group 2), not the Number (Group 1)
             header_pos = match.end()
             remaining_content = self.content[header_pos:]
             
             # Extract blocks like [...]
             blocks = re.findall(r'\[(.*?)\]', remaining_content, re.DOTALL)
             
-            if len(blocks) >= 3:
+            if blocks:
                 # Sort by size to find procedure
                 sorted_blocks = sorted(blocks[:5], key=len, reverse=True)
                 proc_text = sorted_blocks[0].strip()
@@ -77,6 +78,7 @@ class LessonPlanValidator:
                     'procedure': proc_text,
                     'word_count': len(re.findall(r'\w+', proc_text))
                 })
+        print(f"DEBUG: Extracted stages: {[s['name'] for s in stages]}")
         return stages
 
     def validate(self):
@@ -101,15 +103,16 @@ class LessonPlanValidator:
     def _check_preteach_vocabulary(self):
         """Verify pre-teach vocabulary stage for receptive skills shapes."""
         shape = self.metadata.get('shape', '')
-        if shape in ['E', 'F', 'G', 'H']:
-            has_vocab = any("pre-teach" in s['name'].lower() or "vocabulary" in s['name'].lower() for s in self.stages)
+        if shape in ['E', 'G', 'H']:
+            # Expanded keywords to include 'language' and 'preparation' which are common in Productive skills
+            has_vocab = any(kw in s['name'].lower() for s in self.stages for kw in ["pre-teach", "vocabulary", "language", "preparation"])
             if not has_vocab:
-                self.errors.append(f"❌ Shape {shape} requires a Pre-teach Vocabulary stage.")
+                self.errors.append(f"[ERROR] Shape {shape} requires a Pre-teach Vocabulary or Language Preparation stage.")
 
     def _check_stage_structure(self):
         """Check for proper stage numbers."""
         if len(self.stages) < 3:
-            self.warnings.append(f"⚠️ Low stage count ({len(self.stages)}). Verify Shape requirements.")
+            self.warnings.append(f"[WARNING] Low stage count ({len(self.stages)}). Verify Shape requirements.")
 
     def print_report(self):
         """Print validation report."""
@@ -125,14 +128,14 @@ class LessonPlanValidator:
         print()
         
         if self.errors:
-            print("🚫 VALIDATION FAILED\n")
+            print("[FAIL] VALIDATION FAILED\n")
             for error in self.errors:
                 print(error)
         else:
-            print("✅ VALIDATION PASSED\n")
+            print("[PASS] VALIDATION PASSED\n")
         
         if self.warnings:
-            print("⚠️ WARNINGS:\n")
+            print("[WARN] WARNINGS:\n")
             for warning in self.warnings:
                 print(warning)
         

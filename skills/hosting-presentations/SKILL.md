@@ -28,22 +28,20 @@ This skill deploys HTML presentations to **Cloudflare Pages** using direct Wrang
 ## Workflow
 
 ### 1. Build
-Run the build script with the presentation folder name:
+Run the build script without arguments to build ALL presentations found in `inputs/` into `dist/`:
 
 ```powershell
-node scripts/build_dist.js <folder-name>
-```
-
-**Example**:
-```powershell
-node scripts/build_dist.js QAD-Fight-or-Flight
+node scripts/build_dist.js
 ```
 
 The script will:
-- Validate the folder exists in `inputs/`
-- Check for `index.html`
-- Copy files to `dist/`
-- Include shared JS components
+- Scan `inputs/` for folders containing `index.html`
+- Copy each into `dist/[folder-name]/` (Unique URLs)
+- Copy shared JS/Images to `dist/`
+- Generate a dashboard at `dist/index.html` pointing to all lessons.
+
+> [!IMPORTANT]
+> **OVERWRITING PREVENTION**: By using subfolders (`/folder-name/`), we can host multiple slideshows simultaneously on the same domain without they overwriting each other.
 
 ### 2. Deploy
 Deploy using Wrangler with the API token:
@@ -70,7 +68,7 @@ npx wrangler pages deploy dist/
 1. Create a simple HTML file with the link:
 ```html
 <h1>Slideshow Link</h1>
-<p><a href="https://lesson-slideshows.pages.dev">https://lesson-slideshows.pages.dev</a></p>
+<p><a href="https://lesson-slideshows.pages.dev/QAD-Fight-or-Flight/">https://lesson-slideshows.pages.dev/QAD-Fight-or-Flight/</a></p>
 ```
 
 2. Push to Google Docs (this CONVERTS to GDoc format):

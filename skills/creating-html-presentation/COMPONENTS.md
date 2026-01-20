@@ -21,22 +21,25 @@
 ## Layout Patterns (Gold Standard)
 
 ### Core Container Width
-All content fits within **900px** using `row-container`:
+All content fits within **1100px** using `row-container` (Wider for classroom visibility):
 
 ```html
 <div class="row-container">
-    <div class="col-40"><!-- 40% width --></div>
-    <div class="col-60"><!-- 60% width --></div>
+    <div class="col-35"><!-- 35% width --></div>
+    <div class="col-65"><!-- 65% width --></div>
 </div>
 ```
 
-### Font Sizes
+### Font Sizes (Projector Standard)
 | Class | Size | Use Case |
 |-------|------|----------|
-| `.text-lg` | 30px | Headlines |
-| `.text-md` | 28px | Body text (default) |
-| `.text-sm` | 24px | Dense content |
-| `.text-xs` | 22px | Fine print |
+| `.text-lg` | 32pt | Headlines / Hero Text |
+| `.text-md` | 24pt | Major Body Text |
+| `.text-sm` | 20pt | Dense content |
+| `.text-xs` | 18pt | MINIMUM (Fine print) |
+
+> [!CAUTION]
+> **NEVER** use font sizes smaller than 18pt. They are invisible on classroom projectors.
 
 ---
 

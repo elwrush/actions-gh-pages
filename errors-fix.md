@@ -1,3 +1,13 @@
+# Error Fix Log - Jan 20, 2026
+
+## UI/UX Lessons
+- **Font Size**: NEVER use fonts smaller than 18pt in presentations. Classroom projectors make them unreadable.
+- **Container Width**: Standard 900px is too narrow for large-text slides. 1100px is the new standard.
+- **Atmospheric Glow**: Use radial gradients with high blur (120px) instead of box-shadows to avoid a "boxy" look.
+- **Image Resolution**: Always fetch `largeImageURL` (1280px) for backgrounds; 640px looks pixelated on screens.
+- **HTML Syntax**: Be extremely careful with space in comments (`< !--`) as it renders the comment as visible text.
+
+## Previous Entries
 
 # Errors & Fixes Log
 
@@ -569,4 +579,77 @@ This session proceeded without errors requiring fixes. The `writing-lesson-plans
 ### Validator Logic Errors
 - **Issue**: `validate_lesson_plan.py` failed for lack of Thai scaffolding.
 - **Resolution**: Removed the mandatory Thai check as it's no longer required by the user, and updated the script to be more flexible.
+
+---
+
+## 2026-01-18 (Night) | Presentation Deployment & Architecture
+
+### Deployment Overwrite (The "Sprinter Ghost" Sequel)
+- **Issue**: Deploying a new presentation (e.g., Appositives) completely removed the previous one (Fight or Flight) from the live URL.
+- **Cause**: `build_dist.js` cleaned `dist/` and copied the new presentation to the root.
+- **Fix**: 
+  1. Updated `build_dist.js` to build ALL presentations into **unique subfolders** (e.g., `/QAD-Fight-or-Flight/`).
+  2. Implemented a **Dashboard Generator** that creates an `index.html` indexing all lessons.
+  3. Mandated **Stable URLs** in the `hosting-presentations` skill.
+- **Result**: Multiple presentations now coexist peacefully on the same domain.
+
+### Broken Link in Google Docs
+- **Issue**: User reported "Fight or Flight" link pointed to the "wrong lesson."
+- **Cause**: Link pointed to `lesson-slideshows.pages.dev` root, which had been overwritten by a subsequent project.
+- **Fix**: Generated a new **Google Doc link** pointing to the stable subfolder URL. 
+- **Rule**: Never link to the root; always link to the versioned/named subfolder.
+
+---
+
+## 2026-01-19 | Slide Design & Layout Refinements
+
+### Split Layouts for Timer Slides (Global Rule)
+- **Issue**: Timer pills were "stranded" at the bottom of slides, making layouts feel unbalanced.
+- **Cause**: Slides used simple stacked layouts (Title → Content → Timer) instead of structured grids.
+- **Fix**: **Whenever a slide has a `timer-pill`, use a 50/50 Split Layout**:
+  - **Left Column**: Relevant image (`.col-50` + `.inset-media`).
+  - **Right Column**: Instructions + Timer inside `.glass-box`.
+- **Why**: This balances visual weight, gives the timer context, and makes slides look premium.
+
+### Title Slide = Gold Standard First Impression
+- **Issue**: Title slide was "horribly malformed" with a centered div overlay instead of the standard split layout.
+- **Fix**: Title slides MUST follow the template's split layout:
+  1. **Background**: Gradient (`var(--grad-main)`), NOT an image overlay.
+  2. **Left Column (40%)**: Inset hero image with rotation (`rotate(-2deg)`) and cyan border.
+  3. **Right Column (60%)**: Left-aligned text:
+     - **Badge**: CEFR + Skill (e.g., "B1: VOCABULARY").
+     - **Title**: Large `h1` (~60pt).
+     - **Tagline**: Skewed span with maroon background.
+
+### Teacher Notes ≠ Visible Content
+- **Issue**: "Elicit: Branches, Headquarters, Exports" appeared directly on the slide.
+- **Cause**: Misunderstanding of `.teacher-tip` vs `<aside class="notes">`.
+- **Fix**: 
+  - **`<aside class="notes">`**: For "Elicit" instructions, procedural cues (visible ONLY in Speaker View).
+  - **`.teacher-tip` div**: For "Why?" explanations visible to STUDENTS on Answer slides.
+- **Rule**: Students should see **questions**, not teaching prompts.
+
+### Asset Paths are Fragile (The Growth Icon Bug)
+- **Issue**: "Expand" slide showed broken image after moving `growth_icon.png`.
+- **Cause**: Moved file to `images/` but forgot to update ALL `src=` references.
+- **Fix**: When moving any image:
+  1. Search (`grep`) for all occurrences of the filename in HTML.
+  2. Update **every** reference before testing.
+- **Rule**: Link changes are invisible until preview. Always verify paths immediately.
+
+### Segue Angles Must Be Consistent
+- **Issue**: "Boss Level: Transformation" segue was "angled the wrong way" (positive rotation).
+- **Cause**: Inline `style="transform: rotate(2deg)"` overrode the class's default `-3deg`.
+- **Fix**: **Never override `.segue-title` transform inline**. The class already has `rotate(-3deg) skew(-10deg)` for consistency.
+- **Exception**: Only override if intentionally differentiating (e.g., final boss, danger warning).
+
+### Content Belongs on Introduction Slides
+- **Issue**: Put the "Expand" growth icon on the Answer slide (2.9) instead of the Vocabulary Introduction slide (13).
+- **Fix**: Visual assets (icons, diagrams) belong on the slide that **introduces** a concept, not the slide that **tests** it.
+- **Rule**: "First slide to name [X]" = where the visual asset goes.
+
+### CSS Class Missing (.col-50)
+- **Issue**: Split layouts broke silently because `.col-50` wasn't defined in the `<style>` block.
+- **Fix**: Added `.col-50 { flex: 0 0 50%; max-width: 50%; }` to CSS.
+- **Rule**: Before using any `.col-*` class, verify it exists in the HTML's `<style>` or in `COMPONENTS.md`.
 

@@ -14,10 +14,10 @@ import subprocess
 import sys
 
 def validate_worksheet(typ_path, mode):
-    print(f"🔍 Validating {typ_path} in '{mode}' mode...")
+    print(f"[INFO] Validating {typ_path} in '{mode}' mode...")
     
     if not os.path.exists(typ_path):
-        print(f"❌ CRITICAL: File not found: {typ_path}")
+        print(f"[ERROR] CRITICAL: File not found: {typ_path}")
         return False
 
     with open(typ_path, 'r', encoding='utf-8') as f:
@@ -39,15 +39,15 @@ def validate_worksheet(typ_path, mode):
     
     if mode == "bell":
         if not has_bell_logo:
-            warnings.append("⚠️ Branding Warning: Bell logos (Bell.svg, ACT_transparent.png) not found.")
+            warnings.append("[WARN] Branding Warning: Bell logos (Bell.svg, ACT_transparent.png) not found.")
         if has_intensive_header:
-            issues.append("❌ Branding Violation: 'intensive-header.jpg' found in a BELL worksheet.")
+            issues.append("[ERROR] Branding Violation: 'intensive-header.jpg' found in a BELL worksheet.")
     
     elif mode == "intensive":
         if has_bell_logo or has_bell_text:
-            issues.append("❌ Branding Violation: Bell logos or 'BELL LANGUAGE CENTRE' text found in INTENSIVE worksheet. Use intensive-header.jpg instead.")
+            issues.append("[ERROR] Branding Violation: Bell logos or 'BELL LANGUAGE CENTRE' text found in INTENSIVE worksheet. Use intensive-header.jpg instead.")
         if not has_intensive_header:
-            warnings.append("⚠️ Branding Warning: 'intensive-header.jpg' not found. Is the header correct?")
+            warnings.append("[WARN] Branding Warning: 'intensive-header.jpg' not found. Is the header correct?")
 
     # =========================================
     # 2. WRITING LINES VALIDATION
@@ -59,9 +59,9 @@ def validate_worksheet(typ_path, mode):
     for match in writing_line_matches:
         count = int(match)
         if count > 15:
-            issues.append(f"❌ Layout Violation: writing_lines(count: {count}) exceeds the 15-line limit. Risk of spillover.")
+            issues.append(f"[ERROR] Layout Violation: writing_lines(count: {count}) exceeds the 15-line limit. Risk of spillover.")
         elif count > 12:
-            warnings.append(f"⚠️ Layout Warning: writing_lines(count: {count}) is high. Verify it fits on one page.")
+            warnings.append(f"[WARN] Layout Warning: writing_lines(count: {count}) is high. Verify it fits on one page.")
 
     # =========================================
     # 3. IMAGE PATH VALIDATION
@@ -71,18 +71,28 @@ def validate_worksheet(typ_path, mode):
     image_matches = re.findall(r'image\s*\(\s*["\']([^"\']+)["\']', content)
     base_dir = os.path.dirname(typ_path)
     project_root = os.path.abspath(os.path.join(base_dir, "..", ".."))  # Assumes standard structure
-    
+    # Try looking for project root by checking for common files if the above fails
+    if not os.path.exists(os.path.join(project_root, ".agent")):
+         # Fallback: Assume we are running from project root or similar
+         project_root = os.getcwd()
+
     for img_path in image_matches:
         # Resolve path
         if img_path.startswith("/"):
-            # Absolute from project root
+            # Absolute from project root - Typst absolute paths are from project root
+            # We need to be careful here. In the script, we might need to map "/" to the actual project root on disk.
+            # However, for checking file existence, we can try prepending the determined project_root
             full_path = os.path.join(project_root, img_path.lstrip("/"))
         else:
             # Relative to file
             full_path = os.path.normpath(os.path.join(base_dir, img_path))
         
+        # Simple existence check
         if not os.path.exists(full_path):
-            issues.append(f"❌ Broken Image: '{img_path}' does not exist at {full_path}")
+             # Try one more heuristic: sometimes people run from project root, so relative paths might be relative to CWD
+             full_path_cwd = os.path.abspath(img_path)
+             if not os.path.exists(full_path_cwd):
+                issues.append(f"[ERROR] Broken Image: '{img_path}' does not exist at {full_path}")
 
     # =========================================
     # 4. PAGEBREAK CHECK
@@ -92,7 +102,7 @@ def validate_worksheet(typ_path, mode):
     task_count = len(re.findall(r'task_card|task_header', content))
     
     if task_count > 1 and pagebreak_count < task_count - 1:
-        warnings.append(f"⚠️ Pagination Warning: {task_count} tasks found but only {pagebreak_count} pagebreaks. Risk of spillover.")
+        warnings.append(f"[WARN] Pagination Warning: {task_count} tasks found but only {pagebreak_count} pagebreaks. Risk of spillover.")
 
     # =========================================
     # 5. OPTIONAL: COMPILE CHECK
@@ -100,6 +110,7 @@ def validate_worksheet(typ_path, mode):
     
     # Try to compile and check for errors
     try:
+        # We need to set --root to the project root to find absolute image paths
         result = subprocess.run(
             ["typst", "compile", typ_path, "--root", project_root],
             capture_output=True,
@@ -107,11 +118,11 @@ def validate_worksheet(typ_path, mode):
             timeout=30
         )
         if result.returncode != 0:
-            issues.append(f"❌ Compilation Error: {result.stderr.strip()}")
+            issues.append(f"[ERROR] Compilation Error: {result.stderr.strip()}")
     except FileNotFoundError:
-        warnings.append("⚠️ Typst CLI not found. Skipping compilation check.")
+        warnings.append("[WARN] Typst CLI not found. Skipping compilation check.")
     except subprocess.TimeoutExpired:
-        warnings.append("⚠️ Compilation timed out.")
+        warnings.append("[WARN] Compilation timed out.")
 
     # =========================================
     # REPORTING
@@ -125,10 +136,10 @@ def validate_worksheet(typ_path, mode):
     if issues:
         for i in issues:
             print(i)
-        print(f"\n🚫 FAILED: {len(issues)} critical issues found.")
+        print(f"\n[FAIL] FAILED: {len(issues)} critical issues found.")
         return False
     else:
-        print("\n✅ PASSED: No critical issues found.")
+        print("\n[PASS] PASSED: No critical issues found.")
         return True
 
 

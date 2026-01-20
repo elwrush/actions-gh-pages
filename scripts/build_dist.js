@@ -1,14 +1,11 @@
 /**
- * Build Script for Cloudflare Deployment
+ * Build Script for Cloudflare Deployment (Multi-Presentation Support)
  * 
- * Builds a clean `dist/` folder containing ONLY the specified presentation
- * and its required assets.
+ * Builds a clean `dist/` folder containing ALL presentations in `inputs/`
+ * and a central dashboard.
  * 
  * Usage:
- *   node scripts/build_dist.js <folder-name>
- *   node scripts/build_dist.js QAD-Fight-or-Flight
- * 
- * The folder must exist in `inputs/` and contain an `index.html`.
+ *   node scripts/build_dist.js
  */
 
 const fs = require('fs');
@@ -18,49 +15,12 @@ const PROJECT_ROOT = path.join(__dirname, '..');
 const DIST_DIR = path.join(PROJECT_ROOT, 'dist');
 const INPUTS_DIR = path.join(PROJECT_ROOT, 'inputs');
 
-// Get folder name from CLI
-const folderName = process.argv[2];
-
-if (!folderName) {
-    console.error('\n❌ ERROR: No folder name provided.');
-    console.error('\nUsage: node scripts/build_dist.js <folder-name>');
-    console.error('Example: node scripts/build_dist.js QAD-Fight-or-Flight\n');
-    console.error('Available folders in inputs/:');
-
-    // List available folders with index.html
-    const folders = fs.readdirSync(INPUTS_DIR).filter(f => {
-        const indexPath = path.join(INPUTS_DIR, f, 'index.html');
-        return fs.existsSync(indexPath);
-    });
-    folders.forEach(f => console.error(`  - ${f}`));
-
-    process.exit(1);
-}
-
-// Validate source folder
-const srcPath = path.join(INPUTS_DIR, folderName);
-const srcIndex = path.join(srcPath, 'index.html');
-
-if (!fs.existsSync(srcPath)) {
-    console.error(`\n❌ ERROR: Folder not found: inputs/${folderName}`);
-    process.exit(1);
-}
-
-if (!fs.existsSync(srcIndex)) {
-    console.error(`\n❌ ERROR: No index.html in inputs/${folderName}`);
-    process.exit(1);
-}
-
 // Clean and create dist
 console.log('\n🧹 Cleaning dist/ folder...');
 if (fs.existsSync(DIST_DIR)) {
     fs.rmSync(DIST_DIR, { recursive: true, force: true });
 }
 fs.mkdirSync(DIST_DIR);
-
-// Copy presentation to dist root (not a subfolder - for simpler URLs)
-console.log(`📦 Copying inputs/${folderName}/ to dist/...`);
-fs.cpSync(srcPath, DIST_DIR, { recursive: true });
 
 // Copy shared JS components
 const skillsJs = path.join(PROJECT_ROOT, 'skills/creating-html-presentation/js');
@@ -71,21 +31,118 @@ if (fs.existsSync(skillsJs)) {
     console.log('📦 Copied shared JS components.');
 }
 
-// Validation: Check for key assets
-const requiredFiles = ['index.html'];
-const missingFiles = requiredFiles.filter(f => !fs.existsSync(path.join(DIST_DIR, f)));
-
-if (missingFiles.length > 0) {
-    console.error(`\n❌ BUILD FAILED: Missing required files: ${missingFiles.join(', ')}`);
-    process.exit(1);
+// Global images
+const globalImages = path.join(PROJECT_ROOT, 'images');
+if (fs.existsSync(globalImages)) {
+    const destImages = path.join(DIST_DIR, 'images');
+    fs.cpSync(globalImages, destImages, { recursive: true });
+    console.log('📦 Copied global images.');
 }
 
-// Check for images folder (warning only)
-if (!fs.existsSync(path.join(DIST_DIR, 'images'))) {
-    console.warn('\n⚠️  WARNING: No images/ folder found. Presentation may have missing visuals.');
-}
+// Find all presentations
+const folders = fs.readdirSync(INPUTS_DIR).filter(f => {
+    const indexPath = path.join(INPUTS_DIR, f, 'index.html');
+    return fs.existsSync(indexPath);
+});
+
+console.log(`\n📂 Found ${folders.length} presentations:`);
+
+const presentationData = [];
+
+folders.forEach(f => {
+    const srcPath = path.join(INPUTS_DIR, f);
+    const destPath = path.join(DIST_DIR, f);
+
+    console.log(`  - Copying ${f}...`);
+    fs.cpSync(srcPath, destPath, { recursive: true });
+
+    // Extract title from index.html if possible
+    let title = f;
+    try {
+        const content = fs.readFileSync(path.join(srcPath, 'index.html'), 'utf8');
+        const match = content.match(/<title>(.*?)<\/title>/);
+        if (match) title = match[1];
+    } catch (e) { }
+
+    presentationData.push({
+        folder: f,
+        title: title,
+        date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+    });
+});
+
+// Generate Dashboard index.html
+const dashboardHtml = `
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bell Presentations Library</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f172a;
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+        h1 {
+            color: #8b1538;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+            text-decoration: none;
+            color: white;
+            display: block;
+            text-align: left;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #00f2ff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .date {
+            color: #94a3b8;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #00f2ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bell Presentations Library</h1>
+    <div class="grid">
+        ${presentationData.map(p => `
+        <a href="./${p.folder}/" class="card">
+            <span class="date">${p.date}</span>
+            <span class="title">${p.title}</span>
+        </a>
+        `).join('')}
+    </div>
+</body>
+</html>
+`;
+
+fs.writeFileSync(path.join(DIST_DIR, 'index.html'), dashboardHtml);
+console.log('\n✅ Dashboard generated.');
 
 console.log('\n✅ Build complete!');
 console.log(`   Output: dist/`);
-console.log(`   Source: inputs/${folderName}/`);
 console.log('\nNext: Run `npx wrangler pages deploy dist/` to deploy.\n');

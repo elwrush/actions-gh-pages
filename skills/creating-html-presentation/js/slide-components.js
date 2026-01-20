@@ -54,11 +54,10 @@ const COMPONENT_STYLES = `
         --text-primary: white;
         --text-accent: #FFD700;  /* Gold */
         
-        /* Layout Constants - DO NOT CHANGE */
-        --container-width: 900px;
+        /* Layout Constants - Projector Standard */
+        --container-width: 1100px;
         --gap: 40px;
-        --box-padding: 25px;
-        --box-padding: 25px;
+        --box-padding: 35px;
         --border-width: 2px;
         
         /* Functional Colors */
@@ -84,11 +83,11 @@ const COMPONENT_STYLES = `
         font-size: 1.2em !important; /* Prevent overflow */
     }
 
-    /* Body text: Readable sizes for classroom projection */
-    .text-lg { font-size: 32px !important; }
-    .text-md { font-size: 28px !important; }
-    .text-sm { font-size: 24px !important; }
-    .text-xs { font-size: 22px !important; }
+    /* Body text: Projector-Standard readability (18pt floor) */
+    .text-lg { font-size: 32pt !important; }
+    .text-md { font-size: 24pt !important; }
+    .text-sm { font-size: 20pt !important; }
+    .text-xs { font-size: 18pt !important; }
 
     /* ============================================
        LAYOUT SYSTEM (Gold Standard)
@@ -116,10 +115,12 @@ const COMPONENT_STYLES = `
         max-width: 100%;
     }
 
-    /* Column System - Explicit flex basis */
+    /* Column System - Width optimized for large fonts */
+    .col-35 { flex: 0 0 35%; max-width: 35%; }
     .col-40 { flex: 0 0 40%; max-width: 40%; }
     .col-50 { flex: 0 0 50%; max-width: 50%; }
     .col-60 { flex: 0 0 60%; max-width: 60%; }
+    .col-65 { flex: 0 0 65%; max-width: 65%; }
 
     /* ============================================
        COMPONENTS (Gold Standard Patterns)
@@ -297,6 +298,19 @@ const COMPONENT_STYLES = `
     .mt-40 { margin-top: 40px; }
     .text-center { text-align: center; }
     .text-left { text-align: left; }
+    /* Soft Atmospheric Glow Layer */
+    .reveal .slides > section::before {
+        content: "";
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1500px; height: 1500px;
+        background: radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 60%);
+        pointer-events: none;
+        z-index: -1;
+        filter: blur(120px);
+        border-radius: 50%;
+    }
 `;
 
 // Inject Styles

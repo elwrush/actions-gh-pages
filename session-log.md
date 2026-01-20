@@ -104,7 +104,18 @@
 - Reduced font sizes across all slides for proper fit within 960x700 canvas.
 - Compressed table layouts and shortened text where necessary.
 
-### Mandatory Reminder for Future Sessions:
+### Mandatory Reminder for Future# Session Log - January 20, 2026
+
+**Objective**: B1 Story Writing Presentation - Visual & Architectural Refinement.
+
+- **Architectural**: Updated `creating-html-presentation` skill to enforce 1100px width and 18pt minimum font sizes globally.
+- **Refinement**: Switched from 640px to 1280px "Blackboard" texture for crisp background display.
+- **UX**: Improved Auto-Animate word upgrades with "Level Up" badges and scaling.
+- **Layout**: Implemented 35/65 split ratios to prevent text overflow in glass boxes.
+- **Glow System**: Replaced boxy shadows with soft radial atmospheric light layers.
+- **Media**: Reverted Boss Level video to standard segue per user instruction for flow reliability.
+
+## Previous Sessions
 ⚠️ **ALWAYS REVIEW `skills/creating-html-presentation/SKILL.md` BEFORE CREATING PRESENTATIONS**
 - The skill contains critical workflow gates and quality standards.
 - Do NOT skip the Visual Plan approval step.
@@ -320,3 +331,69 @@
 - **Compliance**: All files (Worksheet, Lesson Plan, and Script) validated and passing for **Ed Rush (Bell)**.
 
 
+---
+
+## 2026-01-18 (Evening) | Multi-Presentation Deployment Architecture
+
+### Key Achievement: "Zero Overwrite" Architecture
+- **Problem**: Deployments to the root of `lesson-slideshows.pages.dev` caused each new presentation to overwrite the previous one.
+- **Solution**: Refactored `build_dist.js` to a **Subfolder Whitelist Strategy**:
+  - Automatically scans `inputs/` for all valid presentations.
+  - Builds each into its own unique directory in `dist/` (e.g., `/dist/QAD-Fight-or-Flight/`).
+  - Generates a central **Bell Presentations Library** dashboard at the root.
+- **Impact**: All presentations are now hosted simultaneously at stable, unique URLs.
+
+### Fix: "Fight or Flight" Link Restoration
+- **Action**: Identified that legacy Google Doc links were pointing to the root or abandoned folders.
+- **Resolution**: Created a new stable Google Doc link for "Fight or Flight" pointing to its dedicated subfolder.
+- **New URL**: `https://lesson-slideshows.pages.dev/QAD-Fight-or-Flight/`
+
+### Skill Consolidation
+- **`hosting-presentations`**: Updated to version 3.0, mandating the subfolder build strategy and dashboard generation.
+
+### Future Action Item
+- **Update All Slideshow Links**: In the next lesson, all legacy Google Doc links and worksheet "link.html" references must be updated to point to the new unique subfolder URLs (e.g., `https://lesson-slideshows.pages.dev/[lesson-folder]/`) to ensure stability.
+
+
+## 2026-01-19 (Morning) | Business Empires Slideshow Construction
+
+### Key Achievement: Batch-Built 63-Slide Presentation
+- **Problem**: Large 56-slide visual plan exceeded token limits for single-file generation.
+- **Solution**: Implemented a **3-Batch Construction Workflow**:
+  1. Base Structure + Slides 1-17 (Lead-in, Gist).
+  2. Slides 18-38 (Vocab Tasks 2 & 3).
+  3. Slides 39-63 (Auto-Animate Transformations & Boss Level).
+
+### Feature Implementation: "Gold Standard" Mechanics
+- **Auto-Animate**: Applied strictly for Grammar Transformations (Task 4), splitting 7 questions into 14 paired slides (Question -> Answer) to visualize the text change.
+- **Speaker Notes**: Mandatory `<aside class="notes">` block added to **100% of slides** (verified by pedagogical validator).
+- **Audio Feedback**: Incorporated `timer-pill` (with blip/bell sfx) on all task slides.
+
+### Validation & Quality Assurance
+- **Technical Validation**:
+  - Initial run flagged 36 internal CSS font-size violations.
+  - **Fix**: Replaced inline `style="font-size:..."` with utility classes (`.text-2xl`, `.text-3xl`).
+  - **Result**: 0 Critical Issues.
+- **Corruption Repair**: Detected and fixed a content paste error in Slide 16 (Task 1 Answers) where checklist items overwrote the answer key.
+- **Pedagogical Validation**: Passed 100%.
+
+### Status
+- **Ready**: `inputs/20-JAN-A-CLASS-VOCAB/index.html` is production-ready.
+
+### Visual Refinement Phase (Iterative Polish)
+- **Layout Logic**: Pivot to **Split Layout (50/50)** for all Task Instructions and Reading Slides to improve information density and visual balance.
+- **Asset Generation**: Created custom AI imagery for specific contexts:
+  - *Title*: Holographic Global Empire.
+  - *Task 1*: Diverse Business Meeting.
+  - *Task 2*: Contract Signing Close-up.
+  - *Reading*: Rustic Bakery Storefront & Baker Kneading.
+- **Correction**: Moved "Expand" visualization to the introductory vocabulary slide for better pedagogical flow.
+
+---
+
+## 2026-01-20 | Quality Assurance & Repair Queue
+
+### Repair Work Required: Appositives Slideshow
+- **Issue**: User reported hallucinated material in `inputs/19-Jan-2026-Appositives` slideshow; content does not correspond with the worksheet.
+- **Action Required**: Undertake repair work immediately upon next logon.
+- **Status**: Pending.

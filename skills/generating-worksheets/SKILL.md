@@ -34,14 +34,22 @@ Generates high-quality, print-ready PDF worksheets using **Typst**, offering sup
 2. **Select Header**:
    - **Bell**: Use `#integrated_header()` with maroon strap and logos.
    - **Intensive**: Use `#intensive_header()` which displays `intensive-header.jpg`.
-   - **Diagnostic Section (Page 1)**: Customize the "Repair Targets" or introductory activity.
-   - **Tasks (Pages 2-4)**: 
-     - Update the `task_card` function calls with specific prompts, contexts, and constraints.
-     - **Constraint**: Maintain the **15-line limit** for writing areas to ensure zero spillover.
-     - **Pagination**: Keep strict `#pagebreak()` calls between levels (A2/B1/B2).
-     - **Orphan Prevention**: **CRITICAL**. Wrap every Task header and its instructions in a block with `breakable: false` (e.g., `#block(breakable: false)[ #text(...) [...] ]`). Never let a header sit alone at the bottom of a page.
+3. **Content Generation**:
+   - **Page 1 Branding**: Use the main header strap (e.g., Bell or Intensive) **only on Page 1**. Subsequent pages should remain clean.
+   - **Section Headers**: Use "Task X" (e.g., Task 1, Task 2) rather than "Part X".
+   - **Terminology**: Use specific text types (e.g., "Article", "Report") instead of generic terms like "Story".
+   - **Orphan Prevention**: **CRITICAL**. Wrap every Task header and its instructions in a block with `breakable: false` (e.g., `#block(breakable: false)[ #section_header(...) ... ]`). Never let a header sit alone at the bottom of a page.
+   - **No Separators**: Do **not** use horizontal lines to separate tasks. Use whitespace and clear headers.
 
-3. **Compile PDF**:
+4. **Design & Layout Standards (CRITICAL)**:
+   - **Native Graphics**: Use Typst's native `stack`, `circle`, `line`, and `gradient` for headers. **DO NOT** use external decorative images or simple/naff placeholders. 
+   - **Writing Lines**: 
+     - **Dynamic Alignment**: ALWAYS use `#box(width: 1fr, repeat("."))` for leaders and writing lines.
+     - **Justification**: Set `#set par(justify: false)` for worksheets with leaders to prevent unsightly text stretching.
+     - **Color**: Use **Dark Gray (#666666)** or darker (#4D4D4D) for all lines to ensure visibility in photocopies. **NEVER** use light gray (#E0E0E0).
+   - **Typography**: Minimum font size is **11pt** for student facings text.
+
+5. **Compile PDF**:
    - Compiling follows a strict naming convention: `DD-MM-YYYY-[CEFR LEVEL]-[DESCRIPTION].pdf`.
    - Run the Typst initialization command from the project root:
    ```powershell
@@ -49,7 +57,7 @@ Generates high-quality, print-ready PDF worksheets using **Typst**, offering sup
    ```
    - *Example: `11-01-2026-A2-B2-Grammar-Repair-Shop.pdf`*
 
-4. **🧪 Validate (MANDATORY)**:
+6. **🧪 Validate (MANDATORY)**:
    Run the validator before finalizing:
    ```powershell
    python skills/generating-worksheets/scripts/validate_worksheet.py "path/to/worksheet.typ" --mode [bell|intensive]
@@ -57,15 +65,14 @@ Generates high-quality, print-ready PDF worksheets using **Typst**, offering sup
    - **Rule**: If the script fails, fix the issues and re-run until it passes.
    - **Checks**: Branding, writing line limits (max 15), image paths, pagebreaks.
 
-5. **🚦 Visual Verify**:
-   - Check for **printer safety**: Are headers inside the margins?
-   - Check for **logo visibility**: Are the SVG/PNG logos rendering correctly?
-   - Check for **line contrast**: Are ruled lines **dark gray** (#4D4D4D)? NEVER use light gray.
-   - Check for **spillover**: Does every page fit perfectly without content bleeding to the next?
-   - Check for **warnings**: Did the Typst compiler throw any "no text within stars" warnings? 
-     - **Fix**: Use `#strong[]` instead of `**` and `#emph[]` instead of `*` for nested or punctuation-adjacent text.
+7. **🚦 Visual Verify**:
+   - **Photocopy Safety**: Are lines Dark Gray (#666666)?
+   - **Layout**: Are writing lines perfectly aligned (using `box(width: 1fr...)`)?
+   - **Orphans**: Are headers attached to their content?
+   - **Spillover**: Does every page fit perfectly without content bleeding to the next?
+   - **Legibility**: Is text size >= 11pt?
 
-6. **🏁 THE LINK GATE (MANDATORY)**:
+8. **🏁 THE LINK GATE (MANDATORY)**:
    > [!CRITICAL]
    > **YOU MUST PROVIDE A CLICKABLE LINK TO THE PDF.**
    > 
@@ -77,8 +84,8 @@ Generates high-quality, print-ready PDF worksheets using **Typst**, offering sup
 
 ## Template Structure
 The Typst template uses a functional component approach:
-- `#integrated_header()`: **BELL ONLY**. The maroon strap with logos and title.
+- `#integrated_header()`: **BELL ONLY - Page 1**. The maroon strap with logos and title.
 - `#intensive_header()`: **INTENSIVE ONLY**. Full-width branding image (`intensive-header.jpg`). Do NOT add text or straps over this.
 - `#task_card()`: Boxed prompt with level and context.
 - `#radar_box()`: Self-correction checklist.
-- `#writing_lines(count: 15)`: Fixed-height writing area.
+- `#writing_lines(count: 15)`: Fixed-height writing area using `repeat(".")`.

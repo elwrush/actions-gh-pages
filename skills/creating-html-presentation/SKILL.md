@@ -31,6 +31,9 @@ Use this skill to create the visual backbone of a lesson. Slides must:
 - **Interactive Timers (MANDATORY)**: Every timed exercise MUST have a visible, interactive countdown timer.
     - **Physics**: Must remain within the 960x700 artboard (no spill-off).
     - **Logic**: Must include Start/Pause/Reset functionality for teacher control.
+- **Speaker View (MANDATORY)**:
+    - **Access**: Teachers access notes by pressing **'s'** on the keyboard.
+    - **Content**: Every slide MUST contain an `<aside class="notes">` block with "Advice" and "Next Slide" cues.
 - **Visual Pivots (Slide Offsets)**: Use strongly differentiated background tints for specific pedagogical moments:
     - **Answer Slides**: Use a Deep Emerald/Teal tint (`#052a10`) to signal the transition to validation/review.
     - **Final Task Slides**: Use a Deep Maroon/Crimson tint (`#2a0a0a`) to signal the "Boss Level" or assessment phase.
@@ -172,6 +175,19 @@ Copy-Item "inputs/18-Jan-Reading/audio/bell.mp3" "inputs/[presentation-folder]/a
 3.  **STOP AND WAIT**. Explicitly ask the user to review the artifact.
 4.  **Do not proceed** to `index.html` until you get "Approved".
 
+### Step 4.5: 📊 Batch Building Assessment (MANDATORY)
+**Goal**: Determine if the presentation needs to be built in batches to avoid token limits.
+
+**CRITICAL RULE**: Count the total number of slides in `visual-plan.md`.
+- **IF ≤ 30 slides**: Build in ONE file using `write_to_file`.
+- **IF > 30 slides**: Build in BATCHES using `replace_file_content`.
+  - **Batch 1**: Base HTML structure + Slides 1-20
+  - **Batch 2**: Slides 21-40
+  - **Batch 3**: Slides 41-60 (if needed)
+  - etc.
+
+**Why This Matters**: Large presentations (>40 slides) exceed the 16K token generation limit. You MUST use incremental edits for presentations with many slides.
+
 ### Step 5: 🛠️ Implementation (The Gold Standard)
 Now, write the `index.html`.
 
@@ -305,8 +321,11 @@ Now, write the `index.html`.
 - **Format**:
     - **Header**: "Task X: Question Y"
     - **Body**: The full sentence/answer with the key part highlighted.
-    - **Explanation**: A short "Why?" or explanation box below the answer.
+    - **Explanation (MANDATORY)**: A short "Why?" or explanation box below the answer is REQUIRED for every single answer slide. No exceptions.
 - **Interleaving**: These slides must appear sequentially after the Task slide.
+- **Explanation Quality (STRICT)**:
+    - ❌ **Forbidden**: Single technical words (e.g., "Recurrence", "Collocation", "Adjective").
+    - ✅ **Required**: Simple, student-friendly sentences (e.g., "We do this every day, so it is a daily habit.", "Clients are for professional services like lawyers.").
 
 ### 5. Direct Vocabulary Instruction (The Legacy Standard)
 - **One Word Per Slide**.
@@ -324,7 +343,8 @@ Now, write the `index.html`.
 - **Example**: "The TOWN **where‿I** LIVED‿as‿a TEENager ↘ is FAmous..."
 
 ### 7. Speaker Notes Standard (MANDATORY)
-- **Rule**: Every slide MUST have an `<aside class="notes">` block.
+- **Code**: Every slide MUST have an `<aside class="notes">` block.
+- **Access**: Remind the user/teacher: "Press 's' to view Speaker Notes."
 - **Content**:
     1.  **Advice**: Delivery tips for the teacher (e.g., "Check understanding," "Elicit answers").
     2.  **Next**: A preview of the next slide to facilitate smooth transitions.
@@ -377,11 +397,53 @@ Now, write the `index.html`.
   - **Bell on Finish**: Bell sound plays when timer reaches 0
 - **Audio Files Required**: `blip.mp3`, `30-seconds.mp3`, `bell.mp3` (auto-copied in Step 1.6)
 
+### 🧱 Split Layout Rule (GLOBAL STANDARD)
+**CRITICAL**: **Whenever a slide has a `timer-pill`, it MUST use a Split Layout.**
+
+**Structure**:
+```html
+<div class="row-container">
+    <div class="col-50">
+        <img src="images/[relevant-image].png" class="inset-media">
+    </div>
+    <div class="col-50">
+        <div class="glass-box" style="text-align: left;">
+            <h2>Task Title</h2>
+            <p class="text-xl">Instructions...</p>
+            <timer-pill duration="5"></timer-pill>
+        </div>
+    </div>
+</div>
+```
+
+**Why This Matters**:
+- Timers "stranded" at the bottom look unbalanced and amateur.
+- Split layouts create visual weight balance.
+- The image provides context and makes the slide feel premium.
+
+**Image Selection**:
+- **Task 1 (People/Matching)**: Business meeting or team photo.
+- **Task 2 (Synonyms/Vocabulary)**: Contract signing or document.
+- **Task 3 (Multiple Choice)**: Global/Professional imagery.
+- **Task 4 (Transformation)**: Abstract/Conceptual imagery.
+
+
 ---
 
 ### 🎬 Auto-Animate for Grammar Lessons (GOLD STANDARD)
 
-**When to Use**: Grammar lessons showing **transformations** (e.g., sentence reduction, tense changes, voice changes).
+**When to Use AUTO-ANIMATE**:
+✅ **USE** when:
+- Showing **sentence transformations** (e.g., rewrites using synonyms, paraphrasing)
+- Demonstrating **grammar changes** (tense, voice, clause reduction)
+- Revealing **before/after** comparisons where words change position or disappear
+- The visual plan explicitly says "Auto-Animate"
+
+❌ **DO NOT USE** when:
+- Just revealing an answer (use standard answer slides instead)
+- Showing static vocabulary definitions
+- Displaying multiple-choice questions
+- The transformation is conceptual, not textual (e.g., explaining a process)
 
 **How It Works**:
 1. Add `data-auto-animate` to two consecutive `<section>` elements
