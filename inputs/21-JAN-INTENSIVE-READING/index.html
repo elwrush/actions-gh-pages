@@ -521,44 +521,112 @@
                 </div>
             </section>
 
+            <!-- STRATEGY SLIDE: T/F/NG -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <slide-task title="STRATEGY: T / F / NG" badge="CRITICAL SKILL">
+                    <div style="width: 1000px; text-align: left; margin: 0 auto;">
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: center; margin-bottom: 20px;">
+                            <h3 style="color: #22c55e;">TRUE</h3>
+                            <p class="text-sm">The text says the <strong>same</strong> thing (synonyms).</p>
+                        </div>
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: center; margin-bottom: 20px;">
+                            <h3 style="color: #ef4444;">FALSE</h3>
+                            <p class="text-sm">The text says the <strong>opposite</strong> or contradicts it.</p>
+                        </div>
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: center; margin-bottom: 20px;">
+                            <h3 style="color: #ecc94b;">NOT GIVEN</h3>
+                            <p class="text-sm">The text <strong>does not say</strong> yes or no. (Don't guess!)</p>
+                        </div>
+                        <hr style="border-color: var(--primary); opacity: 0.3; margin: 30px 0;">
+                        <p class="text-sm" style="font-style: italic; color: #999;">
+                            <strong>Example:</strong> Text: "Rice is popular." <br>
+                            Question: "Everyone eats rice." -> <strong>NOT GIVEN</strong> (Popular ≠ Everyone).
+                        </p>
+                    </div>
+                </slide-task>
+            </section>
+
             <!-- SLIDE 20: TASK 3 (T/F/NG) -->
-            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
-                <slide-task title="DETAIL CHECK (T/F/NG)" badge="TASK 3" timer="8" data-id="tfng-slide">
-                    <div data-id="tfng-content" style="text-align: left; width: 100%;">
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <slide-task title="DETAIL CHECK (T/F/NG)" badge="TASK 3" timer="8">
+                    <div style="text-align: left; width: 100%;">
                         <ul class="text-xs" style="list-style: none;">
-                            <li data-id="tf-1">1. Very few people now work in farming? <span class="gap"
-                                    data-id="tf-ans-1"></span></li>
-                            <li data-id="tf-2">2. Indonesia does not produce any meat? <span class="gap"
-                                    data-id="tf-ans-2"></span></li>
-                            <li data-id="tf-3">3. Herbs/Spices are new in cooking? <span class="gap"
-                                    data-id="tf-ans-3"></span></li>
-                            <li data-id="tf-4">4. People now eat more processed foods? <span class="gap"
-                                    data-id="tf-ans-4"></span></li>
-                            <li data-id="tf-5">5. Can produce all rice/sugar it needs? <span class="gap"
-                                    data-id="tf-ans-5"></span></li>
+                            <li>1. Very few people now work in farming? <span class="gap"></span></li>
+                            <li>2. Indonesia does not produce any meat? <span class="gap"></span></li>
+                            <li>3. Herbs/Spices are new in cooking? <span class="gap"></span></li>
+                            <li>4. People now eat more processed foods? <span class="gap"></span></li>
+                            <li>5. Can produce all rice/sugar it needs? <span class="gap"></span></li>
                         </ul>
                     </div>
                 </slide-task>
             </section>
 
-            <!-- SLIDE 21: ANSWER 3 (Reveal all) -->
-            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
-                <slide-task title="DETAIL CHECK (T/F/NG)" badge="TASK 3" data-id="tfng-slide">
-                    <div data-id="tfng-content" style="text-align: left; width: 100%;">
-                        <ul class="text-xs" style="list-style: none;">
-                            <li data-id="tf-1">1. Very few people now work in farming? <span class="gap answer-key"
-                                    data-id="tf-ans-1">FALSE</span></li>
-                            <li data-id="tf-2">2. Indonesia does not produce any meat? <span class="gap answer-key"
-                                    data-id="tf-ans-2">FALSE / NG</span></li>
-                            <li data-id="tf-3">3. Herbs/Spices are new in cooking? <span class="gap answer-key"
-                                    data-id="tf-ans-3">FALSE</span></li>
-                            <li data-id="tf-4">4. People now eat more processed foods? <span class="gap answer-key"
-                                    data-id="tf-ans-4">TRUE</span></li>
-                            <li data-id="tf-5">5. Can produce all rice/sugar it needs? <span class="gap answer-key"
-                                    data-id="tf-ans-5">FALSE</span></li>
-                        </ul>
+            <!-- ANSWER 1 -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="ANSWER 1">
+                    <div style="width: 900px; margin: 0 auto; text-align: left;">
+                        <p class="text-md">1. Very few people now work in farming?</p>
+                        <p class="text-lg answer-key" style="margin: 20px 0;">FALSE</p>
+                        <hr style="opacity: 0.3;">
+                        <p class="text-sm" style="font-style: italic; color: #ccc;">"Agriculture is still the main
+                            employer in many rural areas..."</p>
                     </div>
-                </slide-task>
+                </slide-answer>
+            </section>
+
+            <!-- ANSWER 2 -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="ANSWER 2">
+                    <div style="width: 900px; margin: 0 auto; text-align: left;">
+                        <p class="text-md">2. Indonesia does not produce any meat?</p>
+                        <p class="text-lg answer-key" style="margin: 20px 0;">FALSE</p>
+                        <hr style="opacity: 0.3;">
+                        <p class="text-sm" style="font-style: italic; color: #ccc;">(Context: Pictures of Satay/Beef
+                            often imply local cuisine production adjacent to crops).</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <!-- ANSWER 3 -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="ANSWER 3">
+                    <div style="width: 900px; margin: 0 auto; text-align: left;">
+                        <p class="text-md">3. Herbs/Spices are new in cooking?</p>
+                        <p class="text-lg answer-key" style="margin: 20px 0;">FALSE</p>
+                        <hr style="opacity: 0.3;">
+                        <p class="text-sm" style="font-style: italic; color: #ccc;">"Known as the Spice Islands...
+                            influence on food and cooking [historically]."</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <!-- ANSWER 4 -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="ANSWER 4">
+                    <div style="width: 900px; margin: 0 auto; text-align: left;">
+                        <p class="text-md">4. People now eat more processed foods?</p>
+                        <p class="text-lg answer-key" style="margin: 20px 0;">TRUE</p>
+                        <hr style="opacity: 0.3;">
+                        <p class="text-sm" style="font-style: italic; color: #ccc;">"...diet and shopping habits are
+                            changing. Today people eat more processed foods."</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <!-- ANSWER 5 -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="ANSWER 5">
+                    <div style="width: 900px; margin: 0 auto; text-align: left;">
+                        <p class="text-md">5. Can produce all rice/sugar it needs?</p>
+                        <p class="text-lg answer-key" style="margin: 20px 0;">FALSE</p>
+                        <hr style="opacity: 0.3;">
+                        <p class="text-sm" style="font-style: italic; color: #ccc;">"It implies more foods have to be
+                            imported [to meet demand due to population]."</p>
+                    </div>
+                </slide-answer>
             </section>
 
             <!-- SLIDE 22: TASK 4 (Discussion) -->
