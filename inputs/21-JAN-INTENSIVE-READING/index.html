@@ -156,6 +156,14 @@
             color: var(--primary);
         }
 
+        /* COMPONENT OVERRIDES */
+        slide-task .glass-box.centered,
+        slide-answer .glass-box.centered {
+            width: 1000px !important;
+            /* Force wider layout for tasks */
+            max-width: 95vw;
+        }
+
         /* VOCAB */
         .phoneme {
             font-family: 'Courier Prime', monospace;
@@ -201,7 +209,7 @@
             </section>
 
             <!-- SLIDE 2: SEGUE -->
-            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+            <section data-background-gradient="radial-gradient(circle, #5a0b0b 0%, #1a0101 100%)">
                 <div class="segue-container">
                     <h1 class="r-fit-text"
                         style="color:var(--primary); transform: skew(-10deg) rotate(-2deg); text-shadow: 4px 4px 0 var(--secondary);">
@@ -353,7 +361,7 @@
             </section>
 
             <!-- SLIDE 9: SEGUE -->
-            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+            <section data-background-gradient="radial-gradient(circle, #5a0b0b 0%, #1a0101 100%)">
                 <div class="segue-container">
                     <h1 class="r-fit-text"
                         style="color:var(--primary); transform: skew(-10deg) rotate(-2deg); text-shadow: 4px 4px 0 var(--secondary);">
@@ -393,21 +401,19 @@
             <!-- SLIDE 12: TASK 2.1 (Skim - GRID FIX) -->
             <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
                 <slide-task title="THE SKIM CHECKLIST" badge="TASK 2.1" timer="5">
-                    <div class="glass-box" style="width: 900px; margin: 0 auto;">
-                        <p class="text-sm" style="text-align:center; margin-bottom:40px;"><strong>Skim the text. Which
-                                items are mentioned?</strong></p>
+                    <p class="text-sm" style="text-align:center; margin-bottom:40px;"><strong>Skim the text. Which items
+                            are mentioned?</strong></p>
 
-                        <!-- NEW GRID LAYOUT FOR CHECKLIST -->
-                        <div
-                            style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; font-size: 24pt; text-align: left;">
-                            <div>☐ challenges in the past</div>
-                            <div>☐ changes to jobs</div>
-                            <div>☐ challenges today</div>
-                            <div>☐ local dishes</div>
-                            <div>☐ changes to diet/shopping</div>
-                            <div>☐ money for farmers</div>
-                            <div>☐ plants and crops</div>
-                        </div>
+                    <!-- NEW GRID LAYOUT FOR CHECKLIST -->
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; font-size: 24pt; text-align: left;">
+                        <div>☐ challenges in the past</div>
+                        <div>☐ changes to jobs</div>
+                        <div>☐ challenges today</div>
+                        <div>☐ local dishes</div>
+                        <div>☐ changes to diet/shopping</div>
+                        <div>☐ money for farmers</div>
+                        <div>☐ plants and crops</div>
                     </div>
                 </slide-task>
             </section>
@@ -432,7 +438,7 @@
             <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" timer="6" data-id="summary-slide">
                     <!-- Adjusted width to prevent wrapping issues -->
-                    <div class="glass-box" data-id="summary-box" style="width:1000px;">
+                    <div data-id="summary-content" style="width:1000px; text-align: left;">
                         <p class="text-sm" style="line-height: 1.8;">
                             Indonesia has rain/sunshine and produces different ¹ <span class="gap"
                                 data-id="gap-1"></span>. These influence the food and herbs/spices are used in ² <span
@@ -447,7 +453,7 @@
             <!-- SLIDE 15: ANSWER 2.2 (Gap 1) -->
             <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" data-id="summary-slide">
-                    <div class="glass-box" data-id="summary-box" style="width:1000px;">
+                    <div data-id="summary-content" style="width:1000px; text-align: left;">
                         <p class="text-sm" style="line-height: 1.8;">
                             Indonesia has rain/sunshine and produces different ¹ <span class="gap answer-key"
                                 data-id="gap-1">plants / crops</span>. These influence the food and herbs/spices are
@@ -462,7 +468,7 @@
             <!-- SLIDE 16: ANSWER 2.2 (Gap 2) -->
             <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" data-id="summary-slide">
-                    <div class="glass-box" data-id="summary-box" style="width:1000px;">
+                    <div data-id="summary-content" style="width:1000px; text-align: left;">
                         <p class="text-sm" style="line-height: 1.8;">
                             Indonesia has rain/sunshine and produces different ¹ <span class="gap answer-key"
                                 data-id="gap-1">plants / crops</span>. These influence the food and herbs/spices are
@@ -478,7 +484,7 @@
             <!-- SLIDE 17: ANSWER 2.2 (Gap 3 & 4) -->
             <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" data-id="summary-slide">
-                    <div class="glass-box" data-id="summary-box" style="width:1000px;">
+                    <div data-id="summary-content" style="width:1000px; text-align: left;">
                         <p class="text-sm" style="line-height: 1.8;">
                             Indonesia has rain/sunshine and produces different ¹ <span class="gap answer-key"
                                 data-id="gap-1">plants / crops</span>. These influence the food and herbs/spices are
@@ -495,7 +501,7 @@
             <!-- SLIDE 18: ANSWER 2.2 (Gap 5 & 6) -->
             <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" data-id="summary-slide">
-                    <div class="glass-box" data-id="summary-box" style="width:1000px;">
+                    <div data-id="summary-content" style="width:1000px; text-align: left;">
                         <p class="text-sm" style="line-height: 1.8;">
                             ... One of the main ⁵ <span class="gap answer-key" data-id="gap-5">challenges</span> for the
                             food industry ⁶ <span class="gap answer-key" data-id="gap-6">today</span> is the increasing
@@ -506,7 +512,7 @@
             </section>
 
             <!-- SLIDE 19: PHASE 3 SEGUE -->
-            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+            <section data-background-gradient="radial-gradient(circle, #5a0b0b 0%, #1a0101 100%)">
                 <div class="segue-container">
                     <h1 class="r-fit-text"
                         style="color:var(--primary); transform: skew(-10deg) rotate(-2deg); text-shadow: 4px 4px 0 var(--secondary);">
@@ -518,7 +524,7 @@
             <!-- SLIDE 20: TASK 3 (T/F/NG) -->
             <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="DETAIL CHECK (T/F/NG)" badge="TASK 3" timer="8" data-id="tfng-slide">
-                    <div class="glass-box" data-id="tfng-box">
+                    <div data-id="tfng-content" style="text-align: left; width: 100%;">
                         <ul class="text-xs" style="list-style: none;">
                             <li data-id="tf-1">1. Very few people now work in farming? <span class="gap"
                                     data-id="tf-ans-1"></span></li>
@@ -538,7 +544,7 @@
             <!-- SLIDE 21: ANSWER 3 (Reveal all) -->
             <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="DETAIL CHECK (T/F/NG)" badge="TASK 3" data-id="tfng-slide">
-                    <div class="glass-box" data-id="tfng-box">
+                    <div data-id="tfng-content" style="text-align: left; width: 100%;">
                         <ul class="text-xs" style="list-style: none;">
                             <li data-id="tf-1">1. Very few people now work in farming? <span class="gap answer-key"
                                     data-id="tf-ans-1">FALSE</span></li>
@@ -558,7 +564,7 @@
             <!-- SLIDE 22: TASK 4 (Discussion) -->
             <section data-background-color="var(--secondary)">
                 <slide-task title="STRATEGIC EVALUATION" badge="TASK 4" timer="10">
-                    <div class="glass-box" style="border: none;">
+                    <div style="text-align: left; width: 100%;">
                         <ol class="text-md" style="margin-left: 40px; line-height:1.2;">
                             <li style="margin-bottom:20px;">What changes in diet have there been in Indonesia? Have you
                                 had similar changes in your country?</li>
