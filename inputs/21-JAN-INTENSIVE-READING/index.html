@@ -37,27 +37,25 @@
 
         body {
             font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-dark);
+            background-color: #000;
             color: var(--text-accent);
         }
 
-        /* CINEMA SPOTLIGHT BACKGROUND WITH GRID TEXTURE */
-        .slide-background-spotlight {
-            width: 100%;
-            height: 100%;
-            position: absolute;
+        /* GLOBAL GRID OVERLAY */
+        /* This sits on top of the gradient background to frame the content */
+        .reveal::before {
+            content: "";
+            position: fixed;
             top: 0;
             left: 0;
-            background-color: var(--bg-dark);
+            width: 100%;
+            height: 100%;
             background-image:
-                /* Layer 1: The Spotlight Vignette (Dark edges, clear center) */
-                radial-gradient(circle at 50% 50%, rgba(26, 15, 15, 0.2) 0%, rgba(26, 15, 15, 0.8) 60%, #000000 100%),
-                /* Layer 2: The Grid (Thin gold lines) */
-                linear-gradient(rgba(255, 179, 0, 0.07) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 179, 0, 0.07) 1px, transparent 1px);
-            background-size: 100% 100%, 60px 60px, 60px 60px;
-            /* Grid is 60px square */
-            z-index: -1;
+                linear-gradient(rgba(255, 179, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 179, 0, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* TEXT VISIBILITY - Floating Text on Spotlight */
@@ -70,7 +68,8 @@
         }
 
         .row-container {
-            z-index: 1;
+            z-index: 2;
+            /* Above the grid */
             position: relative;
         }
 
@@ -82,6 +81,28 @@
             justify-content: center;
             align-items: center;
             padding: 0;
+            z-index: 2;
+            /* Above the grid */
+        }
+
+        /* LAYOUT COLUMNS */
+        * {
+            box-sizing: border-box;
+        }
+
+        .col-40 {
+            flex: 0 0 40%;
+            max-width: 40%;
+        }
+
+        .col-50 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .col-60 {
+            flex: 0 0 60%;
+            max-width: 60%;
         }
 
         .row-container {
@@ -89,6 +110,9 @@
             width: 100%;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: nowrap !important;
+            /* Force side-by-side */
+            gap: 20px;
         }
 
         /* ATTRIBUTION - 8pt RULE */
@@ -155,8 +179,7 @@
         <div class="slides">
 
             <!-- SLIDE 1: TITLE (GOLD STANDARD) -->
-            <section>
-                <div class="slide-background-spotlight"></div> <!-- Updated class -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
                 <div class="row-container">
                     <div class="col-40">
                         <img src="images/pixabay_1514141_rice_rice_terrace_terraces_agriculture_rice_cultivation_bali_indonesia_grain_fie.jpg"
@@ -177,7 +200,7 @@
                 </div>
             </section>
 
-            <!-- SLIDE 2: SEGUE (CENTERED FIX - "Perfect") -->
+            <!-- SLIDE 2: SEGUE -->
             <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
                 <div class="segue-container">
                     <h1 class="r-fit-text"
@@ -188,8 +211,7 @@
             </section>
 
             <!-- SLIDE 3: VIDEO LEAD-IN -->
-            <section>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
                 <h2 style="margin-bottom: 40px;">THE MARKET STREETS</h2>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%;">
@@ -212,8 +234,7 @@
             </section>
 
             <!-- SLIDE 4: VOCAB: DOMESTIC -->
-            <section>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
                 <div class="glass-box" style="text-align:center; margin-bottom:40px;">
                     <span style="font-size:45pt; font-weight:800; text-shadow: 0 5px 20px black;">DOMESTIC</span><br>
                     <span class="phoneme">/dəˈmes.tɪk/</span>
@@ -238,8 +259,7 @@
             </section>
 
             <!-- SLIDE 5: VOCAB: PRODUCER -->
-            <section>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
                 <div class="glass-box" style="text-align:center; margin-bottom:40px;">
                     <span style="font-size:45pt; font-weight:800; text-shadow: 0 5px 20px black;">PRODUCER</span><br>
                     <span class="phoneme">/prəˈdʒuː.sər/</span>
@@ -262,8 +282,7 @@
             </section>
 
             <!-- SLIDE 6: VOCAB: URBAN -->
-            <section>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
                 <div class="glass-box" style="text-align:center; margin-bottom:40px;">
                     <span style="font-size:45pt; font-weight:800; text-shadow: 0 5px 20px black;">URBAN</span><br>
                     <span class="phoneme">/ˈɜː.bən/</span>
@@ -286,8 +305,7 @@
             </section>
 
             <!-- SLIDE 7: VOCAB: PROCESSED -->
-            <section>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
                 <div class="glass-box" style="text-align:center; margin-bottom:40px;">
                     <span style="font-size:45pt; font-weight:800; text-shadow: 0 5px 20px black;">PROCESSED</span><br>
                     <span class="phoneme">/ˈprəʊ.sest/</span>
@@ -311,8 +329,7 @@
             </section>
 
             <!-- SLIDE 8: VOCAB: CHALLENGE -->
-            <section>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
                 <div class="glass-box" style="text-align:center; margin-bottom:40px;">
                     <span style="font-size:45pt; font-weight:800; text-shadow: 0 5px 20px black;">CHALLENGE</span><br>
                     <span class="phoneme">/ˈtʃæl.ɪndʒ/</span>
@@ -346,8 +363,7 @@
             </section>
 
             <!-- SLIDE 10: TASK 1 (Prediction) -->
-            <section>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
                 <slide-split title="PREDICTION" badge="TASK 1" timer="3">
                     <img src="images/pixabay_1514141_rice_rice_terrace_terraces_agriculture_rice_cultivation_bali_indonesia_grain_fie.jpg"
                         class="inset-media">
@@ -375,8 +391,7 @@
             </section>
 
             <!-- SLIDE 12: TASK 2.1 (Skim - GRID FIX) -->
-            <section>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
                 <slide-task title="THE SKIM CHECKLIST" badge="TASK 2.1" timer="5">
                     <div class="glass-box" style="width: 900px; margin: 0 auto;">
                         <p class="text-sm" style="text-align:center; margin-bottom:40px;"><strong>Skim the text. Which
@@ -414,8 +429,7 @@
             </section>
 
             <!-- SLIDE 14: TASK 2.2 (Summary - Start) -->
-            <section data-auto-animate>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" timer="6" data-id="summary-slide">
                     <!-- Adjusted width to prevent wrapping issues -->
                     <div class="glass-box" data-id="summary-box" style="width:1000px;">
@@ -431,8 +445,7 @@
             </section>
 
             <!-- SLIDE 15: ANSWER 2.2 (Gap 1) -->
-            <section data-auto-animate>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" data-id="summary-slide">
                     <div class="glass-box" data-id="summary-box" style="width:1000px;">
                         <p class="text-sm" style="line-height: 1.8;">
@@ -447,8 +460,7 @@
             </section>
 
             <!-- SLIDE 16: ANSWER 2.2 (Gap 2) -->
-            <section data-auto-animate>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" data-id="summary-slide">
                     <div class="glass-box" data-id="summary-box" style="width:1000px;">
                         <p class="text-sm" style="line-height: 1.8;">
@@ -464,8 +476,7 @@
             </section>
 
             <!-- SLIDE 17: ANSWER 2.2 (Gap 3 & 4) -->
-            <section data-auto-animate>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" data-id="summary-slide">
                     <div class="glass-box" data-id="summary-box" style="width:1000px;">
                         <p class="text-sm" style="line-height: 1.8;">
@@ -482,8 +493,7 @@
             </section>
 
             <!-- SLIDE 18: ANSWER 2.2 (Gap 5 & 6) -->
-            <section data-auto-animate>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" data-id="summary-slide">
                     <div class="glass-box" data-id="summary-box" style="width:1000px;">
                         <p class="text-sm" style="line-height: 1.8;">
@@ -506,8 +516,7 @@
             </section>
 
             <!-- SLIDE 20: TASK 3 (T/F/NG) -->
-            <section data-auto-animate>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="DETAIL CHECK (T/F/NG)" badge="TASK 3" timer="8" data-id="tfng-slide">
                     <div class="glass-box" data-id="tfng-box">
                         <ul class="text-xs" style="list-style: none;">
@@ -527,8 +536,7 @@
             </section>
 
             <!-- SLIDE 21: ANSWER 3 (Reveal all) -->
-            <section data-auto-animate>
-                <div class="slide-background-spotlight"></div>
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
                 <slide-task title="DETAIL CHECK (T/F/NG)" badge="TASK 3" data-id="tfng-slide">
                     <div class="glass-box" data-id="tfng-box">
                         <ul class="text-xs" style="list-style: none;">
