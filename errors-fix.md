@@ -1,4 +1,30 @@
-# Error Fix Log - Jan 20, 2026
+# Error Fix Log - Jan 28, 2026
+
+## Typst Production & Layout
+- **Library Interface**: Do NOT assume function signatures in `@local` packages. ALWAYS `view_file` the `lib.typ` file first. (e.g., `bell_header()` in `@local/bell-sheets:0.1.0` requires no arguments or specific named arguments).
+- **Library Override**: Direct modification of `@local` library files (e.g., `lib.typ`) is sometimes necessary to override hardcoded defaults, such as the `image_align` parameter added to `hero_strap` to prevent cropping the subject's face.
+- **Auto-Margin Bug**: Typst cannot perform math on `auto` lengths (e.g., `page.height - page.margin`). 
+  - **Fix**: ALWAYS set explicit page margins in the `.typ` file: `#set page(margin: (x: 2cm, top: 2cm, bottom: 2.5cm))`.
+- **Markup Evaluation (External Files)**: Loading narrative text from `.txt` via `read()` prints content literally. To enable italics (`_text_`) or bold from files:
+  - **Fix**: Use `#eval(read("file.txt").replace("[", "\[").replace("]", "\]"), mode: "markup")`.
+- **Bracket Escaping**: Square brackets in external text files break the Typst parser inside `eval` mode.
+  - **Fix**: Always escape brackets using `.replace("[", "\[").replace("]", "\]")` before evaluation.
+- **Handwriting Space (Photocopy Rule)**: For 2-up (A5 on A4) printing, use **1.1cm** for full lines and **1.0cm** for compact lines. 0.85cm is too small for younger students.
+- **Narrative Density**: Use **Single-Column** layout for stories to preserve emotional pacing. Columns are for analytical/informational data ONLY.
+- **Logical Proximity**: Organize worksheets in silos: **[Text] -> [Quiz] -> [Writing Task]**. Decoupling quizzes from their texts increases cognitive load during flipping.
+
+## Pedagogical Engineering
+- **Deterministic Data Gates**: LLMs exhibit "probabilistic laziness" in distractor placement (often favoring B/C). 
+  - **Fix**: Generate answer keys and anchor text via a Python script (e.g., `random.randint`) **BEFORE** generating the quiz to force the LLM to write content around a fixed answer index.
+- **Answer Key UX**: Always provide a **Summary Guide** (e.g., 1. A, 2. B) at the top of the answer key page for rapid manual grading, followed by detailed pedagogical explanations.
+- **CEFR Differentiation**: For B2 worksheets, ensure intro boxes and instructions use academic lexis (e.g., "radiant glory," "transcendence") to set a different register than B1 materials.
+
+## Media Processing
+- **Image Extension Spoofing**: The `generate_image` tool may produce a JPEG but return a filename with a `.png` extension.
+  - **Fix**: Verify the image signature if Typst fails to decode. Use a Python script to check magic bytes if unsure. Rename extension to match reality.
+- **Pathing**: Use relative paths (`assets/image.jpg`) for Typst compilation. Move remote/temporary images into a local `assets/` folder within the project root before compiling.
+
+# Error Fix Log - Jan 27, 2026
 
 ## UI/UX Lessons
 - **Font Size**: NEVER use fonts smaller than 18pt in presentations. Classroom projectors make them unreadable.
@@ -6,6 +32,11 @@
 - **Atmospheric Glow**: Use radial gradients with high blur (120px) instead of box-shadows to avoid a "boxy" look.
 - **Image Resolution**: Always fetch `largeImageURL` (1280px) for backgrounds; 640px looks pixelated on screens.
 - **HTML Syntax**: Be extremely careful with space in comments (`< !--`) as it renders the comment as visible text.
+- **Media (Shorts)**: YouTube Shorts (9:16) require explicit dimensions (e.g., 315x560) and `data-autoplay`/`data-src` for reliable Reveal.js playback.
+- **Contrast**: Never use white text on light-colored backgrounds (e.g., salmon/pinks). Always use a dark overlay or darkened background behind light text.
+- **Typography**: Phonemic scripts (IPA) MUST be lowercase. Global CSS `text-transform: uppercase` on headers must be overridden for IPA spans (`text-transform: none !important`).
+- **Layout Locking**: Forced horizontal layouts with `flex-wrap: nowrap !important` on `.cols` containers to prevent elements from stacking vertically on smaller displays.
+- **Validator Sync**: Ensure `validate_presentation.py` supports `data-src` and `data-autoplay` as valid attributes to avoid false critical errors on lazy-loaded media.
 
 ## Previous Entries
 
@@ -693,4 +724,80 @@ This session proceeded without errors requiring fixes. The `writing-lesson-plans
 - **Status**: Deferred. Direct links via Google Docs workflow unaffected.
 - **TODO**: Fix relative link logic in `build_dist.js` dashboard generation.
 
+---
 
+## 2026-01-26 | Typst Syntax & Image Decoding
+
+### Typst: Invalid Color/String Methods
+- **Issue**: `type color has no method with_alpha` and `type string has no method upper`.
+- **Cause**: Using method-style syntax (`.with_alpha()`, `.upper()`) which is not supported for these types in Typst 0.11.
+- **Fix**: Use functional syntax: `rgb(r, g, b, alpha)` and `upper(string)`.
+
+### Typst: PNG Decoding Errors
+- **Issue**: `failed to decode image (Format error decoding Png)`.
+- **Cause**: AI-generated PNGs sometimes have metadata or structure that Typst's decoder finds invalid.
+- **Fix**: Re-save the image using Python's `PIL` library (`img.save(path, 'PNG')`) to normalize the format.
+
+### Typst: Local File Access
+- **Issue**: `failed to load file (access denied) ... cannot read file outside of project root`.
+- **Cause**: Typst restricts file access to the directory it is compiled from.
+- **Fix**: Always use the `--root "."` flag in the compile command to allow absolute paths from project root.
+
+### PDF: Orphaned Task Headers
+- **Issue**: Task headings floating at the bottom of pages.
+- **Fix**: Wrap the heading + prompt in a `#block(breakable: false)`.
+
+---
+
+## 2026-01-27 | GDrive Sync Errors & Targeted Build Hardening
+
+### GDrive "desktop.ini" Copy Failures
+- **Issue**: `fs.cpSync` and `shutil.copytree` failed on Windows when trying to copy folders containing `desktop.ini` or hidden GDrive metadata.
+- **Cause**: Google Drive synchronization creates hidden system files that are often locked or have restricted permissions, causing "Permission Denied" or "File Not Found" errors during recursive copies.
+- **Fix**: Implemented a **System File Filter** in all build and generation scripts.
+  - **Node.js**: Added a `filter` to `fs.cpSync` that checks `path.basename(src).toLowerCase() !== 'desktop.ini'` and excludes hidden files (starting with `.`).
+  - **Python**: Used `shutil.ignore_patterns('desktop.ini', '.*')` in `shutil.copytree`.
+- **Lesson**: Never perform raw folder copies in a GDrive-synced environment without a whitelist/blacklist filter.
+
+### Windows Folder Lock (-4051)
+- **Issue**: `fs.rmSync` or `Remove-Item` for `dist/` folder failed because the folder was "in use" by a background process (Wrangler, Browser, or File Explorer).
+- **Fix**: 
+  1. Wrapped cleanup in `try-catch` blocks to prevent the entire build from crashing.
+  2. Pivoted from "Delete-and-Rebuild" to "Create-If-Missing & Overwrite" to handle locked directories gracefully.
+- **Lesson**: Don't let a cleanup failure block a production build. Warn and proceed.
+
+### Targeted Build Logic
+- **Issue**: Full project builds (copying 10+ presentations) were slow and prone to recursive errors.
+- **Fix**: Updated `build_dist.js` to support a **Target Filter**.
+  - `node scripts/build_dist.js [folder-name]` now builds ONLY that specific lesson.
+  - If no folder is provided, it defaults to a full build (safeguard).
+- **Lesson**: Development velocity requires targeted tooling, especially when dealing with large asset counts.
+
+### Wrangler Pages Build Directory
+- **Issue**: Cloudflare Pages deployment failed or gave warnings about missing configuration.
+- **Fix**: Added `"pages_build_output_dir": "dist"` to `wrangler.jsonc` and removed incompatible `assets` blocks.
+- **Lesson**: Keep `wrangler.jsonc` minimal and specific to the `dist/` output for Pages.
+
+### Windows File Locking (EBUSY) during Build (Part 2)
+- **Issue**: `node scripts/build_dist.js` failed with `syscall: 'unlink'` during `fs.cpSync` because `dist` contained files locked by other processes (VS Code, Wrangler).
+- **Cause**: The script's "clean `dist`" logic was commented out, leading to unsafe overwrites. Even if enabled, standard `rmSync` fails instantly on locks.
+- **Fix**: Implemented `robustClean(dir)` in `build_dist.js` with a 5-step retry loop and busy-wait delay.
+## 2026-01-29 | Presentation Animation & Logic
+
+### Auto-Animate "Wreckage" (Global vs Local)
+- **Issue**: Attempting to add `data-auto-animate` to ALL slide types caused title and video headers to morph unexpectedly ("wrecked" layout).
+- **Cause**: Applying animation attributes globally without managing the shared `data-id` namespace.
+- **Fix**: **Scope Animations Locally**. Only apply `data-auto-animate` to specific transitions (e.g., Segue -> Mission). Don't force it on static content slides like Titles unless strictly designed for it.
+
+### Vocab Matching: Disappearing Rows
+- **Issue**: Rows 3-5 vanished on the "Answer" slide during transition.
+- **Cause**: The `presentation.json` for the answer slide only contained 2 items (the distractors) instead of the full set of 5. Reveal.js can't animate elements that don't exist in the DOM.
+- **Fix**: **Data Parity**. The Answer slide MUST contain the exact same list of items as the Question slide. Only the `is_answer` flag should change.
+
+### Vocab Matching: The "Floating Column"
+- **Issue**: The numbered word list moved around or disappeared during animation.
+- **Fix**: **Anchor the Left Column**. Use `data-id="fixed-word-{{id}}"` for the left column (words) and `data-id="moving-def-{{id}}"` for the right column (definitions). Ensure the HTML structure for the fixed column is identical on both slides.
+
+### Video Background Loops
+- **Issue**: Short looping videos (e.g., 2-second clip) are distracting behind text.
+- **Fix**: Remove `data-background-video-loop`. Let the video play once and freeze on the final frame (which should be visually compatible with the text).

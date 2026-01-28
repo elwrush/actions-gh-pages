@@ -1,0 +1,27 @@
+<!-- SLIDE: CHECKLIST -->
+<section class="layout-wide layout-split-40-60" data-background-gradient="var(--grad-main)">
+    <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+        {% if slide.badge %}
+        <div class="stage-badge">{{ slide.badge }}</div>
+        {% endif %}
+        <h2 style="font-size: 55pt !important; margin: 0;">{{ slide.title }}</h2>
+        {% if slide.timer %}
+        <timer-pill duration="{{ slide.timer }}" style="margin-top: 40px;"></timer-pill>
+        {% endif %}
+    </div>
+
+    <div class="glass-box" style="display: flex; flex-direction: column; justify-content: center;">
+        <p style="font-size: 20pt; color: var(--primary); margin-bottom: 20px;"><strong>{{ slide.instruction }}</strong>
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 22pt; text-align: left;">
+            {% for item in slide.items %}
+            <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">☐ {{ item }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <aside class="notes">
+        Advice: Quick skim.
+        Next: Answers.
+    </aside>
+</section>

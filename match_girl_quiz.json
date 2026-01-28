@@ -1,0 +1,88 @@
+{
+    "tasks": [
+        {
+            "task_type": "mcq",
+            "instructions": "Choose the correct option based on the text.",
+            "questions": [
+                {
+                    "query": "According to the story, what was the primary reason the girl stayed in the alleyway?",
+                    "choices": [
+                        "She was waiting for more customers to pass by.",
+                        "She was afraid of her father's reaction to her lack of sales.",
+                        "She wanted to watch the New Year's Eve celebrations.",
+                        "She found the alleyway warmer than the open streets."
+                    ],
+                    "answer": 1,
+                    "bloom_level": "Understanding",
+                    "anchor_text": "Fearing her father’s certain wrath if she returned empty-handed, she sought refuge in a narrow alleyway.",
+                    "explanation": "The text explicitly mentions her fear of her father's 'wrath' (anger) because she hadn't sold any matches."
+                },
+                {
+                    "query": "What happened to the girl's visions each time a match was extinguished?",
+                    "choices": [
+                        "They became more vivid and detailed.",
+                        "They were replaced by a new, different vision.",
+                        "They disappeared immediately.",
+                        "They lingered in the air for a few moments."
+                    ],
+                    "answer": 2,
+                    "bloom_level": "Remembering",
+                    "anchor_text": "Each vision vanished as soon as the flame flickered out.",
+                    "explanation": "The text states that the visions 'vanished' as soon as the flame went out."
+                },
+                {
+                    "query": "How did the townspeople react when they found the girl the next morning?",
+                    "choices": [
+                        "They were angry that she had been selling matches.",
+                        "They felt sympathy for her unfortunate fate.",
+                        "They were amazed by the smile on her face.",
+                        "They realized she had seen beautiful visions."
+                    ],
+                    "answer": 1,
+                    "bloom_level": "Remembering",
+                    "anchor_text": "While they pitied her tragic end, they remained oblivious to the beautiful splendors she had witnessed...",
+                    "explanation": "The word 'pitied' indicates they felt sympathy or sorrow for her."
+                }
+            ]
+        },
+        {
+            "task_type": "antecedent",
+            "instructions": "Identify what the highlighted proform refers to.",
+            "questions": [
+                {
+                    "query": "In the sentence 'To ward off the terminal chill, she struck a single match against the brick wall. In **its** fleeting glow...', what does the word 'its' refer to?",
+                    "choices": [
+                        "the terminal chill",
+                        "a single match",
+                        "the brick wall",
+                        "the girl's hand"
+                    ],
+                    "answer": 1,
+                    "bloom_level": "Analyzing",
+                    "anchor_text": "To ward off the terminal chill, she struck a single match against the brick wall. In its fleeting glow...",
+                    "target_text": "its",
+                    "explanation": "'Its' refers back to the 'single match' that was struck, as it is the source of the glow."
+                }
+            ]
+        },
+        {
+            "task_type": "inference",
+            "instructions": "Draw a logical conclusion based on the information provided.",
+            "questions": [
+                {
+                    "query": "Why did the girl frantically strike the remaining matches when she saw her grandmother?",
+                    "choices": [
+                        "She wanted to stay warm for as long as possible.",
+                        "She was trying to alert the townspeople to her location.",
+                        "She hoped to keep the vision of her grandmother from disappearing.",
+                        "She was frightened and acting out of panic."
+                    ],
+                    "answer": 2,
+                    "bloom_level": "Analyzing",
+                    "anchor_text": "When she glimpsed her late grandmother in the next spark, the girl frantically struck the remaining matches to sustain the apparition.",
+                    "explanation": "The word 'sustain' means to keep something going; she struck the matches to prevent the vision (apparition) from ending."
+                }
+            ]
+        }
+    ]
+}

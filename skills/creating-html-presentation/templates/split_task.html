@@ -1,0 +1,56 @@
+<!-- SLIDE: SPLIT TASK -->
+<section data-transition="convex" data-auto-animate>
+    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+
+    <div class="slide-canvas">
+        {% if slide.image %}
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 60px; width: 100%; max-width: 1200px; margin: 0 auto; flex-direction: row; flex-wrap: nowrap;">
+            <!-- Left: Context Image -->
+            <div class="col-40" style="flex: 0 0 40%; max-width: 40%;">
+                <img src="{{ slide.image }}" class="inset-media" data-id="task-image"
+                    style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
+                {% if slide.attribution and 'Pixabay' in slide.attribution %}
+                <div style="color: rgba(255,255,255,0.3); font-style: italic; margin-top: 5px;">{{
+                    slide.attribution }}</div>
+                {% endif %}
+            </div>
+            <!-- Right: Task Card -->
+            <div class="col-60" style="flex: 1; text-align: left;">
+                <div class="glass-box" data-id="task-card"
+                    style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+                    <div data-id="task-badge"
+                        style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-bottom: 25px; transform: skew(-5deg); font-size: 0.8em; letter-spacing: 2px;">
+                        {{ slide.badge | default('TASK') }}
+                    </div>
+                    <h2 style="color: #FFD700; margin-bottom: 25px; line-height: 1.1; font-size: 60px;">{{ slide.title
+                        }}</h2>
+                    <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 30px;">
+                    <div class="task-content" style="line-height: 1.4; color: #f8fafc; font-size: 32px;">
+                        {{ slide.content | safe }}
+                    </div>
+                    {% if slide.timer %}
+                    <timer-pill duration="{{ slide.timer }}"></timer-pill>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <!-- Wide Glass Box (No Image) -->
+        <div class="glass-box"
+            style="max-width: 900px; margin: 0 auto; border: 2px solid #FFD700; background: rgba(0,0,0,0.95); padding: 60px; border-radius: 20px; text-align: left;">
+            <div data-id="task-badge"
+                style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-bottom: 25px;">
+                {{ slide.badge | default('TASK') }}
+            </div>
+            <h2 style="color: #FFD700; font-size: 70px;">{{ slide.title }}</h2>
+            <div style="line-height: 1.4; margin-top: 30px; font-size: 38px;">
+                {{ slide.content | safe }}
+            </div>
+            {% if slide.timer %}
+            <timer-pill duration="{{ slide.timer }}"></timer-pill>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>

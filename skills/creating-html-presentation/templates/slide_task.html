@@ -1,0 +1,23 @@
+<!-- SLIDE: TASK -->
+<section class="layout-split-40-60" data-background-gradient="var(--grad-main)">
+    <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+        {% if slide.badge %}
+        <div class="stage-badge">{{ slide.badge }}</div>
+        {% endif %}
+        <h2 style="font-size: 55pt !important; margin: 0;">{{ slide.title }}</h2>
+        {% if slide.timer %}
+        <timer-pill duration="{{ slide.timer }}" style="margin-top: 40px;"></timer-pill>
+        {% endif %}
+    </div>
+
+    <div class="glass-box"
+        style="display: flex; flex-direction: column; justify-content: center; height: fit-content; align-self: center;">
+        <div style="font-size: 24pt; line-height: 1.4;">
+            {{ slide.content }}
+        </div>
+    </div>
+
+    <aside class="notes">
+        {{ slide.notes | default('Advice: Start timer. Monitor students.') }}
+    </aside>
+</section>

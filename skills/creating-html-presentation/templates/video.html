@@ -1,0 +1,38 @@
+<!-- SLIDE: VIDEO -->
+<section data-background-gradient="var(--grad-main)">
+    <div class="slide-canvas">
+        <h2 style="margin-bottom: 30px; font-size: 1.8em;">{{ slide.title }}</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%;">
+            <!-- VIDEO (Full container fill) -->
+            <div style="height: 400px; position: relative; z-index: 10;">
+                <iframe src="{{ slide.video_url }}&enablejsapi=1" style="width: 100%; height: 100%;" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen"></iframe>
+            </div>
+
+            <!-- QUESTIONS -->
+            <div class="glass-box"
+                style="align-self: center; text-align: left; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                <div
+                    style="background: var(--gold); color: black; display: inline-block; padding: 4px 12px; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; font-size: 0.7em;">
+                    OBSERVE & DISCUSS</div>
+
+                <div style="font-size: 0.85em; line-height: 1.4;">
+                    {% if slide.content %}
+                    {{ slide.content | safe }}
+                    {% else %}
+                    <ul style="margin: 0; padding-left: 20px;">
+                        {% for question in slide.questions %}
+                        <li>{{ question }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside class="notes">
+        {{ slide.notes | default('Advice: Play video. Monitor engagement.') }}
+    </aside>
+</section>

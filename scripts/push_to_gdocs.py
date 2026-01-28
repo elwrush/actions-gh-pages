@@ -32,7 +32,7 @@ SCOPES = [
 ]
 
 # Default target folder
-DEFAULT_FOLDER_ID = '1_n11w9BRN6sd0uaXlqEXjqZuZ74zFiOl'
+DEFAULT_FOLDER_ID = '1XmuKyouUesIam7fyE16gjZXX1c_YOJaj'
 
 # A4 page size in points (1 inch = 72 points, A4 = 210mm x 297mm)
 A4_WIDTH_PT = 595.276  # 210mm

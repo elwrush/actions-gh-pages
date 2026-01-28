@@ -1,0 +1,67 @@
+{
+    "tasks": [
+        {
+            "task_type": "mcq",
+            "instructions": "Choose the correct answer based on the text provided.",
+            "questions": [
+                {
+                    "query": "What is identified as a primary cause of Bangkok's environmental challenges?",
+                    "choices": [
+                        "Agricultural expansion and rural migration",
+                        "Rapid urbanization and industrial growth",
+                        "Tourism-related pollution and waste management",
+                        "Lack of natural resources and biodiversity loss"
+                    ],
+                    "answer": 1,
+                    "explanation": "The text states that the challenges primarily stem from rapid urbanization and industrial growth."
+                },
+                {
+                    "query": "Why is Bangkok sinking according to the passage?",
+                    "choices": [
+                        "Excessive rainfall during the monsoon season",
+                        "Vehicle emissions and smog accumulation",
+                        "Groundwater extraction and the weight of skyscrapers",
+                        "Coastal erosion from the Gulf of Thailand"
+                    ],
+                    "answer": 2,
+                    "explanation": "The sinking is attributed to groundwater extraction and the sheer weight of skyscrapers."
+                }
+            ]
+        },
+        {
+            "task_type": "antecedent",
+            "instructions": "Identify the noun that each underlined pronoun refers to.",
+            "questions": [
+                {
+                    "query": "This smog, largely caused by vehicle emissions and construction dust, poses a serious health risk to the city's inhabitants.",
+                    "target_text": "This smog",
+                    "answer": "Air quality deterioration during the dry season",
+                    "explanation": "'This smog' refers back to the deterioration of air quality mentioned in the previous sentence."
+                },
+                {
+                    "query": "Efforts to mitigate these problems are ongoing, but they require substantial political will...",
+                    "target_text": "they",
+                    "answer": "Efforts (to mitigate these problems)",
+                    "explanation": "'they' refers to the 'efforts' mentioned at the start of the clause."
+                }
+            ]
+        },
+        {
+            "task_type": "inference",
+            "instructions": "Read the text and decide what can be logically inferred.",
+            "questions": [
+                {
+                    "query": "What can be inferred about the effectiveness of current environmental solutions in Bangkok?",
+                    "choices": [
+                        "They are already highly successful and widely supported.",
+                        "They are likely to fail regardless of public cooperation.",
+                        "Their success depends heavily on both leadership and citizen involvement.",
+                        "They are unnecessary because the sinking rate is decreasing."
+                    ],
+                    "answer": 2,
+                    "explanation": "The text states that efforts 'require substantial political will and public cooperation to be truly effective', implying success is conditional on these factors."
+                }
+            ]
+        }
+    ]
+}

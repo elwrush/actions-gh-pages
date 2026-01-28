@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>{{ meta.title }}</title>
+
+    <!-- Projector-Standard Reset -->
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+    <!-- Projector-Standard Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Courier+Prime:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Shared JS Components (Optional, but index has core logic now) -->
+    <!-- <script src="js/slide-components.js"></script> -->
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="css/themes/{{ meta.theme | default('thai-heritage') }}.css">
+
+    <!-- Flag Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
+
+    <style>
+        :root {
+            --gold: #FFD700;
+            --maroon: #A72B26;
+            --accent: #FFD700;
+            /* Ensure accent maps to gold for highlighting */
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #050811;
+            color: #f8fafc;
+        }
+
+        .reveal {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-family: 'Outfit', sans-serif;
+            text-transform: none !important;
+            margin: 0;
+        }
+
+        /* Web Component Styles */
+        .timer-pill {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid var(--gold);
+            padding: 12px 30px;
+            border-radius: 60px;
+            margin-top: 40px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .timer-display {
+            font-family: 'Courier Prime', monospace;
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--gold);
+            min-width: 140px;
+            letter-spacing: 2px;
+        }
+
+        .start-btn {
+            background: var(--gold);
+            color: black;
+            border: none;
+            padding: 10px 25px;
+            font-weight: 900;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 20px;
+            transition: transform 0.1s;
+        }
+
+        .start-btn:active {
+            transform: scale(0.95);
+        }
+
+        .start-btn.pause {
+            background: #f43f5e;
+            color: white;
+        }
+
+        .glass-box {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Flag Icon Scaling */
+        .fi {
+            width: 1.5em;
+            line-height: 1em;
+            vertical-align: middle;
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-left: 10px;
+        }
+
+        /* Reveal Override for centering and scale */
+        .reveal .slides>section {
+            text-align: center;
+            padding: 0;
+        }
+
+        /* Fragmet Styling */
+        .reveal .slides section .fragment {
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .reveal .slides section .fragment.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            {% for slide in slides %}
+            {% include slide.layout + '.html' %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- SCRIPTS (Local Core) -->
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+
+    <script>
+        // Audio FX Logic
+        const AudioFX = {
+            blip: new Audio('audio/blip.mp3'),
+            bell: new Audio('audio/bell.mp3'),
+            warning: new Audio('audio/30-seconds.mp3'),
+            init() {
+                this.blip.load(); this.bell.load(); this.warning.load();
+            }
+        };
+        document.addEventListener('click', () => AudioFX.init(), { once: true });
+
+        // Timer Component
+        class TimerPill extends HTMLElement {
+            connectedCallback() {
+                this.duration = parseInt(this.getAttribute('duration')) || 5;
+                this.timeLeft = this.duration * 60;
+                this.timer = null;
+                this.render();
+            }
+            render() {
+                this.innerHTML = `
+                    <div class="timer-pill">
+                        <div class="timer-display">${this.formatTime(this.timeLeft)}</div>
+                        <button class="start-btn">START</button>
+                    </div>
+                `;
+                this.querySelector('.start-btn').onclick = (e) => {
+                    e.stopPropagation();
+                    this.toggle();
+                };
+            }
+            formatTime(s) {
+                const m = Math.floor(s / 60).toString().padStart(2, '0');
+                const sec = (s % 60).toString().padStart(2, '0');
+                return m + ":" + sec;
+            }
+            toggle() {
+                const btn = this.querySelector('.start-btn');
+                // Ensure audio is initialized/unlocked on first interaction
+                AudioFX.init();
+
+                if (this.timer) {
+                    clearInterval(this.timer);
+                    this.timer = null;
+                    btn.textContent = 'START';
+                    btn.classList.remove('pause');
+                } else {
+                    btn.textContent = 'PAUSE';
+                    btn.classList.add('pause');
+
+                    // Optional: Play a short blip to confirm audio works on start
+                    AudioFX.blip.play().catch(e => console.warn("Audio Context blocked:", e));
+
+                    this.timer = setInterval(() => {
+                        if (this.timeLeft > 0) {
+                            this.timeLeft--;
+                            this.querySelector('.timer-display').textContent = this.formatTime(this.timeLeft);
+
+                            // 30 Seconds Warning
+                            if (this.timeLeft === 30) {
+                                AudioFX.warning.currentTime = 0;
+                                AudioFX.warning.play().catch(e => console.error(e));
+                            }
+
+                            // Countdown blips (10 to 1)
+                            if (this.timeLeft <= 10 && this.timeLeft > 0) {
+                                AudioFX.blip.currentTime = 0;
+                                AudioFX.blip.play().catch(() => { });
+                            }
+                        } else {
+                            // Timer End
+                            clearInterval(this.timer);
+                            this.timer = null;
+                            AudioFX.bell.play().catch(e => console.error(e));
+                            btn.textContent = 'DONE';
+                            btn.disabled = true;
+                        }
+                    }, 1000);
+                }
+            }
+        }
+        customElements.define('timer-pill', TimerPill);
+
+        Reveal.initialize({
+            width: 1280, height: 720, margin: 0.05,
+            transition: 'convex',
+            center: true, hash: true,
+            autoAnimateDuration: 1.2,
+            autoAnimateEasing: 'ease-in-out',
+            embeddedIframesFullscreen: true,
+            plugins: [RevealNotes, RevealMarkdown, RevealHighlight]
+        });
+    </script>
+</body>
+
+</html>

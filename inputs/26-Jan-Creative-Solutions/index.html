@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>A2 Reading: Creative Solutions</title>
+
+    <!-- REVEAL.JS (CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* BASIC GOLD STANDARD STYLES (GS2 TEMPLATE) */
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3,
+        .reveal h4 {
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .reveal h1 {
+            font-weight: 800;
+            font-size: 3.0em;
+        }
+
+        .reveal h2 {
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* LAYOUT UTILS */
+        .cols {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: nowrap !important;
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* BOXES */
+        .box {
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .highlight {
+            color: #A62D26;
+            /* Bell Maroon */
+            font-weight: bold;
+        }
+
+        /* SEGUE TITLES */
+        .segue-title {
+            color: #FFD700;
+            /* Solid Gold */
+            font-size: 3.5em !important;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 215, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        /* IMAGES */
+        .img-framed {
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        /* Force title image size */
+        .title-image {
+            width: 500px !important;
+            max-width: none !important;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* TASKS */
+        .task-badge {
+            background: #333;
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* TIMER STYLES */
+        .timer-widget {
+            display: inline-block;
+            background: #222;
+            color: #0f0;
+            font-family: 'Courier Prime', monospace;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 2px solid #555;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+        }
+
+        /* ANSWER TEXT STANDARD */
+        .text-answer {
+            font-size: 1.8em;
+            line-height: 1.3;
+        }
+
+        /* LEVEL BADGE */
+        .level-badge {
+            background: #A62D26;
+            /* Bell Maroon */
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* MAROON BAR SLIDE STYLE (GS2 MODIFIED) */
+        .maroon-bar-slide {
+            border-left: 15px solid #A62D26;
+            padding-left: 40px;
+            text-align: left;
+        }
+
+        .explanation-box {
+            background: #fdf2f2;
+            border: 1px solid #A62D26;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #333;
+        }
+
+        .phoneme {
+            text-transform: none !important;
+            font-family: 'Courier Prime', monospace;
+            color: #A62D26;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- SLIDE 1: TITLE -->
+            <section data-background-color="#f5f5f5">
+                <div class="cols">
+                    <div class="col">
+                        <img src="images/hero.png" class="title-image inset-media">
+                    </div>
+                    <div class="col text-left">
+                        <div class="level-badge">A2 READING</div>
+                        <h3>MISSION: URBAN INNOVATION</h3>
+                        <h1>CREATIVE<br>SOLUTIONS</h1>
+                        <p style="color: #666;">FIXING THE CITY</p>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Welcome students to the lesson. Today we explore how cities solve traffic problems.
+                    **Next**: Mission 1 Segue.
+                </aside>
+            </section>
+
+            <!-- MISSION 1: DATA SCAN (SEGUE - BLUE NAVY) -->
+            <section data-background-color="#2c3e50"
+                data-background-gradient="linear-gradient(to bottom right, #2c3e50, #4ca1af)">
+                <h1 class="segue-title">MISSION 1<br>THE DATA SCAN</h1>
+                <aside class="notes">
+                    **Advice**: Set the scene. We're looking at the data of urban chaos.
+                    **Next**: Bangkok chaos video.
+                </aside>
+            </section>
+
+            <!-- SLIDE: BANGKOK CHAOS -->
+            <section class="maroon-bar-slide">
+                <h2 style="color: #A62D26;">THE BANGKOK REALITY</h2>
+                <div class="cols">
+                    <div class="col"
+                        style="flex: 0 0 45%; display: flex; justify-content: center; align-items: center;">
+
+                        <!-- 16:9 Aspect Ratio Container for New Video -->
+                        <div
+                            style="width: 100%; position: relative; padding-bottom: 56.25%; height: 0; border: 5px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.15); background: #000; overflow: hidden; border-radius: 10px;">
+                            <iframe src="https://www.youtube.com/embed/PisoTBt2-dQ?rel=0"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0"
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+
+                    </div>
+                    <div class="col text-left">
+                        <div class="box">
+                            <p><strong>MISSION:</strong> Watch the video.</p>
+                            <p>Discuss in pairs: Is this normal? How does it make you feel?</p>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Elicit reactions. It's stressful, noisy, and slow.
+                    **Next**: Task 1 Predictions.
+                </aside>
+            </section>
+
+            <!-- SLIDE: TASK 1 PREDICTIONS -->
+            <section class="maroon-bar-slide">
+                <h2 style="color: #A62D26;">TASK 1: PREDICTIONS</h2>
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <img src="images/curitiba.png" class="img-framed inset-media">
+                    </div>
+                    <div class="col text-left">
+                        <div class="box">
+                            <p>Look at the title and pictures on the handout.</p>
+                            <p><strong>What is the main problem?</strong></p>
+                            <div class="timer-widget" data-minutes="4">
+                                <span class="icon">⏱️</span> <span class="display">04:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Guide students to Task 1 on their worksheet.
+                    **Next**: Vocabulary Segue.
+                </aside>
+            </section>
+
+            <!-- MISSION 2: THE LOADOUT (SEGUE - PURPLE) -->
+            <section data-background-color="#8e44ad"
+                data-background-gradient="linear-gradient(to bottom right, #8e44ad, #9b59b6)">
+                <h1 class="segue-title">MISSION 2<br>THE LOADOUT</h1>
+                <aside class="notes">
+                    **Advice**: We are unlocking the vocabulary weapons needed for the text.
+                    **Next**: Pedestrian.
+                </aside>
+            </section>
+
+            <!-- VOCABULARY SLIDES -->
+            <section>
+                <div class="task-badge">VOCABULARY</div>
+                <h2>1. PEDESTRIAN</h2>
+                <h3>คนเดินเท้า <span class="phoneme">(/pəˈdestriən/)</span></h3>
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <img src="images/pedestrian.png" class="img-framed inset-media">
+                    </div>
+                    <div class="col text-left" style="flex: 0 0 55%;">
+                        <div class="box">
+                            <p>"The city turned its main street into a <span class="highlight">pedestrian</span> street
+                                where only people can walk."</p>
+                            <hr>
+                            <p>เราควรหยุดรถเมื่อเห็นคนเดินเท้าข้ามถนน</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="task-badge">VOCABULARY</div>
+                <h2>2. ENVIRONMENT</h2>
+                <h3>สิ่งแวดล้อม <span class="phoneme">(/ɪnˈvaɪrənmənt/)</span></h3>
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <img src="images/environment.png" class="img-framed inset-media">
+                    </div>
+                    <div class="col text-left" style="flex: 0 0 55%;">
+                        <div class="box">
+                            <p>"We should work hard to save our natural <span class="highlight">environment</span>."</p>
+                            <hr>
+                            <p>การลดการใช้รถยนต์ช่วยรักษาสิ่งแวดล้อมได้</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="task-badge">VOCABULARY</div>
+                <h2>3. PASS (noun)</h2>
+                <h3>บัตรผ่าน <span class="phoneme">(/pɑːs/)</span></h3>
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <img src="images/pass.png" class="img-framed inset-media">
+                    </div>
+                    <div class="col text-left" style="flex: 0 0 55%;">
+                        <div class="box">
+                            <p>"The city gives you a free lifetime <span class="highlight">pass</span> for the tram."
+                            </p>
+                            <hr>
+                            <p>ข้ามีบัตรผ่านจึงเข้างานได้ฟรี</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="task-badge">VOCABULARY</div>
+                <h2>4. POLLUTION</h2>
+                <h3>มลพิษ <span class="phoneme">(/pəˈluːʃn/)</span></h3>
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <img src="images/pollution.png" class="img-framed inset-media">
+                    </div>
+                    <div class="col text-left" style="flex: 0 0 55%;">
+                        <div class="box">
+                            <p>"Too many cars on the road cause air <span class="highlight">pollution</span>."</p>
+                            <hr>
+                            <p>ควันจากท่อไอเสียรถยนต์ทำให้เกิดมลพิษในอากาศ</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="task-badge">VOCABULARY</div>
+                <h2>5. REDUCE</h2>
+                <h3>ลดลง <span class="phoneme">(/rɪˈdjuːs/)</span></h3>
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <img src="images/reduce.png" class="img-framed inset-media">
+                    </div>
+                    <div class="col text-left" style="flex: 0 0 55%;">
+                        <div class="box">
+                            <p>"A cable car can help <span class="highlight">reduce</span> the number of cars."</p>
+                            <hr>
+                            <p>เราต้องลดความเร็วเมื่อขับรถผ่านหน้าโรงเรียน</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STRATEGY SLIDE: SKIMMING -->
+            <section data-background-color="#141414">
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <div class="box"
+                            style="border-color: #FFD700; border-width: 4px; text-align: center; background: #fdf2f2;">
+                            <span style="font-size: 5rem;">🏃‍♂️</span>
+                            <h2 style="color: #A62D26; margin: 0; font-weight: 800;">SKIMMING</h2>
+                            <p style="color: #333;"><strong>Speed Reading</strong></p>
+                        </div>
+                    </div>
+                    <div class="col text-left" style="flex: 0 0 55%;">
+                        <div class="box" style="background: #fdf2f2; border-color: #A62D26;">
+                            <h3 style="color: #A62D26; font-weight: 800;">How to Skim:</h3>
+                            <ul
+                                style="font-size: 1.3rem; line-height: 1.6; color: #000; list-style-type: none; padding-left: 0;">
+                                <li style="margin-bottom: 15px;">👀 <strong>IGNORE</strong> small words.</li>
+                                <li style="margin-bottom: 15px;">✨ <strong>FOCUS</strong> on Headings & Titles.</li>
+                                <li>🎯 <strong>GOAL:</strong> Get the general "Main Idea".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MISSION 3: GLOBAL READING (SEGUE - MAROON) -->
+            <section data-background-color="#800000"
+                data-background-gradient="linear-gradient(to bottom right, #800000, #A00000)">
+                <h1 class="segue-title">MISSION 3<br>GLOBAL READING</h1>
+                <aside class="notes">
+                    **Advice**: Time to scan the world for solutions.
+                    **Next**: Task 2 Gist.
+                </aside>
+            </section>
+
+            <!-- SLIDE: TASK 2 GIST -->
+            <section>
+                <div class="task-badge">TASK 2</div>
+                <h2>GLOBAL HEADINGS</h2>
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <img src="images/hero.png" class="img-framed inset-media">
+                    </div>
+                    <div class="col text-left" style="flex: 0 0 55%;">
+                        <div class="box">
+                            <p>Skim the text. Write the correct heading for each city profile.</p>
+                            <div class="timer-widget" data-minutes="5">
+                                <span class="icon">⏱️</span> <span class="display">05:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Remind students they are looking for the "main idea" of each city.
+                    **Next**: Answers Task 2.
+                </aside>
+            </section>
+
+            <!-- ANSWERS TASK 2 -->
+            <section>
+                <h4>CURITIBA</h4>
+                <p class="text-answer highlight">Putting pedestrians first</p>
+                <div class="explanation-box">
+                    The text mentions they made the main business street "only for pedestrians."
+                </div>
+            </section>
+
+            <section>
+                <h4>MURCIA</h4>
+                <p class="text-answer highlight">Exchange your cars</p>
+                <div class="explanation-box">
+                    The text says people can trade their cars for a lifetime pass on the tram.
+                </div>
+            </section>
+
+            <section>
+                <h4>LA PAZ</h4>
+                <p class="text-answer highlight">High in the sky</p>
+                <div class="explanation-box">
+                    This city uses a cable car that travels "over the city rooftops."
+                </div>
+            </section>
+
+            <!-- STRATEGY SLIDE: SCANNING -->
+            <section data-background-color="#0f172a">
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <div class="box"
+                            style="border-color: #00FFFF; border-width: 4px; text-align: center; background: #f0f9ff;">
+                            <span style="font-size: 5rem;">🔍</span>
+                            <h2 style="color: #0f172a; margin: 0; font-weight: 800;">SCANNING</h2>
+                            <p style="color: #333;"><strong>Keyword Hunting</strong></p>
+                        </div>
+                    </div>
+                    <div class="col text-left" style="flex: 0 0 55%;">
+                        <div class="box" style="background: #f0f9ff; border-color: #0f172a;">
+                            <h3 style="color: #0f172a; font-weight: 800;">How to Scan:</h3>
+                            <ul
+                                style="font-size: 1.3rem; line-height: 1.6; color: #000; list-style-type: none; padding-left: 0;">
+                                <li style="margin-bottom: 15px;">📍 <strong>USE</strong> keywords (names, numbers).</li>
+                                <li style="margin-bottom: 15px;">💨 <strong>MOVE</strong> your eyes in a "Z" pattern.
+                                </li>
+                                <li>🎯 <strong>GOAL:</strong> Find specific information.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: TASK 3 SCANNING -->
+            <section>
+                <div class="task-badge">TASK 3</div>
+                <h2>WHICH CITY?</h2>
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <img src="images/la_paz.png" class="img-framed inset-media">
+                    </div>
+                    <div class="col text-left" style="flex: 0 0 55%;">
+                        <div class="box">
+                            <p>Scan the text. Which city does each statement describe?</p>
+                            <div class="timer-widget" data-minutes="5">
+                                <span class="icon">⏱️</span> <span class="display">05:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ANSWERS TASK 3 -->
+            <section>
+                <h2>TASK 3: ANSWERS</h2>
+                <table style="width: 100%; font-size: 0.7em; border-collapse: collapse;">
+                    <tr style="background: #A62D26; color: white;">
+                        <th style="padding: 10px; border: 1px solid white;">Statement</th>
+                        <th style="padding: 10px; border: 1px solid white;">City</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">1. Its buses are often full.</td>
+                        <td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #A62D26;">Curitiba
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">2. Drivers cannot drive on 52 roads.</td>
+                        <td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #A62D26;">Murcia
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">3. People ride trams for free...</td>
+                        <td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #A62D26;">Murcia
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">4. People hope it reduces pollution.</td>
+                        <td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #A62D26;">La Paz
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">5. It has more than 1,000 green spaces.</td>
+                        <td style="padding: 10px; border: 1px solid #ccc; font-weight: bold; color: #A62D26;">Curitiba
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- SLIDE: TASK 4 T/F -->
+            <section>
+                <div class="task-badge">TASK 4</div>
+                <h2>TRUE OR FALSE?</h2>
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <img src="images/murcia.png" class="img-framed inset-media">
+                    </div>
+                    <div class="col text-left" style="flex: 0 0 55%;">
+                        <div class="box">
+                            <p>Read carefully. Underline the evidence in the text!</p>
+                            <div class="timer-widget" data-minutes="8">
+                                <span class="icon">⏱️</span> <span class="display">08:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ANSWERS TASK 4 -->
+            <section>
+                <h4>QUESTION 1</h4>
+                <p class="text-answer highlight">TRUE</p>
+                <div class="explanation-box">
+                    "Curitiba made its main business street only for pedestrians."
+                </div>
+            </section>
+
+            <section>
+                <h4>QUESTION 2</h4>
+                <p class="text-answer highlight">FALSE</p>
+                <div class="explanation-box">
+                    People can still drive on other streets, just not the main business one.
+                </div>
+            </section>
+
+            <section>
+                <h4>QUESTION 3</h4>
+                <p class="text-answer highlight">TRUE</p>
+                <div class="explanation-box">
+                    "They can turn in any car as long as it is paid for."
+                </div>
+            </section>
+
+            <section>
+                <h4>QUESTION 4</h4>
+                <p class="text-answer highlight">FALSE</p>
+                <div class="explanation-box">
+                    "Murcia puts the old cars in art projects around the city."
+                </div>
+            </section>
+
+            <section>
+                <h4>QUESTION 5</h4>
+                <p class="text-answer highlight">FALSE</p>
+                <div class="explanation-box">
+                    "El Alto is a high city... commuters travel between El Alto and downtown La Paz." (They are
+                    separate).
+                </div>
+            </section>
+
+            <section>
+                <h4>QUESTION 6</h4>
+                <p class="text-answer highlight">TRUE</p>
+                <div class="explanation-box">
+                    "The ride is short... now it only takes 10 minutes."
+                </div>
+            </section>
+
+            <!-- SLIDE: TASK 5 COMPLETION -->
+            <section>
+                <div class="task-badge">TASK 5</div>
+                <h2>SENTENCE COMPLETION</h2>
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <img src="images/la_paz.png" class="img-framed inset-media">
+                    </div>
+                    <div class="col text-left" style="flex: 0 0 55%;">
+                        <div class="box">
+                            <p>Use ONE or TWO words from the text.</p>
+                            <div class="timer-widget" data-minutes="7">
+                                <span class="icon">⏱️</span> <span class="display">07:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ANSWERS TASK 5 -->
+            <section>
+                <h4>ANSWER 1</h4>
+                <p class="text-answer">...as <span class="highlight">impossible</span>.</p>
+                <div class="explanation-box">
+                    "Many people in the city saw this as impossible."
+                </div>
+            </section>
+
+            <section>
+                <h4>ANSWER 2</h4>
+                <p class="text-answer">...save its <span class="highlight">environment</span>.</p>
+            </section>
+
+            <section>
+                <h4>ANSWER 3</h4>
+                <p class="text-answer">...Murcia <span class="highlight">puts</span> its old cars...</p>
+            </section>
+
+            <section>
+                <h4>ANSWER 4</h4>
+                <p class="text-answer">...the <span class="highlight">pollution</span> of cars.</p>
+            </section>
+
+            <section>
+                <h4>ANSWER 5</h4>
+                <p class="text-answer">...will <span class="highlight">reduce</span> the number...</p>
+            </section>
+
+            <!-- MISSION ACCOMPLISHED (SEGUE - GREEN) -->
+            <section data-background-color="#27ae60"
+                data-background-gradient="linear-gradient(to bottom right, #27ae60, #2ecc71)">
+                <h1 class="segue-title">MISSION<br>ACCOMPLISHED</h1>
+                <aside class="notes">
+                    **Advice**: Congratulations. We have mastered the city profiles.
+                    **Next**: Discussion.
+                </aside>
+            </section>
+
+            <!-- SLIDE: DISCUSSION -->
+            <section>
+                <h2>CRITICAL THINKING</h2>
+                <div class="cols" style="align-items: center;">
+                    <div class="col" style="flex: 0 0 40%;">
+                        <img src="images/hero.png" class="img-framed inset-media">
+                    </div>
+                    <div class="col text-left" style="flex: 0 0 55%;">
+                        <div class="box">
+                            <p>1. Can any of these solutions work in Bangkok?</p>
+                            <p>2. What is another way to reduce cars?</p>
+                            <div class="timer-widget" data-minutes="6">
+                                <span class="icon">⏱️</span> <span class="display">06:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: CONCLUSION -->
+            <section data-background-color="#A62D26">
+                <h1 style="color: white;">STAY CREATIVE</h1>
+                <p style="color: #eee;">Urban innovation starts with a single idea.</p>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- AUDIO ASSETS -->
+    <audio id="audio-start" src="audio/timer_start.mp3"></audio>
+    <audio id="audio-tick" src="audio/30-seconds.mp3"></audio>
+    <audio id="audio-end" src="audio/bell.mp3"></audio>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script>
+        Reveal.initialize({
+            width: 960,
+            height: 700,
+            transition: 'convex',
+            hash: true,
+            autoPlayMedia: true,
+            plugins: [RevealNotes]
+        });
+
+        // TIMER LOGIC WITH AUDIO
+        document.querySelectorAll('.timer-widget').forEach(timer => {
+            timer.addEventListener('click', function () {
+                if (this.classList.contains('running')) return;
+
+                document.getElementById('audio-start').play().catch(e => console.log("Audio allow required"));
+
+                this.classList.add('running');
+                let minutes = parseInt(this.getAttribute('data-minutes'));
+                let totalSeconds = minutes * 60;
+                const display = this.querySelector('.display');
+
+                const interval = setInterval(() => {
+                    totalSeconds--;
+
+                    if (totalSeconds === 30) {
+                        document.getElementById('audio-tick').play().catch(e => console.log("Audio allow required"));
+                        this.style.color = "orange";
+                        this.style.borderColor = "orange";
+                    }
+
+                    if (totalSeconds < 0) {
+                        clearInterval(interval);
+                        display.textContent = "00:00";
+                        this.style.backgroundColor = "red";
+                        this.style.color = "white";
+                        document.getElementById('audio-end').play();
+                        return;
+                    }
+
+                    const m = Math.floor(totalSeconds / 60);
+                    const s = totalSeconds % 60;
+                    display.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+
+</html>

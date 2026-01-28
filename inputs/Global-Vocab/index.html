@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Global Explorer</title>
+
+    <!-- Projector-Standard Reset -->
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+    <!-- Projector-Standard Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Courier+Prime:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Shared JS Components (Optional, but index has core logic now) -->
+    <!-- <script src="js/slide-components.js"></script> -->
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="css/themes/indonesia.css">
+
+    <!-- Flag Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
+
+    <style>
+        :root {
+            --gold: #FFD700;
+            --maroon: #A72B26;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #050811;
+            color: #f8fafc;
+        }
+
+        .reveal {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-family: 'Outfit', sans-serif;
+            text-transform: none !important;
+            margin: 0;
+        }
+
+        /* Web Component Styles */
+        .timer-pill {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid var(--gold);
+            padding: 12px 30px;
+            border-radius: 60px;
+            margin-top: 40px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .timer-display {
+            font-family: 'Courier Prime', monospace;
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--gold);
+            min-width: 140px;
+            letter-spacing: 2px;
+        }
+
+        .start-btn {
+            background: var(--gold);
+            color: black;
+            border: none;
+            padding: 10px 25px;
+            font-weight: 900;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 20px;
+            transition: transform 0.1s;
+        }
+
+        .start-btn:active {
+            transform: scale(0.95);
+        }
+
+        .start-btn.pause {
+            background: #f43f5e;
+            color: white;
+        }
+
+        .glass-box {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Flag Icon Scaling */
+        .fi {
+            width: 1.5em;
+            line-height: 1em;
+            vertical-align: middle;
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-left: 10px;
+        }
+
+        /* Reveal Override for centering and scale */
+        .reveal .slides>section {
+            text-align: center;
+            padding: 0;
+        }
+
+        /* Fragmet Styling */
+        .reveal .slides section .fragment {
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .reveal .slides section .fragment.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- SLIDE: TITLE -->
+<section data-transition="fade">
+    <aside class="notes">Welcome the class to their 'Global Explorer' mission.</aside>
+
+    <div class="slide-canvas">
+        <div class="test-title-slide"
+            style="display: flex; height: 100%; align-items: center; justify-content: center; gap: 40px;">
+            <!-- Left: Branding & Text -->
+            <div style="flex: 0 0 60%; text-align: left; padding: 20px;">
+                <div
+                    style="background: #A72B26; color: white; display: inline-block; padding: 8px 18px; font-weight: 800; margin-bottom: 25px; transform: skew(-10deg); letter-spacing: 2px;">
+                    B1 VOCABULARY
+                </div>
+                <h1 style="margin: 0; line-height: 1.0; color: white; text-shadow: 4px 4px 0px #A72B26; font-weight: 900; width: 100%;">
+                    GLOBAL EXPLORER
+                </h1>
+                
+                <h3 style="color: #94A3B8; font-style: italic; margin-top: 20px; font-weight: 400; line-height: 1.2;">
+                    Discovering Countries, People & Languages
+                </h3>
+                
+            </div>
+
+            <!-- Right: Themed Imagery -->
+            <div style="flex: 0 0 35%; display: flex; justify-content: center; align-items: center;">
+                <img src="images/title.jpg" class="inset-media"
+                    style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.6); transform: rotate(2deg); border: 5px solid #FFD700;">
+                
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: SEGUE (Chapter Transition) -->
+<section data-transition="zoom" data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)"
+    data-auto-animate>
+    <aside class="notes">Begin the mission with a global geography challenge.</aside>
+
+    <div class="slide-canvas">
+        <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <h3 data-id="phase-label"
+                style="color: #FFD700; letter-spacing: 12px; font-weight: 300; margin-bottom: 20px;">
+                PHASE 1
+            </h3>
+            <h1 data-id="segue-title"
+                style="text-transform: uppercase; text-shadow: 0 0 40px rgba(255,215,0,0.4); transform: skew(-5deg) rotate(-2deg); font-weight: 900;">
+                MISSION START
+            </h1>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: VIDEO -->
+<section data-background-gradient="var(--grad-main)">
+    <div class="slide-canvas">
+        <h2 style="margin-bottom: 40px;">WORLD GEOGRAPHY QUIZ</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%;">
+            <!-- VIDEO (Full container fill) -->
+            <div style="height: 400px; position: relative; z-index: 10;">
+                <iframe src="https://www.youtube.com/embed/xbGQeHCXQcs?start=464&end=704&enablejsapi=1" style="width: 100%; height: 100%;" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen"></iframe>
+            </div>
+
+            <!-- QUESTIONS -->
+            <div class="glass-box" style="align-self: center; text-align: left;">
+                <h3 style="color:var(--primary); margin-bottom:20px;">Observe & Discuss:</h3>
+                <ul style="line-height: 1.5;">
+                    
+                    <li>identify the countries shown.</li>
+                    
+                    <li>Can you name the capitals?</li>
+                    
+                    <li>Spot the flags!</li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <aside class="notes">
+        Video clipped at 7:44-11:44. Pause to elicit/drill pronunciation of tricky names.
+    </aside>
+</section>
+            
+            <!-- SLIDE: SEGUE (Chapter Transition) -->
+<section data-transition="zoom" data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)"
+    data-auto-animate>
+    <aside class="notes">Transitioning to regional mapping and continents.</aside>
+
+    <div class="slide-canvas">
+        <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <h3 data-id="phase-label"
+                style="color: #FFD700; letter-spacing: 12px; font-weight: 300; margin-bottom: 20px;">
+                PHASE 2
+            </h3>
+            <h1 data-id="segue-title"
+                style="text-transform: uppercase; text-shadow: 0 0 40px rgba(255,215,0,0.4); transform: skew(-5deg) rotate(-2deg); font-weight: 900;">
+                PARTS OF THE WORLD
+            </h1>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: STRATEGY (Instructional focus) -->
+<section data-transition="convex">
+    <aside class="notes">Strategic focus: Moving from general world knowledge to specific terminology.</aside>
+
+    <div class="slide-canvas">
+        <div class="glass-box"
+            style="max-width: 1050px; margin: 0 auto; border-left: 15px solid #FFD700; background: rgba(15, 23, 42, 0.95); padding: 50px; border-radius: 0 20px 20px 0; text-align: left;">
+            <h2 style="color: #FFD700; margin-bottom: 30px;">Strategy: REGIONAL EXPERT</h2>
+            <div
+                style="line-height: 1.6; border-top: 1px solid rgba(255,215,0,0.2); padding-top: 30px; color: #e2e8f0;">
+                <ul><li>🌍 <b>Schema</b>: Activate what you know.</li><li>📖 <b>Reference</b>: Use the worksheet maps.</li><li>🔍 <b>Detail</b>: Distinguish between 'Far East' and 'Middle East'.</li></ul>
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: SPLIT TASK -->
+<section data-transition="convex" data-auto-animate>
+    <aside class="notes">Monitor for spelling of nationalities and languages. Time: 15 mins total.</aside>
+
+    <div class="slide-canvas">
+        
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 60px; width: 100%; max-width: 1200px; margin: 0 auto; flex-direction: row; flex-wrap: nowrap;">
+            <!-- Left: Context Image -->
+            <div class="col-40" style="flex: 0 0 40%; max-width: 40%;">
+                <img src="images/mapping.jpg" class="inset-media" data-id="task-image"
+                    style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
+                
+            </div>
+            <!-- Right: Task Card -->
+            <div class="col-60" style="flex: 1; text-align: left;">
+                <div class="glass-box" data-id="task-card"
+                    style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+                    <div data-id="task-badge"
+                        style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-bottom: 25px; transform: skew(-5deg); font-size: 0.8em; letter-spacing: 2px;">
+                        TASKS 1 & 2
+                    </div>
+                    <h2 style="color: #FFD700; margin-bottom: 25px; line-height: 1.1; font-size: 60px;">QUICK QUIZ & MAPPING</h2>
+                    <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 30px;">
+                    <div class="task-content" style="line-height: 1.4; color: #f8fafc; font-size: 32px;">
+                        <ul><li>Complete <b>Task 1</b> (Quick Quiz)</li><li>Complete <b>Task 2</b> (Regional Mapping)</li><li>Check your answers with a partner!</li></ul>
+                    </div>
+                    
+                    <timer-pill duration="15"></timer-pill>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+            
+            <!-- SLIDE: ANSWER LIST (Sequential Reveal) -->
+<section class="layout-wide layout-split-40-60" data-background-color="var(--bg-dark)" data-auto-animate>
+    <aside class="notes">Elicit answers from the class before revealing each one.</aside>
+
+    <div class="slide-canvas">
+        <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+            <h2 data-id="title" style="margin: 0; color: var(--primary);">QUICK QUIZ ANSWERS</h2>
+            <div data-id="task-badge"
+                style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-top: 20px; transform: skew(-5deg); letter-spacing: 2px;">
+                CHECK YOUR WORK</div>
+        </div>
+
+        <div class="glass-box" data-id="task-card"
+            style="display: flex; flex-direction: column; justify-content: center; height: fit-content; align-self: center; border-color: var(--primary); background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+            <div style="font-weight: 800; color: var(--text-accent); margin-bottom: 25px; text-align: left;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        1. Polish <span class='fi fi-pl'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        2. Thai <span class='fi fi-th'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        3. Spanish <span class='fi fi-es'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        4. Israel <span class='fi fi-il'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        5. China <span class='fi fi-cn'></span> / Taiwan <span class='fi fi-tw'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        6. Portuguese <span class='fi fi-pt'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        7. Arabic <span class='fi fi-eg'></span> <span class='fi fi-sa'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        8. German <span class='fi fi-de'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        9. UK <span class='fi fi-gb'></span> / USA <span class='fi fi-us'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        10. Switzerland <span class='fi fi-ch'></span>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: ANSWER LIST (Sequential Reveal) -->
+<section class="layout-wide layout-split-40-60" data-background-color="var(--bg-dark)" data-auto-animate>
+    <aside class="notes">Verify geographic understanding.</aside>
+
+    <div class="slide-canvas">
+        <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+            <h2 data-id="title" style="margin: 0; color: var(--primary);">MAPPING ANSWERS</h2>
+            <div data-id="task-badge"
+                style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-top: 20px; transform: skew(-5deg); letter-spacing: 2px;">
+                CHECK YOUR WORK</div>
+        </div>
+
+        <div class="glass-box" data-id="task-card"
+            style="display: flex; flex-direction: column; justify-content: center; height: fit-content; align-self: center; border-color: var(--primary); background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+            <div style="font-weight: 800; color: var(--text-accent); margin-bottom: 25px; text-align: left;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        1. Germany <span class='fi fi-de'></span>: Europe
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        2. Japan <span class='fi fi-jp'></span>: Far East
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        3. Saudi Arabia <span class='fi fi-sa'></span>: Mid East
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        4. Italy <span class='fi fi-it'></span>: Europe
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        5. Jamaica <span class='fi fi-jm'></span>: Caribbean
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        6. Argentina <span class='fi fi-ar'></span>: South Am.
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: SEGUE (Chapter Transition) -->
+<section data-transition="zoom" data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)"
+    data-auto-animate>
+    <aside class="notes">Focusing on pronunciation and grammar rules.</aside>
+
+    <div class="slide-canvas">
+        <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <h3 data-id="phase-label"
+                style="color: #FFD700; letter-spacing: 12px; font-weight: 300; margin-bottom: 20px;">
+                PHASE 3
+            </h3>
+            <h1 data-id="segue-title"
+                style="text-transform: uppercase; text-shadow: 0 0 40px rgba(255,215,0,0.4); transform: skew(-5deg) rotate(-2deg); font-weight: 900;">
+                STRESS & PEOPLE
+            </h1>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: VOCABULARY -->
+<section data-transition="convex">
+    <aside class="notes">Use this to drill the -ian suffix and the plural 's'.</aside>
+
+    <div class="slide-canvas">
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 50px; width: 1200px; margin: 0 auto;">
+            <!-- Left: Word Card -->
+            <div class="col-50" style="flex: 0 0 45%;">
+                <img src="images/people.jpg" class="inset-media"
+                    style="width: 100%; height: auto; border: 6px solid #A72B26; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                
+            </div>
+            <!-- Right: Definition Card -->
+            <div class="col-50" style="flex: 0 0 50%; text-align: left;">
+                <div
+                    style="background: #A72B26; color: white; display: inline-block; padding: 4px 12px; font-weight: 800; margin-bottom: 15px; letter-spacing: 2px;">
+                    VOCABULARY</div>
+                <h1 style="color: #FFD700; margin: 0; line-height: 0.9; font-weight: 900;">BRAZILIAN</h1>
+
+                <div class="phoneme"
+                    style="color: #94A3B8; font-family: 'Courier Prime', monospace; margin: 15px 0 30px 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                    /brəˈzɪl.i.ən/
+                    
+                    <span class="thai-text"
+                        style="color: #f87171; font-family: sans-serif; font-style: italic; margin-left: 20px;">ชาวบราซิล</span>
+                    
+                </div>
+
+                <div
+                    style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 10px; border-left: 6px solid #FFD700; box-shadow: inset 0 0 20px rgba(0,0,0,0.2);">
+                    <p style="font-weight: 600; margin: 0; color: white; line-height: 1.3;">A person from Brazil <span class='fi fi-br'></span>.</p>
+                    
+                    <p style="font-style: italic; color: #94A3B8; margin-top: 20px;">"Brazilians are famous for their love of football."
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: SPLIT TASK -->
+<section data-transition="convex" data-auto-animate>
+    <aside class="notes">Drill pronunciation chorally. Focus on the grammar of 'The' vs 's'.</aside>
+
+    <div class="slide-canvas">
+        
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 60px; width: 100%; max-width: 1200px; margin: 0 auto; flex-direction: row; flex-wrap: nowrap;">
+            <!-- Left: Context Image -->
+            <div class="col-40" style="flex: 0 0 40%; max-width: 40%;">
+                <img src="images/people.jpg" class="inset-media" data-id="task-image"
+                    style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
+                
+            </div>
+            <!-- Right: Task Card -->
+            <div class="col-60" style="flex: 1; text-align: left;">
+                <div class="glass-box" data-id="task-card"
+                    style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+                    <div data-id="task-badge"
+                        style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-bottom: 25px; transform: skew(-5deg); font-size: 0.8em; letter-spacing: 2px;">
+                        TASKS 3 & 5
+                    </div>
+                    <h2 style="color: #FFD700; margin-bottom: 25px; line-height: 1.1; font-size: 60px;">STRESS & NATIONALS</h2>
+                    <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 30px;">
+                    <div class="task-content" style="line-height: 1.4; color: #f8fafc; font-size: 32px;">
+                        <ul><li><b>Task 3</b>: Underline the main stress.</li><li><b>Task 5</b>: Complete with the collective name.</li><li>Remember the rule: <b>'The French'</b> vs <b>'Brazilians'</b></li></ul>
+                    </div>
+                    
+                    <timer-pill duration="13"></timer-pill>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+            
+            <!-- SLIDE: ANSWER LIST (Sequential Reveal) -->
+<section class="layout-wide layout-split-40-60" data-background-color="var(--bg-dark)" data-auto-animate>
+    <aside class="notes">Fast-fire capital recall.</aside>
+
+    <div class="slide-canvas">
+        <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+            <h2 data-id="title" style="margin: 0; color: var(--primary);">CAPITAL CITIES</h2>
+            <div data-id="task-badge"
+                style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-top: 20px; transform: skew(-5deg); letter-spacing: 2px;">
+                CHECK YOUR WORK</div>
+        </div>
+
+        <div class="glass-box" data-id="task-card"
+            style="display: flex; flex-direction: column; justify-content: center; height: fit-content; align-self: center; border-color: var(--primary); background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+            <div style="font-weight: 800; color: var(--text-accent); margin-bottom: 25px; text-align: left;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        1. Bangkok <span class='fi fi-th'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        2. Ankara <span class='fi fi-tr'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        3. Seoul <span class='fi fi-kr'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        4. Moscow <span class='fi fi-ru'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        5. Buenos Aires <span class='fi fi-ar'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        6. Athens <span class='fi fi-gr'></span>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: ANSWER LIST (Sequential Reveal) -->
+<section class="layout-wide layout-split-40-60" data-background-color="var(--bg-dark)" data-auto-animate>
+    <aside class="notes">Highlight 'The' + Adjective vs Suffix + 's'.</aside>
+
+    <div class="slide-canvas">
+        <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+            <h2 data-id="title" style="margin: 0; color: var(--primary);">SYSTEMS ANSWERS</h2>
+            <div data-id="task-badge"
+                style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-top: 20px; transform: skew(-5deg); letter-spacing: 2px;">
+                CHECK YOUR WORK</div>
+        </div>
+
+        <div class="glass-box" data-id="task-card"
+            style="display: flex; flex-direction: column; justify-content: center; height: fit-content; align-self: center; border-color: var(--primary); background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+            <div style="font-weight: 800; color: var(--text-accent); margin-bottom: 25px; text-align: left;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        1. the French <span class='fi fi-fr'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        2. Germans <span class='fi fi-de'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        3. the Japanese <span class='fi fi-jp'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        4. Israelis <span class='fi fi-il'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        5. Brazilians <span class='fi fi-br'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        6. the British <span class='fi fi-gb'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        7. The Swiss <span class='fi fi-ch'></span>
+                    </div>
+                    
+                    <div class="fragment" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 10px 0;">
+                        8. Russians <span class='fi fi-ru'></span>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: SEGUE (Chapter Transition) -->
+<section data-transition="zoom" data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)"
+    data-auto-animate>
+    <aside class="notes">Mingle activity time.</aside>
+
+    <div class="slide-canvas">
+        <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <h3 data-id="phase-label"
+                style="color: #FFD700; letter-spacing: 12px; font-weight: 300; margin-bottom: 20px;">
+                PHASE 4
+            </h3>
+            <h1 data-id="segue-title"
+                style="text-transform: uppercase; text-shadow: 0 0 40px rgba(255,215,0,0.4); transform: skew(-5deg) rotate(-2deg); font-weight: 900;">
+                PASSPORT CONTROL
+            </h1>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: SPLIT TASK -->
+<section data-transition="convex" data-auto-animate>
+    <aside class="notes">High energy mingle. Monitor for use of 'I am [Nationality]' and 'I speak [Language]'.</aside>
+
+    <div class="slide-canvas">
+        
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 60px; width: 100%; max-width: 1200px; margin: 0 auto; flex-direction: row; flex-wrap: nowrap;">
+            <!-- Left: Context Image -->
+            <div class="col-40" style="flex: 0 0 40%; max-width: 40%;">
+                <img src="images/journal.jpg" class="inset-media" data-id="task-image"
+                    style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
+                
+            </div>
+            <!-- Right: Task Card -->
+            <div class="col-60" style="flex: 1; text-align: left;">
+                <div class="glass-box" data-id="task-card"
+                    style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+                    <div data-id="task-badge"
+                        style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-bottom: 25px; transform: skew(-5deg); font-size: 0.8em; letter-spacing: 2px;">
+                        OVER TO YOU
+                    </div>
+                    <h2 style="color: #FFD700; margin-bottom: 25px; line-height: 1.1; font-size: 60px;">EXPLORER INTERVIEW</h2>
+                    <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 30px;">
+                    <div class="task-content" style="line-height: 1.4; color: #f8fafc; font-size: 32px;">
+                        <ul><li>Interview 3 partners!</li><li>Notes down their <b>Nationality</b>, <b>Languages</b>, and <b>Travel Dreams</b>.</li><li>Be a strict Passport Officer! 🛂</li></ul>
+                    </div>
+                    
+                    <timer-pill duration="10"></timer-pill>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+            
+            <!-- SLIDE: SEGUE (Chapter Transition) -->
+<section data-transition="zoom" data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)"
+    data-auto-animate>
+    <aside class="notes">Final critical thinking discussion.</aside>
+
+    <div class="slide-canvas">
+        <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <h3 data-id="phase-label"
+                style="color: #FFD700; letter-spacing: 12px; font-weight: 300; margin-bottom: 20px;">
+                DEBATE
+            </h3>
+            <h1 data-id="segue-title"
+                style="text-transform: uppercase; text-shadow: 0 0 40px rgba(255,215,0,0.4); transform: skew(-5deg) rotate(-2deg); font-weight: 900;">
+                GLOBAL LANGUAGE?
+            </h1>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: STRATEGY (Instructional focus) -->
+<section data-transition="convex">
+    <aside class="notes">Discussion: Is a single universal language a good thing?</aside>
+
+    <div class="slide-canvas">
+        <div class="glass-box"
+            style="max-width: 1050px; margin: 0 auto; border-left: 15px solid #FFD700; background: rgba(15, 23, 42, 0.95); padding: 50px; border-radius: 0 20px 20px 0; text-align: left;">
+            <h2 style="color: #FFD700; margin-bottom: 30px;">Strategy: CRITICAL THINKING</h2>
+            <div
+                style="line-height: 1.6; border-top: 1px solid rgba(255,215,0,0.2); padding-top: 30px; color: #e2e8f0;">
+                <ul><li>🤔 <b>Perspective</b>: Consider pros and cons.</li><li>🗣️ <b>Dialogue</b>: Listen to your partner's view.</li><li>✍️ <b>Record</b>: Write your conclusion.</li></ul>
+            </div>
+        </div>
+    </div>
+</section>
+            
+        </div>
+    </div>
+
+    <!-- SCRIPTS (Local Core) -->
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+
+    <script>
+        // Audio FX Logic
+        const AudioFX = {
+            blip: new Audio('audio/blip.mp3'),
+            bell: new Audio('audio/bell.mp3'),
+            warning: new Audio('audio/30-seconds.mp3'),
+            init() {
+                this.blip.load(); this.bell.load(); this.warning.load();
+            }
+        };
+        document.addEventListener('click', () => AudioFX.init(), { once: true });
+
+        // Timer Component
+        class TimerPill extends HTMLElement {
+            connectedCallback() {
+                this.duration = parseInt(this.getAttribute('duration')) || 5;
+                this.timeLeft = this.duration * 60;
+                this.timer = null;
+                this.render();
+            }
+            render() {
+                this.innerHTML = `
+                    <div class="timer-pill">
+                        <div class="timer-display">${this.formatTime(this.timeLeft)}</div>
+                        <button class="start-btn">START</button>
+                    </div>
+                `;
+                this.querySelector('.start-btn').onclick = (e) => {
+                    e.stopPropagation();
+                    this.toggle();
+                };
+            }
+            formatTime(s) {
+                const m = Math.floor(s / 60).toString().padStart(2, '0');
+                const sec = (s % 60).toString().padStart(2, '0');
+                return m + ":" + sec;
+            }
+            toggle() {
+                const btn = this.querySelector('.start-btn');
+                // Ensure audio is initialized/unlocked on first interaction
+                AudioFX.init();
+
+                if (this.timer) {
+                    clearInterval(this.timer);
+                    this.timer = null;
+                    btn.textContent = 'START';
+                    btn.classList.remove('pause');
+                } else {
+                    btn.textContent = 'PAUSE';
+                    btn.classList.add('pause');
+
+                    // Optional: Play a short blip to confirm audio works on start
+                    AudioFX.blip.play().catch(e => console.warn("Audio Context blocked:", e));
+
+                    this.timer = setInterval(() => {
+                        if (this.timeLeft > 0) {
+                            this.timeLeft--;
+                            this.querySelector('.timer-display').textContent = this.formatTime(this.timeLeft);
+
+                            // 30 Seconds Warning
+                            if (this.timeLeft === 30) {
+                                AudioFX.warning.currentTime = 0;
+                                AudioFX.warning.play().catch(e => console.error(e));
+                            }
+
+                            // Countdown blips (10 to 1)
+                            if (this.timeLeft <= 10 && this.timeLeft > 0) {
+                                AudioFX.blip.currentTime = 0;
+                                AudioFX.blip.play().catch(() => { });
+                            }
+                        } else {
+                            // Timer End
+                            clearInterval(this.timer);
+                            this.timer = null;
+                            AudioFX.bell.play().catch(e => console.error(e));
+                            btn.textContent = 'DONE';
+                            btn.disabled = true;
+                        }
+                    }, 1000);
+                }
+            }
+        }
+        customElements.define('timer-pill', TimerPill);
+
+        Reveal.initialize({
+            width: 1280, height: 720, margin: 0.05,
+            transition: 'convex',
+            center: true, hash: true,
+            autoAnimateDuration: 1.2,
+            autoAnimateEasing: 'ease-in-out',
+            embeddedIframesFullscreen: true,
+            plugins: [RevealNotes, RevealMarkdown, RevealHighlight]
+        });
+    </script>
+</body>
+
+</html>

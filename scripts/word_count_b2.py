@@ -1,0 +1,24 @@
+
+import re
+
+def count_words(text):
+    text = re.sub(r'#+\s+', '', text)
+    text = re.sub(r'\*\*', '', text)
+    words = text.split()
+    return len(words)
+
+content = """
+Extending over a staggering million square meters and housing more than 1,200 individual retail outlets, the Dubai Mall is truly gargantuan even by ambitious global standards. Every week, approximately 750,000 visitors flock to this architectural marvel, finding nearly every conceivable product to satisfy their increasingly diverse requirements. Consequently, these colossal mega-malls serve as the quintessential hub for Generation Y—the most formidable, discerning, and fiscally active demographic of consumers the global market has ever witnessed in its history.
+
+The term "Generation Y" typically classifies a broad group of individuals born between the late 1970s and the mid-1990s. Their formative years and transition into adulthood have coincided with profound financial shifts in the way we perceive and spend our money. Furthermore, members of this particular demographic are increasingly exhibiting sophisticated and globalized financial behaviors that transcend national borders and cultural boundaries, potentially reshaping the global economic landscape for decades to come.
+
+In stark contrast to their parents' generation, who frequently enjoyed personal relationships with independent local shopkeepers while growing up, Generation Y individuals are far more inclined to patronize massive multinational corporations such as Walmart. This retail titan shows no indication of slowing its aggressive expansion; it grew from 8,500 locations in 15 countries in 2011 to a staggering 11,500 outlets across 28 nations by 2015. That same year, Walmart's annual revenue reached nearly 500 billion U.S. dollars—a figure that actually exceeds the Gross Domestic Product (GDP) of 165 different countries combined.
+
+While Generation Y consumers enjoy an unprecedented array of choices at monolithic shopping centers, their options are even more extensive in the digital realm. Over the course of a mere decade, online retail has undergone exponential and disruptive growth. In the United Kingdom, for instance, consumer e-commerce spending rose from £800 million in 2000 to a remarkable £114 billion by 2015. Amazon, currently the most dominant global online retailer, manages such an immense inventory that its products must be housed in colossal distribution centers, some of which are comparable in physical scale to ten professional soccer pitches.
+
+Generation Y represents the primary focus for modern corporations due to their significant purchasing power and distinct attitudes toward consumption. Within the United States, this demographic possesses an estimated $170 billion in disposable income, with 31% earning enough to sustain their desired lifestyles and personal goals. Nevertheless, they are frequently cited by experts as the most challenging group to target effectively. A significant proportion of Generation Y asserts that they are largely indifferent to traditional advertising. Instead, one in three relies heavily on blogs and independent reviews to inform their purchasing decisions. Although they resist overt influence and remain skeptical of marketing slogans, they paradoxically expect brands to engage with them transparently and personally via social media platforms.
+
+As Generation Y consumers continue to mature and their individual wealth increases, it becomes progressively vital for corporations to develop a deep and nuanced understanding of their preferences. If a company can successfully leverage modern technology to customize its products and services, it stands to secure the long-term loyalty of some of the most affluent, demanding, and technologically literate customers in human history.
+"""
+
+print(f"B2 word count: {count_words(content)}")

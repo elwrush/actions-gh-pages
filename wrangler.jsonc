@@ -1,7 +1,5 @@
 {
-    "name": "lesson-plan-agent",
+    "name": "lesson-slideshows",
     "compatibility_date": "2026-01-17",
-    "assets": {
-        "directory": "./dist"
-    }
+    "pages_build_output_dir": "dist"
 }

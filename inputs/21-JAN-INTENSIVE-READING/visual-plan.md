@@ -1,5 +1,8 @@
-
 # Visual Plan: The Food of Indonesia (B1 Intensive Reading)
+
+> **Deployment Link (Google Drive)**: [21-Jan-Slideshow-Link.txt](https://drive.google.com/file/d/1jW-NYvWTBRDrxg060EL_rCO1y1hSW8c7/view?usp=drivesdk)
+> **Live Presentation**: [https://lesson-slideshows.pages.dev/inputs/21-JAN-INTENSIVE-READING/](https://lesson-slideshows.pages.dev/inputs/21-JAN-INTENSIVE-READING/)
+
 
 ## Meta Information
 - **Audience**: High School (Expert/Academic tone)

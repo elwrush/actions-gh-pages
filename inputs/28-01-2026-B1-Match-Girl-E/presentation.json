@@ -1,0 +1,333 @@
+{
+    "meta": {
+        "title": "THE LITTLE MATCH GIRL",
+        "subtitle": "A Vision of Hope in the Cold",
+        "theme": "noir",
+        "mode": "bell",
+        "palette": "noir"
+    },
+    "slides": [
+        {
+            "layout": "title",
+            "badge": "B1 READING SKILLS",
+            "title": "THE LITTLE MATCH GIRL",
+            "image": "images/cover.jpg"
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 1",
+            "title": "SETTING THE SCENE"
+        },
+        {
+            "layout": "video",
+            "title": "MODERN REALITY",
+            "badge": "LEAD-IN",
+            "video_url": "https://www.youtube.com/embed/Fg6XlSPV6ek?start=0&end=48",
+            "content": "<ul><li><strong>Observe:</strong> What are the living conditions like?</li><li><strong>Identify:</strong> What is the main 'Complication' for these people?</li><li><strong>Connect:</strong> How would YOU feel in this situation?</li></ul>",
+            "notes": "Show the first 48 seconds. Elicit immediate reactions. Connect to the concept of 'Complication'."
+        },
+        {
+            "layout": "impact",
+            "title": "Today's Mission",
+            "background_video": "images/mission_bg_clipped.mp4",
+            "main_text": "We are upgrading your reading skills.",
+            "points": [
+                {
+                    "icon": "🔎",
+                    "text": "Scan for Details"
+                },
+                {
+                    "icon": "⚖️",
+                    "text": "Find the Proof"
+                },
+                {
+                    "icon": "🧠",
+                    "text": "Infer Meaning"
+                }
+            ],
+            "notes": "Student-centered objective. Set the stage for success. Emphasize that 'Proof' is the key today."
+        },
+        {
+            "layout": "split_task",
+            "title": "THE STORY SYMBOLS",
+            "badge": "PREDICTION",
+            "timer": 3,
+            "image": "images/symbols.jpg",
+            "content": "<p>In pairs, guess how these three items are related in a story set 180 years ago:</p><ol><li>A Matchbox</li><li>A Roast Goose</li><li>A Falling Star</li></ol>",
+            "notes": "Encourage creative guesses. Write predictions on the board to check later."
+        },
+        {
+            "layout": "split_task",
+            "title": "VICTORIAN DENMARK",
+            "badge": "CONTEXT",
+            "image": "images/victorian_context.jpg",
+            "content": "<p><strong>Situation:</strong> New Year's Eve, 1845.</p><p>Is the problem in the modern video similar or different to life 180 years ago?</p>",
+            "notes": "Establish the historical setting. Elicit that while technology changes, the human experience of cold and poverty remains similar."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 2",
+            "title": "USEFUL LANGUAGE"
+        },
+        {
+            "layout": "strategy",
+            "title": "VOCAB STRATEGY",
+            "badge": "TIPS",
+            "content": "🗣️ <strong>Guessing from Context</strong><br><p>Don't reach for a dictionary! Look at the words around the target word to find clues about its meaning.</p>",
+            "notes": "Internalize the strategy before seeing the words."
+        },
+        {
+            "layout": "vocab",
+            "word": "BAREFOOT",
+            "phoneme": "/ˈbeə.fʊt/",
+            "thai": "เท้าเปล่า",
+            "context_sentence": "He forgot his shoes at the beach, so he had to walk <span style='color: var(--accent);'>barefoot</span> on the hot sand.",
+            "image": "images/barefoot.jpg"
+        },
+        {
+            "layout": "vocab",
+            "word": "SHIVERING",
+            "phoneme": "/ˈʃɪv.ər.ɪŋ/",
+            "thai": "ตัวสั่น",
+            "context_sentence": "The boy was <span style='color: var(--accent);'>shivering</span> because he was standing in the cold rain without a coat.",
+            "image": "images/shivering.jpg"
+        },
+        {
+            "layout": "vocab",
+            "word": "VANISHED",
+            "phoneme": "/ˈvæn.ɪʃt/",
+            "thai": "อันตรธาน",
+            "context_sentence": "The magician waved his hand and the rabbit <span style='color: var(--accent);'>vanished</span>; it was completely gone!",
+            "image": "images/vanished.jpg"
+        },
+        {
+            "layout": "vocab",
+            "word": "MAGNIFICENT",
+            "phoneme": "/mæɡˈnɪf.ɪ.sənt/",
+            "thai": "งดงามตระการตา",
+            "context_sentence": "The king lived in a <span style='color: var(--accent);'>magnificent</span> palace with golden walls and hundreds of rooms.",
+            "image": "images/magnificent.jpg"
+        },
+        {
+            "layout": "vocab",
+            "word": "SOUL",
+            "phoneme": "/səʊl/",
+            "thai": "วิญญาณ",
+            "context_sentence": "Many people believe that when the body dies, the <span style='color: var(--accent);'>soul</span> continues to live forever.",
+            "image": "images/soul.jpg"
+        },
+        {
+            "layout": "matching",
+            "title": "VOCAB REVIEW",
+            "badge": "CHECK",
+            "data-id": "vocab-match",
+            "pairs": [
+                {
+                    "id": 1,
+                    "word": "Barefoot"
+                },
+                {
+                    "id": 2,
+                    "word": "Shivering"
+                },
+                {
+                    "id": 3,
+                    "word": "Vanished"
+                },
+                {
+                    "id": 4,
+                    "word": "Magnificent"
+                },
+                {
+                    "id": 5,
+                    "word": "Soul"
+                }
+            ],
+            "shuffled": [
+                {
+                    "id": 4,
+                    "key": "A",
+                    "def": "Grand / Royal",
+                    "word": "Magnificent"
+                },
+                {
+                    "id": 1,
+                    "key": "B",
+                    "def": "No shoes",
+                    "word": "Barefoot"
+                },
+                {
+                    "id": 3,
+                    "key": "C",
+                    "def": "Disappeared",
+                    "word": "Vanished"
+                },
+                {
+                    "id": 5,
+                    "key": "D",
+                    "def": "Spiritual part",
+                    "word": "Soul"
+                },
+                {
+                    "id": 2,
+                    "key": "E",
+                    "def": "Shaking from cold",
+                    "word": "Shivering"
+                }
+            ],
+            "notes": "Ss match the words on the left to definitions on the right."
+        },
+        {
+            "layout": "matching",
+            "title": "VOCAB REVIEW",
+            "badge": "ANSWERS",
+            "is_answer": true,
+            "data-id": "vocab-match",
+            "pairs": [
+                {
+                    "id": 1,
+                    "word": "Barefoot",
+                    "key": "B",
+                    "def": "No shoes"
+                },
+                {
+                    "id": 2,
+                    "word": "Shivering",
+                    "key": "E",
+                    "def": "Shaking from cold"
+                },
+                {
+                    "id": 3,
+                    "word": "Vanished",
+                    "key": "C",
+                    "def": "Disappeared"
+                },
+                {
+                    "id": 4,
+                    "word": "Magnificent",
+                    "key": "A",
+                    "def": "Grand / Royal"
+                },
+                {
+                    "id": 5,
+                    "word": "Soul",
+                    "key": "D",
+                    "def": "Spiritual part"
+                }
+            ],
+            "notes": "Verify the correct matches. Auto-animate should swoop the definitions into place."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 3",
+            "title": "READING MISSION"
+        },
+        {
+            "layout": "strategy",
+            "title": "MISSION STRATEGY",
+            "badge": "TIPS",
+            "content": "🔍 <strong>The Proof Strategy</strong><br><ul><li><strong>Scan</strong> first to find the paragraph.</li><li><strong>Underline</strong> the specific sentence that gives the answer.</li><li><strong>Explain</strong> WHY you chose it.</li></ul>",
+            "notes": "This is a skills-based lesson (Shape E). The focus is on the process of finding evidence."
+        },
+        {
+            "layout": "split_task",
+            "title": "TASK 1: GIST",
+            "badge": "SKIM",
+            "timer": 4,
+            "image": "images/cover.jpg",
+            "content": "<p><strong>Part 1 Context:</strong> Skim the B1 text quickly.</p><p>Choose the best title for the whole story. Why?</p>",
+            "notes": "Check gist before going deep."
+        },
+        {
+            "layout": "split_task",
+            "title": "TASK 2: THE DETAILS",
+            "badge": "MCQ MISSION",
+            "timer": 12,
+            "image": "images/victorian_context.jpg",
+            "content": "<p>Answer the 7 Multiple Choice questions on your worksheet.</p><p>⚠️ <strong>Requirement:</strong> You MUST underline the evidence in the text for every answer.</p>",
+            "notes": "T monitors and ensures evidence is being physically underlined on the paper."
+        },
+        {
+            "layout": "answer",
+            "title": "ANSWER Q1",
+            "badge": "EVIDENCE",
+            "answer": "<h3>Correct: <strong>B</strong></h3>",
+            "explanation": "<blockquote>'She was afraid to go home because her father would be angry...'</blockquote><p><strong>Why?</strong> The text explicitly states her fear of his anger.</p>",
+            "para": "Para 3",
+            "notes": "Refer to the anchor text in the JSON."
+        },
+        {
+            "layout": "answer",
+            "title": "ANSWER Q2",
+            "badge": "EVIDENCE",
+            "answer": "<h3>Correct: <strong>TRUE</strong></h3>",
+            "explanation": "<blockquote>'Her hands felt completely frozen.'</blockquote><p><strong>Why?</strong> Extreme cold leads to loss of feeling.</p>",
+            "para": "Para 3",
+            "notes": "Concept check: 'Almost frozen' = numbness."
+        },
+        {
+            "layout": "strategy",
+            "title": "KEYWORD FOCUS",
+            "badge": "LITERARY DEVICE",
+            "content": "👀 <strong>Similes & Visions</strong><br><ul><li>The text says: <em>'It <strong>seemed</strong> as if...'</em></li><li>This means it is NOT real.</li><li>She is hallucinating (imagining) it because of the cold.</li></ul>",
+            "notes": "Concept Check: Was the stove real? (No). How do we know?"
+        },
+        {
+            "layout": "answer",
+            "title": "ANSWER Q3",
+            "badge": "EVIDENCE",
+            "answer": "<h3>Correct: <strong>B</strong></h3>",
+            "explanation": "<blockquote>'It seemed to her as if she were sitting in front of a warm iron stove...'</blockquote><p><strong>Why?</strong> The stove represents warmth and security.</p>",
+            "para": "Para 3",
+            "notes": "Discuss symbolism: The stove is what she DESIRES."
+        },
+        {
+            "layout": "answer",
+            "title": "ANSWER Q4",
+            "badge": "EVIDENCE",
+            "answer": "<h3>Correct: <strong>B</strong></h3>",
+            "explanation": "<blockquote>'...a falling star meant a soul was going to heaven.'</blockquote><p><strong>Why?</strong> Her beliefs are based on her grandmother's teachings.</p>",
+            "para": "Para 5",
+            "notes": "Discuss the spiritual connection."
+        },
+        {
+            "layout": "answer",
+            "title": "ANSWER Q5",
+            "badge": "EVIDENCE",
+            "answer": "<h3>Correct: <strong>C</strong></h3>",
+            "explanation": "<blockquote>'She quickly lit the rest of her matches to keep the vision alive.'</blockquote><p><strong>Why?</strong> Desperation to prevent the grandmother from vanishing.</p>",
+            "para": "Para 6",
+            "notes": "Ask Ss: Would you do the same?"
+        },
+        {
+            "layout": "strategy",
+            "title": "CRITICAL THINKING",
+            "badge": "IRONY",
+            "content": "🤔 <strong>Appearance vs. Reality</strong><br><ul><li><strong>The Crowd Sees:</strong> A dead girl. Sadness.</li><li><strong>The Girl Sees:</strong> Her grandmother. Joy.</li><li>This contrast is called <strong>Dramatic Irony</strong>.</li></ul>",
+            "notes": "Explain that we know something the townspeople don't."
+        },
+        {
+            "layout": "answer",
+            "title": "ANSWER Q6",
+            "badge": "EVIDENCE",
+            "answer": "<h3>Correct: <strong>B</strong></h3>",
+            "explanation": "<blockquote>'No one knew the beautiful things she had seen...'</blockquote><p><strong>Why?</strong> Her external state (death) contrasts with her internal joy.</p>",
+            "para": "Para 7",
+            "notes": "Discuss the IRONY. The townspeople are sad, but she experienced 'magnificent splendors'."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 4",
+            "title": "REFLECTION"
+        },
+        {
+            "layout": "split_task",
+            "title": "THE BIG QUESTION",
+            "badge": "DISCUSSION",
+            "timer": 8,
+            "image": "images/victorian_context.jpg",
+            "content": "<p><strong>Should we help the poor? Or should they just take care of themselves?</strong></p><ul><li>Who is responsible for the little girl?</li><li>What could have been different?</li></ul>",
+            "notes": "Final personalization stage. Connect back to the modern video."
+        }
+    ]
+}

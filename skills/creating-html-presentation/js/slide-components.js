@@ -54,10 +54,10 @@ const COMPONENT_STYLES = `
         --text-primary: white;
         --text-accent: #FFD700;  /* Gold */
         
-        /* Layout Constants - Projector Standard */
-        --container-width: 1100px;
+        /* Layout Constants - Projector Standard (16:9 Optimized) */
+        --container-width: 1200px;
         --gap: 40px;
-        --box-padding: 35px;
+        --box-padding: 25px;
         --border-width: 2px;
         
         /* Functional Colors */
@@ -107,20 +107,25 @@ const COMPONENT_STYLES = `
     .row-container {
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap; /* CRITICAL: Do not wrap for title slides */
+        flex-wrap: nowrap;
         justify-content: center;
-        align-items: center;
-        gap: var(--gap);
+        align-items: center; /* Changed from stretch to center */
+        gap: 20px;
         width: var(--container-width);
         max-width: 100%;
+        margin: 0 auto;
     }
 
     /* Column System - Width optimized for large fonts */
+    .col-25 { flex: 0 0 25%; max-width: 25%; }
+    .col-30 { flex: 0 0 30%; max-width: 30%; }
     .col-35 { flex: 0 0 35%; max-width: 35%; }
     .col-40 { flex: 0 0 40%; max-width: 40%; }
     .col-50 { flex: 0 0 50%; max-width: 50%; }
     .col-60 { flex: 0 0 60%; max-width: 60%; }
     .col-65 { flex: 0 0 65%; max-width: 65%; }
+    .col-70 { flex: 0 0 70%; max-width: 70%; }
+    .col-75 { flex: 0 0 75%; max-width: 75%; }
 
     /* ============================================
        COMPONENTS (Gold Standard Patterns)
@@ -135,11 +140,75 @@ const COMPONENT_STYLES = `
         text-align: left;
     }
     
-    /* Centered box variant */
+    /* Centered box variant - Wider for 16:9 */
     .glass-box.centered {
-        width: 800px;
+        width: 1000px;
+        max-width: 95%;
         margin: 0 auto;
         text-align: center;
+    }
+
+    /* ============================================
+       HORIZONTAL LAYOUTS - USE FULL WIDTH (16:9)
+       ============================================ */
+    .layout-horizontal {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: stretch !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 40px !important;
+        box-sizing: border-box !important;
+    }
+
+    .layout-horizontal > * {
+        flex: 1;
+        min-width: 0; /* Prevent flex overflow */
+    }
+
+    /* SPLIT LAYOUTS */
+    .layout-split-40-60 {
+        display: grid !important;
+        grid-template-columns: 40% 60% !important;
+        gap: 60px;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 60px !important;
+        box-sizing: border-box !important;
+        align-items: center;
+    }
+
+    .layout-split-50-50 {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 60px;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 60px !important;
+        box-sizing: border-box !important;
+        align-items: center;
+    }
+
+    .layout-split-60-40 {
+        display: grid !important;
+        grid-template-columns: 60% 40% !important;
+        gap: 60px;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 60px !important;
+        box-sizing: border-box !important;
+        align-items: center;
+    }
+
+    /* OVERRIDE CENTERING FOR THESE LAYOUTS */
+    section.layout-horizontal,
+    section.layout-split-40-60,
+    section.layout-split-50-50,
+    section.layout-split-60-40 {
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+        flex-direction: row !important; /* Safety */
     }
 
     /* Stage Badge - Skewed cyber pill */
@@ -196,7 +265,6 @@ const COMPONENT_STYLES = `
         max-height: 400px;
         max-width: 100%;
         border: 3px solid var(--primary);
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     }
 
     /* 16:9 Video Container */
@@ -397,14 +465,17 @@ class SlideTask extends HTMLElement {
         const duration = this.getAttribute('timer');
         const content = this.innerHTML;
 
+        // Force a 40/60 Horizontal Split for 16:9 utilization
         this.innerHTML = `
-            <div class="slide-canvas">
-                ${badge ? `<div class="stage-badge">${badge}</div>` : ''}
-                <h2>${title}</h2>
-                <div class="glass-box centered">
-                    ${content}
+            <div class="layout-split-40-60">
+                <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+                    ${badge ? `<div class="stage-badge">${badge}</div>` : ''}
+                    <h2 style="font-size: 55pt !important; margin: 0;">${title}</h2>
+                    ${duration ? `<timer-pill duration="${duration}" style="margin-top: 40px;"></timer-pill>` : ''}
                 </div>
-                ${duration ? `<timer-pill duration="${duration}"></timer-pill>` : ''}
+                <div class="glass-box" style="display: flex; flex-direction: column; justify-content: center; height: fit-content; align-self: center;">
+                    <div style="font-size: 24pt; line-height: 1.4;">${content}</div>
+                </div>
             </div>
         `;
     }
@@ -445,35 +516,45 @@ class SlideSplit extends HTMLElement {
     _render() {
         const title = this.getAttribute('title') || '';
         const badge = this.getAttribute('badge') || '';
+        const duration = this.getAttribute('timer');
 
-        // Robust extraction: Clone children, find img, then get remaining
+        // Robust extraction
         const container = document.createElement('div');
         container.innerHTML = this.innerHTML;
         const img = container.querySelector('img');
         const imgHTML = img ? img.outerHTML : '';
         if (img) img.remove();
+
+        // Handle attribution
+        const attrDiv = container.querySelector('.attribution');
+        const attrHTML = attrDiv ? attrDiv.outerHTML : '';
+        if (attrDiv) attrDiv.remove();
+
         const contentHTML = container.innerHTML;
 
         this.innerHTML = `
-            <div class="slide-canvas">
-                ${badge ? `<div class="stage-badge">${badge}</div>` : ''}
-                ${title ? `<h2>${title}</h2>` : ''}
-                <div class="row-container" style="align-items: center;">
-                    <div class="col-40">
-                        ${imgHTML}
-                    </div>
-                    <div class="col-60 glass-box">
+            <div class="layout-split-40-60">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    ${badge ? `<div class="stage-badge" style="align-self: flex-start; margin-bottom: 20px;">${badge}</div>` : ''}
+                    <div style="width: 100%; text-align: center;">${imgHTML}</div>
+                    ${attrHTML}
+                    ${duration ? `<timer-pill duration="${duration}" style="margin-top: 30px;"></timer-pill>` : ''}
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: center;">
+                    ${title ? `<h2 style="font-size: 45pt !important; margin-bottom: 30px; text-align: left;">${title}</h2>` : ''}
+                    <div class="glass-box" style="font-size: 26pt; line-height: 1.3;">
                         ${contentHTML}
                     </div>
                 </div>
             </div>
         `;
 
-        // Apply constrained-media class to img
         const newImg = this.querySelector('img');
         if (newImg) {
             newImg.classList.add('constrained-media');
-            newImg.style.maxHeight = '450px';
+            newImg.style.maxHeight = '500px';
+            newImg.style.width = 'auto';
+            newImg.style.border = '4px solid var(--primary)';
         }
     }
 }
@@ -494,7 +575,7 @@ class SlideMedia extends HTMLElement {
             if (src.includes('youtube') || src.includes('youtu.be')) {
                 mediaHTML = `
                     <div class="video-wrapper">
-                        <iframe src="${src}" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="${src}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen playsinline></iframe>
                     </div>
                 `;
             } else {

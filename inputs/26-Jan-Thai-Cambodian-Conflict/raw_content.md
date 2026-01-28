@@ -1,0 +1,15 @@
+PRESENTER [00:00]: Several hundred thousand people in Thailand and Cambodia have been ordered to evacuate as a new wave of fighting erupted between the Southeast Asian neighbors. Both sides are blaming each other for starting the fighting. Thailand's air force said it struck Cambodian military targets along the disputed border, describing them as heavy weapons and combat personnel that could be a threat. Cambodia has denied provoking violence and has asked observers from the regional block ASEAN to investigate the Thai claims and urged them not to retaliate.
+
+PRESENTER [00:40]: Well, let's speak now to Panisha Amocha who is following developments for us at the BBC. What is the latest?
+
+PENANISHA [00:50]: So we recently just have the press conference from Thailand's Prime Minister who said that he believed in Thai military forces. According to the data that we received, the Thai military has deployed air strikes to target the Cambodian military sites and military positions. While in Cambodia, they said that they have not retaliated against Thailand at the moment. 
+
+PENANISHA [01:17]: This confrontation is one of the most severe since the ceasefire back in July. We have seen images from both Thai and Cambodian sides of people in the border areas who have had to evacuate. A lot of people have moved to shelters or even to their relatives' houses, but there are still a lot of fragile people who have health issues who are still affected. Schools have been shut, meaning students cannot go to school on either side.
+
+PRESENTER [01:54]: Okay. So both sides are taking steps to keep people safe in the meantime, but there is concern about what might happen next and how far this could escalate. What are people saying about that?
+
+PENANISHA [02:08]: We have seen the Malaysian Prime Minister, Anwar Ibrahim, express concern about two hours ago that these confrontations will escalate. He has been trying to talk to the heads of state of both countries to try to negotiate and mitigate the conflict. On the Thai side, I've talked to a few local residents; they want this confrontation to end. This is not just happening now; it has affected their lives for many months. They have to stay in their houses and then evacuate to shelters; they cannot work. We can imagine that similar situations are happening on the Cambodian side as well.
+
+PENANISHA [02:55]: What we really want to see is the two countries talk things out. They have a joint border committee to talk to each other, but it has been proven time and time again that this means is really not useful. When we have a third party, for example, the Malaysian Prime Minister, ASEAN, or even the US, trying to mitigate this, the two countries really want it to be effective.
+
+PRESENTER [03:23]: Okay, Panisha. Thank you very much for bringing us right up to date. We have got a live page that's running at the moment on the BBC website and the news app as you can see here with the very latest details. We're keeping a very close eye on that fractious situation between the two countries.

@@ -1,0 +1,167 @@
+{
+    "meta": {
+        "title": "Global Explorer",
+        "subtitle": "Countries, People & Languages",
+        "theme": "indonesia",
+        "mode": "bell"
+    },
+    "slides": [
+        {
+            "layout": "title",
+            "badge": "B1 VOCABULARY",
+            "title": "GLOBAL EXPLORER",
+            "subtitle": "Discovering Countries, People & Languages",
+            "image": "images/title.jpg",
+            "notes": "Welcome the class to their 'Global Explorer' mission."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 1",
+            "title": "MISSION START",
+            "notes": "Begin the mission with a global geography challenge."
+        },
+        {
+            "layout": "video",
+            "title": "WORLD GEOGRAPHY QUIZ",
+            "video_url": "https://www.youtube.com/embed/xbGQeHCXQcs?start=464&end=704",
+            "questions": [
+                "identify the countries shown.",
+                "Can you name the capitals?",
+                "Spot the flags!"
+            ],
+            "notes": "Video clipped at 7:44-11:44. Pause to elicit/drill pronunciation of tricky names."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 2",
+            "title": "PARTS OF THE WORLD",
+            "notes": "Transitioning to regional mapping and continents."
+        },
+        {
+            "layout": "strategy",
+            "title": "REGIONAL EXPERT",
+            "content": "<ul><li>🌍 <b>Schema</b>: Activate what you know.</li><li>📖 <b>Reference</b>: Use the worksheet maps.</li><li>🔍 <b>Detail</b>: Distinguish between 'Far East' and 'Middle East'.</li></ul>",
+            "notes": "Strategic focus: Moving from general world knowledge to specific terminology."
+        },
+        {
+            "layout": "split_task",
+            "title": "QUICK QUIZ & MAPPING",
+            "badge": "TASKS 1 & 2",
+            "timer": 15,
+            "image": "images/mapping.jpg",
+            "content": "<ul><li>Complete <b>Task 1</b> (Quick Quiz)</li><li>Complete <b>Task 2</b> (Regional Mapping)</li><li>Check your answers with a partner!</li></ul>",
+            "notes": "Monitor for spelling of nationalities and languages. Time: 15 mins total."
+        },
+        {
+            "layout": "answer_list",
+            "title": "QUICK QUIZ ANSWERS",
+            "answers": [
+                "1. Polish <span class='fi fi-pl'></span>",
+                "2. Thai <span class='fi fi-th'></span>",
+                "3. Spanish <span class='fi fi-es'></span>",
+                "4. Israel <span class='fi fi-il'></span>",
+                "5. China <span class='fi fi-cn'></span> / Taiwan <span class='fi fi-tw'></span>",
+                "6. Portuguese <span class='fi fi-pt'></span>",
+                "7. Arabic <span class='fi fi-eg'></span> <span class='fi fi-sa'></span>",
+                "8. German <span class='fi fi-de'></span>",
+                "9. UK <span class='fi fi-gb'></span> / USA <span class='fi fi-us'></span>",
+                "10. Switzerland <span class='fi fi-ch'></span>"
+            ],
+            "notes": "Elicit answers from the class before revealing each one."
+        },
+        {
+            "layout": "answer_list",
+            "title": "MAPPING ANSWERS",
+            "answers": [
+                "1. Germany <span class='fi fi-de'></span>: Europe",
+                "2. Japan <span class='fi fi-jp'></span>: Far East",
+                "3. Saudi Arabia <span class='fi fi-sa'></span>: Mid East",
+                "4. Italy <span class='fi fi-it'></span>: Europe",
+                "5. Jamaica <span class='fi fi-jm'></span>: Caribbean",
+                "6. Argentina <span class='fi fi-ar'></span>: South Am."
+            ],
+            "notes": "Verify geographic understanding."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 3",
+            "title": "STRESS & PEOPLE",
+            "notes": "Focusing on pronunciation and grammar rules."
+        },
+        {
+            "layout": "vocab",
+            "word": "BRAZILIAN",
+            "phoneme": "/brəˈzɪl.i.ən/",
+            "thai": "ชาวบราซิล",
+            "definition": "A person from Brazil <span class='fi fi-br'></span>.",
+            "image": "images/people.jpg",
+            "example": "Brazilians are famous for their love of football.",
+            "notes": "Use this to drill the -ian suffix and the plural 's'."
+        },
+        {
+            "layout": "split_task",
+            "title": "STRESS & NATIONALS",
+            "badge": "TASKS 3 & 5",
+            "timer": 13,
+            "image": "images/people.jpg",
+            "content": "<ul><li><b>Task 3</b>: Underline the main stress.</li><li><b>Task 5</b>: Complete with the collective name.</li><li>Remember the rule: <b>'The French'</b> vs <b>'Brazilians'</b></li></ul>",
+            "notes": "Drill pronunciation chorally. Focus on the grammar of 'The' vs 's'."
+        },
+        {
+            "layout": "answer_list",
+            "title": "CAPITAL CITIES",
+            "badge": "TASK 4",
+            "answers": [
+                "1. Bangkok <span class='fi fi-th'></span>",
+                "2. Ankara <span class='fi fi-tr'></span>",
+                "3. Seoul <span class='fi fi-kr'></span>",
+                "4. Moscow <span class='fi fi-ru'></span>",
+                "5. Buenos Aires <span class='fi fi-ar'></span>",
+                "6. Athens <span class='fi fi-gr'></span>"
+            ],
+            "notes": "Fast-fire capital recall."
+        },
+        {
+            "layout": "answer_list",
+            "title": "SYSTEMS ANSWERS",
+            "answers": [
+                "1. the French <span class='fi fi-fr'></span>",
+                "2. Germans <span class='fi fi-de'></span>",
+                "3. the Japanese <span class='fi fi-jp'></span>",
+                "4. Israelis <span class='fi fi-il'></span>",
+                "5. Brazilians <span class='fi fi-br'></span>",
+                "6. the British <span class='fi fi-gb'></span>",
+                "7. The Swiss <span class='fi fi-ch'></span>",
+                "8. Russians <span class='fi fi-ru'></span>"
+            ],
+            "notes": "Highlight 'The' + Adjective vs Suffix + 's'."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 4",
+            "title": "PASSPORT CONTROL",
+            "notes": "Mingle activity time."
+        },
+        {
+            "layout": "split_task",
+            "title": "EXPLORER INTERVIEW",
+            "badge": "OVER TO YOU",
+            "timer": 10,
+            "image": "images/journal.jpg",
+            "content": "<ul><li>Interview 3 partners!</li><li>Notes down their <b>Nationality</b>, <b>Languages</b>, and <b>Travel Dreams</b>.</li><li>Be a strict Passport Officer! 🛂</li></ul>",
+            "notes": "High energy mingle. Monitor for use of 'I am [Nationality]' and 'I speak [Language]'."
+        },
+        {
+            "layout": "segue",
+            "phase": "DEBATE",
+            "title": "GLOBAL LANGUAGE?",
+            "notes": "Final critical thinking discussion."
+        },
+        {
+            "layout": "strategy",
+            "title": "CRITICAL THINKING",
+            "content": "<ul><li>🤔 <b>Perspective</b>: Consider pros and cons.</li><li>🗣️ <b>Dialogue</b>: Listen to your partner's view.</li><li>✍️ <b>Record</b>: Write your conclusion.</li></ul>",
+            "notes": "Discussion: Is a single universal language a good thing?"
+        }
+    ]
+}

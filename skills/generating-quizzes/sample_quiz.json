@@ -1,0 +1,40 @@
+{
+    "tasks": [
+        {
+            "task_type": "mcq",
+            "instructions": "Read the text and choose the correct answer.",
+            "questions": [
+                {
+                    "query": "Where is the capital of Thailand?",
+                    "choices": [
+                        "Bangkok",
+                        "Phuket",
+                        "Chiang Mai",
+                        "Pattaya"
+                    ],
+                    "answer": 0,
+                    "bloom_level": "Remembering",
+                    "anchor_text": "Bangkok is the capital city of Thailand.",
+                    "explanation": "The text explicitly states that Bangkok is the capital."
+                }
+            ]
+        },
+        {
+            "task_type": "boolean",
+            "instructions": "State if the following is True or False.",
+            "questions": [
+                {
+                    "query": "Thailand is in Europe.",
+                    "choices": [
+                        "True",
+                        "False"
+                    ],
+                    "answer": 1,
+                    "bloom_level": "Understanding",
+                    "anchor_text": "Thailand is a country in Southeast Asia.",
+                    "explanation": "Thailand is in Southeast Asia, not Europe."
+                }
+            ]
+        }
+    ]
+}

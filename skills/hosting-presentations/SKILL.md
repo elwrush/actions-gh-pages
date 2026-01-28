@@ -25,6 +25,22 @@ This skill deploys HTML presentations to **Cloudflare Pages** using direct Wrang
 > [!IMPORTANT]
 > **SOURCE LOCATION**: Presentations must exist in `inputs/[QAD-folder]/` alongside their lesson plan and worksheet.
 
+## Architectural Overview
+
+```mermaid
+graph TD
+    A[inputs/FOLDER] -->|Target Filter| B(Build Script)
+    B -->|Scan & Validate| C{Exists?}
+    C -->|No| X[Error]
+    C -->|Yes| D[Robust Clean dist/]
+    D -->|Retry Logic| E[Clean dist/]
+    C -->|Copy| F[dist/FOLDER/]
+    G[Shared Assets] -->|Copy| F
+    F -->|Deploy| H[Cloudflare Pages]
+    H -->|Return URL| I[Create Link HTML]
+    I -->|Push| J[Google Docs]
+```
+
 ## Workflow
 
 ### 1. Build
@@ -59,6 +75,14 @@ npx wrangler pages deploy dist/
 - **Production URL**: `https://<project-name>.pages.dev`
 - SSL certificates may take 1-2 minutes to provision for new projects
 
+> [!CRITICAL]
+> **URL PATTERN**: The deployed URL does **NOT** include `/inputs/`.
+> - SOURCE: `inputs/[FOLDER-NAME]/index.html`
+> - DEPLOYED: `https://lesson-slideshows.pages.dev/[FOLDER-NAME]/`
+> 
+> **WRONG**: `https://lesson-slideshows.pages.dev/inputs/21-JAN-INTENSIVE-READING/` ❌
+> **CORRECT**: `https://lesson-slideshows.pages.dev/21-JAN-INTENSIVE-READING/` ✅
+
 ### 4. Create Google Doc Link (MANDATORY)
 
 > [!CRITICAL]
@@ -78,6 +102,9 @@ python scripts/push_to_gdocs.py --file "path/to/link.html" --name "DD-MM-YY Slid
 ```
 
 3. Provide the Google Doc URL to the user.
+
+> [!CRITICAL]
+> **CANONICAL STORAGE**: All shareable GDoc links MUST be stored in the [Slideshow Drive Folder](https://drive.google.com/drive/folders/1XmuKyouUesIam7fyE16gjZXX1c_YOJaj).
 
 ## One-Liner (Quick Deploy)
 

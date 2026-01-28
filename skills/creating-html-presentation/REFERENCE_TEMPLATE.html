@@ -5,265 +5,162 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>B1 Writing: The 20/20 Tech Article</title>
+    <title>Lesson Title (Gold Standard 2)</title>
 
-    <!-- REVEAL.JS CORE -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css?v=3.1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css?v=3.1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css?v=3.1" id="theme">
+    <!-- REVEAL.JS (CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
 
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
 
-    <!-- CYBER-GAMER THEME & LAYOUT ENGINE -->
     <style>
-        :root {
-            --maroon: #ff0055;
-            --cyan: #00F2FF;
-            --navy: #050811;
-            --glass: rgba(10, 10, 20, 0.95);
-            --neon-border: #00F2FF;
-        }
-
+        /* BASIC GOLD STANDARD STYLES */
         body {
             font-family: 'Outfit', sans-serif;
-            background-color: var(--navy);
         }
 
-        /* TYPOGRAPHY: MANDATORY SCALING */
-        .reveal h1 {
-            font-size: 80pt;
-            /* Hero Title */
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-family: 'Outfit', sans-serif;
             text-transform: uppercase;
+        }
+
+        .reveal h1 {
             font-weight: 800;
-            margin: 0 0 20px 0;
-            color: white;
-            text-shadow: 4px 4px 0px var(--maroon);
+            font-size: 3.0em;
         }
 
         .reveal h2 {
-            font-size: 45pt;
-            /* Slide Heading */
-            color: var(--cyan);
-            text-transform: uppercase;
-            font-weight: 800;
-            border-bottom: 4px solid var(--cyan);
-            display: inline-block;
-            margin-bottom: 30px;
-        }
-
-        .reveal h3 {
-            font-size: 35pt;
-            /* Sub-heading */
-            color: yellow;
-            text-transform: uppercase;
             font-weight: 600;
-            margin-bottom: 15px;
+            color: #333;
         }
 
-        .reveal p,
-        .reveal li {
-            font-size: 30pt;
-            /* Standard Body */
-            line-height: 1.2;
-        }
-
-        /* LAYOUT UTILITIES (FIXED CANVAS APPROACH) */
-        .slide-canvas {
-            width: 960px;
-            height: 700px;
+        /* LAYOUT UTILS */
+        .cols {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            position: relative;
-        }
-
-        /* Explicit Row Containers - NO percentages that resolve to 0 */
-        .row-container {
-            display: flex;
-            flex-direction: row;
             justify-content: center;
-            align-items: center;
-            /* Vertical center alignment */
             gap: 40px;
-            width: 900px;
-            /* Safe width */
         }
 
-        /* Flex Columns with explicit Basis */
-        .col-40 {
-            flex: 0 0 40%;
-            max-width: 40%;
+        .col {
+            flex: 1;
         }
 
-        .col-50 {
-            flex: 0 0 50%;
-            max-width: 50%;
-        }
-
-        .col-60 {
-            flex: 0 0 60%;
-            max-width: 60%;
-        }
-
-        /* COMPONENTS */
-        .glass-box {
-            background: var(--glass);
-            border: 2px solid var(--neon-border);
-            padding: 25px;
-            box-shadow: 6px 6px 0px rgba(0, 242, 255, 0.2);
+        .text-left {
             text-align: left;
         }
 
-        .stage-badge {
-            background: var(--cyan);
-            color: black;
+        .text-center {
+            text-align: center;
+        }
+
+        /* BOXES */
+        .box {
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .highlight {
+            color: #d32f2f;
+            /* Red Accent */
+            font-weight: bold;
+        }
+
+        /* SEGUE TITLES */
+        .segue-title {
+            color: white;
+            font-size: 3.5em !important;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+            line-height: 1.2;
+        }
+
+        /* IMAGES */
+        .img-framed {
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            max-height: 400px;
+        }
+
+        /* Force title image size */
+        .title-image {
+            width: 500px !important;
+            max-width: none !important;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* TASKS */
+        .task-badge {
+            background: #333;
+            color: white;
             padding: 5px 15px;
-            font-weight: 800;
-            transform: skew(-10deg);
+            font-size: 0.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* TIMER STYLES */
+        .timer-widget {
+            display: inline-block;
+            background: #222;
+            color: #0f0;
+            /* Matrix Green */
+            font-family: 'Courier Prime', monospace;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 2px solid #555;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+        }
+
+        .timer-widget:hover {
+            background: #333;
+            border-color: #fff;
+        }
+
+        .timer-widget.running {
+            background: #330000;
+            color: #ff0000;
+            border-color: #ff0000;
+        }
+
+        /* ANSWER TEXT STANDARD */
+        .text-answer {
+            font-size: 1.8em;
+            line-height: 1.3;
+        }
+
+        /* LEVEL BADGE */
+        .level-badge {
+            background: #d32f2f;
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
             display: inline-block;
             margin-bottom: 20px;
-            font-size: 0.6em;
-        }
-
-        /* HEADER STRAP (Cyber Pill Design) */
-        .header-strap {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(5, 8, 17, 0.9);
-            border: 1px solid var(--cyan);
-            border-radius: 50px;
-            /* Pill shape */
-            padding: 8px 25px;
-            text-align: center;
-            font-family: 'Courier Prime', monospace;
-            font-weight: 700;
-            letter-spacing: 2px;
-            font-size: 14px;
-            color: var(--cyan);
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
-            z-index: 10;
-        }
-
-        .teacher-tip {
-            border: 2px dashed var(--maroon);
-            background: black;
-            padding: 15px;
-            margin-top: 15px;
-            font-size: 0.7em;
-            color: white;
-        }
-
-        /* MEDIA HANDLING: THE INSET STANDARD */
-        .inset-media {
-            border: 4px solid white;
-            box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.5);
-            max-height: 400px;
-            max-width: 100%;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .reveal .inset-media img {
-            border: none;
-            box-shadow: none;
-            margin: 0;
-            max-height: 392px;
-            /* Accounting for 4px border top/bottom */
-        }
-
-        /* TABLES: THE PRESENTATION STANDARD */
-        .slide-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 5px;
-            font-size: 28px;
-        }
-
-        .slide-table th {
-            background: var(--maroon);
-            color: white;
-            padding: 15px;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .slide-table td {
-            background: var(--glass);
-            border: 1px solid var(--neon-border);
-            padding: 15px;
-            color: white;
-        }
-
-        /* SEGUE TITLE */
-        .segue-title {
-            /* font-size removed to allow r-fit-text to work */
-            line-height: 1.1;
-            color: yellow;
-            text-transform: uppercase;
-            transform: rotate(-3deg) skew(-10deg);
-            /* Angled "Pop" */
-            text-shadow: 6px 6px 0px var(--maroon), 0 0 20px var(--cyan);
-            /* Cyber Glow */
-            margin: 0;
-            padding: 20px;
-            /* Add padding to prevent clipping of rotation */
-            position: relative;
-            z-index: 2;
-        }
-
-        /* TIMER */
-        .timer-display {
-            font-family: 'Courier Prime', monospace;
-            font-size: 2em;
-            color: white;
-            border: 1px solid var(--cyan);
-            padding: 10px 20px;
-            background: rgba(0, 0, 0, 0.5);
-            display: inline-block;
-        }
-
-        /* AUDIO PLAYER */
-        .audio-player {
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid var(--cyan);
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            margin-top: 20px;
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
-            width: fit-content;
-        }
-
-        .listen-label {
-            font-family: 'Courier Prime', monospace;
-            color: var(--cyan);
-            font-weight: bold;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            font-size: 0.8em;
             letter-spacing: 1px;
         }
 
-        /* THE ARCHITECTURAL BACKER */
-        .reveal .background-architecture {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--navy);
-            /* Layered Pattern: Grid + Diagonal Slopes */
-            background-image:
-                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(45deg, rgba(255, 0, 85, 0.03) 25%, transparent 25%, transparent 50%, rgba(255, 0, 85, 0.03) 50%, rgba(255, 0, 85, 0.03) 75%, transparent 75%, transparent);
-            background-size: 50px 50px, 50px 50px, 100px 100px;
-            z-index: -1;
+        /* RED BAR SLIDE STYLE */
+        .red-bar-slide {
+            border-left: 15px solid #d32f2f;
+            padding-left: 40px;
+            text-align: left;
         }
     </style>
 </head>
@@ -273,365 +170,181 @@
         <div class="slides">
 
             <!-- SLIDE 1: TITLE -->
-            <section>
-                <div class="background-architecture"></div>
-                <img src="images/ACT_transparent.png"
-                    style="position: absolute; top: 30px; left: 30px; height: 80px; z-index: 10;">
-
-                <div class="row-container" style="height: 500px;">
-                    <div class="col-40">
-                        <img src="images/hero_v3.png" class="inset-media"
-                            style="transform: rotate(-2deg); border-color: var(--cyan);">
+            <section data-background-color="#f5f5f5">
+                <div class="cols">
+                    <div class="col">
+                        <!-- PLACEHOLDERHERO -->
+                        <img src="https://placehold.co/500x500" class="title-image">
                     </div>
-                    <div class="col-60" style="text-align: left; padding-left: 20px;">
-                        <div class="stage-badge">LEVEL UP: WRITING</div>
-                        <h1 style="font-size: 60pt;">THE 20/20<br>TECH WRITER</h1>
-                        <p><span
-                                style="background: var(--maroon); padding: 5px 15px; font-weight: 800; transform: skew(-10deg); display: inline-block;">CRACK
-                                THE CODE</span></p>
+                    <div class="col text-left">
+                        <div class="level-badge">B1/B2 LEVEL</div>
+                        <h3>MISSION: [MISSION NAME]</h3>
+                        <h1>LESSON<br>TITLE</h1>
+                        <p style="color: #666;">SUBTITLE / HOOK</p>
                     </div>
                 </div>
+                <aside class="notes">
+                    **Advice**: Welcome students. Set the mission.
+                    **Next**: Task 1 Segue.
+                </aside>
             </section>
 
-            <!-- SLIDE 2: SEGUE (Abstract Gradient) -->
-            <section data-background-gradient="radial-gradient(circle, #2a0a18 0%, #050811 100%)">
-                <h1 class="r-fit-text segue-title">PHASE 1:<br>WHAT MAKES A VIRAL MOMENT TICK?</h1>
+            <!-- SEGUE SLIDE -->
+            <section data-background-color="#2c3e50"
+                data-background-gradient="linear-gradient(to bottom right, #2c3e50, #4ca1af)">
+                <h1 class="segue-title">PHASE 1<br>TITLE</h1>
+                <aside class="notes">
+                    **Advice**: Phase transition.
+                </aside>
             </section>
 
-            <!-- SLIDE 3: WARM UP (Fixed Aspect Ratio Video + Abstract Backer) -->
-            <section data-background-color="#050811">
-                <!-- Pattern for consistency -->
-                <div
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-                background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 40px); pointer-events: none;">
-                </div>
-
-                <div class="stage-badge">WARM UP</div>
-                <h2 class="r-fit-text">The Office Interruption</h2>
-
-                <div class="row-container" style="align-items: flex-start;">
-                    <div class="col-50 glass-box">
-                        <p style="font-size: 28px;"><strong>"A live world news interview. A serious topic."</strong></p>
-                        <p style="color: var(--cyan); margin: 15px 0; font-size: 28px;">And then... the chaos begins.
-                        </p>
-                        <div class="teacher-tip">
-                            <strong>WHY IT WENT VIRAL:</strong> It's the <strong>CLASH</strong>—serious suit vs. dancing
-                            kid.
-                        </div>
+            <!-- STANDARD CONTENT (RED BAR STYLE) -->
+            <section class="red-bar-slide">
+                <h2 style="color: #d32f2f;">MAIN HEADING</h2>
+                <div class="cols">
+                    <div class="col">
+                        <img src="https://placehold.co/400x300" class="img-framed">
                     </div>
-                    <div class="col-50">
-                        <!-- Aspect Ratio lock for Youtube -->
-                        <div
-                            style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 2px solid var(--cyan); box-shadow: 10px 10px 0 black;">
-                            <iframe src="https://www.youtube.com/embed/Mh4f9AYRCZY"
-                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0"
-                                allowfullscreen></iframe>
+                    <div class="col text-left">
+                        <div class="box">
+                            <p><strong>KEY POINT:</strong> Main concept here.</p>
+                            <p>Supporting details or context.</p>
                         </div>
                     </div>
                 </div>
                 <aside class="notes">
-                    - Play the video (it's short).
-                    - Ask: "Why is this funny?"
-                    - Elicit: The CONTRAST between the serious BBC news and the chaotic kids.
+                    **Advice**: Contextual notes.
                 </aside>
             </section>
 
-            <!-- SLIDE 4: SEGUE -->
-            <section data-background-gradient="radial-gradient(circle, #2a0a18 0%, #050811 100%)">
-                <h1 class="r-fit-text segue-title">PHASE 2:<br>DECODING THE BOSS LEVEL</h1>
-            </section>
-
-            <!-- SLIDE 5: TASK 1 (Centered Box) -->
-            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
-                <div class="stage-badge">TASK 1: ANALYSIS</div>
-                <h2>The Challenge</h2>
-                <div class="glass-box" style="width: 800px; margin: 0 auto; text-align: center;">
-                    <h3 style="color: yellow; font-size: 40px;">WHAT MAKES YOU LAUGH?</h3>
-                    <p style="font-size: 30px;">Write an article telling us <strong>what makes you laugh and
-                            why</strong>.</p>
-                    <p style="font-size: 30px;">Is it <strong>important for people to laugh</strong>?</p>
-                    <div class="teacher-tip" style="text-align: left;">
-                        <strong>PRO TIP:</strong> Check those 3 bold questions. Miss one and it's GAME OVER.
+            <!-- TIMER SLIDE -->
+            <section>
+                <h2>TASK INSTRUCTION</h2>
+                <div class="box" style="max-width: 800px; margin: 0 auto;">
+                    <p style="font-size: 1.5em;">Instruction 1.</p>
+                    <p>Instruction 2.</p>
+                    <!-- DATA-MINUTES ATTRIBUTE CONTROLS TIME -->
+                    <div class="timer-widget" data-minutes="5">
+                        <span class="icon">⏱️</span> <span class="display">05:00</span>
                     </div>
                 </div>
+                <aside class="notes">
+                    **Advice**: Monitor students.
+                </aside>
             </section>
 
-            <!-- SLIDE 6: MODEL -->
-            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
-                <div class="stage-badge">TASK 1: ANALYSIS</div>
-                <h2>The Perfect 20/20</h2>
-                <div class="row-container">
-                    <div class="col-50 glass-box" style="font-family: 'Courier Prime', monospace; font-size: 22px;">
-                        <p><span style="background:yellow; color:black;">[Q1]</span> "I love comedies... especially
-                            <strong>Chinese Running Man</strong>."
-                        </p>
-                        <br>
-                        <p><span style="background:yellow; color:black;">[Q2]</span> "Actors <strong>overcome
-                                quests</strong>... tickles my funny bone!"</p>
-                        <br>
-                        <p><span style="background:yellow; color:black;">[Q3]</span> "Laughing <strong>releases
-                                stress</strong>... more attractive too!"</p>
+            <!-- DEFINITION / MYSTERY SLIDE -->
+            <section>
+                <div class="task-badge">DEFINITION</div>
+                <h2>KEY CONCEPT</h2>
+                <div class="cols">
+                    <div class="col">
+                        <img src="https://placehold.co/400x300" class="img-framed">
                     </div>
-                    <div class="col-50" style="text-align: left;">
-                        <h3 style="background: black; padding: 10px; transform: rotate(-2deg); display: inline-block;">
-                            WHY IT WINS:</h3>
-                        <ul style="font-size: 28px; list-style: none;">
-                            <li style="margin-bottom: 10px;">✅ Hits all 3 targets.</li>
-                            <li style="margin-bottom: 10px;">✅ Real details.</li>
-                            <li style="margin-bottom: 10px;">✅ Strong opinions.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SLIDE 7: SEGUE -->
-            <section data-background-gradient="radial-gradient(circle, #2a0a18 0%, #050811 100%)">
-                <h1 class="r-fit-text segue-title">PHASE 3:<br>THE BLUEPRINT</h1>
-            </section>
-
-            <!-- SLIDE 8: LOGIC FLOW -->
-            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
-                <div class="stage-badge">TASK 2: PLANNING</div>
-                <h2>The Logic Flow</h2>
-                <div class="row-container">
-                    <div class="col-40 glass-box">
-                        <div style="margin-bottom: 30px;">
-                            <span style="background: var(--cyan); color: black; padding: 2px 5px; font-weight: bold;">1.
-                                HEADLINE</span>
-                            <p style="font-size: 24px;">Your assertion.<br>"Computers are essential."</p>
-                        </div>
-                        <div>
-                            <span style="background: yellow; color: black; padding: 2px 5px; font-weight: bold;">2.
-                                EVIDENCE</span>
-                            <p style="font-size: 24px;">The proof.<br>"For example, students..."</p>
-                        </div>
-                    </div>
-                    <div class="col-60">
-                        <img src="images/structure.png" class="constrained-media"
-                            style="max-height: 400px; border: 3px solid white;">
-                    </div>
-                </div>
-            </section>
-
-            <!-- SLIDE 9: SEGUE -->
-            <section data-background-gradient="radial-gradient(circle, #2a0a18 0%, #050811 100%)">
-                <h1 class="r-fit-text segue-title">PHASE 4:<br>THE LOADOUT</h1>
-            </section>
-
-            <!-- SLIDE 10: VOCABULARY GRID -->
-            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
-                <div class="stage-badge">TASK 3: TOOLBOX</div>
-                <h2>Vocabulary Weapons</h2>
-                <div class="glass-box" style="width: 900px; margin: 0 auto;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                        <!-- Cell 1 -->
-                        <div>
-                            <p style="color: var(--cyan); font-weight: 800; font-size: 24px;">PREFERENCE:</p>
-                            <p style="font-size: 22px; margin-top: 5px;">"The app I use most frequently is..."</p>
-                        </div>
-                        <!-- Cell 2 -->
-                        <div>
-                            <p style="color: var(--cyan); font-weight: 800; font-size: 24px;">PROOF:</p>
-                            <p style="font-size: 22px; margin-top: 5px;">"Furthermore, they allow us to..."</p>
-                        </div>
-                        <!-- Cell 3 -->
-                        <div>
-                            <p style="color: var(--cyan); font-weight: 800; font-size: 24px;">OPINION:</p>
-                            <p style="font-size: 22px; margin-top: 5px;">"In my view, computers are..."</p>
-                        </div>
-                        <!-- Cell 4 -->
-                        <div>
-                            <p style="color: var(--cyan); font-weight: 800; font-size: 24px;">POSSIBILITY:</p>
-                            <p style="font-size: 22px; margin-top: 5px;">"It might make us..."</p>
+                    <div class="col text-left">
+                        <div class="box">
+                            <p>Definition text.</p>
+                            <hr>
+                            <p>❌ Incorrect example.</p>
+                            <p>✅ Correct example.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- SLIDE 11: SEGUE -->
-            <section data-background-gradient="radial-gradient(circle, #2a0a18 0%, #050811 100%)">
-                <h1 class="r-fit-text segue-title">PHASE 5:<br>GO TIME</h1>
-            </section>
-
-            <!-- EXAMPLE: ANSWER SLIDE (VISUAL PIVOT: GREEN) -->
-            <section data-background-color="#052a10">
-                <div class="slide-canvas">
-                    <div class="glass-box" style="border-color: #22c55e;">
-                        <h3 style="color: #22c55e;">MODEL ANSWER</h3>
-                        <p class="text-body">"The car <strong>which</strong> I bought last week is very fast."</p>
-                    </div>
+            <!-- ANSWER SLIDE -->
+            <section>
+                <h4>ANSWER KEY</h4>
+                <p class="text-answer">The correct answer sentence. <span class="highlight">Key part</span>.</p>
+                <div class="box" style="margin-top: 20px; font-size: 0.8em;">
+                    <strong>WHY?</strong> Explanation goes here.
                 </div>
             </section>
 
-            <!-- EXAMPLE: FINAL TASK (VISUAL PIVOT: MAROON) -->
-            <section data-background-color="#2a0a0a">
-                <div class="slide-canvas">
-                    <div class="stage-badge">FINAL MISSION</div>
-                    <h2>BOSS LEVEL</h2>
-                    <div class="glass-box">
-                        <p class="text-body">Apply all grammar weapons to solve the final case study.</p>
-                    </div>
+            <!-- AUTO ANIMATE EXAMPLE -->
+            <section data-auto-animate>
+                <h2>FIND THE PATTERN</h2>
+                <div class="box">
+                    <p style="font-family: monospace; font-size: 1.5em;">Sentence one. Sentence two.</p>
                 </div>
             </section>
 
-            <!-- SLIDE 12: FINAL MISSION (Timer) -->
-            <section data-background-color="var(--maroon)">
-                <div class="stage-badge" style="background: black; color: white;">TASK 3: WRITING</div>
-
-                <div class="row-container" style="align-items: flex-start;">
-                    <div class="col-50">
-                        <img src="images/mission.png" class="constrained-media"
-                            style="max-height: 350px; border: 3px solid black; box-shadow: 10px 10px 0 black;">
-                    </div>
-                    <div class="col-50 glass-box" style="background: rgba(0,0,0,0.6); border: none; box-shadow: none;">
-                        <h3>TECHNOLOGY AND YOU</h3>
-                        <p style="font-size: 20px;">Write about your favorite app and if teenagers need computers.</p>
-
-                        <div style="text-align: center; margin-top: 30px;">
-                            <timer-pill duration="20"></timer-pill>
-                        </div>
-                    </div>
+            <section data-auto-animate>
+                <h2>THE HIDDEN PATTERN</h2>
+                <div class="box">
+                    <p style="font-family: monospace; font-size: 1.5em;">Sentence one. <span
+                            class="highlight">S</span>entence two.</p>
                 </div>
             </section>
 
-
-
-            <!-- SAMPLE: VOCABULARY WITH AUDIO -->
-            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
-                <div class="stage-badge">VOCABULARY</div>
-                <h2>Hikikomori /ˌhɪkiˈkɒməri/</h2>
-                <h3>คนที่หลบหนีสังคม (Social Recluse)</h3>
-
-                <div class="glass-box" style="width: 800px; margin: 30px auto; text-align: center;">
-                    <p style="font-size: 26px;">"Toshi had such extreme <strong>hikikomori</strong> that he locked his
-                        door."</p>
-                    <p style="font-size: 26px; color: var(--cyan);">"โทชิมีอาการ <strong>ฮิกิโกะโมริ</strong>
-                        อย่างรุนแรง"</p>
-
-                    <div class="audio-player" style="margin: 30px auto;">
-                        <p class="listen-label">🔊 Listen to the word!</p>
-                        <!-- AUDIO FILE MUST BE GENERATED BY SCRIPT -->
-                        <audio controls src="images/audio/hikikomori.wav"></audio>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SAMPLE: INFOGRAPHIC (GENERATIVE) -->
-            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
-                <div class="stage-badge">PROCESS</div>
-                <h2>The Feedback Loop</h2>
-                <div class="row-container">
-                    <div class="col-60">
-                        <!-- PLACEHOLDER FOR GENERATIVE ART -->
-                        <img src="https://placehold.co/600x400/050811/00F2FF?text=GENERATE:+Neon+Cycle+Diagram"
-                            class="constrained-media" style="border: 2px solid var(--cyan);">
-                        <div class="teacher-tip">
-                            <strong>PROMPT:</strong> "Create a neon cyber-style cycle diagram showing Input -> Process
-                            -> Output."
-                        </div>
-                    </div>
-                    <div class="col-40 glass-box">
-                        <p>1. <strong>INPUT</strong>: Data enters.</p>
-                        <p>2. <strong>PROCESS</strong>: CPU works.</p>
-                        <p>3. <strong>OUTPUT</strong>: Result shows.</p>
-                    </div>
-                </div>
+            <!-- CONCLUSION -->
+            <section data-background-color="#2c3e50">
+                <h1 class="r-fit-text" style="color: white; text-transform: uppercase;">MISSION ACCOMPLISHED</h1>
+                <p style="color: #ccc;">Summary statement.</p>
             </section>
 
         </div>
     </div>
 
+    <!-- AUDIO ASSETS -->
+    <audio id="audio-start" src="audio/blip.mp3"></audio>
+    <audio id="audio-tick" src="audio/30-seconds.mp3"></audio> <!-- 30s warning -->
+    <audio id="audio-end" src="audio/bell.mp3"></audio>
+
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin/plugin/mermaid/mermaid.js"></script>
     <script>
         Reveal.initialize({
-            hash: true,
             width: 960,
             height: 700,
-            transition: 'slide',
-            backgroundTransition: 'fade',
-            center: true,
-            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+            margin: 0.1,
+            transition: 'convex',
+            hash: true,
+            plugins: [RevealNotes]
         });
 
-        // AUDIO ASSETS
-        const blipSfx = new Audio('audio/blip.mp3');
-        const bellSfx = new Audio('audio/bell.mp3');
-        const warningSfx = new Audio('audio/30-seconds.mp3');
+        // TIMER LOGIC WITH AUDIO
+        document.querySelectorAll('.timer-widget').forEach(timer => {
+            timer.addEventListener('click', function () {
+                if (this.classList.contains('running')) return; // Prevent double click
 
-        // NATIVE WEB COMPONENT: <timer-pill>
-        class TimerPill extends HTMLElement {
-            constructor() {
-                super();
-                this.duration = parseInt(this.getAttribute('duration')) || 5;
-                this.timeLeft = this.duration * 60;
-                this.timer = null;
-            }
+                // Play Start Sound
+                document.getElementById('audio-start').play().catch(e => console.log("Audio allow required"));
 
-            connectedCallback() {
-                this.render();
-                this.updateDisplay();
-                this.querySelector('.start-btn').onclick = () => this.toggle();
-            }
+                this.classList.add('running');
+                let minutes = parseInt(this.getAttribute('data-minutes'));
+                let totalSeconds = minutes * 60;
+                const display = this.querySelector('.display');
 
-            render() {
-                this.innerHTML = `
-                    <div class="timer-pill">
-                        <div class="timer-display">00:00</div>
-                        <button class="start-btn">START</button>
-                    </div>
-                `;
-            }
+                const interval = setInterval(() => {
+                    totalSeconds--;
 
-            updateDisplay() {
-                const m = Math.floor(this.timeLeft / 60).toString().padStart(2, '0');
-                const s = (this.timeLeft % 60).toString().padStart(2, '0');
-                this.querySelector('.timer-display').textContent = `${m}:${s}`;
-            }
+                    // 30 Seconds Remaining Warning
+                    if (totalSeconds === 30) {
+                        document.getElementById('audio-tick').play().catch(e => console.log("Audio allow required"));
+                        this.style.color = "orange";
+                        this.style.borderColor = "orange";
+                    }
 
-            toggle() {
-                const btn = this.querySelector('.start-btn');
-                const pill = this.querySelector('.timer-pill');
-                const display = this.querySelector('.timer-display');
+                    if (totalSeconds < 0) {
+                        clearInterval(interval);
+                        display.textContent = "00:00";
+                        this.style.backgroundColor = "red";
+                        this.style.color = "white";
 
-                if (this.timer) {
-                    clearInterval(this.timer);
-                    this.timer = null;
-                    btn.textContent = 'START';
-                    btn.classList.remove('pause');
-                } else {
-                    pill.style.borderColor = 'var(--gold)';
-                    btn.textContent = 'PAUSE';
-                    btn.classList.add('pause');
-                    this.timer = setInterval(() => {
-                        if (this.timeLeft > 0) {
-                            this.timeLeft--;
-                            this.updateDisplay();
+                        // Play End Sound
+                        document.getElementById('audio-end').play();
+                        return;
+                    }
 
-                            // 30-second warning
-                            if (this.timeLeft === 30) warningSfx.play();
+                    const m = Math.floor(totalSeconds / 60);
+                    const s = totalSeconds % 60;
+                    display.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 
-                            // Pulse Blip
-                            blipSfx.currentTime = 0;
-                            blipSfx.play();
-                        } else {
-                            clearInterval(this.timer);
-                            this.timer = null;
-                            display.style.color = '#ef4444';
-                            pill.style.borderColor = '#ef4444';
-                            btn.textContent = 'DONE';
-                            btn.disabled = true;
-                            bellSfx.play();
-                        }
-                    }, 1000);
-                }
-            }
-        }
-        customElements.define('timer-pill', TimerPill);
+                }, 1000);
+            });
+        });
     </script>
 </body>
 

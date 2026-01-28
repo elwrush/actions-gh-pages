@@ -1,0 +1,15 @@
+<!-- SLIDE: STRATEGY (Instructional focus) -->
+<section data-transition="convex">
+    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+
+    <div class="slide-canvas">
+        <div class="glass-box"
+            style="max-width: 1050px; margin: 0 auto; border-left: 15px solid #FFD700; background: rgba(15, 23, 42, 0.95); padding: 50px; border-radius: 0 20px 20px 0; text-align: left;">
+            <h2 style="color: #FFD700; margin-bottom: 30px;">Strategy: {{ slide.title }}</h2>
+            <div
+                style="line-height: 1.6; border-top: 1px solid rgba(255,215,0,0.2); padding-top: 30px; color: #e2e8f0;">
+                {{ slide.content | safe }}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,1370 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>THE LITTLE MATCH GIRL</title>
+
+    <!-- Projector-Standard Reset -->
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+    <!-- Projector-Standard Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Courier+Prime:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Shared JS Components (Optional, but index has core logic now) -->
+    <!-- <script src="js/slide-components.js"></script> -->
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="css/themes/noir.css">
+
+    <!-- Flag Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
+
+    <style>
+        :root {
+            --gold: #FFD700;
+            --maroon: #A72B26;
+            --accent: #FFD700;
+            /* Ensure accent maps to gold for highlighting */
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #050811;
+            color: #f8fafc;
+        }
+
+        .reveal {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-family: 'Outfit', sans-serif;
+            text-transform: none !important;
+            margin: 0;
+        }
+
+        /* Web Component Styles */
+        .timer-pill {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid var(--gold);
+            padding: 12px 30px;
+            border-radius: 60px;
+            margin-top: 40px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .timer-display {
+            font-family: 'Courier Prime', monospace;
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--gold);
+            min-width: 140px;
+            letter-spacing: 2px;
+        }
+
+        .start-btn {
+            background: var(--gold);
+            color: black;
+            border: none;
+            padding: 10px 25px;
+            font-weight: 900;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 20px;
+            transition: transform 0.1s;
+        }
+
+        .start-btn:active {
+            transform: scale(0.95);
+        }
+
+        .start-btn.pause {
+            background: #f43f5e;
+            color: white;
+        }
+
+        .glass-box {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Flag Icon Scaling */
+        .fi {
+            width: 1.5em;
+            line-height: 1em;
+            vertical-align: middle;
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-left: 10px;
+        }
+
+        /* Reveal Override for centering and scale */
+        .reveal .slides>section {
+            text-align: center;
+            padding: 0;
+        }
+
+        /* Fragmet Styling */
+        .reveal .slides section .fragment {
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .reveal .slides section .fragment.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- SLIDE: TITLE -->
+<section data-transition="fade">
+    
+
+    <div class="slide-canvas">
+        <div class="test-title-slide"
+            style="position: relative; z-index: 10; display: flex; height: 100%; align-items: center; justify-content: center; gap: 40px;">
+            <!-- Left: Branding & Text -->
+            <div style="flex: 0 0 60%; text-align: left; padding: 20px;">
+                <div
+                    style="background: #A72B26; color: white; display: inline-block; padding: 8px 18px; font-weight: 800; margin-bottom: 25px; transform: skew(-10deg); letter-spacing: 2px;">
+                    B1 READING SKILLS
+                </div>
+                <h1
+                    style="margin: 0; line-height: 1.0; color: white; text-shadow: 4px 4px 0px #A72B26; font-weight: 900; width: 100%;">
+                    THE LITTLE MATCH GIRL
+                </h1>
+                
+            </div>
+
+            <!-- Right: Themed Imagery -->
+            <div style="flex: 0 0 35%; display: flex; justify-content: center; align-items: center;">
+                <img src="images/cover.jpg" class="inset-media"
+                    style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.6); transform: rotate(2deg); border: 5px solid #FFD700;">
+                
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: SEGUE (Chapter Transition) -->
+<section data-transition="zoom" data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)">
+    
+
+    <div class="slide-canvas">
+        <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <h3 data-id="phase-label"
+                style="color: #FFD700; letter-spacing: 12px; font-weight: 300; margin-bottom: 20px;">
+                PHASE 1
+            </h3>
+            <h1 data-id="segue-title"
+                style="text-transform: uppercase; text-shadow: 0 0 40px rgba(255,215,0,0.4); transform: skew(-5deg) rotate(-2deg); font-weight: 900;">
+                SETTING THE SCENE
+            </h1>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: VIDEO -->
+<section data-background-gradient="var(--grad-main)">
+    <div class="slide-canvas">
+        <h2 style="margin-bottom: 30px; font-size: 1.8em;">MODERN REALITY</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%;">
+            <!-- VIDEO (Full container fill) -->
+            <div style="height: 400px; position: relative; z-index: 10;">
+                <iframe src="https://www.youtube.com/embed/Fg6XlSPV6ek?start=0&end=48&enablejsapi=1" style="width: 100%; height: 100%;" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen"></iframe>
+            </div>
+
+            <!-- QUESTIONS -->
+            <div class="glass-box"
+                style="align-self: center; text-align: left; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                <div
+                    style="background: var(--gold); color: black; display: inline-block; padding: 4px 12px; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; font-size: 0.7em;">
+                    OBSERVE & DISCUSS</div>
+
+                <div style="font-size: 0.85em; line-height: 1.4;">
+                    
+                    <ul><li><strong>Observe:</strong> What are the living conditions like?</li><li><strong>Identify:</strong> What is the main 'Complication' for these people?</li><li><strong>Connect:</strong> How would YOU feel in this situation?</li></ul>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside class="notes">
+        Show the first 48 seconds. Elicit immediate reactions. Connect to the concept of 'Complication'.
+    </aside>
+</section>
+            
+            <section data-auto-animate  data-background-video="images/mission_bg_clipped.mp4"
+    data-background-video-muted data-background-opacity="0.5" data-background-color="#050811" >
+
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+
+        <!-- Big Animated Title -->
+        <h1 style="font-size: 3.2em; color: var(--gold); text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); margin: 0;"
+            data-id="major-title">
+            TODAY'S MISSION
+        </h1>
+
+        <div style="height: 2px; width: 200px; background: var(--maroon); margin: 20px 0;" data-id="major-line"></div>
+
+        <!-- Content Container -->
+        <div style="font-size: 1.1em; line-height: 1.3; max-width: 90%; text-align: center;">
+            <div data-id="impact-main" style="margin-bottom: 30px; animation: fadeInUp 0.8s ease-out 0.2s both;">
+                <p><strong>We are upgrading your reading skills.</strong></p>
+            </div>
+
+            <div style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;" data-id="impact-points">
+                
+                <div
+                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); padding: 15px 30px; border-radius: 12px; backdrop-filter: blur(5px); animation: fadeInUp 0.8s ease-out 0.5s both;">
+                    <span style="font-size: 0.8em; color: #cbd5e1;">🔎</span><br>
+                    <strong style="color: white; font-size: 1em;">Scan for Details</strong>
+                </div>
+                
+                <div
+                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); padding: 15px 30px; border-radius: 12px; backdrop-filter: blur(5px); animation: fadeInUp 0.8s ease-out 0.7s both;">
+                    <span style="font-size: 0.8em; color: #cbd5e1;">⚖️</span><br>
+                    <strong style="color: white; font-size: 1em;">Find the Proof</strong>
+                </div>
+                
+                <div
+                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); padding: 15px 30px; border-radius: 12px; backdrop-filter: blur(5px); animation: fadeInUp 0.8s ease-out 0.9s both;">
+                    <span style="font-size: 0.8em; color: #cbd5e1;">🧠</span><br>
+                    <strong style="color: white; font-size: 1em;">Infer Meaning</strong>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <aside class="notes">
+        Student-centered objective. Set the stage for success. Emphasize that 'Proof' is the key today.
+    </aside>
+</section>
+
+<style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+            
+            <!-- SLIDE: SPLIT TASK -->
+<section data-transition="convex" data-auto-animate>
+    <aside class="notes">Encourage creative guesses. Write predictions on the board to check later.</aside>
+
+    <div class="slide-canvas">
+        
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 60px; width: 100%; max-width: 1200px; margin: 0 auto; flex-direction: row; flex-wrap: nowrap;">
+            <!-- Left: Context Image -->
+            <div class="col-40" style="flex: 0 0 40%; max-width: 40%;">
+                <img src="images/symbols.jpg" class="inset-media" data-id="task-image"
+                    style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
+                
+            </div>
+            <!-- Right: Task Card -->
+            <div class="col-60" style="flex: 1; text-align: left;">
+                <div class="glass-box" data-id="task-card"
+                    style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+                    <div data-id="task-badge"
+                        style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-bottom: 25px; transform: skew(-5deg); font-size: 0.8em; letter-spacing: 2px;">
+                        PREDICTION
+                    </div>
+                    <h2 style="color: #FFD700; margin-bottom: 25px; line-height: 1.1; font-size: 60px;">THE STORY SYMBOLS</h2>
+                    <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 30px;">
+                    <div class="task-content" style="line-height: 1.4; color: #f8fafc; font-size: 32px;">
+                        <p>In pairs, guess how these three items are related in a story set 180 years ago:</p><ol><li>A Matchbox</li><li>A Roast Goose</li><li>A Falling Star</li></ol>
+                    </div>
+                    
+                    <timer-pill duration="3"></timer-pill>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+            
+            <!-- SLIDE: SPLIT TASK -->
+<section data-transition="convex" data-auto-animate>
+    <aside class="notes">Establish the historical setting. Elicit that while technology changes, the human experience of cold and poverty remains similar.</aside>
+
+    <div class="slide-canvas">
+        
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 60px; width: 100%; max-width: 1200px; margin: 0 auto; flex-direction: row; flex-wrap: nowrap;">
+            <!-- Left: Context Image -->
+            <div class="col-40" style="flex: 0 0 40%; max-width: 40%;">
+                <img src="images/victorian_context.jpg" class="inset-media" data-id="task-image"
+                    style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
+                
+            </div>
+            <!-- Right: Task Card -->
+            <div class="col-60" style="flex: 1; text-align: left;">
+                <div class="glass-box" data-id="task-card"
+                    style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+                    <div data-id="task-badge"
+                        style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-bottom: 25px; transform: skew(-5deg); font-size: 0.8em; letter-spacing: 2px;">
+                        CONTEXT
+                    </div>
+                    <h2 style="color: #FFD700; margin-bottom: 25px; line-height: 1.1; font-size: 60px;">VICTORIAN DENMARK</h2>
+                    <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 30px;">
+                    <div class="task-content" style="line-height: 1.4; color: #f8fafc; font-size: 32px;">
+                        <p><strong>Situation:</strong> New Year's Eve, 1845.</p><p>Is the problem in the modern video similar or different to life 180 years ago?</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+            
+            <!-- SLIDE: SEGUE (Chapter Transition) -->
+<section data-transition="zoom" data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)">
+    
+
+    <div class="slide-canvas">
+        <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <h3 data-id="phase-label"
+                style="color: #FFD700; letter-spacing: 12px; font-weight: 300; margin-bottom: 20px;">
+                PHASE 2
+            </h3>
+            <h1 data-id="segue-title"
+                style="text-transform: uppercase; text-shadow: 0 0 40px rgba(255,215,0,0.4); transform: skew(-5deg) rotate(-2deg); font-weight: 900;">
+                USEFUL LANGUAGE
+            </h1>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: STRATEGY (Instructional focus) -->
+<section data-transition="convex">
+    <aside class="notes">Internalize the strategy before seeing the words.</aside>
+
+    <div class="slide-canvas">
+        <div class="glass-box"
+            style="max-width: 1050px; margin: 0 auto; border-left: 15px solid #FFD700; background: rgba(15, 23, 42, 0.95); padding: 50px; border-radius: 0 20px 20px 0; text-align: left;">
+            <h2 style="color: #FFD700; margin-bottom: 30px;">Strategy: VOCAB STRATEGY</h2>
+            <div
+                style="line-height: 1.6; border-top: 1px solid rgba(255,215,0,0.2); padding-top: 30px; color: #e2e8f0;">
+                🗣️ <strong>Guessing from Context</strong><br><p>Don't reach for a dictionary! Look at the words around the target word to find clues about its meaning.</p>
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: VOCABULARY -->
+<section data-transition="convex">
+    
+
+    <div class="slide-canvas">
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 50px; width: 1200px; margin: 0 auto;">
+            <!-- Left: Word Card -->
+            <div class="col-50" style="flex: 0 0 45%;">
+                <img src="images/barefoot.jpg" class="inset-media"
+                    style="width: 100%; height: auto; border: 6px solid #A72B26; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                
+            </div>
+            <!-- Right: Definition Card -->
+            <div class="col-50" style="flex: 0 0 50%; text-align: left;">
+                <div
+                    style="background: #A72B26; color: white; display: inline-block; padding: 4px 12px; font-weight: 800; margin-bottom: 15px; letter-spacing: 2px;">
+                    VOCABULARY</div>
+                <h1 style="color: #FFD700; margin: 0; line-height: 0.9; font-weight: 900;">BAREFOOT</h1>
+
+                <div class="phoneme"
+                    style="color: #94A3B8; font-family: 'Courier Prime', monospace; margin: 15px 0 30px 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                    /ˈbeə.fʊt/
+                    
+                    <span class="thai-text"
+                        style="color: #f87171; font-family: sans-serif; font-style: italic; margin-left: 20px;">เท้าเปล่า</span>
+                    
+                </div>
+
+                <div
+                    style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 10px; border-left: 6px solid #FFD700; box-shadow: inset 0 0 20px rgba(0,0,0,0.2);">
+                    <!-- Context Sentence Only -->
+                    <p style="font-size: 1.1em; font-weight: 500; margin: 0; color: white; line-height: 1.5;">
+                        He forgot his shoes at the beach, so he had to walk <span style='color: var(--accent);'>barefoot</span> on the hot sand.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: VOCABULARY -->
+<section data-transition="convex">
+    
+
+    <div class="slide-canvas">
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 50px; width: 1200px; margin: 0 auto;">
+            <!-- Left: Word Card -->
+            <div class="col-50" style="flex: 0 0 45%;">
+                <img src="images/shivering.jpg" class="inset-media"
+                    style="width: 100%; height: auto; border: 6px solid #A72B26; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                
+            </div>
+            <!-- Right: Definition Card -->
+            <div class="col-50" style="flex: 0 0 50%; text-align: left;">
+                <div
+                    style="background: #A72B26; color: white; display: inline-block; padding: 4px 12px; font-weight: 800; margin-bottom: 15px; letter-spacing: 2px;">
+                    VOCABULARY</div>
+                <h1 style="color: #FFD700; margin: 0; line-height: 0.9; font-weight: 900;">SHIVERING</h1>
+
+                <div class="phoneme"
+                    style="color: #94A3B8; font-family: 'Courier Prime', monospace; margin: 15px 0 30px 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                    /ˈʃɪv.ər.ɪŋ/
+                    
+                    <span class="thai-text"
+                        style="color: #f87171; font-family: sans-serif; font-style: italic; margin-left: 20px;">ตัวสั่น</span>
+                    
+                </div>
+
+                <div
+                    style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 10px; border-left: 6px solid #FFD700; box-shadow: inset 0 0 20px rgba(0,0,0,0.2);">
+                    <!-- Context Sentence Only -->
+                    <p style="font-size: 1.1em; font-weight: 500; margin: 0; color: white; line-height: 1.5;">
+                        The boy was <span style='color: var(--accent);'>shivering</span> because he was standing in the cold rain without a coat.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: VOCABULARY -->
+<section data-transition="convex">
+    
+
+    <div class="slide-canvas">
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 50px; width: 1200px; margin: 0 auto;">
+            <!-- Left: Word Card -->
+            <div class="col-50" style="flex: 0 0 45%;">
+                <img src="images/vanished.jpg" class="inset-media"
+                    style="width: 100%; height: auto; border: 6px solid #A72B26; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                
+            </div>
+            <!-- Right: Definition Card -->
+            <div class="col-50" style="flex: 0 0 50%; text-align: left;">
+                <div
+                    style="background: #A72B26; color: white; display: inline-block; padding: 4px 12px; font-weight: 800; margin-bottom: 15px; letter-spacing: 2px;">
+                    VOCABULARY</div>
+                <h1 style="color: #FFD700; margin: 0; line-height: 0.9; font-weight: 900;">VANISHED</h1>
+
+                <div class="phoneme"
+                    style="color: #94A3B8; font-family: 'Courier Prime', monospace; margin: 15px 0 30px 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                    /ˈvæn.ɪʃt/
+                    
+                    <span class="thai-text"
+                        style="color: #f87171; font-family: sans-serif; font-style: italic; margin-left: 20px;">อันตรธาน</span>
+                    
+                </div>
+
+                <div
+                    style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 10px; border-left: 6px solid #FFD700; box-shadow: inset 0 0 20px rgba(0,0,0,0.2);">
+                    <!-- Context Sentence Only -->
+                    <p style="font-size: 1.1em; font-weight: 500; margin: 0; color: white; line-height: 1.5;">
+                        The magician waved his hand and the rabbit <span style='color: var(--accent);'>vanished</span>; it was completely gone!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: VOCABULARY -->
+<section data-transition="convex">
+    
+
+    <div class="slide-canvas">
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 50px; width: 1200px; margin: 0 auto;">
+            <!-- Left: Word Card -->
+            <div class="col-50" style="flex: 0 0 45%;">
+                <img src="images/magnificent.jpg" class="inset-media"
+                    style="width: 100%; height: auto; border: 6px solid #A72B26; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                
+            </div>
+            <!-- Right: Definition Card -->
+            <div class="col-50" style="flex: 0 0 50%; text-align: left;">
+                <div
+                    style="background: #A72B26; color: white; display: inline-block; padding: 4px 12px; font-weight: 800; margin-bottom: 15px; letter-spacing: 2px;">
+                    VOCABULARY</div>
+                <h1 style="color: #FFD700; margin: 0; line-height: 0.9; font-weight: 900;">MAGNIFICENT</h1>
+
+                <div class="phoneme"
+                    style="color: #94A3B8; font-family: 'Courier Prime', monospace; margin: 15px 0 30px 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                    /mæɡˈnɪf.ɪ.sənt/
+                    
+                    <span class="thai-text"
+                        style="color: #f87171; font-family: sans-serif; font-style: italic; margin-left: 20px;">งดงามตระการตา</span>
+                    
+                </div>
+
+                <div
+                    style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 10px; border-left: 6px solid #FFD700; box-shadow: inset 0 0 20px rgba(0,0,0,0.2);">
+                    <!-- Context Sentence Only -->
+                    <p style="font-size: 1.1em; font-weight: 500; margin: 0; color: white; line-height: 1.5;">
+                        The king lived in a <span style='color: var(--accent);'>magnificent</span> palace with golden walls and hundreds of rooms.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: VOCABULARY -->
+<section data-transition="convex">
+    
+
+    <div class="slide-canvas">
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 50px; width: 1200px; margin: 0 auto;">
+            <!-- Left: Word Card -->
+            <div class="col-50" style="flex: 0 0 45%;">
+                <img src="images/soul.jpg" class="inset-media"
+                    style="width: 100%; height: auto; border: 6px solid #A72B26; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                
+            </div>
+            <!-- Right: Definition Card -->
+            <div class="col-50" style="flex: 0 0 50%; text-align: left;">
+                <div
+                    style="background: #A72B26; color: white; display: inline-block; padding: 4px 12px; font-weight: 800; margin-bottom: 15px; letter-spacing: 2px;">
+                    VOCABULARY</div>
+                <h1 style="color: #FFD700; margin: 0; line-height: 0.9; font-weight: 900;">SOUL</h1>
+
+                <div class="phoneme"
+                    style="color: #94A3B8; font-family: 'Courier Prime', monospace; margin: 15px 0 30px 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                    /səʊl/
+                    
+                    <span class="thai-text"
+                        style="color: #f87171; font-family: sans-serif; font-style: italic; margin-left: 20px;">วิญญาณ</span>
+                    
+                </div>
+
+                <div
+                    style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 10px; border-left: 6px solid #FFD700; box-shadow: inset 0 0 20px rgba(0,0,0,0.2);">
+                    <!-- Context Sentence Only -->
+                    <p style="font-size: 1.1em; font-weight: 500; margin: 0; color: white; line-height: 1.5;">
+                        Many people believe that when the body dies, the <span style='color: var(--accent);'>soul</span> continues to live forever.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: MATCHING -->
+<section data-auto-animate data-transition="convex">
+    <div
+        style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 15px; width: 1100px; margin-left: auto; margin-right: auto;">
+        <div style="text-align: left;">
+            <div class="stage-badge"
+                style="background: var(--maroon); color: white; display: inline-block; padding: 4px 12px; font-weight: 800; font-size: 0.6em; transform: skew(-5deg);">
+                CHECK</div>
+            <h2 style="color: var(--gold); font-size: 44px; margin: 5px 0;">VOCAB REVIEW</h2>
+        </div>
+
+        
+    </div>
+
+    <div class="glass-box"
+        style="padding: 25px 40px; border-radius: 20px; border: 1px solid rgba(255,215,0,0.2); background: rgba(5, 8, 17, 0.95); width: 1150px; margin: 0 auto;">
+        <div style="display: flex; gap: 30px; align-items: stretch;">
+            <!-- Words Column (STAY STILL) -->
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+                
+                <div data-id="fixed-word-1"
+                    style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                    <span style="color: var(--gold); margin-right: 15px;">1.</span> Barefoot
+                </div>
+                
+                <div data-id="fixed-word-2"
+                    style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                    <span style="color: var(--gold); margin-right: 15px;">2.</span> Shivering
+                </div>
+                
+                <div data-id="fixed-word-3"
+                    style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                    <span style="color: var(--gold); margin-right: 15px;">3.</span> Vanished
+                </div>
+                
+                <div data-id="fixed-word-4"
+                    style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                    <span style="color: var(--gold); margin-right: 15px;">4.</span> Magnificent
+                </div>
+                
+                <div data-id="fixed-word-5"
+                    style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                    <span style="color: var(--gold); margin-right: 15px;">5.</span> Soul
+                </div>
+                
+            </div>
+
+            <!-- Definitions Column (MOVE and BIG FONT) -->
+            <div style="flex: 2; display: flex; flex-direction: column; gap: 10px;">
+                
+                
+                <div data-id="moving-def-4"
+                    style="background: rgba(255, 255, 255, 0.05); border-left: 5px solid #334155; padding: 10px 20px; font-size: 26px; font-weight: 600; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                    <span style="color: var(--gold); margin-right: 15px; font-weight: 800; font-size: 1.2em;">A.</span> Grand / Royal
+                </div>
+                
+                <div data-id="moving-def-1"
+                    style="background: rgba(255, 255, 255, 0.05); border-left: 5px solid #334155; padding: 10px 20px; font-size: 26px; font-weight: 600; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                    <span style="color: var(--gold); margin-right: 15px; font-weight: 800; font-size: 1.2em;">B.</span> No shoes
+                </div>
+                
+                <div data-id="moving-def-3"
+                    style="background: rgba(255, 255, 255, 0.05); border-left: 5px solid #334155; padding: 10px 20px; font-size: 26px; font-weight: 600; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                    <span style="color: var(--gold); margin-right: 15px; font-weight: 800; font-size: 1.2em;">C.</span> Disappeared
+                </div>
+                
+                <div data-id="moving-def-5"
+                    style="background: rgba(255, 255, 255, 0.05); border-left: 5px solid #334155; padding: 10px 20px; font-size: 26px; font-weight: 600; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                    <span style="color: var(--gold); margin-right: 15px; font-weight: 800; font-size: 1.2em;">D.</span> Spiritual part
+                </div>
+                
+                <div data-id="moving-def-2"
+                    style="background: rgba(255, 255, 255, 0.05); border-left: 5px solid #334155; padding: 10px 20px; font-size: 26px; font-weight: 600; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                    <span style="color: var(--gold); margin-right: 15px; font-weight: 800; font-size: 1.2em;">E.</span> Shaking from cold
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Ss match the words on the left to definitions on the right.
+    </aside>
+</section>
+            
+            <!-- SLIDE: MATCHING -->
+<section data-auto-animate data-transition="convex">
+    <div
+        style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 15px; width: 1100px; margin-left: auto; margin-right: auto;">
+        <div style="text-align: left;">
+            <div class="stage-badge"
+                style="background: var(--maroon); color: white; display: inline-block; padding: 4px 12px; font-weight: 800; font-size: 0.6em; transform: skew(-5deg);">
+                ANSWERS</div>
+            <h2 style="color: var(--gold); font-size: 44px; margin: 5px 0;">VOCAB REVIEW</h2>
+        </div>
+
+        
+    </div>
+
+    <div class="glass-box"
+        style="padding: 25px 40px; border-radius: 20px; border: 1px solid rgba(255,215,0,0.2); background: rgba(5, 8, 17, 0.95); width: 1150px; margin: 0 auto;">
+        <div style="display: flex; gap: 30px; align-items: stretch;">
+            <!-- Words Column (STAY STILL) -->
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+                
+                <div data-id="fixed-word-1"
+                    style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                    <span style="color: var(--gold); margin-right: 15px;">1.</span> Barefoot
+                </div>
+                
+                <div data-id="fixed-word-2"
+                    style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                    <span style="color: var(--gold); margin-right: 15px;">2.</span> Shivering
+                </div>
+                
+                <div data-id="fixed-word-3"
+                    style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                    <span style="color: var(--gold); margin-right: 15px;">3.</span> Vanished
+                </div>
+                
+                <div data-id="fixed-word-4"
+                    style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                    <span style="color: var(--gold); margin-right: 15px;">4.</span> Magnificent
+                </div>
+                
+                <div data-id="fixed-word-5"
+                    style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                    <span style="color: var(--gold); margin-right: 15px;">5.</span> Soul
+                </div>
+                
+            </div>
+
+            <!-- Definitions Column (MOVE and BIG FONT) -->
+            <div style="flex: 2; display: flex; flex-direction: column; gap: 10px;">
+                
+                
+                <div data-id="moving-def-1"
+                    style="background: rgba(255, 215, 0, 0.1); border-left: 5px solid var(--gold); padding: 10px 20px; font-size: 26px; font-weight: 600; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                    <span style="color: var(--gold); margin-right: 15px; font-weight: 800; font-size: 1.2em;">B.</span> No shoes
+                </div>
+                
+                <div data-id="moving-def-2"
+                    style="background: rgba(255, 215, 0, 0.1); border-left: 5px solid var(--gold); padding: 10px 20px; font-size: 26px; font-weight: 600; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                    <span style="color: var(--gold); margin-right: 15px; font-weight: 800; font-size: 1.2em;">E.</span> Shaking from cold
+                </div>
+                
+                <div data-id="moving-def-3"
+                    style="background: rgba(255, 215, 0, 0.1); border-left: 5px solid var(--gold); padding: 10px 20px; font-size: 26px; font-weight: 600; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                    <span style="color: var(--gold); margin-right: 15px; font-weight: 800; font-size: 1.2em;">C.</span> Disappeared
+                </div>
+                
+                <div data-id="moving-def-4"
+                    style="background: rgba(255, 215, 0, 0.1); border-left: 5px solid var(--gold); padding: 10px 20px; font-size: 26px; font-weight: 600; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                    <span style="color: var(--gold); margin-right: 15px; font-weight: 800; font-size: 1.2em;">A.</span> Grand / Royal
+                </div>
+                
+                <div data-id="moving-def-5"
+                    style="background: rgba(255, 215, 0, 0.1); border-left: 5px solid var(--gold); padding: 10px 20px; font-size: 26px; font-weight: 600; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                    <span style="color: var(--gold); margin-right: 15px; font-weight: 800; font-size: 1.2em;">D.</span> Spiritual part
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Verify the correct matches. Auto-animate should swoop the definitions into place.
+    </aside>
+</section>
+            
+            <!-- SLIDE: SEGUE (Chapter Transition) -->
+<section data-transition="zoom" data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)">
+    
+
+    <div class="slide-canvas">
+        <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <h3 data-id="phase-label"
+                style="color: #FFD700; letter-spacing: 12px; font-weight: 300; margin-bottom: 20px;">
+                PHASE 3
+            </h3>
+            <h1 data-id="segue-title"
+                style="text-transform: uppercase; text-shadow: 0 0 40px rgba(255,215,0,0.4); transform: skew(-5deg) rotate(-2deg); font-weight: 900;">
+                READING MISSION
+            </h1>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: STRATEGY (Instructional focus) -->
+<section data-transition="convex">
+    <aside class="notes">This is a skills-based lesson (Shape E). The focus is on the process of finding evidence.</aside>
+
+    <div class="slide-canvas">
+        <div class="glass-box"
+            style="max-width: 1050px; margin: 0 auto; border-left: 15px solid #FFD700; background: rgba(15, 23, 42, 0.95); padding: 50px; border-radius: 0 20px 20px 0; text-align: left;">
+            <h2 style="color: #FFD700; margin-bottom: 30px;">Strategy: MISSION STRATEGY</h2>
+            <div
+                style="line-height: 1.6; border-top: 1px solid rgba(255,215,0,0.2); padding-top: 30px; color: #e2e8f0;">
+                🔍 <strong>The Proof Strategy</strong><br><ul><li><strong>Scan</strong> first to find the paragraph.</li><li><strong>Underline</strong> the specific sentence that gives the answer.</li><li><strong>Explain</strong> WHY you chose it.</li></ul>
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: SPLIT TASK -->
+<section data-transition="convex" data-auto-animate>
+    <aside class="notes">Check gist before going deep.</aside>
+
+    <div class="slide-canvas">
+        
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 60px; width: 100%; max-width: 1200px; margin: 0 auto; flex-direction: row; flex-wrap: nowrap;">
+            <!-- Left: Context Image -->
+            <div class="col-40" style="flex: 0 0 40%; max-width: 40%;">
+                <img src="images/cover.jpg" class="inset-media" data-id="task-image"
+                    style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
+                
+            </div>
+            <!-- Right: Task Card -->
+            <div class="col-60" style="flex: 1; text-align: left;">
+                <div class="glass-box" data-id="task-card"
+                    style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+                    <div data-id="task-badge"
+                        style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-bottom: 25px; transform: skew(-5deg); font-size: 0.8em; letter-spacing: 2px;">
+                        SKIM
+                    </div>
+                    <h2 style="color: #FFD700; margin-bottom: 25px; line-height: 1.1; font-size: 60px;">TASK 1: GIST</h2>
+                    <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 30px;">
+                    <div class="task-content" style="line-height: 1.4; color: #f8fafc; font-size: 32px;">
+                        <p><strong>Part 1 Context:</strong> Skim the B1 text quickly.</p><p>Choose the best title for the whole story. Why?</p>
+                    </div>
+                    
+                    <timer-pill duration="4"></timer-pill>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+            
+            <!-- SLIDE: SPLIT TASK -->
+<section data-transition="convex" data-auto-animate>
+    <aside class="notes">T monitors and ensures evidence is being physically underlined on the paper.</aside>
+
+    <div class="slide-canvas">
+        
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 60px; width: 100%; max-width: 1200px; margin: 0 auto; flex-direction: row; flex-wrap: nowrap;">
+            <!-- Left: Context Image -->
+            <div class="col-40" style="flex: 0 0 40%; max-width: 40%;">
+                <img src="images/victorian_context.jpg" class="inset-media" data-id="task-image"
+                    style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
+                
+            </div>
+            <!-- Right: Task Card -->
+            <div class="col-60" style="flex: 1; text-align: left;">
+                <div class="glass-box" data-id="task-card"
+                    style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+                    <div data-id="task-badge"
+                        style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-bottom: 25px; transform: skew(-5deg); font-size: 0.8em; letter-spacing: 2px;">
+                        MCQ MISSION
+                    </div>
+                    <h2 style="color: #FFD700; margin-bottom: 25px; line-height: 1.1; font-size: 60px;">TASK 2: THE DETAILS</h2>
+                    <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 30px;">
+                    <div class="task-content" style="line-height: 1.4; color: #f8fafc; font-size: 32px;">
+                        <p>Answer the 7 Multiple Choice questions on your worksheet.</p><p>⚠️ <strong>Requirement:</strong> You MUST underline the evidence in the text for every answer.</p>
+                    </div>
+                    
+                    <timer-pill duration="12"></timer-pill>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+            
+            <!-- SLIDE: ANSWER -->
+<section class="layout-wide layout-split-40-60" data-background-color="var(--bg-dark)" data-auto-animate>
+    <div class="slide-canvas">
+        <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+            <h2 data-id="title" style="margin: 0; color: var(--primary);">ANSWER Q1</h2>
+            <div data-id="task-badge"
+                style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-top: 20px; transform: skew(-5deg); letter-spacing: 2px;">
+                CHECK YOUR WORK</div>
+        </div>
+
+        <div class="glass-box" data-id="task-card"
+            style="display: flex; flex-direction: column; gap: 20px; justify-content: center; height: fit-content; align-self: center; border-color: var(--primary); background: rgba(0,0,0,0.8); padding: 30px; border-radius: 20px;">
+
+            <!-- 1. The Verdict Card -->
+            <div
+                style="background: rgba(255, 215, 0, 0.1); border: 1px solid var(--gold); border-radius: 12px; padding: 15px 25px; text-align: center;">
+                <div
+                    style="font-weight: 800; color: var(--gold); font-size: 1.4em; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                    <h3>Correct: <strong>B</strong></h3>
+                </div>
+            </div>
+
+            
+            <!-- 2. The Evidence Card -->
+            <div
+                style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; text-align: left; position: relative;">
+                <div
+                    style="display: flex; justify-content: space-between; position: absolute; top: -12px; left: 15px; right: 15px;">
+                    <div
+                        style="background: #333; color: #aaa; font-size: 0.6em; padding: 2px 8px; border-radius: 4px; border: 1px solid #555;">
+                        EVIDENCE</div>
+                    
+                    <div
+                        style="background: var(--maroon); color: white; font-size: 0.6em; padding: 2px 8px; border-radius: 4px; font-weight: 800; border: 1px solid rgba(255,255,255,0.2);">
+                        Para 3</div>
+                    
+                </div>
+
+                <div style="line-height: 1.5; color: #eee; font-size: 0.9em; margin-top: 5px;">
+                    <blockquote>'She was afraid to go home because her father would be angry...'</blockquote><p><strong>Why?</strong> The text explicitly states her fear of his anger.</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Refer to the anchor text in the JSON.
+    </aside>
+</section>
+            
+            <!-- SLIDE: ANSWER -->
+<section class="layout-wide layout-split-40-60" data-background-color="var(--bg-dark)" data-auto-animate>
+    <div class="slide-canvas">
+        <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+            <h2 data-id="title" style="margin: 0; color: var(--primary);">ANSWER Q2</h2>
+            <div data-id="task-badge"
+                style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-top: 20px; transform: skew(-5deg); letter-spacing: 2px;">
+                CHECK YOUR WORK</div>
+        </div>
+
+        <div class="glass-box" data-id="task-card"
+            style="display: flex; flex-direction: column; gap: 20px; justify-content: center; height: fit-content; align-self: center; border-color: var(--primary); background: rgba(0,0,0,0.8); padding: 30px; border-radius: 20px;">
+
+            <!-- 1. The Verdict Card -->
+            <div
+                style="background: rgba(255, 215, 0, 0.1); border: 1px solid var(--gold); border-radius: 12px; padding: 15px 25px; text-align: center;">
+                <div
+                    style="font-weight: 800; color: var(--gold); font-size: 1.4em; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                    <h3>Correct: <strong>TRUE</strong></h3>
+                </div>
+            </div>
+
+            
+            <!-- 2. The Evidence Card -->
+            <div
+                style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; text-align: left; position: relative;">
+                <div
+                    style="display: flex; justify-content: space-between; position: absolute; top: -12px; left: 15px; right: 15px;">
+                    <div
+                        style="background: #333; color: #aaa; font-size: 0.6em; padding: 2px 8px; border-radius: 4px; border: 1px solid #555;">
+                        EVIDENCE</div>
+                    
+                    <div
+                        style="background: var(--maroon); color: white; font-size: 0.6em; padding: 2px 8px; border-radius: 4px; font-weight: 800; border: 1px solid rgba(255,255,255,0.2);">
+                        Para 3</div>
+                    
+                </div>
+
+                <div style="line-height: 1.5; color: #eee; font-size: 0.9em; margin-top: 5px;">
+                    <blockquote>'Her hands felt completely frozen.'</blockquote><p><strong>Why?</strong> Extreme cold leads to loss of feeling.</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Concept check: 'Almost frozen' = numbness.
+    </aside>
+</section>
+            
+            <!-- SLIDE: STRATEGY (Instructional focus) -->
+<section data-transition="convex">
+    <aside class="notes">Concept Check: Was the stove real? (No). How do we know?</aside>
+
+    <div class="slide-canvas">
+        <div class="glass-box"
+            style="max-width: 1050px; margin: 0 auto; border-left: 15px solid #FFD700; background: rgba(15, 23, 42, 0.95); padding: 50px; border-radius: 0 20px 20px 0; text-align: left;">
+            <h2 style="color: #FFD700; margin-bottom: 30px;">Strategy: KEYWORD FOCUS</h2>
+            <div
+                style="line-height: 1.6; border-top: 1px solid rgba(255,215,0,0.2); padding-top: 30px; color: #e2e8f0;">
+                👀 <strong>Similes & Visions</strong><br><ul><li>The text says: <em>'It <strong>seemed</strong> as if...'</em></li><li>This means it is NOT real.</li><li>She is hallucinating (imagining) it because of the cold.</li></ul>
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: ANSWER -->
+<section class="layout-wide layout-split-40-60" data-background-color="var(--bg-dark)" data-auto-animate>
+    <div class="slide-canvas">
+        <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+            <h2 data-id="title" style="margin: 0; color: var(--primary);">ANSWER Q3</h2>
+            <div data-id="task-badge"
+                style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-top: 20px; transform: skew(-5deg); letter-spacing: 2px;">
+                CHECK YOUR WORK</div>
+        </div>
+
+        <div class="glass-box" data-id="task-card"
+            style="display: flex; flex-direction: column; gap: 20px; justify-content: center; height: fit-content; align-self: center; border-color: var(--primary); background: rgba(0,0,0,0.8); padding: 30px; border-radius: 20px;">
+
+            <!-- 1. The Verdict Card -->
+            <div
+                style="background: rgba(255, 215, 0, 0.1); border: 1px solid var(--gold); border-radius: 12px; padding: 15px 25px; text-align: center;">
+                <div
+                    style="font-weight: 800; color: var(--gold); font-size: 1.4em; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                    <h3>Correct: <strong>B</strong></h3>
+                </div>
+            </div>
+
+            
+            <!-- 2. The Evidence Card -->
+            <div
+                style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; text-align: left; position: relative;">
+                <div
+                    style="display: flex; justify-content: space-between; position: absolute; top: -12px; left: 15px; right: 15px;">
+                    <div
+                        style="background: #333; color: #aaa; font-size: 0.6em; padding: 2px 8px; border-radius: 4px; border: 1px solid #555;">
+                        EVIDENCE</div>
+                    
+                    <div
+                        style="background: var(--maroon); color: white; font-size: 0.6em; padding: 2px 8px; border-radius: 4px; font-weight: 800; border: 1px solid rgba(255,255,255,0.2);">
+                        Para 3</div>
+                    
+                </div>
+
+                <div style="line-height: 1.5; color: #eee; font-size: 0.9em; margin-top: 5px;">
+                    <blockquote>'It seemed to her as if she were sitting in front of a warm iron stove...'</blockquote><p><strong>Why?</strong> The stove represents warmth and security.</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss symbolism: The stove is what she DESIRES.
+    </aside>
+</section>
+            
+            <!-- SLIDE: ANSWER -->
+<section class="layout-wide layout-split-40-60" data-background-color="var(--bg-dark)" data-auto-animate>
+    <div class="slide-canvas">
+        <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+            <h2 data-id="title" style="margin: 0; color: var(--primary);">ANSWER Q4</h2>
+            <div data-id="task-badge"
+                style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-top: 20px; transform: skew(-5deg); letter-spacing: 2px;">
+                CHECK YOUR WORK</div>
+        </div>
+
+        <div class="glass-box" data-id="task-card"
+            style="display: flex; flex-direction: column; gap: 20px; justify-content: center; height: fit-content; align-self: center; border-color: var(--primary); background: rgba(0,0,0,0.8); padding: 30px; border-radius: 20px;">
+
+            <!-- 1. The Verdict Card -->
+            <div
+                style="background: rgba(255, 215, 0, 0.1); border: 1px solid var(--gold); border-radius: 12px; padding: 15px 25px; text-align: center;">
+                <div
+                    style="font-weight: 800; color: var(--gold); font-size: 1.4em; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                    <h3>Correct: <strong>B</strong></h3>
+                </div>
+            </div>
+
+            
+            <!-- 2. The Evidence Card -->
+            <div
+                style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; text-align: left; position: relative;">
+                <div
+                    style="display: flex; justify-content: space-between; position: absolute; top: -12px; left: 15px; right: 15px;">
+                    <div
+                        style="background: #333; color: #aaa; font-size: 0.6em; padding: 2px 8px; border-radius: 4px; border: 1px solid #555;">
+                        EVIDENCE</div>
+                    
+                    <div
+                        style="background: var(--maroon); color: white; font-size: 0.6em; padding: 2px 8px; border-radius: 4px; font-weight: 800; border: 1px solid rgba(255,255,255,0.2);">
+                        Para 5</div>
+                    
+                </div>
+
+                <div style="line-height: 1.5; color: #eee; font-size: 0.9em; margin-top: 5px;">
+                    <blockquote>'...a falling star meant a soul was going to heaven.'</blockquote><p><strong>Why?</strong> Her beliefs are based on her grandmother's teachings.</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss the spiritual connection.
+    </aside>
+</section>
+            
+            <!-- SLIDE: ANSWER -->
+<section class="layout-wide layout-split-40-60" data-background-color="var(--bg-dark)" data-auto-animate>
+    <div class="slide-canvas">
+        <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+            <h2 data-id="title" style="margin: 0; color: var(--primary);">ANSWER Q5</h2>
+            <div data-id="task-badge"
+                style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-top: 20px; transform: skew(-5deg); letter-spacing: 2px;">
+                CHECK YOUR WORK</div>
+        </div>
+
+        <div class="glass-box" data-id="task-card"
+            style="display: flex; flex-direction: column; gap: 20px; justify-content: center; height: fit-content; align-self: center; border-color: var(--primary); background: rgba(0,0,0,0.8); padding: 30px; border-radius: 20px;">
+
+            <!-- 1. The Verdict Card -->
+            <div
+                style="background: rgba(255, 215, 0, 0.1); border: 1px solid var(--gold); border-radius: 12px; padding: 15px 25px; text-align: center;">
+                <div
+                    style="font-weight: 800; color: var(--gold); font-size: 1.4em; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                    <h3>Correct: <strong>C</strong></h3>
+                </div>
+            </div>
+
+            
+            <!-- 2. The Evidence Card -->
+            <div
+                style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; text-align: left; position: relative;">
+                <div
+                    style="display: flex; justify-content: space-between; position: absolute; top: -12px; left: 15px; right: 15px;">
+                    <div
+                        style="background: #333; color: #aaa; font-size: 0.6em; padding: 2px 8px; border-radius: 4px; border: 1px solid #555;">
+                        EVIDENCE</div>
+                    
+                    <div
+                        style="background: var(--maroon); color: white; font-size: 0.6em; padding: 2px 8px; border-radius: 4px; font-weight: 800; border: 1px solid rgba(255,255,255,0.2);">
+                        Para 6</div>
+                    
+                </div>
+
+                <div style="line-height: 1.5; color: #eee; font-size: 0.9em; margin-top: 5px;">
+                    <blockquote>'She quickly lit the rest of her matches to keep the vision alive.'</blockquote><p><strong>Why?</strong> Desperation to prevent the grandmother from vanishing.</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Ask Ss: Would you do the same?
+    </aside>
+</section>
+            
+            <!-- SLIDE: STRATEGY (Instructional focus) -->
+<section data-transition="convex">
+    <aside class="notes">Explain that we know something the townspeople don't.</aside>
+
+    <div class="slide-canvas">
+        <div class="glass-box"
+            style="max-width: 1050px; margin: 0 auto; border-left: 15px solid #FFD700; background: rgba(15, 23, 42, 0.95); padding: 50px; border-radius: 0 20px 20px 0; text-align: left;">
+            <h2 style="color: #FFD700; margin-bottom: 30px;">Strategy: CRITICAL THINKING</h2>
+            <div
+                style="line-height: 1.6; border-top: 1px solid rgba(255,215,0,0.2); padding-top: 30px; color: #e2e8f0;">
+                🤔 <strong>Appearance vs. Reality</strong><br><ul><li><strong>The Crowd Sees:</strong> A dead girl. Sadness.</li><li><strong>The Girl Sees:</strong> Her grandmother. Joy.</li><li>This contrast is called <strong>Dramatic Irony</strong>.</li></ul>
+            </div>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: ANSWER -->
+<section class="layout-wide layout-split-40-60" data-background-color="var(--bg-dark)" data-auto-animate>
+    <div class="slide-canvas">
+        <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
+            <h2 data-id="title" style="margin: 0; color: var(--primary);">ANSWER Q6</h2>
+            <div data-id="task-badge"
+                style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-top: 20px; transform: skew(-5deg); letter-spacing: 2px;">
+                CHECK YOUR WORK</div>
+        </div>
+
+        <div class="glass-box" data-id="task-card"
+            style="display: flex; flex-direction: column; gap: 20px; justify-content: center; height: fit-content; align-self: center; border-color: var(--primary); background: rgba(0,0,0,0.8); padding: 30px; border-radius: 20px;">
+
+            <!-- 1. The Verdict Card -->
+            <div
+                style="background: rgba(255, 215, 0, 0.1); border: 1px solid var(--gold); border-radius: 12px; padding: 15px 25px; text-align: center;">
+                <div
+                    style="font-weight: 800; color: var(--gold); font-size: 1.4em; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                    <h3>Correct: <strong>B</strong></h3>
+                </div>
+            </div>
+
+            
+            <!-- 2. The Evidence Card -->
+            <div
+                style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; text-align: left; position: relative;">
+                <div
+                    style="display: flex; justify-content: space-between; position: absolute; top: -12px; left: 15px; right: 15px;">
+                    <div
+                        style="background: #333; color: #aaa; font-size: 0.6em; padding: 2px 8px; border-radius: 4px; border: 1px solid #555;">
+                        EVIDENCE</div>
+                    
+                    <div
+                        style="background: var(--maroon); color: white; font-size: 0.6em; padding: 2px 8px; border-radius: 4px; font-weight: 800; border: 1px solid rgba(255,255,255,0.2);">
+                        Para 7</div>
+                    
+                </div>
+
+                <div style="line-height: 1.5; color: #eee; font-size: 0.9em; margin-top: 5px;">
+                    <blockquote>'No one knew the beautiful things she had seen...'</blockquote><p><strong>Why?</strong> Her external state (death) contrasts with her internal joy.</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss the IRONY. The townspeople are sad, but she experienced 'magnificent splendors'.
+    </aside>
+</section>
+            
+            <!-- SLIDE: SEGUE (Chapter Transition) -->
+<section data-transition="zoom" data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)">
+    
+
+    <div class="slide-canvas">
+        <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <h3 data-id="phase-label"
+                style="color: #FFD700; letter-spacing: 12px; font-weight: 300; margin-bottom: 20px;">
+                PHASE 4
+            </h3>
+            <h1 data-id="segue-title"
+                style="text-transform: uppercase; text-shadow: 0 0 40px rgba(255,215,0,0.4); transform: skew(-5deg) rotate(-2deg); font-weight: 900;">
+                REFLECTION
+            </h1>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: SPLIT TASK -->
+<section data-transition="convex" data-auto-animate>
+    <aside class="notes">Final personalization stage. Connect back to the modern video.</aside>
+
+    <div class="slide-canvas">
+        
+        <div class="row-container"
+            style="display: flex; height: 100%; align-items: center; gap: 60px; width: 100%; max-width: 1200px; margin: 0 auto; flex-direction: row; flex-wrap: nowrap;">
+            <!-- Left: Context Image -->
+            <div class="col-40" style="flex: 0 0 40%; max-width: 40%;">
+                <img src="images/victorian_context.jpg" class="inset-media" data-id="task-image"
+                    style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
+                
+            </div>
+            <!-- Right: Task Card -->
+            <div class="col-60" style="flex: 1; text-align: left;">
+                <div class="glass-box" data-id="task-card"
+                    style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 50px; border-radius: 15px;">
+                    <div data-id="task-badge"
+                        style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-bottom: 25px; transform: skew(-5deg); font-size: 0.8em; letter-spacing: 2px;">
+                        DISCUSSION
+                    </div>
+                    <h2 style="color: #FFD700; margin-bottom: 25px; line-height: 1.1; font-size: 60px;">THE BIG QUESTION</h2>
+                    <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 30px;">
+                    <div class="task-content" style="line-height: 1.4; color: #f8fafc; font-size: 32px;">
+                        <p><strong>Should we help the poor? Or should they just take care of themselves?</strong></p><ul><li>Who is responsible for the little girl?</li><li>What could have been different?</li></ul>
+                    </div>
+                    
+                    <timer-pill duration="8"></timer-pill>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+            
+        </div>
+    </div>
+
+    <!-- SCRIPTS (Local Core) -->
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+
+    <script>
+        // Audio FX Logic
+        const AudioFX = {
+            blip: new Audio('audio/blip.mp3'),
+            bell: new Audio('audio/bell.mp3'),
+            warning: new Audio('audio/30-seconds.mp3'),
+            init() {
+                this.blip.load(); this.bell.load(); this.warning.load();
+            }
+        };
+        document.addEventListener('click', () => AudioFX.init(), { once: true });
+
+        // Timer Component
+        class TimerPill extends HTMLElement {
+            connectedCallback() {
+                this.duration = parseInt(this.getAttribute('duration')) || 5;
+                this.timeLeft = this.duration * 60;
+                this.timer = null;
+                this.render();
+            }
+            render() {
+                this.innerHTML = `
+                    <div class="timer-pill">
+                        <div class="timer-display">${this.formatTime(this.timeLeft)}</div>
+                        <button class="start-btn">START</button>
+                    </div>
+                `;
+                this.querySelector('.start-btn').onclick = (e) => {
+                    e.stopPropagation();
+                    this.toggle();
+                };
+            }
+            formatTime(s) {
+                const m = Math.floor(s / 60).toString().padStart(2, '0');
+                const sec = (s % 60).toString().padStart(2, '0');
+                return m + ":" + sec;
+            }
+            toggle() {
+                const btn = this.querySelector('.start-btn');
+                // Ensure audio is initialized/unlocked on first interaction
+                AudioFX.init();
+
+                if (this.timer) {
+                    clearInterval(this.timer);
+                    this.timer = null;
+                    btn.textContent = 'START';
+                    btn.classList.remove('pause');
+                } else {
+                    btn.textContent = 'PAUSE';
+                    btn.classList.add('pause');
+
+                    // Optional: Play a short blip to confirm audio works on start
+                    AudioFX.blip.play().catch(e => console.warn("Audio Context blocked:", e));
+
+                    this.timer = setInterval(() => {
+                        if (this.timeLeft > 0) {
+                            this.timeLeft--;
+                            this.querySelector('.timer-display').textContent = this.formatTime(this.timeLeft);
+
+                            // 30 Seconds Warning
+                            if (this.timeLeft === 30) {
+                                AudioFX.warning.currentTime = 0;
+                                AudioFX.warning.play().catch(e => console.error(e));
+                            }
+
+                            // Countdown blips (10 to 1)
+                            if (this.timeLeft <= 10 && this.timeLeft > 0) {
+                                AudioFX.blip.currentTime = 0;
+                                AudioFX.blip.play().catch(() => { });
+                            }
+                        } else {
+                            // Timer End
+                            clearInterval(this.timer);
+                            this.timer = null;
+                            AudioFX.bell.play().catch(e => console.error(e));
+                            btn.textContent = 'DONE';
+                            btn.disabled = true;
+                        }
+                    }, 1000);
+                }
+            }
+        }
+        customElements.define('timer-pill', TimerPill);
+
+        Reveal.initialize({
+            width: 1280, height: 720, margin: 0.05,
+            transition: 'convex',
+            center: true, hash: true,
+            autoAnimateDuration: 1.2,
+            autoAnimateEasing: 'ease-in-out',
+            embeddedIframesFullscreen: true,
+            plugins: [RevealNotes, RevealMarkdown, RevealHighlight]
+        });
+    </script>
+</body>
+
+</html>

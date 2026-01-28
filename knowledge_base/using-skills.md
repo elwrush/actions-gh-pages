@@ -88,6 +88,8 @@ description: Generates unit tests for Python using pytest.  # REQUIRED. Third-pe
 - **Black Box Scripts**: Instruct agent to run with `--help` first, not read source.
 - **Decision Trees**: For complex skills, add "How to choose" sections.
 - **Validators**: Always run validators immediately after making changes.
+- **Frontend Interactions**: For UI transitions (like Reveal.js Auto-Animate), enforce strict ID consistency (e.g., `data-id="major-title"`) across templates.
+- **Data vs Logic**: Keep business logic in Python scripts and display logic in templates. Avoid hardcoding content in templates when it should be in the JSON data source.
 
 ### Naming Conventions
 - Use **gerund form**: `processing-pdfs`, `analyzing-spreadsheets`.

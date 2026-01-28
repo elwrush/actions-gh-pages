@@ -15,6 +15,42 @@ This skill guides you through an 8-step interactive workflow to create a lesson 
 - Access to `knowledge_base/shapes/` directory for modular shape definitions
 - Materials in `/inputs` subfolder (or user will design new materials)
 
+## Visual Process
+
+```mermaid
+graph TD
+    Start([LP Request]) --> Shape{1. Shape Selection}
+    Shape -->|A-J| Metadata[2. Collect Metadata]
+    Metadata --> Type{3. Lesson Type}
+    
+    Type -->|Bell| HeaderBell[bell-header.jpg]
+    Type -->|Intensive| HeaderInt[intensive-header.jpg]
+    
+    HeaderBell & HeaderInt --> Source{4. Materials Source}
+    Source -->|New| H[Design Materials]
+    Source -->|Existing| I[Scan Source Inputs]
+    
+    H & I --> Clarify[5. Clarify Materials]
+    Clarify --> Special[6. Special Requests]
+    Special --> Suggest[7. Suggest Objective]
+    Suggest --> Write[8. Write Typst Plan]
+    
+    Write --> Validate{9. Validate}
+    Validate -->|Fail| Fix[Fix Plan]
+    Fix --> Write
+    
+    Validate -->|Pass| ApproveLP{Gate 1: LP Approval?}
+    ApproveLP -->|Fail| Fix
+    
+    ApproveLP -->|Pass| Slideshow[Generate Slideshow]
+    Slideshow --> ApproveSlides{Gate 2: Slideshow Approval?}
+    
+    ApproveSlides -->|Fail| Slideshow
+    ApproveSlides -->|Pass| Automate[10. Post-Generation Automations]
+    
+    Automate --> Finish([🏁 Final PDF & Live Slideshow])
+```
+
 ## Workflow
 
 ### Step 1: Present Lesson Shape Menu
@@ -100,11 +136,12 @@ Wait for user approval before proceeding.
 > 
 > The generated lesson plan must:
 > 1. **Match the stage structure** of the model (not be a slavish rendering of materials)
-> 2. **Follow the pedagogical intent** - e.g., Shape E focuses on skills, not language
-> 3. **Use similar stage headers** - e.g., "Lead-in", "Reading for detail", "Post-reading"
-> 4. **Maintain similar timing proportions** - the model shows where to invest time
-> 5. **Consolidate activities** into logical stages rather than listing each exercise separately
-6. **Explicit Task Referencing**: Always reference specific task/exercise numbers (e.g., "Task 2: Global Reading") within the Procedure column. This ensures the lesson plan is directly anchored to the materials.
+> 2. **Depth and Complexity**: Procedures MUST match the "thickness" and granularity of the example lesson plans in the models. If a model has multi-part lead-ins or detailed elicitation steps, the generated plan must reflect that specific pedagogical density.
+> 3. **Follow the pedagogical intent** - e.g., Shape E focuses on skills, not language
+> 4. **Use similar stage headers** - e.g., "Lead-in", "Reading for detail", "Post-reading"
+> 5. **Maintain similar timing proportions** - the model shows where to invest time
+> 6. **Consolidate activities** into logical stages rather than listing each exercise separately
+> 7. **Explicit Task Referencing**: Always reference specific task/exercise numbers (e.g., "Task 1: Pre-teaching") within the Procedure column. This ensures the lesson plan is directly anchored to the materials.
 > 
 > **Example: Shape E (Receptive Skills) model has only 3 stages:**
 > - Stage 1: Lead-in (6 min) - Multi-part warmup with prediction/discussion
@@ -114,17 +151,15 @@ Wait for user approval before proceeding.
 > **Do NOT** create 6+ granular stages for each worksheet section. Combine related activities into coherent stages that match the model.
 
 > [!IMPORTANT]
-> ## McKinsey Storylining & Strategic Pedagogy
+> ## Traditional Pedagogical Depth & Storylining
 > 
-> Do NOT slavishly and mechanistically reproduce the structure of worksheets. Also, **AVOID labored, hokey, or intrusive metaphors** (e.g., Turning everything into "Coding", "Heroes", or "Mechanics").
+> Do NOT slavishly and mechanistically reproduce the structure of worksheets. Avoid "thin" procedures that only list task numbers. 
 > 
 > Instead:
-> - **McKinsey Logic**: Use the **SCR Framework** (Situation, Complication, Resolution) to structure the lesson flow.
-> - **Dot-Dash Strategy**: Organize key points as **Dots** (Headlines) and evidence as **Dashes** (Details).
-> - **Similes over Metaphors**: When explaining pedagogy, use **professional similes** rather than deep metaphors. 
->   - *Example (Simile)*: "Like an architect sketching a plan, we must outline our ideas before writing."
->   - *Avoid (Labored Metaphor)*: "You are the Programmer, and Paragraph 2 is your System Architecture."
-> - **Strategic Clarity**: Frame material as an expert consultant would—focused on *influence* and *clarity*.
+> - **Pedagogical Thickness**: Procedures MUST match the granularity of the model lesson plans. Include elicitation steps, specific CCQs (Concept Check Questions), and clear transitions between activities.
+> - **Storylining**: Frame the lesson as a narrative journey. The Lead-in should "hook" the students, the middle stages should deepen their understanding, and the final stage should provide a meaningful resolution or reflection.
+> - **Similes over Metaphors**: Use professional ELT similes to guide students (e.g., "Like a detective looking for clues, scanning the text for specific dates"). 
+> - **Intrinsic Engagement**: Focus on the inherent interest of the material and the professional relevance of the task to foster motivation.
 - **Thematic Consistency**: **CRITICAL**. Ensure the "Situation" (topic/theme) remains consistent across stages. Avoid "pedagogical whiplash" (e.g., moving from a Lead-in about Art to a Diagnostic about Weather). The Initial Test in Shape C and the Lead-in in all shapes MUST be thematically linked to the core target language context.
 - **No Rewards/Dojos**: NEVER include mentions of "Dojo rewards", "stickers", or any other artificial reward systems. The focus is on intrinsic motivation and professional task engagement.
 - **No Hallucinations**: Do NOT invent visual materials (e.g., "Show photo of Thai student with EKG") unless they definitively exist in the `images/` or materials folder. Use generic references to the title/topic if unsure.
@@ -133,18 +168,29 @@ Wait for user approval before proceeding.
 
 Generate the lesson plan **in Typst format** for professional PDF output. Use the standardized component library.
 
+> [!CRITICAL]
+> **GATE 1: LESSON PLAN APPROVAL**
+> You MUST present the generated lesson plan (or a clean markdown summary) to the user and wait for EXPLICIT APPROVAL before proceeding to any subsequent steps (such as slideshow generation).
+
 > [!IMPORTANT]
 > **Output Format**: Typst (`.typ`) files compiled to PDF using the `compiling-typst-docs` skill.
 > - Typst provides version control, reusability, and consistent branding.
 > - **Template Import**: Always import the components at the top:
 >   `#import "../../skills/writing-lesson-plans/templates/lesson-plan-components.typ": *`
 
-#### File Naming Convention
-Store in the **source folder** (same as materials) with this format:
-```
-DD-MM-YYYY-LP-[CEFR]-[topic]-[Shape].typ
-```
-*(Note: Use 4-digit year)*
+#### File Naming & Location Discipline
+**Canonical Folder:** `inputs/[DD-MM-YYYY-Topic-Level]/`
+
+Store ALL files in this folder using strict sub-directories:
+- **Lesson Plan:** `inputs/[Folder]/[Date-Slug]-LP.typ`
+- **Images:** `inputs/[Folder]/images/`
+- **Audio:** `inputs/[Folder]/audio/`
+- **Quizzes:** `inputs/[Folder]/quizzes/`
+- **Presentations (JSON/HTML):** `inputs/[Folder]/`
+
+> [!CRITICAL]
+> **NO ROOT FILES**: Never save files to the `inputs/` root or the Project root. Always use the named subfolder.
+> **NO SCATTERING**: Do not create generic folders like `temp_quiz_repo`. Use the `quizzes/` subfolder.
 
 #### Typst Structure
 
@@ -167,7 +213,7 @@ DD-MM-YYYY-LP-[CEFR]-[topic]-[Shape].typ
   shape: "[X (Name)]",
   assessment: "[N/A or CA]",
   focus: "[Focus]",
-  materials: "[filename]",
+  materials: "[filename].pdf",
 ))
 
 #v(0.5cm)
@@ -179,8 +225,12 @@ DD-MM-YYYY-LP-[CEFR]-[topic]-[Shape].typ
 #v(0.5cm)
 
 #differentiation_box[
-  This lesson employs a "Tiered Text" strategy, allowing students to self-select between B1, B1+, and B2 versions of the core material. This approach is grounded in *Krashen's Input Hypothesis (1982)*, which posits that language acquisition occurs when learners receive "comprehensible input" (i+1). 
+  ...
 ]
+
+// MANDATORY: Slideshow link MUST be placed here, after the differentiation box and before the stages
+#v(0.5cm)
+#slideshow_link("https://elwrush.github.io/lesson-plan-agent/[FOLDER-NAME]/")
 
 #v(0.5cm)
 
@@ -209,6 +259,33 @@ Run the validator before finalizing:
 python skills/writing-lesson-plans/scripts/validate_lesson_plan.py "path/to/lesson-plan.typ" --mode [bell|intensive]
 ```
 - **Rule**: If the script fails, fix the issues and re-run until it passes.
+
+> [!CRITICAL]
+> **GATE 2: POST-VALIDATION CHECK**
+> Once the plan passes validation, confirm with the user one final time: "The lesson plan is validated and ready. Shall I proceed to generate the slideshow/materials?"
+
+### Step 10: Post-Generation Automations
+
+After the lesson plan is validated and approved, perform the following automations:
+
+1.  **Generate Slideshow**:
+    Follow the `creating-html-presentation` skill.
+    > [!CRITICAL]
+    > **GATE 3: SLIDESHOW APPROVAL**
+    > The slideshow MUST be reviewed by the user (using `Start-Process`) and EXPLICITLY APPROVED before it is built into the dashboard or uploaded to GitHub Pages.
+
+2.  **Build Slideshow Dashboard**:
+    Run the build script ONLY after the slideshow is approved:
+    ```powershell
+    node scripts/build_dist.js
+    ```
+3.  **Deployment Reminder**:
+    Explicitly tell the user:
+    > "I've updated the slideshow library. Please **push your changes to GitHub** to trigger the live deployment to GitHub Pages (assuming the slideshow has been approved for production)."
+
+3.  **URL Reporting**:
+    Provide the user with the direct link to the slideshow:
+    `https://elwrush.github.io/lesson-plan-agent/[FOLDER-NAME]/`
 
 #### Pre-teach Vocabulary Format (Shape E)
 

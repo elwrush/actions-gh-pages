@@ -16,18 +16,41 @@ const DIST_DIR = path.join(PROJECT_ROOT, 'dist');
 const INPUTS_DIR = path.join(PROJECT_ROOT, 'inputs');
 
 // Clean and create dist
-console.log('\n🧹 Cleaning dist/ folder...');
-if (fs.existsSync(DIST_DIR)) {
-    fs.rmSync(DIST_DIR, { recursive: true, force: true });
+// function to robustly delete folder with retries
+function robustClean(dir) {
+    if (!fs.existsSync(dir)) return;
+
+    let retries = 5;
+    while (retries > 0) {
+        try {
+            fs.rmSync(dir, { recursive: true, force: true });
+            console.log('🧹 Cleaned dist/ folder.');
+            return;
+        } catch (e) {
+            console.warn(`⚠️ EBUSY/Locked file in ${dir}. Retrying in 1s... (${retries} left)`);
+            const start = Date.now();
+            while (Date.now() - start < 1000) { } // Busy wait
+            retries--;
+        }
+    }
+    console.warn(`❌ Could not fully clean ${dir}. Proceeding with overwrite...`);
 }
-fs.mkdirSync(DIST_DIR);
+
+robustClean(DIST_DIR);
+
+if (!fs.existsSync(DIST_DIR)) {
+    fs.mkdirSync(DIST_DIR);
+}
 
 // Copy shared JS components
 const skillsJs = path.join(PROJECT_ROOT, 'skills/creating-html-presentation/js');
 if (fs.existsSync(skillsJs)) {
     const destJs = path.join(DIST_DIR, 'skills/creating-html-presentation/js');
     fs.mkdirSync(destJs, { recursive: true });
-    fs.cpSync(skillsJs, destJs, { recursive: true });
+    fs.cpSync(skillsJs, destJs, {
+        recursive: true,
+        filter: (src) => !path.basename(src).startsWith('.') && path.basename(src).toLowerCase() !== 'desktop.ini'
+    });
     console.log('📦 Copied shared JS components.');
 }
 
@@ -35,17 +58,36 @@ if (fs.existsSync(skillsJs)) {
 const globalImages = path.join(PROJECT_ROOT, 'images');
 if (fs.existsSync(globalImages)) {
     const destImages = path.join(DIST_DIR, 'images');
-    fs.cpSync(globalImages, destImages, { recursive: true });
+    fs.cpSync(globalImages, destImages, {
+        recursive: true,
+        filter: (src) => !path.basename(src).startsWith('.') && path.basename(src).toLowerCase() !== 'desktop.ini'
+    });
     console.log('📦 Copied global images.');
 }
 
-// Find all presentations
+// Targeted build check
+const targetFolder = process.argv[2];
+if (targetFolder) {
+    console.log(`🎯 Targeted build for: ${targetFolder}`);
+}
+
+// Find presentations
 const folders = fs.readdirSync(INPUTS_DIR).filter(f => {
+    if (f.startsWith('.')) return false;
+
+    // If a target folder is specified, only include it
+    if (targetFolder && f !== targetFolder) return false;
+
     const indexPath = path.join(INPUTS_DIR, f, 'index.html');
     return fs.existsSync(indexPath);
 });
 
-console.log(`\n📂 Found ${folders.length} presentations:`);
+if (folders.length === 0) {
+    console.error('❌ No matching presentations found.');
+    process.exit(1);
+}
+
+console.log(`\n📂 Processing ${folders.length} presentation(s):`);
 
 const presentationData = [];
 
@@ -54,7 +96,17 @@ folders.forEach(f => {
     const destPath = path.join(DIST_DIR, f);
 
     console.log(`  - Copying ${f}...`);
-    fs.cpSync(srcPath, destPath, { recursive: true });
+    fs.cpSync(srcPath, destPath, {
+        recursive: true,
+        filter: (src) => {
+            const base = path.basename(src).toLowerCase();
+            const isGit = src.includes('.git');
+            const isHidden = base.startsWith('.');
+            const isLegacy = src.includes('reveal_presentation');
+            const isSystem = base === 'desktop.ini';
+            return !isGit && !isHidden && !isLegacy && !isSystem;
+        }
+    });
 
     // Extract title from index.html if possible
     let title = f;
@@ -145,4 +197,4 @@ console.log('\n✅ Dashboard generated.');
 
 console.log('\n✅ Build complete!');
 console.log(`   Output: dist/`);
-console.log('\nNext: Run `npx wrangler pages deploy dist/` to deploy.\n');
+console.log('\nNext: Push to GitHub to deploy to GitHub Pages.\n');

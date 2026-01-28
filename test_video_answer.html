@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Video Answer Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+    <script src="js/slide-components.js"></script>
+    <style>
+        :root {
+            --primary: #00F2FF;
+            --secondary: #8B1538;
+            --text-accent: #FFD700;
+            --grad-main: linear-gradient(135deg, #050811 0%, #1a1f35 100%);
+            --glass: rgba(10, 10, 20, 0.9);
+        }
+        body { font-family: 'Outfit', sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- MANUALLY RENDERED TEST SLIDE -->
+            <section data-background-gradient="var(--grad-main)" class="layout-split-50-50">
+                <div class="header-strap">Roblox History: The "Oof" Sound</div>
+
+                <!-- LEFT: YouTube Video Clip -->
+                <div class="video-wrapper" style="border: 2px solid var(--primary); box-shadow: 0 0 30px rgba(0,0,0,0.5); align-self: center;">
+                    <iframe 
+                        src="https://www.youtube.com/embed/f4yvE_S_fNo?enablejsapi=1&start=45&end=60&rel=0" 
+                        style="width: 100%; height: 100%;" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- RIGHT: Answer Box -->
+                <div class="glass-box" style="display: flex; flex-direction: column; gap: 20px; align-self: center; text-align: left;">
+                    
+                    <div class="fragment" style="border-bottom: 1px solid var(--primary); padding-bottom: 15px;">
+                        <div style="font-size: 0.6em; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; font-weight: 800; margin-bottom: 5px;">
+                            Correct Answer
+                        </div>
+                        <div style="font-size: 1.6em; font-weight: 800; color: white; line-height: 1.1;">
+                            Tommy Tallarico
+                        </div>
+                    </div>
+
+                    <div class="fragment" style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-left: 4px solid var(--text-accent); border-radius: 0 8px 8px 0;">
+                        <div style="font-size: 0.5em; color: var(--text-accent); font-weight: bold; margin-bottom: 8px; text-transform: uppercase;">
+                            From the Transcript
+                        </div>
+                        <div style="font-family: 'Courier Prime', monospace; font-size: 0.8em; color: #eee; font-style: italic; line-height: 1.4;">
+                            "The iconic sound was actually originally created by video game composer Tommy Tallarico for Messiah."
+                        </div>
+                    </div>
+
+                    <div class="fragment">
+                        <div style="font-size: 0.6em; color: var(--secondary); font-weight: bold; text-transform: uppercase; margin-bottom: 5px;">
+                            Explanation
+                        </div>
+                        <div style="font-size: 0.85em; line-height: 1.3; color: #ccc;">
+                            While commonly associated with Roblox, the sound had a long legal dispute regarding its original authorship.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            width: 1280, height: 720, margin: 0.05,
+            center: true, hash: true,
+            embeddedIframesFullscreen: true
+        });
+    </script>
+</body>
+</html>

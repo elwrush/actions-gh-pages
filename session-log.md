@@ -515,3 +515,78 @@
 ### Known Issues (Deferred)
 - **Dashboard Broken Links**: Clicking cards on `lesson-slideshows.pages.dev` causes recursive URL appending. Direct links unaffected. Fix later in `build_dist.js`.
 
+---
+
+## 2026-01-26 | Header Standardization & A2 Reading Worksheet
+
+### Key Technical Achievement: Photographic Header Standardization
+- **Problem**: Inconsistent branding between Bell (maroon strap) and Intensive (photographic header).
+- **Solution**: Standardized on **Photographic Headers** (`bell-header.jpg` and `intensive-header.jpg`) for ALL materials.
+  - Updated `developing-bespoke-materials` and `generating-worksheets` skills.
+  - Refactored `validate_worksheet.py` to remove false positives for legacy logos (Bell.svg).
+  - Legacy branding now generates a warning (Bell) or error (Intensive) in the validator.
+
+### Worksheet Development: "Creative Solutions" (A2 Reading)
+- **Design Strategy**: Editorial High-Density.
+- **Visuals**: Switched from icons to high-quality city photography for Curitiba, Murcia, and La Paz.
+- **Usability**:
+  - Implemented **Vertical Listing** for matching/completion tasks to maximize handwriting space.
+  - Forced **1em leading** for A2 learners.
+  - Applied `#block(breakable: false)` to 100% of Task headers to prevent orphaning.
+- **Result**: Compact 2-page reading worksheet with integrated assessment and answer key.
+
+### Technical Bug Squashing
+- **Typst Color**: Fixed `type color has no method with_alpha` by using `rgb(r, g, b, alpha)`.
+- **Typst Strings**: Fixed `type string has no method upper` by using `upper(string)`.
+- **PNG Corruption**: Resolved `failed to decode image (Format error)` by using a PIL-based repair script (`fix_images.py`).
+
+
+---
+
+## 2026-01-27 | Auto-Animate Matching & Build Hardening
+
+**Objective**: Finalize and deploy the Thai-Cambodian Conflict lesson with interactive vocabulary matching and a hardened deployment pipeline.
+
+### Architectural: "Hardened Targeted Builds"
+- **Targeted Deployment**: Modified `build_dist.js` to allow `node scripts/build_dist.js [folder]`. This prevents overwriting/recopying all 10 presentations when only one is being edited.
+- **GDrive Resilience**: Updated all copy logic (Python & JS) to ignore `desktop.ini` and hidden GDrive metadata that caused Windows "Permission Denied" errors.
+- **Cleanup Persistence**: Wrapped `dist/` cleanup in try-catch to bypass folder locks.
+
+### Presentation: "The Morphing Match"
+- **Matching Layout**: Created a dedicated `matching.html` template. 
+- **Auto-Animate**: Implemented stable `data-id` mapping so definitions physically morph and glide into position during the Answer Key reveal.
+- **Visuals**: Repositioned emojis to the start of lines to function as visual bullet points on strategy slides.
+
+### Worksheet: "Dynamic Content Filling"
+- **Transcript page**: Moved the full BBC transcript to Page 4 and the Answer Key to Page 5.
+- **Dynamic Lines**: Applied the Typst context-aware calculation to Page 3 to perfectly fill the remaining space with handwriting lines for Task 4.
+
+### Skill Upgrades
+- **`creating-html-presentation`**: Version 4.1. Now includes the `matching` layout catalog and mandatory GDrive file ignore rules.
+- **Build Tooling**: The generator script and build script are now cross-platform safe for GDrive environments.
+
+---
+
+## 2026-01-27 (Night) | "Pro" Template Refinement & Layout Troubleshooting
+
+### Objective
+Development of the **"Pro" Worksheet Template** for the Bondi Beach Attack lesson, focusing on high-end OCR compatibility and standardized student data blocks.
+
+### Key Technical Achievements
+- **OCR-Optimized Identity Block**: 
+  - Standardized the CLASS and STUDENT ID bubble containers with pure white interiors and dark gray outlines.
+  - Implemented an OMR-style side-by-side grid layout for student metadata.
+  - Aligned Thai instructions ("Please color the bubbles...") with centered visual examples and 13pt responsive font sizing.
+- **Header Hardening**: 
+  - Fixed `pro_header` width overflow issue by switching from fixed `21.05cm` to responsive `100%`, ensuring it respects page margins.
+- **Orphan Prevention**: 
+  - Implemented strict page breaks for Tasks 3 and 4 to prevent fragmented layouts in the 4-page booklet.
+
+### "The Task Badge Wreck" (Ongoing Issue)
+- **Problem**: The `task_badge` components (maroon/off-white split) encountered significant rendering issues, either spilling off the page or vertically stretching into "huge rectangles" when using grid-based alignment.
+- **Root Cause**: Inconsistent behavior of `auto` vs `1fr` widths in Typst blocks when nested inside complex grids lacking fixed width constraints.
+- **Current Status**: Content logic is correct, but visual styling is currently "wrecked."
+
+### Session Status
+- **Next Steps**: Finishing tomorrow.
+- **Context**: We now have the official **Typst repository** as a reference to resolve these layout/grid anomalies.

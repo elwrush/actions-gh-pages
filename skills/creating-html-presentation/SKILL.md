@@ -5,487 +5,234 @@ description: Generates vibrant Reveal.js HTML presentations (slideshows) from le
 
 # Skill: Creating HTML Presentations (`creating-html-presentation`)
 
-## Description
-This skill generates vibrant, high-energy HTML presentations using **Reveal.js**. It transforms lesson plans into dynamic, web-based experiences with "pop and verve."
+**Version**: 4.0 (Local Reveal.js Core + Pixel-Perfect Standards)
 
-## ⛔ MANDATORY CO-LOCATION RULE (READ FIRST)
+## Description
+This skill generates vibrant, high-energy HTML presentations using **Reveal.js** via a Python generator script. It transforms lesson plans into dynamic, web-based experiences with "pop and verve." This version relies on a local Reveal.js distribution (in `reveal_core/`) to ensure offline reliability and perfect rendering.
+
+## ⛔ MANDATORY CO-LOCATION & ROOT BAN (READ FIRST)
 
 > [!CRITICAL]
+> **ROOT FOLDER BAN**: You are STRICTLY FORBIDDEN from creating any lesson files (PDFs, Typst, Images, HTML) in the Project Root (`C:\PROJECTS\LESSONS AND SLIDESHOWS 2\`).
+> 
+> **Canonical Location**: ALL files MUST be created inside a dedicated subfolder in `inputs/` (e.g., `inputs/28-01-2026-B1-Match-Girl-E/`). This applies to the Lesson Plan, Slideshow, Images, worksheets, and assets.
+
+> [!CRITICAL]
+> **PREREQUISITE**: You MUST NOT generate a presentation until the corresponding Lesson Plan has been EXPLICITLY APPROVED by the user.
+> 
 > **ALL presentation files (`index.html`, `images/`, `audio/`) MUST be created inside the SAME folder as the lesson plan and worksheet.**
 > 
 > **Canonical Location**: `inputs/[QAD-folder]/` (e.g., `inputs/QAD-Fight-or-Flight/`)
-> 
-> **NEVER create presentations in**:
-> - ❌ Project root (e.g., `18-01-26_Fight-or-Flight/`)
-> - ❌ `presentations/` folder (this is for deployment links only)
-> - ❌ Any folder that doesn't contain the `.typ` lesson plan file
 >
-> **Why**: This ensures all materials for a lesson are grouped, preventing version drift and deployment bugs.
+> [!IMPORTANT]
+> **IGNORE GDRIVE SYSTEM FILES**: Always ignore `desktop.ini` and other hidden system files created by Google Drive synchronization. These files should never be included in the presentation assets or copied to `dist/`.
 
-## Context
-Use this skill to create the visual backbone of a lesson. Slides must:
-- **Mirror the Lesson Plan**: Alignment with stages and materials is mandatory.
-- **High-Energy Stage Segues**: Use clear, high-energy transitions (Phases).
-- **Preferred Transition**: Use **`convex`** as the default Reveal.js transition for all presentations.
-    - **Requirement**: Every segue slide MUST include a sub-headline (max 15 words) explaining the specific pedagogical goal of the upcoming phase.
-- **Interactive Timers (MANDATORY)**: Every timed exercise MUST have a visible, interactive countdown timer.
-    - **Physics**: Must remain within the 960x700 artboard (no spill-off).
-    - **Logic**: Must include Start/Pause/Reset functionality for teacher control.
-- **Speaker View (MANDATORY)**:
-    - **Access**: Teachers access notes by pressing **'s'** on the keyboard.
-    - **Content**: Every slide MUST contain an `<aside class="notes">` block with "Advice" and "Next Slide" cues.
-- **Visual Pivots (Slide Offsets)**: Use strongly differentiated background tints for specific pedagogical moments:
-    - **Answer Slides**: Use a Deep Emerald/Teal tint (`#052a10`) to signal the transition to validation/review.
-    - **Final Task Slides**: Use a Deep Maroon/Crimson tint (`#2a0a0a`) to signal the "Boss Level" or assessment phase.
-- **Visual Impact**: Use high-contrast themes and cinematic visuals.
+## Workflow
 
-## 🛑 VISUAL-FIRST WORKFLOW (MANDATORY)
+## Workflow
 
-> [!CRITICAL]
-> **DO NOT WRITE CODE UNTIL STEP 4**
-> You must strictly follow this linear process. Do not skip steps.
+### Step 0: 🧠 Context Check (CRITICAL)
+1. **Ingest History**: You MUST read `errors-fix.md` before generating any presentation to ensure previous mistakes (e.g., iframe fullscreen issues, layout stacking, malformed titles) are not repeated.
+2. **Review Updates**: Check if any new layout rules (e.g., "Horizontal-First") apply to your current task.
 
-### Step 0: ❓ Context Check
-**Goal**: Determine the target audience, branding, and file routing.
+### Step 1: 📋 Source Check (MANDATORY)
+1.  **Check Context**: Ensure you are in a valid lesson folder with a lesson plan (`.typ`/`.md`) and worksheet.
+2.  **Extract Content**: Create a checklist of tasks from the source materials. Use "Task" nomenclature (e.g., "Task 1", "Task 2").
+3.  **Validate**: Show this checklist to the user.
 
-**GATE 1: Branding**
-- **Mode**: "Bell" or "Intensive" (Determines default color palette, but **NO LOGOS** are included).
-- **Tone**: 
-  - **Bell**: Warm/Standard.
-  - **Intensive**: Modern/Edge.
+### Step 1.5: 📐 Flow Visualization & Audit (Drift Check)
+1.  **Activate**: `skills/rendering-prompts-into-mermaid/SKILL.md`.
+2.  **Generate Flowchart**: Create a Mermaid `graph TD` mapping the Lesson Plan to specific Slide Nodes.
+3.  **Strict Node Annotation**:
+    -   Each node MUST identify its **Layout** (e.g., `[Strategy Slide]`, `[Task 4: Split Video]`).
+    -   Multimedia nodes MUST include **Timestamps** (e.g., `Video: 01:17-01:35`).
+    -   Task nodes MUST confirm **"Anti-Echo"** logic (e.g., `Options: Rephrased/Mixed`).
+4.  **Pedagogical Visual Check**:
+    -   Does a **Strategy Node** appear before every Task Node?
+    -   Does a **Video Answer Node** immediately follow the Task?
+    -   **Pedagogical Mandate**: Does a **Contextualization Slide** appear immediately after the Lead-in? This slide MUST explain the lesson objective in a student-centered way (e.g., "Today we're making you a better reader! By the end of the lesson you'll...").
+6.  **Stop & Confirm**: Present this graph to the user. Do NOT proceed to code generation until the flow is approved.
 
-**GATE 2: Audience (MANDATORY - STOP HERE)**
-- **Ask**: "Is the audience **Middle School** or **High School**?"
-- **⚠️ CRITICAL**: **STOP** and wait for explicit user confirmation. Do NOT assume, do NOT pre-fetch files, and do NOT read ahead to Step 0.5. Wait for the answer.
-- **Tone Logic**:
-  - **Middle School**: "Pop & Verve"
-    - **Language**: High energy, game-based metaphors (Boss Levels, Power Ups, Missions)
-    - **Complexity**: More visual scaffolding, shorter explanations
-    - **Example Slide Title**: "MISSION 1: Hunt the Hidden Clauses!" ✅
-    - **Avoid**: "Analyze the syntactic structure..." ❌
-  - **High School**: "Expert/Academic"
-    - **Language**: Focus on university pathways, career utility, professional lexicon
-    - **Complexity**: Sophisticated analytical hooks, technical terminology
-    - **Example Slide Title**: "Task 1: Identify and Classify Relative Clause Types" ✅
-    - **Avoid**: "Let's find the clauses, team!" ❌
+### Step 2: 📦 Asset Strategy (External Generation)
+**Goal**: Create high-quality visual aides via external user-led generation.
 
-### Step 0.5: 📂 Source Material Validation (MANDATORY GATE)
-**Goal**: Ensure input materials exist before generating slides.
-**Action**:
-1.  **Check Lesson Plan**: Look for `*.typ`, `*.md`, or `*.pdf` lesson plan.
-    -   **IF MISSING**: **STOP**. You cannot generate a presentation without a plan.
-2.  **Check Learning Materials**: Look for a worksheet or source text.
-    -   **IF MISSING**: Ask: "No worksheet/source text found. Are we proceeding without one? (y/n)"
-    -   **Decision**: 
-        -   **Yes**: Proceed (User acknowledges 'No Source' mode).
-        -   **No**: **STOP** and wait for files.
+1.  **Generation Strategy (User-Led)**:
+    -   **CRITICAL RULE**: Do NOT attempt to generate images internally using `generate_image`.
+    -   **Action**: Provide the user with highly detailed, cinematic prompts for all required visuals (Title, Vocab, Lead-ins).
+    -   **Wait**: You MUST stop all automated progress and wait for the user to provide the generated image files.
+    -   **Action**: Once the user provides the images, copy/move them to the canonical `images/` folder within the lesson directory.
 
-### Step 0.6: 📋 SOURCE CONTENT EXTRACTION (CRITICAL ANTI-HALLUCINATION GATE)
+2.  **Pixabay Strategy (Fallback)**:
+    -   Only use `skills/searching-pixabay/SKILL.md` if the user explicitly requests a photographic fallback or if external generation is not feasible.
 
-> [!CRITICAL]
-> **MANDATORY. Failure causes 30+ minutes of repair work.**
+3.  **Attribution Rules**:
+    -   **AI Images**: DO NOT include any attribution text.
+    -   **Pixabay Images**: MUST include attribution (e.g., "Image by [User] from Pixabay").
+    -   **Styling**: Attribution text must be **10pt**, subtle, and placed directly beneath the image.
 
-**Goal**: Create a deterministic checklist of ALL worksheet content.
+4.  **Organization Rule**:
+    -   ALL images must be saved to `inputs/[Lesson]/images/`.
+    -   ALL audio must be saved to `inputs/[Lesson]/audio/`.
+    -   **Never** leave assets in the root folder.
 
-**Action**:
-1. Read **Lesson Plan** completely. Note all stages.
-2. Read **Worksheet** completely. Extract:
-   - Task names (exactly as written)
-   - All questions/prompts (copy exact wording)
-   - All correct answers (from answer key)
-3. Generate a **Content Extraction Checklist** (see `REFERENCE.md` → "Content Checklist Template")
-4. **STOP**: Present checklist to user with count ("X tasks, Y questions")
-5. **Wait for confirmation** before proceeding.
+### Step 3: 🎨 Config Generation (JSON)
+Generate `presentation.json`. Use **Auto-Animate** (`data-auto-animate`) liberally for smooth transformations (e.g., Vocabulary matching, Grammar rules, Sentence changes). By using stable `data-id` attributes on elements across slides, Reveal.js will automatically morph them.
 
-**Why**: Without this checklist, agent WILL hallucinate or truncate content.
+**Tone & Typography Guide**:
+-   **Persona**: Warm, friendly, and engaging ESL Teacher.
+-   **Voice**: Use short sentences and simple words. Avoid academic jargon.
+-   **Typography**: NEVER use all-caps for headers or body text (except Title Deck 1).
+-   **Color Palette Rule**: You MUST select a cohesive **Color Palette** (e.g., Noir, Cyber, Pastel) before generating the JSON. This ensures visual consistency across all slides.
+-   **NO VISIBLE TIPS**: NEVER include "Teacher Tips", "Pro Tips", or "Pedagogical Advice" on the actual slide surface. This information belongs EXCLUSIVELY in the `notes` field for the speaker view.
+-   **Context Slide Rule**: You MUST include a "Contextualization" slide after the Lead-in. It sets the student's personal goal for the lesson.
+-   **Video Slide Rule**: YouTube slides MUST include 3 directive bullet points (talking points/questions) to guide viewing. Never just say "Watch this."
+-   **Layout Philosophy**: Always utilize the full 16:9 horizontal space. Avoid centered "boxes in the middle".
+
+## 📐 Layout Philosophy (16:9 Optimization)
+
+Reveal.js presentations are 16:9. Always use horizontal space efficiently:
+- ❌ **DON'T**: Create centered boxes with content stacked vertically.
+- ✅ **DO**: Use split layouts (40/60, 50/50, 60/40) for most slides.
+- ✅ **DO**: Place images/media on one side, text on the other.
+- ✅ **DO**: Use full-width grids for checklists and multi-item content.
+
+### Patterns:
+- **Vertical Center**: ONLY for segue slides or very short, single-sentence quotes.
+- **Split 40/60**: Image left (40%), content right (60%) - Default for vocab and tasks.
+- **Split 60/40**: Content left (60%), media right (40%).
+- **Split 50/50**: Video + Questions side-by-side.
+
+### 🌟 New Design Standards (2026 Updates)
+1.  **Strategy Slide Pattern**:
+    -   **Mandatory**: Every Speaking/Listening task MUST have a preceding "Strategy" slide.
+    -   **Style**: Emoji Bullet Points (e.g., 🗣️ **Speak**, 🌍 **Connect**) instead of standard bullets.
+    -   **Content**: Focus on *how* to do the task, not just instructions.
+
+2.  **Video Answer Logic (Combined Card)**:
+    -   **Layout**: 50/50 Split.
+    -   **Left**: Replay Video Clip (iframe) with precise start/end times.
+    -   **Right**: **Combined Analysis Card**.
+        -   **Top**: CORRECT ANSWER (Bold, Large).
+        -   **Bottom**: EVIDENCE/TRANSCRIPT (Typewriter font, highlighted keywords, font size ~22-24px).
+
+3.  **Anti-Echoing Rule (Pedagogical)**:
+    -   **Checklists/Options**: Must **NOT** directly echo the transcript audio.
+    -   **Validation**: Rephrase the options (e.g., "Rare event" -> "Unusual occurrence") and **Reorder** them so they do not match the video sequence.
+
+4.  **Auto-Animate Checklists**:
+    -   **Question Slide**: Unchecked items `[ ]`.
+    -   **Answer Slide**: Checked items `[✓]` with Green/Bold styling.
+    -   **Tech**: Use matching `data-id` attributes on both slides to enable smooth morphing.
+
+5.  **Compact Layouts**:
+    -   For Split Task slides, use **30px padding** (not 40px) inside glass boxes to prevent vertical overflow.
+    -   Header sizes: ~45px. Body text: ~24px.
 
 
-### Step 1: 🎨 Gated Palette Selection (MANDATORY GATE)
-**Goal**: Define the exact color palette from the modular system.
-
-**Action**:
-1.  **Consult** `skills/creating-html-presentation/PALETTES.md` to review available themes.
-2.  **STOP** and present the menu to the user explicitly.
-3.  **Propose** a specific palette (Name + ID) based on the lesson's tone (Step 0).
-    -   *Example*: "For a 'High School/Serious' lesson, I recommend Palette #5 (Blue Grey Steel)."
-4.  **Wait** for the user to confirm the Palette ID (e.g., "Use #5").
-
-**MANDATORY RULES (The Fixed Canvas):**
--   **Segue Slides**: Must ALWAYS use a **vibrant dark radial gradient** and a **neon glow** on the title.
-    -   *Background Code*: `var(--grad-segue)`
-    -   *Title Glow*: `text-shadow: 0 0 20px var(--text-accent), 0 0 40px var(--primary), 6px 6px 0px rgba(0,0,0,0.5);`
--   **Warning/Constraint Slides**: Must use the **Boss Level gradient** (`var(--grad-boss)`) and include a visual hazard icon (e.g., road sign).
-    -   *Purpose*: Signals a negative grammar rule (e.g., "When NOT to use this").
-    
-### Step 1.5: 📦 Asset Strategy & Sourcing (MANDATORY GATE)
-**Goal**: Define and source the exact media assets needed.
-
-**GATE: Media Strategy Check**
-You MUST ask:
-> "Do you want images, sound, or video in this presentation? Choose:
-> 1. Images
-> 2. Sounds
-> 3. Videos
-> 4. All"
-
-**Sourcing Logic (Strict):**
--   **A. Images**:
-    1.  Ask: "Photos, Illustrations, or Vectors?"
-    2.  **Constraint**: Illustrations/Vectors **MUST** be transparent PNGs.
-    3.  **Source**: **Pixabay First** (`searching-pixabay`).
-    4.  **Attribution (MANDATORY)**:
-        -   **Format**: "Image by [User] from Pixabay"
-        -   **Placement**: Static, centered, directly BENEATH the image (inside the column).
-        -   **Code**: `.attribution { position: static; text-align: center; font-size: 12px; margin-top: 8px; }`
-    5.  **Fallback**: Internal Generation -> External Gemini API.
--   **B. Sounds**:
-    1.  **Source**: **Freesound ONLY** (`searching-freesound`). **NO VOCABULARY AUDIO** (user explicitly removed requirement).
-    2.  **Process**: Present 3 candidates (for UI/Timer) -> Wait for Approval -> Download.
-    3.  **Optimization (MANDATORY)**: You MUST convert all `.wav` files to `.mp3` using `ffmpeg` to reduce file size.
-        -   *Command*: `ffmpeg -i input.wav -codec:a libmp3lame -qscale:a 2 output.mp3`
-        -   **Action**: Delete the original `.wav` after successful conversion.
--   **C. Videos**:
-    1.  Ask: "YouTube or Pixabay?"
-    2.  **Source**: Pixabay (Download) or YouTube (Embed). **NO GENERATION**.
-
-**Output**: A list of approved assets to use in Step 2.
-
----
-
-### Step 1.6: 🔊 Audio Setup (MANDATORY - AUTOMATIC)
-**Goal**: Copy standard timer audio files to the presentation folder.
-
-**CRITICAL**: **EVERY** presentation uses timers and requires these 3 audio files. This step is **NOT OPTIONAL**.
-
-**Action (Auto-run)**:
+**Command**:
 ```bash
-Copy-Item "audio/blip.mp3" "inputs/[presentation-folder]/audio/blip.mp3"
-Copy-Item "audio/30-seconds.mp3" "inputs/[presentation-folder]/audio/30-seconds.mp3"  
-Copy-Item "inputs/18-Jan-Reading/audio/bell.mp3" "inputs/[presentation-folder]/audio/bell.mp3"
+python skills/creating-html-presentation/scripts/generate_presentation.py inputs/[Lesson-Folder]/presentation.json
 ```
 
-**Verification**:
-- ✅ Confirm all 3 files exist in `inputs/[presentation-folder]/audio/`
-- ✅ File sizes > 0
-
-**Why This Matters**: Timer sounds break EVERY TIME if this step is skipped. This is now a mandatory pre-flight check.
-
----
-
-### Step 2: 📝 The Visual Plan (Markdown)
-**Goal**: Map every single slide, **INCLUDING ANSWER KEYS**.
-- **Action**: Cross-reference every Task slide with the Source File. If content is missing, **STOP**.
-- **Constraint**: You MUST interleave answer keys immediately after tasks.
-- **Format**:
-  ```markdown
-  ## Slide 1: Title
-  - **Visual**: Hero image...
-  ```
-
-### Step 3: 🚦 User Approval Gate
-**STOP**. Present the Visual Plan (Markdown) to the user.
-- **Ask**: "Does this visual structure match the [Theme Name] vision?"
-- **Do not proceed** to wireframing until the user says "Yes."
-
-### Step 4: 🛠️ Visual Plan Review (Artifact Gate)
-**Goal**: Allow the user to review the full plan via an artifact BEFORE coding.
-**Action**:
-1.  Generate a file named `visual-plan.md` (if not already done in Step 2).
-2.  Update it with **FINALIZED** asset paths (e.g., `images/ship.jpg`).
-3.  **STOP AND WAIT**. Explicitly ask the user to review the artifact.
-4.  **Do not proceed** to `index.html` until you get "Approved".
-
-### Step 4.5: 📊 Batch Building Assessment (MANDATORY)
-**Goal**: Determine if the presentation needs to be built in batches to avoid token limits.
-
-**CRITICAL RULE**: Count the total number of slides in `visual-plan.md`.
-- **IF ≤ 30 slides**: Build in ONE file using `write_to_file`.
-- **IF > 30 slides**: Build in BATCHES using `replace_file_content`.
-  - **Batch 1**: Base HTML structure + Slides 1-20
-  - **Batch 2**: Slides 21-40
-  - **Batch 3**: Slides 41-60 (if needed)
-  - etc.
-
-**Why This Matters**: Large presentations (>40 slides) exceed the 16K token generation limit. You MUST use incremental edits for presentations with many slides.
-
-### Step 5: 🛠️ Implementation (The Gold Standard)
-Now, write the `index.html`.
-
-**📚 REQUIRED READING**:
-1.  **First**: Review `COMPONENTS.md` for all available CSS classes and Web Components.
-2.  **When unsure**: Consult `DECISION_TREE.md` for "which component to use when" logic.
-3.  **For Reveal.js features**: Check `docs/reveal-layout.md` and `docs/reveal-backgrounds.md`.
-
-**Pre-Flight Checklist**:
-- ✅ **CRITICAL**: Use CDN links for Reveal.js: `https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css` (NOT `../../js/reveal.js/dist/reveal.css`)
-- ✅ Check `images/` folder for real file extensions (`.jpg`, `.png`, `.svg`)
-- ✅ Verify `audio/` folder exists with `blip.mp3`, `30-seconds.mp3`, `bell.mp3`
-- ✅ Confirm lesson plan specifies timer durations for tasks
-
-**CSS LOCKDOWN**:
-- 🛑 **NO INLINE STYLES** for `font-size` or `color` on high-contrast slides (use CSS classes from `COMPONENTS.md` or scoped CSS).
-- ✅ **CONTRAST RULE**: Yellow/White backgrounds (Level Selection, Task Subtitles) **MUST** use black text (`color: black !important`) for readability.
-- ✅ **IMAGE CLASS**: All <img> tags must use either `.inset-media` or `.constrained-media` to prevent layout explosions.
-- ✅ **USE DOCUMENTED CLASSES**: `.glass-box`, `.inset-media`, `.slide-table`, `<timer-pill>`
-- ✅ **COPY BOILERPLATE** from `REFERENCE_TEMPLATE.html`
-- 🛑 **DO NOT** invent custom classes (use `COMPONENTS.md` library)
-
-**Theme Adaptation**:
-- Modify `:root` CSS variables (`--maroon`, `--cyan`, `--navy`) to match **Approved Theme** (Step 1)
-- Do NOT break layout classes (`.row-container`, `.col-*`)
-
-### Step 5.3: Pedagogical Compliance
-**Goal**: Ensure students can use the vocabulary in practice.
-**Rules**:
-1.  **Vocabulary Context (MANDATORY)**: Every vocabulary slide MUST include a contextualizing sentence in English.
-    *   *Correct*: "If you face a dangerous situation, your **instinct** tells you to run."
-    *   *Incorrect*: "Instinct: A natural behavior."
-
-3.  **One Answer, One Slide (MANDATORY)**: Never put multiple answers on a single slide. Each answer must have its own slide containing:
-    *   **Title Format**: "Answer: Question N" (e.g. "Answer: Question 1").
-    *   **Snippet/Para**: Use the format "Para N" for the source reference (e.g. "Para 4").
-    *   A brief snippet from the source text and a clear **Explanation Box** ("Why is this the answer?").
-    *   **Goal**: Ensure students digest the logic, not just the correct word.
-
-### Step 5.4: 🧱 The "Split-Anchor" Visual Standard
-**Goal**: Integrate images without cluttering explanations.
-**Rule**: Use the **40/60 Split Layout** for content slides with images.
--   **Left Column (40%)**: The **Visual Anchor** (Image).
-    -   *Class*: `.col-40` containing `<img>` and `.attribution`.
--   **Right Column (60%)**: The **Instructional Content**.
-    -   *Class*: `.col-60` containing `.glass-box`.
-**Why**: This prevents "wallpaper" images. The image becomes a distinct pedagogical tool.
-
-### Step 5.5: 🧪 Technical Validation (MANDATORY)
-**Action**: You MUST run the technical validator before proceeding.
-1.  **First**: Run with `--help` to understand usage:
-    ```bash
-    python skills/creating-html-presentation/scripts/validate_presentation.py --help
-    ```
-2.  **Then**: Execute the validator:
-    ```bash
-    python skills/creating-html-presentation/scripts/validate_presentation.py [path/to/index.html] --mode [bell|intensive]
-    ```
-- **Rule**: If the script fails, you **MUST** fix the issues and re-run it until it passes.
-- **Why**: This script catches broken links, incorrect CSS usage, and missing components.
-
-### Step 5.6: 🎓 Pedagogical Validation (MANDATORY)
-**Action**: You MUST run the pedagogical validator to ensure content fidelity.
-1.  **Execute**:
-    ```bash
-    python skills/creating-html-presentation/scripts/validate_pedagogical.py [path/to/index.html]
-    ```
-    - The script auto-detects `visual-plan.md` and source materials in the same directory.
-2.  **What it checks**:
-    - ✅ Slide count matches `visual-plan.md`
-    - ✅ Answer slides follow task slides (interleaving)
-    - ✅ Each task has correct number of answer slides
-    - ✅ Task numbering is sequential and consistent
-    - ✅ Content matches source materials (no hallucination)
-
-- **Rule**: If the script fails, you **MUST** fix the pedagogical issues and re-run.
-- **Why**: This prevents content hallucination and ensures strict adherence to the approved plan.
-- **Critical**: This is the **enforcement mechanism** that prevents the errors you just experienced.
-
-### Step 5.7: 🛑 Slide Approval Gate (MANDATORY)
-**Goal**: Ensure the user is satisfied with the visual and audio quality before making it live.
-**Action**:
-1.  Provide the path to the `index.html` and a summary of the media assets.
-2.  **STOP**. You MUST get explicit approval (e.g., "Approved" or "Go for deployment") from the user.
-3.  **DO NOT** push to Git or generate Google Doc links until this gate is cleared.
-
-### Step 6: 🚀 Deployment & Organization
-
-> [!CAUTION]
-> **STORAGE RULE**: Always keep the `index.html` and its `audio/images` folders in the **SAME FOLDER** as the worksheet (`*.typ`) and lesson plan. 
-> This ensures that all materials for a specific lesson are grouped together in the `inputs/` directory.
-
-1.  **Organize**: Ensure the presentation files (`index.html`, `audio/`, `images/`) are inside the specific lesson folder (e.g., `inputs/QAD-Fight-or-Flight/`).
-2.  **Deployment (Optional)**: If a web-live version is needed:
-    - Add an entry to `presentations/index.html` (library card).
-    - Git Add / Commit / Push to trigger Cloudflare build.
-
-## Pedagogical & Thematic Standards (STRICT)
-
-### 1. The Expert ESL Teacher Voice
-- **Rule**: Every slide must have a clear *student action* or *takeaway*.
-- **Tone Adaptation (Based on Gate 2 Decision)**:
-    - **Middle School**: Use "Hook & Play" language. Tasks are "Missions" or "Quests".
-    - **High School**: Use "Utility & Achievement" language. Tasks are "Case Studies" or "Strategic Analysis".
-- **Tone**: **Warm & Authoritative**. (Never infantilizing, even for Middle School).
-- **Scaffolding**: You MUST use the `<div class="teacher-tip">` box for **pedagogical hints only** (e.g., "Check understanding," "Monitor pronunciation").
-- **CRITICAL**: **NEVER** put procedural instructions (e.g., "Give students 5 minutes to review") in teacher-tip boxes. These belong in `<aside class="notes">` only.
-
-**Tone Comparison Table**:
-| Context | Middle School (Pop & Verve) | High School (Expert/Academic) |
-|:--------|:----------------------------|:------------------------------|
-| **Slide Title** | "BOSS LEVEL: Final Writing Mission!" | "Task 4: Written Case Study" |
-| **Instructions** | "Hunt down the relative clauses and mark them!" | "Identify and classify relative clause types." |
-| **Explanation** | "This word connects two ideas like a bridge!" | "Relative pronouns establish syntactic relationships between clauses." |
-| **Motivation** | "Unlock the next grammar power-up!" | "This skill is essential for IELTS Writing Task 2." |
-| **Feedback** | "You crushed it! 🎯" | "Excellent application of the target structure." |
-
-### 2. Theming: Flexible Identity
-- **Rule**: The visuals must strictly follow the **Approved Theme** (Step 1).
-- **No Freestyling**: Do not mix aesthetics.
-
-### 3. Source Material Sync (DETERMINISTIC)
-- **Rule**: Slides cannot be divorced from source materials.
-- **Naming**: If the Worksheet says "Task 2", the Slide must say "TASK 2".
-- **Validation**: If the Lesson Plan does not explicitly list the questions/answers, you **MUST STOP** and ask the user for the source text. **NEVER invent/hallucinate questions or answers**.
-- **Quote-Based**: You must be able to point to the exact line in the source file for every activity.
-
-### 4. The Per-Question Answer Key Standard (STRICT GOLDEN RULE)
-- **Separate Slides**: NEVER present all answers on a single slide.
-- **Rule**: Create a distinct slide for **EACH** question's answer (e.g., Answer 1, Answer 2, Answer 3).
-- **Format**:
-    - **Header**: "Task X: Question Y"
-    - **Body**: The full sentence/answer with the key part highlighted.
-    - **Explanation (MANDATORY)**: A short "Why?" or explanation box below the answer is REQUIRED for every single answer slide. No exceptions.
-- **Interleaving**: These slides must appear sequentially after the Task slide.
-- **Explanation Quality (STRICT)**:
-    - ❌ **Forbidden**: Single technical words (e.g., "Recurrence", "Collocation", "Adjective").
-    - ✅ **Required**: Simple, student-friendly sentences (e.g., "We do this every day, so it is a daily habit.", "Clients are for professional services like lawyers.").
-
-### 5. Direct Vocabulary Instruction (The Legacy Standard)
-- **One Word Per Slide**.
-- **MANDATORY Image**.
-- **Header**: Word + /phonemics/ + **Thai Definition**.
-- **NO AUDIO**: Audio players/listen badges are no longer used for vocabulary slides.
-
-### 6. Pronunciation Drills (Sentences)
-- **Rule**: Use **COMPLETE SENTENCES** from the source text. No isolated phrases.
-- **MANDATORY**: Consult `REFERENCE.md` for phonological accuracy.
-- **Markup**:
-    - **Stress**: CAPITALIZE stressed syllables (e.g., "imPORtant").
-    - **Linking**: Use `‿` symbol (e.g., "where‿I").
-    - **Intonation**: Use arrows `↘` `↗` for tone changes.
-- **Example**: "The TOWN **where‿I** LIVED‿as‿a TEENager ↘ is FAmous..."
-
-### 7. Speaker Notes Standard (MANDATORY)
-- **Code**: Every slide MUST have an `<aside class="notes">` block.
-- **Access**: Remind the user/teacher: "Press 's' to view Speaker Notes."
-- **Content**:
-    1.  **Advice**: Delivery tips for the teacher (e.g., "Check understanding," "Elicit answers").
-    2.  **Next**: A preview of the next slide to facilitate smooth transitions.
-- **Example**:
-    ```html
-    <aside class="notes">
-        **Advice**: Monitor student pronunciation of 'intricate'.
-        **Next**: Task 2 Instructions.
-    </aside>
-    ```
-
-
-
-## Technical Standards (The Fixed Canvas)
-
-### 📐 Resolution & Scaling
-- **960x700 ONLY**. This is the artboard. All internal math assumes this footprint.
-- **Font Sizes (MANDATORY)**: 
-    - **H1 (Titles/Segues)**: `80pt` (approx. `2.5em`). Use `r-fit-text` ONLY if text is long.
-    - **H2 (Slide Headings)**: `45pt` (approx. `1.5em`).
-    - **H3 (Sub-titles)**: `35pt` (approx. `1.2em`).
-    - **Normal Body**: `30pt` (approx. `1.0em`).
-    - **Small Body**: `24pt`.
-    - **Teacher Tips**: `18pt`.
-
-### 🎨 Design Philosophy: "Vibrant Depth"
-- **NO IMAGE BACKERS**: Do not use photos as backgrounds.
-- **THE RADIAL BACKER**: Every slide must have a multi-layered CSS background driven by variables.
-    - **Main Gradient**: `var(--grad-main)` (e.g., `radial-gradient(circle, var(--bg-dark) 0%, #100630 100%)`)
-    - **Segue Gradient**: `var(--grad-segue)` (Fixed high-contrast dark: `radial-gradient(circle, #2d3436 0%, #000000 100%)`)
-- **GLOWING SEGUES**: Segue titles must use a multi-layered text shadow to create a "neon" effect.
-- **IMAGES AS INSETS**: Images must be focal points, wrapped in a frame (border + shadow).
-
-### 🧱 Layout Classes (Use These EXACTLY)
-- `.slide-canvas`: The main wrapper.
-- `.row-container`: `width: 900px`, `gap: 40px`.
-- `.col-40`, `.col-50`, `.col-60`: Fixed width columns.
-- `.glass-box`: The standard container for text/input.
-- `.inset-media`: Standard wrapper for images (adds border, shadow, and `max-height: 400px`).
-
-### 🕒 Interactive Timers (The "Pace" Standard)
-- **Timer Component**: Use the standard `.timer-pill` layout.
-- **Visibility**: Always place in the bottom-center or a clearly visible `.glass-box`.
-- **Logic**: Use the `reveal-timer.js` pattern (Start/Pause functionality).
-- **Duration**: Match the Lesson Plan (Default: 4 or 6 minutes).
-- **Audio Behavior (MANDATORY)**:
-  - **Blip on Start**: Plays when START button is pressed
-  - **Final 29 Seconds**: Blip plays every second from 29 down to 1 (not during longer periods)
-  - **30-Second Warning**: Warning sound plays at exactly 30 seconds remaining
-  - **Bell on Finish**: Bell sound plays when timer reaches 0
-- **Audio Files Required**: `blip.mp3`, `30-seconds.mp3`, `bell.mp3` (auto-copied in Step 1.6)
-
-### 🧱 Split Layout Rule (GLOBAL STANDARD)
-**CRITICAL**: **Whenever a slide has a `timer-pill`, it MUST use a Split Layout.**
-
-**Structure**:
-```html
-<div class="row-container">
-    <div class="col-50">
-        <img src="images/[relevant-image].png" class="inset-media">
-    </div>
-    <div class="col-50">
-        <div class="glass-box" style="text-align: left;">
-            <h2>Task Title</h2>
-            <p class="text-xl">Instructions...</p>
-            <timer-pill duration="5"></timer-pill>
-        </div>
-    </div>
-</div>
+**JSON Structure**:
+```json
+{
+  "meta": {
+    "title": "Lesson Title",
+    "subtitle": "Subtitle",
+    "theme": "indonesia", // See css/themes/
+    "mode": "intensive" // or "bell"
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "badge": "B1 INTENSIVE READING",
+      "title": "THE FOOD OF INDONESIA",
+      "image": "images/cover.jpg",
+      "attribution": "Pixabay"
+    },
+    {
+      "layout": "segue",
+      "phase": "PHASE 1",
+      "title": "SITUATION & VOCAB"
+    },
+    {
+      "layout": "vocab",
+      "word": "DOMESTIC",
+      "phoneme": "/dəˈmes.tɪk/",
+      "thai": "ภายในประเทศ",
+      // DEFINITIONS ARE BANNED. Use Context Sentence only.
+      "context_sentence": "Most rice is for <span style='color: var(--accent);'>domestic</span> use.",
+      "image": "images/satay.jpg"
+    },
+    {
+      "layout": "split_task",
+      "title": "PREDICTION",
+      "badge": "TASK 1",
+      "timer": 3,
+      "image": "images/cover.jpg",
+      "content": "<p>Recall the video...</p>",
+      "notes": "Ask students what they see in the picture. Elicit keywords like 'border' or 'patrol'."
+    }
+  ]
+}
 ```
 
-**Why This Matters**:
-- Timers "stranded" at the bottom look unbalanced and amateur.
-- Split layouts create visual weight balance.
-- The image provides context and makes the slide feel premium.
+### Step 4: 🛠️ Speaker Notes (MANDATORY)
+Every slide MUST have specific `notes` in the JSON. These notes should provide the teacher with:
+1.  **Pedagogical Advice**: What to ask, what to check (CCQs), how to drill.
+2.  **Procedural Hints**: "Start the timer now," "Move to groups."
+3.  **Transition Cues**: What is coming on the next slide.
 
-**Image Selection**:
-- **Task 1 (People/Matching)**: Business meeting or team photo.
-- **Task 2 (Synonyms/Vocabulary)**: Contract signing or document.
-- **Task 3 (Multiple Choice)**: Global/Professional imagery.
-- **Task 4 (Transformation)**: Abstract/Conceptual imagery.
+### Step 5: 🛠️ Generation
+Run the python script. It will:
+1.  Read the JSON.
+2.  Load Jinja2 templates from `templates/`.
+3.  Render `index.html`.
+4.  Copy required assets (`audio/`, shared JS).
 
-### 🚫 HORIZONTAL-FIRST LAYOUT RULE (ANTI-VERTICAL-STACKING)
+### Step 5: 🧪 Validation
+Run the existing validators to ensure the output is perfect.
+- `python skills/creating-html-presentation/scripts/validate_presentation.py`
+- `python skills/creating-html-presentation/scripts/validate_pedagogical.py`
 
-> [!CRITICAL]
-> **NEVER center-stack content vertically on content-heavy slides.**
-> Vertical stacking causes content to overflow below the 700px canvas.
+## Available Layouts (The Catalog)
 
-**Layout Requirements by Slide Type:**
+1.  **`title`**: Gold Standard Split: Deck 1 (ALL CAPS) & Deck 2 (Title Case).
+2.  **`segue`**: Heavy Radial Gradient with Skewed Phase markers.
+3.  **`vocab`**: Glass-box container with Phonics and Thai Translation support.
+4.  **`split_task`**: 35/65 Cinematic Split (Image Left / Task Glass-box Right).
+5.  **`video`**: Embeds YouTube/Shorts + Floating Task Box.
+6.  **`checklist`**: Grid of items for "Skim" tasks.
+7.  **`answer`**: Validation slide with "Why?" explanation box.
+8.  **`video_answer`**: 40/60 Split: Video clip (Left) / Answer + Transcript + Explanation (Right).
+9.  **`strategy`**: Scaffolding slide.
+    -   **Usage**: MUST appear before complex Tasks/Answers (e.g., Inference, Irony).
+    -   **Content**: Focus on keywords (e.g., "Seemed to be") or concepts (e.g., "Irony") rather than giving the answer.
+10. **`matching`**: Interactive Vocabulary Match.
+    -   **Auto-Animate Rule**: Use `data-auto-animate`.
+    -   **Stability Rule**: Ensure the Left Column (Words) is **Identical** in the `pairs` array for both Question and Answer slides.
+    -   **ID Rule**: Use `data-id="fixed-word-{{id}}"` for words and `data-id="moving-def-{{id}}"` for definitions.
+    -   **Animation**: Only the definitions (Right Column) should move.
 
-| Slide Type | Layout | Structure |
-|:-----------|:-------|:----------|
-| Task Instructions | 50/50 Split | Left: Image, Right: Glass box with timer |
-| Answer Slides | 50/50 or Full | Left: Image OR centered 800px glass box |
-| Reading/Content | 40/60 Split | Left: Small image, Right: Wide text |
-| Segue/Title | Centered OK | Only for short phase titles |
+## ⚠️ Technical Pitfalls (Learned Lessons)
 
-**Pre-Build Checklist:**
-- [ ] Every content slide uses `.row-container`?
-- [ ] All text visible within 700px height?
-- [ ] Timers inside `.glass-box`, not floating?
-- [ ] Glass box at least 700px wide?
+1.  **Segue Transitions**:
+    -   ❌ **NEVER** use `data-auto-animate` on Segue slides. It effectively disables the 'Zoom' transition if the previous slide has matching elements.
+    -   ✅ **ALWAYS** rely on standard `data-transition="zoom"` for Segues to create a hard phase break.
 
-> **Code Examples**: See `REFERENCE.md` → "Horizontal Layout Patterns"
+2.  **Answer Context**:
+    -   ❌ **NEVER** use short snippets (e.g., "...her father...").
+    -   ✅ **ALWAYS** use full verbatim sentences that contain the **reasoning** (e.g., "She was afraid *because her father would be angry*"). The "Why" must be visible in the text.
 
+3.  **Canvas Clipping**:
+    -   ❌ **NEVER** position decorative elements (SVGs) with negative coordinates (e.g., `top: -10%`). They will be clipped and invisible on the slide canvas.
+    -   ✅ **ALWAYS** keep elements within 0-100% or set `overflow: visible` explicitly (though risky).
 
+## Assets
+-   **Images**: Same rules apply (Pixabay first, Attribution mandatory).
+-   **Audio**: The script automatically copies `blip.mp3`, `bell.mp3`, etc.
 
----
-
-### 🎬 Auto-Animate for Grammar Lessons
-
-**When to Use**: Showing sentence transformations, grammar changes, before/after comparisons.
-**When NOT to Use**: Static answers, vocabulary definitions, multiple-choice questions.
-
-**How It Works**: Add `data-auto-animate` to two consecutive `<section>` elements with matching `data-id` attributes.
-
-**Critical Settings**:
-- `data-auto-animate-duration="1.5"` (default 0.4s is too fast)
-- `data-auto-animate-easing="ease-in-out"`
-
-**Use Cases**: Appositives, tense changes, active→passive, word order inversions.
-
-> **Code Examples**: See `REFERENCE.md` → "Auto-Animate Patterns"
-
+## CSS Themes
+Themes are defined in `skills/creating-html-presentation/css/themes/`.
+Available: `indonesia.css`, `thai-heritage.css` (Gold Standard), `noir.css`, `cyber.css`.

@@ -30,7 +30,7 @@ def validate_presentation(html_path, mode):
     print(f"   Checking {len(media_tags)} media assets...")
     
     for tag in media_tags:
-        src = tag.get('src')
+        src = tag.get('src') or tag.get('data-src')
         if src:
             # Handle absolute/relative paths
             # In the specific failed case, source was "../../images/..." which might be valid from the server perspective 
@@ -84,7 +84,12 @@ def validate_presentation(html_path, mode):
     # Exception: "vocab_" files (TTS) or "generated_" (Internal)
     audio_tags = soup.find_all('audio')
     for tag in audio_tags:
-        src = tag.get('src') or tag.find('source').get('src')
+        src = tag.get('src') or tag.get('data-src')
+        if not src:
+            source_tag = tag.find('source')
+            if source_tag:
+                src = source_tag.get('src')
+        
         if src and not src.startswith('http'): # Only check local files
             filename = os.path.basename(src)
             if "vocab_" in filename or "tts_" in filename:
@@ -153,7 +158,7 @@ def validate_presentation(html_path, mode):
         if isinstance(classes, str):
             classes = classes.split()
         if 'inset-media' not in classes and 'constrained-media' not in classes:
-            src = img.get('src', 'unknown')
+            src = img.get('src') or img.get('data-src') or 'unknown'
             issues.append(f"❌ Component Violation: Image '{os.path.basename(src)}' must use '.inset-media' or '.constrained-media' class.")
 
     # 9. LAYOUT CONTAINER CHECK

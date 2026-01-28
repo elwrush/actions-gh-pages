@@ -1,0 +1,1098 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>BONDI BEACH ATTACK</title>
+
+    <!-- Projector-Standard Reset -->
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+    <!-- Projector-Standard Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Courier+Prime:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Shared JS Components (Optional, but index has core logic now) -->
+    <!-- <script src="js/slide-components.js"></script> -->
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="css/themes/thai-heritage.css">
+
+    <style>
+        :root {
+            --gold: #FFD700;
+            --maroon: #A72B26;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #050811;
+            color: #f8fafc;
+        }
+
+        .reveal {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-family: 'Outfit', sans-serif;
+            text-transform: none !important;
+            margin: 0;
+        }
+
+        /* Web Component Styles */
+        .timer-pill {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid var(--gold);
+            padding: 12px 30px;
+            border-radius: 60px;
+            margin-top: 40px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .timer-display {
+            font-family: 'Courier Prime', monospace;
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--gold);
+            min-width: 140px;
+            letter-spacing: 2px;
+        }
+
+        .start-btn {
+            background: var(--gold);
+            color: black;
+            border: none;
+            padding: 10px 25px;
+            font-weight: 900;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 20px;
+            transition: transform 0.1s;
+        }
+
+        .start-btn:active {
+            transform: scale(0.95);
+        }
+
+        .start-btn.pause {
+            background: #f43f5e;
+            color: white;
+        }
+
+        .glass-box {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Reveal Override for centering and scale */
+        .reveal .slides>section {
+            text-align: center;
+            padding: 0;
+        }
+
+        /* Fragmet Styling */
+        .reveal .slides section .fragment {
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .reveal .slides section .fragment.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- SLIDE: TITLE -->
+            <section data-transition="fade">
+                <aside class="notes">Welcome the students. Topic: News report on the Bondi Beach incident, focusing on
+                    community response.</aside>
+
+                <div class="test-title-slide"
+                    style="display: flex; height: 100%; align-items: center; justify-content: center; gap: 40px;">
+                    <!-- Left: Branding & Text -->
+                    <div style="flex: 0 0 60%; text-align: left; padding: 20px;">
+                        <div
+                            style="background: #A72B26; color: white; display: inline-block; padding: 8px 18px; font-weight: 800; margin-bottom: 25px; transform: skew(-10deg); font-size: 0.8em; letter-spacing: 2px;">
+                            B1 INTENSIVE LISTENING
+                        </div>
+                        <h1
+                            style="font-size: 80px; margin: 0; line-height: 1.0; color: white; text-shadow: 4px 4px 0px #A72B26; font-weight: 900; width: 100%;">
+                            BONDI BEACH ATTACK
+                        </h1>
+
+                    </div>
+
+                    <!-- Right: Themed Imagery -->
+                    <div style="flex: 0 0 35%; display: flex; justify-content: center; align-items: center;">
+                        <img src="images/cover.png"
+                            style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.6); transform: rotate(2deg); border: 5px solid #FFD700;">
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: SPLIT TASK -->
+            <section data-transition="convex">
+                <aside class="notes">Elicit 'Bondi Beach' and 'Australia'. Build the context.</aside>
+
+
+                <div class="row-container"
+                    style="display: flex; height: 100%; align-items: center; gap: 40px; width: 1200px; margin: 0 auto;">
+                    <!-- Left: Context Image -->
+                    <div class="col-40" style="flex: 0 0 40%;">
+                        <img src="images/bondi_beach.png"
+                            style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
+
+                    </div>
+                    <!-- Right: Task Card -->
+                    <div class="col-60" style="flex: 0 0 55%;">
+                        <div class="glass-box"
+                            style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 40px; border-radius: 15px; text-align: left;">
+                            <div
+                                style="background: #A72B26; color: white; display: inline-block; padding: 5px 15px; font-weight: 800; margin-bottom: 20px; font-size: 0.7em; transform: skew(-5deg);">
+                                LEAD-IN
+                            </div>
+                            <h2 style="color: #FFD700; font-size: 55px; margin-bottom: 20px;">LEAD-IN: SYDNEY</h2>
+                            <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 25px;">
+                            <div class="task-content" style="font-size: 28px; line-height: 1.5; color: #f8fafc;">
+                                <ul>
+                                    <li>Where is this beach?</li>
+                                    <li>What is Sydney famous for?</li>
+                                    <li>Have you ever been to a beach like this?</li>
+                                </ul>
+                            </div>
+
+                            <timer-pill duration="4"></timer-pill>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- SLIDE: SPLIT TASK -->
+            <section data-transition="convex">
+                <aside class="notes">Brainstorm qualities. Set the stage for acts of civilian bravery in the report.
+                </aside>
+
+
+                <div class="row-container"
+                    style="display: flex; height: 100%; align-items: center; gap: 40px; width: 1200px; margin: 0 auto;">
+                    <!-- Left: Context Image -->
+                    <div class="col-40" style="flex: 0 0 40%;">
+                        <img src="images/hero.png"
+                            style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
+
+                    </div>
+                    <!-- Right: Task Card -->
+                    <div class="col-60" style="flex: 0 0 55%;">
+                        <div class="glass-box"
+                            style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 40px; border-radius: 15px; text-align: left;">
+                            <div
+                                style="background: #A72B26; color: white; display: inline-block; padding: 5px 15px; font-weight: 800; margin-bottom: 20px; font-size: 0.7em; transform: skew(-5deg);">
+                                DISCUSSION
+                            </div>
+                            <h2 style="color: #FFD700; font-size: 55px; margin-bottom: 20px;">WHAT IS A HERO?</h2>
+                            <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 25px;">
+                            <div class="task-content" style="font-size: 28px; line-height: 1.5; color: #f8fafc;">
+                                <ul>
+                                    <li>What qualities does a 'hero' have?</li>
+                                    <li>Can 'ordinary' people be heroes?</li>
+                                    <li>Think of 3 words to describe a hero.</li>
+                                </ul>
+                            </div>
+
+                            <timer-pill duration="3"></timer-pill>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- SLIDE: CONTEXT SETTING -->
+            <section data-transition="convex">
+                <div class="glass-box"
+                    style="max-width: 1100px; margin: 0 auto; padding: 60px; border-top: 10px solid #A72B26; background: rgba(0, 0, 0, 0.9);">
+                    <div
+                        style="color: #A72B26; font-weight: 800; letter-spacing: 4px; font-size: 24px; margin-bottom: 20px;">
+                        TODAY'S TOPIC</div>
+                    <h2 style="font-size: 60px; color: white; margin-bottom: 40px; line-height: 1.2;">
+                        A Community in Crisis
+                    </h2>
+                    <div style="font-size: 36px; line-height: 1.6; color: #cbd5e1;">
+                        <p style="margin-bottom: 30px;">
+                            Today we are going to watch a video about a horrible <span style="color: #FFD700;">terror
+                                attack</span> that happened in Sydney.
+                        </p>
+                        <p>
+                            But more importantly, we will see how <span style="color: #4ADE80;">ordinary people</span>
+                            became heroes, and how the community is trying to recover.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- SLIDE: SEGUE (Chapter Transition) -->
+            <section data-transition="zoom"
+                data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)">
+
+
+                <div
+                    style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                    <h3
+                        style="color: #FFD700; letter-spacing: 12px; font-weight: 300; font-size: 30px; margin-bottom: 20px;">
+                        PHASE 1
+                    </h3>
+                    <h1
+                        style="font-size: 110px; text-transform: uppercase; text-shadow: 0 0 40px rgba(255,215,0,0.4); transform: skew(-5deg) rotate(-2deg); font-weight: 900;">
+                        VOCABULARY PREPARATION
+                    </h1>
+                </div>
+            </section>
+
+            <!-- SLIDE: STRATEGY (Instructional focus) -->
+            <section data-transition="convex">
+                <aside class="notes">Strategy focus. Explain that some words are 'Key' to understanding the story.
+                </aside>
+
+                <div class="glass-box"
+                    style="max-width: 1050px; margin: 0 auto; border-left: 15px solid #FFD700; background: rgba(15, 23, 42, 0.95); padding: 50px; border-radius: 0 20px 20px 0; text-align: left;">
+                    <h2 style="color: #FFD700; font-size: 50px; margin-bottom: 30px;">Strategy: Power Words</h2>
+                    <div
+                        style="font-size: 32px; line-height: 1.6; border-top: 1px solid rgba(255,215,0,0.2); padding-top: 30px; color: #e2e8f0;">
+                        <p>🔑 Some words unlock the meaning of the whole story.</p>
+                        <ul>
+                            <li>🎭 <strong>Context:</strong> Is it a happy or sad story?</li>
+                            <li>🔊 <strong>Sound:</strong> Does the word sound dangerous (e.g., 'Attack', 'Disarm')?
+                            </li>
+                            <li>🧠 <strong>Action:</strong> Let's connect the word to a picture in our heads.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: MATCHING -->
+            <section data-auto-animate data-transition="convex">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 15px; width: 1100px; margin-left: auto; margin-right: auto;">
+                    <div style="text-align: left;">
+                        <div class="stage-badge"
+                            style="background: var(--maroon); color: white; display: inline-block; padding: 4px 12px; font-weight: 800; font-size: 0.6em; transform: skew(-5deg);">
+                            TASK 1</div>
+                        <h2 style="color: var(--gold); font-size: 44px; margin: 5px 0;">TASK 1: VOCABULARY MATCH</h2>
+                    </div>
+
+
+                    <div style="transform: scale(0.8); transform-origin: right bottom;">
+                        <timer-pill duration="5"></timer-pill>
+                    </div>
+
+                </div>
+
+                <div class="glass-box"
+                    style="padding: 25px 40px; border-radius: 20px; border: 1px solid rgba(255,215,0,0.2); background: rgba(5, 8, 17, 0.95); width: 1150px; margin: 0 auto;">
+                    <div style="display: flex; gap: 30px; align-items: stretch;">
+                        <!-- Words Column -->
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+
+                            <div data-id="word-1"
+                                style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                                <span style="color: var(--gold); margin-right: 15px;">1.</span> Targeted
+                            </div>
+
+                            <div data-id="word-2"
+                                style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                                <span style="color: var(--gold); margin-right: 15px;">2.</span> Receiving treatment
+                            </div>
+
+                            <div data-id="word-3"
+                                style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                                <span style="color: var(--gold); margin-right: 15px;">3.</span> Disarm
+                            </div>
+
+                            <div data-id="word-4"
+                                style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                                <span style="color: var(--gold); margin-right: 15px;">4.</span> Overwhelmed
+                            </div>
+
+                            <div data-id="word-5"
+                                style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                                <span style="color: var(--gold); margin-right: 15px;">5.</span> Tight-knit
+                            </div>
+
+                        </div>
+
+                        <!-- Definitions Column -->
+                        <div style="flex: 2; display: flex; flex-direction: column; gap: 10px;">
+
+
+                            <div data-id="def-A"
+                                style="background: rgba(255, 255, 255, 0.05); border-left: 5px solid #334155; padding: 10px 20px; font-size: 22px; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                                <span style="color: var(--gold); margin-right: 15px; font-weight: 800;">.</span> To
+                                remove a weapon from someone.
+                            </div>
+
+                            <div data-id="def-B"
+                                style="background: rgba(255, 255, 255, 0.05); border-left: 5px solid #334155; padding: 10px 20px; font-size: 22px; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                                <span style="color: var(--gold); margin-right: 15px; font-weight: 800;">.</span> A very
+                                close and supportive community.
+                            </div>
+
+                            <div data-id="def-C"
+                                style="background: rgba(255, 255, 255, 0.05); border-left: 5px solid #334155; padding: 10px 20px; font-size: 22px; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                                <span style="color: var(--gold); margin-right: 15px; font-weight: 800;">.</span> Feeling
+                                like something is too much to handle.
+                            </div>
+
+                            <div data-id="def-D"
+                                style="background: rgba(255, 255, 255, 0.05); border-left: 5px solid #334155; padding: 10px 20px; font-size: 22px; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                                <span style="color: var(--gold); margin-right: 15px; font-weight: 800;">.</span> Being
+                                cared for by doctors in a hospital.
+                            </div>
+
+                            <div data-id="def-E"
+                                style="background: rgba(255, 255, 255, 0.05); border-left: 5px solid #334155; padding: 10px 20px; font-size: 22px; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                                <span style="color: var(--gold); margin-right: 15px; font-weight: 800;">.</span>
+                                Something aimed at a specific person or place.
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Focus on 'disarm' and 'tight-knit' as they appear in the video.
+                </aside>
+            </section>
+
+            <!-- SLIDE: MATCHING -->
+            <section data-auto-animate data-transition="convex">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 15px; width: 1100px; margin-left: auto; margin-right: auto;">
+                    <div style="text-align: left;">
+                        <div class="stage-badge"
+                            style="background: var(--maroon); color: white; display: inline-block; padding: 4px 12px; font-weight: 800; font-size: 0.6em; transform: skew(-5deg);">
+                            ANSWERS</div>
+                        <h2 style="color: var(--gold); font-size: 44px; margin: 5px 0;">TASK 1: ANSWERS</h2>
+                    </div>
+
+
+                </div>
+
+                <div class="glass-box"
+                    style="padding: 25px 40px; border-radius: 20px; border: 1px solid rgba(255,215,0,0.2); background: rgba(5, 8, 17, 0.95); width: 1150px; margin: 0 auto;">
+                    <div style="display: flex; gap: 30px; align-items: stretch;">
+                        <!-- Words Column -->
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+
+                            <div data-id="word-1"
+                                style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                                <span style="color: var(--gold); margin-right: 15px;">1.</span> Targeted
+                            </div>
+
+                            <div data-id="word-2"
+                                style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                                <span style="color: var(--gold); margin-right: 15px;">2.</span> Receiving treatment
+                            </div>
+
+                            <div data-id="word-3"
+                                style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                                <span style="color: var(--gold); margin-right: 15px;">3.</span> Disarm
+                            </div>
+
+                            <div data-id="word-4"
+                                style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                                <span style="color: var(--gold); margin-right: 15px;">4.</span> Overwhelmed
+                            </div>
+
+                            <div data-id="word-5"
+                                style="background: rgba(167, 43, 38, 0.2); border-left: 5px solid var(--maroon); padding: 10px 20px; font-size: 26px; font-weight: 800; color: white; display: flex; align-items: center; height: 55px;">
+                                <span style="color: var(--gold); margin-right: 15px;">5.</span> Tight-knit
+                            </div>
+
+                        </div>
+
+                        <!-- Definitions Column -->
+                        <div style="flex: 2; display: flex; flex-direction: column; gap: 10px;">
+
+
+
+                            <div data-id="def-E"
+                                style="background: rgba(255, 215, 0, 0.1); border-left: 5px solid var(--gold); padding: 10px 20px; font-size: 22px; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                                <span style="color: var(--gold); margin-right: 15px; font-weight: 800;">E.</span>
+                                Something aimed at a specific person or place.
+                            </div>
+
+                            <div data-id="def-D"
+                                style="background: rgba(255, 215, 0, 0.1); border-left: 5px solid var(--gold); padding: 10px 20px; font-size: 22px; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                                <span style="color: var(--gold); margin-right: 15px; font-weight: 800;">D.</span> Being
+                                cared for by doctors in a hospital.
+                            </div>
+
+                            <div data-id="def-A"
+                                style="background: rgba(255, 215, 0, 0.1); border-left: 5px solid var(--gold); padding: 10px 20px; font-size: 22px; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                                <span style="color: var(--gold); margin-right: 15px; font-weight: 800;">A.</span> To
+                                remove a weapon from someone.
+                            </div>
+
+                            <div data-id="def-C"
+                                style="background: rgba(255, 215, 0, 0.1); border-left: 5px solid var(--gold); padding: 10px 20px; font-size: 22px; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                                <span style="color: var(--gold); margin-right: 15px; font-weight: 800;">C.</span>
+                                Feeling like something is too much to handle.
+                            </div>
+
+                            <div data-id="def-B"
+                                style="background: rgba(255, 215, 0, 0.1); border-left: 5px solid var(--gold); padding: 10px 20px; font-size: 22px; color: #f8fafc; height: 55px; display: flex; align-items: center;">
+                                <span style="color: var(--gold); margin-right: 15px; font-weight: 800;">B.</span> A very
+                                close and supportive community.
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    Drill pronunciation. Use CCQs: 'If a group is tight-knit, do they help each other?'
+                </aside>
+            </section>
+
+            <!-- SLIDE: SEGUE (Chapter Transition) -->
+            <section data-transition="zoom"
+                data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)">
+
+
+                <div
+                    style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                    <h3
+                        style="color: #FFD700; letter-spacing: 12px; font-weight: 300; font-size: 30px; margin-bottom: 20px;">
+                        PHASE 2
+                    </h3>
+                    <h1
+                        style="font-size: 110px; text-transform: uppercase; text-shadow: 0 0 40px rgba(255,215,0,0.4); transform: skew(-5deg) rotate(-2deg); font-weight: 900;">
+                        THE NEWS REPORT
+                    </h1>
+                </div>
+            </section>
+
+            <!-- SLIDE: STRATEGY (Gist) -->
+            <section data-transition="convex">
+                <aside class="notes">Strategy focus: Gist listening. Relax and let it wash over you.</aside>
+
+                <div class="glass-box"
+                    style="max-width: 1050px; margin: 0 auto; border-left: 15px solid #FFD700; background: rgba(15, 23, 42, 0.95); padding: 50px; border-radius: 0 20px 20px 0; text-align: left;">
+                    <h2 style="color: #FFD700; font-size: 50px; margin-bottom: 30px;">Strategy: The Big Picture</h2>
+                    <div
+                        style="font-size: 32px; line-height: 1.6; border-top: 1px solid rgba(255,215,0,0.2); padding-top: 30px; color: #e2e8f0;">
+                        <p>🎥 Watch the news report like a movie first.</p>
+                        <ul>
+                            <li>😢 <strong>Faces:</strong> Are people happy, scared, or serious?</li>
+                            <li>🗣️ <strong>Tone:</strong> Is the reporter's voice fast or slow?</li>
+                            <li>📰 <strong>Topic:</strong> What is the main event? (Don't worry about details yet!)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: SPLIT TASK -->
+            <section data-transition="convex">
+                <aside class="notes">Answer: Terror attack | Hanukkah celebration.</aside>
+
+
+                <div class="row-container"
+                    style="display: flex; height: 100%; align-items: center; gap: 40px; width: 1200px; margin: 0 auto;">
+                    <!-- Left: Context Image -->
+                    <div class="col-40" style="flex: 0 0 40%;">
+                        <div
+                            style="position: relative; padding-bottom: 56.25%; height: 0; border: 4px solid #FFD700; border-radius: 8px; overflow: hidden; box-shadow: 15px 15px 0px rgba(0,0,0,0.5);">
+                            <iframe src="https://www.youtube.com/embed/hDAwWCZGxEQ?enablejsapi=1&start=0&end=60"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                            </iframe>
+                        </div>
+                    </div>
+                    <!-- Right: Task Card -->
+                    <div class="col-60" style="flex: 0 0 55%;">
+                        <div class="glass-box"
+                            style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 40px; border-radius: 15px; text-align: left;">
+                            <div
+                                style="background: #A72B26; color: white; display: inline-block; padding: 5px 15px; font-weight: 800; margin-bottom: 20px; font-size: 0.7em; transform: skew(-5deg);">
+                                GIST (0:00-1:00)
+                            </div>
+                            <h2 style="color: #FFD700; font-size: 55px; margin-bottom: 20px;">TASK 2: GIST LISTENING
+                            </h2>
+                            <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 25px;">
+                            <div class="task-content" style="font-size: 28px; line-height: 1.5; color: #f8fafc;">
+                                <p>Listen to the first part of the report.</p>
+                                <h3>What happened at Bondi Beach, and why were people gathered there?</h3>
+                            </div>
+
+                            <timer-pill duration="3"></timer-pill>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- SLIDE: ANSWER -->
+            <!-- SLIDE: VIDEO ANSWER (Reveal.js Optimized) -->
+            <section data-transition="convex">
+                <aside class="notes">Confirm the gist. Clarify that Hanukkah is a Jewish festival.</aside>
+
+                <div class="row-container"
+                    style="display: flex; height: 100%; align-items: center; gap: 40px; width: 1260px; margin: 0 auto;">
+                    <!-- LEFT: Replay Clip -->
+                    <div style="flex: 0 0 50%;">
+                        <div
+                            style="background: #A72B26; color: white; display: inline-block; padding: 5px 15px; font-weight: 800; margin-bottom: 20px; font-size: 0.6em; transform: skew(-5deg); letter-spacing: 2px;">
+                            REPLAY CLIP</div>
+                        <div
+                            style="position: relative; padding-bottom: 56.25%; height: 0; border: 4px solid #FFD700; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                            <iframe src="https://www.youtube.com/embed/hDAwWCZGxEQ?enablejsapi=1&start=10&end=48"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Combined Analysis Card -->
+                    <div class="glass-box"
+                        style="flex: 0 0 45%; border: 2px solid #FFD700; background: rgba(5,6,15,0.95); padding: 30px; border-radius: 12px; text-align: left; height: 450px; overflow-y: auto;">
+
+                        <!-- 1. The Answer -->
+                        <div class="fragment"
+                            style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,215,0,0.2); padding-bottom: 15px;">
+                            <div
+                                style="color: #4ADE80; font-weight: 800; font-size: 0.5em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">
+                                CORRECT ANSWER</div>
+                            <div style="font-size: 32px; font-weight: 900; color: white; line-height: 1.1;">
+                                Deadly Attack | Hanukkah
+                            </div>
+                        </div>
+
+                        <!-- 2. The Evidence (Transcript) -->
+                        <div class="fragment">
+                            <div
+                                style="font-size: 16px; color: #94A3B8; margin-bottom: 10px; font-weight: 800; letter-spacing: 1px;">
+                                EVIDENCE (0:25)</div>
+
+                            <div
+                                style="font-family: 'Courier Prime', monospace; font-size: 18px; line-height: 1.5; color: #f8fafc;">
+                                <p style="margin-bottom: 15px;">
+                                    <strong style="color: var(--gold);">MICHELLE:</strong> Today, people are laying
+                                    flowers to honor the victims of a deadly <span
+                                        style="background: rgba(255, 215, 0, 0.2); color: #FFD700; padding: 2px 5px; border-radius: 4px;">terror
+                                        attack</span>...
+                                </p>
+                                <p>
+                                    Two men with guns fired at an event... to celebrate <span
+                                        style="background: rgba(74, 222, 128, 0.2); color: #4ADE80; padding: 2px 5px; border-radius: 4px;">Hanukkah</span>,
+                                    an ancient Jewish festival.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: STRATEGY (Detail) -->
+            <section data-transition="convex">
+                <aside class="notes">Strategy focus: Detail listening. Scan for specific info.</aside>
+
+                <div class="glass-box"
+                    style="max-width: 1050px; margin: 0 auto; border-left: 15px solid #FFD700; background: rgba(15, 23, 42, 0.95); padding: 50px; border-radius: 0 20px 20px 0; text-align: left;">
+                    <h2 style="color: #FFD700; font-size: 50px; margin-bottom: 30px;">Strategy: Listening for Detail
+                    </h2>
+                    <div
+                        style="font-size: 32px; line-height: 1.6; border-top: 1px solid rgba(255,215,0,0.2); padding-top: 30px; color: #e2e8f0;">
+                        <p>🕵️‍♀️ Now we need to be detectives and catch specific information.</p>
+                        <ul>
+                            <li>🔍 <strong>Keywords:</strong> Listen specifically for 'Dead', 'Hero', 'Disarm'.</li>
+                            <li>🔢 <strong>Numbers:</strong> How many people? (Write it down!)</li>
+                            <li>📝 <strong>Notes:</strong> Don't try to write full sentences. Just words.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: VIDEO -->
+            <section data-background-gradient="var(--grad-main)">
+                <h2 style="margin-bottom: 40px;">TASK 3: LISTENING FOR DETAIL</h2>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%;">
+                    <!-- VIDEO (Full container fill) -->
+                    <div style="height: 400px; position: relative; z-index: 10;">
+                        <iframe src="https://www.youtube.com/embed/hDAwWCZGxEQ?start=60&end=135&enablejsapi=1"
+                            style="width: 100%; height: 100%;" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen"></iframe>
+                    </div>
+
+                    <!-- QUESTIONS -->
+                    <div class="glass-box" style="align-self: center; text-align: left;">
+                        <h3 style="font-size:24pt; color:var(--primary); margin-bottom:20px;">Observe & Discuss:</h3>
+                        <ul style="font-size: 22pt; line-height: 1.5;">
+
+                            <li>How many people were killed?</li>
+
+                            <li>What is the status of the gunmen?</li>
+
+                            <li>Where did people hide?</li>
+
+                            <li>How did Ahmed Al Ahmed help?</li>
+
+                        </ul>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Advise students to write short notes.
+                </aside>
+            </section>
+
+            <!-- SLIDE: ANSWER 1 (15 Dead) -->
+            <section data-transition="convex">
+                <div class="row-container"
+                    style="display: flex; height: 100%; align-items: center; gap: 40px; width: 1260px; margin: 0 auto;">
+                    <div style="flex: 0 0 50%;">
+                        <div
+                            style="background: #A72B26; color: white; display: inline-block; padding: 5px 15px; font-weight: 800; margin-bottom: 20px; font-size: 0.6em; transform: skew(-5deg); letter-spacing: 2px;">
+                            Q1: CASUALTIES</div>
+                        <div
+                            style="position: relative; padding-bottom: 56.25%; height: 0; border: 4px solid #FFD700; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                            <iframe src="https://www.youtube.com/embed/hDAwWCZGxEQ?enablejsapi=1&start=70&end=80"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        </div>
+                    </div>
+                    <div class="glass-box"
+                        style="flex: 0 0 45%; border: 2px solid #FFD700; background: rgba(5,6,15,0.95); padding: 30px; border-radius: 12px; text-align: left; height: 450px; overflow-y: auto;">
+                        <div class="fragment"
+                            style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,215,0,0.2); padding-bottom: 15px;">
+                            <div
+                                style="color: #4ADE80; font-weight: 800; font-size: 0.5em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">
+                                CORRECT ANSWER</div>
+                            <div style="font-size: 32px; font-weight: 900; color: white; line-height: 1.1;">15 Dead
+                            </div>
+                        </div>
+                        <div class="fragment">
+                            <div
+                                style="font-size: 20px; color: #94A3B8; margin-bottom: 10px; font-weight: 800; letter-spacing: 1px;">
+                                TRANSCRIPT (1:11)</div>
+                            <div
+                                style="font-family: 'Courier Prime', monospace; font-size: 22px; line-height: 1.5; color: #f8fafc;">
+                                <p><strong style="color: var(--gold);">MICHELLE:</strong> At least <span
+                                        style="background: rgba(255, 215, 0, 0.2); color: #FFD700; padding: 2px 5px; border-radius: 4px;">15
+                                        people</span> have been killed and more than 40 are in hospital receiving
+                                    treatment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: ANSWER 2 (Gunmen) -->
+            <section data-transition="convex">
+                <div class="row-container"
+                    style="display: flex; height: 100%; align-items: center; gap: 40px; width: 1260px; margin: 0 auto;">
+                    <div style="flex: 0 0 50%;">
+                        <div
+                            style="background: #A72B26; color: white; display: inline-block; padding: 5px 15px; font-weight: 800; margin-bottom: 20px; font-size: 0.6em; transform: skew(-5deg); letter-spacing: 2px;">
+                            Q2: THE GUNMEN</div>
+                        <div
+                            style="position: relative; padding-bottom: 56.25%; height: 0; border: 4px solid #FFD700; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                            <iframe src="https://www.youtube.com/embed/hDAwWCZGxEQ?enablejsapi=1&start=77&end=95"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        </div>
+                    </div>
+                    <div class="glass-box"
+                        style="flex: 0 0 45%; border: 2px solid #FFD700; background: rgba(5,6,15,0.95); padding: 30px; border-radius: 12px; text-align: left; height: 450px; overflow-y: auto;">
+                        <div class="fragment"
+                            style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,215,0,0.2); padding-bottom: 15px;">
+                            <div
+                                style="color: #4ADE80; font-weight: 800; font-size: 0.5em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">
+                                CORRECT ANSWER</div>
+                            <div style="font-size: 32px; font-weight: 900; color: white; line-height: 1.1;">1 Dead | 1
+                                Arrested</div>
+                        </div>
+                        <div class="fragment">
+                            <div
+                                style="font-size: 20px; color: #94A3B8; margin-bottom: 10px; font-weight: 800; letter-spacing: 1px;">
+                                TRANSCRIPT (1:20)</div>
+                            <div
+                                style="font-family: 'Courier Prime', monospace; font-size: 22px; line-height: 1.5; color: #f8fafc;">
+                                <p><strong style="color: var(--gold);">MICHELLE:</strong> Officials have confirmed that
+                                    <span
+                                        style="background: rgba(255, 215, 0, 0.2); color: #FFD700; padding: 2px 5px; border-radius: 4px;">one
+                                        gunman is dead</span> and the <span
+                                        style="background: rgba(74, 222, 128, 0.2); color: #4ADE80; padding: 2px 5px; border-radius: 4px;">other
+                                        has been arrested</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: ANSWER 3 (Hiding) -->
+            <section data-transition="convex">
+                <div class="row-container"
+                    style="display: flex; height: 100%; align-items: center; gap: 40px; width: 1260px; margin: 0 auto;">
+                    <div style="flex: 0 0 50%;">
+                        <div
+                            style="background: #A72B26; color: white; display: inline-block; padding: 5px 15px; font-weight: 800; margin-bottom: 20px; font-size: 0.6em; transform: skew(-5deg); letter-spacing: 2px;">
+                            Q3: HIDING PLACE</div>
+                        <div
+                            style="position: relative; padding-bottom: 56.25%; height: 0; border: 4px solid #FFD700; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                            <iframe src="https://www.youtube.com/embed/hDAwWCZGxEQ?enablejsapi=1&start=97&end=109"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        </div>
+                    </div>
+                    <div class="glass-box"
+                        style="flex: 0 0 45%; border: 2px solid #FFD700; background: rgba(5,6,15,0.95); padding: 30px; border-radius: 12px; text-align: left; height: 450px; overflow-y: auto;">
+                        <div class="fragment"
+                            style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,215,0,0.2); padding-bottom: 15px;">
+                            <div
+                                style="color: #4ADE80; font-weight: 800; font-size: 0.5em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">
+                                CORRECT ANSWER</div>
+                            <div style="font-size: 32px; font-weight: 900; color: white; line-height: 1.1;">Surf Club
+                                Change Room</div>
+                        </div>
+                        <div class="fragment">
+                            <div
+                                style="font-size: 20px; color: #94A3B8; margin-bottom: 10px; font-weight: 800; letter-spacing: 1px;">
+                                TRANSCRIPT (1:37)</div>
+                            <div
+                                style="font-family: 'Courier Prime', monospace; font-size: 22px; line-height: 1.5; color: #f8fafc;">
+                                <p><strong style="color: var(--gold);">SURVIVOR:</strong> We ran to the side of the
+                                    <span
+                                        style="background: rgba(255, 215, 0, 0.2); color: #FFD700; padding: 2px 5px; border-radius: 4px;">surf
+                                        club</span>... opened the <span
+                                        style="background: rgba(74, 222, 128, 0.2); color: #4ADE80; padding: 2px 5px; border-radius: 4px;">change
+                                        room</span> door and was ushering people inside.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: ANSWER 4 (Ahmed) -->
+            <section data-transition="convex">
+                <div class="row-container"
+                    style="display: flex; height: 100%; align-items: center; gap: 40px; width: 1260px; margin: 0 auto;">
+                    <div style="flex: 0 0 50%;">
+                        <div
+                            style="background: #A72B26; color: white; display: inline-block; padding: 5px 15px; font-weight: 800; margin-bottom: 20px; font-size: 0.6em; transform: skew(-5deg); letter-spacing: 2px;">
+                            Q4: THE HERO</div>
+                        <div
+                            style="position: relative; padding-bottom: 56.25%; height: 0; border: 4px solid #FFD700; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                            <iframe src="https://www.youtube.com/embed/hDAwWCZGxEQ?enablejsapi=1&start=109&end=120"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        </div>
+                    </div>
+                    <div class="glass-box"
+                        style="flex: 0 0 45%; border: 2px solid #FFD700; background: rgba(5,6,15,0.95); padding: 30px; border-radius: 12px; text-align: left; height: 450px; overflow-y: auto;">
+                        <div class="fragment"
+                            style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,215,0,0.2); padding-bottom: 15px;">
+                            <div
+                                style="color: #4ADE80; font-weight: 800; font-size: 0.5em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">
+                                CORRECT ANSWER</div>
+                            <div style="font-size: 32px; font-weight: 900; color: white; line-height: 1.1;">Ahmed
+                                disarmed a gunman</div>
+                        </div>
+                        <div class="fragment">
+                            <div
+                                style="font-size: 20px; color: #94A3B8; margin-bottom: 10px; font-weight: 800; letter-spacing: 1px;">
+                                TRANSCRIPT (1:49)</div>
+                            <div
+                                style="font-family: 'Courier Prime', monospace; font-size: 22px; line-height: 1.5; color: #f8fafc;">
+                                <p><strong style="color: var(--gold);">MICHELLE:</strong> And one local man named <span
+                                        style="background: rgba(255, 215, 0, 0.2); color: #FFD700; padding: 2px 5px; border-radius: 4px;">Ahmed
+                                        Al Ahmed</span>... helped <span
+                                        style="background: rgba(74, 222, 128, 0.2); color: #4ADE80; padding: 2px 5px; border-radius: 4px;">disarm</span>
+                                    one gunman.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: SPLIT TASK (Question) -->
+            <section data-auto-animate data-transition="convex">
+                <aside class="notes">Discuss mental health: Why is 'switching off' good advice?</aside>
+
+                <div class="row-container"
+                    style="display: flex; height: 100%; align-items: center; gap: 40px; width: 1200px; margin: 0 auto;">
+                    <!-- Left: Context Video -->
+                    <div class="col-40" style="flex: 0 0 40%;">
+                        <div
+                            style="position: relative; padding-bottom: 56.25%; height: 0; border: 4px solid #FFD700; border-radius: 8px; overflow: hidden; box-shadow: 15px 15px 0px rgba(0,0,0,0.5);">
+                            <iframe src="https://www.youtube.com/embed/hDAwWCZGxEQ?enablejsapi=1&start=135&end=210"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        </div>
+                    </div>
+                    <!-- Right: Task Card -->
+                    <div class="col-60" style="flex: 0 0 55%;">
+                        <div class="glass-box"
+                            style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 30px; border-radius: 15px; text-align: left;">
+                            <div
+                                style="background: #A72B26; color: white; display: inline-block; padding: 5px 15px; font-weight: 800; margin-bottom: 15px; font-size: 0.7em; transform: skew(-5deg);">
+                                ADVICE (2:15-3:30)
+                            </div>
+                            <h2 style="color: #FFD700; font-size: 45px; margin-bottom: 15px;">TASK 4: UNDERSTANDING
+                                ADVICE</h2>
+                            <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 20px;">
+                            <div class="task-content" style="font-size: 24px; line-height: 1.5; color: #f8fafc;">
+                                <p style="margin-bottom: 15px;">Tick the advice mentioned:</p>
+                                <ul>
+                                    <li data-id="t4-1">[ ] Speak with a trusted adult.</li>
+                                    <li data-id="t4-2">[ ] Stay updated constantly.</li>
+                                    <li data-id="t4-3">[ ] Take a break from the media.</li>
+                                    <li data-id="t4-4">[ ] It's unusual for this to happen.</li>
+                                    <li data-id="t4-5">[ ] Look for the positive actions.</li>
+                                </ul>
+                            </div>
+                            <timer-pill duration="5"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: SPLIT TASK (Answer) -->
+            <section data-auto-animate data-transition="convex">
+                <div class="row-container"
+                    style="display: flex; height: 100%; align-items: center; gap: 40px; width: 1200px; margin: 0 auto;">
+                    <!-- Left: Context Video -->
+                    <div class="col-40" style="flex: 0 0 40%;">
+                        <div
+                            style="position: relative; padding-bottom: 56.25%; height: 0; border: 4px solid #FFD700; border-radius: 8px; overflow: hidden; box-shadow: 15px 15px 0px rgba(0,0,0,0.5);">
+                            <iframe src="https://www.youtube.com/embed/hDAwWCZGxEQ?enablejsapi=1&start=135&end=210"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                        </div>
+                    </div>
+                    <!-- Right: Task Card -->
+                    <div class="col-60" style="flex: 0 0 55%;">
+                        <div class="glass-box"
+                            style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 30px; border-radius: 15px; text-align: left;">
+                            <div
+                                style="background: var(--gold); color: black; display: inline-block; padding: 5px 15px; font-weight: 800; margin-bottom: 15px; font-size: 0.7em; transform: skew(-5deg);">
+                                ANSWER KEY
+                            </div>
+                            <h2 style="color: #FFD700; font-size: 45px; margin-bottom: 15px;">TASK 4: SOLUTIONS</h2>
+                            <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 20px;">
+                            <div class="task-content" style="font-size: 24px; line-height: 1.5; color: #f8fafc;">
+                                <p style="margin-bottom: 15px;">Tick the advice mentioned:</p>
+                                <ul>
+                                    <li data-id="t4-1" style="color: #4ADE80; font-weight: bold;">[✓] Speak with a
+                                        trusted adult.</li>
+                                    <li data-id="t4-2" style="opacity: 0.4; text-decoration: line-through;">[ ] Stay
+                                        updated constantly.</li>
+                                    <li data-id="t4-3" style="color: #4ADE80; font-weight: bold;">[✓] Take a break from
+                                        the media.</li>
+                                    <li data-id="t4-4" style="color: #4ADE80; font-weight: bold;">[✓] It's unusual for
+                                        this to happen.</li>
+                                    <li data-id="t4-5" style="color: #4ADE80; font-weight: bold;">[✓] Look for the
+                                        positive actions.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: STRATEGY -->
+            <section data-background-gradient="linear-gradient(135deg, #1e293b, #0f172a)">
+                <div class="row-container"
+                    style="display: flex; height: 100%; align-items: center; gap: 60px; width: 1200px; margin: 0 auto;">
+                    <div style="flex: 0 0 40%; text-align: center;">
+                        <div style="font-size: 180px; text-shadow: 0 0 40px rgba(255,215,0,0.3);">💭</div>
+                    </div>
+                    <div style="flex: 1; text-align: left;">
+                        <h2
+                            style="color: var(--gold); font-size: 55px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px;">
+                            Strategy: Deep Discussion</h2>
+                        <div class="glass-box" style="padding: 40px; border-left: 6px solid var(--gold);">
+                            <ul style="font-size: 32px; line-height: 1.8; list-style: none; margin: 0; padding: 0;">
+                                <li style="margin-bottom: 25px;">🗣️ <strong>Explain Why:</strong> Don't just say 'Yes'
+                                    or 'No'. Use 'Because...'.</li>
+                                <li style="margin-bottom: 25px;">🌍 <strong>Connect:</strong> Have you seen this happen
+                                    in real life?</li>
+                                <li>🤝 <strong>Collaborate:</strong> Listen and build on your partner's ideas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE: SPLIT TASK -->
+            <section data-transition="convex">
+                <aside class="notes">Final discussion. Elicit 'support', 'solidarity', and 'helping each other'.</aside>
+
+
+                <div class="row-container"
+                    style="display: flex; height: 100%; align-items: center; gap: 40px; width: 1200px; margin: 0 auto;">
+                    <!-- Left: Context Image -->
+                    <div class="col-40" style="flex: 0 0 40%;">
+                        <img src="images/community.png"
+                            style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
+
+                    </div>
+                    <!-- Right: Task Card -->
+                    <div class="col-60" style="flex: 0 0 55%;">
+                        <div class="glass-box"
+                            style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 40px; border-radius: 15px; text-align: left;">
+                            <div
+                                style="background: #A72B26; color: white; display: inline-block; padding: 5px 15px; font-weight: 800; margin-bottom: 20px; font-size: 0.7em; transform: skew(-5deg);">
+                                WRAPPING UP
+                            </div>
+                            <h2 style="color: #FFD700; font-size: 55px; margin-bottom: 20px;">TASK 5: REFLECTION</h2>
+                            <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 25px;">
+                            <div class="task-content" style="font-size: 28px; line-height: 1.5; color: #f8fafc;">
+                                <h3>'Tight-knit'</h3>
+                                <ul>
+                                    <li>How does a community help after a tragedy?</li>
+                                    <li>Why focus on 'light' over 'darkness'?</li>
+                                </ul>
+                            </div>
+
+                            <timer-pill duration="5"></timer-pill>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </div>
+
+    <!-- SCRIPTS (Local Core) -->
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+
+    <script>
+        // Audio FX Logic
+        const AudioFX = {
+            blip: new Audio('audio/blip.mp3'),
+            bell: new Audio('audio/bell.mp3'),
+            warning: new Audio('audio/30-seconds.mp3'),
+            init() {
+                this.blip.load(); this.bell.load(); this.warning.load();
+            }
+        };
+        document.addEventListener('click', () => AudioFX.init(), { once: true });
+
+        // Timer Component
+        class TimerPill extends HTMLElement {
+            connectedCallback() {
+                this.duration = parseInt(this.getAttribute('duration')) || 5;
+                this.timeLeft = this.duration * 60;
+                this.timer = null;
+                this.render();
+            }
+            render() {
+                this.innerHTML = `
+                    <div class="timer-pill">
+                        <div class="timer-display">${this.formatTime(this.timeLeft)}</div>
+                        <button class="start-btn">START</button>
+                    </div>
+                `;
+                this.querySelector('.start-btn').onclick = (e) => {
+                    e.stopPropagation();
+                    this.toggle();
+                };
+            }
+            formatTime(s) {
+                const m = Math.floor(s / 60).toString().padStart(2, '0');
+                const sec = (s % 60).toString().padStart(2, '0');
+                return m + ":" + sec;
+            }
+            toggle() {
+                const btn = this.querySelector('.start-btn');
+                // Ensure audio is initialized/unlocked on first interaction
+                AudioFX.init();
+
+                if (this.timer) {
+                    clearInterval(this.timer);
+                    this.timer = null;
+                    btn.textContent = 'START';
+                    btn.classList.remove('pause');
+                } else {
+                    btn.textContent = 'PAUSE';
+                    btn.classList.add('pause');
+
+                    // Optional: Play a short blip to confirm audio works on start
+                    AudioFX.blip.play().catch(e => console.warn("Audio Context blocked:", e));
+
+                    this.timer = setInterval(() => {
+                        if (this.timeLeft > 0) {
+                            this.timeLeft--;
+                            this.querySelector('.timer-display').textContent = this.formatTime(this.timeLeft);
+
+                            // 30 Seconds Warning
+                            if (this.timeLeft === 30) {
+                                AudioFX.warning.currentTime = 0;
+                                AudioFX.warning.play().catch(e => console.error(e));
+                            }
+
+                            // Countdown blips (10 to 1)
+                            if (this.timeLeft <= 10 && this.timeLeft > 0) {
+                                AudioFX.blip.currentTime = 0;
+                                AudioFX.blip.play().catch(() => { });
+                            }
+                        } else {
+                            // Timer End
+                            clearInterval(this.timer);
+                            this.timer = null;
+                            AudioFX.bell.play().catch(e => console.error(e));
+                            btn.textContent = 'DONE';
+                            btn.disabled = true;
+                        }
+                    }, 1000);
+                }
+            }
+        }
+        customElements.define('timer-pill', TimerPill);
+
+        Reveal.initialize({
+            width: 1280, height: 720, margin: 0.05,
+            transition: 'convex',
+            center: true, hash: true,
+            autoAnimateDuration: 1.2,
+            autoAnimateEasing: 'ease-in-out',
+            embeddedIframesFullscreen: true,
+            plugins: [RevealNotes, RevealMarkdown, RevealHighlight]
+        });
+    </script>
+</body>
+
+</html>
