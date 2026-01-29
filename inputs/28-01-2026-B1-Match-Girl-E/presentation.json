@@ -29,7 +29,7 @@
         {
             "layout": "impact",
             "title": "Today's Mission",
-            "background_video": "images/mission_bg_clipped.mp4",
+            "background_video": "https://elwrush.github.io/lesson-plan-agent/images/mission_bg_clipped.mp4",
             "main_text": "We are upgrading your reading skills.",
             "points": [
                 {
