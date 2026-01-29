@@ -620,3 +620,14 @@ Development of the **"Pro" Worksheet Template** for the Bondi Beach Attack lesso
 ### Build Logic
 - **Gitignore Tuning**: Patched `.gitignore` to use root-specific paths (`/dist/`) allowing presentation assets in `inputs/` to be committed.
 - **Presentation Sync**: Updated `generate_presentation.py` with `dirs_exist_ok=True` to ensure new themes like `noir.css` are correctly updated in existing presentation folders.
+
+### Policy & Standard: "Thai Translation Ban"
+- **Reasoning**: Thai translations on vocabulary slides were identified as frequently inaccurate/hallucinated.
+- **Standard**: Thai translations are now **STRICTLY BANNED** from all vocabulary slides across all lesson shapes.
+- **Skill Implementation**: Updated `creating-html-presentation` and `writing-lesson-plans` skills to enforce this standard.
+- **Validator Upgrade**: Sanitized `validate_presentation.py` to remove Thai-specific overrides from the layout safety checks.
+
+### Output Standard: "Zero Leak/Published Pattern"
+- **Encapsulation**: Updated `generate_presentation.py` to output exclusively to a **`published/`** subfolder within each lesson directory.
+- **Asset Portability**: The `published/` folder now contains its own `dist/`, `plugin/`, and `images/` copies, making it a fully portable, deployable unit.
+- **Build Integration**: Enhanced `build_dist.js` to prioritize the `published/` folder when compiling the dashboard, ensuring a clean separation between source materials and production output.
