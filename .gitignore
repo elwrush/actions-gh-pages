@@ -10,8 +10,8 @@ __pycache__/
 *.so
 .Python
 *.egg-info/
-dist/
-build/
+/dist/
+/build/
 
 # Virtual environments
 venv/
@@ -46,6 +46,6 @@ tmp/
 
 # Node
 node_modules/
-dist/
+/dist/
 
 

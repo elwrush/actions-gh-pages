@@ -25,9 +25,11 @@ def generate_presentation(json_path):
     for folder in ['dist', 'plugin', 'css']:
         src = os.path.join(skill_dir, folder) if folder == 'css' else os.path.join(core_dir, folder)
         dst = os.path.join(output_dir, folder)
-        if not os.path.exists(dst):
-            shutil.copytree(src, dst, ignore=ignore_func)
-            print(f"📦 Copied {folder} to: {dst}")
+        
+        if os.path.exists(src):
+            # Using dirs_exist_ok=True (Python 3.8+) to merge/update folders
+            shutil.copytree(src, dst, ignore=ignore_func, dirs_exist_ok=True)
+            print(f"📦 Synchronized {folder} to: {dst}")
 
     # 4. Copy Audio Assets
     audio_src = os.path.join(os.path.dirname(skill_dir), 'audio') # Project Root/audio
