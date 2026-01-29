@@ -294,7 +294,7 @@ Select **5 words** from the source text.
 
 ```
 ### 1. word /phonetic/: English context sentence (implies meaning).
-Thai translation: Thai context sentence (implies meaning).
+// NOTE: Thai translations are BANNED - use only English context sentences.
 ```
 
 ---

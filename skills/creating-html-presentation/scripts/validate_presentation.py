@@ -64,8 +64,8 @@ def validate_presentation(html_path, mode):
             classes = el.get('class', [])
             if isinstance(classes, str): classes = classes.split()
             
-            # Allow phonemes, thai-text, or large headers which need overrides
-            if 'phoneme' in classes or 'thai-text' in classes or el.name == 'h1' or 'check-item' in classes:
+            # Allow phonemes or large headers which need overrides
+            if 'phoneme' in classes or el.name == 'h1' or 'check-item' in classes:
                 continue
                 
             # Allow grid/flex adjustments

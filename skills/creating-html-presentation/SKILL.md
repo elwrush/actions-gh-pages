@@ -160,7 +160,7 @@ python skills/creating-html-presentation/scripts/generate_presentation.py inputs
       "layout": "vocab",
       "word": "DOMESTIC",
       "phoneme": "/dəˈmes.tɪk/",
-      "thai": "ภายในประเทศ",
+      // THAI TRANSLATIONS ARE BANNED because they are often inaccurate.
       // DEFINITIONS ARE BANNED. Use Context Sentence only.
       "context_sentence": "Most rice is for <span style='color: var(--accent);'>domestic</span> use.",
       "image": "images/satay.jpg"
@@ -201,7 +201,7 @@ Run the existing validators to ensure the output is perfect.
 
 1.  **`title`**: Gold Standard Split: Deck 1 (ALL CAPS) & Deck 2 (Title Case).
 2.  **`segue`**: Heavy Radial Gradient with Skewed Phase markers.
-3.  **`vocab`**: Glass-box container with Phonics and Thai Translation support.
+3.  **`vocab`**: Glass-box container with Phonics support. (Note: Thai translations are BANNED).
 4.  **`split_task`**: 35/65 Cinematic Split (Image Left / Task Glass-box Right).
 5.  **`video`**: Embeds YouTube/Shorts + Floating Task Box.
 6.  **`checklist`**: Grid of items for "Skim" tasks.

@@ -1,0 +1,109 @@
+:root {
+    --primary: #FFB300;      /* Turmeric Gold */
+    --secondary: #CE1126;    /* Heritage Red */
+    --bg-dark: #1A0F0F;      /* Deep Wood */
+    --text-accent: #F5F5F5;  /* Rice White */
+
+    /* GRADIENTS */
+    --grad-main: radial-gradient(circle, #2d3436 0%, #000000 100%);
+    --grad-segue: radial-gradient(circle, #5a0b0b 0%, #1a0101 100%);
+    --grad-boss: radial-gradient(circle, #2a0a0a 0%, #000000 100%);
+
+    --glass: transparent;
+    --neon-border: #FFB300;
+}
+
+body {
+    background-color: #000;
+    color: var(--text-accent);
+}
+
+/* GLOBAL GRID OVERLAY */
+.reveal::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 179, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 179, 0, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* TEXT SHADOWS */
+.reveal h1, .reveal h2 {
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 1);
+}
+
+.glass-box {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 1);
+}
+
+/* UTILS */
+.attribution {
+    font-size: 8pt !important;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 4px;
+    text-align: right;
+    font-style: italic;
+}
+
+.phoneme {
+    font-family: 'Courier Prime', monospace;
+    color: var(--primary);
+    font-size: 0.8em;
+    text-transform: lowercase;
+}
+
+.thai-text {
+    font-size: 0.8em;
+    color: #999;
+    margin-left: 10px;
+    font-family: sans-serif;
+}
+
+.answer-key {
+    color: #22c55e !important;
+    font-weight: 800;
+}
+
+.gap {
+    display: inline-block;
+    min-width: 100px;
+    border-bottom: 2px solid var(--primary);
+    margin: 0 5px;
+    text-align: center;
+    color: var(--primary);
+}
+
+/* LAYOUT COLUMNS */
+.row-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap !important;
+    gap: 20px;
+}
+
+.col-40 { flex: 0 0 40%; max-width: 40%; }
+.col-50 { flex: 0 0 50%; max-width: 50%; }
+.col-60 { flex: 0 0 60%; max-width: 60%; }
+
+/* SEGUE CENTERING */
+.segue-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}

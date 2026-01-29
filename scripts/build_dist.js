@@ -81,8 +81,9 @@ const folders = fs.readdirSync(INPUTS_DIR).filter(f => {
     // If a target folder is specified, only include it
     if (targetFolder && f !== targetFolder) return false;
 
-    const indexPath = path.join(INPUTS_DIR, f, 'index.html');
-    return fs.existsSync(indexPath);
+    const publishedIndex = path.join(INPUTS_DIR, f, 'published/index.html');
+    const rootIndex = path.join(INPUTS_DIR, f, 'index.html');
+    return fs.existsSync(publishedIndex) || fs.existsSync(rootIndex);
 });
 
 if (folders.length === 0) {
@@ -95,10 +96,14 @@ console.log(`\n📂 Processing ${folders.length} presentation(s):`);
 const presentationData = [];
 
 folders.forEach(f => {
-    const srcPath = path.join(INPUTS_DIR, f);
+    const publishedPath = path.join(INPUTS_DIR, f, 'published');
+    const hasPublished = fs.existsSync(path.join(publishedPath, 'index.html'));
+
+    // If published folder exists, use it as source to keep dist/ clean
+    const srcPath = hasPublished ? publishedPath : path.join(INPUTS_DIR, f);
     const destPath = path.join(DIST_DIR, f);
 
-    console.log(`  - Copying ${f}...`);
+    console.log(`  - Copying ${f}${hasPublished ? ' (from published/)' : ''}...`);
     fs.cpSync(srcPath, destPath, {
         recursive: true,
         filter: (src) => {
@@ -107,14 +112,18 @@ folders.forEach(f => {
             const isHidden = base.startsWith('.');
             const isLegacy = src.includes('reveal_presentation');
             const isSystem = base === 'desktop.ini';
-            return !isGit && !isHidden && !isLegacy && !isSystem;
+            // If copying lesson root, exclude published/ folder itself to avoid recursion if dest is inside src (not possible here but good practice)
+            // also exclude source artifacts like .typ and .json and .txt
+            const isSource = base.endsWith('.typ') || base.endsWith('.json') || base.endsWith('.txt');
+            return !isGit && !isHidden && !isLegacy && !isSystem && (!hasPublished || !isSource);
         }
     });
 
     // Extract title from index.html if possible
     let title = f;
     try {
-        const content = fs.readFileSync(path.join(srcPath, 'index.html'), 'utf8');
+        const indexToRead = path.join(srcPath, 'index.html');
+        const content = fs.readFileSync(indexToRead, 'utf8');
         const match = content.match(/<title>(.*?)<\/title>/);
         if (match) title = match[1];
     } catch (e) { }
