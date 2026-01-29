@@ -1,6 +1,6 @@
 {
   "name": "lessons-and-slideshows-2",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "AI-powered lesson planning assistant for English language teachers, built with Google Gemini and the Skills-based architecture.",
   "main": "index.js",
   "scripts": {
