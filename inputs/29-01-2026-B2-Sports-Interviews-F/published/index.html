@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>SPORTS INTERVIEWS</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+    <style>
+        /* TIMER UI - Native Styling */
+        .timer-display {
+            font-family: monospace;
+            font-size: 2.5em;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .timer-btn {
+            background: #FFD700;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 5px;
+            font-size: 0.8em;
+        }
+
+        .timer-btn.reset {
+            background: #444;
+            color: white;
+        }
+
+        /* Mission Badge Styling - Square, 10% smaller */
+        .mission-badge {
+            background-color: rgba(255, 215, 0, 0.2);
+            border: 2px solid #FFD700;
+            padding: 12px 20px;
+            border-radius: 4px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.0em;
+            margin: 8px;
+            width: 180px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contrast Shadow for maximum pop on dimmed backgrounds */
+        .reveal section {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
+                0px 0px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Native Table Styling - Constrained */
+        .reveal table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.8em;
+        }
+
+        .reveal table th,
+        .reveal table td {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+        }
+
+        .reveal table th {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- SLIDE: TITLE -->
+<section data-background="images/title_bg.jpg"
+    data-background-gradient="linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 100%)"
+    data-background-opacity="0.5" data-auto-animate>
+    <div style="text-align: left; padding-left: 100px;">
+        <h3 style="color: #FFD700; margin-bottom: 20px;">B1 SPEAKING & INTERVIEW</h3>
+        <h1 data-id="title-text" style="font-size: 3.5em; margin: 0;">SPORTS INTERVIEWS</h1>
+        
+        <p style="font-size: 1.5em; opacity: 0.8; margin-top: 20px;">Success & Pressure in Pro Sports</p>
+        
+    </div>
+    <aside class="notes">
+        Welcome the students.
+    </aside>
+</section>
+            
+            <!-- SLIDE: VIDEO OBSERVATION -->
+<section data-background-video="images/hockey_7s.mp4" data-background-video-muted data-background-video-loop
+    data-background-opacity="0.4" data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: left; max-width: 900px;">
+            <h3 style="color: #FFD700; margin-bottom: 20px;">OBSERVE & DISCUSS</h3>
+            <h2 data-id="slide-title" style="font-size: 2.5em;">ICE HOCKEY</h2>
+            <div style="margin-top: 30px;">
+                <ul><li>What are the <strong>merits</strong> (advantages) of this sport?</li><li>What are the <strong>disadvantages</strong>?</li><li>Would you try it?</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Fast-paced action. 7-second clip. Group discussion.
+    </aside>
+</section>
+            
+            <!-- SLIDE: VIDEO OBSERVATION -->
+<section data-background-video="images/badminton_7s.mp4" data-background-video-muted data-background-video-loop
+    data-background-opacity="0.4" data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: left; max-width: 900px;">
+            <h3 style="color: #FFD700; margin-bottom: 20px;">OBSERVE & DISCUSS</h3>
+            <h2 data-id="slide-title" style="font-size: 2.5em;">BADMINTON</h2>
+            <div style="margin-top: 30px;">
+                <ul><li>How does this compare to Hockey?</li><li>What <strong>skills</strong> do you need?</li><li>Is it easier or harder than it looks?</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Agility focus.
+    </aside>
+</section>
+            
+            <!-- SLIDE: VIDEO OBSERVATION -->
+<section data-background-video="images/basketball_7s.mp4" data-background-video-muted data-background-video-loop
+    data-background-opacity="0.4" data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: left; max-width: 900px;">
+            <h3 style="color: #FFD700; margin-bottom: 20px;">OBSERVE & DISCUSS</h3>
+            <h2 data-id="slide-title" style="font-size: 2.5em;">BASKETBALL</h2>
+            <div style="margin-top: 30px;">
+                <ul><li>Why is this one of the most popular sports?</li><li>What are the <strong>risks</strong>?</li><li>Teamwork vs. Individual talent?</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Lead into the athlete profiles.
+    </aside>
+</section>
+            
+            <!-- SLIDE: IMPACT (MISSION) -->
+<section data-background-video="https://elwrush.github.io/lesson-plan-agent/images/mission_bg_clipped.mp4" data-background-video-muted data-background-opacity="0.5"
+    data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: center;">
+            <h1 data-id="major-title" style="color: #FFD700; font-size: 3.2em;">TODAY'S MISSION</h1>
+            <p style="font-size: 1.5em; margin-bottom: 40px;">Become a Sports Journalist.</p>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                
+                <div class="mission-badge">
+                    <span style="font-size: 1.5em;">🎤</span>
+                    <span>1-Minute Interview</span>
+                </div>
+                
+                <div class="mission-badge">
+                    <span style="font-size: 1.5em;">🗣️</span>
+                    <span>Master Reported Speech</span>
+                </div>
+                
+                <div class="mission-badge">
+                    <span style="font-size: 1.5em;">🔊</span>
+                    <span>Perfect Pronunciation</span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Non-looping goal setting.
+    </aside>
+</section>
+            
+            <!-- SLIDE: SEGUE -->
+<section data-transition="zoom">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE 1</div>
+    <h1 style="color: #FFD700; font-size: 4em;">MEET THE ATHLETES</h1>
+    <aside class="notes">
+        Moving to next section.
+    </aside>
+</section>
+            
+            <!-- SLIDE: SPLIT TASK (PROFILE/TASK) -->
+<section data-background="images/petra.jpg" data-background-opacity="0.5" data-auto-animate>
+
+    <div
+        style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; height: 100%; max-width: 1100px; margin: auto;">
+        <div style="width: 100%;">
+            <h3 style="color: #FFD700; margin-bottom: 5px;">TENNIS</h3>
+            <h1 data-id="task-title" style="font-size: 2.5em; margin-bottom: 20px; text-align: left;">PETRA (14)
+            </h1>
+
+            <div style="font-size: 1.1em; line-height: 1.4;">
+                <ul><li><strong>Home:</strong> Czech Republic ➔ US School</li><li><strong>Training:</strong> 5 hours/day training + 3 hours study</li><li><strong>Status:</strong> Under a lot of pressure to succeed.</li></ul>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Monitor student progress.
+    </aside>
+</section>
+            
+            <!-- SLIDE: SPLIT TASK (PROFILE/TASK) -->
+<section data-background="images/holly.jpg" data-background-opacity="0.5" data-auto-animate>
+
+    <div
+        style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; height: 100%; max-width: 1100px; margin: auto;">
+        <div style="width: 100%;">
+            <h3 style="color: #FFD700; margin-bottom: 5px;">SOCCER</h3>
+            <h1 data-id="task-title" style="font-size: 2.5em; margin-bottom: 20px; text-align: left;">HOLLY (16)
+            </h1>
+
+            <div style="font-size: 1.1em; line-height: 1.4;">
+                <ul><li><strong>Team:</strong> Local team top scorer.</li><li><strong>Change:</strong> Used to be shy; now very confident.</li><li><strong>Goal:</strong> Wants to be a coach after school.</li></ul>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Monitor student progress.
+    </aside>
+</section>
+            
+            <!-- SLIDE: SPLIT TASK (PROFILE/TASK) -->
+<section data-background="images/newman.jpg" data-background-opacity="0.5" data-auto-animate>
+
+    <div
+        style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; height: 100%; max-width: 1100px; margin: auto;">
+        <div style="width: 100%;">
+            <h3 style="color: #FFD700; margin-bottom: 5px;">BASKETBALL</h3>
+            <h1 data-id="task-title" style="font-size: 2.5em; margin-bottom: 20px; text-align: left;">NEWMAN (18)
+            </h1>
+
+            <div style="font-size: 1.1em; line-height: 1.4;">
+                <ul><li><strong>Past:</strong> Serious accident 3 years ago; wheelchair user.</li><li><strong>Now:</strong> Joined wheelchair basketball club; playing again.</li><li><strong>Dream:</strong> Represent his country in the Paralympics.</li></ul>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Monitor student progress.
+    </aside>
+</section>
+            
+            <!-- SLIDE: SEGUE -->
+<section data-transition="zoom">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE 2</div>
+    <h1 style="color: #FFD700; font-size: 4em;">REPORTING THE ACTION</h1>
+    <aside class="notes">
+        Moving to next section.
+    </aside>
+</section>
+            
+            <!-- SLIDE: SPLIT TASK (PROFILE/TASK) -->
+<section data-background="images/title_bg.jpg" data-background-opacity="0.5" data-auto-animate>
+
+    <div
+        style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; height: 100%; max-width: 1100px; margin: auto;">
+        <div style="width: 100%;">
+            <h3 style="color: #FFD700; margin-bottom: 5px;">TASK 6</h3>
+            <h1 data-id="task-title" style="font-size: 2.5em; margin-bottom: 20px; text-align: left;">REPORTING VERBS
+            </h1>
+
+            <div style="font-size: 1.1em; line-height: 1.4;">
+                <ul><li>Open your Student's Book to page 85.</li><li>Complete Exercise 6.</li><li>Match the reporting verbs to the quotes.</li></ul>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Monitor student progress.
+    </aside>
+</section>
+            
+            <!-- SLIDE: ANSWER KEY (TABLE) -->
+<section data-background="images/title_bg.jpg" data-background-opacity="0.3" data-auto-animate>
+
+    <div class="r-stack">
+        <div style="width: 1000px;">
+            <h3 style="color: #FFD700; margin-bottom: 10px;">TASK 6</h3>
+            <h2 data-id="matching-title">MATCHING ANSWERS</h2>
+
+            <div style="margin-top: 30px;">
+                <table><thead><tr><th>Verb</th><th>Name</th><th>Quote</th></tr></thead><tbody><tr><td>1. admit</td><td>Petra</td><td>'I often feel anxious...'</td></tr><tr><td>2. explain</td><td>Holly</td><td>'My mom never misses a game now.'</td></tr><tr><td>3. complain</td><td>Petra</td><td>'I never have any free time.'</td></tr><tr><td>4. offer</td><td>Holly</td><td>'I'll get you some tickets...'</td></tr><tr><td>5. deny</td><td>Newman</td><td>'That's wrong, I didn't give up.'</td></tr><tr><td>6. insist</td><td>Newman</td><td>'You must let me play!'</td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Review the answers with the class.
+    </aside>
+</section>
+            
+            <!-- SLIDE: STRATEGY (BLOCKQUOTE) -->
+<section data-background="images/interviewer.jpg" data-background-opacity="0.5" data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: left; max-width: 1000px;">
+            <h3 style="color: #FFD700; margin-bottom: 10px;">SKILLS</h3>
+            <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">THE INTERVIEWER'S CRAFT</h2>
+
+            <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
+                <ul><li><strong>Prep:</strong> Choose your athlete carefully.</li><li><strong>Accuracy:</strong> Use reported speech correctly.</li><li><strong>Energy:</strong> Practice with your partner. Sound like a pro journalist!</li></ul>
+            </blockquote>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss the strategy with students.
+    </aside>
+</section>
+            
+            <!-- SLIDE: SPLIT TASK (PROFILE/TASK) -->
+<section data-background="images/title_bg.jpg" data-background-opacity="0.5" data-auto-animate>
+
+    <div
+        style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; height: 100%; max-width: 1100px; margin: auto;">
+        <div style="width: 100%;">
+            
+            <h1 data-id="task-title" style="font-size: 2.5em; margin-bottom: 20px; text-align: left;">THE 1-MIN INTERVIEW
+            </h1>
+
+            <div style="font-size: 1.1em; line-height: 1.4;">
+                <ul><li><strong>Student A:</strong> The Athlete.</li><li><strong>Student B:</strong> The Interviewer.</li><li>Interview each other. Focus on content and pronunciation.</li><li>Your teacher will give you feedback.</li></ul>
+            </div>
+
+            
+            <div style="margin-top: 30px; align-self: center; width: 100%; text-align: center;">
+                <div class="timer-display" id="timer-60-display">
+                    
+                    01:00
+                </div>
+                <div>
+                    <button class="timer-btn"
+                        onclick="toggleTimer(60, 'timer-60-display', this)">START</button>
+                    <button class="timer-btn reset"
+                        onclick="resetTimer(60, 'timer-60-display')">RESET</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Monitor student progress.
+    </aside>
+</section>
+            
+        </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        const AudioFX = {
+            blip: new Audio('audio/blip.mp3'),
+            bell: new Audio('audio/bell.mp3'),
+            warning: new Audio('audio/warning.mp3'),
+            init() {
+                this.blip.load(); this.bell.load(); this.warning.load();
+            }
+        };
+
+        const TimerRegistry = {};
+
+        function toggleTimer(durationSeconds, displayId, btn) {
+            if (TimerRegistry[displayId] && TimerRegistry[displayId].interval) {
+                clearInterval(TimerRegistry[displayId].interval);
+                TimerRegistry[displayId].interval = null;
+                btn.textContent = 'START';
+            } else {
+                btn.textContent = 'PAUSE';
+                const display = document.getElementById(displayId);
+                AudioFX.init();
+
+                if (!TimerRegistry[displayId]) {
+                    TimerRegistry[displayId] = { original: durationSeconds, current: durationSeconds };
+                }
+
+                const tick = () => {
+                    let timer = --TimerRegistry[displayId].current;
+                    let minutes = parseInt(timer / 60, 10);
+                    let seconds = parseInt(timer % 60, 10);
+                    display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+
+                    if (timer <= 0) {
+                        clearInterval(TimerRegistry[displayId].interval);
+                        TimerRegistry[displayId].interval = null;
+                        btn.textContent = 'START';
+                        AudioFX.bell.play().catch(e => console.warn(e));
+                        display.textContent = "DONE!";
+                    } else if (timer === 30) {
+                        AudioFX.warning.play().catch(e => console.warn(e));
+                    } else if (timer < 10 && timer >= 0) {
+                        AudioFX.blip.play().catch(e => console.warn(e));
+                    }
+                };
+
+                // Run once immediately, then start interval
+                tick();
+                TimerRegistry[displayId].interval = setInterval(tick, 1000);
+            }
+        }
+
+        function resetTimer(durationSeconds, displayId) {
+            if (TimerRegistry[displayId]) {
+                clearInterval(TimerRegistry[displayId].interval);
+            }
+            const display = document.getElementById(displayId);
+            // Reset button text in the same slide
+            const section = display.closest('section');
+            const startBtn = section.querySelector('.timer-btn:not(.reset)');
+            if (startBtn) startBtn.textContent = 'START';
+
+            let minutes = parseInt(durationSeconds / 60, 10);
+            let seconds = parseInt(durationSeconds % 60, 10);
+            display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+            TimerRegistry[displayId] = { original: durationSeconds, current: durationSeconds, interval: null };
+        }
+
+        Reveal.initialize({
+            hash: true,
+            width: 1280,
+            height: 720,
+            margin: 0.1,
+            center: true,
+            autoAnimateDuration: 1.2,
+            autoAnimateEasing: 'ease-in-out',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>

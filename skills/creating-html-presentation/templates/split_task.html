@@ -1,58 +1,35 @@
-<!-- SLIDE: SPLIT TASK -->
-<section data-transition="convex" data-auto-animate {% if slide.background_video
-    %}data-background-video="{{ slide.background_video }}" data-background-video-muted data-background-opacity="0.3" {%
-    endif %}>
-    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+<!-- SLIDE: SPLIT TASK (PROFILE/TASK) -->
+<section data-background="{{ slide.image }}" data-background-opacity="0.5" data-auto-animate>
 
-    <div class="slide-canvas">
-        {% if slide.image %}
-        <div class="row-container"
-            style="display: flex; height: 100%; align-items: center; gap: 60px; width: 100%; max-width: 1200px; margin: 0 auto; flex-direction: row; flex-wrap: nowrap;">
-            <!-- Left: Context Image -->
-            <div class="col-40" style="flex: 0 0 40%; max-width: 40%;">
-                <img src="{{ slide.image }}" class="inset-media" data-id="task-image"
-                    style="width: 100%; height: auto; border: 4px solid #FFD700; box-shadow: 15px 15px 0px rgba(0,0,0,0.5); border-radius: 4px;">
-                {% if slide.attribution and 'Pixabay' in slide.attribution %}
-                <div style="color: rgba(255,255,255,0.3); font-style: italic; margin-top: 5px;">{{
-                    slide.attribution }}</div>
-                {% endif %}
-            </div>
-            <!-- Right: Task Card -->
-            <div class="col-60" style="flex: 1; text-align: left;">
-                <div class="glass-box" data-id="task-card"
-                    style="border: 2px solid #FFD700; background: rgba(0,0,0,0.9); padding: 25px; border-radius: 15px;">
-                    <div data-id="task-badge"
-                        style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-bottom: 25px; transform: skew(-5deg); font-size: 0.8em; letter-spacing: 2px;">
-                        {{ slide.badge | default('TASK') }}
-                    </div>
-                    <h2 style="color: #FFD700; margin-bottom: 25px; line-height: 1.1; font-size: 60px;">{{ slide.title
-                        }}</h2>
-                    <hr style="border-color: #A72B26; opacity: 0.4; margin-bottom: 30px;">
-                    <div class="task-content" style="line-height: 1.4; color: #f8fafc; font-size: 32px;">
-                        {{ slide.content | safe }}
-                    </div>
-                    {% if slide.timer %}
-                    <timer-pill duration="{{ slide.timer }}"></timer-pill>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        {% else %}
-        <!-- Wide Glass Box (No Image) -->
-        <div class="glass-box"
-            style="max-width: 900px; margin: 0 auto; border: 2px solid #FFD700; background: rgba(0,0,0,0.95); padding: 40px; border-radius: 20px; text-align: left;">
-            <div data-id="task-badge"
-                style="background: #A72B26; color: white; display: inline-block; padding: 10px 20px; font-weight: 800; margin-bottom: 25px;">
-                {{ slide.badge | default('TASK') }}
-            </div>
-            <h2 style="color: #FFD700; font-size: 70px;">{{ slide.title }}</h2>
-            <div style="line-height: 1.4; margin-top: 20px; font-size: 34px;">
+    <div
+        style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; height: 100%; max-width: 1100px; margin: auto;">
+        <div style="width: 100%;">
+            {% if slide.badge %}<h3 style="color: #FFD700; margin-bottom: 5px;">{{ slide.badge }}</h3>{% endif %}
+            <h1 data-id="task-title" style="font-size: 2.5em; margin-bottom: 20px; text-align: left;">{{ slide.title }}
+            </h1>
+
+            <div style="font-size: 1.1em; line-height: 1.4;">
                 {{ slide.content | safe }}
             </div>
+
             {% if slide.timer %}
-            <timer-pill duration="{{ slide.timer }}"></timer-pill>
+            <div style="margin-top: 30px; align-self: center; width: 100%; text-align: center;">
+                <div class="timer-display" id="timer-{{ slide.timer }}-display">
+                    {% set mins = (slide.timer / 60) | int %}{% set secs = (slide.timer % 60) | int %}
+                    {{ "%02d"|format(mins) }}:{{ "%02d"|format(secs) }}
+                </div>
+                <div>
+                    <button class="timer-btn"
+                        onclick="toggleTimer({{ slide.timer }}, 'timer-{{ slide.timer }}-display', this)">START</button>
+                    <button class="timer-btn reset"
+                        onclick="resetTimer({{ slide.timer }}, 'timer-{{ slide.timer }}-display')">RESET</button>
+                </div>
+            </div>
             {% endif %}
         </div>
-        {% endif %}
     </div>
+
+    <aside class="notes">
+        {{ slide.notes | default('Monitor student progress.') }}
+    </aside>
 </section>

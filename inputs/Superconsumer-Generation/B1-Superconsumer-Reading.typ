@@ -68,11 +68,11 @@ The older and richer Gen Y consumers become, the more important it is for compan
 #v(0.4cm)
 #block(inset: 12pt, stroke: 0.5pt + maroon, radius: 3pt, width: 100%, fill: maroon.lighten(98%))[
   #grid(columns: (1fr), row-gutter: 0.4cm,
-    [*A.* Who is Generation Y?],
-    [*B.* Are large stores still growing?],
-    [*C.* How fast is online shopping growing?],
-    [*D.* Why is Gen Y hard to influence?],
-    [*E.* Reading the future of shopping?]
+    [*A.* Reading the future of shopping?],
+    [*B.* Who is Generation Y?],
+    [*C.* Why is Gen Y hard to influence?],
+    [*D.* Are large stores still growing?],
+    [*E.* How fast is online shopping growing?]
   )
 ]
 
@@ -129,7 +129,7 @@ The older and richer Gen Y consumers become, the more important it is for compan
 #v(0.5cm)
 
 #block(inset: 8pt, fill: rgb("#F8FAFC"), radius: 4pt, width: 100%)[
-  *Key Summary:* #h(1em) *(T2)* 2:A, 3:B, 4:C, 5:D, 6:E #h(2em) *(T4)* 1:NG, 2:F, 3:NG, 4:T, 5:F
+  *Key Summary:* #h(1em) *(T2)* 2:B, 3:D, 4:E, 5:C, 6:A #h(2em) *(T4)* 1:NG, 2:F, 3:NG, 4:T, 5:F
 ]
 
 #v(0.5cm)

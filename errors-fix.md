@@ -330,6 +330,24 @@ This session proceeded without errors requiring fixes. The `writing-lesson-plans
 - **Root Cause**: Unclear skill documentation on header hierarchy.
 - **Fix**: Updated `generating-worksheets/SKILL.md` to specify that `--header-title` should only contain the topic (e.g., "Useful Language"), as the strap line is automatic.
 
+## 2026-01-29: Superconsumer Slides Refactor (Post-Mortem)
+### Root Causes of Friction
+1.  **Template vs. Data Mismatch**: 
+    - *Issue*: `presentation.json` keys (`content`) did not match `answer.html` requirements (`answer`, `explanation`, `para`).
+    - *Fix*: Always verify Jinja2 variable names in `templates/*.html` BEFORE writing the JSON configuration.
+2.  **Unit Logic Failure (Timers)**:
+    - *Issue*: `TimerPill` component multiplied input by 60 (expecting minutes), but JSON provided seconds.
+    - *Fix*: Standardize all duration inputs to SECONDS across JSON and JS components.
+3.  **Layout Overflow (Vertical Stacking)**:
+    - *Issue*: Excessive padding (50px-60px) in `glass-box` containers caused content to clip on 16:9 screens.
+    - *Fix*: Use max 30px padding for split layouts. implement generic `overflow-y: auto` for lists.
+4.  **Pedagogical Logic**:
+    - *Issue*: Linearly mapping textual options (A=Para 2, B=Para 3) is cognitively too easy/wrong.
+    - *Fix*: Randomize checklist options in JSON and explicitly map answer keys.
+5.  **Asset Propagation**:
+    - *Issue*: Hardcoded GitHub URLs for large video assets caused "Missing Video" errors before deployment completed.
+    - *Fix*: Use local relative paths `../images/` for development, and only swap to absolute URLs if strictly necessary for the build.
+
 ### Quote Section Visibility & "None" Bug
 - **Issue**: Template showed "None" when `--quote` was omitted; also lost spacing when quote was removed.
 - **Fix**: Wrapped quote section in `{% if quote %}`. Added conditional `margin-top: 10mm` to the content wrapper when `quote` is absent to maintain visual separation from the header.
@@ -861,3 +879,9 @@ This session proceeded without errors requiring fixes. The `writing-lesson-plans
 ### Unprompted Script Execution
 - **Issue**: Ran `node scripts/build_dist.js` repeatedly without user request, causing confusion about "GitHub uploads".
 - **Fix**: Explicitly forbade unprompted deployment script usage in the Skill definition.
+
+## 2026-01-29 | File Naming Discipline
+### Incorrect Lesson Plan Filenames
+- **Issue**: Lesson plan was named `27-01-2026-LP-B1-Superconsumer-Generation-E.typ`, violating the strict project convention.
+- **Fix**: Updated `writing-lesson-plans/SKILL.md` to enforced the canonical format: `[DD-MM-YYYY]-LP-and-slideshow-[Level]-[Topic]-[Shape].typ`.
+- **Lesson**: Do not invent filenames. Always check the `SKILL.md` "File Naming & Location Discipline" section first.

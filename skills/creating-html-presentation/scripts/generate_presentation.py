@@ -33,14 +33,14 @@ def generate_presentation(json_path):
         
         if os.path.exists(src):
             shutil.copytree(src, dst, ignore=ignore_func, dirs_exist_ok=True)
-            print(f"📦 Synchronized {folder} to: {dst}")
+            print(f"Synchronized {folder} to: {dst}")
 
     # 3.5 Copy Lesson Images (MANDATORY for published folder portability)
     images_src = os.path.join(lesson_dir, 'images')
     if os.path.exists(images_src):
         images_dst = os.path.join(output_dir, 'images')
         shutil.copytree(images_src, images_dst, ignore=ignore_func, dirs_exist_ok=True)
-        print(f"🖼️ Synchronized images to: {images_dst}")
+        print(f"Synchronized images to: {images_dst}")
 
     # 4. Copy Audio Assets
     project_root = os.path.dirname(os.path.dirname(skill_dir))
@@ -54,7 +54,7 @@ def generate_presentation(json_path):
         dst_file = os.path.join(audio_dst, item)
         if os.path.exists(src_file) and not os.path.exists(dst_file):
             shutil.copy2(src_file, dst_file)
-            print(f"🎵 Copied {item} to: {audio_dst}")
+            print(f"Copied {item} to: {audio_dst}")
 
     # 5. Render Template
     env = Environment(loader=FileSystemLoader(template_dir))
@@ -68,6 +68,12 @@ def generate_presentation(json_path):
             if end:
                 url += f"&end={end}"
             slide['video_url'] = url
+        
+        # Ensure autoplay and once-only for background videos as per request
+        if 'video_url' in slide and slide['video_url'].endswith('.mp4'):
+            # These will be used in data-background-video-* attributes
+            slide['video_autoplay'] = True
+            slide['video_loop'] = False
 
     output_html = template.render(
         meta=config.get('meta', {}),
@@ -79,7 +85,7 @@ def generate_presentation(json_path):
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(output_html)
         
-    print(f"✨ Presentation generated successfully at: {output_path}")
+    print(f"Presentation generated successfully at: {output_path}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

@@ -1,6 +1,6 @@
 ---
 name: creating-html-presentation
-description: Generates vibrant Reveal.js HTML presentations (slideshows) from lesson plans with high-energy visuals, timers, and answer keys.
+description: Generates vibrant Reveal.js HTML presentations (slideshows) from materials and instructions with high-energy visuals, timers, and answer keys.
 ---
 
 # Skill: Creating HTML Presentations (`creating-html-presentation`)
@@ -8,19 +8,25 @@ description: Generates vibrant Reveal.js HTML presentations (slideshows) from le
 **Version**: 4.0 (Local Reveal.js Core + Pixel-Perfect Standards)
 
 ## Description
-This skill generates vibrant, high-energy HTML presentations using **Reveal.js** via a Python generator script. It transforms lesson plans into dynamic, web-based experiences with "pop and verve." This version relies on a local Reveal.js distribution (in `reveal_core/`) to ensure offline reliability and perfect rendering.
+This skill generates vibrant, high-energy HTML presentations using **Official Reveal.js Native Patterns**. We have abandoned custom CSS containers and fragile template wrappers in favor of the library's core classes (`r-fit-text`, `r-stretch`) and standard semantic HTML (`<table>`, `<ul>`). This ensures perfect stability, responsive scaling, and high performance across all devices.
+
+## 💎 The "Native Core" Standards (2026 Update)
+1. **Zero-Box Philosophy**: NEVER create custom `div` boxes for text backgrounds.
+    - **Visibility**: Use `data-background-opacity="0.5"` (Dimming) on task slides.
+    - **Contrast**: Global `text-shadow: 2px 2px 8px rgba(0,0,0,0.9)` is applied to all slide text.
+2. **Gradient Overlays**: Title and transition slides MUST use `data-background-gradient` (e.g., `linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0))`) to anchor text.
+3. **Mission Badges**: Learning objectives on the Mission slide must be **Square Badges** (minimal border-radius, background tint, small width ~180px) to prevent screen spillover.
+4. **Table Logic**: Use native `<table>` for all answer keys and data comparisons.
+5. **Flex Layouts**: Prefer `display: flex` centering for complex slides with timers to ensure vertical alignment doesn't clip content. Avoid over-reliance on `r-stack`.
 
 ## ⛔ MANDATORY CO-LOCATION & ROOT BAN (READ FIRST)
 
-> [!CRITICAL]
-> **ROOT FOLDER BAN**: You are STRICTLY FORBIDDEN from creating any lesson files (PDFs, Typst, Images, HTML) in the Project Root (`C:\PROJECTS\LESSONS AND SLIDESHOWS 2\`).
-> 
-> **Canonical Location**: ALL files MUST be created inside a dedicated subfolder in `inputs/` (e.g., `inputs/28-01-2026-B1-Match-Girl-E/`). This applies to the Lesson Plan, Slideshow, Images, worksheets, and assets. Completed and approved materials should be moved to a `published/` sub-subdirectory.
+> **Canonical Location**: ALL files MUST be created inside a dedicated subfolder in `inputs/` (e.g., `inputs/28-01-2026-B1-Match-Girl-E/`). This applies to the Materials, Slideshow, Images, worksheets, and assets. Completed and approved materials should be moved to a `published/` sub-subdirectory.
 
 > [!CRITICAL]
-> **PREREQUISITE**: You MUST NOT generate a presentation until the corresponding Lesson Plan has been EXPLICITLY APPROVED by the user.
+> **PREREQUISITE**: You MUST NOT generate a presentation until the Materials and User Instructions have been EXPLICITLY APPROVED by the user.
 > 
-> **ALL presentation files (`index.html`, `images/`, `audio/`) MUST be created inside the SAME folder as the lesson plan and worksheet.**
+> **ALL presentation files (`index.html`, `images/`, `audio/`) MUST be created inside the SAME folder as the source materials and worksheet.**
 > 
 > **Canonical Location**: `inputs/[QAD-folder]/` (e.g., `inputs/QAD-Fight-or-Flight/`)
 >
@@ -29,29 +35,34 @@ This skill generates vibrant, high-energy HTML presentations using **Reveal.js**
 
 ## Workflow
 
-## Workflow
+### Phase 0: 🧠 User Discovery & Architecture (MANDATORY GATED STEPS)
 
-### Step 0: 🧠 Context Check (CRITICAL)
-1. **Ingest History**: You MUST read `errors-fix.md` before generating any presentation to ensure previous mistakes (e.g., iframe fullscreen issues, layout stacking, malformed titles) are not repeated.
-2. **Review Updates**: Check if any new layout rules (e.g., "Horizontal-First") apply to your current task.
+You MUST NOT proceed to any code or image generation until the following questions are answered and the resulting architecture is approved.
 
-### Step 1: 📋 Source Check (MANDATORY)
-1.  **Check Context**: Ensure you are in a valid lesson folder with a lesson plan (`.typ`/`.md`) and worksheet.
-2.  **Extract Content**: Create a checklist of tasks from the source materials. Use "Task" nomenclature (e.g., "Task 1", "Task 2").
-3.  **Validate**: Show this checklist to the user.
+1.  **Level Check**: Which CEFR level is this for (e.g., B1, B2)?
+2.  **Skill Check**: Which specific skill is being targeted (e.g., Reading, Speaking)?
+3.  **Materials Ingestion**: What are the source materials? (Read `raw_content.md`, textbook scans, etc.).
+4.  **Special Requests**: Do you have any specific high-energy requirements or design preferences?
+5.  **Learning Objectives**: What MUST the students be able to do by the end of the lesson? (The "Mission").
+6.  **Architecture Proposal**: 
+    -   Generate a markdown file (e.g., `slide_architecture.md`) detailing the slide-by-slide plan.
+    -   Include: Slide Number, Title, **Layout Pattern** (Pattern Catalog), **Media Requirement**, and **Pedagogical Goal**.
+    -   **Wait for Approval**: notify_user and wait for explicit approval of this architecture.
 
-### Step 1.5: 📐 Flow Visualization & Audit (Drift Check)
+### Phase 1: 📊 Pedagogical Mapping (Mermaid)
+
+Once Phase 0 is approved, visualize the flow:
 1.  **Activate**: `skills/rendering-prompts-into-mermaid/SKILL.md`.
-2.  **Generate Flowchart**: Create a Mermaid `graph TD` mapping the Lesson Plan to specific Slide Nodes.
-3.  **Strict Node Annotation**:
-    -   Each node MUST identify its **Layout** (e.g., `[Strategy Slide]`, `[Task 4: Split Video]`).
-    -   Multimedia nodes MUST include **Timestamps** (e.g., `Video: 01:17-01:35`).
-    -   Task nodes MUST confirm **"Anti-Echo"** logic (e.g., `Options: Rephrased/Mixed`).
-4.  **Pedagogical Visual Check**:
-    -   Does a **Strategy Node** appear before every Task Node?
-    -   Does a **Video Answer Node** immediately follow the Task?
-    -   **Pedagogical Mandate**: Does a **Contextualization Slide** appear immediately after the Lead-in? This slide MUST explain the lesson objective in a student-centered way (e.g., "Today we're making you a better reader! By the end of the lesson you'll...").
-6.  **Stop & Confirm**: Present this graph to the user. Do NOT proceed to code generation until the flow is approved.
+2.  **Generate Flowchart**: Create a Mermaid `graph TD` mapping the Materials and Instructions to specific Slide Nodes.
+3.  **Mandatory Nodes**:
+    -   Include a **"Discovery"** node.
+    -   Include a **"Linguistic Alignment"** node (CEFR profiling).
+4.  **Strict Node Annotation**:
+    -   Each node MUST identify its **Layout** (e.g., `[Strategy Slide]`).
+    -   Multimedia nodes MUST include **Timestamps**.
+    -   Task nodes MUST confirm **"Anti-Echo"** logic.
+5.  **Stop & Confirm**: Present this graph to the user. Do NOT proceed to code generation until the pedagogical flow is approved.
+6.  **Visual Reference**: Refer to `skills/creating-html-presentation/WORKFLOW_VISUAL.md` for the technical mapping.
 
 ### Step 2: 📦 Asset Strategy (External Generation)
 **Goal**: Create high-quality visual aides via external user-led generation.
@@ -83,17 +94,19 @@ Generate `presentation.json`. Use **Auto-Animate** (`data-auto-animate`) liberal
 -   **Voice**: Use short sentences and simple words. Avoid academic jargon.
 -   **Typography**: NEVER use all-caps for headers or body text (except Title Deck 1).
 -   **Color Palette Rule**: You MUST select a cohesive **Color Palette** (e.g., Noir, Cyber, Pastel) before generating the JSON. This ensures visual consistency across all slides.
--   **NO VISIBLE TIPS**: NEVER include "Teacher Tips", "Pro Tips", or "Pedagogical Advice" on the actual slide surface. This information belongs EXCLUSIVELY in the `notes` field for the speaker view.
--   **Context Slide Rule**: You MUST include a "Contextualization" slide after the Lead-in. It sets the student's personal goal for the lesson.
--   **Video Slide Rule**: YouTube slides MUST include 3 directive bullet points (talking points/questions) to guide viewing. Never just say "Watch this."
--   **Layout Philosophy**: Always utilize the full 16:9 horizontal space. Avoid centered "boxes in the middle".
+- **Full-Screen Background Rule**: You MUST present ALL images as full-screen backgrounds using `<section data-background="images/your-image.jpg">`. Use `data-background-opacity="0.5"` (Dimming) for task slides to ensure white-text contrast.
+- **Contrast & Gradient Rule**: Apply `data-background-gradient="linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0))"` to title and transition slides.
+- **Mission Slide Background Rule**: The "Mission" slide MUST use: `https://elwrush.github.io/lesson-plan-agent/images/mission_bg_clipped.mp4`. Call it using `data-background-video` with `data-background-video-muted` but **WITHOUT** `data-background-video-loop`. It must auto-start and play once.
+- **Badge Styling Rule**: Objectives on the Mission slide must be presented as **Badges** (background color + rounded corners) rather than simple list items.
+- **Timer Rule**: All timers MUST include a **Reset** button and trigger **Audio Cures** (bell.mp3) upon completion. The start button MUST toggle to a **Pause** state when active.
 
 ## 📐 Layout Philosophy (16:9 Optimization)
 
 Reveal.js presentations are 16:9. Always use horizontal space efficiently:
 - ❌ **DON'T**: Create centered boxes with content stacked vertically.
-- ✅ **DO**: Use split layouts (40/60, 50/50, 60/40) for most slides.
-- ✅ **DO**: Place images/media on one side, text on the other.
+- ❌ **DON'T**: Use inset images for main content.
+- ✅ **DO**: Use full-screen backgrounds (`data-background`) for all image slides.
+- ✅ **DO**: Use glass-box containers for text overlays on top of backgrounds.
 - ✅ **DO**: Use full-width grids for checklists and multi-item content.
 
 ### Patterns:
@@ -103,30 +116,23 @@ Reveal.js presentations are 16:9. Always use horizontal space efficiently:
 - **Split 50/50**: Video + Questions side-by-side.
 
 ### 🌟 New Design Standards (2026 Updates)
-1.  **Strategy Slide Pattern**:
-    -   **Mandatory**: Every Speaking/Listening task MUST have a preceding "Strategy" slide.
-    -   **Style**: Emoji Bullet Points (e.g., 🗣️ **Speak**, 🌍 **Connect**) instead of standard bullets.
-    -   **Content**: Focus on *how* to do the task, not just instructions.
+1.  **Full-Screen Image Pattern**:
+    -   **Layout**: `data-background` attribute on `<section>`.
+    -   **Styling**: Use a semi-transparent glass-box to ensure text readability.
 
-2.  **Video Answer Logic (Combined Card)**:
-    -   **Layout**: 50/50 Split.
-    -   **Left**: Replay Video Clip (iframe) with precise start/end times.
-    -   **Right**: **Combined Analysis Card**.
-        -   **Top**: CORRECT ANSWER (Bold, Large).
-        -   **Bottom**: EVIDENCE/TRANSCRIPT (Typewriter font, highlighted keywords, font size ~22-24px).
+3.  **Mission Slide Pattern**:
+    -   **Layout**: `data-background-video="https://elwrush.github.io/lesson-plan-agent/images/mission_bg_clipped.mp4"`.
+    -   **Looping**: MUST be set to `false`.
+    -   **Badges**: Standard square badges (10% smaller than default) to prevent overflow.
 
-3.  **Anti-Echoing Rule (Pedagogical)**:
+4.  **Anti-Echoing Rule (Pedagogical)**:
     -   **Checklists/Options**: Must **NOT** directly echo the transcript audio.
-    -   **Validation**: Rephrase the options (e.g., "Rare event" -> "Unusual occurrence") and **Reorder** them so they do not match the video sequence.
+    -   **Validation**: Rephrase the options and **Reorder** them.
 
-4.  **Auto-Animate Checklists**:
-    -   **Question Slide**: Unchecked items `[ ]`.
-    -   **Answer Slide**: Checked items `[✓]` with Green/Bold styling.
-    -   **Tech**: Use matching `data-id` attributes on both slides to enable smooth morphing.
-
-5.  **Compact Layouts**:
-    -   For Split Task slides, use **30px padding** (not 40px) inside glass boxes to prevent vertical overflow.
-    -   Header sizes: ~45px. Body text: ~24px.
+5.  **Native Answer Tables**:
+    -   **Layout**: Native HTML `<table>`.
+    -   **Columns**: Always include context (e.g., "Name" column for "Who said what").
+    -   **Scaling**: Use `font-size: 0.8em` for tables to ensure fit.
 
 
 **Command**:

@@ -33,7 +33,9 @@ graph TD
     H & I --> Clarify[5. Clarify Materials]
     Clarify --> Special[6. Special Requests]
     Special --> Suggest[7. Suggest Objective]
-    Suggest --> Write[8. Write Typst Plan]
+    
+    Suggest --> Align{Linguistic Alignment}
+    Align --> Write[8. Write Typst Plan]
     
     Write --> Validate{9. Validate}
     Validate -->|Fail| Fix[Fix Plan]
@@ -48,7 +50,7 @@ graph TD
     ApproveSlides -->|Fail| Slideshow
     ApproveSlides -->|Pass| Automate[10. Post-Generation Automations]
     
-    Automate --> Finish([🏁 Final PDF & Live Slideshow in published/])
+    Automate --> Finish([🏁 Final PDF & Live Slideshow])
 ```
 
 ## Workflow
@@ -182,8 +184,8 @@ Generate the lesson plan **in Typst format** for professional PDF output. Use th
 **Canonical Folder:** `inputs/[DD-MM-YYYY-Topic-Level]/`
 
 Store ALL files in this folder using strict sub-directories:
-- **Lesson Plan:** `inputs/[Folder]/published/[Date-Slug]-LP.typ`
-- **Published PDF:** `inputs/[Folder]/published/[Date-Slug]-LP.pdf`
+- **Lesson Plan:** `inputs/[Folder]/published/[DD-MM-YYYY]-LP-and-slideshow-[Level]-[Topic]-[Shape].typ`
+- **Published PDF:** `inputs/[Folder]/published/[DD-MM-YYYY]-LP-and-slideshow-[Level]-[Topic]-[Shape].pdf`
 - **Images:** `inputs/[Folder]/images/`
 - **Audio:** `inputs/[Folder]/audio/`
 - **Quizzes:** `inputs/[Folder]/quizzes/`

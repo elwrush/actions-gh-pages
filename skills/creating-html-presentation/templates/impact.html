@@ -1,51 +1,24 @@
-<section data-auto-animate {% if slide.background_video %} data-background-video="{{ slide.background_video }}"
-    data-background-video-muted data-background-opacity="0.5" data-background-color="#050811" {% else %}
-    data-background-color="#000000" {% endif %}>
+<!-- SLIDE: IMPACT (MISSION) -->
+<section data-background-video="{{ slide.background_video }}" data-background-video-muted data-background-opacity="0.5"
+    data-auto-animate>
 
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+    <div class="r-stack">
+        <div style="text-align: center;">
+            <h1 data-id="major-title" style="color: #FFD700; font-size: 3.2em;">{{ slide.title }}</h1>
+            <p style="font-size: 1.5em; margin-bottom: 40px;">{{ slide.main_text }}</p>
 
-        <!-- Big Animated Title -->
-        <h1 style="font-size: 3.2em; color: var(--gold); text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); margin: 0;"
-            data-id="major-title">
-            {{ slide.title | upper }}
-        </h1>
-
-        <div style="height: 2px; width: 200px; background: var(--maroon); margin: 20px 0;" data-id="major-line"></div>
-
-        <!-- Content Container -->
-        <div style="font-size: 1.1em; line-height: 1.3; max-width: 90%; text-align: center;">
-            <div data-id="impact-main" style="margin-bottom: 30px; animation: fadeInUp 0.8s ease-out 0.2s both;">
-                <p><strong>{{ slide.main_text }}</strong></p>
-            </div>
-
-            <div style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;" data-id="impact-points">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
                 {% for point in slide.points %}
-                <div
-                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); padding: 15px 30px; border-radius: 12px; backdrop-filter: blur(5px); animation: fadeInUp 0.8s ease-out {{ 0.5 + loop.index0 * 0.2 }}s both;">
-                    <span style="font-size: 0.8em; color: #cbd5e1;">{{ point.icon }}</span><br>
-                    <strong style="color: white; font-size: 1em;">{{ point.text }}</strong>
+                <div class="mission-badge">
+                    <span style="font-size: 1.5em;">{{ point.icon }}</span>
+                    <span>{{ point.text }}</span>
                 </div>
                 {% endfor %}
             </div>
         </div>
-
     </div>
 
     <aside class="notes">
-        {{ slide.notes }}
+        {{ slide.notes | default('Introduce the mission.') }}
     </aside>
 </section>
-
-<style>
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-</style>

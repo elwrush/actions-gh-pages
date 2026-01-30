@@ -1,17 +1,8 @@
-<!-- SLIDE: SEGUE (Chapter Transition) -->
-<section data-transition="zoom" data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)">
-    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
-
-    <div class="slide-canvas">
-        <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
-            <h3 data-id="phase-label"
-                style="color: #FFD700; letter-spacing: 12px; font-weight: 300; margin-bottom: 20px;">
-                {{ slide.phase | default('CONTINUE') }}
-            </h3>
-            <h1 data-id="segue-title"
-                style="text-transform: uppercase; text-shadow: 0 0 40px rgba(255,215,0,0.4); transform: skew(-5deg) rotate(-2deg); font-weight: 900;">
-                {{ slide.title }}
-            </h1>
-        </div>
-    </div>
+<!-- SLIDE: SEGUE -->
+<section data-transition="zoom">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">{{ slide.phase }}</div>
+    <h1 style="color: #FFD700; font-size: 4em;">{{ slide.title }}</h1>
+    <aside class="notes">
+        Moving to next section.
+    </aside>
 </section>
