@@ -47,7 +47,6 @@
             "layout": "strategy",
             "title": "BUILDING BLOCKS",
             "background_color": "#C2B280",
-            "icon": "fas fa-map-marked-alt",
             "content": "<p style='font-size: 1.2em;'>To describe a holiday, you need more than just 'beach'. You need to describe the <b>place</b>.</p><hr style='border-color: rgba(255,255,255,0.3); width: 50%; margin: 20px 0;'><p style='font-size: 1.0em; font-style: italic;'>Let's load your memory with the geography of the coast.</p>",
             "badge": "FOCUS",
             "notes": "Explain that vocabulary is the foundation."
@@ -55,7 +54,6 @@
         {
             "layout": "split_table",
             "title": "VOCABULARY: THE COAST",
-            "icon": "fas fa-map-marked-alt",
             "image": "images/coast_learn_high_quality.jpg",
             "rationale": "Here are some great words to help you describe the seaside",
             "background_gradient": "linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.2))",
@@ -65,7 +63,6 @@
         {
             "layout": "split_table",
             "title": "VOCABULARY: THE COAST",
-            "icon": "fas fa-map-marked-alt",
             "image": "images/coast_learn_high_quality.jpg",
             "rationale": "Here are some great words to help you describe the seaside",
             "background_gradient": "linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.2))",
@@ -103,7 +100,6 @@
             "layout": "strategy",
             "title": "WORD PARTNERS",
             "background_color": "#2E86AB",
-            "icon": "fas fa-handshake",
             "content": "<p style='font-size: 1.2em;'>English words have 'best friends'. We call these <b>Collocations</b>.</p><hr style='border-color: rgba(255,255,255,0.3); width: 50%; margin: 20px 0;'><p style='font-size: 1.0em; font-style: italic;'>Don't translate word-for-word. Learn which words go together (like 'Rough Sea') to sound natural.</p>",
             "badge": "FLUENCY SECRET",
             "notes": "Explain the concept of collocations."
@@ -111,7 +107,6 @@
         {
             "layout": "match_reorder",
             "title": "TASK 2: MATCHING",
-            "icon": "fas fa-handshake",
             "image": "images/hero.jpg",
             "rationale": "These 'partners' (collocations) make your English sound natural, not translated.",
             "background_gradient": "linear-gradient(to right, rgba(0,0,0,0.95), rgba(0,0,0,0.7))",
@@ -136,7 +131,6 @@
         {
             "layout": "match_reorder",
             "title": "TASK 2: MATCHING",
-            "icon": "fas fa-handshake",
             "image": "images/hero.jpg",
             "rationale": "These 'partners' (collocations) make your English sound natural, not translated.",
             "background_gradient": "linear-gradient(to right, rgba(0,0,0,0.95), rgba(0,0,0,0.7))",
@@ -216,7 +210,6 @@
             "layout": "strategy",
             "title": "PRECISION TRAINING",
             "background_color": "#34495E",
-            "icon": "fas fa-crosshairs",
             "content": "<p style='font-size: 1.2em;'>B1/B2 exams often trick you with words that look similar but have different meanings.</p><hr style='border-color: rgba(255,255,255,0.3); width: 50%; margin: 20px 0;'><p style='font-size: 1.0em; font-style: italic;'>Let's spot the difference between commonly confused words.</p>",
             "badge": "ACCURACY",
             "notes": "Warn them about distractors and similar words."
@@ -224,7 +217,6 @@
         {
             "layout": "split_table",
             "title": "TASK 4: WORD CHOICE",
-            "icon": "fas fa-crosshairs",
             "rationale": "These words are often confused. Choosing the right one gets you higher marks.",
             "image": "images/coastline_phase1.jpg",
             "background_gradient": "linear-gradient(to right, rgba(0,0,0,0.95), rgba(0,0,0,0.7))",
@@ -234,7 +226,6 @@
         {
             "layout": "split_table",
             "title": "TASK 4: WORD CHOICE",
-            "icon": "fas fa-crosshairs",
             "rationale": "These words are often confused. Choosing the right one gets you higher marks.",
             "image": "images/hero.jpg",
             "background_gradient": "linear-gradient(to right, rgba(0,0,0,0.95), rgba(0,0,0,0.7))",
@@ -288,7 +279,7 @@
             "title": "TASK 6: SPEAKING MISSION",
             "image": "images/task6_high_quality.jpg",
             "background_gradient": "linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.4))",
-            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 0.9em;'><tbody><tr><td style='width: 60px; text-align: center; vertical-align: middle;'><i class='fas fa-file-alt' style='color: #FFD700; font-size: 1.5em;'></i></td><td style='vertical-align: middle;'>Choose ONE question from your worksheet</td></tr><tr><td style='width: 60px; text-align: center; vertical-align: middle;'><i class='fas fa-stopwatch' style='color: #FFD700; font-size: 1.5em;'></i></td><td style='vertical-align: middle;'>Prepare: 2 mins | Speak: 1 min</td></tr><tr><td style='width: 60px; text-align: center; vertical-align: middle;'><i class='fas fa-comments' style='color: #FFD700; font-size: 1.5em;'></i></td><td style='vertical-align: middle;'>Your teacher will provide feedback</td></tr><tr style='border-top: 1px solid rgba(255,255,255,0.2);'><td style='width: 60px; text-align: center; vertical-align: middle; padding-top: 20px;'><div class='timer-display' id='timer-60-display' style='font-size: 2.0em; font-family: monospace; color: #FFD700; margin: 0;'>01:00</div></td><td style='vertical-align: middle; padding-top: 20px; padding-left: 40px;'><div style='display: flex; gap: 10px; align-items: center;'><button class='timer-btn' onclick='toggleTimer(60, \"timer-60-display\", this)'>START</button><button class='timer-btn reset' onclick='resetTimer(60, \"timer-60-display\")'>RESET</button></div></td></tr></tbody></table>",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 0.8em;'><tbody><tr><td style='width: 60px; text-align: center; vertical-align: middle;'><i class='fas fa-file-alt' style='color: #FFD700; font-size: 1.5em;'></i></td><td style='vertical-align: middle;'>Choose ONE question from your worksheet</td></tr><tr><td style='width: 60px; text-align: center; vertical-align: middle;'><i class='fas fa-stopwatch' style='color: #FFD700; font-size: 1.5em;'></i></td><td style='vertical-align: middle;'>Prepare: 2 mins | Speak: 1 min</td></tr><tr><td style='width: 60px; text-align: center; vertical-align: middle;'><i class='fas fa-comments' style='color: #FFD700; font-size: 1.5em;'></i></td><td style='vertical-align: middle;'>Your teacher will provide feedback</td></tr><tr style='border-top: 1px solid rgba(255,255,255,0.2);'><td style='width: 60px; text-align: center; vertical-align: middle; padding-top: 20px;'><div class='timer-display' id='timer-60-display' style='font-size: 2.0em; font-family: monospace; color: #FFD700; margin: 0;'>01:00</div></td><td style='vertical-align: middle; padding-top: 20px; padding-left: 40px;'><div style='display: flex; gap: 10px; align-items: center;'><button class='timer-btn' onclick='toggleTimer(60, \"timer-60-display\", this)'>START</button><button class='timer-btn reset' onclick='resetTimer(60, \"timer-60-display\")'>RESET</button></div></td></tr></tbody></table>",
             "notes": "Monitor fluency. Don't correct mistakes while they speak. Start the timer when they begin."
         }
     ]

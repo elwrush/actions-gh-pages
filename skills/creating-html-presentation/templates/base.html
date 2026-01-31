@@ -104,11 +104,11 @@
     <script src="plugin/highlight/highlight.js"></script>
     <script>
         const AudioFX = {
-            blip: new Audio('audio/beep.mp3'),
+            beep: new Audio('audio/beep.mp3'),
             bell: new Audio('audio/bell.mp3'),
             warning: new Audio('audio/warning.mp3'),
             init() {
-                this.blip.load(); this.bell.load(); this.warning.load();
+                this.beep.load(); this.bell.load(); this.warning.load();
             }
         };
 
@@ -123,6 +123,7 @@
                 btn.textContent = 'PAUSE';
                 const display = document.getElementById(displayId);
                 AudioFX.init();
+                AudioFX.beep.play().catch(e => console.warn(e));
 
                 if (!TimerRegistry[displayId]) {
                     TimerRegistry[displayId] = { original: durationSeconds, current: durationSeconds };
@@ -143,7 +144,7 @@
                     } else if (timer === 30) {
                         AudioFX.warning.play().catch(e => console.warn(e));
                     } else if (timer < 10 && timer >= 0) {
-                        AudioFX.blip.play().catch(e => console.warn(e));
+                        AudioFX.beep.play().catch(e => console.warn(e));
                     }
                 };
 
