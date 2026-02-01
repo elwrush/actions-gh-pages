@@ -1,6 +1,6 @@
 ---
 name: producing-educational-materials
-description: Handles the entire lifecycle of educational material creation: consultation, pedagogical design, and production of professional Typst worksheets.
+description: Handles the entire lifecycle of educational material creation: consultation, pedagogical design, and production of professional Typst worksheets. Use when the user requests the creation of worksheets, lesson plans, or educational PDFs.
 ---
 
 # Producing Educational Materials
@@ -96,23 +96,9 @@ Before writing any code, you MUST verify the environment:
   - ALWAYS allow content to **flow naturally across pages**. 
   - **STRICTLY NO manual page breaks** between tasks or sections in the initial draft.
   - *Rationale*: The user will review the content spread first and then request specific booklet impositions or page adjustments in subsequent turns.
-- **Rule: Top Padding**: Always provide minimal space (e.g., `#v(0.1cm)`) between the top logo and the badges/hero strap to maximize vertical utility.
-- **Rule: Badge Positioning**: Badges MUST always be placed on the **top-left**, above the hero strap.
 
-### Step 5: Design Strategy (Editorial Standard)
-Apply the **Creative/Editorial** approach to maximize engagement:
-1. **Typography Standard**: Use **Arial 13pt** for all body text. This is the absolute global standard for clarity.
-2. **Focus Passages**: Use **Arial 13pt** (Bold for emphasis) for core reading texts. (Note: Avoid 16pt unless a specific visual 'breakaway' is required for readability).
-3. **Cinematic Headers**: Use full-width banners with overlay text.
-4. **Leading & Justification**: Use **0.55em** for body text leading. Text MUST be **left-justified** (ragged right), never full-justified.
-5. **Handwriting Space**: 
-   - ALWAYS provide at least **0.8cm - 1.2cm** of clear vertical space between the prompt and the writing line.
-   - For lists, pair **Left-Aligned** badges directly with lines using `#stack(dir: ltr, spacing: 12pt, badge(...), align(bottom, box(width: 1fr, ...)))`.
-6. **Writing Lines**: Use **0.9cm** line spacing via `#writing_lines_dynamic(line-spacing: 0.9cm)` for long-form responses.
-7. **Numbered Lists**: ALWAYS use native numbering syntax (e.g., `+` in Typst). 
-   - **Style**: Numbers must be **boldfaced**.
-   - **Constraint**: NEVER manually type "1.", "2." etc. in strings or stacks.
-   - **Typst implementation**: Use `#set enum(numbering: n => [*#n.*])` to enforce project-wide bold numbering.
+### Step 5: Design Strategy & Styling
+For detailed typography, spacing, and branding standards, refer to **[styling.md](references/styling.md)**.
 
 ### Step 6: Rendering & Validation
 1. **Compile**:
@@ -137,6 +123,7 @@ Apply the **Creative/Editorial** approach to maximize engagement:
 ## Reference Material
 - **Skill Architecture Standard**: `C:\PROJECTS\LESSONS AND SLIDESHOWS 2\knowledge_base\using-skills.md` (MUST follow for all skill updates).
 - **Visualization Tool**: `C:\PROJECTS\LESSONS AND SLIDESHOWS 2\skills\rendering-prompts-into-mermaid\SKILL.md` (Use for updating Mermaid diagrams).
+- **Styling Guide**: `C:\PROJECTS\LESSONS AND SLIDESHOWS 2\skills\producing-educational-materials\references\styling.md` (Design and Branding standards).
 - **B1 Standard**: `C:\PROJECTS\LESSONS AND SLIDESHOWS 2\skills\producing-educational-materials\B1-LINGUISTIC-PROFILE.md`
 - **B2 Standard**: `C:\PROJECTS\LESSONS AND SLIDESHOWS 2\skills\producing-educational-materials\B2-LINGUISTIC-PROFILE.md`
 - **Typst Library**: `C:\Users\elwru\AppData\Roaming\typst\packages\local\bell-sheets\0.1.0\lib.typ`

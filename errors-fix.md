@@ -1,3 +1,27 @@
+# Error Fix Log - Jan 31, 2026
+
+## Media & Asset Management
+- **The 4K Video Trap**: Downloading "Original" video files from Pixabay (~80MB) destroys Git repository limits and causes deployment lag.
+  - **Fix**: Use `process_video.py` to auto-trim to **7 seconds** and scale to **720p** before adding to the project.
+- **Git History Purge**: Accidental push of large files requires a history rewrite.
+  - **Fix**: `git reset --soft [last-good-commit]`, delete the file, then `git commit --amend` and `git push --force`.
+- **Audio key mapping**: Renaming audio keys in `base.html` (e.g., `blip` -> `beep`) without updating the `AudioFX.init()` and `tick()` calls causes silent failures.
+  - **Fix**: ALWAYS verify every JS callsite after renaming a key in the `AudioFX` object.
+
+## JSON & HTML Engineering
+- **Nested JSON Quoting**: Including `onclick` handlers with string arguments inside a JSON `content` field leads to "quote escaping hell."
+  - **Fix**: Use single quotes for HTML attributes (`onclick='...'`) and escaped double quotes for JS strings (`\"timer-id\"`).
+- **Blurry Text**: Applying multiple heavy `text-shadow` layers to darkened backgrounds creates a "blurred" or "unfocused" perception.
+  - **Fix**: Use crisp, single-layer shadows or rely on background dimming (`data-background-opacity="0.4"`) for contrast.
+- **Vertical Overflow**: Content "spilling" off slides is often caused by unnecessary decorative headers (Badges).
+  - **Fix**: Delete "MISSION/TASK" badges to reclaim 80px of vertical space. 
+
+## Typst & Tooling
+- **Typst Root Paths**: Using `--root "."` restricts relative imports like `../../`.
+  - **Fix**: Use absolute-style leading slash paths (`/skills/folder/file.typ`) which Typst resolves relative to the specified root.
+- **Probabilistic Timing**: Validators checking only for `[XX Min]` strings miss timings passed as function arguments.
+  - **Fix**: Use explicit regex `stage\(\s*".*?"\s*,\s*".*?"\s*,\s*"(\d+)"` to capture the 3rd argument. Perform deterministic math (`sum()`) and print the calculation to the console for verification.
+
 # Error Fix Log - Jan 28, 2026
 
 ## Typst Production & Layout
@@ -885,3 +909,19 @@ This session proceeded without errors requiring fixes. The `writing-lesson-plans
 - **Issue**: Lesson plan was named `27-01-2026-LP-B1-Superconsumer-Generation-E.typ`, violating the strict project convention.
 - **Fix**: Updated `writing-lesson-plans/SKILL.md` to enforced the canonical format: `[DD-MM-YYYY]-LP-and-slideshow-[Level]-[Topic]-[Shape].typ`.
 - **Lesson**: Do not invent filenames. Always check the `SKILL.md` "File Naming & Location Discipline" section first.
+
+# Error Fix Log - Jan 31, 2026 (Afternoon)
+
+## UI & Template Engineering
+- **Ghost Badges**: Deleting a badge from JSON didn't remove it because templates had hardcoded fallbacks (e.g., {{ badge | default('ANSWERS') }}).
+  - **Fix**: Audit all templates (nswer.html, mission.html) and remove hardcoded string fallbacks. Use strict Jinja2 if checks.
+- **Audio Scrubber Overflow**: Audio players often "exploded" out of narrow table columns.
+  - **Fix**: Use ox-sizing: border-box, overflow: hidden, and a responsive width: 95%. Always place players in a colspan header row if part of a grid.
+- **Video Loop Fatigue**: Background videos looping continuously behind text become a distraction.
+  - **Fix**: Set "video_loop": false and ensure templates remove the data-background-video-loop attribute.
+- **Phonemic Uppercasing**: Browser-level 	ext-transform: uppercase destroys the accuracy of IPA symbols.
+  - **Fix**: Wrap symbols in <span class='phonetic'> and use 	ext-transform: none !important in the global CSS.
+
+## Workflow & Discipline
+- **The Reasoning Trap**: Relying on the model to "remember" the Rule of 3 Lines or video duration leads to failure.
+  - **Fix**: USE HOOKS. If a rule can be expressed as a regex or a duration check, it MUST be a pre-command hook.

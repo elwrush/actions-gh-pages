@@ -1,6 +1,6 @@
 ---
 name: creating-html-presentation
-description: Generates vibrant Reveal.js HTML presentations from materials and instructions. Handles design, animation, and strict content validation.
+description: Generates vibrant Reveal.js HTML presentations from materials and instructions. Handles design, animation, and strict content validation. Use when the user wants to generate a Reveal.js slideshow from lesson content or educational materials.
 ---
 
 # Skill: Creating HTML Presentations (`creating-html-presentation`)
@@ -16,6 +16,8 @@ This skill generates high-energy Reveal.js presentations. It mandates a **Pedago
 3.  **Local-First Architecture**: **ABSOLUTELY NO CDNs** (except FontAwesome). All code comes from `temp_reveal_repo`.
 4.  **Verbatim Fidelity**: Content in the slide JSON must match the `.typ` source 100%. No summarization.
 5.  **Pedagogical UI**: Use **Dual Coding** (Icons + Text) and **Negative Feedback** animations (Red Strikethrough).
+6.  **Phonemic Casing**: Phonemic script (text within slashes, e.g., /tɒm/) MUST NEVER use upper-case Latin letters (A-Z). Phonemes are always lower-case or specific IPA symbols.
+7.  **Student-Centric Voice**: All visible slide content (titles, instructions, rationales) **MUST** be addressed directly to the student using an engaging, high-energy "Pop & Verve" tone (e.g., "YOUR MISSION", "THE CHALLENGE", "FINAL CHALLENGE"). **NEVER** use teacher-facing procedural language (e.g., "Objective", "Rationale", "Monitor") in student-visible areas. These belong exclusively in `<aside class="notes">`.
 
 ## Workflow
 

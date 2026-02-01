@@ -1,7 +1,32 @@
 
 ---
 
-## 2026-01-14 | Presentation Physics Overhaul & Visual Workflow
+## 2026-01-31 | Pedagogical Scaffolding & Asset Hardening
+
+### Key Achievement: "The Bridge Slide" Paradigm
+- **Pedagogical Shift**: Moved from "Corporate Overview" to "Teaching Aid" by mandating **Bridge Slides** (using the `strategy` layout) before every major task.
+- **Scaffolding**: Integrated explicit Schema Activation (e.g., "BUILDING BLOCKS" for vocab) and Metacognition (e.g., "SPEAKING FORMULA" for O.R.E. structure) to explain the *Why* before the *What*.
+- **Dual Coding**: Standardized the use of illustrative FontAwesome icons next to all vocabulary terms and instructions.
+
+### Technical Achievement: Deterministic Validation & Video Optimization
+- **Verbatim Gatekeeper**: Developed `validate_content_alignment.py`. This script deterministically compares the slide JSON against the `.typ` source file. It successfully identified and blocked 17 instances of "Generative Hallucinations" (summarized/truncated sentences).
+- **Video Sanitization**: Created `process_video.py` to solve the "Monster File" problem. It automatically:
+  - Trims to exactly **7 seconds**.
+  - Scales to **720p** (1280x720).
+  - Mutes audio and compresses to < 2MB.
+  - Deletes the unedited raw file automatically.
+- **LP Validator 2.0**: Upgraded the lesson plan validator to perform **Deterministic Math** on stage timings (parsing function arguments like `stage("X", "Name", "Time")`).
+
+### Design Refinement: "Vertical Space Economy"
+- **Badge Decommissioning**: Removed all top headers ("MISSION", "TASK") to reclaim ~10% of vertical space, eliminating scrolling text boxes on 16:9 screens.
+- **Explicit Table Alignment**: Mandated `text-align: center` for numeric columns in native tables to prevent visual crowding.
+- **Audio Update**: Standardized on `beep.mp3` (digital beep) for all timer and button interactions, while preserving `blip.mp3` in the repository.
+
+### Skill Upgrades
+- **`creating-html-presentation`**: Promoted to **Version 6.0**. Includes Pedagogical Mapping Matrix and Layout Gap Analysis.
+- **`searching-pixabay`**: Updated with strict Resolution Discipline (Banning 4K).
+
+---
 
 ### Key Technical Achievement: "Fixed Canvas Logic"
 - **Problem**: Fluid/Responsive layouts (`height: 100%`) caused content to overflow or disappear on large screens ("Webpage Logic").
@@ -660,3 +685,26 @@ Development of the **"Pro" Worksheet Template** for the Bondi Beach Attack lesso
 - **Template Library**: Created `table.html` and overhauled `checklist.html`, `mission.html`, and `title.html` for reuse across the institution.
 - **Script Improvement**: Updated `generate_presentation.py` to automatically copy the ACT logo from the project root to the published asset folder.
 - **Animation Stability**: Standardized the use of `data-id` on `<span>` elements to ensure jump-free, pixel-perfect morphing between slides.
+
+## 2026-01-31 | Phonetic Hardening & Deterministic Hooks
+
+### Key Achievement: Deterministic Validation Pipeline
+- **Problem**: Relying on LLM "reasoning" to follow design rules led to repetitive errors (looping videos, too many lines, incorrect casing).
+- **Solution**: Implemented .gemini/hooks/present-validator.py as a mandatory pre-build gate.
+- **Enforced Rules**:
+  - **The 7-Second Rule**: Background videos MUST be exactly 7 seconds (verified via ffprobe).
+  - **Rule of 3 Lines**: Slide content (especially answers) is limited to 3-5 items; violators are blocked and forced to split.
+  - **Phonemic Casing**: Automatic regex check ensures no uppercase Latin letters appear within phonemic slashes (/.../).
+  - **Audio-Timer Conflict**: Blocks slides that contain both an audio player and a countdown timer.
+
+### Technical UI: The Tabulated Audio Player
+- **Standard**: Moved the <audio-player> from a floating element to a structural component of the task table.
+- **UI Architecture**: Integrated the player into a full-width header row (colspan) with ox-sizing: border-box to prevent column overlap.
+- **Functionality**: Functional scrubber and time display are now standard for all pronunciation tasks.
+
+### Design: Casing Protection
+- **Issue**: Global CSS 	ext-transform: uppercase on headers was breaking IPA phonetic symbols (e.g., /p/ becoming /P/).
+- **Fix**: Created the .phonetic class with 	ext-transform: none !important and updated all header templates to exclude phonetic spans.
+
+### Asset Portability
+- **Standard**: Transitioned to remote GitHub URLs for shared high-resolution media (e.g., Mission Video) to reduce repo bloat and maintain a single source of truth.

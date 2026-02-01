@@ -73,6 +73,12 @@ const COMPONENT_STYLES = `
         font-weight: 800;
         margin: 0 0 20px 0;
     }
+
+    /* Ensure IPA symbols and slashes never get forced to uppercase */
+    .phonetic, .phonetic *, / {
+        text-transform: none !important;
+        display: inline-block;
+    }
     
     .reveal h2 { 
         color: white !important; /* RULE: Headers must contrast with slide background */
@@ -297,6 +303,67 @@ const COMPONENT_STYLES = `
     .mt-40 { margin-top: 40px; }
     .text-center { text-align: center; }
     .text-left { text-align: left; }
+    /* ============================================
+       AUDIO PLAYER (Gold Standard Scrubber)
+       ============================================ */
+    .audio-player {
+        background: var(--glass);
+        border: 2px solid var(--primary);
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+    .audio-play-btn {
+        background: var(--primary);
+        color: black;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        transition: transform 0.2s;
+    }
+    .audio-play-btn:hover { transform: scale(1.1); }
+    .audio-scrubber-container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .audio-scrubber {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+        outline: none;
+    }
+    .audio-scrubber::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 16px;
+        height: 16px;
+        background: var(--text-accent);
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 10px var(--text-accent);
+    }
+    .audio-time {
+        font-family: 'Courier Prime', monospace;
+        font-size: 14px;
+        color: var(--text-accent);
+        display: flex;
+        justify-content: space-between;
+    }
 `;
 
 // Inject Styles
@@ -306,6 +373,86 @@ document.head.appendChild(styleSheet);
 
 
 // --- COMPONENTS ---
+
+/**
+ * <audio-player src="">
+ * Custom Audio Player with Scrubber
+ */
+class AudioPlayer extends HTMLElement {
+    constructor() {
+        super();
+        this.audio = new Audio();
+        this.isPlaying = false;
+    }
+
+    connectedCallback() {
+        const src = this.getAttribute('src');
+        if (!src) return;
+        this.audio.src = src;
+
+        this.innerHTML = `
+            <div class="audio-player">
+                <button class="audio-play-btn"><i class="fas fa-play"></i></button>
+                <div class="audio-scrubber-container">
+                    <input type="range" class="audio-scrubber" value="0" min="0" max="100">
+                    <div class="audio-time">
+                        <span class="current">00:00</span>
+                        <span class="total">00:00</span>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        this.playBtn = this.querySelector('.audio-play-btn');
+        this.scrubber = this.querySelector('.audio-scrubber');
+        this.currentTimeDisplay = this.querySelector('.current');
+        this.totalTimeDisplay = this.querySelector('.total');
+
+        this.playBtn.onclick = (e) => {
+            e.stopPropagation();
+            this.togglePlay();
+        };
+
+        this.scrubber.oninput = (e) => {
+            const time = (this.scrubber.value / 100) * this.audio.duration;
+            this.audio.currentTime = time;
+        };
+
+        this.audio.ontimeupdate = () => {
+            const progress = (this.audio.currentTime / this.audio.duration) * 100;
+            this.scrubber.value = progress || 0;
+            this.currentTimeDisplay.textContent = this.formatTime(this.audio.currentTime);
+        };
+
+        this.audio.onloadedmetadata = () => {
+            this.totalTimeDisplay.textContent = this.formatTime(this.audio.duration);
+        };
+
+        this.audio.onended = () => {
+            this.isPlaying = false;
+            this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        };
+    }
+
+    togglePlay() {
+        if (this.isPlaying) {
+            this.audio.pause();
+            this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        } else {
+            this.audio.play();
+            this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        }
+        this.isPlaying = !this.isPlaying;
+    }
+
+    formatTime(seconds) {
+        if (isNaN(seconds)) return "00:00";
+        const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+        const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+    }
+}
+customElements.define('audio-player', AudioPlayer);
 
 /**
  * <slide-title title="" badge="" subtitle="">

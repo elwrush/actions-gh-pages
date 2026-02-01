@@ -3,7 +3,9 @@
 
     <div class="r-stack">
         <div style="text-align: left; max-width: 1000px;">
-            <h3 style="color: #FFD700; margin-bottom: 10px;">{{ slide.badge | default('TIPS') }}</h3>
+            {% if slide.badge %}
+            <h3 style="color: #FFD700; margin-bottom: 10px;">{{ slide.badge }}</h3>
+            {% endif %}
             <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">{{ slide.title }}</h2>
 
             <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">

@@ -67,6 +67,20 @@ Themes are located in `css/themes/`.
     -   ❌ **NEVER** summarize or truncate source sentences in grammar/vocab tasks.
     -   ✅ **ALWAYS** verify strict verbatim alignment with the `.typ` source.
 
+4.  **Student-Centric Voice**:
+    -   ❌ **NEVER** use teacher-procedural words in student-visible areas (e.g., "Objective: Students will...", "Rationale: Focus on...").
+    -   ✅ **ALWAYS** address the student directly with high energy (e.g., "YOUR MISSION", "THE CHALLENGE", "PRO TIP").
+
+### 🎭 Tone Comparison Table
+
+| Teacher-Facing (BANNED) | Student-Facing (REQUIRED: "Pop & Verve") |
+| :--- | :--- |
+| Objective: Master IPA Symbols | YOUR MISSION: Decode the Secret Code! |
+| Rationale: Focus on phoneme contrasts | THE CHALLENGE: Spot the Difference! |
+| Instructions: Listen and tick | LISTEN & TICK: Can you catch them all? |
+| Procedural: Monitor student pairs | *[Place in <aside class="notes"> only]* |
+| Note: /ɪ/ is a short vowel | PRO TIP: Keep it short and snappy! |
+
 ---
 
 ## 🧩 Copy-Paste Snippets

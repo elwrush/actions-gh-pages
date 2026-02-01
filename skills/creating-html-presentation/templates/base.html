@@ -80,11 +80,84 @@
         .reveal table td {
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 15px;
+            text-align: center;
         }
 
         .reveal table th {
             background: rgba(255, 215, 0, 0.1);
             color: #FFD700;
+        }
+
+        /* AUDIO PLAYER - Gold Standard Scrubber */
+        .audio-player {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #FFD700;
+            padding: 10px 15px; /* Slightly tighter padding */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 95%; /* Responsive width */
+            max-width: 600px;
+            margin: 10px auto;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box; /* Prevent padding from expanding width */
+            overflow: hidden;
+        }
+
+        .audio-play-btn {
+            background: #FFD700;
+            color: black;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+
+        .audio-play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-scrubber-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .audio-scrubber {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .audio-scrubber::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #FFD700;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px #FFD700;
+        }
+
+        .audio-time {
+            font-family: monospace;
+            font-size: 0.7em;
+            color: #FFD700;
+            display: flex;
+            justify-content: space-between;
         }
     </style>
 </head>
@@ -103,6 +176,87 @@
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
     <script>
+        // AUDIO PLAYER COMPONENT
+        class AudioPlayer extends HTMLElement {
+            constructor() {
+                super();
+                this.audio = new Audio();
+                this.isPlaying = false;
+            }
+
+            connectedCallback() {
+                const src = this.getAttribute('src');
+                if (!src) return;
+                this.audio.src = src;
+
+                this.innerHTML = `
+                    <div class="audio-player">
+                        <button class="audio-play-btn"><i class="fas fa-play"></i></button>
+                        <div class="audio-scrubber-container">
+                            <input type="range" class="audio-scrubber" value="0" min="0" max="100">
+                            <div class="audio-time">
+                                <span class="current">00:00</span>
+                                <span class="total">00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                this.playBtn = this.querySelector('.audio-play-btn');
+                this.scrubber = this.querySelector('.audio-scrubber');
+                this.currentTimeDisplay = this.querySelector('.current');
+                this.totalTimeDisplay = this.querySelector('.total');
+
+                this.playBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    this.togglePlay();
+                };
+
+                this.scrubber.oninput = (e) => {
+                    if (this.audio.duration) {
+                        const time = (this.scrubber.value / 100) * this.audio.duration;
+                        this.audio.currentTime = time;
+                    }
+                };
+
+                this.audio.ontimeupdate = () => {
+                    if (this.audio.duration) {
+                        const progress = (this.audio.currentTime / this.audio.duration) * 100;
+                        this.scrubber.value = progress || 0;
+                        this.currentTimeDisplay.textContent = this.formatTime(this.audio.currentTime);
+                    }
+                };
+
+                this.audio.onloadedmetadata = () => {
+                    this.totalTimeDisplay.textContent = this.formatTime(this.audio.duration);
+                };
+
+                this.audio.onended = () => {
+                    this.isPlaying = false;
+                    this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                };
+            }
+
+            togglePlay() {
+                if (this.isPlaying) {
+                    this.audio.pause();
+                    this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                } else {
+                    this.audio.play();
+                    this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+                this.isPlaying = !this.isPlaying;
+            }
+
+            formatTime(seconds) {
+                if (isNaN(seconds)) return "00:00";
+                const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+                const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+                return `${m}:${s}`;
+            }
+        }
+        customElements.define('audio-player', AudioPlayer);
+
         const AudioFX = {
             beep: new Audio('audio/beep.mp3'),
             bell: new Audio('audio/bell.mp3'),
