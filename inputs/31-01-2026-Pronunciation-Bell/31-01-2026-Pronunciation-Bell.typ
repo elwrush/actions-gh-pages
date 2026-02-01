@@ -37,6 +37,8 @@
   image_align: top
 )
 
+#slideshow_link("https://elwrush.github.io/lesson-plan-agent/31-01-2026-Pronunciation-Bell/")
+
 #v(0.5cm)
 #badge("The Phonemic Chart")
 
