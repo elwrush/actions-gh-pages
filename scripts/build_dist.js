@@ -1,5 +1,5 @@
 /**
- * Build Script for Cloudflare Deployment (Multi-Presentation Support)
+ * Build Script for GitHub Pages Deployment (Multi-Presentation Support)
  * 
  * Builds a clean `dist/` folder containing ALL presentations in `inputs/`
  * and a central dashboard.
@@ -12,13 +12,19 @@ const fs = require('fs');
 const path = require('path');
 
 const PROJECT_ROOT = path.join(__dirname, '..');
-const DIST_DIR = PROJECT_ROOT; // Build directly into root for GitHub Pages
+const DIST_DIR = path.join(PROJECT_ROOT, 'dist');
 const INPUTS_DIR = path.join(PROJECT_ROOT, 'inputs');
 
 // Clean and create dist
 // function to robustly delete folder with retries
 function robustClean(dir) {
     if (!fs.existsSync(dir)) return;
+    
+    // SAFETY: Never clean the project root!
+    if (dir === PROJECT_ROOT) {
+        console.error("❌ SAFETY VIOLATION: Attempted to clean PROJECT_ROOT. Aborting.");
+        process.exit(1);
+    }
 
     let retries = 5;
     while (retries > 0) {
@@ -87,6 +93,11 @@ if (!fs.existsSync(DIST_DIR)) {
     fs.mkdirSync(DIST_DIR);
 }
 
+// Ensure inputs exists
+if (!fs.existsSync(INPUTS_DIR)) {
+    console.error('❌ inputs/ directory not found.');
+    process.exit(1);
+}
 
 // Find presentations
 const folders = fs.readdirSync(INPUTS_DIR).filter(f => {
@@ -100,70 +111,61 @@ const folders = fs.readdirSync(INPUTS_DIR).filter(f => {
     return fs.existsSync(publishedIndex) || fs.existsSync(rootIndex);
 });
 
-if (folders.length === 0) {
-    console.error('❌ No matching presentations found.');
-    process.exit(1);
-}
-
 console.log(`\n📂 Processing ${folders.length} presentation(s):`);
 
-const presentationData = [];
+folders.forEach(folder => {
+    const publishedPath = path.join(INPUTS_DIR, folder, 'published');
+    const rootPath = path.join(INPUTS_DIR, folder);
+    
+    // Source priority: published/ folder, then root
+    const sourceDir = fs.existsSync(path.join(publishedPath, 'index.html')) ? publishedPath : rootPath;
+    const destDir = path.join(DIST_DIR, folder);
 
-folders.forEach(f => {
-    const publishedPath = path.join(INPUTS_DIR, f, 'published');
-    const hasPublished = fs.existsSync(path.join(publishedPath, 'index.html'));
-
-    // If published folder exists, use it as source to keep dist/ clean
-    const srcPath = hasPublished ? publishedPath : path.join(INPUTS_DIR, f);
-    const destPath = path.join(DIST_DIR, f);
-
-    console.log(`  - Copying ${f}${hasPublished ? ' (from published/)' : ''}...`);
-    fs.cpSync(srcPath, destPath, {
-        recursive: true,
-        filter: (src) => {
-            const base = path.basename(src).toLowerCase();
-            if (base.endsWith('.pdf')) return false; // GLOBAL PDF BAN
-
-            const isGit = src.includes('.git');
-            const isHidden = base.startsWith('.');
-            const isLegacy = src.includes('reveal_presentation');
-            const isSystem = base === 'desktop.ini';
-            // Exclude Reveal engine folders if we are in a subfolder to use the global ones
-            const isEngine = ['dist', 'plugin', 'css'].includes(base);
-            // also exclude source artifacts like .typ and .json and .txt
-            const isSource = base.endsWith('.typ') || base.endsWith('.json') || base.endsWith('.txt');
-            return !isGit && !isHidden && !isLegacy && !isSystem && !isEngine && (!hasPublished || !isSource);
-        }
-    });
-
-    // Update index.html to point to global Reveal engine (../dist etc)
-    const indexPath = path.join(destPath, 'index.html');
-    if (fs.existsSync(indexPath)) {
-        let content = fs.readFileSync(indexPath, 'utf8');
-        content = content.replace(/href="dist\//g, 'href="../dist/');
-        content = content.replace(/src="dist\//g, 'src="../dist/');
-        content = content.replace(/href="css\//g, 'href="../css/');
-        content = content.replace(/src="plugin\//g, 'src="../plugin/');
-        fs.writeFileSync(indexPath, content);
+    console.log(`  - Copying ${folder} (from ${path.relative(INPUTS_DIR, sourceDir)}/)...`);
+    
+    if (!fs.existsSync(destDir)) {
+        fs.mkdirSync(destDir, { recursive: true });
     }
 
-    // Extract title from index.html if possible
-    let title = f;
-    try {
-        const indexToRead = path.join(srcPath, 'index.html');
-        const content = fs.readFileSync(indexToRead, 'utf8');
-        const match = content.match(/<title>(.*?)<\/title>/);
-        if (match) title = match[1];
-    } catch (e) { }
-
-    presentationData.push({
-        folder: f,
-        title: title,
-        date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+    // Copy contents
+    fs.cpSync(sourceDir, destDir, {
+        recursive: true,
+        filter: (src) => {
+            const name = path.basename(src);
+            // Skip system files and source materials
+            return !name.startsWith('.') && 
+                   name.toLowerCase() !== 'desktop.ini' &&
+                   !name.endsWith('.typ') &&
+                   !name.endsWith('.pdf') &&
+                   name !== 'presentation.json' &&
+                   name !== 'slide_architecture.md' &&
+                   name !== 'quizzes' &&
+                   name !== 'audio'; // Audio is shared at root for efficiency
+        }
     });
 });
 
-// Generate Dashboard index.html
+// Generate Dashboard (index.html in dist/)
+const dashboardPath = path.join(DIST_DIR, 'index.html');
+const presentationCards = folders.map(f => {
+    // Attempt to extract title and date from folder name or metadata
+    const nameParts = f.split('-');
+    let dateStr = "Unknown Date";
+    let titleStr = f;
+
+    if (nameParts.length >= 3 && /^\d+$/.test(nameParts[0])) {
+        dateStr = `${nameParts[0]} ${getMonthName(nameParts[1])} ${nameParts[2]}`;
+        titleStr = nameParts.slice(3).join(' ').replace(/-/g, ' ');
+    }
+
+    return `
+        <a href="./${f}/" class="card">
+            <span class="date">${dateStr}</span>
+            <span class="title">${titleStr}</span>
+        </a>
+    `;
+}).join('\n');
+
 const dashboardHtml = `
 <!DOCTYPE html>
 <html>
@@ -221,20 +223,21 @@ const dashboardHtml = `
 <body>
     <h1>Bell Presentations Library</h1>
     <div class="grid">
-        ${presentationData.map(p => `
-        <a href="./${p.folder}/" class="card">
-            <span class="date">${p.date}</span>
-            <span class="title">${p.title}</span>
-        </a>
-        `).join('')}
+        ${presentationCards}
     </div>
 </body>
 </html>
 `;
 
-fs.writeFileSync(path.join(DIST_DIR, 'index.html'), dashboardHtml);
+fs.writeFileSync(dashboardPath, dashboardHtml);
 console.log('\n✅ Dashboard generated.');
 
 console.log('\n✅ Build complete!');
-console.log(`   Output: dist/`);
-console.log('\nNext: Push to GitHub to deploy to GitHub Pages.\n');
+console.log(`   Output: ${path.relative(PROJECT_ROOT, DIST_DIR)}/`);
+console.log('\nNext: Push to GitHub to deploy to GitHub Pages.');
+
+function getMonthName(num) {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const i = parseInt(num) - 1;
+    return (i >= 0 && i < 12) ? months[i] : num;
+}
