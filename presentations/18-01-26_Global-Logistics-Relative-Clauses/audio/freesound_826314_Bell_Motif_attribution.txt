@@ -1,5 +1,0 @@
-Sound: Bell Motif
-Author: akelley6
-Source: https://freesound.org/people/akelley6/sounds/826314/
-License: https://creativecommons.org/licenses/by/4.0/
-Duration: 1.43s

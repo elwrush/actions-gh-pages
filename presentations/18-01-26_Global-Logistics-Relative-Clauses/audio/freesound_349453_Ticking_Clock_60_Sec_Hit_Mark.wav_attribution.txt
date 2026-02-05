@@ -1,5 +1,0 @@
-Sound: Ticking Clock 60 Sec Hit Mark.wav
-Author: LilMati
-Source: https://freesound.org/people/LilMati/sounds/349453/
-License: http://creativecommons.org/publicdomain/zero/1.0/
-Duration: 1.01s

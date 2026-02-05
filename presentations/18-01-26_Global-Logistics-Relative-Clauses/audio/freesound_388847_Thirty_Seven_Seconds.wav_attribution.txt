@@ -1,5 +1,0 @@
-Sound: Thirty Seven Seconds.wav
-Author: thatjeffcarter
-Source: https://freesound.org/people/thatjeffcarter/sounds/388847/
-License: https://creativecommons.org/licenses/by/4.0/
-Duration: 3.15s

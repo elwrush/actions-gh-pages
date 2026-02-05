@@ -1,5 +1,0 @@
-Sound: heartbeat sub kick - soft
-Author: music_is_wiggly_air
-Source: https://freesound.org/people/music_is_wiggly_air/sounds/784657/
-License: http://creativecommons.org/publicdomain/zero/1.0/
-Duration: 0.37s

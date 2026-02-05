@@ -1,5 +1,0 @@
-Sound: Heartbeat Fast
-Author: Poyekhali
-Source: https://freesound.org/people/Poyekhali/sounds/254366/
-License: http://creativecommons.org/licenses/by/3.0/
-Duration: 5.59s
