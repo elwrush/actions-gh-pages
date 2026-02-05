@@ -1,4 +1,3 @@
-
 import json
 import os
 import sys
@@ -90,9 +89,14 @@ def generate_presentation(json_path):
             slide['video_autoplay'] = True
             slide['video_loop'] = True
 
+    # Standardize on 2 levels up for the library root (../../dist/ etc)
+    # This is because in 'dist/', presentations live in /dist/LESSON-NAME/index.html
+    root_path = "../../"
+
     output_html = template.render(
         meta=config.get('meta', {}),
-        slides=config.get('slides', [])
+        slides=config.get('slides', []),
+        root_path=root_path
     )
 
     # 6. Save Output

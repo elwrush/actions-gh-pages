@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>{{ meta.title }}</title>
-    <link rel="stylesheet" href="dist/reset.css">
-    <link rel="stylesheet" href="dist/reveal.css">
-    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="{{ root_path }}dist/reset.css">
+    <link rel="stylesheet" href="{{ root_path }}dist/reveal.css">
+    <link rel="stylesheet" href="{{ root_path }}dist/theme/black.css" id="theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -171,10 +171,10 @@
         </div>
     </div>
 
-    <script src="dist/reveal.js"></script>
-    <script src="plugin/notes/notes.js"></script>
-    <script src="plugin/markdown/markdown.js"></script>
-    <script src="plugin/highlight/highlight.js"></script>
+    <script src="{{ root_path }}dist/reveal.js"></script>
+    <script src="{{ root_path }}plugin/notes/notes.js"></script>
+    <script src="{{ root_path }}plugin/markdown/markdown.js"></script>
+    <script src="{{ root_path }}plugin/highlight/highlight.js"></script>
     <script>
         // AUDIO PLAYER COMPONENT
         class AudioPlayer extends HTMLElement {

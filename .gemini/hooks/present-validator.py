@@ -82,6 +82,27 @@ def check_repo_hygiene(json_path):
                 
     return errors
 
+def check_path_hygiene(output_dir):
+    """
+    Verifies that index.html correctly references the shared engine at ../../
+    """
+    index_path = os.path.join(output_dir, 'index.html')
+    if not os.path.exists(index_path):
+        return []
+        
+    errors = []
+    with open(index_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+        
+    # Check for the presence of the global engine path
+    if 'src="../../dist/reveal.js"' not in content and 'src="../../dist/reveal.js"' not in content.replace('"', "'"):
+        errors.append("Path Violation: index.html must reference the root engine via '../../dist/reveal.js'.")
+        
+    if 'href="../../dist/reveal.css"' not in content and 'href="../../dist/reveal.css"' not in content.replace('"', "'"):
+        errors.append("Path Violation: index.html must reference the root CSS via '../../dist/reveal.css'.")
+        
+    return errors
+
 def validate_presentation(json_path):
     if not os.path.exists(json_path):
         print(f"Error: {json_path} not found.")
@@ -90,13 +111,18 @@ def validate_presentation(json_path):
     # 0. Repo Hygiene Check
     repo_errors = check_repo_hygiene(json_path)
     
+    # 0.1 Path Hygiene Check (Targeting the published folder)
+    lesson_dir = os.path.dirname(json_path)
+    output_dir = os.path.join(lesson_dir, 'published')
+    path_errors = check_path_hygiene(output_dir)
+    
     with open(json_path, 'r', encoding='utf-8') as f:
         config = json.load(f)
 
     lesson_dir = os.path.dirname(json_path)
     images_dir = os.path.join(lesson_dir, 'images')
     
-    errors = repo_errors
+    errors = repo_errors + path_errors
     warnings = [] # Initialize warnings list
     
     slides = config.get('slides', [])
