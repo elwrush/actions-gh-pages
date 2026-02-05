@@ -166,7 +166,7 @@
     <div class="reveal">
         <div class="slides">
             
-            <section  
+            <section  data-background-video="../images/gold_bg.mp4" data-background-video-muted   
      >
 
 
@@ -183,21 +183,39 @@
     </aside>
 </section>
             
-            <!-- SLIDE: STRATEGY (BLOCKQUOTE) -->
-<section data-background-color="#8B1538" data-auto-animate>
+            <section  data-background-video="../images/mission_bg_clipped.mp4" data-background-video-muted data-background-video-loop  class="mission-slide">
 
-    <div class="r-stack">
-        <div style="text-align: left; max-width: 1000px;">
+    <!-- Failsafe Gradient Overlay -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: linear-gradient(to right, rgba(0,0,0,0.95), rgba(7, 3, 3, 0.4)); z-index: -1;">
+    </div>
+
+    <div style="position: relative; z-index: 2; padding: 40px; width: 100%; text-align: center;">
+        <h2
+            style="color: var(--accent); margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9); white-space: nowrap; font-size: 2.2em;">
+            YOUR MISSION: RESOURCE MANAGEMENT</h2>
+        <p style="font-size: 1.1em; margin-bottom: 40px; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">Reading infographics is a key 21st-century skill.</p>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
             
-            <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">YOUR MISSION: RESOURCE MANAGEMENT</h2>
-
-            <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
-                <div style='display: flex; justify-content: center; flex-wrap: wrap;'>
-    <div class='mission-badge'><i class='fas fa-search'></i><p>SCAN for information</p></div>
-    <div class='mission-badge'><i class='fas fa-database'></i><p>EXTRACT specific data</p></div>
-    <div class='mission-badge'><i class='fas fa-cog'></i><p>MASTER verb suffixes</p></div>
-</div>
-            </blockquote>
+            <div class="mission-badge">
+                <i class="fas fa-search fa-3x"></i>
+                <div style="font-size: 0.8em; opacity: 0.7; margin-bottom: 5px;">GOAL 1</div>
+                <div style="line-height: 1.2;">SCAN for information</div>
+            </div>
+            
+            <div class="mission-badge">
+                <i class="fas fa-database fa-3x"></i>
+                <div style="font-size: 0.8em; opacity: 0.7; margin-bottom: 5px;">GOAL 2</div>
+                <div style="line-height: 1.2;">EXTRACT specific data</div>
+            </div>
+            
+            <div class="mission-badge">
+                <i class="fas fa-cog fa-3x"></i>
+                <div style="font-size: 0.8em; opacity: 0.7; margin-bottom: 5px;">GOAL 3</div>
+                <div style="line-height: 1.2;">MASTER verb suffixes</div>
+            </div>
+            
         </div>
     </div>
 
