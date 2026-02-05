@@ -5,7 +5,7 @@ description: Automates the process of staging and committing changes to GitHub w
 
 # Skill: Committing Project to GitHub (`committing-project-to-github`)
 
-This skill ensures that all changes follow the project's commit standards, specifically targeting the [lesson-plan-agent](https://github.com/elwrush/lesson-plan-agent.git) repository. It enforces the exclusion of system artifacts like `desktop.ini` and mandates verbose, descriptive commit messages.
+This skill ensures that all changes follow the project's commit standards, specifically targeting the [actions-gh-pages](https://github.com/elwrush/actions-gh-pages.git) repository. It enforces the exclusion of system artifacts like `desktop.ini` and mandates verbose, descriptive commit messages.
 
 ## Architectural Workflow
 
@@ -27,6 +27,9 @@ graph TD
 ```
 
 ## Critical Rules
+
+> [!CRITICAL]
+> **NO BUILD ARTIFACTS**: NEVER commit the `dist/` folder. It is excluded via `.gitignore`. The live site is built automatically by GitHub Actions.
 
 > [!CRITICAL]
 > **NO SYSTEM ARTIFACTS**: You MUST NEVER stage `desktop.ini` files. These are artifacts of Google Drive synchronization and do not belong in the repository.

@@ -699,12 +699,47 @@ Development of the **"Pro" Worksheet Template** for the Bondi Beach Attack lesso
 
 ### Technical UI: The Tabulated Audio Player
 - **Standard**: Moved the <audio-player> from a floating element to a structural component of the task table.
-- **UI Architecture**: Integrated the player into a full-width header row (colspan) with ox-sizing: border-box to prevent column overlap.
+- **UI Architecture**: Integrated the player into a full-width header row (colspan) with box-sizing: border-box to prevent column overlap.
 - **Functionality**: Functional scrubber and time display are now standard for all pronunciation tasks.
 
 ### Design: Casing Protection
-- **Issue**: Global CSS 	ext-transform: uppercase on headers was breaking IPA phonetic symbols (e.g., /p/ becoming /P/).
-- **Fix**: Created the .phonetic class with 	ext-transform: none !important and updated all header templates to exclude phonetic spans.
+- **Issue**: Global CSS text-transform: uppercase on headers was breaking IPA phonetic symbols (e.g., /p/ becoming /P/).
+- **Fix**: Created the .phonetic class with text-transform: none !important and updated all header templates to exclude phonetic spans.
 
 ### Asset Portability
 - **Standard**: Transitioned to remote GitHub URLs for shared high-resolution media (e.g., Mission Video) to reduce repo bloat and maintain a single source of truth.
+
+---
+
+## 2026-02-05 | The "Repo Hygiene" Crisis & AGENTS.md Architecture
+
+### Crisis: The "Broken Deployment" Spiral
+- **Incident**: The deployment of "Gold Infographic (B1)" resulted in broken 404 links and raw HTML rendering for all presentations.
+- **Root Cause Analysis (RCA)**:
+    1.  **Repo Mismatch**: The agent was pushing to `lesson-plan-agent` instead of the actual hosting repo `actions-gh-pages`, causing a "Ghost Push" where code was updated but the site never changed.
+    2.  **Asset Duplication**: Heavy media files (MP4) were duplicated into both `inputs/` and `dist/`, bloating the repo.
+    3.  **Path Confusion**: The local `dist/` structure (nested `dist/dist/`) clashed with GitHub Pages' root-serving configuration, breaking relative paths (`../../` vs `../`).
+    4.  **Engine Loss**: A "Targeted Build" strategy failed to copy the Reveal.js engine assets to the deployment folder, leading to a site with content but no CSS/JS.
+
+### Architectural Pivot: The "AGENTS.md" Standard
+- **Insight**: Skills-based architecture failed because the agent forgot to "load" the hygiene rules.
+- **Solution**: Implemented the **Vercel `AGENTS.md` Pattern**.
+    - Created a root-level `AGENTS.md` containing "Iron Laws" for paths, hygiene, and structure.
+    - Updated global `GEMINI.md` to mandate reading this file at session start.
+    - This acts as a "BIOS" for the agent, ensuring context persistency.
+
+### Fixes & Implementation
+- **Validation**: Created `.gemini/hooks/present-validator.py` with strict checks for:
+    - **Repo Leaks**: Blocks commit if heavy media exists in both source and build folders.
+    - **Path Hygiene**: Verifies `index.html` links use the correct `../dist/` relative path.
+- **Build Script**: Refactored `build_dist.js` to:
+    - Build to a clean `dist/` folder (restored from root deployment attempt).
+    - Perform a **Full Build** to guarantee engine presence.
+- **Deployment**:
+    - Corrected remote to `actions-gh-pages`.
+    - Pushed a fully synced codebase with corrected paths (`../dist/reveal.js`).
+
+### Final Status
+- **Presentation Live**: `https://elwrush.github.io/actions-gh-pages/05-02-2026-Gold-Infographic-B1/`
+- **Dashboard Live**: `https://elwrush.github.io/actions-gh-pages/`
+- **Codebase**: Audited, cleaned of duplicates, and enforcing strict hygiene via pre-commit hooks.

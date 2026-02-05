@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/elwrush/lesson-plan-agent.git"
+    "url": "git+https://github.com/elwrush/actions-gh-pages.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/elwrush/lesson-plan-agent/issues"
+    "url": "https://github.com/elwrush/actions-gh-pages/issues"
   },
-  "homepage": "https://github.com/elwrush/lesson-plan-agent#readme",
+  "homepage": "https://github.com/elwrush/actions-gh-pages#readme",
   "dependencies": {
     "reveal.js": "^5.2.1"
   }

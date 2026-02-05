@@ -5,7 +5,7 @@
  * and a central dashboard.
  * 
  * Usage:
- *   node scripts/build_dist.js
+ *   node scripts/build_dist.js [folder-name]
  */
 
 const fs = require('fs');
@@ -51,25 +51,37 @@ if (targetFolder) {
 } else {
     robustClean(DIST_DIR);
     
-    // Copy shared JS components
+    if (!fs.existsSync(DIST_DIR)) {
+        fs.mkdirSync(DIST_DIR);
+    }
+
+    // Copy shared JS components (ONLY .js files)
     const skillsJs = path.join(PROJECT_ROOT, 'skills/creating-html-presentation/js');
     if (fs.existsSync(skillsJs)) {
         const destJs = path.join(DIST_DIR, 'skills/creating-html-presentation/js');
         fs.mkdirSync(destJs, { recursive: true });
         fs.cpSync(skillsJs, destJs, {
             recursive: true,
-            filter: (src) => !path.basename(src).startsWith('.') && path.basename(src).toLowerCase() !== 'desktop.ini'
+            filter: (src) => {
+                const name = path.basename(src);
+                return fs.statSync(src).isDirectory() || name.endsWith('.js');
+            }
         });
         console.log('📦 Copied shared JS components.');
     }
 
-    // Global images
+    // Global images (WHITELIST extensions)
     const globalImages = path.join(PROJECT_ROOT, 'images');
     if (fs.existsSync(globalImages)) {
         const destImages = path.join(DIST_DIR, 'images');
+        fs.mkdirSync(destImages, { recursive: true });
         fs.cpSync(globalImages, destImages, {
             recursive: true,
-            filter: (src) => !path.basename(src).startsWith('.') && path.basename(src).toLowerCase() !== 'desktop.ini'
+            filter: (src) => {
+                const name = path.basename(src);
+                if (fs.statSync(src).isDirectory()) return true;
+                return /\.(png|jpg|jpeg|svg|webp|mp4)$/i.test(name);
+            }
         });
         console.log('📦 Copied global images.');
     }
@@ -82,15 +94,15 @@ if (targetFolder) {
         if (fs.existsSync(src)) {
             fs.cpSync(src, dest, {
                 recursive: true,
-                filter: (src) => !path.basename(src).startsWith('.') && path.basename(src).toLowerCase() !== 'desktop.ini'
+                filter: (src) => {
+                    const name = path.basename(src);
+                    if (fs.statSync(src).isDirectory()) return true;
+                    return !name.startsWith('.') && name.toLowerCase() !== 'desktop.ini' && !name.endsWith('.md');
+                }
             });
             console.log(`📦 Copied global Reveal engine: ${folder}`);
         }
     });
-}
-
-if (!fs.existsSync(DIST_DIR)) {
-    fs.mkdirSync(DIST_DIR);
 }
 
 // Ensure inputs exists
@@ -127,20 +139,21 @@ folders.forEach(folder => {
         fs.mkdirSync(destDir, { recursive: true });
     }
 
-    // Copy contents
+    // Copy contents (WHITELIST ONLY)
     fs.cpSync(sourceDir, destDir, {
         recursive: true,
         filter: (src) => {
             const name = path.basename(src);
-            // Skip system files and source materials
-            return !name.startsWith('.') && 
-                   name.toLowerCase() !== 'desktop.ini' &&
-                   !name.endsWith('.typ') &&
-                   !name.endsWith('.pdf') &&
-                   name !== 'presentation.json' &&
-                   name !== 'slide_architecture.md' &&
-                   name !== 'quizzes' &&
-                   name !== 'audio'; // Audio is shared at root for efficiency
+            const stats = fs.statSync(src);
+            
+            if (stats.isDirectory()) {
+                // Allow images and audio subdirectories
+                return name === 'images' || name === 'audio' || name === 'published' || src === sourceDir;
+            } else {
+                // Allow only specific web-ready file types
+                return name === 'index.html' || 
+                       /\.(png|jpg|jpeg|svg|webp|mp3|mp4|css|js)$/i.test(name);
+            }
         }
     });
 });

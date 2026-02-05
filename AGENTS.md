@@ -52,7 +52,7 @@
 **Golden Rule**: Targeted, Incremental Builds.
 1.  **Command**: `node scripts/build_dist.js [Folder-Name]` (e.g., `05-02-2026-Gold...`).
 2.  **Check**: Ensure `dist/[Folder]` contains `index.html` but **NO** duplicate global assets.
-3.  **Link**: Update the Typst plan with the live URL: `https://elwrush.github.io/lesson-plan-agent/dist/[Folder]/`.
+3.  **Link**: Update the Typst plan with the live URL: `https://elwrush.github.io/actions-gh-pages/[Folder]/`.
 
 ## 5. VALIDATION HOOKS
 **Run these BEFORE confirming any task:**

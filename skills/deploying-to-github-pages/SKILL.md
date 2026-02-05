@@ -1,91 +1,79 @@
 ---
 name: deploying-to-github-pages
-description: Deploys slideshows to GitHub Pages and synchronizes the live URL back to the lesson plan. Handles building, committing, and post-deployment linking.
+description: Deploys Reveal.js presentations to GitHub Pages while keeping source materials (lesson plans, JSON) off the live site.
 ---
 
 # Skill: Deploying to GitHub Pages (`deploying-to-github-pages`)
 
 ## Description
-This skill automates the deployment of Reveal.js Presentations to GitHub Pages. It relies on the official [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) engine via `.github/workflows/deploy.yml`. It ensures that once a Presentation is pushed, the corresponding Typst lesson plan is updated with the finalized live URL.
+This skill automates the deployment of Reveal.js Presentations to GitHub Pages. It uses a **clean-build strategy**:
+1.  Source materials (`inputs/`) live in the `main` branch.
+2.  The build script (`scripts/build_dist.js`) extracts ONLY web assets into a temporary `dist/` folder.
+3.  GitHub Actions builds and pushes `dist/` to a separate `gh-pages` branch.
+4.  **Only the contents of `dist/` are visible on the live website.**
 
 ## Critical Rules
 
 > [!CRITICAL]
-> **POST-DEPLOYMENT SYNC**: You MUST run the `sync_lesson_plan_url.py` script immediately after push. This ensures the PDF lesson plan correctly links to the interactive content.
-
-> [!IMPORTANT]
-> **REPOSITORY VISIBILITY**: The repository MUST be set to **Public** for free GitHub Pages hosting.
-> **PERMISSIONS**: The `GITHUB_TOKEN` in the workflow MUST have `contents: write` permissions.
+> **HYGIENE MANDATE**: Never commit the `dist/` folder to the `main` branch. It is excluded via `.gitignore`. The live site is built automatically by GitHub Actions upon pushing to `main`.
 
 > [!CRITICAL]
-> **DISTRIBUTION HYGIENE**: You MUST NEVER push non-essential files to the `dist/` folder. This includes:
-> - **PDFs**: These are for offline use and do not belong on the slideshow host.
-> - **Source Files**: `.typ`, `.json`, and `.txt` files should remain in `inputs/`, not `dist/`.
-> - **Large Raw Media**: Ensure all media in `dist/` is optimized (e.g., 720p videos).
+> **ONLY PRESENTATIONS**: The build script is whitelisted. It will NEVER copy `.typ`, `.pdf`, `.json` (config), or `.py` files to the deployment folder.
+
+> [!IMPORTANT]
+> **REPOSITORY**: The target repository is `https://github.com/elwrush/actions-gh-pages`.
+> **LIVE URL**: `https://elwrush.github.io/actions-gh-pages/[FOLDER-NAME]/`
 
 ## Architectural Workflow
 
 ```mermaid
 graph TD
-    Start([🚀 Presentation Deployment Request]) --> Discovery[1. Discovery: Verify Repo Visibility & Permissions]
-    Discovery --> Build[2. Local Build: node scripts/build_dist.js]
-    Build --> Commit[3. Commit & Push via /commit]
+    Start([🚀 Deployment Request]) --> Build[1. Local Build & Validate: npm run build]
+    Build --> Commit[2. Commit Source to main: /commit]
+    Commit --> Push[3. Push to GitHub]
     
-    subgraph CI_CD_Pipeline [GitHub Actions]
-        Commit --> Trigger[Trigger: deploy.yml]
-        Trigger --> Logic[peaceiris/actions-gh-pages@v4]
-        Logic --> Publish[Publish to gh-pages branch]
+    subgraph GitHub_Actions [CI/CD Pipeline]
+        Push --> Action[Trigger: deploy.yml]
+        Action --> RemoteBuild[npm run build]
+        RemoteBuild --> Deploy[peaceiris/actions-gh-pages]
+        Deploy --> Publish[Update gh-pages branch]
     end
     
-    Publish --> CalcURL[4. Calculate Live URL]
-    CalcURL --> Sync[5. Sync Live URL to .typ Plan]
+    Publish --> Sync[4. Sync Live URL to .typ Plan]
     Sync --> Finish([🏁 Live Slideshow & Updated Plan])
-    
-    %% Semantic Requirements
-    SyncNode[sync_lesson_plan_url.py] -.->|Regex Replace| Sync
 ```
 
 ## Workflow Steps
 
-### 1. Build the Distribution
-Run the build script to prepare the `dist/` directory.
+### 1. Build & Validate (Local)
+Prepare the `dist/` directory and ensure no source materials leaked in.
 // turbo
 ```powershell
-node scripts/build_dist.js
+npm run build; python scripts/validate_dist_hygiene.py
 ```
 
-### 1.5 Validate Hygiene (MANDATORY)
-Verify that no PDFs or duplicate engines are in the distribution.
-// turbo
-```powershell
-python scripts/validate_dist_hygiene.py
-```
-
-### 2. Commit and Push
-Use the `/commit` workflow to push the changes.
+### 2. Commit & Push Source
+Commit your changes (JSON, Typst, etc.) to the `main` branch.
 ```bash
-/commit "feat: deploy [Presentation Name] presentation"
+/commit "feat: update [Lesson Name] and prepare for deployment"
 ```
+*Note: This triggers the GitHub Action.*
 
 ### 3. Synchronize Lesson Plan URL (CRITICAL)
-Update the Typst source file with the calculated live URL.
+Once the action completes (usually 1-2 minutes), update your Typst file with the finalized live URL.
 // turbo
 ```powershell
-python skills/deploying-to-github-pages/scripts/sync_lesson_plan_url.py "inputs/[FOLDER]/[FILENAME].typ" "https://elwrush.github.io/lesson-plan-agent/[FOLDER]/"
+python skills/deploying-to-github-pages/scripts/sync_lesson_plan_url.py "inputs/[FOLDER]/[FILENAME].typ" "https://elwrush.github.io/actions-gh-pages/[FOLDER]/"
 ```
 
-## Global Assets (Optimization)
-To avoid duplicating large files (like 5MB background videos) in every presentation:
-1.  **Place the file** in the root `images/` folder of the project.
-2.  **Reference it** in your `presentation.json` using the absolute GitHub Pages URL:
-    - `https://elwrush.github.io/lesson-plan-agent/images/[FILENAME]`
-3.  This ensures the file is uploaded only once and works in both local and live environments.
+## Troubleshooting
 
-## Technical Pitfalls & Learnings
-- **Gitignore Conflicts**: Ensure `.gitignore` uses root-specific paths (e.g., `/dist/`) to avoid blocking presentation-specific assets in `inputs/`.
-- **Theme Sync**: The `generate_presentation.py` script must use `dirs_exist_ok=True` to ensure themes (like `noir.css`) are updated in the presentation folders.
-- **Workflow Branching**: Always use the semantic version `@v4` for official actions to avoid the "missing lib/index.js" errors found in unbuilt forks.
+### "Materials appearing on site"
+1. Run `python scripts/validate_dist_hygiene.py` locally.
+2. Check `scripts/build_dist.js` whitelists.
+3. Ensure `dist/` is NOT tracked in git: `git rm -r --cached dist`.
 
-## Reference
-- [rendering-prompts-into-mermaid](../rendering-prompts-into-mermaid/SKILL.md) - Standards for this skill's architecture maps.
-- [sync_lesson_plan_url.py](scripts/sync_lesson_plan_url.py) - Script for regex-based URL replacement.
+### "404 Not Found"
+1. Verify the folder name in `inputs/` matches the URL.
+2. Check GitHub Actions tab for build failures.
+3. Ensure `index.html` exists in `inputs/[FOLDER]/published/`.
