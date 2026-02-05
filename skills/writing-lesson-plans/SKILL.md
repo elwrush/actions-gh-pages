@@ -207,7 +207,7 @@ Store ALL files in this folder using strict sub-directories:
 
 // MANDATORY: Slideshow link MUST be placed here, after the differentiation box and before the stages
 #v(0.5cm)
-#slideshow_link("https://elwrush.github.io/lesson-plan-agent/[FOLDER-NAME]/")
+#slideshow_link("https://elwrush.github.io/actions-gh-pages/[FOLDER-NAME]/")
 
 #v(0.5cm)
 
@@ -263,7 +263,7 @@ After the lesson plan is validated and approved, perform the following automatio
 
 3.  **URL Reporting**:
     Provide the user with the direct link to the slideshow:
-    `https://elwrush.github.io/lesson-plan-agent/[FOLDER-NAME]/`
+    `https://elwrush.github.io/actions-gh-pages/[FOLDER-NAME]/`
 
 #### Pre-teach Vocabulary Format (Shape E)
 

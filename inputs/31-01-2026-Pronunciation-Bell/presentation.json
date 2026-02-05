@@ -14,7 +14,7 @@
       "layout": "mission",
       "title": "THE MISSION",
       "intro": "In your PET exam, clarity is key. Today we decode symbols to help you pronounce any word perfectly.",
-      "video": "https://elwrush.github.io/lesson-plan-agent/images/mission_bg_clipped.mp4",
+      "video": "https://elwrush.github.io/actions-gh-pages/images/mission_bg_clipped.mp4",
       "video_loop": false,
       "objectives": [
         { "icon": "fa-book-open", "text": "Decode IPA Symbols" },

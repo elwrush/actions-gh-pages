@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>What's So Special About Gold?</title>
+    <link rel="stylesheet" href="../dist/reset.css">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* TIMER UI - Native Styling */
+        .timer-display {
+            font-family: monospace;
+            font-size: 2.5em;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .timer-btn {
+            background: #FFD700;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 5px;
+            font-size: 0.8em;
+        }
+
+        .timer-btn.reset {
+            background: #444;
+            color: white;
+        }
+
+        /* Mission Badge Styling - Square, 10% smaller */
+        .mission-badge {
+            background-color: rgba(255, 215, 0, 0.15);
+            border: 2px solid #FFD700;
+            padding: 15px;
+            border-radius: 4px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.0em;
+            margin: 10px;
+            width: 220px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .mission-badge i {
+            font-size: 2em;
+            color: #FFD700;
+        }
+
+        /* Contrast Shadow for maximum pop on dimmed backgrounds */
+        .reveal section {
+            /* Text shadows removed to prevent blurring */
+        }
+
+        /* Native Table Styling - Constrained */
+        .reveal table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.75em;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .reveal table th,
+        .reveal table td {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .reveal table th {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+        }
+
+        /* AUDIO PLAYER - Gold Standard Scrubber */
+        .audio-player {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #FFD700;
+            padding: 10px 15px; /* Slightly tighter padding */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 95%; /* Responsive width */
+            max-width: 600px;
+            margin: 10px auto;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box; /* Prevent padding from expanding width */
+            overflow: hidden;
+        }
+
+        .audio-play-btn {
+            background: #FFD700;
+            color: black;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+
+        .audio-play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-scrubber-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .audio-scrubber {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .audio-scrubber::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #FFD700;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px #FFD700;
+        }
+
+        .audio-time {
+            font-family: monospace;
+            font-size: 0.7em;
+            color: #FFD700;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <section  
+     >
+
+
+    <div style="padding: 30px; width: 100%; text-align: center;">
+        <img src="images/ACT.png" style="height: 120px; margin-bottom: 20px;">
+        <h4 style="color: var(--accent); letter-spacing: 2px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">ASSUMPTION
+            COLLEGE MATHAYOM</h4>
+        <h1 style="font-size: 3.5em; margin: 10px 0; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">WHAT'S SO SPECIAL ABOUT GOLD?</h1>
+        <h3 style="opacity: 0.8; font-weight: normal; color: #FFD700; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">OXFORD DISCOVER FUTURES: UNIT 10</h3>
+    </div>
+
+    <aside class="notes">
+        Welcome the students. Introduce the topic of gold and its value.
+    </aside>
+</section>
+            
+            <!-- SLIDE: STRATEGY (BLOCKQUOTE) -->
+<section data-background-color="#8B1538" data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: left; max-width: 1000px;">
+            
+            <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">YOUR MISSION: RESOURCE MANAGEMENT</h2>
+
+            <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
+                <div style='display: flex; justify-content: center; flex-wrap: wrap;'>
+    <div class='mission-badge'><i class='fas fa-search'></i><p>SCAN for information</p></div>
+    <div class='mission-badge'><i class='fas fa-database'></i><p>EXTRACT specific data</p></div>
+    <div class='mission-badge'><i class='fas fa-cog'></i><p>MASTER verb suffixes</p></div>
+</div>
+            </blockquote>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Explain the objectives. Why do we need to read infographics? They are key for the PET exam and real-life data comprehension.
+    </aside>
+</section>
+            
+            <section data-background="images/gold_bar.jpg" data-background-opacity="0.5" >
+
+    <div
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+
+            <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">GOLD: FACT OR FICTION?</h1>
+
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <h3>THE CHALLENGE:</h3>
+<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px;'>
+    <tbody>
+        <tr class='fragment'>
+            <td style='width: 40px; color: #FFD700;'>1</td>
+            <td>Gold is edible.</td>
+            <td class='fragment' style='color: #4CAF50; font-weight: bold;'>FACT</td>
+        </tr>
+        <tr class='fragment'>
+            <td style='width: 40px; color: #FFD700;'>2</td>
+            <td>All gold ever mined fits in 2 Olympic pools.</td>
+            <td class='fragment' style='color: #F44336; font-weight: bold;'>FICTION (It's 3-4)</td>
+        </tr>
+        <tr class='fragment'>
+            <td style='width: 40px; color: #FFD700;'>3</td>
+            <td>There is gold in your body.</td>
+            <td class='fragment' style='color: #4CAF50; font-weight: bold;'>FACT (0.2mg)</td>
+        </tr>
+    </tbody>
+</table>
+<div class='timer-display' id='timer-lead-in'>02:00</div>
+<button class='timer-btn' onclick='toggleTimer(120, "timer-lead-in", this)'>START</button>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Quick warmer. Students guess. Reveal the answers to spark interest.
+    </aside>
+</section>
+            
+            <!-- SLIDE: STRATEGY (BLOCKQUOTE) -->
+<section data-background-color="#1E3A8A" data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: left; max-width: 1000px;">
+            
+            <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">DECODING THE METAL</h2>
+
+            <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
+                <p style='font-size: 1.2em;'>Before we excavate the facts, let's unlock the language.</p>
+            </blockquote>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Bridge slide to vocabulary.
+    </aside>
+</section>
+            
+            <section data-background="" data-background-opacity="0.5"  data-auto-animate>
+
+    <div
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: start; height: 100%; max-width: 1200px; margin: auto; text-align: left; padding-top: 20px;">
+
+        <!-- Container -->
+        <div
+            style="padding: 10px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+
+            <h1 data-id="task-title"
+                style="font-size: 1.8em; margin-bottom: 10px; line-height: 1.1; text-shadow: 2px 2px 4px black;">
+                UNLOCK THE LANGUAGE
+            </h1>
+
+            
+
+            <!-- Columns -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; font-size: 0.9em;">
+
+                <!-- Left Column (Fixed) -->
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-origin"
+                        style="padding: 10px; background: rgba(50,50,50,0.8); border: 1px solid var(--accent); border-radius: 6px; text-align: center;">
+                        origin
+                    </div>
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-excavate"
+                        style="padding: 10px; background: rgba(50,50,50,0.8); border: 1px solid var(--accent); border-radius: 6px; text-align: center;">
+                        excavate
+                    </div>
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-manipulate"
+                        style="padding: 10px; background: rgba(50,50,50,0.8); border: 1px solid var(--accent); border-radius: 6px; text-align: center;">
+                        manipulate
+                    </div>
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-radiation"
+                        style="padding: 10px; background: rgba(50,50,50,0.8); border: 1px solid var(--accent); border-radius: 6px; text-align: center;">
+                        radiation
+                    </div>
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-precious"
+                        style="padding: 10px; background: rgba(50,50,50,0.8); border: 1px solid var(--accent); border-radius: 6px; text-align: center;">
+                        precious
+                    </div>
+                    
+                </div>
+
+                <!-- Right Column (Reordering) -->
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-energy sent out as waves" style="padding: 10px; 
+                               background: rgba(50,50,50,0.8); 
+                               border: none; 
+                               color: white;
+                               border-radius: 6px; text-align: center;">
+                        energy sent out as waves
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-where something comes from" style="padding: 10px; 
+                               background: rgba(50,50,50,0.8); 
+                               border: none; 
+                               color: white;
+                               border-radius: 6px; text-align: center;">
+                        where something comes from
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-very valuable" style="padding: 10px; 
+                               background: rgba(50,50,50,0.8); 
+                               border: none; 
+                               color: white;
+                               border-radius: 6px; text-align: center;">
+                        very valuable
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-to dig something up" style="padding: 10px; 
+                               background: rgba(50,50,50,0.8); 
+                               border: none; 
+                               color: white;
+                               border-radius: 6px; text-align: center;">
+                        to dig something up
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-to handle or control" style="padding: 10px; 
+                               background: rgba(50,50,50,0.8); 
+                               border: none; 
+                               color: white;
+                               border-radius: 6px; text-align: center;">
+                        to handle or control
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Pre-teach vocabulary. Model and drill the word stress in ex-ca-vate and ma-nip-u-late.
+    </aside>
+</section>
+            
+            <!-- SLIDE: STRATEGY (BLOCKQUOTE) -->
+<section data-background-color="#1E3A8A" data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: left; max-width: 1000px;">
+            
+            <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">THE SPEED SCAN</h2>
+
+            <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
+                <p style='font-size: 1.2em;'>Don't read every word! Look for headings and numbers.</p>
+            </blockquote>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Bridge to scanning strategy.
+    </aside>
+</section>
+            
+            <section data-background="images/infographic_preview.jpg" data-background-opacity="0.5" >
+
+    <div
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+
+            <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">SCANNING FOR ANSWERS</h1>
+
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <h3>TASK: EXERCISE 1</h3>
+<ul style='font-size: 0.8em;'>
+    <li>Where did the gold on the surface of Earth come from?</li>
+    <li>How was gold formed in the universe?</li>
+    <li>Where is most of the gold on the Earth?</li>
+    <li>How are gold deposits formed underground?</li>
+    <li>What are the five main uses of gold?</li>
+</ul>
+<div class='timer-display' id='timer-scan'>02:00</div>
+<button class='timer-btn' onclick='toggleTimer(120, "timer-scan", this)'>START</button>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Scanning task. Students have 2 minutes to find the answers using headings and images.
+    </aside>
+</section>
+            
+            <!-- SLIDE: STRATEGY (BLOCKQUOTE) -->
+<section data-background-color="#8B1538" data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: left; max-width: 1000px;">
+            
+            <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">DATA DETECTIVES</h2>
+
+            <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
+                <p style='font-size: 1.2em;'>Now look deeper. What do these specific numbers tell us?</p>
+            </blockquote>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Bridge to detail reading.
+    </aside>
+</section>
+            
+            <section data-background="" data-background-opacity="0.5" >
+
+    <div
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+
+            <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">THE NUMBERS GAME</h1>
+
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <h3>WHAT DO THESE FIGURES REFER TO?</h3>
+<table style='width: 100%; font-size: 0.7em;'>
+    <tbody>
+        <tr class='fragment'>
+            <td style='color: #FFD700;'>130 million years</td>
+            <td>Age of the explosion that created gold.</td>
+        </tr>
+        <tr class='fragment'>
+            <td style='color: #FFD700;'>99%</td>
+            <td>Gold in liquid form at Earth's center.</td>
+        </tr>
+        <tr class='fragment'>
+            <td style='color: #FFD700;'>45 cm</td>
+            <td>Depth of gold if it covered the Earth.</td>
+        </tr>
+        <tr class='fragment'>
+            <td style='color: #FFD700;'>1,000,000,000</td>
+            <td>Cell phones produced each year.</td>
+        </tr>
+    </tbody>
+</table>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Exercise 3. Students match the figures to their meanings.
+    </aside>
+</section>
+            
+            <section data-background="images/cleopatra.jpg" data-background-opacity="0.5" >
+
+    <div
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+
+            <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">THE HISTORICAL RECORD</h1>
+
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <h3>THE CHALLENGE: EXERCISE 4</h3>
+<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'>
+    <tbody>
+        <tr class='fragment'>
+            <td>What were the historical uses?</td>
+            <td class='fragment' style='color: #FFD700;'>Jewelry, currency, dentistry.</td>
+        </tr>
+        <tr class='fragment'>
+            <td>What are the benefits?</td>
+            <td class='fragment' style='color: #FFD700;'>Doesn't darken, easy to manipulate.</td>
+        </tr>
+    </tbody>
+</table>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Exercise 4. Deep detail reading.
+    </aside>
+</section>
+            
+            <!-- SLIDE: STRATEGY (BLOCKQUOTE) -->
+<section data-background-color="#1E3A8A" data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: left; max-width: 1000px;">
+            
+            <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">WORD TRANSFORMATIONS</h2>
+
+            <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
+                <p style='font-size: 1.2em;'>How do we turn 'Beauty' into 'Beautify'? Suffix power!</p>
+            </blockquote>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Bridge to grammar focus.
+    </aside>
+</section>
+            
+            <section data-background="" data-background-opacity="0.5" >
+
+    <div
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+
+            <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">THE VERB FACTORY</h1>
+
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <h3>VERB SUFFIXES (-ify, -ize, -en, -ate)</h3>
+<table style='width: 100%; font-size: 0.8em;'>
+    <thead><tr><th>Suffix</th><th>Example from Text</th></tr></thead>
+    <tbody>
+        <tr class='fragment'>
+            <td style='color: #FFD700;'>-ify</td>
+            <td>beautify, solidify</td>
+        </tr>
+        <tr class='fragment'>
+            <td style='color: #FFD700;'>-ize</td>
+            <td>moisturize, specialize</td>
+        </tr>
+        <tr class='fragment'>
+            <td style='color: #FFD700;'>-en</td>
+            <td>brighten, harden</td>
+        </tr>
+        <tr class='fragment'>
+            <td style='color: #FFD700;'>-ate</td>
+            <td>excavate, manipulate</td>
+        </tr>
+    </tbody>
+</table>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Vocabulary focus on verb suffixes. Students categorize words from the text.
+    </aside>
+</section>
+            
+            <section data-background="images/resources.jpg" data-background-opacity="0.5" >
+
+    <div
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+
+            <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">VALUE & VIRTUE</h1>
+
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <h3>TALKING POINTS:</h3>
+<ul style='font-size: 0.9em;'>
+    <li class='fragment'>Is gold necessary for our lives? Why?</li>
+    <li class='fragment'>What factors make resources valuable?</li>
+    <li class='fragment'>Do we value any resources too much or too little?</li>
+</ul>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Personalization. Final discussion.
+    </aside>
+</section>
+            
+        </div>
+    </div>
+
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+    <script>
+        // AUDIO PLAYER COMPONENT
+        class AudioPlayer extends HTMLElement {
+            constructor() {
+                super();
+                this.audio = new Audio();
+                this.isPlaying = false;
+            }
+
+            connectedCallback() {
+                const src = this.getAttribute('src');
+                if (!src) return;
+                this.audio.src = src;
+
+                this.innerHTML = `
+                    <div class="audio-player">
+                        <button class="audio-play-btn"><i class="fas fa-play"></i></button>
+                        <div class="audio-scrubber-container">
+                            <input type="range" class="audio-scrubber" value="0" min="0" max="100">
+                            <div class="audio-time">
+                                <span class="current">00:00</span>
+                                <span class="total">00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                this.playBtn = this.querySelector('.audio-play-btn');
+                this.scrubber = this.querySelector('.audio-scrubber');
+                this.currentTimeDisplay = this.querySelector('.current');
+                this.totalTimeDisplay = this.querySelector('.total');
+
+                this.playBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    this.togglePlay();
+                };
+
+                this.scrubber.oninput = (e) => {
+                    if (this.audio.duration) {
+                        const time = (this.scrubber.value / 100) * this.audio.duration;
+                        this.audio.currentTime = time;
+                    }
+                };
+
+                this.audio.ontimeupdate = () => {
+                    if (this.audio.duration) {
+                        const progress = (this.audio.currentTime / this.audio.duration) * 100;
+                        this.scrubber.value = progress || 0;
+                        this.currentTimeDisplay.textContent = this.formatTime(this.audio.currentTime);
+                    }
+                };
+
+                this.audio.onloadedmetadata = () => {
+                    this.totalTimeDisplay.textContent = this.formatTime(this.audio.duration);
+                };
+
+                this.audio.onended = () => {
+                    this.isPlaying = false;
+                    this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                };
+            }
+
+            togglePlay() {
+                if (this.isPlaying) {
+                    this.audio.pause();
+                    this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                } else {
+                    this.audio.play();
+                    this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+                this.isPlaying = !this.isPlaying;
+            }
+
+            formatTime(seconds) {
+                if (isNaN(seconds)) return "00:00";
+                const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+                const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+                return `${m}:${s}`;
+            }
+        }
+        customElements.define('audio-player', AudioPlayer);
+
+        const AudioFX = {
+            beep: new Audio('audio/beep.mp3'),
+            bell: new Audio('audio/bell.mp3'),
+            warning: new Audio('audio/warning.mp3'),
+            init() {
+                this.beep.load(); this.bell.load(); this.warning.load();
+            }
+        };
+
+        const TimerRegistry = {};
+
+        function toggleTimer(durationSeconds, displayId, btn) {
+            if (TimerRegistry[displayId] && TimerRegistry[displayId].interval) {
+                clearInterval(TimerRegistry[displayId].interval);
+                TimerRegistry[displayId].interval = null;
+                btn.textContent = 'START';
+            } else {
+                btn.textContent = 'PAUSE';
+                const display = document.getElementById(displayId);
+                AudioFX.init();
+                AudioFX.beep.play().catch(e => console.warn(e));
+
+                if (!TimerRegistry[displayId]) {
+                    TimerRegistry[displayId] = { original: durationSeconds, current: durationSeconds };
+                }
+
+                const tick = () => {
+                    let timer = --TimerRegistry[displayId].current;
+                    let minutes = parseInt(timer / 60, 10);
+                    let seconds = parseInt(timer % 60, 10);
+                    display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+
+                    if (timer <= 0) {
+                        clearInterval(TimerRegistry[displayId].interval);
+                        TimerRegistry[displayId].interval = null;
+                        btn.textContent = 'START';
+                        AudioFX.bell.play().catch(e => console.warn(e));
+                        display.textContent = "DONE!";
+                    } else if (timer === 30) {
+                        AudioFX.warning.play().catch(e => console.warn(e));
+                    } else if (timer < 10 && timer >= 0) {
+                        AudioFX.beep.play().catch(e => console.warn(e));
+                    }
+                };
+
+                // Run once immediately, then start interval
+                tick();
+                TimerRegistry[displayId].interval = setInterval(tick, 1000);
+            }
+        }
+
+        function resetTimer(durationSeconds, displayId) {
+            if (TimerRegistry[displayId]) {
+                clearInterval(TimerRegistry[displayId].interval);
+            }
+            const display = document.getElementById(displayId);
+            // Reset button text in the same slide
+            const section = display.closest('section');
+            const startBtn = section.querySelector('.timer-btn:not(.reset)');
+            if (startBtn) startBtn.textContent = 'START';
+
+            let minutes = parseInt(durationSeconds / 60, 10);
+            let seconds = parseInt(durationSeconds % 60, 10);
+            display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+            TimerRegistry[displayId] = { original: durationSeconds, current: durationSeconds, interval: null };
+        }
+
+        Reveal.initialize({
+            hash: true,
+            width: 1280,
+            height: 720,
+            margin: 0.1,
+            center: true,
+            autoAnimateDuration: 1.2,
+            autoAnimateEasing: 'ease-in-out',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>

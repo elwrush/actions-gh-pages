@@ -1,0 +1,1206 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Business Vocabulary - From Local to Global</title>
+
+    <!-- REVEAL.JS CORE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #5C6BC0;
+            --secondary: #7986CB;
+            --bg-dark: #1A237E;
+            --text-accent: #FFEB3B;
+            --glass: rgba(26, 35, 126, 0.95);
+            --grad-main: radial-gradient(circle, #1A237E 0%, #0d1142 100%);
+            --grad-segue: radial-gradient(circle, #1a1a2e 0%, #0f0f1a 100%);
+            --answer-bg: #052a10;
+            --boss-bg: #2a0a0a;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+        }
+
+        .reveal h1 {
+            font-size: 80pt;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: white;
+            text-shadow: 4px 4px 0px var(--primary);
+        }
+
+        .reveal h2 {
+            font-size: 45pt;
+            color: var(--text-accent);
+            text-transform: uppercase;
+            font-weight: 800;
+            border-bottom: 4px solid var(--text-accent);
+            display: inline-block;
+        }
+
+        .reveal h3 {
+            font-size: 35pt;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .reveal p,
+        .reveal li {
+            font-size: 30pt;
+            line-height: 1.3;
+        }
+
+        .row-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            width: 900px;
+            margin: 0 auto;
+        }
+
+        .col-40 {
+            flex: 0 0 40%;
+            max-width: 40%;
+        }
+
+        .col-50 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .col-60 {
+            flex: 0 0 60%;
+            max-width: 60%;
+        }
+
+        .glass-box {
+            background: var(--glass);
+            border: 2px solid var(--primary);
+            padding: 25px;
+            box-shadow: 6px 6px 0px rgba(92, 107, 192, 0.3);
+            text-align: left;
+        }
+
+        .inset-media {
+            border: 4px solid white;
+            box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.5);
+            max-height: 400px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .segue-title {
+            font-size: 70pt;
+            line-height: 1.1;
+            color: var(--text-accent);
+            text-transform: uppercase;
+            transform: rotate(-2deg);
+            text-shadow: 0 0 20px var(--text-accent), 0 0 40px var(--primary), 6px 6px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        .timer-pill {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--text-accent);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .timer-display {
+            font-family: 'Courier Prime', monospace;
+            font-size: 2em;
+            color: white;
+        }
+
+        .start-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: 800;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .teacher-tip {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px dashed var(--text-accent);
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 0.8em;
+        }
+
+        .attribution {
+            font-size: 10px;
+            text-align: center;
+            margin-top: 8px;
+            opacity: 0.4;
+        }
+
+        /* UTILITY CLASSES */
+        .text-xl {
+            font-size: 1.5em;
+        }
+
+        .text-2xl {
+            font-size: 2em;
+        }
+
+        .text-3xl {
+            font-size: 3em;
+        }
+
+        .text-lg {
+            font-size: 1.2em;
+        }
+
+        .text-md {
+            font-size: 1em;
+        }
+
+        .text-sm {
+            font-size: 0.8em;
+        }
+
+        .text-strike {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- SLIDE 1: TITLE -->
+            <section data-background="var(--grad-main)">
+                <div class="row-container" style="height: 500px;">
+                    <div class="col-40">
+                        <img src="images/global_empire.png" class="inset-media"
+                            style="transform: rotate(-2deg); border-color: var(--cyan);">
+                    </div>
+                    <div class="col-60" style="text-align: left; padding-left: 20px;">
+                        <div class="stage-badge">B1: VOCABULARY</div>
+                        <h1 style="font-size: 60pt; line-height: 0.9;">BUSINESS<br>EMPIRES</h1>
+                        <p><span
+                                style="background: var(--maroon); padding: 5px 15px; font-weight: 800; transform: skew(-10deg); display: inline-block; font-size: 30px;">FROM
+                                LOCAL TO GLOBAL</span></p>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Welcome class. Press 's' to see these trainer notes. Elicit the topic: What makes a business
+                    successful?
+                    Next: Mission 1 segue.
+                </aside>
+            </section>
+
+            <!-- SLIDE 2: SEGUE (STAGE 1) -->
+            <section data-background-gradient="var(--grad-segue)">
+                <h1 class="segue-title r-fit-text">MISSION 1: THE JOURNEY</h1>
+                <h3 style="color: var(--secondary);">How big can an idea grow?</h3>
+                <aside class="notes">
+                    Introduce the topic with energy. Elicit what students know about companies.
+                    Next: Lead-in Local slide.
+                </aside>
+            </section>
+
+            <!-- SLIDE 3: LEAD-IN (LOCAL) -->
+            <section data-background="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/bakery_storefront.png" class="inset-media">
+                    </div>
+                    <div class="col-60">
+                        <div class="glass-box">
+                            <h2>Denham Farm Bakery</h2>
+                            <p><strong>Question:</strong> Is this a GLOBAL company?</p>
+                            <p style="color: var(--text-accent);">Why / Why not?</p>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Elicit: No, it's local/family business. Check understanding of "global".
+                    Next: Lead-in Global slide.
+                </aside>
+            </section>
+
+            <!-- SLIDE 4: LEAD-IN (GLOBAL) -->
+            <section data-background="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/global_office.jpg" class="inset-media">
+                        <p class="attribution">Image by 652234 from Pixabay</p>
+                    </div>
+                    <div class="col-60">
+                        <div class="glass-box">
+                            <h2>Morgan & Stenson</h2>
+                            <p><strong>Question:</strong> What makes a company 'Global'?</p>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Elicit: Branches, Headquarters, Exports.
+                    Write keywords on board: branches, HQ, international clients.
+                    Next: Mission 2 segue.
+                </aside>
+            </section>
+
+            <!-- SLIDE 5: SEGUE (STAGE 2) -->
+            <section data-background-gradient="var(--grad-segue)">
+                <h1 class="segue-title r-fit-text">MISSION 2: INTEL GATHERING</h1>
+                <h3 style="color: var(--secondary);">Scan the files. Find the facts.</h3>
+                <aside class="notes">
+                    Build suspense. Students will now read about two companies.
+                    Next: Reading Text 1.
+                </aside>
+            </section>
+
+            <!-- SLIDE 6: READING TEXT 1 (BAKERY) -->
+            <section data-background="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-50">
+                        <img src="source_page_1.png" class="inset-media"
+                            style="max-height: 600px; border: 3px solid var(--primary); width: auto;">
+                    </div>
+                    <div class="col-50">
+                        <div class="glass-box" style="text-align: left;">
+                            <h2 style="font-size: 40px;">Read: Denham Farm Bakery</h2>
+                            <p class="text-md" style="margin-bottom: 30px;">Read the text.<br>Is this business growing?
+                            </p>
+                            <timer-pill duration="2"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Monitor reading. Check comprehension after timer.
+                    Next: Reading Text 2.
+                </aside>
+            </section>
+
+            <!-- SLIDE 7: READING TEXT 2 (ACCOUNTANTS) -->
+            <section data-background="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-50">
+                        <img src="source_page_2.png" class="inset-media"
+                            style="max-height: 600px; border: 3px solid var(--primary); width: auto;">
+                    </div>
+                    <div class="col-50">
+                        <div class="glass-box" style="text-align: left;">
+                            <h2 style="font-size: 40px; line-height: 1.1;">Read: Morgan & Stenson</h2>
+                            <p class="text-md" style="margin-bottom: 30px;">Read the text.<br>Where are their offices?
+                            </p>
+                            <timer-pill duration="2"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Compare and contrast with Bakery text.
+                    Next: Gist Check questions.
+                </aside>
+            </section>
+
+            <!-- SLIDE 8: GIST CHECK -->
+            <section data-background="var(--grad-main)">
+                <h2>Quick Check!</h2>
+                <div class="glass-box" style="width: 800px; margin: 0 auto;">
+                    <p><strong>Question 1:</strong> Which business is a family firm?</p>
+                    <p style="margin-top: 30px;"><strong>Question 2:</strong> Which one has many branches?</p>
+                </div>
+                <aside class="notes">
+                    Elicit answers orally before revealing.
+                    Next: Gist answers.
+                </aside>
+            </section>
+
+            <!-- SLIDE 9: GIST ANSWERS -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3 style="color: #22c55e;">✓ ANSWERS</h3>
+                    <p><strong>Answer 1:</strong> Denham Farm Bakery (Family firm)</p>
+                    <p style="margin-top: 20px;"><strong>Answer 2:</strong> Morgan & Stenson (Many branches)</p>
+                </div>
+                <aside class="notes">
+                    Confirm understanding before moving to vocabulary.
+                    Next: Power Up segue.
+                </aside>
+            </section>
+
+            <!-- SLIDE 10: SEGUE (STAGE 3) -->
+            <section data-background-gradient="var(--grad-segue)">
+                <h1 class="segue-title r-fit-text">POWER UP: BUSINESS SPEAK</h1>
+                <h3 style="color: var(--secondary);">Unlock the vocabulary of success.</h3>
+                <aside class="notes">
+                    Energize the class. This is vocabulary drill time.
+                    Next: Vocab - Set Up.
+                </aside>
+            </section>
+
+            <!-- SLIDE 11: VOCAB - SET UP -->
+            <section data-background="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/startup.jpg" class="inset-media">
+                        <p class="attribution">Image by moerschy from Pixabay</p>
+                    </div>
+                    <div class="col-60">
+                        <div class="glass-box">
+                            <h2>SET UP</h2>
+                            <h3>(Phrasal Verb)</h3>
+                            <p>"The company was <strong>set up</strong> in 1991."</p>
+                            <p style="color: var(--text-accent);">= Started/Founded</p>
+                            <p><strong>Pronunciation:</strong> /set ʌp/</p>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Drill pronunciation. Check linking /set_ʌp/.
+                    Next: Vocab - Headquarters.
+                </aside>
+            </section>
+
+            <!-- SLIDE 12: VOCAB - HEADQUARTERS -->
+            <section data-background="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/hq.jpg" class="inset-media">
+                        <p class="attribution">Image by 738189 from Pixabay</p>
+                    </div>
+                    <div class="col-60">
+                        <div class="glass-box">
+                            <h2>HEADQUARTERS</h2>
+                            <h3>(Noun)</h3>
+                            <p>"Apple's <strong>headquarters</strong> are in California."</p>
+                            <p style="color: var(--text-accent);">= Main Office/HQ</p>
+                            <p><strong>Pronunciation:</strong> /HEAD-quar-ters/</p>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Emphasize stress on first syllable. Note plural form.
+                    Next: Vocab - Expand.
+                </aside>
+            </section>
+
+            <!-- SLIDE 13: VOCAB - EXPAND -->
+            <section data-background="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/growth_icon.png" class="inset-media">
+                    </div>
+                    <div class="col-60">
+                        <div class="glass-box">
+                            <h2>EXPAND</h2>
+                            <h3>(Verb)</h3>
+                            <p>"We need to <strong>expand</strong> into new markets."</p>
+                            <p style="color: var(--text-accent);">= Get bigger/Grow</p>
+                            <p><strong>Form:</strong> expand, expanded, expanding</p>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Connect to "expansion". Elicit examples.
+                    Next: Quest 1 segue.
+                </aside>
+            </section>
+
+            <!-- SLIDE 14: SEGUE (STAGE 4) -->
+            <section data-background-gradient="var(--grad-segue)">
+                <h1 class="segue-title r-fit-text">QUEST 1: IDENTITY CHECK</h1>
+                <h3 style="color: var(--secondary);">Who is who in the business world?</h3>
+                <aside class="notes">
+                    Task 1 coming up. Prepare students for category check.
+                    Next: Task 1 Instructions.
+                </aside>
+            </section>
+
+            <!-- SLIDE 15: TASK 1 INSTRUCTIONS -->
+            <section data-background="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-50">
+                        <img src="images/business_meeting.png" class="inset-media" style="border-color: #22c55e;">
+                    </div>
+                    <div class="col-50">
+                        <div class="glass-box" style="border-color: #22c55e; text-align: left;">
+                            <h2>Task 1: People Check</h2>
+                            <h3 class="text-2xl">People or Organization?</h3>
+                            <p class="text-xl">Tick (✓) the words that refer to <strong>PEOPLE</strong>.</p>
+                            <timer-pill duration="3"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Monitor students working. Check they understand the task.
+                    Next: Task 1 Answers.
+                </aside>
+            </section>
+
+            <!-- SLIDE 16: TASK 1 ANSWERS -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3 style="color: #22c55e;">✓ PEOPLE WORDS</h3>
+                    <ul class="text-2xl" style="list-style: none;">
+                        <li>✅ Accountant <em>(A person who manages money)</em></li>
+                        <li>✅ Employee <em>(A person who works for a firm)</em></li>
+                        <li>✅ Client <em>(A person who pays for services)</em></li>
+                        <li>✅ Expert <em>(A person with special knowledge)</em></li>
+                        <li>✅ Contacts <em>(People you know in business)</em></li>
+                    </ul>
+                </div>
+                <aside class="notes">
+                    Confirm all answers. Clarify any confusion.
+                    Next: Task 2 Instructions.
+                </aside>
+            </section>
+
+            <!-- SLIDE 17: TASK 2 INSTRUCTIONS -->
+            <section data-background="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-50">
+                        <img src="images/contract_signing.png" class="inset-media" style="border-color: #22c55e;">
+                    </div>
+                    <div class="col-50">
+                        <div class="glass-box" style="text-align: left;">
+                            <h2>Task 2: Synonym Match</h2>
+                            <p class="text-xl">Replace the underlined words with business vocabulary.</p>
+                            <timer-pill duration="5"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Students work individually. Monitor progress.
+                    Next: Answer 2.1 (Daily).
+                </aside>
+            </section>
+
+            <!-- SLIDE 18: ANSWER 2.1 (DAILY) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 2: Q1</h3>
+                    <p>"The food is delivered <strong style="color:red; text-decoration: line-through;">every
+                            day</strong>."</p>
+                    <p>⬇</p>
+                    <p class="text-xl" style="color: #22c55e;">"The food is delivered <strong>DAILY</strong>."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> "Every day" means it happens daily.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Check spelling of 'daily'.
+                    Next: Answer 2.2.
+                </aside>
+            </section>
+
+            <!-- SLIDE 19: ANSWER 2.2 (DEMAND) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 2: Q2</h3>
+                    <p>"There is a real <strong style="color:red; text-decoration: line-through;">need</strong>..."</p>
+                    <p>⬇</p>
+                    <p class="text-xl" style="color: #22c55e;">"...real <strong>DEMAND</strong> for organic food."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> When people want/need a product, there is "demand".
+                    </div>
+                </div>
+                <aside class="notes">
+                    Collocation: 'High demand'.
+                    Next: Answer 2.3.
+                </aside>
+            </section>
+
+            <!-- SLIDE 20: ANSWER 2.3 (AIM) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 2: Q3</h3>
+                    <p>"Our <strong style="color:red; text-decoration: line-through;">plan</strong> is to open..."</p>
+                    <p>⬇</p>
+                    <p class="text-xl" style="color: #22c55e;">"Our <strong>AIM</strong> is to open..."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> Your "aim" is your future goal or plan.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Aim = Target/Goal.
+                    Next: Answer 2.4.
+                </aside>
+            </section>
+
+            <!-- SLIDE 21: ANSWER 2.4 (FIRM) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 2: Q4</h3>
+                    <p>"The <strong style="color:red; text-decoration: line-through;">company</strong> is doing well."
+                    </p>
+                    <p>⬇</p>
+                    <p class="text-xl" style="color: #22c55e;">"The <strong>FIRM</strong> is doing well."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> "Firm" is a synonym for business/company.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Law firm, accountancy firm.
+                    Next: Answer 2.5.
+                </aside>
+            </section>
+
+            <!-- SLIDE 22: ANSWER 2.5 (EMPLOYEES) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 2: Q5</h3>
+                    <p>"We have 25 <strong style="color:red; text-decoration: line-through;">workers</strong>."</p>
+                    <p>⬇</p>
+                    <p class="text-xl" style="color: #22c55e;">"We have 25 <strong>EMPLOYEES</strong>."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> People who work for a company are employees.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Employee (worker) vs Employer (boss).
+                    Next: Answer 2.6.
+                </aside>
+            </section>
+
+            <!-- SLIDE 23: ANSWER 2.6 (SET UP) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 2: Q6</h3>
+                    <p>"I <strong style="color:red; text-decoration: line-through;">started</strong> the business..."
+                    </p>
+                    <p>⬇</p>
+                    <p class="text-xl" style="color: #22c55e;">"I <strong>SET UP</strong> the business..."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> To "set up" means to start/create a business.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Phrasal verb recall.
+                    Next: Answer 2.7.
+                </aside>
+            </section>
+
+            <!-- SLIDE 24: ANSWER 2.7 (HEADQUARTERS) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 2: Q7</h3>
+                    <p>"Their <strong style="color:red; text-decoration: line-through;">main offices</strong> are..."
+                    </p>
+                    <p>⬇</p>
+                    <p class="text-xl" style="color: #22c55e;">"Their <strong>HEADQUARTERS</strong> are..."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> The most important office is the HQ.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Pronunciation: Stress 1st syllable.
+                    Next: Answer 2.8.
+                </aside>
+            </section>
+
+            <!-- SLIDE 25: ANSWER 2.8 (POSITION) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 2: Q8</h3>
+                    <p>"He's hoping for a <strong style="color:red; text-decoration: line-through;">job</strong>..."</p>
+                    <p>⬇</p>
+                    <p class="text-xl" style="color: #22c55e;">"He's hoping for a <strong>POSITION</strong>..."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> In business, a specific job title is a "position".
+                    </div>
+                </div>
+                <aside class="notes">
+                    More formal than 'job'.
+                    Next: Answer 2.9.
+                </aside>
+            </section>
+
+            <!-- SLIDE 26: ANSWER 2.9 (EXPANDING) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 2: Q9</h3>
+                    <p>"The firm is <strong style="color:red; text-decoration: line-through;">getting bigger</strong>."
+                    </p>
+                    <p>⬇</p>
+                    <p class="text-xl" style="color: #22c55e;">"The firm is <strong>EXPANDING</strong>."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> To "expand" means to grow/open branches.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Continuous form check (is expanding).
+                    Next: Answer 2.10.
+                </aside>
+            </section>
+
+            <!-- SLIDE 27: ANSWER 2.10 (A GREAT DEAL) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 2: Q10</h3>
+                    <p>"The company made <strong style="color:red; text-decoration: line-through;">a lot</strong> of
+                        money."</p>
+                    <p>⬇</p>
+                    <p class="text-xl" style="color: #22c55e;">"...made <strong>A GREAT DEAL</strong> of money."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> Formal phrase for "a large amount".
+                    </div>
+                </div>
+                <aside class="notes">
+                    Formal/Business register.
+                    Next: Quest 2 Segue.
+                </aside>
+            </section>
+
+            <!-- SLIDE 28: SEGUE (QUEST 2) -->
+            <section data-background-gradient="var(--grad-segue)">
+                <h1 class="segue-title r-fit-text">QUEST 2: PRECISION STRIKE</h1>
+                <h3 style="color: var(--secondary);">Choose the exact word.</h3>
+                <aside class="notes">
+                    Task 3: Multiple choice/Gap fill.
+                    Next: Task 3 Instructions.
+                </aside>
+            </section>
+
+            <!-- SLIDE 29: TASK 3 INSTRUCTIONS -->
+            <section data-background="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-50">
+                        <img src="images/global_empire.png" class="inset-media" style="border-color: #22c55e;">
+                    </div>
+                    <div class="col-50">
+                        <div class="glass-box" style="text-align: left;">
+                            <h2>Task 3: Best Word Choice</h2>
+                            <p class="text-xl">Choose the best business word to complete each sentence.</p>
+                            <timer-pill duration="4"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Monitor for collocations (experts IN, take UP).
+                    Next: Answer 3.1.
+                </aside>
+            </section>
+
+            <!-- SLIDE 30: ANSWER 3.1 (EXPERTS) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 3: Q1</h3>
+                    <p>"They're <strong>experts</strong> <span class="highlight">in</span> farming."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> We always say "expert IN" a field.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Collocation check: Expert IN.
+                    Next: Answer 3.2.
+                </aside>
+            </section>
+
+            <!-- SLIDE 31: ANSWER 3.2 (TAKE UP) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 3: Q2</h3>
+                    <p>"When did you <strong>take up</strong> tennis?"</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> You "take up" a hobby. You "set up" a business.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Phrasal verb distinction.
+                    Next: Answer 3.3.
+                </aside>
+            </section>
+
+            <!-- SLIDE 32: ANSWER 3.3 (CLIENTS) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 3: Q3</h3>
+                    <p>"Her law firm has many famous <strong>clients</strong>."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> Lawyers/Professionals have clients. Shops have customers.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Client vs Customer distinction.
+                    Next: Answer 3.4.
+                </aside>
+            </section>
+
+            <!-- SLIDE 33: ANSWER 3.4 (EX-WIFE) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 3: Q4</h3>
+                    <p>"She's actually my <strong>ex-</strong>wife."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> "Ex-" is for relationships. "Former" is for job titles.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Prefix distinction.
+                    Next: Answer 3.5.
+                </aside>
+            </section>
+
+            <!-- SLIDE 34: ANSWER 3.5 (SET UP) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 3: Q5</h3>
+                    <p>"When did they <strong>set up</strong> the company?"</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> To "set up" means to start/build a company.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Synonym for start/establish.
+                    Next: Answer 3.6.
+                </aside>
+            </section>
+
+            <!-- SLIDE 35: ANSWER 3.6 (CUSTOMER) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 3: Q6</h3>
+                    <p>"The shop assistant was serving a <strong>customer</strong>."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> In a shop, the buyer is a "customer".
+                    </div>
+                </div>
+                <aside class="notes">
+                    Shop context = Customer.
+                    Next: Answer 3.7.
+                </aside>
+            </section>
+
+            <!-- SLIDE 36: ANSWER 3.7 (CURRENTLY) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 3: Q7</h3>
+                    <p>"He's <strong>currently</strong> working abroad."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> "Currently" means right now.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Currently vs Actually false friend check.
+                    Next: Answer 3.8.
+                </aside>
+            </section>
+
+            <!-- SLIDE 37: ANSWER 3.8 (TAKE OVER) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 3: Q8</h3>
+                    <p>"Are they planning to <strong>take over</strong> the company?"</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> "Take over" means to buy/acquire control.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Acquisition context.
+                    Next: Answer 3.9.
+                </aside>
+            </section>
+
+            <!-- SLIDE 38: ANSWER 3.9 (FORMER) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e; width: 800px; margin: 0 auto;">
+                    <h3>Task 3: Q9</h3>
+                    <p>"George Bush is a <strong>former</strong> president."</p>
+                    <div class="teacher-tip">
+                        <strong>Why?</strong> Use "Former" for past official job titles.
+                    </div>
+                </div>
+                <aside class="notes">
+                    Title context (not ex-president).
+                    Next: Boss Level Segue.
+                </aside>
+            </section>
+
+            <!-- SLIDE 39: SEGUE (STAGE 5) -->
+            <section data-background-gradient="radial-gradient(circle, #2a0a0a 0%, #000000 100%)">
+                <h1 class="segue-title r-fit-text" style="color: #ef4444;">BOSS LEVEL:
+                    TRANSFORMATION</h1>
+                <h3 style="color: white;">Rewrite reality. Keep the meaning.</h3>
+                <aside class="notes">
+                    High energy! This is the hardest part.
+                    Next: Task 4 Instructions.
+                </aside>
+            </section>
+
+            <!-- SLIDE 40: TASK 4 INSTRUCTIONS -->
+            <section data-background="var(--boss-bg)">
+                <div class="row-container">
+                    <div class="col-50">
+                        <img src="images/title_bg.png" class="inset-media" style="border-color: #ef4444;">
+                    </div>
+                    <div class="col-50">
+                        <div class="glass-box" style="border-color: #ef4444; text-align: left;">
+                            <h2>Task 4: Rewrite</h2>
+                            <p class="text-xl">Rewrite the sentences using the word in <strong>CAPITALS</strong>.</p>
+                            <timer-pill duration="6"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Monitor closely. This is B1+ level difficulty.
+                    Next: Answer 4.1 (Variety).
+                </aside>
+            </section>
+
+            <!-- SLIDE 41: ANSWER 4.1 (VARIETY) - AUTO ANIMATE -->
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q1</h3>
+                <p class="text-lg">"He makes <span data-id="change1">different</span> cakes."</p>
+                <p data-id="arrow">⬇</p>
+            </section>
+
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q1</h3>
+                <p class="text-lg" style="opacity: 0.5;">"He makes <span data-id="change1"
+                        style="text-decoration: line-through;">different</span> cakes."</p>
+                <p data-id="arrow">⬇</p>
+                <p class="text-xl" style="color: #22c55e;">"He makes a <strong>VARIETY</strong> of cakes."</p>
+                <div class="teacher-tip">
+                    <strong>Why?</strong> "Variety" (Noun) = many different types.
+                </div>
+                <aside class="notes">
+                    Key word transformation: different -> variety of.
+                    Next: Answer 4.2.
+                </aside>
+            </section>
+
+            <!-- SLIDE 42: ANSWER 4.2 (ACHIEVED) - AUTO ANIMATE -->
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q2</h3>
+                <p class="text-lg">"They were <span data-id="change2">very successful</span>."</p>
+                <p data-id="arrow">⬇</p>
+            </section>
+
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q2</h3>
+                <p class="text-lg" style="opacity: 0.5;">"They were <span data-id="change2"
+                        style="text-decoration: line-through;">very successful</span>."</p>
+                <p data-id="arrow">⬇</p>
+                <p class="text-xl" style="color: #22c55e;">"They <strong>ACHIEVED</strong> a great deal."</p>
+                <div class="teacher-tip">
+                    <strong>Why?</strong> To "achieve" success means to reach your goal.
+                </div>
+                <aside class="notes">
+                    Collocation: Achieve a great deal/success.
+                    Next: Answer 4.3.
+                </aside>
+            </section>
+
+            <!-- SLIDE 43: ANSWER 4.3 (CONTACTS) - AUTO ANIMATE -->
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q3</h3>
+                <p class="text-lg">"I know <span data-id="change3">a lot of people</span> in banking."</p>
+                <p data-id="arrow">⬇</p>
+            </section>
+
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q3</h3>
+                <p class="text-lg" style="opacity: 0.5;">"I know <span data-id="change3"
+                        style="text-decoration: line-through;">a lot of people</span>..."</p>
+                <p data-id="arrow">⬇</p>
+                <p class="text-xl" style="color: #22c55e;">"I have many <strong>CONTACTS</strong> in banking."</p>
+                <div class="teacher-tip">
+                    <strong>Why?</strong> "Contacts" are useful people you know.
+                </div>
+                <aside class="notes">
+                    Networking context.
+                    Next: Answer 4.4.
+                </aside>
+            </section>
+
+            <!-- SLIDE 44: ANSWER 4.4 (FORMERLY) - AUTO ANIMATE -->
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q4</h3>
+                <p class="text-lg">"They <span data-id="change4">used to be</span> called BMG."</p>
+                <p data-id="arrow">⬇</p>
+            </section>
+
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q4</h3>
+                <p class="text-lg" style="opacity: 0.5;">"They <span data-id="change4"
+                        style="text-decoration: line-through;">used to be</span> called..."</p>
+                <p data-id="arrow">⬇</p>
+                <p class="text-xl" style="color: #22c55e;">"They were <strong>FORMERLY</strong> known as BMG."</p>
+                <div class="teacher-tip">
+                    <strong>Why?</strong> "Formerly" is formal for "in the past".
+                </div>
+                <aside class="notes">
+                    Formal business change of name.
+                    Next: Answer 4.5.
+                </aside>
+            </section>
+
+            <!-- SLIDE 45: ANSWER 4.5 (AMBITION) - AUTO ANIMATE -->
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q5</h3>
+                <p class="text-lg">"I've always <span data-id="change5">wanted</span> to fly a plane."</p>
+                <p data-id="arrow">⬇</p>
+            </section>
+
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q5</h3>
+                <p class="text-lg" style="opacity: 0.5;">"I've always <span data-id="change5"
+                        style="text-decoration: line-through;">wanted</span>..."</p>
+                <p data-id="arrow">⬇</p>
+                <p class="text-xl" style="color: #22c55e;">"It's my <strong>AMBITION</strong> to fly a plane."</p>
+                <div class="teacher-tip">
+                    <strong>Why?</strong> Ambition = Strong desire/goal for the future.
+                </div>
+                <aside class="notes">
+                    Noun vs Verb structure transformation.
+                    Next: Answer 4.6.
+                </aside>
+            </section>
+
+            <!-- SLIDE 46: ANSWER 4.6 (EXPERT) - AUTO ANIMATE -->
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q6</h3>
+                <p class="text-lg">"She has <span data-id="change6">a great knowledge of</span> finance."</p>
+                <p data-id="arrow">⬇</p>
+            </section>
+
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q6</h3>
+                <p class="text-lg" style="opacity: 0.5;">"She has <span data-id="change6"
+                        style="text-decoration: line-through;">a great knowledge of</span>..."</p>
+                <p data-id="arrow">⬇</p>
+                <p class="text-xl" style="color: #22c55e;">"She is an <strong>EXPERT</strong> in finance."</p>
+                <div class="teacher-tip">
+                    <strong>Why?</strong> An expert is a person who knows a lot.
+                </div>
+                <aside class="notes">
+                    Collocation: Expert IN (Review from Task 3).
+                    Next: Answer 4.7.
+                </aside>
+            </section>
+
+            <!-- SLIDE 47: ANSWER 4.7 (ATTENTION) - AUTO ANIMATE -->
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q7</h3>
+                <p class="text-lg">"People <span data-id="change7">noticed</span> the adverts."</p>
+                <p data-id="arrow">⬇</p>
+            </section>
+
+            <section data-auto-animate data-background-color="var(--answer-bg)">
+                <h3>Task 4: Q7</h3>
+                <p class="text-lg" style="opacity: 0.5;">"People <span data-id="change7"
+                        style="text-decoration: line-through;">noticed</span> the adverts."</p>
+                <p data-id="arrow">⬇</p>
+                <p class="text-xl" style="color: #22c55e;">"The adverts attracted a lot of
+                    <strong>ATTENTION</strong>."
+                </p>
+                <div class="teacher-tip">
+                    <strong>Why?</strong> To "attract attention" = make people look/notice.
+                </div>
+                <aside class="notes">
+                    Passive/Active switch + Collocation.
+                    Next: Final Quest.
+                </aside>
+            </section>
+
+            <!-- SLIDE 48: FINAL QUEST (TASK 5) -->
+            <section data-background="var(--boss-bg)">
+                <h2>Final Quest: The Success Story</h2>
+                <div class="glass-box" style="border-color: #ef4444; width: 800px; margin: 0 auto;">
+                    <h3>Danielle Spinks</h3>
+                    <p>Complete the text with the correct word form.</p>
+                </div>
+                <timer-pill duration="4"></timer-pill>
+                <aside class="notes">
+                    Final consolidation task.
+                    Next: Answer 5.1.
+                </aside>
+            </section>
+
+            <!-- SLIDE 49: ANSWER 5.1 (DELIVER) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e;">
+                    <h3>Gap 1: DELIVER</h3>
+                    <p>"...Danielle promised to <strong>deliver</strong> them..."</p>
+                    <div class="teacher-tip">Couriers deliver documents.</div>
+                </div>
+                <aside class="notes">Verb form check.</aside>
+            </section>
+
+            <!-- SLIDE 50: ANSWER 5.2 (FIRM/BUSINESS) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e;">
+                    <h3>Gap 2: FIRM/BUSINESS</h3>
+                    <p>"It was only a small <strong>firm/business</strong>..."</p>
+                    <div class="teacher-tip">Both answers acceptable.</div>
+                </div>
+                <aside class="notes">Synonyms.</aside>
+            </section>
+
+            <!-- SLIDE 51: ANSWER 5.3 (ACHIEVED) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e;">
+                    <h3>Gap 3: ACHIEVED</h3>
+                    <p>"...but DCS <strong>achieved</strong> immediate success..."</p>
+                    <div class="teacher-tip">Past tense of achieve.</div>
+                </div>
+                <aside class="notes">Past simple regular.</aside>
+            </section>
+
+            <!-- SLIDE 52: ANSWER 5.4 (BRANCH) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e;">
+                    <h3>Gap 4: BRANCH</h3>
+                    <p>"...so Danielle set up another <strong>branch</strong>..."</p>
+                    <div class="teacher-tip">A new office in a different city.</div>
+                </div>
+                <aside class="notes">Singular noun.</aside>
+            </section>
+
+            <!-- SLIDE 53: ANSWER 5.5 (RUN) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e;">
+                    <h3>Gap 5: RUN</h3>
+                    <p>"...which was <strong>run</strong> by her brother..."</p>
+                    <div class="teacher-tip">Passive voice: was run (manage).</div>
+                </div>
+                <aside class="notes">Irregular verb: Run-Ran-Run.</aside>
+            </section>
+
+            <!-- SLIDE 54: ANSWER 5.6 (EXPANDED) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e;">
+                    <h3>Gap 6: EXPANDED</h3>
+                    <p>"The business soon <strong>expanded</strong> rapidly..."</p>
+                    <div class="teacher-tip">Got bigger/grew larger.</div>
+                </div>
+                <aside class="notes">Past simple regular.</aside>
+            </section>
+
+            <!-- SLIDE 55: ANSWER 5.7 (AMBITION) -->
+            <section data-background-color="var(--answer-bg)">
+                <div class="glass-box" style="border-color: #22c55e;">
+                    <h3>Gap 7: AMBITION</h3>
+                    <p>"...it is now Danielle's <strong>ambition</strong> to have..."</p>
+                    <div class="teacher-tip">Her big future goal.</div>
+                </div>
+                <aside class="notes">Noun form.</aside>
+            </section>
+
+            <!-- SLIDE 56: VICTORY SCREEN -->
+            <section data-background="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
+                data-background-opacity="0.3">
+                <h1 class="r-fit-text" style="color: #FFD700; text-shadow: 0 0 20px #FFD700;">MISSION COMPLETE</h1>
+                <div class="glass-box"
+                    style="border-color: #FFD700; background: rgba(0,0,0,0.8); width: 800px; margin: 30px auto;">
+                    <h3 style="color: white;">Business Tycoon Status: UNLOCKED</h3>
+                    <p class="text-2xl">Level up! You are now ready for the global market.</p>
+                </div>
+                <aside class="notes">
+                    Congratulate class on unlocking the Business Tycoon achievement.
+                    Wrap up the lesson.
+                </aside>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            width: 960,
+            height: 700,
+            transition: 'convex',
+            center: true,
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+
+        // Audio assets
+        const blipSfx = new Audio('audio/blip.mp3');
+        const bellSfx = new Audio('audio/bell.mp3');
+        const warningSfx = new Audio('audio/30-seconds.mp3');
+
+        // Timer component
+        class TimerPill extends HTMLElement {
+            constructor() {
+                super();
+                this.duration = parseInt(this.getAttribute('duration')) || 5;
+                this.timeLeft = this.duration * 60;
+                this.timer = null;
+            }
+
+            connectedCallback() {
+                this.render();
+                this.updateDisplay();
+                this.querySelector('.start-btn').onclick = () => this.toggle();
+            }
+
+            render() {
+                this.innerHTML = `
+                    <div class="timer-pill">
+                        <div class="timer-display">00:00</div>
+                        <button class="start-btn">START</button>
+                    </div>
+                `;
+            }
+
+            updateDisplay() {
+                const m = Math.floor(this.timeLeft / 60).toString().padStart(2, '0');
+                const s = (this.timeLeft % 60).toString().padStart(2, '0');
+                this.querySelector('.timer-display').textContent = `${m}:${s}`;
+            }
+
+            toggle() {
+                const btn = this.querySelector('.start-btn');
+                if (this.timer) {
+                    clearInterval(this.timer);
+                    this.timer = null;
+                    btn.textContent = 'START';
+                } else {
+                    blipSfx.play();
+                    btn.textContent = 'PAUSE';
+                    this.timer = setInterval(() => {
+                        if (this.timeLeft > 0) {
+                            this.timeLeft--;
+                            this.updateDisplay();
+                            if (this.timeLeft === 30) warningSfx.play();
+                            if (this.timeLeft <= 29 && this.timeLeft > 0) {
+                                blipSfx.currentTime = 0;
+                                blipSfx.play();
+                            }
+                        } else {
+                            clearInterval(this.timer);
+                            this.timer = null;
+                            btn.textContent = 'DONE';
+                            btn.disabled = true;
+                            bellSfx.play();
+                        }
+                    }, 1000);
+                }
+            }
+        }
+        customElements.define('timer-pill', TimerPill);
+    </script>
+</body>
+
+</html>

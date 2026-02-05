@@ -22,7 +22,7 @@
             "layout": "mission",
             "title": "TODAY'S MISSION",
             "subtitle": "Unlocking the Superconsumer Code",
-            "background_video": "https://elwrush.github.io/lesson-plan-agent/images/mission_bg_clipped.mp4",
+            "background_video": "https://elwrush.github.io/actions-gh-pages/images/mission_bg_clipped.mp4",
             "mission_items": [
                 {
                     "icon": "🚀",

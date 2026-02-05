@@ -21,7 +21,7 @@
   - 🏖️ Learn coastal and activity vocabulary.
   - 📝 Practice word matching and sentence completion.
   - 🗣️ Speak for 1 minute about your favorite beach activity.
-- **Background Video**: `https://elwrush.github.io/lesson-plan-agent/images/mission_bg_clipped.mp4`
+- **Background Video**: `https://elwrush.github.io/actions-gh-pages/images/mission_bg_clipped.mp4`
 - **Notes**: Explain the PET relevance. Students will chooses a question from Task 6 later.
 
 ### Slide 3: Segue
@@ -72,3 +72,4 @@
   - Choose ONE question from Task 6.
   - Prepare to speak for **1 minute** non-stop.
 - **Notes**: Give students 2 minutes to prepare first. Then start the 1-minute timer for each speaker.
+

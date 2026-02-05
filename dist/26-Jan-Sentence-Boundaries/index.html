@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Sentence Boundaries (Gold Standard 2)</title>
+
+    <!-- REVEAL.JS (CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* BASIC GOLD STANDARD STYLES */
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .reveal h1 {
+            font-weight: 800;
+            font-size: 3.0em;
+        }
+
+        .reveal h2 {
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* LAYOUT UTILS */
+        .cols {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .col {
+            flex: 1;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* BOXES */
+        .box {
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .highlight {
+            color: #d32f2f;
+            /* Red Accent */
+            font-weight: bold;
+        }
+
+        /* SEGUE TITLES */
+        .segue-title {
+            color: white;
+            font-size: 3.5em !important;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+            line-height: 1.2;
+        }
+
+        /* IMAGES */
+        .img-framed {
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            max-height: 400px;
+        }
+
+        /* Force title image size */
+        .title-image {
+            width: 500px !important;
+            max-width: none !important;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* TASKS */
+        .task-badge {
+            background: #333;
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* TIMER STYLES */
+        .timer-widget {
+            display: inline-block;
+            background: #222;
+            color: #0f0;
+            /* Matrix Green */
+            font-family: 'Courier Prime', monospace;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 2px solid #555;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+        }
+
+        .timer-widget:hover {
+            background: #333;
+            border-color: #fff;
+        }
+
+        .timer-widget.running {
+            background: #330000;
+            color: #ff0000;
+            border-color: #ff0000;
+        }
+
+        /* ANSWER TEXT STANDARD */
+        .text-answer {
+            font-size: 1.8em;
+            line-height: 1.3;
+        }
+
+        /* LEVEL BADGE */
+        .level-badge {
+            background: #d32f2f;
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* RED BAR SLIDE STYLE */
+        .red-bar-slide {
+            border-left: 15px solid #d32f2f;
+            padding-left: 40px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- SLIDE 1: TITLE -->
+            <section data-background-color="#f5f5f5">
+                <div class="cols">
+                    <div class="col">
+                        <img src="title_crime_scene.png" class="title-image">
+                    </div>
+                    <div class="col text-left">
+                        <div class="level-badge">B1 GRAMMAR</div>
+                        <h3>MISSION: GRAMMAR</h3>
+                        <h1>SENTENCE<br>BOUNDARIES</h1>
+                        <p style="color: #666;">CRACK THE CODE</p>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Welcome students to the "Grammar Repair Shop." Today's mission is about mastering the
+                    boundaries of thoughts.
+                    **Next**: Task 1 Segue.
+                </aside>
+            </section>
+
+            <!-- TASK 1: DATA (SEGUE - BLUE NAVY) -->
+            <section data-background-color="#2c3e50"
+                data-background-gradient="linear-gradient(to bottom right, #2c3e50, #4ca1af)">
+                <h1 class="segue-title">TASK 1<br>THE DATA SCAN</h1>
+                <aside class="notes">
+                    **Advice**: Set the scene. We aren't just guessing; we are analyzing data from their own writing.
+                    **Next**: The Scoreboard.
+                </aside>
+            </section>
+
+            <!-- SLIDE: SCOREBOARD -->
+            <section class="red-bar-slide">
+                <h2 style="color: #d32f2f;">THE SCOREBOARD</h2>
+                <div class="cols">
+                    <div class="col">
+                        <img src="grade_block.png" class="img-framed">
+                    </div>
+                    <div class="col text-left">
+                        <div class="box">
+                            <p><strong>OBJECTIVE:</strong> Lower your error count.</p>
+                            <p>We are moving from "Mistake Hunting" to "Precision Writing."</p>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Explain that the goal is precision. We want to move away from accidental writing to
+                    intentional writing.
+                    **Next**: The Target.
+                </aside>
+            </section>
+
+            <!-- SLIDE: PROGRESS -->
+            <section class="red-bar-slide">
+                <h2 style="color: #d32f2f;">THE TARGET: <= 3</h2>
+                        <div class="cols">
+                            <div class="col">
+                                <img src="progress_chart.png" class="img-framed">
+                            </div>
+                            <div class="col text-left">
+                                <div class="box">
+                                    <p>We want <strong>no more than 3 mistakes</strong> in your first 50 words.</p>
+                                    <small>Check your report: How close were you?</small>
+                                </div>
+                            </div>
+                        </div>
+                        <aside class="notes">
+                            **Advice**: This is the B1 benchmark. Less than 3 boundary/grammar errors in the
+                            introduction.
+                            **Next**: Errant Patterns.
+                        </aside>
+            </section>
+
+            <!-- SLIDE: ERRANT -->
+            <section class="red-bar-slide">
+                <h2 style="color: #d32f2f;">ERRANT PATTERNS</h2>
+                <div class="cols">
+                    <div class="col">
+                        <img src="errant_analysis.png" class="img-framed">
+                    </div>
+                    <div class="col text-left">
+                        <p>The <strong>ERRANT script</strong> finds your habits:</p>
+                        <ul>
+                            <li>Spelling?</li>
+                            <li>Verbs?</li>
+                            <li>Sentence Structure?</li>
+                        </ul>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Elicit from students what errors they see most often in their feedback.
+                    **Next**: Mistake 1 Analysis.
+                </aside>
+            </section>
+
+            <!-- ANALYSIS: REAL EXAMPLE -->
+            <section class="red-bar-slide">
+                <h3 style="color: #d32f2f;">MISTAKE 1: CAPITALIZATION</h3>
+                <div style="text-align: center; margin-top: 30px;">
+                    <img src="mistake_1.png" class="img-framed" style="max-height: 500px; width: auto;">
+                </div>
+                <aside class="notes">
+                    **Advice**: Show them the lack of hyphen and the lowercase start to a new sentence.
+                    **Next**: Task 2 Segue.
+                </aside>
+            </section>
+
+            <!-- TASK 2: DEFINITIONS (SEGUE - DEEP RED) -->
+            <section data-background-color="#800000"
+                data-background-gradient="linear-gradient(to bottom right, #800000, #A00000)">
+                <h1 class="segue-title">TASK 2<br>ZERO TOLERANCE</h1>
+                <aside class="notes">
+                    **Advice**: We are defining the 'Three Crimes' of sentence boundaries.
+                    **Next**: Mystery 1.
+                </aside>
+            </section>
+
+            <!-- MYSTERY 1 -->
+            <section>
+                <div class="task-badge">DEFINITION</div>
+                <h2>1. THE COMMA SPLICE</h2>
+                <div class="cols">
+                    <div class="col">
+                        <img src="mystery_splice.png" class="img-framed">
+                    </div>
+                    <div class="col text-left">
+                        <div class="box">
+                            <p>A comma is too weak to hold two sentences.</p>
+                            <hr>
+                            <p>❌ I am tired, I go to bed.</p>
+                            <p>✅ I am tired. <strong>I</strong> go to bed.</p>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Use the visual of the string breaking. A comma cannot support two full thoughts.
+                    **Next**: Mystery 2.
+                </aside>
+            </section>
+
+            <!-- MYSTERY 2 -->
+            <section>
+                <div class="task-badge">DEFINITION</div>
+                <h2>2. THE FUSED SENTENCE</h2>
+                <div class="cols">
+                    <div class="col">
+                        <img src="mystery_fused.png" class="img-framed">
+                    </div>
+                    <div class="col text-left">
+                        <div class="box">
+                            <p>No wall at all! Thoughts crash.</p>
+                            <hr>
+                            <p>❌ I am tired I go to bed.</p>
+                            <p>✅ I am tired. <strong>I</strong> go to bed.</p>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: A car crash. Two facts need a full stop as a wall between them.
+                    **Next**: Mystery 3.
+                </aside>
+            </section>
+
+            <!-- MYSTERY 3 -->
+            <section>
+                <div class="task-badge">DEFINITION</div>
+                <h2>3. THE INFINITE FLOW</h2>
+                <div class="cols">
+                    <div class="col">
+                        <img src="mystery_infinite.png" class="img-framed">
+                    </div>
+                    <div class="col text-left">
+                        <div class="box">
+                            <p>Going on forever.</p>
+                            <hr>
+                            <p>❌ ...because I am tired and because...</p>
+                            <p>✅ One 'because' is okay. Two is illegal.</p>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Remind students that in Thai, thoughts flow. In English, we need to stop and start.
+                    **Next**: Task 1 Segue.
+                </aside>
+            </section>
+
+            <!-- TASK 3: SEARCH SCAN (SEGUE - ORANGE ALERT) -->
+            <section data-background-color="#d35400"
+                data-background-gradient="linear-gradient(to bottom right, #d35400, #e67e22)">
+                <h1 class="segue-title">TASK 3<br>SEARCH SCAN</h1>
+                <aside class="notes">
+                    **Advice**: Students will now scan their own reports for the three crimes we just defined.
+                    **Next**: Scan Your Report instructions.
+                </aside>
+            </section>
+
+            <!-- TASK 1 CONTENT -->
+            <section>
+                <h2>SCAN YOUR REPORT</h2>
+                <div class="box" style="max-width: 800px; margin: 0 auto;">
+                    <p style="font-size: 1.5em;">Look for your <strong>Repair Target</strong> boxes.</p>
+                    <p>Identify if you have committed the 3 crimes.</p>
+                    <p>Write your findings on the worksheet.</p>
+                    <div class="timer-widget" data-minutes="4">
+                        <span class="icon">⏱️</span> <span class="display">04:00</span>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Monitor students as they check their repair target boxes. Ensure they are using the
+                    worksheet to note findings.
+                    **Next**: Case Study Segue.
+                </aside>
+            </section>
+
+            <!-- HOOK (SEGUE - GREY SCALE) -->
+            <section data-background-color="#34495e">
+                <h1 class="segue-title">CASE STUDY</h1>
+                <aside class="notes">
+                    **Advice**: Apply what we learned to a real text about Elon Musk.
+                    **Next**: Elon Musk Bio.
+                </aside>
+            </section>
+
+            <!-- ELON MUSK BIO -->
+            <section>
+                <h2>ELON MUSK</h2>
+                <div class="cols">
+                    <div class="col">
+                        <img src="elon_musk.png" class="img-framed">
+                    </div>
+                    <div class="col text-left">
+                        <ul style="font-size: 0.8em;">
+                            <li>Founder of SpaceX and CEO of Tesla.</li>
+                            <li>Founded SpaceX in 2002 to develop spacecraft.</li>
+                            <li>Leading electric vehicles since 2004.</li>
+                            <li>Focus: Changing travel on Earth and Space.</li>
+                        </ul>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Read through the bio. Ask students if they know who he is.
+                    **Next**: Find the Barrier.
+                </aside>
+            </section>
+
+            <!-- HOOK QUESTION (AUTO ANIMATE) -->
+            <section data-auto-animate>
+                <h2>FIND THE BARRIER</h2>
+                <div class="box">
+                    <p style="font-family: monospace; font-size: 1.5em;">Elon Musk is a successful man he takes many
+                        risks to get here.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Read the sentence. Ask students where it feels difficult to read. Where is the break?
+                    **Next**: The Invisible Wall (Revealed).
+                </aside>
+            </section>
+
+            <section data-auto-animate>
+                <h2>THE INVISIBLE WALL</h2>
+                <div class="box">
+                    <p style="font-family: monospace; font-size: 1.5em;">Elon Musk is a successful man. <span
+                            class="highlight">He</span> takes many risks to get here.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: There it is. Without the wall, the thoughts crash. We need a period and a capital H.
+                    **Next**: 3 Targets Reminder.
+                </aside>
+            </section>
+
+
+
+            <!-- 3 TARGETS REMINDER -->
+            <section>
+                <h2>THE 3 TARGETS</h2>
+                <p>Find and fix these errors in the next task.</p>
+                <div class="cols">
+                    <div class="col box">1. Comma Splice</div>
+                    <div class="col box">2. Fused Sentence</div>
+                    <div class="col box">3. Infinite Flow</div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Summary of the three crimes before we move to the final practice.
+                    **Next**: Task 3 Segue.
+                </aside>
+            </section>
+
+            <!-- TASK 4: THE 7 REPAIRS (SEGUE - PURPLE PRACTICE) -->
+            <section data-background-color="#8e44ad"
+                data-background-gradient="linear-gradient(to bottom right, #8e44ad, #9b59b6)">
+                <h1 class="segue-title">TASK 4<br>THE 7 REPAIRS</h1>
+                <aside class="notes">
+                    **Advice**: Final practice task. Students repair 7 sentences on their worksheet.
+                    **Next**: The Big Fix instructions.
+                </aside>
+            </section>
+
+            <!-- TASK 2 INSTRUCTION -->
+            <section>
+                <h2>THE BIG FIX</h2>
+                <p>Complete <strong>Task 3</strong> on your worksheet.</p>
+                <p>Find the invisible walls and add gateways.</p>
+                <div class="timer-widget" data-minutes="6">
+                    <span class="icon">⏱️</span> <span class="display">06:00</span>
+                </div>
+                <aside class="notes">
+                    **Advice**: 6 minutes to complete the repairs. Monitor for students struggling with transition
+                    words.
+                    **Next**: Answer 1.
+                </aside>
+            </section>
+
+            <!-- ANSWERS (SINGLE SLIDES, HIGHLIGHTED) -->
+
+            <section>
+                <h4>ANSWER 1</h4>
+                <p class="text-answer">I am so tired. <span class="highlight">I</span> want to go to bed.</p>
+                <aside class="notes">
+                    **Advice**: Fused sentence. Needs a wall.
+                    **Next**: Answer 2.
+                </aside>
+            </section>
+
+            <section>
+                <h4>ANSWER 2</h4>
+                <p class="text-answer">She is very kind. <span class="highlight">E</span>veryone likes her.</p>
+                <aside class="notes">
+                    **Advice**: Fused sentence. Capitalize the start of the second sentence.
+                    **Next**: Answer 3.
+                </aside>
+            </section>
+
+            <section>
+                <h4>ANSWER 3</h4>
+                <p class="text-answer">My friend lives in London. <span class="highlight">M</span>eanwhile, I live in
+                    Bangkok.</p>
+                <aside class="notes">
+                    **Advice**: Comma splice or fused sentence fix. 'Meanwhile' starts a new sentence.
+                    **Next**: Answer 4.
+                </aside>
+            </section>
+
+            <section>
+                <h4>ANSWER 4</h4>
+                <p class="text-answer">We went to the mall. <span class="highlight">W</span>e bought some new shoes.</p>
+                <aside class="notes">
+                    **Advice**: Fused sentence. Needs a wall.
+                    **Next**: Answer 5.
+                </aside>
+            </section>
+
+            <section>
+                <h4>ANSWER 5</h4>
+                <p class="text-answer">...because fear stops us. <span class="highlight">I</span>t makes us feel small
+                    and we lose...</p>
+                <aside class="notes">
+                    **Advice**: Comma splice fix.
+                    **Next**: Answer 6.
+                </aside>
+            </section>
+
+            <section>
+                <h4>ANSWER 6</h4>
+                <p class="text-answer">The movie was long. <span class="highlight">T</span>herefore, people left.</p>
+                <aside class="notes">
+                    **Advice**: Fused sentence fix with transition word.
+                    **Next**: Answer 7.
+                </aside>
+            </section>
+
+            <section>
+                <h4>ANSWER 7</h4>
+                <p class="text-answer">Success takes risk. <span class="highlight">W</span>ithout risk you cannot grow.
+                    <span class="highlight">F</span>ailure is a lesson.
+                </p>
+                <aside class="notes">
+                    **Advice**: Multiple sentences fused together. Needs multiple walls.
+                    **Next**: Task 4 Segue.
+                </aside>
+            </section>
+
+
+            <!-- TASK 5: FINAL BOSS (SEGUE - GREEN FINAL) -->
+            <section data-background-color="#27ae60"
+                data-background-gradient="linear-gradient(to bottom right, #27ae60, #2ecc71)">
+                <h1 class="segue-title">TASK 5<br>FINAL BOSS</h1>
+                <aside class="notes">
+                    **Advice**: The Final Boss. Students must apply everything to their own work.
+                    **Next**: Personal Repair instructions.
+                </aside>
+            </section>
+
+            <!-- FINAL BOSS -->
+            <section>
+                <h2>PERSONAL REPAIR</h2>
+                <div class="box">
+                    <p>1. Look at your original writing.</p>
+                    <p>2. Make sure you are not repeating the mistakes I identified.</p>
+                    <p>3. Make sure you do not write the "3 crimes".</p>
+                    <div class="timer-widget" data-minutes="14">
+                        <span class="icon">⏱️</span> <span class="display">14:00</span>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: 14 minutes for deep repair. Monitor and help students find their specific errors.
+                    **Next**: Conclusion.
+                </aside>
+            </section>
+
+            <!-- CONCLUSION -->
+            <section data-background-color="#2c3e50">
+                <h1 class="r-fit-text" style="color: white; text-transform: uppercase;">MISSION ACCOMPLISHED</h1>
+                <p style="color: #ccc;">Your writing is now clearer and professional.</p>
+                <aside class="notes">
+                    **Advice**: Praise students for their hard work. Writing for precision is a major step forward.
+                    **Next**: End.
+                </aside>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- AUDIO ASSETS -->
+    <audio id="audio-start" src="timer_start.mp3"></audio>
+    <audio id="audio-tick" src="30-seconds.mp3"></audio> <!-- 30s warning -->
+    <audio id="audio-end" src="bell.mp3"></audio>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script>
+        Reveal.initialize({
+            width: 960,
+            height: 700,
+            margin: 0.1,
+            transition: 'convex',
+            hash: true,
+            plugins: [RevealNotes]
+        });
+
+        // TIMER LOGIC WITH AUDIO
+        document.querySelectorAll('.timer-widget').forEach(timer => {
+            timer.addEventListener('click', function () {
+                if (this.classList.contains('running')) return; // Prevent double click
+
+                // Play Start Sound
+                document.getElementById('audio-start').play().catch(e => console.log("Audio allow required"));
+
+                this.classList.add('running');
+                let minutes = parseInt(this.getAttribute('data-minutes'));
+                let totalSeconds = minutes * 60;
+                const display = this.querySelector('.display');
+
+                const interval = setInterval(() => {
+                    totalSeconds--;
+
+                    // 30 Seconds Remaining Warning
+                    if (totalSeconds === 30) {
+                        document.getElementById('audio-tick').play().catch(e => console.log("Audio allow required"));
+                        this.style.color = "orange";
+                        this.style.borderColor = "orange";
+                    }
+
+                    if (totalSeconds < 0) {
+                        clearInterval(interval);
+                        display.textContent = "00:00";
+                        this.style.backgroundColor = "red";
+                        this.style.color = "white";
+
+                        // Play End Sound
+                        document.getElementById('audio-end').play();
+                        return;
+                    }
+
+                    const m = Math.floor(totalSeconds / 60);
+                    const s = totalSeconds % 60;
+                    display.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+
+</html>

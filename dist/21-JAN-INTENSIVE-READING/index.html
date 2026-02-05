@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>B1 Intensive Reading: The Food of Indonesia</title>
+
+    <!-- REVEAL.JS CORE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+
+    <!-- FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Courier+Prime:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- COMPONENT LIBRARY -->
+    <script src="../../skills/creating-html-presentation/js/slide-components.js"></script>
+
+    <style>
+        :root {
+            --primary: #FFB300;
+            /* Turmeric Gold */
+            --secondary: #CE1126;
+            /* Heritage Red */
+            --bg-dark: #1A0F0F;
+            /* Deep Wood */
+            --text-accent: #F5F5F5;
+            /* Rice White */
+            --glass: transparent;
+            /* SPOTLIGHT THEME: No boxes */
+            --neon-border: #FFB300;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #000;
+            color: var(--text-accent);
+        }
+
+        /* GLOBAL GRID OVERLAY */
+        /* This sits on top of the gradient background to frame the content */
+        .reveal::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 179, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 179, 0, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* TEXT VISIBILITY - Floating Text on Spotlight */
+        .glass-box {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 1);
+            /* Heavy shadow for legibility */
+        }
+
+        .row-container {
+            z-index: 2;
+            /* Above the grid */
+            position: relative;
+        }
+
+        /* CENTER ALIGNMENT FIX (The "Perfect" Logic) */
+        .reveal .slides>section {
+            height: 100%;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            z-index: 2;
+            /* Above the grid */
+        }
+
+        /* LAYOUT COLUMNS */
+        * {
+            box-sizing: border-box;
+        }
+
+        .col-40 {
+            flex: 0 0 40%;
+            max-width: 40%;
+        }
+
+        .col-50 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .col-60 {
+            flex: 0 0 60%;
+            max-width: 60%;
+        }
+
+        .row-container {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap !important;
+            /* Force side-by-side */
+            gap: 20px;
+        }
+
+        /* ATTRIBUTION - 8pt RULE */
+        .attribution {
+            font-size: 8pt !important;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 4px;
+            text-align: right;
+            font-style: italic;
+        }
+
+        /* SEGUE CENTERING FIX */
+        .segue-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* LAYOUT UTILS */
+        .reveal h2 {
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+            font-size: 40pt;
+        }
+
+        /* ANSWER SLIDE GLOW */
+        slide-answer h2 {
+            text-shadow: 0 0 20px var(--primary), 0 0 10px var(--secondary);
+        }
+
+        .answer-key {
+            color: #22c55e !important;
+            font-weight: 800;
+        }
+
+        .gap {
+            display: inline-block;
+            min-width: 100px;
+            border-bottom: 2px solid var(--primary);
+            margin: 0 5px;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        /* COMPONENT OVERRIDES */
+        slide-task .glass-box.centered,
+        slide-answer .glass-box.centered {
+            width: 1000px !important;
+            /* Force wider layout for tasks */
+            max-width: 95vw;
+        }
+
+        /* VOCAB */
+        .phoneme {
+            font-family: 'Courier Prime', monospace;
+            color: var(--primary);
+            font-size: 0.8em;
+            text-transform: lowercase;
+            /* Force lowercase */
+        }
+
+        .thai-text {
+            font-size: 0.8em;
+            color: #999;
+            margin-left: 10px;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- SLIDE 1: TITLE (GOLD STANDARD) -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/pixabay_1514141_rice_rice_terrace_terraces_agriculture_rice_cultivation_bali_indonesia_grain_fie.jpg"
+                            class="inset-media"
+                            style="border: 4px solid var(--primary); box-shadow: 0 0 50px rgba(0,0,0,0.8); max-height:400px;">
+                        <div class="attribution">Image by DaFranzos from Pixabay</div>
+                    </div>
+                    <div class="col-60" style="text-align: left; padding-left: 40px;">
+                        <div
+                            style="background:var(--secondary); color:white; padding:5px 15px; font-weight:800; display:inline-block; font-size:14pt; margin-bottom:20px;">
+                            B1 INTENSIVE READING
+                        </div>
+                        <h1
+                            style="font-size: 65pt; line-height: 0.9; text-transform:uppercase; margin:0; text-shadow: 0 10px 30px black;">
+                            THE FOOD OF<br><span style="color:var(--primary);">INDONESIA</span>
+                        </h1>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 2: SEGUE -->
+            <section data-background-gradient="radial-gradient(circle, #5a0b0b 0%, #1a0101 100%)">
+                <div class="segue-container">
+                    <h1 class="r-fit-text"
+                        style="color:var(--primary); transform: skew(-10deg) rotate(-2deg); text-shadow: 4px 4px 0 var(--secondary);">
+                        PHASE 1:<br>SITUATION & VOCAB
+                    </h1>
+                </div>
+            </section>
+
+            <!-- SLIDE 3: VIDEO LEAD-IN -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <h2 style="margin-bottom: 40px;">THE MARKET STREETS</h2>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%;">
+                    <!-- VIDEO (Full container fill) -->
+                    <div style="border: 2px solid var(--primary); height: 400px; box-shadow: 0 0 30px black;">
+                        <iframe src="https://www.youtube.com/embed/MCOnsoZRUMw" style="width: 100%; height: 100%;"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                            allowfullscreen></iframe>
+                    </div>
+
+                    <!-- QUESTIONS -->
+                    <div class="glass-box" style="align-self: center; text-align: left;">
+                        <h3 style="font-size:24pt; color:var(--primary); margin-bottom:20px;">Observe & Discuss:</h3>
+                        <ul style="font-size: 22pt; line-height: 1.5;">
+                            <li>Which country is this?</li>
+                            <li>Is it 'disgusting'? (Why?)</li>
+                            <li>Why do people eat these?</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 4: VOCAB: DOMESTIC -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <div class="glass-box" style="text-align:center; margin-bottom:40px;">
+                    <span style="font-size:45pt; font-weight:800; text-shadow: 0 5px 20px black;">DOMESTIC</span><br>
+                    <span class="phoneme">/dəˈmes.tɪk/</span>
+                    <span class="thai-text">(ภายในประเทศ)</span>
+                </div>
+
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/pixabay_4692718_satay_chicken_satay_indonesian_sate_spicy_food_delicious_chicken_cuisine_satay_s.jpg"
+                            class="inset-media" style="max-height:350px; box-shadow: 0 0 30px black;">
+                        <div class="attribution">Image by katon765 from Pixabay</div>
+                    </div>
+                    <div class="col-60 glass-box">
+                        <p style="font-size:28pt; margin-bottom:20px;">(adj) Relating to or happening within one
+                            country.</p>
+                        <hr style="border-color:var(--primary); opacity:0.5; width: 50%; margin: 20px 0;">
+                        <p style="font-size:22pt; font-style:italic; color: #ccc;">"Most of the rice is grown for
+                            <strong>domestic</strong> use, not for export."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 5: VOCAB: PRODUCER -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <div class="glass-box" style="text-align:center; margin-bottom:40px;">
+                    <span style="font-size:45pt; font-weight:800; text-shadow: 0 5px 20px black;">PRODUCER</span><br>
+                    <span class="phoneme">/prəˈdʒuː.sər/</span>
+                    <span class="thai-text">(ผู้ผลิต)</span>
+                </div>
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/pixabay_2785512_anise_star_anise_schisandraceae_cinnamon_cinnamon_sticks_cloves_dried_seasoning_.jpg"
+                            class="inset-media" style="max-height:350px; box-shadow: 0 0 30px black;">
+                        <div class="attribution">Image by Pixabay from Pixabay</div>
+                    </div>
+                    <div class="col-60 glass-box">
+                        <p style="font-size:28pt; margin-bottom:20px;">(n) A person or country that makes or grows
+                            something.</p>
+                        <hr style="border-color:var(--primary); opacity:0.5; width: 50%; margin: 20px 0;">
+                        <p style="font-size:22pt; font-style:italic; color: #ccc;">"Indonesia is one of the world's
+                            largest <strong>producers</strong> of palm oil."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 6: VOCAB: URBAN -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <div class="glass-box" style="text-align:center; margin-bottom:40px;">
+                    <span style="font-size:45pt; font-weight:800; text-shadow: 0 5px 20px black;">URBAN</span><br>
+                    <span class="phoneme">/ˈɜː.bən/</span>
+                    <span class="thai-text">(ในเมือง)</span>
+                </div>
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/pixabay_4845108_jakarta_indonesia_night_cityscape_city_skyscraper_architecture_modern_illuminate.jpg"
+                            class="inset-media" style="max-height:350px; box-shadow: 0 0 30px black;">
+                        <div class="attribution">Image by katon765 from Pixabay</div>
+                    </div>
+                    <div class="col-60 glass-box">
+                        <p style="font-size:28pt; margin-bottom:20px;">(adj) Relating to a city or town.</p>
+                        <hr style="border-color:var(--primary); opacity:0.5; width: 50%; margin: 20px 0;">
+                        <p style="font-size:22pt; font-style:italic; color: #ccc;">"Many people are moving from farms to
+                            <strong>urban</strong> areas like Jakarta."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 7: VOCAB: PROCESSED -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <div class="glass-box" style="text-align:center; margin-bottom:40px;">
+                    <span style="font-size:45pt; font-weight:800; text-shadow: 0 5px 20px black;">PROCESSED</span><br>
+                    <span class="phoneme">/ˈprəʊ.sest/</span>
+                    <span class="thai-text">(ที่ผ่านกระบวนการ)</span>
+                </div>
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/pixabay_2589548_girl_woman_people_market_fashion_model_clothing_pushcart_necklace_store_lights_p.jpg"
+                            class="inset-media" style="max-height:350px; box-shadow: 0 0 30px black;">
+                        <div class="attribution">Image by katon765 from Pixabay</div>
+                    </div>
+                    <div class="col-60 glass-box">
+                        <p style="font-size:28pt; margin-bottom:20px;">(adj) Food that has been changed from its natural
+                            state in a factory.</p>
+                        <hr style="border-color:var(--primary); opacity:0.5; width: 50%; margin: 20px 0;">
+                        <p style="font-size:22pt; font-style:italic; color: #ccc;">"Supermarkets sell more
+                            <strong>processed</strong> foods like canned soup."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 8: VOCAB: CHALLENGE -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <div class="glass-box" style="text-align:center; margin-bottom:40px;">
+                    <span style="font-size:45pt; font-weight:800; text-shadow: 0 5px 20px black;">CHALLENGE</span><br>
+                    <span class="phoneme">/ˈtʃæl.ɪndʒ/</span>
+                    <span class="thai-text">(ความท้าทาย)</span>
+                </div>
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/pixabay_2264698_rock_climbing_free_climbing_climbing_man_extreme_sport_adventure_rock_climbing_r.jpg"
+                            class="inset-media" style="max-height:350px; box-shadow: 0 0 30px black;">
+                        <div class="attribution">Image by katon765 from Pixabay</div>
+                    </div>
+                    <div class="col-60 glass-box">
+                        <p style="font-size:28pt; margin-bottom:20px;">(n) Something that needs a lot of effort to be
+                            done successfully.</p>
+                        <hr style="border-color:var(--primary); opacity:0.5; width: 50%; margin: 20px 0;">
+                        <p style="font-size:22pt; font-style:italic; color: #ccc;">"The increasing population is a major
+                            <strong>challenge</strong> for the food industry."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 9: SEGUE -->
+            <section data-background-gradient="radial-gradient(circle, #5a0b0b 0%, #1a0101 100%)">
+                <div class="segue-container">
+                    <h1 class="r-fit-text"
+                        style="color:var(--primary); transform: skew(-10deg) rotate(-2deg); text-shadow: 4px 4px 0 var(--secondary);">
+                        PHASE 2:<br>CORE ANALYSIS
+                    </h1>
+                </div>
+            </section>
+
+            <!-- SLIDE 10: TASK 1 (Prediction) -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <slide-split title="PREDICTION" badge="TASK 1" timer="3">
+                    <img src="images/pixabay_1514141_rice_rice_terrace_terraces_agriculture_rice_cultivation_bali_indonesia_grain_fie.jpg"
+                        class="inset-media">
+                    <div class="attribution">Image by DaFranzos from Pixabay</div>
+                    <div class="glass-box">
+                        <p class="text-md">Recall the "Market Footage" from Phase 1.</p>
+                        <p class="text-sm"><strong>Question:</strong> What is the purpose of this text?</p>
+                        <ul class="text-xs">
+                            <li>A. To give an overview of the industry.</li>
+                            <li>B. To compare with the rest of the world.</li>
+                        </ul>
+                    </div>
+                </slide-split>
+            </section>
+
+            <!-- SLIDE 11: ANSWER 1 -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="ANSWER: TASK 1">
+                    <div class="glass-box" style="width: 800px; margin: 0 auto;">
+                        <p class="text-md answer-key">Option A: To give an overview of the Indonesian food industry.</p>
+                        <p class="text-sm">The text covers history, exports, urban diets, and future challenges—a
+                            complete industry profile.</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <!-- SLIDE 12: TASK 2.1 (Skim - GRID FIX) -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <slide-task title="THE SKIM CHECKLIST" badge="TASK 2.1" timer="5">
+                    <p class="text-sm" style="text-align:center; margin-bottom:40px;"><strong>Skim the text. Which items
+                            are mentioned?</strong></p>
+
+                    <!-- NEW GRID LAYOUT FOR CHECKLIST -->
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; font-size: 24pt; text-align: left;">
+                        <div>☐ challenges in the past</div>
+                        <div>☐ changes to jobs</div>
+                        <div>☐ challenges today</div>
+                        <div>☐ local dishes</div>
+                        <div>☐ changes to diet/shopping</div>
+                        <div>☐ money for farmers</div>
+                        <div>☐ plants and crops</div>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- SLIDE 13: ANSWER 2.1 -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="ANSWER: TASK 2.1">
+                    <div class="glass-box" style="width: 800px; margin: 0 auto;">
+                        <ul class="text-sm" style="list-style: none;">
+                            <li>✅ challenges today <span style="font-size:0.7em; opacity:0.7;">(Para 5)</span></li>
+                            <li>✅ local dishes <span style="font-size:0.7em; opacity:0.7;">(Para 3)</span></li>
+                            <li>✅ changes to diet/shopping <span style="font-size:0.7em; opacity:0.7;">(Para 4)</span>
+                            </li>
+                            <li>✅ plants and crops <span style="font-size:0.7em; opacity:0.7;">(Para 1-2)</span></li>
+                            <li>✅ changes to jobs <span style="font-size:0.7em; opacity:0.7;">(Para 1)</span></li>
+                        </ul>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <!-- SLIDE 14: TASK 2.2 (Summary - Start) -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
+                <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" timer="6" data-id="summary-slide">
+                    <!-- Adjusted width to prevent wrapping issues -->
+                    <div data-id="summary-content" style="width:1000px; text-align: left;">
+                        <p class="text-sm" style="line-height: 1.8;">
+                            Indonesia has rain/sunshine and produces different ¹ <span class="gap"
+                                data-id="gap-1"></span>. These influence the food and herbs/spices are used in ² <span
+                                class="gap" data-id="gap-2"></span>.<br><br>
+                            However, ³ <span class="gap" data-id="gap-3"></span> and ⁴ <span class="gap"
+                                data-id="gap-4"></span> habits are changing. Today people eat more processed foods.
+                        </p>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- SLIDE 15: ANSWER 2.2 (Gap 1) -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
+                <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" data-id="summary-slide">
+                    <div data-id="summary-content" style="width:1000px; text-align: left;">
+                        <p class="text-sm" style="line-height: 1.8;">
+                            Indonesia has rain/sunshine and produces different ¹ <span class="gap answer-key"
+                                data-id="gap-1">plants / crops</span>. These influence the food and herbs/spices are
+                            used in ² <span class="gap" data-id="gap-2"></span>.<br><br>
+                            However, ³ <span class="gap" data-id="gap-3"></span> and ⁴ <span class="gap"
+                                data-id="gap-4"></span> habits are changing. Today people eat more processed foods.
+                        </p>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- SLIDE 16: ANSWER 2.2 (Gap 2) -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
+                <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" data-id="summary-slide">
+                    <div data-id="summary-content" style="width:1000px; text-align: left;">
+                        <p class="text-sm" style="line-height: 1.8;">
+                            Indonesia has rain/sunshine and produces different ¹ <span class="gap answer-key"
+                                data-id="gap-1">plants / crops</span>. These influence the food and herbs/spices are
+                            used in ² <span class="gap answer-key" data-id="gap-2">local dishes /
+                                cooking</span>.<br><br>
+                            However, ³ <span class="gap" data-id="gap-3"></span> and ⁴ <span class="gap"
+                                data-id="gap-4"></span> habits are changing. Today people eat more processed foods.
+                        </p>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- SLIDE 17: ANSWER 2.2 (Gap 3 & 4) -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
+                <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" data-id="summary-slide">
+                    <div data-id="summary-content" style="width:1000px; text-align: left;">
+                        <p class="text-sm" style="line-height: 1.8;">
+                            Indonesia has rain/sunshine and produces different ¹ <span class="gap answer-key"
+                                data-id="gap-1">plants / crops</span>. These influence the food and herbs/spices are
+                            used in ² <span class="gap answer-key" data-id="gap-2">local dishes /
+                                cooking</span>.<br><br>
+                            However, ³ <span class="gap answer-key" data-id="gap-3">diet / dietary</span> and ⁴ <span
+                                class="gap answer-key" data-id="gap-4">shopping</span> habits are changing. Today people
+                            eat more processed foods.
+                        </p>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- SLIDE 18: ANSWER 2.2 (Gap 5 & 6) -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)" data-auto-animate>
+                <slide-task title="INDUSTRY SUMMARY" badge="TASK 2.2" data-id="summary-slide">
+                    <div data-id="summary-content" style="width:1000px; text-align: left;">
+                        <p class="text-sm" style="line-height: 1.8;">
+                            ... One of the main ⁵ <span class="gap answer-key" data-id="gap-5">challenges</span> for the
+                            food industry ⁶ <span class="gap answer-key" data-id="gap-6">today</span> is the increasing
+                            population. It means more foods have to be imported.
+                        </p>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- SLIDE 19: PHASE 3 SEGUE -->
+            <section data-background-gradient="radial-gradient(circle, #5a0b0b 0%, #1a0101 100%)">
+                <div class="segue-container">
+                    <h1 class="r-fit-text"
+                        style="color:var(--primary); transform: skew(-10deg) rotate(-2deg); text-shadow: 4px 4px 0 var(--secondary);">
+                        PHASE 3:<br>EVALUATION
+                    </h1>
+                </div>
+            </section>
+
+            <!-- STRATEGY SLIDE: T/F/NG -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <slide-task title="STRATEGY: T / F / NG" badge="CRITICAL SKILL">
+                    <div class="row-container" style="align-items: center; gap: 60px;">
+                        <!-- LEFT: DEFINITIONS -->
+                        <div class="col-60" style="text-align: left;">
+                            <div
+                                style="display: grid; grid-template-columns: 200px 1fr; gap: 10px; align-items: center; margin-bottom: 40px;">
+                                <h3 style="color: #22c55e; margin:0; text-align:right;">TRUE</h3>
+                                <p class="text-sm" style="margin:0; line-height: 1.2;">The text says the
+                                    <strong>same</strong> thing.<br><span
+                                        style="font-size:0.7em; opacity:0.7;">(Synonyms/Paraphrase)</span>
+                                </p>
+                            </div>
+                            <div
+                                style="display: grid; grid-template-columns: 200px 1fr; gap: 10px; align-items: center; margin-bottom: 40px;">
+                                <h3 style="color: #ef4444; margin:0; text-align:right;">FALSE</h3>
+                                <p class="text-sm" style="margin:0; line-height: 1.2;">The text says the
+                                    <strong>opposite</strong>.<br><span
+                                        style="font-size:0.7em; opacity:0.7;">(Contradiction)</span>
+                                </p>
+                            </div>
+                            <div
+                                style="display: grid; grid-template-columns: 200px 1fr; gap: 10px; align-items: center;">
+                                <h3 style="color: #ecc94b; margin:0; text-align:right;">NG</h3>
+                                <p class="text-sm" style="margin:0; line-height: 1.2;">The text <strong>does not
+                                        say</strong> yes or no.<br><span
+                                        style="font-size:0.7em; opacity:0.7;">(Unknown)</span></p>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT: EXAMPLE BOX -->
+                        <div class="col-40" style="display: flex; flex-direction: column; justify-content: center;">
+                            <div
+                                style="border: 2px dashed var(--primary); background: rgba(255, 179, 0, 0.05); padding: 25px; border-radius: 15px; text-align: center;">
+                                <p class="text-sm" style="margin: 0; color: white; line-height: 1.4;">
+                                    <strong style="color:var(--primary); font-size:1.1em;">EXAMPLE</strong>
+                                    <hr style="border-color:#444; margin: 10px 0;">
+                                    <span style="color: #999;">Text:</span> "Rice is popular."<br>
+                                    <span style="color: #999;">Q:</span> "Everyone eats rice."<br>
+                                    <br>
+                                    <strong style="color: #ecc94b; font-size: 1.4em;">NOT GIVEN</strong><br>
+                                    <span style="font-size: 0.7em; font-style:italic;">(Popular ≠ Everyone)</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- SLIDE 20: TASK 3 (T/F/NG) -->
+            <section data-background-gradient="radial-gradient(circle, #2d3436 0%, #000000 100%)">
+                <slide-task title="DETAIL CHECK (T/F/NG)" badge="TASK 3" timer="8">
+                    <div style="text-align: left; width: 100%;">
+                        <ul class="text-xs" style="list-style: none;">
+                            <li>1. Very few people now work in farming? <span class="gap"></span></li>
+                            <li>2. Indonesia does not produce any meat? <span class="gap"></span></li>
+                            <li>3. Herbs/Spices are new in cooking? <span class="gap"></span></li>
+                            <li>4. People now eat more processed foods? <span class="gap"></span></li>
+                            <li>5. Can produce all rice/sugar it needs? <span class="gap"></span></li>
+                        </ul>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- ANSWER 1 -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="ANSWER 1">
+                    <div style="width: 900px; margin: 0 auto; text-align: left;">
+                        <p class="text-md">1. Very few people now work in farming?</p>
+                        <p class="text-lg answer-key" style="margin: 20px 0;">FALSE</p>
+                        <hr style="opacity: 0.3;">
+                        <p class="text-sm" style="font-style: italic; color: #ccc;">"Agriculture is still the main
+                            employer in many rural areas..."</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <!-- ANSWER 2 -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="ANSWER 2">
+                    <div style="width: 900px; margin: 0 auto; text-align: left;">
+                        <p class="text-md">2. Indonesia does not produce any meat?</p>
+                        <p class="text-lg answer-key" style="margin: 20px 0; color: #ecc94b !important;">NOT GIVEN</p>
+                        <hr style="opacity: 0.3;">
+                        <p class="text-sm" style="font-style: italic; color: #ccc;">The text lists plants and crops, but
+                            does not mention whether meat is produced or not.</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <!-- ANSWER 3 -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="ANSWER 3">
+                    <div style="width: 900px; margin: 0 auto; text-align: left;">
+                        <p class="text-md">3. Herbs/Spices are new in cooking?</p>
+                        <p class="text-lg answer-key" style="margin: 20px 0;">FALSE</p>
+                        <hr style="opacity: 0.3;">
+                        <p class="text-sm" style="font-style: italic; color: #ccc;">"Known as the Spice Islands...
+                            influence on food and cooking [historically]."</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <!-- ANSWER 4 -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="ANSWER 4">
+                    <div style="width: 900px; margin: 0 auto; text-align: left;">
+                        <p class="text-md">4. People now eat more processed foods?</p>
+                        <p class="text-lg answer-key" style="margin: 20px 0;">TRUE</p>
+                        <hr style="opacity: 0.3;">
+                        <p class="text-sm" style="font-style: italic; color: #ccc;">"...diet and shopping habits are
+                            changing. Today people eat more processed foods."</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <!-- ANSWER 5 -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="ANSWER 5">
+                    <div style="width: 900px; margin: 0 auto; text-align: left;">
+                        <p class="text-md">5. Can produce all rice/sugar it needs?</p>
+                        <p class="text-lg answer-key" style="margin: 20px 0;">FALSE</p>
+                        <hr style="opacity: 0.3;">
+                        <p class="text-sm" style="font-style: italic; color: #ccc;">"It implies more foods have to be
+                            imported [to meet demand due to population]."</p>
+                    </div>
+                </slide-answer>
+            </section>
+
+            <!-- SLIDE 22: TASK 4 (Discussion) -->
+            <section data-background-color="var(--secondary)">
+                <slide-task title="STRATEGIC EVALUATION" badge="TASK 4" timer="10">
+                    <div style="text-align: left; width: 100%;">
+                        <ol class="text-md" style="margin-left: 40px; line-height:1.2;">
+                            <li style="margin-bottom:20px;">What changes in diet have there been in Indonesia? Have you
+                                had similar changes in your country?</li>
+                            <li>Why do you think people eat more processed foods today? What health problems might it
+                                cause?</li>
+                        </ol>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- SLIDE 23: FINAL MISSION -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-split title="MISSION COMPLETE" badge="GOAL ACHIEVED">
+                    <img src="images/pixabay_4845108_jakarta_indonesia_night_cityscape_city_skyscraper_architecture_modern_illuminate.jpg"
+                        class="inset-media">
+                    <div class="glass-box">
+                        <p class="text-lg">Intensive Analysis Complete.</p>
+                        <p class="text-md">You have mastered the industry landscape of the Indonesian Archipelago.</p>
+                    </div>
+                </slide-split>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script>
+        Reveal.initialize({
+            width: 960, height: 700, margin: 0.1,
+            transition: 'convex',
+            center: true, hash: true,
+            autoAnimateDuration: 1.2,
+            autoAnimateEasing: 'ease-in-out',
+            plugins: [RevealNotes]
+        });
+    </script>
+</body>
+
+</html>

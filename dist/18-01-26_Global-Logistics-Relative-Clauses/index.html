@@ -1,0 +1,1006 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Global Logistics: Relative Clauses</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+
+    <!-- GOLD STANDARD FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+
+    <!-- MODULAR CARD SYSTEM (INLINED FOR RELIABILITY) -->
+    <script>
+        /**
+         * Modular Slide Card System for Reveal.js
+         * Enforces strict layout boundaries to prevent content overflow ("explosions").
+         */
+
+        // Global Sound Effects (Singleton)
+        const AudioFX = {
+            blip: new Audio('audio/blip.mp3'),       // Seconds tick
+            bell: new Audio('audio/bell.mp3'),       // Timer end
+            warning: new Audio('audio/30-seconds.mp3'), // 30-second warning
+            init: function () {
+                this.blip.load();
+                this.bell.load();
+                this.warning.load();
+            }
+        };
+
+        // Initialize Audio on user interaction (first click)
+        document.addEventListener('click', () => AudioFX.init(), { once: true });
+
+        // Shared Styles Registry - GOLD STANDARD LAYOUT PATTERNS
+        const COMPONENT_STYLES = `
+            /* ============================================
+               CUSTOM ELEMENT DISPLAY FIX
+               ============================================ */
+            slide-segue, slide-task, slide-answer, slide-split, slide-media {
+                display: block;
+                width: 100%;
+            }
+
+            .slide-canvas {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            /* ============================================
+               THEME TOKENS (Override in presentation CSS)
+               ============================================ */
+            :root {
+                /* Colors - Cyber-Gamer Palette (Override per-project in PALETTES.md) */
+                --primary: #00F2FF;      /* Cyan */
+                --secondary: #ff0055;    /* Maroon/Pink (for shadows) */
+                --bg-dark: #050811;      /* Deep navy */
+                --glass: rgba(10, 10, 20, 0.95);
+                --text-primary: white;
+                --text-accent: #FFD700;  /* Gold */
+                
+                /* Layout Constants - DO NOT CHANGE */
+                --container-width: 900px;
+                --gap: 40px;
+                --box-padding: 25px;
+                --border-width: 2px;
+                
+                /* Functional Colors */
+                --danger: #ef4444;
+            }
+
+            /* ============================================
+               TYPOGRAPHY (Gold Standard Sizes)
+               ============================================ */
+            .reveal h1, .reveal h2, .reveal h3 {
+                text-transform: uppercase;
+                font-weight: 800;
+                margin: 0 0 20px 0;
+            }
+            
+            .reveal h2 { 
+                color: white !important; /* RULE: Headers must contrast with slide background */
+                font-size: 1.6em !important;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.5);
+            }
+            .reveal h3 { 
+                color: var(--text-accent); 
+                font-size: 1.2em !important; /* Prevent overflow */
+            }
+
+            /* Body text: Readable sizes for classroom projection */
+            .text-lg { font-size: 32px !important; }
+            .text-md { font-size: 28px !important; }
+            .text-sm { font-size: 24px !important; }
+            .text-xs { font-size: 22px !important; }
+
+            /* ============================================
+               LAYOUT SYSTEM (Gold Standard)
+               ============================================ */
+            
+            /* Slide Canvas - Simple centering wrapper */
+            .slide-canvas {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Row Container - THE key layout primitive */
+            .row-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap; /* CRITICAL: Do not wrap for title slides */
+                justify-content: center;
+                align-items: center;
+                gap: var(--gap);
+                width: var(--container-width);
+                max-width: 100%;
+            }
+
+            /* Column System - Explicit flex basis */
+            .col-40 { flex: 0 0 40%; max-width: 40%; }
+            .col-50 { flex: 0 0 50%; max-width: 50%; }
+            .col-60 { flex: 0 0 60%; max-width: 60%; }
+
+            /* ============================================
+               COMPONENTS (Gold Standard Patterns)
+               ============================================ */
+            
+            /* Glass Box - Content container */
+            .glass-box {
+                background: var(--glass);
+                border: var(--border-width) solid var(--primary);
+                padding: var(--box-padding);
+                box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+                text-align: left;
+            }
+            
+            /* Centered box variant */
+            .glass-box.centered {
+                width: 800px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            /* Stage Badge - Skewed cyber pill */
+            .stage-badge {
+                background: var(--primary);
+                color: black;
+                padding: 5px 15px;
+                font-weight: 800;
+                transform: skew(-10deg);
+                display: inline-block;
+                margin-bottom: 20px;
+                font-size: 0.6em;
+            }
+
+            /* Header Strap - Position indicator */
+            .header-strap {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                background: rgba(5, 8, 17, 0.9);
+                border: 1px solid var(--primary);
+                border-radius: 50px;
+                padding: 8px 25px;
+                font-family: 'Courier Prime', monospace;
+                font-weight: 700;
+                letter-spacing: 2px;
+                font-size: 14px;
+                color: var(--primary);
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+                z-index: 10;
+            }
+
+            /* Teacher Tip */
+            .teacher-tip {
+                border: 2px dashed var(--secondary);
+                background: black;
+                padding: 15px;
+                margin-top: 15px;
+                font-size: 0.7em;
+                color: white;
+            }
+
+            /* ============================================
+               MEDIA HANDLING (Safe Constraints)
+               ============================================ */
+            .constrained-media {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+            }
+
+            .inset-media {
+                max-height: 400px;
+                max-width: 100%;
+                border: 3px solid var(--primary);
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            }
+
+            /* 16:9 Video Container */
+            .video-wrapper {
+                position: relative;
+                padding-bottom: 56.25%;
+                height: 0;
+                overflow: hidden;
+                border: 2px solid var(--primary);
+            }
+            .video-wrapper iframe {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+            }
+
+            /* ============================================
+               TITLE SLIDE (Gold Standard Style)
+               ============================================ */
+            .title-main-header {
+                font-size: 80px !important;
+                color: white !important;
+                text-shadow: 6px 6px 0px var(--secondary);
+                line-height: 1;
+                margin-bottom: 30px !important;
+                text-align: left;
+            }
+            .title-subtitle {
+                margin: 0 !important;
+                text-align: left;
+            }
+            .title-subtitle span {
+                background: var(--secondary);
+                color: white;
+                padding: 5px 20px;
+                font-weight: 800;
+                transform: skew(-10deg);
+                display: inline-block;
+                font-size: 1.1em;
+            }
+            .title-logo-top {
+                position: absolute;
+                top: 30px;
+                left: 30px;
+                height: 80px;
+                z-index: 10;
+            }
+
+            /* ============================================
+               SEGUE TITLE (Gold Standard Style)
+               ============================================ */
+            .segue-title {
+                line-height: 1.1;
+                color: var(--text-accent);
+                text-transform: uppercase;
+                transform: rotate(-3deg) skew(-10deg);
+                text-shadow: 6px 6px 0px var(--secondary), 0 0 20px var(--primary);
+                margin: 0;
+                padding: 20px;
+                position: relative;
+                z-index: 2;
+            }
+
+            /* ============================================
+               TIMER (Monospace Display)
+               ============================================ */
+            .timer-pill {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                background: rgba(0, 0, 0, 0.5);
+                border: 1px solid var(--primary);
+                padding: 10px 20px;
+                margin-top: 20px;
+            }
+            .timer-display {
+                font-family: 'Courier Prime', monospace;
+                font-size: 2em;
+                color: white;
+                min-width: 100px;
+                text-align: center;
+            }
+            .start-btn {
+                background: var(--primary);
+                color: black;
+                border: none;
+                padding: 10px 20px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            .start-btn.pause { background: var(--secondary); color: white; }
+            .start-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+            /* ============================================
+               UTILITY CLASSES
+               ============================================ */
+            .highlight { color: var(--text-accent); font-weight: 800; }
+            .mt-20 { margin-top: 20px; }
+            .mt-40 { margin-top: 40px; }
+            .text-center { text-align: center; }
+            .text-left { text-align: left; }
+        `;
+
+        // Inject Styles
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = COMPONENT_STYLES;
+        document.head.appendChild(styleSheet);
+
+
+        // --- COMPONENTS ---
+
+        /**
+         * <slide-title title="" badge="" subtitle="">
+         * Gold Standard Title Slide: 40% Image (rotated/glow) + 60% Text (Badge, Title, Subtitle).
+         */
+        class SlideTitle extends HTMLElement {
+            connectedCallback() {
+                requestAnimationFrame(() => {
+                    const title = this.getAttribute('title') || 'TITLE';
+                    const badge = this.getAttribute('badge') || '';
+                    const subtitle = this.getAttribute('subtitle') || '';
+
+                    // Capture image
+                    const img = this.querySelector('img');
+                    const imgHTML = img ? img.outerHTML : '';
+
+                    this.innerHTML = `
+                        <div class="row-container" style="height: 500px;">
+                            <div class="col-40" style="display: flex; justify-content: center; align-items: center;">
+                                ${imgHTML}
+                            </div>
+                            <div class="col-60" style="text-align: left; padding-left: 20px;">
+                                <div class="stage-badge">${badge}</div>
+                                <h1 class="title-main-header">${title}</h1>
+                                ${subtitle ? `<p class="title-subtitle"><span>${subtitle}</span></p>` : ''}
+                            </div>
+                        </div>
+                    `;
+
+                    // Style the hero image
+                    const newImg = this.querySelector('.col-40 img');
+                    if (newImg) {
+                        newImg.style.maxHeight = '400px';
+                        newImg.style.transform = 'rotate(-2deg)';
+                        newImg.style.border = '3px solid var(--primary)';
+                        newImg.style.boxShadow = '0 0 30px rgba(0, 0, 0, 0.5)';
+                        newImg.classList.add('constrained-media');
+                    }
+                    if (window.Reveal) Reveal.layout();
+                });
+            }
+        }
+
+        /**
+         * <slide-segue title="">
+         * Full screen segue slide with rotated title (Gold Standard Pattern)
+         */
+        class SlideSegue extends HTMLElement {
+            connectedCallback() {
+                requestAnimationFrame(() => {
+                    const title = this.getAttribute('title') || 'SEGUE';
+                    this.innerHTML = `
+                        <div class="slide-canvas">
+                            <h1 class="segue-title" style="font-size: 80px !important; text-shadow: 6px 6px 0px var(--secondary), 0 0 20px var(--primary) !important;">${title}</h1>
+                        </div>
+                    `;
+                    if (window.Reveal) Reveal.layout();
+                });
+            }
+        }
+
+        /**
+         * <slide-task title="" timer="5">
+         * Task slide with stage badge, title, and optional timer
+         * Gold Standard: Automatically wraps content in a centered glass-box.
+         */
+        class SlideTask extends HTMLElement {
+            connectedCallback() {
+                requestAnimationFrame(() => this._render());
+            }
+            _render() {
+                const title = this.getAttribute('title') || 'TASK';
+                const badge = this.getAttribute('badge') || '';
+                const duration = this.getAttribute('timer');
+                const content = this.innerHTML;
+
+                this.innerHTML = `
+                    <div class="slide-canvas">
+                        ${badge ? `<div class="stage-badge">${badge}</div>` : ''}
+                        <h2>${title}</h2>
+                        <div class="glass-box centered">
+                            ${content}
+                        </div>
+                        ${duration ? `<timer-pill duration="${duration}"></timer-pill>` : ''}
+                    </div>
+                `;
+            }
+        }
+
+        /**
+         * <slide-answer title="">
+         * Answer slide with themed title and auto glass-box
+         */
+        class SlideAnswer extends HTMLElement {
+            connectedCallback() {
+                requestAnimationFrame(() => this._render());
+            }
+            _render() {
+                const title = this.getAttribute('title') || 'ANSWER';
+                const content = this.innerHTML;
+
+                this.innerHTML = `
+                    <div class="slide-canvas">
+                        <h2 style="color: var(--primary);">${title}</h2>
+                        <div class="glass-box centered" style="border-color: var(--primary);">
+                            ${content}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        /**
+         * <slide-split title="">
+         * 2-Column Layout using row-container + col-XX
+         * Gold Standard: Image on left, Text in glass-box on right.
+         */
+        class SlideSplit extends HTMLElement {
+            connectedCallback() {
+                requestAnimationFrame(() => this._render());
+            }
+            _render() {
+                const title = this.getAttribute('title') || '';
+                const badge = this.getAttribute('badge') || '';
+
+                // Robust extraction: Clone children, find img, then get remaining
+                const container = document.createElement('div');
+                container.innerHTML = this.innerHTML;
+                const img = container.querySelector('img');
+                const imgHTML = img ? img.outerHTML : '';
+                if (img) img.remove();
+                const contentHTML = container.innerHTML;
+
+                this.innerHTML = `
+                    <div class="slide-canvas">
+                        ${badge ? `<div class="stage-badge">${badge}</div>` : ''}
+                        ${title ? `<h2>${title}</h2>` : ''}
+                        <div class="row-container" style="align-items: center;">
+                            <div class="col-40">
+                                ${imgHTML}
+                            </div>
+                            <div class="col-60 glass-box">
+                                ${contentHTML}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Apply constrained-media class to img
+                const newImg = this.querySelector('img');
+                if (newImg) {
+                    newImg.classList.add('constrained-media');
+                    newImg.style.maxHeight = '450px';
+                }
+            }
+        }
+
+        /**
+         * <slide-media title="" type="video|audio" src="">
+         * Media wrapper with proper aspect ratio handling (Gold Standard Pattern)
+         */
+        class SlideMedia extends HTMLElement {
+            connectedCallback() {
+                const title = this.getAttribute('title') || 'MEDIA';
+                const type = this.getAttribute('type') || 'video';
+                const src = this.getAttribute('src');
+
+                let mediaHTML = '';
+                if (type === 'video') {
+                    // Use 16:9 video-wrapper for YouTube embeds
+                    if (src.includes('youtube') || src.includes('youtu.be')) {
+                        mediaHTML = `
+                            <div class="video-wrapper">
+                                <iframe src="${src}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        `;
+                    } else {
+                        mediaHTML = `<video controls src="${src}" class="constrained-media" style="max-height: 450px;"></video>`;
+                    }
+                } else if (type === 'audio') {
+                    mediaHTML = `
+                        <div class="glass-box" style="padding: 40px; text-align: center;">
+                            <div style="font-size: 60pt; margin-bottom: 20px;">🎵</div>
+                            <audio controls src="${src}" style="width: 500px;"></audio>
+                        </div>
+                    `;
+                }
+
+                this.innerHTML = `
+                    <h2>${title}</h2>
+                    <div style="width: 800px; margin-top: 20px;">
+                        ${mediaHTML}
+                    </div>
+                `;
+            }
+        }
+
+        /**
+         * <timer-pill duration="5">
+         * Interactive Timer Component
+         */
+        class TimerPill extends HTMLElement {
+            constructor() {
+                super();
+                this.duration = parseInt(this.getAttribute('duration')) || 5;
+                this.timeLeft = this.duration * 60;
+                this.timer = null;
+            }
+
+            connectedCallback() {
+                this.innerHTML = `
+                    <div class="timer-pill">
+                        <div class="timer-display">${this.formatTime(this.timeLeft)}</div>
+                        <button class="start-btn">START</button>
+                    </div>
+                `;
+
+                this.btn = this.querySelector('.start-btn');
+                this.display = this.querySelector('.timer-display');
+                this.pill = this.querySelector('.timer-pill');
+
+                this.btn.onclick = (e) => {
+                    e.stopPropagation(); // Prevent reveal.js nav
+                    this.toggle();
+                };
+            }
+
+            formatTime(seconds) {
+                const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+                const s = (seconds % 60).toString().padStart(2, '0');
+                return `${m}:${s} `;
+            }
+
+            updateDisplay() {
+                this.display.textContent = this.formatTime(this.timeLeft);
+            }
+
+            toggle() {
+                // Initialize Audio context if needed
+                AudioFX.init();
+
+                if (this.timer) {
+                    // PAUSE
+                    clearInterval(this.timer);
+                    this.timer = null;
+                    this.btn.textContent = 'RESUME';
+                    this.btn.classList.remove('pause');
+                } else {
+                    // START
+                    this.btn.textContent = 'PAUSE';
+                    this.btn.classList.add('pause');
+                    AudioFX.blip.play().catch(e => console.log("Audio play failed", e)); // Start blip
+
+                    this.timer = setInterval(() => {
+                        if (this.timeLeft > 0) {
+                            this.timeLeft--;
+                            this.updateDisplay();
+
+                            // Audio Triggers
+                            if (this.timeLeft === 30) {
+                                AudioFX.warning.play().catch(e => console.error(e));
+                            }
+
+                            // Blip on every second in last 10 seconds
+                            if (this.timeLeft < 10 && this.timeLeft > 0) {
+                                AudioFX.blip.play().catch(() => { });
+                            }
+
+                        } else {
+                            // FINISH
+                            clearInterval(this.timer);
+                            this.timer = null;
+                            this.pill.style.borderColor = 'var(--danger)';
+                            this.display.style.color = 'var(--danger)';
+                            this.btn.textContent = 'DONE';
+                            this.btn.disabled = true;
+                            AudioFX.bell.play().catch(e => console.error(e));
+                        }
+                    }, 1000);
+                }
+            }
+        }
+
+        // Register Components
+        customElements.define('slide-title', SlideTitle);
+        customElements.define('slide-segue', SlideSegue);
+        customElements.define('slide-task', SlideTask);
+        customElements.define('slide-answer', SlideAnswer);
+        customElements.define('slide-split', SlideSplit);
+        customElements.define('slide-media', SlideMedia);
+        customElements.define('timer-pill', TimerPill);
+
+        console.log('✅ Modular Slide Components Loaded (INLINED)');
+    </script>
+
+    <style>
+        :root {
+            /* Palette #5: Blue Grey Steel (Corporate, Neutral) */
+            --primary: #78909C;
+            --secondary: #90A4AE;
+            --bg-dark: #263238;
+            --text-accent: #FFFFFF;
+            --glass: rgba(38, 50, 56, 0.95);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+        }
+
+        .reveal {
+            font-family: 'Outfit', sans-serif;
+            color: white;
+        }
+
+        /* Helper for specific highlights */
+        .highlight {
+            color: var(--text-accent);
+            font-weight: 800;
+        }
+
+        /* Large decorative symbols */
+        .dec-symbol {
+            font-size: 60pt !important;
+            color: var(--primary);
+            font-weight: 800;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- SLIDE 1: TITLE -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.2">
+                <slide-title title="GLOBAL<br>LOGISTICS" badge="B1: CORE GRAMMAR" subtitle="RELATIVE CLAUSES">
+                    <img src="images/container_ship.jpg">
+                </slide-title>
+                <aside class="notes">
+                    **Advice**: Welcome the class with high energy. Check that everyone can see the screen.
+                    **Next**: The "Why are we here?" motivation slide (CEFR Ladder).
+                </aside>
+            </section>
+
+            <!-- PHASE 1 -->
+            <section data-background-gradient="radial-gradient(circle, #1a1a2e 0%, #0f0f1a 100%)">
+                <slide-segue title="PHASE 1: FOUNDATIONS"></slide-segue>
+            </section>
+
+            <!-- SLIDE 2: MOTIVATION -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <slide-split title="THE B1 GATEWAY" badge="CONTEXT">
+                    <img src="presentation-images/cefr_university_hierarchy.png">
+                    <p>Using and controlling relative clauses will send you to <span
+                            class="highlight">university</span>.</p>
+                    <p class="highlight text-small mt-20">ACHIEVING B2+ PROFICIENCY</p>
+                </slide-split>
+                <aside class="notes">
+                    **Advice**: Point to the "cutoff" line. Explain that B1 is the gateway to academic success.
+                    **Next**: The Context slide (Global Logistics Map).
+                </aside>
+            </section>
+
+            <!-- SLIDE 3: CONTEXT -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <slide-split title="SOURCE & DESTINATION">
+                    <img src="images/global_map_vector.jpg">
+                    <h3 class="highlight">THE LOGISTICS JOURNEY</h3>
+                    <ul style="margin-top: 30px;" class="text-sm">
+                        <li><strong>Global Supply:</strong> Where it starts.</li>
+                        <li><strong>Local Access:</strong> Where you buy it.</li>
+                    </ul>
+                    <p class="mt-40 text-center text-sm">"Where does your food come from?"</p>
+                </slide-split>
+                <aside class="notes">
+                    **Advice**: Ask the class the question. Elicit specific countries (e.g. "Rice from Thailand").
+                    **Next**: Phase 2 Segue (Analysis).
+                </aside>
+            </section>
+
+            <!-- PHASE 2 -->
+            <section data-background-gradient="radial-gradient(circle, #1a1a2e 0%, #0f0f1a 100%)">
+                <slide-segue title="PHASE 2: ANALYSIS"></slide-segue>
+            </section>
+
+            <!-- SLIDE 4: LEAD-IN -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <slide-task title="THE LOGISTICS LINK" badge="LEAD-IN">
+                    <div class="row-container">
+                        <div class="text-center">
+                            <p class="text-xs">DATA A</p>
+                            <p class="highlight">"I like pizza."</p>
+                        </div>
+                        <div class="dec-symbol">+</div>
+                        <div class="text-center">
+                            <p class="text-xs">DATA B</p>
+                            <p class="highlight">"Pizza is Italian."</p>
+                        </div>
+                    </div>
+                    <div class="dec-symbol text-center mt-20">⬇</div>
+                    <div class="text-center mt-20">
+                        <p class="text-md">"I like pizza, <span class="highlight">which</span> is Italian."</p>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- SLIDE 5: MEANING -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <slide-task title="DEFINING VS NON-DEFINING" badge="MEANING">
+                    <div class="row-container">
+                        <div style="flex: 1;">
+                            <h3 class="highlight">DEFINING</h3>
+                            <p class="text-sm">"Farmers <span class="highlight">who</span> sell locally earn more."</p>
+                            <div class="teacher-tip">Essential: Tells us which farmers.</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3>NON-DEFINING</h3>
+                            <p class="text-sm">"Pomegranates, <span class="highlight">which</span> are delicious..."</p>
+                            <div class="teacher-tip">Extra: High-level detail, optional.</div>
+                        </div>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- SLIDE 6: FORM -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <slide-task title="THE PRONOUN MANIFEST" badge="FORM">
+                    <p class="text-md"><span class="highlight">WHO</span> &rarr; PEOPLE 👤</p>
+                    <p class="mt-20 text-md"><span class="highlight">WHICH / THAT</span> &rarr; THINGS 📦</p>
+                    <p class="mt-20 text-md"><span class="highlight">WHERE</span> &rarr; PLACES 📍</p>
+                </slide-task>
+            </section>
+
+            <!-- SLIDE 6.5: THE THAT RULE -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <slide-task title="THE 'THAT' RULE" badge="GRAMMAR ALERT">
+                    <div class="row-container">
+                        <div style="flex: 1;">
+                            <h3 class="highlight">DEFINING</h3>
+                            <p class="text-sm">"The car <span class="highlight">which/that</span> I bought..."</p>
+                            <div class="teacher-tip">Both correct!</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: var(--secondary);">NON-DEFINING</h3>
+                            <p class="text-sm">"The car, <span style="text-decoration: line-through;">that</span> I
+                                bought..."</p>
+                            <div class="teacher-tip">FORBIDDEN: No THAT after comma.</div>
+                        </div>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- PHASE 3 -->
+            <section data-background-gradient="radial-gradient(circle, #1a1a2e 0%, #0f0f1a 100%)">
+                <slide-segue title="PHASE 3: FLUENCY"></slide-segue>
+            </section>
+
+            <!-- SLIDE 7: PRONUNCIATION -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <slide-task title="SOUND COHESION">
+                    <p class="text-sm">1. FARMers <span class="highlight">who</span> SELL‿in LOcal MARkets ↘ OFten‿EARN
+                        MORE.</p>
+                    <p class="text-sm mt-20">2. POMegranates, ↘ <span class="highlight">which</span>‿are deLIcious, ↘
+                        are RICH‿in VItamins.</p>
+                    <p class="text-sm mt-20">3. The TOWN <span class="highlight">where</span>‿I LIVED‿as‿a TEENager ↘ is
+                        FAmous...</p>
+                </slide-task>
+            </section>
+
+            <!-- PHASE 4 -->
+            <section data-background-gradient="radial-gradient(circle, #1a1a2e 0%, #0f0f1a 100%)">
+                <slide-segue title="PHASE 4: PRACTICE"></slide-segue>
+            </section>
+
+            <!-- TASK 1 -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <slide-task title="TASK 1: IDENTIFY & CLASSIFY" badge="PRACTICE" timer="4">
+                    <p class="text-md">1. Underline the relative clause.</p>
+                    <p class="text-md">2. Label it: <span class="highlight">D</span> or <span
+                            class="highlight">ND</span>.</p>
+                </slide-task>
+            </section>
+
+            <!-- TASK 1 ANSWERS -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 1: ANSWER 1">
+                    <p class="text-md">"Common foods <span class="highlight">[which are grown in this country]</span>
+                        include wheat..."</p>
+                    <p class="mt-20 highlight">DEFINING (D)</p>
+                    <div class="teacher-tip">Defines which foods.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 1: ANSWER 2">
+                    <p class="text-md">"Farmers <span class="highlight">[who sell in the local market]</span> always
+                        sell..."</p>
+                    <p class="mt-20 highlight">DEFINING (D)</p>
+                    <div class="teacher-tip">Defines which farmers.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 1: ANSWER 3">
+                    <p class="text-md">"Crumble<span class="highlight">, which is an English dessert,</span> is made
+                        from..."</p>
+                    <p class="mt-20 highlight">NON-DEFINING (ND)</p>
+                    <div class="teacher-tip">Extra info. Commas = No 'That'.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 1: ANSWER 4">
+                    <p class="text-md">"The area on the coast<span class="highlight">, where many farmers are
+                            based,</span> is good..."</p>
+                    <p class="mt-20 highlight">NON-DEFINING (ND)</p>
+                    <div class="teacher-tip">Extra info about area.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 1: ANSWER 5">
+                    <p class="text-md">"The food stall owners, <span class="highlight">, who work in this area,</span>
+                        must have..."</p>
+                    <p class="mt-20 highlight">NON-DEFINING (ND)</p>
+                    <div class="teacher-tip">Extra info regarding owners.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 1: ANSWER 6">
+                    <p class="text-md">"The town <span class="highlight">[where I lived as a teenager]</span> is
+                        famous..."</p>
+                    <p class="mt-20 highlight">DEFINING (D)</p>
+                    <div class="teacher-tip">Specific town defined.</div>
+                </slide-answer>
+            </section>
+
+            <!-- SEGUE: Moving to Task 2 -->
+            <section data-background-gradient="radial-gradient(circle, #1a1a2e 0%, #0f0f1a 100%)">
+                <slide-segue title="TASK 2: FILL THE GAPS"></slide-segue>
+            </section>
+
+            <!-- TASK 2 -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <slide-task title="COMPLETE THE MANIFEST" timer="4">
+                    <p class="text-md">Fill in the correct relative pronoun:</p>
+                    <h3 class="highlight">WHO • WHICH • WHERE</h3>
+                </slide-task>
+            </section>
+
+            <!-- TASK 2 ANSWERS -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 2: ANSWER 1">
+                    <p class="text-md">"People <span class="highlight">who</span> lived in the countryside..."</p>
+                    <div class="teacher-tip">Subject is People.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 2: ANSWER 2">
+                    <p class="text-md">"...lived <span class="highlight">where</span> it was easy to grow..."</p>
+                    <div class="teacher-tip">Subject is Place.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 2: ANSWER 3">
+                    <p class="text-md">"The new kinds of food <span class="highlight">which/that</span> are popular..."
+                    </p>
+                    <div class="teacher-tip">Subject is Things. Defining.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 2: ANSWER 4">
+                    <p class="text-md">"The food <span class="highlight">which/that</span> we eat in my country..."</p>
+                    <div class="teacher-tip">Subject is Things. Defining.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 2: ANSWER 5">
+                    <p class="text-md">"In hot and dry places <span class="highlight">where</span> there is little
+                        rain..."</p>
+                    <div class="teacher-tip">Subject is Place.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 2: ANSWER 6">
+                    <p class="text-md">"People living in the city, <span class="highlight">who</span> are usually
+                        richer..."</p>
+                    <div class="teacher-tip">Subject is People. Non-Defining.</div>
+                </slide-answer>
+            </section>
+
+            <!-- SEGUE: Moving to Task 3 -->
+            <section data-background-gradient="radial-gradient(circle, #1a1a2e 0%, #0f0f1a 100%)">
+                <slide-segue title="TASK 3: SENTENCE MERGING"></slide-segue>
+            </section>
+
+            <!-- TASK 3 -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <slide-task title="JOIN THE SENTENCES" timer="5">
+                    <p class="text-md text-center">Merge after the subject.</p>
+                    <div class="mt-20 text-center">
+                        <p class="text-md highlight">MODEL</p>
+                        <p class="text-md">"People eat fish." + "They live on islands."</p>
+                        <p class="highlight">→ "People who live on islands eat fish."</p>
+                    </div>
+                </slide-task>
+            </section>
+
+            <!-- TASK 3 ANSWERS -->
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 3: ANSWER 1">
+                    <p class="text-md">"The people <span class="highlight">who</span> live on small islands mostly eat
+                        fish."</p>
+                    <div class="teacher-tip">"They" is replaced by "who" because it refers to PEOPLE.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 3: ANSWER 2">
+                    <p class="text-md">"Bottled water, <span class="highlight">which</span> comes from other countries,
+                        is more expensive..."</p>
+                    <div class="teacher-tip">"It" is replaced by "which" because it refers to a THING.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 3: ANSWER 3">
+                    <p class="text-md">"The dish, <span class="highlight">which</span> is made from rice..., comes from
+                        the north."</p>
+                    <div class="teacher-tip">"It" is replaced by "which" - adds extra info about the dish.</div>
+                </slide-answer>
+            </section>
+
+            <section data-background-color="var(--bg-dark)">
+                <slide-answer title="TASK 3: ANSWER 4">
+                    <p class="text-md">"The places <span class="highlight">which</span> are in the center of the country
+                        eat more meat."</p>
+                    <div class="teacher-tip">"They" is replaced by "which" because it refers to PLACES (things).</div>
+                </slide-answer>
+            </section>
+
+            <!-- TASK 4: PERSONAL WRITING -->
+            <section data-background-color="var(--maroon)">
+                <slide-task title="TASK 4: PERSONAL WRITING" badge="THE CHALLENGE" timer="6">
+                    <h3 class="highlight">Write 50-70 words about your favourite food.</h3>
+                    <p class="text-md mt-20">You must include at least <strong>two relative clauses</strong>.</p>
+                    <p class="text-sm italic mt-20">(e.g. "Pizza, which is Italian, is my favourite...")</p>
+                </slide-task>
+                <aside class="notes">
+                    **Advice**: This is the final assessment. Monitor students silently. Check for comma usage.
+                    **Next**: The Closing Slide.
+                </aside>
+            </section>
+
+            <!-- CLOSING -->
+            <section data-background-image="images/cyber_bg.png" data-background-opacity="0.1">
+                <slide-split title="DELIVERED" badge="COMPLETE">
+                    <img src="images/container_ship.jpg">
+                    <h3 class="highlight">B1 ACHIEVED</h3>
+                    <p class="mt-20 text-md">You have completed the grammar audit.</p>
+                </slide-split>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            width: 960,
+            height: 700,
+            transition: 'convex',
+            center: true
+        });
+    </script>
+</body>
+
+</html>

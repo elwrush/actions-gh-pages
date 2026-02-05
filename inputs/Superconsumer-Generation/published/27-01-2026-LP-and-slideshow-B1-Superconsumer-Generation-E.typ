@@ -31,7 +31,7 @@
 ]
 
 #v(0.5cm)
-#slideshow_link("https://elwrush.github.io/lesson-plan-agent/Superconsumer-Generation/")
+#slideshow_link("https://elwrush.github.io/actions-gh-pages/Superconsumer-Generation/")
 
 #v(0.5cm)
 
@@ -60,3 +60,4 @@
     - T monitors timings (10 min timer).
   ], "Ss-Ss / Indiv"),
 ))
+

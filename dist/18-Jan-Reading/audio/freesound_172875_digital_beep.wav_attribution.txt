@@ -1,0 +1,5 @@
+Sound: digital beep.wav
+Author: razor2988
+Source: https://freesound.org/people/razor2988/sounds/172875/
+License: http://creativecommons.org/publicdomain/zero/1.0/
+Duration: 1.00s

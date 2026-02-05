@@ -31,7 +31,7 @@
 
 #v(0.5cm)
 
-#slideshow_link("https://elwrush.github.io/lesson-plan-agent/29-01-2026-B2-Sports-Interviews-F/")
+#slideshow_link("https://elwrush.github.io/actions-gh-pages/29-01-2026-B2-Sports-Interviews-F/")
 
 #v(0.5cm)
 
@@ -73,3 +73,4 @@
     - Feedback: T highlights 1-2 examples of good interviewing technique heard during monitoring.
   ], "Ss-Ss"),
 ))
+

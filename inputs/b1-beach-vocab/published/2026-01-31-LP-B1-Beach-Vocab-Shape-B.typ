@@ -31,7 +31,7 @@
 ]
 
 #v(0.5cm)
-#slideshow_link("https://elwrush.github.io/lesson-plan-agent/b1-beach-vocab/")
+#slideshow_link("https://elwrush.github.io/actions-gh-pages/b1-beach-vocab/")
 
 #v(0.5cm)
 

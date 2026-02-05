@@ -22,4 +22,5 @@
 - **Core**: Lightweight Developer Standard.
 - **Images**: ALL images will be full-bleed `data-background`.
 - **Gating**: Task 9 (Writing) is EXCLUDED as per instructions.
-- **Mission Video**: `https://elwrush.github.io/lesson-plan-agent/images/mission_bg_clipped.mp4`.
+- **Mission Video**: `https://elwrush.github.io/actions-gh-pages/images/mission_bg_clipped.mp4`.
+

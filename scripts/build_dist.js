@@ -1,264 +1,164 @@
-/**
- * Build Script for GitHub Pages Deployment (Multi-Presentation Support)
- * 
- * Builds a clean `dist/` folder containing ALL presentations in `inputs/`
- * and a central dashboard.
- * 
- * Usage:
- *   node scripts/build_dist.js [folder-name]
- */
-
 const fs = require('fs');
 const path = require('path');
+const fsPromises = fs.promises;
 
-const PROJECT_ROOT = path.join(__dirname, '..');
-const DIST_DIR = path.join(PROJECT_ROOT, 'dist');
-const INPUTS_DIR = path.join(PROJECT_ROOT, 'inputs');
+async function copyDir(src, dest, filter = () => true) {
+    await fsPromises.mkdir(dest, { recursive: true });
+    const entries = await fsPromises.readdir(src, { withFileTypes: true });
 
-// Clean and create dist
-// function to robustly delete folder with retries
-function robustClean(dir) {
-    if (!fs.existsSync(dir)) return;
-    
-    // SAFETY: Never clean the project root!
-    if (dir === PROJECT_ROOT) {
-        console.error("❌ SAFETY VIOLATION: Attempted to clean PROJECT_ROOT. Aborting.");
-        process.exit(1);
-    }
+    for (let entry of entries) {
+        const srcPath = path.join(src, entry.name);
+        const destPath = path.join(dest, entry.name);
 
-    let retries = 5;
-    while (retries > 0) {
-        try {
-            fs.rmSync(dir, { recursive: true, force: true });
-            console.log('🧹 Cleaned dist/ folder.');
-            return;
-        } catch (e) {
-            console.warn(`⚠️ EBUSY/Locked file in ${dir}. Retrying in 1s... (${retries} left)`);
-            const start = Date.now();
-            while (Date.now() - start < 1000) { } // Busy wait
-            retries--;
-        }
-    }
-    console.warn(`❌ Could not fully clean ${dir}. Proceeding with overwrite...`);
-}
+        if (!filter(srcPath)) continue;
 
-// Targeted build check
-const targetFolder = process.argv[2];
-
-// Clean and create dist
-if (targetFolder) {
-    console.log(`🎯 Targeted build for: ${targetFolder} (Incremental Mode)`);
-} else {
-    robustClean(DIST_DIR);
-    
-    if (!fs.existsSync(DIST_DIR)) {
-        fs.mkdirSync(DIST_DIR);
-    }
-
-    // Copy shared JS components (ONLY .js files)
-    const skillsJs = path.join(PROJECT_ROOT, 'skills/creating-html-presentation/js');
-    if (fs.existsSync(skillsJs)) {
-        const destJs = path.join(DIST_DIR, 'skills/creating-html-presentation/js');
-        fs.mkdirSync(destJs, { recursive: true });
-        fs.cpSync(skillsJs, destJs, {
-            recursive: true,
-            filter: (src) => {
-                const name = path.basename(src);
-                return fs.statSync(src).isDirectory() || name.endsWith('.js');
-            }
-        });
-        console.log('📦 Copied shared JS components.');
-    }
-
-    // Global images (WHITELIST extensions)
-    const globalImages = path.join(PROJECT_ROOT, 'images');
-    if (fs.existsSync(globalImages)) {
-        const destImages = path.join(DIST_DIR, 'images');
-        fs.mkdirSync(destImages, { recursive: true });
-        fs.cpSync(globalImages, destImages, {
-            recursive: true,
-            filter: (src) => {
-                const name = path.basename(src);
-                if (fs.statSync(src).isDirectory()) return true;
-                return /\.(png|jpg|jpeg|svg|webp|mp4)$/i.test(name);
-            }
-        });
-        console.log('📦 Copied global images.');
-    }
-
-    // Global Reveal.js Engine (for shared hosting)
-    // PREFER: node_modules (CI/CD safe) -> FALLBACK: temp_reveal_repo (Local dev)
-    const nodeModulesReveal = path.join(PROJECT_ROOT, 'node_modules', 'reveal.js');
-    const tempReveal = path.join(PROJECT_ROOT, 'temp_reveal_repo');
-    const revealSource = fs.existsSync(nodeModulesReveal) ? nodeModulesReveal : tempReveal;
-
-    console.log(`🔍 Resolving Reveal.js engine from: ${revealSource}`);
-
-    ['dist', 'plugin', 'css'].forEach(folder => {
-        const src = path.join(revealSource, folder);
-        const dest = path.join(DIST_DIR, folder);
-        if (fs.existsSync(src)) {
-            fs.cpSync(src, dest, {
-                recursive: true,
-                filter: (src) => {
-                    const name = path.basename(src);
-                    if (fs.statSync(src).isDirectory()) return true;
-                    return !name.startsWith('.') && name.toLowerCase() !== 'desktop.ini' && !name.endsWith('.md') && !name.endsWith('.json');
-                }
-            });
-            console.log(`📦 Copied global Reveal engine: ${folder}`);
+        if (entry.isDirectory()) {
+            await copyDir(srcPath, destPath, filter);
         } else {
-            console.warn(`⚠️ Warning: Could not find engine folder: ${src}`);
+            await fsPromises.copyFile(srcPath, destPath);
         }
-    });
+    }
 }
 
-// Ensure inputs exists
-if (!fs.existsSync(INPUTS_DIR)) {
-    console.error('❌ inputs/ directory not found.');
-    process.exit(1);
+async function emptyDir(dir) {
+    if (!fs.existsSync(dir)) return;
+    const entries = await fsPromises.readdir(dir, { withFileTypes: true });
+    for (let entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+            await fsPromises.rm(fullPath, { recursive: true, force: true });
+        } else {
+            await fsPromises.unlink(fullPath);
+        }
+    }
 }
 
-// Find presentations
-const folders = fs.readdirSync(INPUTS_DIR).filter(f => {
-    if (f.startsWith('.')) return false;
+async function build() {
+    const projectRoot = process.cwd();
+    const distRoot = path.join(projectRoot, 'dist');
+    const tempRepo = path.join(projectRoot, 'temp_reveal_repo');
+    const inputsDir = path.join(projectRoot, 'inputs');
 
-    // If a target folder is specified, only include it
-    if (targetFolder && f !== targetFolder) return false;
+    console.log('🚀 Starting build process...');
 
-    const publishedIndex = path.join(INPUTS_DIR, f, 'published/index.html');
-    const rootIndex = path.join(INPUTS_DIR, f, 'index.html');
-    return fs.existsSync(publishedIndex) || fs.existsSync(rootIndex);
-});
-
-console.log(`\n📂 Processing ${folders.length} presentation(s):`);
-
-folders.forEach(folder => {
-    const publishedPath = path.join(INPUTS_DIR, folder, 'published');
-    const rootPath = path.join(INPUTS_DIR, folder);
-    
-    // Source priority: published/ folder, then root
-    const sourceDir = fs.existsSync(path.join(publishedPath, 'index.html')) ? publishedPath : rootPath;
-    const destDir = path.join(DIST_DIR, folder);
-
-    console.log(`  - Copying ${folder} (from ${path.relative(INPUTS_DIR, sourceDir)}/)...`);
-    
-    if (!fs.existsSync(destDir)) {
-        fs.mkdirSync(destDir, { recursive: true });
+    // 1. Clean dist directory
+    try {
+        if (fs.existsSync(distRoot)) {
+            await emptyDir(distRoot);
+            console.log('🧹 Cleaned dist directory.');
+        } else {
+            await fsPromises.mkdir(distRoot, { recursive: true });
+        }
+    } catch (err) {
+        console.error('❌ Error cleaning dist:', err);
     }
 
-    // Copy contents (WHITELIST ONLY)
-    fs.cpSync(sourceDir, destDir, {
-        recursive: true,
-        filter: (src) => {
-            const name = path.basename(src);
-            const stats = fs.statSync(src);
+    // 2. Copy Shared Reveal.js Engine
+    console.log('📦 Copying shared Reveal.js engine...');
+    const engineFolders = ['dist', 'plugin', 'css'];
+    for (const folder of engineFolders) {
+        const src = path.join(tempRepo, folder);
+        const dest = path.join(distRoot, folder);
+        if (fs.existsSync(src)) {
+            await copyDir(src, dest, (srcPath) => !srcPath.includes('desktop.ini') && !srcPath.includes('.git'));
+            console.log(`   ✅ Copied ${folder}/`);
+        } else {
+            console.warn(`   ⚠️  Warning: ${folder} not found in ${tempRepo}`);
+        }
+    }
+
+    // 3. Aggregate Presentations
+    console.log('📂 Aggregating presentations from inputs/...');
+    const lessons = [];
+    const folders = await fsPromises.readdir(inputsDir);
+
+    for (const folder of folders) {
+        const lessonPath = path.join(inputsDir, folder);
+        const stat = await fsPromises.stat(lessonPath);
+        if (!stat.isDirectory()) continue;
+
+        let presentationSrc = path.join(lessonPath, 'published');
+        if (!fs.existsSync(path.join(presentationSrc, 'index.html'))) {
+            presentationSrc = lessonPath;
+        }
+
+        const indexHtml = path.join(presentationSrc, 'index.html');
+        if (fs.existsSync(indexHtml)) {
+            console.log(`   ✨ Processing lesson: ${folder}`);
+            const destLessonDir = path.join(distRoot, folder);
+            await fsPromises.mkdir(destLessonDir, { recursive: true });
+
+            let content = await fsPromises.readFile(indexHtml, 'utf-8');
+
+            // --- PATH FIXING LOGIC ---
+            // Ensure assets reference the shared root engine at ../dist/ and ../plugin/
+            // Match href="dist/ or src="dist/ or href='dist/ or src='dist/
+            content = content.replace(/(href|src)=["']dist\//g, '$1="../dist/');
+            content = content.replace(/(href|src)=["']plugin\//g, '$1="../plugin/');
             
-            if (stats.isDirectory()) {
-                // Allow images and audio subdirectories
-                return name === 'images' || name === 'audio' || name === 'published' || src === sourceDir;
-            } else {
-                // Allow only specific web-ready file types
-                return name === 'index.html' || 
-                       /\.(png|jpg|jpeg|svg|webp|mp3|mp4|css|js)$/i.test(name);
+            // Also handle any absolute-style paths that might have been accidentally used
+            // e.g. /dist/ or /plugin/ should also point to ../
+            content = content.replace(/(href|src)=["']\/dist\//g, '$1="../dist/');
+            content = content.replace(/(href|src)=["']\/plugin\//g, '$1="../plugin/');
+
+            await fsPromises.writeFile(path.join(destLessonDir, 'index.html'), content);
+
+            for (const assetFolder of ['images', 'audio']) {
+                const srcAsset = path.join(presentationSrc, assetFolder);
+                const destAsset = path.join(destLessonDir, assetFolder);
+                if (fs.existsSync(srcAsset)) {
+                    await copyDir(srcAsset, destAsset, (srcPath) => !srcPath.includes('desktop.ini'));
+                }
             }
+
+            const titleMatch = content.match(/<title>(.*?)<\/title>/);
+            const title = titleMatch ? titleMatch[1] : folder;
+
+            lessons.push({
+                folder: folder,
+                title: title
+            });
         }
-    });
-});
-
-// Generate Dashboard (index.html in dist/)
-const dashboardPath = path.join(DIST_DIR, 'index.html');
-const presentationCards = folders.map(f => {
-    // Attempt to extract title and date from folder name or metadata
-    const nameParts = f.split('-');
-    let dateStr = "Unknown Date";
-    let titleStr = f;
-
-    if (nameParts.length >= 3 && /^\d+$/.test(nameParts[0])) {
-        dateStr = `${nameParts[0]} ${getMonthName(nameParts[1])} ${nameParts[2]}`;
-        titleStr = nameParts.slice(3).join(' ').replace(/-/g, ' ');
     }
 
-    return `
-        <a href="./${f}/" class="card">
-            <span class="date">${dateStr}</span>
-            <span class="title">${titleStr}</span>
-        </a>
-    `;
-}).join('\n');
-
-const dashboardHtml = `
+    // 4. Generate Dashboard
+    console.log('📊 Generating dashboard...');
+    const dashboardHtml = `
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Bell Presentations Library</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bell Language Centre | Presentations Library</title>
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #0f172a;
-            color: white;
-            padding: 50px;
-            text-align: center;
-        }
-        h1 {
-            color: #8b1538;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .card {
-            background: #1e293b;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #334155;
-            transition: 0.3s;
-            text-decoration: none;
-            color: white;
-            display: block;
-            text-align: left;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #00f2ff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-        .date {
-            color: #94a3b8;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-            display: block;
-        }
-        .title {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #00f2ff;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a1a1a; color: white; padding: 40px; }
+        h1 { color: #8B1538; border-bottom: 2pt solid #8B1538; padding-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: #2a2a2a; border-radius: 8px; padding: 20px; transition: transform 0.2s; border: 1px solid #444; text-decoration: none; color: white; display: block; }
+        .card:hover { transform: translateY(-5px); border-color: #8B1538; }
+        .card h3 { margin-top: 0; color: #FFD700; }
+        .card p { font-size: 0.9em; color: #ccc; }
     </style>
 </head>
 <body>
-    <h1>Bell Presentations Library</h1>
+    <h1>📚 Presentations Library</h1>
     <div class="grid">
-        ${presentationCards}
+        ${lessons.map(l => `
+            <a href="${l.folder}/" class="card">
+                <h3>${l.title}</h3>
+                <p>${l.folder}</p>
+            </a>
+        `).join('')}
     </div>
 </body>
 </html>
-`;
+    `;
+    await fsPromises.writeFile(path.join(distRoot, 'index.html'), dashboardHtml);
 
-fs.writeFileSync(dashboardPath, dashboardHtml);
-console.log('\n✅ Dashboard generated.');
-
-console.log('\n✅ Build complete!');
-console.log(`   Output: ${path.relative(PROJECT_ROOT, DIST_DIR)}/`);
-console.log('\nNext: Push to GitHub to deploy to GitHub Pages.');
-
-function getMonthName(num) {
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    const i = parseInt(num) - 1;
-    return (i >= 0 && i < 12) ? months[i] : num;
+    console.log('🏁 Build complete! Ready for deployment.');
 }
+
+build().catch(err => {
+    console.error('💥 Build failed:', err);
+    process.exit(1);
+});

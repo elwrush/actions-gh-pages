@@ -29,7 +29,7 @@
 #differentiation_box("Students choose their own sentences for the final challenge, allowing for self-leveling based on their comfort with the phonemic symbols. Stronger students can attempt complex diphthongs like /əʊ/ and /ɔɪ/.")
 
 #v(0.5cm)
-#slideshow_link("https://elwrush.github.io/lesson-plan-agent/31-01-2026-Pronunciation-Bell/")
+#slideshow_link("https://elwrush.github.io/actions-gh-pages/31-01-2026-Pronunciation-Bell/")
 
 // --- STAGES ---
 #stage_table((
@@ -127,3 +127,4 @@
   #strong[/ɔː/:] walk, thought, water, all, door 
   #strong[/əʊ/:] ago, moment, won't, only, phone, although
 ])
+

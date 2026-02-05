@@ -326,7 +326,7 @@
 
 ### Live URLs
 - **Fight or Flight Slideshow**: https://lesson-slideshows.pages.dev
-- **Presentations Dashboard**: https://lesson-plan-agent.pages.dev/presentations/
+- **Presentations Dashboard**: https://elwrush.github.io/actions-gh-pages/presentations/
 
 ---
 

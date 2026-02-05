@@ -24,5 +24,6 @@ node scripts/build_dist.js
 // turbo
 Run the sync script to update the `#slideshow_link` in your `.typ` file:
 ```powershell
-python skills/deploying-to-github-pages/scripts/sync_lesson_plan_url.py "inputs/[FOLDER]/[FILENAME].typ" "https://elwrush.github.io/lesson-plan-agent/[FOLDER]/"
+python skills/deploying-to-github-pages/scripts/sync_lesson_plan_url.py "inputs/[FOLDER]/[FILENAME].typ" "https://elwrush.github.io/actions-gh-pages/[FOLDER]/"
 ```
+

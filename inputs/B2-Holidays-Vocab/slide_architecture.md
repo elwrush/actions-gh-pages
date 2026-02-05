@@ -18,7 +18,7 @@
 
 ### Slide 2: The Mission
 **Layout**: `mission`  
-**Media**: `https://elwrush.github.io/lesson-plan-agent/images/mission_bg_clipped.mp4` (Auto-play once).  
+**Media**: `https://elwrush.github.io/actions-gh-pages/images/mission_bg_clipped.mp4` (Auto-play once).  
 **Slide Text**:
 - **Objective 1**: Identify and define 6 types of holiday accommodation accurately.
 - **Objective 2**: Differentiate between 10+ core holiday activities and their verb forms.
@@ -159,3 +159,4 @@
 - **Main**: UNIT 50 COMPLETE
 - **Subtitle**: You've mastered Holidays & Hotel Language!
 - **Badge**: WELL DONE
+

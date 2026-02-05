@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Stories | Bell Language Centre</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Reveal.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+    <!-- Component Library -->
+    <script src="../../skills/creating-html-presentation/js/slide-components.js"></script>
+
+    <style>
+        :root {
+            --primary: #00F2FF;
+            --secondary: #7000ff;
+            --bg-dark: #050811;
+            --text-accent: #FFD700;
+            --glass: rgba(10, 10, 20, 0.95);
+            --danger: #ef4444;
+
+            /* Custom Glow Variables */
+            --glow-cyan: 0 0 20px rgba(0, 242, 255, 0.6);
+            --glow-purple: 0 0 20px rgba(112, 0, 255, 0.6);
+
+            /* Backgrounds */
+            --grad-main: radial-gradient(circle, #0a0a2a 0%, #050811 100%);
+            --grad-segue: radial-gradient(circle, #1a1a2e 0%, #000000 100%);
+            --grad-boss: radial-gradient(circle, #2a0a0a 0%, #000000 100%);
+        }
+
+        .reveal {
+            font-family: 'Outfit', sans-serif;
+            background: var(--grad-main);
+            background-image: url('images/pixabay_1846865_blackboard_wallpaper_4k_wall_wallpaper_hd_windows_wallpaper_cool_backgrounds_fre.jpg');
+            background-blend-mode: multiply;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        /* Removed boxy vignette */
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Larger Title Font */
+        .title-slide h1 {
+            font-size: 100pt !important;
+            text-shadow: 0 0 40px var(--primary);
+        }
+
+        .title-subtitle span {
+            font-size: 40pt !important;
+            padding: 10px 30px !important;
+        }
+
+        /* Segue Glow Effect */
+        .segue-title {
+            text-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary), 6px 6px 0px rgba(0, 0, 0, 0.5);
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+            }
+
+            to {
+                text-shadow: 0 0 25px var(--primary), 0 0 50px var(--secondary);
+            }
+        }
+
+        /* Widened Layout System */
+        .reveal .row-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            width: 1100px !important;
+            /* Widened from 900px */
+            max-width: 95vw;
+            margin: 0 auto;
+        }
+
+        .reveal .col-40 {
+            flex: 0 0 35%;
+            max-width: 35%;
+        }
+
+        .reveal .col-60 {
+            flex: 0 0 65%;
+            max-width: 65%;
+        }
+
+        .reveal .col-50 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .reveal .glass-box {
+            background: var(--glass);
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.3), inset 0 0 20px rgba(0, 242, 255, 0.1);
+            border-radius: 12px;
+            padding: 35px;
+            backdrop-filter: blur(15px);
+            width: 100%;
+            /* Fill column width */
+            box-sizing: border-box;
+        }
+
+        .reveal .glass-box.centered {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Larger Badge Text */
+        /* Larger Badge Text (32pt for max visibility) */
+        .reveal .stage-badge {
+            font-size: 32pt !important;
+            font-weight: 800;
+            letter-spacing: 2px;
+            padding: 10px 30px !important;
+        }
+
+        /* Improved Soft Atmospheric Glow (Cyber-Gamer) */
+        .reveal .slides>section::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(120px);
+            border-radius: 50%;
+        }
+
+        .level-up-badge {
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            font-weight: 800;
+            font-size: 0.5em;
+            text-transform: uppercase;
+            transform: skew(-10deg);
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px var(--secondary);
+        }
+
+        .upgrade-word {
+            display: inline-block;
+            font-weight: 800;
+            transition: all 0.5s ease;
+        }
+
+        .highlight {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+            font-weight: 800;
+        }
+
+        /* Enforce 18pt Minimum Font Size Policy */
+        .reveal .text-lg {
+            font-size: 32pt !important;
+        }
+
+        .reveal .text-md {
+            font-size: 24pt !important;
+        }
+
+        .reveal .text-sm {
+            font-size: 20pt !important;
+        }
+
+        .reveal .text-xs {
+            font-size: 18pt !important;
+        }
+
+        /* Specific element fixes */
+        .level-up-badge {
+            background: var(--secondary);
+            color: white;
+            padding: 8px 20px;
+            font-weight: 800;
+            font-size: 18pt !important;
+            /* Minimum 18pt */
+            text-transform: uppercase;
+            transform: skew(-10deg);
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px var(--secondary);
+        }
+
+        .reveal .notes,
+        .reveal aside {
+            font-size: 18pt !important;
+            /* Ensure speaker notes are readable too */
+        }
+
+        /* Teacher Tips HIDDEN on slides, use Notes instead */
+        .teacher-tip {
+            display: none;
+        }
+
+        .inset-media {
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
+            border-radius: 8px;
+            max-height: 450px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- SLIDE 1: HERO -->
+            <section class="title-slide">
+                <slide-title title="WRITING STORIES" subtitle="IMAGINATION & STRUCTURE" badge="FINAL CA TASK">
+                    <img
+                        src="images/pixabay_4203628_storytelling_fantasy_imagination_story_storyteller_literature_kids_children_magi.jpg">
+                </slide-title>
+                <aside class="notes">
+                    **Advice**: Set the energy high. Tell them today they aren't just students, they are STORYTELLERS.
+                    **Next**: Phase 1 Segue.
+                </aside>
+            </section>
+            <!-- SLIDE 2: SEGUE 1 -->
+            <section data-background-gradient="var(--grad-segue)"><slide-segue title="PHASE 1: THE MISSION">
+                    <p class="text-md" style="color: var(--primary); font-weight: 600;">ENGAGE & ANALYZE THE TARGET
+                    </p>
+                </slide-segue>
+                <aside class="notes">**Advice**: Press 's' for teacher notes. Explain that Phase 1 is about decoding
+                    what makes a story great. **Next**: Lead-in Discussion. </aside>
+            </section>
+            <!-- SLIDE 3: LEAD-IN -->
+            <section><slide-split title="GETTING STARTED" badge="WARM UP"><img
+                        src="images/pixabay_7912249_kimono_geisha_pop_art_asia_manga_anime_design_japan_pop_art_pop_art_asia_manga_m.jpg"
+                        class="inset-media">
+                    <div class="glass-box">
+                        <p class="text-lg highlight">What was the last GOOD story you read?</p>
+                        <ul class="text-md">
+                            <li>Horror 🧟</li>
+                            <li>Comedy 😂</li>
+                            <li>Sci-Fi 🚀</li>
+                            <li>Manga 🗡️</li>
+                        </ul>
+                    </div>
+                </slide-split>
+                <aside class="notes">**Advice**: Get students talking in pairs first. Elicit examples from the
+                    class ! **Next**: Model Analysis introduction. </aside>
+            </section>
+            <!-- SLIDE 4: MODEL ANALYSIS THE HOOK -->
+            <section><slide-split title="DECONSTRUCTING THE MODEL" badge="TASK 1: ANALYSIS"><img
+                        src="images/pixabay_2567915_happy_holidays_women_talking_laugh_happy_friends_casual_outdoors_people.jpg"
+                        class="inset-media">
+                    <div class="glass-box">
+                        <h2>The Hook</h2>
+                        <p class="text-md">Look at the model text: <strong>"What Makes You Laugh?" </strong>
+                        </p>
+                        <p class="text-md highlight">Find the Rhetorical Question at the start.</p>
+                        <p class="text-sm">Why does it grab your attention?</p>
+                    </div>
+                </slide-split>
+                <aside class="notes">**Advice**: Show the model text on the board or in their hands.
+                    **Next**: Answer for the Hook. </aside>
+            </section>
+            <!-- SLIDE 5: ANSWER HOOK -->
+            <section data-background-color="var(--bg-dark)"><slide-answer title="TASK 1: HOOK ANSWER">
+                    <div class="glass-box" style="text-align: center;">
+                        <p class="r-fit-text">"Are you looking for a laugh?" </p>
+                    </div>
+                </slide-answer>
+                <aside class="notes">**Advice**: Explain that a question forces the reader to think of
+                    an answer,
+                    engaging them. A hook grabs the reader's attention immediately!
+                    **Next**: Features Task. </aside>
+            </section>
+            <!-- SLIDE 6: FEATURES TASK -->
+            <section><slide-task title="DECONSTRUCTING THE MODEL" badge="TASK 1: FEATURES" timer="5">
+                    <div class="row-container">
+                        <div class="col-40"><img
+                                src="images/pixabay_211075_clockwork_gear_historical_clockwork_clockwork_clockwork_clockwork_clockwork.jpg"
+                                class="inset-media"></div>
+                        <div class="col-60">
+                            <div class="glass-box">
+                                <p class="text-md">Find these features in the text:</p>
+                                <ul class="text-md">
+                                    <li><span class="highlight">The Connection (Style)</span>: Direct Address ("you/we")
+                                    </li>
+                                    <li><span class="highlight">The Opinion (Content)</span>: Strong Opinions ("I
+                                        love...")</li>
+                                    <li><span class="highlight">The Glue (Cohesion)</span>: 2 Linking Words</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </slide-task>
+                <aside class="notes">**Advice**: Monitor and help students who are struggling to
+                    find the specific phrases. **Next**: Features Answers. </aside>
+            </section>
+            <!-- SLIDE 7: FEATURES ANSWERS -->
+            <section data-background-color="var(--bg-dark)"><slide-answer title="TASK 1: FEATURE ANSWERS">
+                    <div class="glass-box">
+                        <ul class="text-md" style="list-style: none;">
+                            <li>✅ <span class="highlight">The Connection:</span> "Make US feel better..."
+                            </li>
+                            <li>✅ <span class="highlight">The Opinion:</span> "I love to watch...", "I enjoy..."
+                            </li>
+                            <li>✅ <span class="highlight">The Glue:</span> "Because", "It may also..." </li>
+                        </ul>
+                    </div>
+                </slide-answer></section>
+            <!-- SLIDE 8: SEGUE 2 -->
+            <section data-background-gradient="var(--grad-segue)"><slide-segue title="PHASE 2: VOCAB UPGRADE">
+                    <p class="text-md" style="color: var(--primary); font-weight: 600;">
+                        TASK 2: LEVEL UP YOUR WORDS</p>
+                </slide-segue></section>
+            <!-- SLIDE 9: VOCAB PREP -->
+            <section>
+                <div class="row-container">
+                    <div class="col-50">
+                        <h2 class="segue-title">LEVEL UP !</h2><img
+                            src="images/pixabay_876543_children_india_education_classroom_happy_smile_together_school_india_education_e.jpg"
+                            class="inset-media">
+                    </div>
+                    <div class="col-50">
+                        <div class="glass-box">
+                            <p class="text-md">B1 words are good...</p>
+                            <p class="text-lg highlight">But B2 words are EPIC !</p>
+                            <p class="text-sm">Click next to see the transformation.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- SLIDE 10: AUTO-ANIMATE 1 -->
+            <section data-auto-animate>
+                <h2>WORD POWER</h2>
+                <div class="glass-box centered">
+                    <p class="text-lg">The movie was <span data-id="word" class="highlight">funny</span>.</p>
+                    <div style="margin-top: 20px; color: var(--primary);">Standard (B1)</div>
+                </div>
+            </section>
+            <section data-auto-animate>
+                <h2 style="color: var(--primary);">WORD POWER</h2>
+                <div class="glass-box centered" style="border-color: var(--secondary);">
+                    <div class="level-up-badge">LEVEL UP!</div>
+                    <p class="text-lg">The movie was <span data-id="word" class="upgrade-word"
+                            style="color: var(--secondary); text-shadow: 0 0 20px var(--secondary); font-size: 1.4em;">HILARIOUS</span>!
+                    </p>
+                    <div style="margin-top: 20px; color: var(--secondary);">Advanced (B2)</div>
+                </div>
+                <aside class="notes">Context: "The comedian was so hilarious I couldn't stop laughing."</aside>
+            </section>
+            <!-- SLIDE 11: AUTO-ANIMATE 2 -->
+            <section data-auto-animate>
+                <h2>WORD POWER</h2>
+                <div class="glass-box centered">
+                    <p class="text-lg">The story was <span data-id="word2" class="highlight">sad</span>.</p>
+                    <div style="margin-top: 20px; color: var(--primary);">Standard (B1)</div>
+                </div>
+            </section>
+            <section data-auto-animate>
+                <h2 style="color: var(--primary);">WORD POWER</h2>
+                <div class="glass-box centered" style="border-color: var(--secondary);">
+                    <div class="level-up-badge">LEVEL UP!</div>
+                    <p class="text-lg">The story was <span data-id="word2" class="upgrade-word"
+                            style="color: var(--secondary); text-shadow: 0 0 20px var(--secondary); font-size: 1.4em;">POIGNANT</span>.
+                    </p>
+                    <div style="margin-top: 20px; color: var(--secondary);">Advanced (B2)</div>
+                </div>
+                <aside class="notes">Context: "The poignant ending of the book made everyone cry."</aside>
+            </section>
+            <!-- SLIDE 12: AUTO-ANIMATE 3 -->
+            <section data-auto-animate>
+                <h2>WORD POWER</h2>
+                <div class="glass-box centered">
+                    <p class="text-lg">The plot was <span data-id="word3" class="highlight">complicated</span>.</p>
+                    <div style="margin-top: 20px; color: var(--primary);">Standard (B1)</div>
+                </div>
+            </section>
+            <section data-auto-animate>
+                <h2 style="color: var(--primary);">WORD POWER</h2>
+                <div class="glass-box centered" style="border-color: var(--secondary);">
+                    <div class="level-up-badge">LEVEL UP!</div>
+                    <p class="text-lg">The plot was <span data-id="word3" class="upgrade-word"
+                            style="color: var(--secondary); text-shadow: 0 0 20px var(--secondary); font-size: 1.4em;">INTRICATE</span>.
+                    </p>
+                    <div style="margin-top: 20px; color: var(--secondary);">Advanced (B2)</div>
+                </div>
+                <aside class="notes">Context: "The intricate plot had so many twists nobody could guess the end."
+                </aside>
+            </section>
+            <!-- SLIDE 12.1: VOCAB BRAINSTORM -->
+            <section>
+                <slide-task title="VOCABULARY CHALLENGE" badge="VOCAB BONUS" timer="3">
+                    <div class="row-container">
+                        <div class="col-40">
+                            <img src="images/pixabay_4203628_storytelling_fantasy_imagination_story_storyteller_literature_kids_children_magi.jpg"
+                                class="inset-media">
+                        </div>
+                        <div class="col-60">
+                            <div class="glass-box">
+                                <p class="text-md highlight">Think of TWO more words...</p>
+                                <p class="text-sm">...that you could use to describe YOUR story.</p>
+                                <p class="text-sm mt-20">Write them in the <span class="highlight">Vocabulary box</span>
+                                    on your worksheet now.</p>
+                                <ul class="text-xs mt-20">
+                                    <li>Think about: Emotion, Atmosphere, or Character.</li>
+                                    <li>Try to use a B2 "Level Up" word if you can!</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </slide-task>
+                <aside class="notes">
+                    **Advice**: This is a quick brainstorm before the planning phase. Encourage students to look at the
+                    "Vocabulary for Stories" section on their worksheet.
+                </aside>
+            </section>
+            <!-- SLIDE 13: SEGUE 3 -->
+            <section data-background-gradient="var(--grad-segue)">
+                <slide-segue title="PHASE 3: THE BLUEPRINT">
+                    <p class="text-md" style="color: var(--primary); font-weight: 600;">
+                        PLANNING YOUR MASTERPIECE</p>
+                </slide-segue>
+            </section>
+            <!-- SLIDE 14: DIFFERENTIATION -->
+            <section><slide-split title="CHOOSE YOUR PATH" badge="TRACKER"><img
+                        src="images/pixabay_3310194_robot_cyborg_futuristic_android_cybernetics_intelligence_blue_robot_robot_robot_.jpg"
+                        class="inset-media">
+                    <div class="glass-box">
+                        <div style="margin-bottom: 20px;">
+                            <h3 style="color: white;">Standard (B1)
+                            </h3>
+                            <p class="text-sm">~100 Words. Focus on
+                                the topic and basic details.</p>
+                        </div>
+                        <div style="border-top: 1px solid var(--primary); padding-top: 20px;">
+                            <h3 class="highlight">Advanced (B2)</h3>
+                            <p class="text-sm">140-190 Words. Focus
+                                on *WHY* and complex description.
+                            </p>
+                        </div>
+                    </div>
+                </slide-split></section>
+            <!-- SLIDE 14.1: B1 QUESTION -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="stage-badge">B1 MISSION</div>
+                    <div class="glass-box centered" style="border-color: var(--primary);">
+                        <p class="text-md highlight">B1 Students:</p>
+                        <p class="text-sm">Here is the question you will be writing about tomorrow. <br><strong>Write it
+                                down now!</strong></p>
+
+                        <div
+                            style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 8px; border-left: 4px solid var(--primary); margin-top: 20px; text-align: left;">
+                            <p class="text-sm"
+                                style="margin-bottom: 10px; color: var(--text-accent); font-weight: 800;">Articles
+                                wanted: Your favorite stories!</p>
+                            <p class="text-xs">Write an article telling us what you like to read the most: books, manga,
+                                comics, or something else?</p>
+                            <ul class="text-xs" style="margin-top: 10px;">
+                                <li>Do you think it’s good to read a lot? Why?</li>
+                            </ul>
+                            <p class="text-xs" style="margin-top: 10px; font-style: italic; opacity: 0.8;">The best
+                                articles answering these questions will be published next month.</p>
+                        </div>
+                        <div style="margin-top: 30px;">
+                            <timer-pill duration="2"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Ensure all B1 students have copied the exact wording of the prompts. This is their CA
+                    task!
+                </aside>
+            </section>
+            <!-- SLIDE 14.2: B2 MISSION -->
+            <section>
+                <div class="slide-canvas">
+                    <div class="stage-badge">B2 MISSION</div>
+                    <div class="glass-box centered" style="border-color: var(--secondary);">
+                        <p class="text-md highlight">B2 Students:</p>
+                        <p class="text-sm">Here is your advanced challenge. <br><strong>Prepare your strategy
+                                now!</strong></p>
+
+                        <div
+                            style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 8px; border-left: 4px solid var(--secondary); margin-top: 20px; text-align: left;">
+                            <p class="text-sm" style="margin-bottom: 10px; color: var(--secondary); font-weight: 800;">
+                                Articles wanted: Unusual Stories!</p>
+                            <p class="text-xs">We’re looking for articles about unusual material you have read: books,
+                                mangas, or anything else.</p>
+                            <ul class="text-xs" style="margin-top: 10px;">
+                                <li>Have you, or a friend, ever read anything that you thought was really unusual?</li>
+                                <li>Tell us about it – describe the reading material and explain why was it so unusual.
+                                </li>
+                            </ul>
+                            <p class="text-xs" style="margin-top: 10px; font-style: italic; opacity: 0.8;">The best
+                                articles will be published in our next issue.</p>
+                        </div>
+                        <div style="margin-top: 30px;">
+                            <timer-pill duration="2"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: B2 students need to focus on the 'Why' and the characters. Encourage them to be critics,
+                    not just storytellers.
+                </aside>
+            </section>
+            <!-- SLIDE 15: PLANNING -->
+            <section><slide-task title="THE BLUEPRINT" badge="TASK 4: PLANNING" timer="2">
+                    <div class="row-container">
+                        <div class="col-40"><img
+                                src="images/pixabay_7567746_notepad_writing_writer_write_notebook_paper_office_thinking_casual_man_freelance.jpg"
+                                class="inset-media"></div>
+                        <div class="col-60">
+                            <div class="glass-box">
+                                <p class="text-md">Plan your 3
+                                    Paragraphs:</p>
+                                <ul class="text-sm">
+                                    <li><span class="highlight">Para
+                                            1:</span>Intro &
+                                        Hook (The Question)</li>
+                                    <li><span class="highlight">Para
+                                            2:</span>The Core
+                                        Description</li>
+                                    <li><span class="highlight">Para
+                                            3:</span>Final
+                                        Thought & Conclusion
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </slide-task></section>
+            <!-- SLIDE 16: SEGUE 4 -->
+            <section data-background-gradient="var(--grad-boss)">
+                <slide-segue title="BOSS LEVEL: PLANNING">
+                    <p class="text-md" style="color: #ff0000; font-weight: 600;">GET READY TO PLAN !</p>
+                </slide-segue>
+            </section>
+            <!-- SLIDE 17: BOSS LEVEL TASK -->
+            <section data-background-color="#1a0000">
+                <div class="row-container">
+                    <div class="col-100">
+                        <div class="glass-box"
+                            style="border-color: #ff0000; box-shadow: 0 0 30px rgba(255, 0, 0, 0.3); text-align: center;">
+                            <h2 style="color: #ff0000;">
+                                THE FINAL MISSION</h2>
+                            <p class="text-md">COMPLETE
+                                YOUR PLAN NOW !</p>
+                            <p class="text-sm highlight">
+                                Checklist:</p>
+                            <ul class="text-sm" style="display: inline-block; text-align: left;">
+                                <li>Have you chosen the
+                                    B1 or B2 track?</li>
+                                <li>Do you have 3
+                                    vocabulary upgrades?
+                                </li>
+                                <li>Is your structure
+                                    clear?</li>
+                            </ul>
+                            <div style="margin-top: 20px;">
+                                <timer-pill duration="10"></timer-pill>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">**Advice**: This is
+                    the focused writing time. Play some
+                    low-fi music in the background if
+                    possible. **Next**: Peer Feedback.
+                </aside>
+            </section>
+            <!-- SLIDE 18: PEER FEEDBACK -->
+            <section><slide-split title="PEER REVIEW" badge="TASK 5: FEEDBACK"><img
+                        src="images/pixabay_1825515_return_feedback_news_board_chalk_fonts_dialog_discussion_communicate_converse_co.jpg"
+                        class="inset-media">
+                    <div class="glass-box">
+                        <p class="text-md">Swap your
+                            papers !</p>
+                        <p class="text-sm">Check
+                            for:</p>
+                        <ul class="text-sm">
+                            <li>Did they use the
+                                <span class="highlight">Vocabulary
+                                    Upgrades</span>?
+                            </li>
+                            <li>Is the hook
+                                interesting?</li>
+                        </ul>
+                    </div>
+                </slide-split></section>
+        </div>
+    </div>
+
+    <!-- Reveal.js Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            width: 960,
+            height: 700,
+            margin: 0.1,
+            transition: 'convex',
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            plugins: []
+        });
+
+        // Toggle speaker notes with 's'
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 's') {
+                Reveal.getPlugin('notes').toggleNotes();
+            }
+        });
+    </script>
+</body>
+
+</html>

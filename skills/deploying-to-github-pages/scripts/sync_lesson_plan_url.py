@@ -1,43 +1,53 @@
-import re
-import argparse
 import os
 import sys
+import re
 
-def sync_url(typ_path, live_url):
-    """
-    Updates the #slideshow_link("...") in a Typst file with the provided live URL.
-    """
-    if not os.path.exists(typ_path):
-        print(f"Error: File not found: {typ_path}")
-        sys.exit(1)
-
-    print(f"Reading {typ_path}...")
-    with open(typ_path, 'r', encoding='utf-8') as f:
-        content = f.read()
-
-    # Regex to find #slideshow_link("...") or #slideshow_link("...") with spaces
-    # Supports single or double quotes
-    pattern = r'(#slideshow_link\s*\(\s*["\'])(.*?)(["\']\s*\))'
+def sync_url(folder_name):
+    project_root = os.getcwd()
+    inputs_dir = os.path.join(project_root, 'inputs', folder_name)
     
-    if not re.search(pattern, content):
-        print(f"Warning: No #slideshow_link macro found in {typ_path}. Skipping update.")
+    if not os.path.exists(inputs_dir):
+        print(f"❌ Error: Folder '{folder_name}' not found in inputs/")
         return
 
-    new_content = re.sub(pattern, rf'\1{live_url}\3', content)
+    # Base URL for GitHub Pages
+    base_url = f"https://elwrush.github.io/actions-gh-pages/{folder_name}/"
+    
+    # Search for .typ file in inputs/[folder]/published or inputs/[folder]/
+    typ_files = []
+    search_paths = [os.path.join(inputs_dir, 'published'), inputs_dir]
+    
+    for path in search_paths:
+        if os.path.exists(path):
+            typ_files.extend([os.path.join(path, f) for f in os.listdir(path) if f.endswith('.typ')])
+    
+    if not typ_files:
+        print(f"⚠️  No .typ files found for {folder_name}.")
+        return
 
-    if new_content == content:
-        print(f"URL is already up to date: {live_url}")
-    else:
-        with open(typ_path, 'w', encoding='utf-8') as f:
-            f.write(new_content)
-        print(f"Successfully updated live URL in {typ_path}")
-        print(f"URL: {live_url}")
+    pattern = re.compile(r'#slideshow_link\(".*?"\)')
+    replacement = f'#slideshow_link("{base_url}")'
+    
+    for typ_file in typ_files:
+        with open(typ_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        if pattern.search(content):
+            new_content = pattern.sub(replacement, content)
+            if new_content != content:
+                with open(typ_file, 'w', encoding='utf-8') as f:
+                    f.write(new_content)
+                print(f"✅ Updated URL in: {os.path.relpath(typ_file, project_root)}")
+            else:
+                print(f"ℹ️  URL already up to date in: {os.path.relpath(typ_file, project_root)}")
+        else:
+            # If no link exists, we might want to add it, but for now we follow the mandate 
+            # to only update existing ones to avoid breaking formatting.
+            print(f"ℹ️  No #slideshow_link found in: {os.path.relpath(typ_file, project_root)}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Sync live slideshow URL to Typst lesson plan.")
-    parser.add_argument("typ_path", help="Path to the .typ lesson plan file")
-    parser.add_argument("live_url", help="The direct live URL of the slideshow (GitHub Pages)")
+    if len(sys.argv) < 2:
+        print("Usage: python sync_lesson_plan_url.py <folder_name>")
+        sys.exit(1)
     
-    args = parser.parse_args()
-    
-    sync_url(args.typ_path, args.live_url)
+    sync_url(sys.argv[1])

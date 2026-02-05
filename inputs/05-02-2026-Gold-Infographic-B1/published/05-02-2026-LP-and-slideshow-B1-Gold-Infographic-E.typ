@@ -30,7 +30,7 @@
 ]
 
 #v(0.5cm)
-#slideshow_link("https://elwrush.github.io/lesson-plan-agent/05-02-2026-Gold-Infographic-B1/")
+#slideshow_link("https://elwrush.github.io/actions-gh-pages/05-02-2026-Gold-Infographic-B1/")
 
 #v(0.5cm)
 
@@ -75,3 +75,4 @@
     - Brief content feedback to conclude the lesson. (T-S).
   ], "Ss-Ss"),
 ))
+

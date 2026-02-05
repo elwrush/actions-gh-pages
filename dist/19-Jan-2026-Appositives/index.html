@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>The Art of Precision: Mastering Appositives</title>
+
+    <!-- REVEAL.JS CORE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css?v=3.1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css?v=3.1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css?v=3.1" id="theme">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+
+    <!-- DEEP PURPLE THEME & LAYOUT ENGINE -->
+    <style>
+        :root {
+            --primary: #7E57C2;
+            /* Deep Purple 400 */
+            --secondary: #9575CD;
+            /* Deep Purple 300 */
+            --bg-dark: #311B92;
+            /* Deep Purple 900 */
+            --text-accent: #B2FF59;
+            /* Light Green A200 */
+            --glass: rgba(49, 27, 146, 0.95);
+            --answer-bg: #052a10;
+            /* Deep emerald for answers */
+            --boss-bg: #2a0a0a;
+            /* Deep maroon for final task */
+
+            /* GRADIENT SYSTEM */
+            --grad-main: radial-gradient(circle, var(--bg-dark) 0%, #100630 100%);
+            --grad-segue: radial-gradient(circle, #2d3436 0%, #000000 100%);
+            --grad-answer: radial-gradient(circle, var(--answer-bg) 0%, #051a08 100%);
+            --grad-boss: radial-gradient(circle, var(--boss-bg) 0%, #1a0505 100%);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+        }
+
+        /* TYPOGRAPHY */
+        .reveal h1 {
+            font-size: 80pt;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin: 0 0 20px 0;
+            color: white !important;
+            text-shadow: 4px 4px 0px var(--primary), 2px 2px 4px rgba(0, 0, 0, 0.9);
+        }
+
+        .reveal h2 {
+            font-size: 45pt;
+            color: white !important;
+            text-transform: uppercase;
+            font-weight: 800;
+            border-bottom: 4px solid var(--primary);
+            display: inline-block;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+        }
+
+        .reveal h3 {
+            font-size: 35pt;
+            color: var(--text-accent);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .reveal p,
+        .reveal li {
+            font-size: 30pt;
+            line-height: 1.2;
+        }
+
+        /* LAYOUT UTILITIES */
+        .slide-canvas {
+            width: 960px;
+            height: 700px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .row-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            width: 900px;
+        }
+
+        .col-40 {
+            flex: 0 0 40%;
+            max-width: 40%;
+        }
+
+        .col-50 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .col-60 {
+            flex: 0 0 60%;
+            max-width: 60%;
+        }
+
+        /* COMPONENTS */
+        .glass-box {
+            background: var(--glass);
+            border: 2px solid var(--primary);
+            padding: 25px;
+            box-shadow: 6px 6px 0px rgba(126, 87, 194, 0.2);
+            text-align: left;
+            border-radius: 12px;
+        }
+
+        .stage-badge {
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            font-weight: 800;
+            transform: skew(-10deg);
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 0.6em;
+        }
+
+        .teacher-tip {
+            border: 2px dashed var(--text-accent);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 0.7em;
+            color: white;
+        }
+
+        /* MEDIA HANDLING */
+        .inset-media {
+            border: 4px solid var(--primary);
+            box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.5);
+            max-height: 400px;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+
+        /* SEGUE TITLE */
+        .segue-title {
+            line-height: 1.1;
+            color: var(--text-accent) !important;
+            text-transform: uppercase;
+            transform: rotate(-3deg) skew(-10deg);
+            text-shadow: 0 0 20px var(--text-accent), 0 0 40px var(--primary), 6px 6px 0px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .segue-subtitle {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 20px;
+            transform: none;
+            text-shadow: none;
+        }
+
+        .highlight {
+            background: var(--text-accent);
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .attribution {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+
+        /* Contextual attribution for columns */
+        .col-40 .attribution,
+        .col-50 .attribution {
+            position: static;
+            text-align: center;
+            margin-top: 8px;
+            font-size: 12px;
+            width: 100%;
+        }
+
+        /* TIMER */
+        .timer-pill {
+            background: var(--glass);
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            padding: 10px 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .timer-display {
+            font-family: 'Courier Prime', monospace;
+            font-size: 2em;
+            color: var(--text-accent);
+            line-height: 1;
+        }
+
+        .timer-pill button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .timer-pill button:hover {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- SLIDE 1: TITLE -->
+            <section data-background-gradient="radial-gradient(circle, #311B92 0%, #100630 100%)">
+                <div class="row-container" style="height: 500px;">
+                    <div class="col-50">
+                        <img src="images/mona-lisa.jpg" class="inset-media" alt="Mona Lisa">
+                        <div class="attribution">Image by WikiImages from Pixabay</div>
+                    </div>
+                    <div class="col-50" style="text-align: left; padding-left: 20px;">
+                        <div class="stage-badge">B1 GRAMMAR</div>
+                        <h1 style="font-size: 60pt;">THE ART OF<br>PRECISION</h1>
+                        <p style="font-size: 28px; color: var(--text-accent);">Mastering Appositives for CEFR B2 Writing
+                        </p>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Set the tone—this is about elevating their writing to B2 level.
+                    **Next**: Writing Review slide.
+                </aside>
+            </section>
+
+            <!-- SLIDE 2: WRITING REVIEW & MOTIVATION -->
+            <section data-background-gradient="var(--grad-main)">
+                <div class="stage-badge">WRITING REVIEW</div>
+                <h2 style="font-size: 38pt; margin-bottom: 20px;">Building on Your Writing</h2>
+                <div class="glass-box" style="width: 800px; margin: 0 auto; padding: 20px;">
+                    <p style="font-size: 30px;">Today we add <span class="highlight">Precision (ความแม่นยำ)</span> to
+                        your writing toolkit</p>
+                    <p style="font-size: 26px; margin-top: 20px;">This skill is essential for reaching <strong
+                            style="color: var(--text-accent);">CEFR B2</strong> level</p>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <timer-pill duration="5"></timer-pill>
+                </div>
+                <aside class="notes">
+                    **Advice**: Give students 5 minutes to review feedback from their previous writing assignment.
+                    Monitor and answer brief questions.
+                    **Next**: Lead-in with Mona Lisa discussion.
+                </aside>
+            </section>
+
+            <!-- PHASE 1 SEGUE -->
+            <section data-background-gradient="var(--grad-segue)">
+                <h1 class="r-fit-text segue-title">PHASE 1:<br>DISCOVERY</h1>
+                <p class="segue-subtitle">Exploring the Master's Technique</p>
+                <aside class="notes">
+                    **Advice**: Pause for effect. Let the phase transition sink in.
+                    **Next**: Lead-in discussion about Leonardo.
+                </aside>
+            </section>
+
+            <!-- SLIDE 3: LEAD-IN - THE MASTER -->
+            <section data-background-gradient="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/mona-lisa.jpg" class="inset-media" alt="Mona Lisa">
+                        <div class="attribution">Image by WikiImages from Pixabay</div>
+                    </div>
+                    <div class="col-60">
+                        <h2 style="font-size: 40pt;">Who Created This Masterpiece?</h2>
+                        <div class="glass-box">
+                            <p style="font-size: 28px;"><strong>Discussion Questions:</strong></p>
+                            <ul style="font-size: 26px; text-align: left; margin-top: 20px;">
+                                <li>Who painted this?</li>
+                                <li>What do we know about him?</li>
+                                <li>Where can you see this painting today?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Elicit facts: "He lived in Italy", "He was a genius", "The Louvre".
+                    **Next**: Diagnostic test begins.
+                </aside>
+            </section>
+
+            <!-- PHASE 2 SEGUE -->
+            <section data-background-gradient="var(--grad-segue)">
+                <h1 class="r-fit-text segue-title">PHASE 2:<br>DIAGNOSTIC TEST</h1>
+                <p class="segue-subtitle">Can You Reduce These Sentences?</p>
+                <aside class="notes">
+                    **Advice**: Explain that students will write on mini-whiteboards.
+                    **Next**: First diagnostic sentence.
+                </aside>
+            </section>
+
+            <!-- SLIDE 4: TEST 1 - SENTENCE 1 -->
+            <section data-background-gradient="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/louvre.jpg" class="inset-media" alt="The Louvre">
+                        <div class="attribution">Image by matt_86 from Pixabay</div>
+                    </div>
+                    <div class="col-60">
+                        <div class="stage-badge">CHALLENGE 1/3</div>
+                        <h2 style="font-size: 38pt; margin-bottom: 20px;">Diagnostic Test</h2>
+                        <div class="glass-box" style="padding: 20px;">
+                            <p style="font-size: 28px; font-style: italic;">"The Louvre, which is a world-famous museum,
+                                is in Paris."</p>
+                            <p style="font-size: 24px; margin-top: 25px; color: var(--text-accent);">Can you make this
+                                sentence shorter and more precise?</p>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <timer-pill duration="2"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Monitor comma usage on whiteboards.
+                    **Next**: Answer for sentence 1.
+                </aside>
+            </section>
+
+            <!-- SLIDE 5: ANSWER KEY - SENTENCE 1 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Answer: Challenge 1</h2>
+                <div class="glass-box" style="width: 800px; margin: 0 auto; border-color: #26A69A;">
+                    <p style="font-size: 24px;"><strong>Original:</strong> "The Louvre, which is a world-famous museum,
+                        is in Paris."</p>
+                    <p style="font-size: 32px; margin-top: 20px; color: var(--text-accent);"><strong>Reduced:</strong>
+                        "The Louvre, a world-famous museum, is in Paris."</p>
+                    <p style="font-size: 24px; margin-top: 30px;">✓ Removed <span class="highlight">which is</span> to
+                        create a cleaner, more precise sentence.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Check understanding: "Did we change the meaning?" (No)
+                    **Next**: Second diagnostic sentence.
+                </aside>
+            </section>
+
+            <!-- SLIDE 6: TEST 1 - SENTENCE 2 -->
+            <section data-background-gradient="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/david.jpg" class="inset-media" style="height: 450px;"
+                            alt="Michelangelo's David">
+                        <div class="attribution">Image by 21150 from Pixabay</div>
+                    </div>
+                    <div class="col-60">
+                        <div class="stage-badge">CHALLENGE 2/3</div>
+                        <h2 style="font-size: 38pt; margin-bottom: 20px;">Diagnostic Test</h2>
+                        <div class="glass-box" style="padding: 20px;">
+                            <p style="font-size: 28px; font-style: italic;">"Michelangelo, who was a brilliant sculptor,
+                                carved the statue of David."</p>
+                            <p style="font-size: 24px; margin-top: 25px; color: var(--text-accent);">Can you make this
+                                sentence shorter and more precise?</p>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <timer-pill duration="2"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Watch for students who delete the commas entirely.
+                    **Next**: Answer for sentence 2.
+                </aside>
+            </section>
+
+            <!-- SLIDE 7: ANSWER KEY - SENTENCE 2 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Answer: Challenge 2</h2>
+                <div class="glass-box" style="width: 800px; margin: 0 auto; border-color: #26A69A;">
+                    <p style="font-size: 24px;"><strong>Original:</strong> "Michelangelo, who was a brilliant sculptor,
+                        carved the statue of David."</p>
+                    <p style="font-size: 32px; margin-top: 20px; color: var(--text-accent);"><strong>Reduced:</strong>
+                        "Michelangelo, a brilliant sculptor, carved the statue of David."</p>
+                    <p style="font-size: 24px; margin-top: 30px;">✓ Removed <span class="highlight">who was</span> for
+                        conciseness.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: CCQ: "Which verb did we delete?" (to be)
+                    **Next**: Third diagnostic sentence.
+                </aside>
+            </section>
+
+            <!-- SLIDE 8: TEST 1 - SENTENCE 3 -->
+            <section data-background-gradient="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/renaissance.jpg" class="inset-media" alt="Renaissance Art">
+                        <div class="attribution">Image by janeb13 from Pixabay</div>
+                    </div>
+                    <div class="col-60">
+                        <div class="stage-badge">CHALLENGE 3/3</div>
+                        <h2 style="font-size: 38pt; margin-bottom: 20px;">Diagnostic Test</h2>
+                        <div class="glass-box" style="padding: 20px;">
+                            <p style="font-size: 28px; font-style: italic;">"The Renaissance, which was a period of
+                                great art, began in Italy."</p>
+                            <p style="font-size: 24px; margin-top: 25px; color: var(--text-accent);">Can you make this
+                                sentence shorter and more precise?</p>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <timer-pill duration="2"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Final diagnostic—prepare to transition to clarification.
+                    **Next**: Answer for sentence 3.
+                </aside>
+            </section>
+
+            <!-- SLIDE 9: ANSWER KEY - SENTENCE 3 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Answer: Challenge 3</h2>
+                <div class="glass-box" style="width: 800px; margin: 0 auto; border-color: #26A69A;">
+                    <p style="font-size: 24px;"><strong>Original:</strong> "The Renaissance, which was a period of great
+                        art, began in Italy."</p>
+                    <p style="font-size: 32px; margin-top: 20px; color: var(--text-accent);"><strong>Reduced:</strong>
+                        "The Renaissance, a period of great art, began in Italy."</p>
+                    <p style="font-size: 24px; margin-top: 30px;">✓ Removed <span class="highlight">which was</span> to
+                        maintain flow.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: CCQ: "Which pronoun did we delete?" (who/which)
+                    **Next**: Clarification phase begins.
+                </aside>
+            </section>
+
+            <!-- PHASE 3 SEGUE -->
+            <section data-background-gradient="var(--grad-segue)">
+                <h1 class="r-fit-text segue-title">PHASE 3:<br>CLARIFICATION</h1>
+                <p class="segue-subtitle">Understanding the Reduction Logic</p>
+                <aside class="notes">
+                    **Advice**: Now we formalize what they discovered.
+                    **Next**: The Reduction Logic slide.
+                </aside>
+            </section>
+
+            <!-- SLIDE 10A: THE REDUCTION LOGIC - BEFORE -->
+            <section data-auto-animate data-auto-animate-duration="1.5" data-auto-animate-easing="ease-in-out"
+                data-background-gradient="var(--grad-main)">
+                <h2>From Relative Clause to Appositive</h2>
+                <div style="margin-top: 60px;">
+                    <p data-id="sentence" style="font-size: 36px; font-style: italic; text-align: center;">
+                        Michelangelo, <span data-id="remove"
+                            style="color: #ef4444; font-weight: bold; text-decoration: underline;">who was</span> a
+                        brilliant sculptor, carved the statue of David.
+                    </p>
+                </div>
+                <p style="font-size: 24px; margin-top: 40px; color: #ef4444;">⬇ Watch the underlined words disappear ⬇
+                </p>
+                <aside class="notes">
+                    **Advice**: Point out "who was" - this is what we'll remove. Advance slowly to show the animation.
+                    **Next**: Auto-animate to show the reduction.
+                </aside>
+            </section>
+
+            <!-- SLIDE 10B: THE REDUCTION LOGIC - AFTER -->
+            <section data-auto-animate data-auto-animate-duration="1.5" data-auto-animate-easing="ease-in-out"
+                data-background-gradient="var(--grad-main)">
+                <h2>From Relative Clause to Appositive</h2>
+                <div style="margin-top: 60px;">
+                    <p data-id="sentence"
+                        style="font-size: 36px; font-style: italic; text-align: center; color: var(--text-accent);">
+                        Michelangelo, a brilliant sculptor, carved the statue of David.
+                    </p>
+                </div>
+                <p style="font-size: 32px; margin-top: 40px; color: var(--text-accent);">✓ We removed:
+                    <strong>who/which</strong> + <strong>to be verb</strong>
+                </p>
+                <aside class="notes">
+                    **Advice**: The sentence morphs smoothly over 1.5 seconds - "who was" disappears!
+                    **Next**: Position matters slide.
+                </aside>
+            </section>
+
+            <!-- SLIDE 11: POSITION MATTERS -->
+            <section data-background-gradient="var(--grad-main)">
+                <h2>Two Positions for Appositives</h2>
+                <div class="glass-box" style="width: 800px; margin: 40px auto;">
+                    <p style="font-size: 28px;"><strong>Mid-Sentence (2 commas):</strong></p>
+                    <p style="font-size: 32px; margin-top: 15px; font-style: italic;">My brother, <span
+                            class="highlight">a master chef</span>, lives in Bangkok.</p>
+
+                    <hr style="margin: 40px 0; border-color: var(--primary);">
+
+                    <p style="font-size: 28px;"><strong>End-Sentence (1 comma):</strong></p>
+                    <p style="font-size: 32px; margin-top: 15px; font-style: italic;">I live with my brother, <span
+                            class="highlight">a master chef</span>.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Emphasize the comma rule—this is a common error.
+                    **Next**: The Warning Zone.
+                </aside>
+            </section>
+
+            <!-- SLIDE 11.5: THE WARNING ZONE -->
+            <section data-background-gradient="var(--grad-boss)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/warning.jpg" class="inset-media" alt="Warning Sign">
+                        <div class="attribution">Image by Clker-Free-Vector-Images from Pixabay</div>
+                    </div>
+                    <div class="col-60">
+                        <div class="stage-badge" style="background: #e67e22;">WARNING ZONE</div>
+                        <h2 style="font-size: 38pt; margin-bottom: 20px;">When CAN'T you use it?</h2>
+                        <div class="glass-box" style="padding: 20px; border-color: #e67e22;">
+                            <p style="font-size: 26px; color: #FFF;">You need the verb <strong>TO BE</strong> (is, are,
+                                was, were)</p>
+                            <hr style="margin: 20px 0; border-color: #e67e22; opacity: 0.5;">
+                            <p style="font-size: 22px; text-align: left;">✅ The man <strong style="color: #4CAF50;">who
+                                    is</strong> a chef...<br>
+                                <span style="color: #4CAF50;">→ The man, a chef,...</span>
+                            </p>
+                            <div
+                                style="margin-top: 15px; background: rgba(255,0,0,0.1); padding: 10px; border-radius: 8px;">
+                                <p style="font-size: 22px; text-align: left;">❌ The man <strong
+                                        style="color: #ef5350;">who works</strong> here...<br>
+                                    <span style="color: #ef5350;">→ The man, works here,...</span> (GRAMMAR ERROR!)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Crucial check—if there's no "BE" verb, you can't just delete the pronoun. It creates a
+                    sentence fragment.
+                    **Next**: Practice phase.
+                </aside>
+            </section>
+
+            <!-- PHASE 4 SEGUE -->
+            <section data-background-gradient="var(--grad-segue)">
+                <h1 class="r-fit-text segue-title">PHASE 4:<br>PRACTICE</h1>
+                <p class="segue-subtitle">Applying Your New Skill</p>
+                <aside class="notes">
+                    **Advice**: Students now work on the worksheet.
+                    **Next**: Task 1 instructions.
+                </aside>
+            </section>
+
+            <!-- SLIDE 12: TASK 1 - IDENTIFICATION -->
+            <section data-background-gradient="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/leonardo.jpg" class="inset-media" style="height: 450px;"
+                            alt="Leonardo da Vinci Portrait">
+                        <div class="attribution">Image by GDJ from Pixabay</div>
+                    </div>
+                    <div class="col-60">
+                        <div class="stage-badge">TASK 1</div>
+                        <h2 style="font-size: 38pt; margin-bottom: 20px;">Find the Appositives</h2>
+                        <div class="glass-box" style="padding: 20px;">
+                            <p style="font-size: 24px;">Read the text about Leonardo da Vinci on your worksheet</p>
+                            <p style="font-size: 22px; margin-top: 20px; color: var(--text-accent);">Underline the
+                                appositives for the <strong>bolded</strong> subjects</p>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <timer-pill duration="4"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Walk around and check student work. Monitor for accuracy—students should identify
+                    phrases like "a master of the Italian Renaissance".
+                    **Next**: Task 2 instructions.
+                </aside>
+            </section>
+
+            <!-- SLIDE 12B: TASK 1 - ANSWER 1 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <div class="stage-badge" style="background: #26A69A;">ANSWER 1/4</div>
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Task 1: Answer 1</h2>
+                <div class="glass-box"
+                    style="width: 800px; margin: 0 auto; border-color: #26A69A; text-align: left; padding: 30px;">
+                    <p style="font-size: 28px; line-height: 1.4;">
+                        Leonardo da Vinci, <span class="highlight">a master of the Italian Renaissance</span>, was more
+                        than just a painter.
+                    </p>
+                    <hr style="margin: 30px 0; border-color: #26A69A; opacity: 0.5;">
+                    <p style="font-size: 24px; color: var(--text-accent);">
+                        <strong>Explanation:</strong> Describes Leonardo da Vinci directly.
+                    </p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Check: Did they underline the commas too? (They should underline the phrase).
+                    **Next**: Answer 2.
+                </aside>
+            </section>
+
+            <!-- SLIDE 12C: TASK 1 - ANSWER 2 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <div class="stage-badge" style="background: #26A69A;">ANSWER 2/4</div>
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Task 1: Answer 2</h2>
+                <div class="glass-box"
+                    style="width: 800px; margin: 0 auto; border-color: #26A69A; text-align: left; padding: 30px;">
+                    <p style="font-size: 28px; line-height: 1.4;">
+                        His most famous work, <span class="highlight">the Mona Lisa</span>, sits in the Louvre Museum in
+                        Paris.
+                    </p>
+                    <hr style="margin: 30px 0; border-color: #26A69A; opacity: 0.5;">
+                    <p style="font-size: 24px; color: var(--text-accent);">
+                        <strong>Explanation:</strong> Identifies his most famous work.
+                    </p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Highlight the double commas for mid-sentence position.
+                    **Next**: Answer 3.
+                </aside>
+            </section>
+
+            <!-- SLIDE 12D: TASK 1 - ANSWER 3 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <div class="stage-badge" style="background: #26A69A;">ANSWER 3/4</div>
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Task 1: Answer 3</h2>
+                <div class="glass-box"
+                    style="width: 800px; margin: 0 auto; border-color: #26A69A; text-align: left; padding: 30px;">
+                    <p style="font-size: 28px; line-height: 1.4;">
+                        Leonardo often kept notebooks, <span class="highlight">leather-bound volumes filled with
+                            sketches and ideas</span>, to record his observations.
+                    </p>
+                    <hr style="margin: 30px 0; border-color: #26A69A; opacity: 0.5;">
+                    <p style="font-size: 24px; color: var(--text-accent);">
+                        <strong>Explanation:</strong> Describes what the notebooks were.
+                    </p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Emphasize the descriptive detail.
+                    **Next**: Answer 4.
+                </aside>
+            </section>
+
+            <!-- SLIDE 12E: TASK 1 - ANSWER 4 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <div class="stage-badge" style="background: #26A69A;">ANSWER 4/4</div>
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Task 1: Answer 4</h2>
+                <div class="glass-box"
+                    style="width: 800px; margin: 0 auto; border-color: #26A69A; text-align: left; padding: 30px;">
+                    <p style="font-size: 28px; line-height: 1.4;">
+                        His great rival, <span class="highlight">Michelangelo</span>, also worked in Italy during this
+                        period.
+                    </p>
+                    <hr style="margin: 30px 0; border-color: #26A69A; opacity: 0.5;">
+                    <p style="font-size: 24px; color: var(--text-accent);">
+                        <strong>Explanation:</strong> Identifies who his great rival was.
+                    </p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Wrap up Task 1.
+                    **Next**: Task 2 instructions.
+                </aside>
+            </section>
+
+            <!-- SLIDE 13: TASK 2 - THE ARCHITECT'S GRID -->
+            <section data-background-gradient="var(--grad-main)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/blueprint.jpg" class="inset-media" alt="Architectural Blueprint">
+                        <div class="attribution">Image by geralt from Pixabay</div>
+                    </div>
+                    <div class="col-60">
+                        <div class="stage-badge">TASK 2</div>
+                        <h2 style="font-size: 38pt; margin-bottom: 20px;">The Architect's Grid</h2>
+                        <div class="glass-box" style="padding: 20px;">
+                            <p style="font-size: 22px;">Combine the sentence pairs using appositives</p>
+                            <div
+                                style="background: rgba(255,255,255,0.1); padding: 10px; margin-top: 15px; border-radius: 8px;">
+                                <p style="font-size: 18px;"><strong>Example:</strong></p>
+                                <p style="font-size: 18px;">My teacher is Mr. Smith. He is a marathon runner.</p>
+                                <p style="font-size: 22px; color: var(--text-accent);">→ My teacher, a marathon runner,
+                                    is Mr. Smith.</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <timer-pill duration="6"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Monitor for "Force-Feeding"—appositives should flow naturally. Check for comma
+                    accuracy, especially end-of-sentence appositives.
+                    **Next**: Task 2 Answer Key.
+                </aside>
+            </section>
+
+            <!-- SLIDE 13B: TASK 2 - ANSWER 1 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <div class="stage-badge" style="background: #26A69A;">ANSWER 1/7</div>
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Task 2: Question 1</h2>
+                <div class="glass-box"
+                    style="width: 800px; margin: 0 auto; border-color: #26A69A; text-align: left; padding: 30px;">
+                    <p style="font-size: 32px; color: var(--text-accent);">Bangkok, <span class="highlight">a bustling
+                            metropolis</span>, is the capital of Thailand.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Check for correct comma placement.
+                    **Next**: Answer 2.
+                </aside>
+            </section>
+
+            <!-- SLIDE 13C: TASK 2 - ANSWER 2 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <div class="stage-badge" style="background: #26A69A;">ANSWER 2/7</div>
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Task 2: Question 2</h2>
+                <div class="glass-box"
+                    style="width: 800px; margin: 0 auto; border-color: #26A69A; text-align: left; padding: 30px;">
+                    <p style="font-size: 32px; color: var(--text-accent);">My favorite book, <span class="highlight">a
+                            classic fantasy novel</span>, is 'The Hobbit'.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Note the apostrophes around the book title.
+                    **Next**: Answer 3.
+                </aside>
+            </section>
+
+            <!-- SLIDE 13D: TASK 2 - ANSWER 3 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <div class="stage-badge" style="background: #26A69A;">ANSWER 3/7</div>
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Task 2: Question 3</h2>
+                <div class="glass-box"
+                    style="width: 800px; margin: 0 auto; border-color: #26A69A; text-align: left; padding: 30px;">
+                    <p style="font-size: 32px; color: var(--text-accent);">Serena Williams, <span class="highlight">a
+                            world-renowned tennis player</span>, has won 23 Grand Slam titles.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Emphasize the mid-sentence position.
+                    **Next**: Answer 4.
+                </aside>
+            </section>
+
+            <!-- SLIDE 13E: TASK 2 - ANSWER 4 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <div class="stage-badge" style="background: #26A69A;">ANSWER 4/7</div>
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Task 2: Question 4</h2>
+                <div class="glass-box"
+                    style="width: 800px; margin: 0 auto; border-color: #26A69A; text-align: left; padding: 30px;">
+                    <p style="font-size: 32px; color: var(--text-accent);">My cousin, <span class="highlight">a
+                            pilot</span>, flies for Thai Airways.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Check comma accuracy.
+                    **Next**: Answer 5.
+                </aside>
+            </section>
+
+            <!-- SLIDE 13F: TASK 2 - ANSWER 5 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <div class="stage-badge" style="background: #26A69A;">ANSWER 5/7</div>
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Task 2: Question 5</h2>
+                <div class="glass-box"
+                    style="width: 800px; margin: 0 auto; border-color: #26A69A; text-align: left; padding: 30px;">
+                    <p style="font-size: 32px; color: var(--text-accent);">The durian, <span class="highlight">a
+                            distinctive fruit</span>, is known for its strong smell.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Students may laugh at "durian"—good engagement!
+                    **Next**: Answer 6.
+                </aside>
+            </section>
+
+            <!-- SLIDE 13G: TASK 2 - ANSWER 6 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <div class="stage-badge" style="background: #26A69A;">ANSWER 6/7</div>
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Task 2: Question 6</h2>
+                <div class="glass-box"
+                    style="width: 800px; margin: 0 auto; border-color: #26A69A; text-align: left; padding: 30px;">
+                    <p style="font-size: 32px; color: var(--text-accent);">Albert Einstein, <span class="highlight">a
+                            brilliant physicist</span>, developed the theory of relativity.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Classic example of mid-sentence appositive.
+                    **Next**: Answer 7 (final).
+                </aside>
+            </section>
+
+            <!-- SLIDE 13H: TASK 2 - ANSWER 7 -->
+            <section data-background-gradient="var(--grad-answer)">
+                <div class="stage-badge" style="background: #26A69A;">ANSWER 7/7</div>
+                <h2 style="color: #26A69A !important; border-color: #26A69A;">Task 2: Question 7</h2>
+                <div class="glass-box"
+                    style="width: 800px; margin: 0 auto; border-color: #26A69A; text-align: left; padding: 30px;">
+                    <p style="font-size: 32px; color: var(--text-accent);">Tokyo, <span class="highlight">the capital of
+                            Japan</span>, is the largest city in the world.</p>
+                </div>
+                <aside class="notes">
+                    **Advice**: Emphasize the single comma rule for end position.
+                    **Next**: Boss Level.
+                </aside>
+            </section>
+
+            <!-- PHASE 5 SEGUE -->
+            <section data-background-gradient="var(--grad-segue)">
+                <h1 class="r-fit-text segue-title">PHASE 5:<br>PRODUCTION</h1>
+                <p class="segue-subtitle">Your Writing Challenge</p>
+                <aside class="notes">
+                    **Advice**: This is the "Boss Level"—emphasize the importance.
+                    **Next**: Task 3 instructions.
+                </aside>
+            </section>
+
+            <!-- SLIDE 14: TASK 3 - PRODUCTION CHALLENGE -->
+            <section data-background-gradient="var(--grad-boss)">
+                <div class="row-container">
+                    <div class="col-40">
+                        <img src="images/writing-desk.jpg" class="inset-media" alt="Creative Writing Desk">
+                        <div class="attribution">Image by Pexels from Pixabay</div>
+                    </div>
+                    <div class="col-60">
+                        <div class="stage-badge" style="background: #EF5350;">BOSS LEVEL</div>
+                        <h2
+                            style="color: #FFEB3B !important; border-color: #FFEB3B; font-size: 38pt; margin-bottom: 20px;">
+                            Task 3: Production</h2>
+                        <div class="glass-box" style="border-color: #EF5350; padding: 20px;">
+                            <p style="font-size: 24px; color: #FFEB3B;">Write <strong>70+ words</strong> about a person
+                                or place you find fascinating</p>
+                            <ul style="font-size: 20px; text-align: left; margin-top: 15px; line-height: 1.2;">
+                                <li>Use at least <strong>3 appositives</strong></li>
+                                <li>Make them flow naturally</li>
+                            </ul>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <timer-pill duration="10"></timer-pill>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    **Advice**: Peer review—students swap papers and underline appositives. Monitor for natural
+                    integration—avoid "forced" appositives.
+                    **Next**: Closing slide.
+                </aside>
+            </section>
+
+            <!-- SLIDE 15: CLOSING - KEY TAKEAWAYS -->
+            <section data-background-gradient="var(--grad-main)">
+                <h2>Precision Achieved</h2>
+                <div class="glass-box" style="width: 800px; margin: 40px auto;">
+                    <p style="font-size: 32px; color: var(--text-accent); margin-bottom: 30px;">Key Takeaways:</p>
+                    <ul style="font-size: 28px; text-align: left;">
+                        <li>Appositives = Reduced relative clauses</li>
+                        <li>Remove <strong>who/which</strong> + <strong>to be</strong></li>
+                        <li>Two positions: mid-sentence (2 commas) or end-sentence (1 comma)</li>
+                        <li>This skill elevates your writing to <strong style="color: var(--text-accent);">B2
+                                level</strong></li>
+                    </ul>
+                </div>
+                <aside class="notes">
+                    **Advice**: Congratulate students on mastering a B2-level skill.
+                    **Next**: End of presentation.
+                </aside>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            width: 960,
+            height: 700,
+            transition: 'convex',
+            backgroundTransition: 'fade',
+            center: true,
+            plugins: [RevealNotes]
+        });
+
+        // AUDIO ASSETS
+        const blipSfx = new Audio('audio/blip.mp3');
+        const bellSfx = new Audio('audio/bell.mp3');
+        const warningSfx = new Audio('audio/30-seconds.mp3');
+
+        // NATIVE WEB COMPONENT: <timer-pill>
+        class TimerPill extends HTMLElement {
+            constructor() {
+                super();
+                this.duration = parseInt(this.getAttribute('duration')) || 5;
+                this.timeLeft = this.duration * 60;
+                this.timer = null;
+            }
+
+            connectedCallback() {
+                this.render();
+                this.updateDisplay();
+                this.querySelector('.start-btn').onclick = () => this.toggle();
+            }
+
+            render() {
+                this.innerHTML = `
+                    <div class="timer-pill">
+                        <div class="timer-display">00:00</div>
+                        <button class="start-btn">START</button>
+                    </div>
+                `;
+            }
+
+            updateDisplay() {
+                const m = Math.floor(this.timeLeft / 60).toString().padStart(2, '0');
+                const s = (this.timeLeft % 60).toString().padStart(2, '0');
+                this.querySelector('.timer-display').textContent = `${m}:${s}`;
+            }
+
+            toggle() {
+                const btn = this.querySelector('.start-btn');
+                const pill = this.querySelector('.timer-pill');
+                const display = this.querySelector('.timer-display');
+
+                if (this.timer) {
+                    clearInterval(this.timer);
+                    this.timer = null;
+                    btn.textContent = 'START';
+                } else {
+                    pill.style.borderColor = 'var(--text-accent)';
+                    btn.textContent = 'PAUSE';
+                    blipSfx.play(); // Blip on start
+                    this.timer = setInterval(() => {
+                        if (this.timeLeft > 0) {
+                            this.timeLeft--;
+                            this.updateDisplay();
+
+                            // 30-second warning
+                            if (this.timeLeft === 30) {
+                                warningSfx.play();
+                            }
+
+                            // Pulse Blip only during final 29 seconds (29 to 1)
+                            if (this.timeLeft <= 29 && this.timeLeft >= 1) {
+                                blipSfx.currentTime = 0;
+                                blipSfx.play();
+                            }
+                        } else {
+                            clearInterval(this.timer);
+                            this.timer = null;
+                            display.style.color = '#ef4444';
+                            pill.style.borderColor = '#ef4444';
+                            btn.textContent = 'DONE';
+                            btn.disabled = true;
+                            bellSfx.play();
+                        }
+                    }, 1000);
+                }
+            }
+        }
+        customElements.define('timer-pill', TimerPill);
+    </script>
+</body>
+
+</html>

@@ -34,7 +34,7 @@
 #v(0.5cm)
 
 // Visible slideshow link after the boxes
-#slideshow_link("https://elwrush.github.io/lesson-plan-agent/28-01-2026-B1-Match-Girl-E/")
+#slideshow_link("https://elwrush.github.io/actions-gh-pages/28-01-2026-B1-Match-Girl-E/")
 
 #v(0.5cm)
 
@@ -69,3 +69,4 @@
 
 #v(0.5cm)
 *Technical Note: B2 learners follow a parallel track for Stages 3 and 4 using the B2 text/questions and the 'Philosophical Reflection' prompt.*
+

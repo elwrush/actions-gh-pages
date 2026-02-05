@@ -15,7 +15,7 @@
         },
         {
             "layout": "mission",
-            "video": "https://elwrush.github.io/lesson-plan-agent/images/mission_bg_clipped.mp4",
+            "video": "https://elwrush.github.io/actions-gh-pages/images/mission_bg_clipped.mp4",
             "data-background-video-loop": false,
             "intro": "In your test you'll probably have to speak about holidays. This lesson will help you do that.",
             "objectives": [

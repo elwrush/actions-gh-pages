@@ -16,7 +16,7 @@
         },
         {
             "layout": "mission",
-            "video": "https://elwrush.github.io/lesson-plan-agent/images/mission_bg_clipped.mp4",
+            "video": "https://elwrush.github.io/actions-gh-pages/images/mission_bg_clipped.mp4",
             "background_gradient": "linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.6))",
             "intro": "In the exam, you need to talk about your holidays. Today we will learn the words to do that perfectly.",
             "objectives": [

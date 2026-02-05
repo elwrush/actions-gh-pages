@@ -1,79 +1,82 @@
 ---
 name: deploying-to-github-pages
-description: Deploys Reveal.js presentations to GitHub Pages while keeping source materials (lesson plans, JSON) off the live site.
+description: >
+  Builds and deploys Reveal.js presentations to GitHub Pages using a clean
+  subfolder architecture. Use when the user wants to publish or update
+  their live presentations.
 ---
 
 # Skill: Deploying to GitHub Pages (`deploying-to-github-pages`)
 
 ## Description
-This skill automates the deployment of Reveal.js Presentations to GitHub Pages. It uses a **clean-build strategy**:
-1.  Source materials (`inputs/`) live in the `main` branch.
-2.  The build script (`scripts/build_dist.js`) extracts ONLY web assets into a temporary `dist/` folder.
-3.  GitHub Actions builds and pushes `dist/` to a separate `gh-pages` branch.
-4.  **Only the contents of `dist/` are visible on the live website.**
+This skill automates the process of building a production-ready `dist/` directory and preparing it for GitHub Pages deployment. It enforces the "Zero Overwrite" architecture where each lesson lives in its own subfolder and shares a single root-level Reveal.js engine.
 
-## Critical Rules
+## Core Mandates
+1.  **Repo Hygiene**: NEVER commit heavy media (>1MB) to both `inputs/` and `dist/`. Build scripts must handle assets according to the Global Asset Pattern.
+2.  **Zero Overwrite**: Every presentation must reside in its own unique subfolder (e.g., `https://elwrush.github.io/actions-gh-pages/lesson-name/`).
+3.  **Single Engine**: All presentations reference the shared Reveal.js engine at the parent level (`../dist/`, `../plugin/`).
+4.  **Automatic Sync**: After a build, the live URL MUST be synchronized back to the Typst lesson plan.
 
-> [!CRITICAL]
-> **HYGIENE MANDATE**: Never commit the `dist/` folder to the `main` branch. It is excluded via `.gitignore`. The live site is built automatically by GitHub Actions upon pushing to `main`.
-
-> [!CRITICAL]
-> **ONLY PRESENTATIONS**: The build script is whitelisted. It will NEVER copy `.typ`, `.pdf`, `.json` (config), or `.py` files to the deployment folder.
-
-> [!IMPORTANT]
-> **REPOSITORY**: The target repository is `https://github.com/elwrush/actions-gh-pages`.
-> **LIVE URL**: `https://elwrush.github.io/actions-gh-pages/[FOLDER-NAME]/`
-
-## Architectural Workflow
+## Architectural Overview
 
 ```mermaid
 graph TD
-    Start([🚀 Deployment Request]) --> Build[1. Local Build & Validate: npm run build]
-    Build --> Commit[2. Commit Source to main: /commit]
-    Commit --> Push[3. Push to GitHub]
-    
-    subgraph GitHub_Actions [CI/CD Pipeline]
-        Push --> Action[Trigger: deploy.yml]
-        Action --> RemoteBuild[npm run build]
-        RemoteBuild --> Deploy[peaceiris/actions-gh-pages]
-        Deploy --> Publish[Update gh-pages branch]
-    end
-    
-    Publish --> Sync[4. Sync Live URL to .typ Plan]
-    Sync --> Finish([🏁 Live Slideshow & Updated Plan])
+    A[inputs/FOLDER/published] -->|Aggregate| B(build_dist.js)
+    E[temp_reveal_repo] -->|Copy Engine| B
+    B -->|Clean & Populate| C[dist/]
+    C -->|Subfolder Structure| D[dist/FOLDER/index.html]
+    C -->|Shared Assets| F[dist/dist/]
+    B -->|Generate| G[dist/index.html Dashboard]
+    D -->|Sync URL| H[Lesson Plan .typ]
 ```
 
-## Workflow Steps
+## Workflow
 
-### 1. Build & Validate (Local)
-Prepare the `dist/` directory and ensure no source materials leaked in.
-// turbo
+### 1. Build
+Run the build script to aggregate all presentations and the shared engine into the root `dist/` folder:
+
 ```powershell
-npm run build; python scripts/validate_dist_hygiene.py
+node scripts/build_dist.js
 ```
 
-### 2. Commit & Push Source
-Commit your changes (JSON, Typst, etc.) to the `main` branch.
-```bash
-/commit "feat: update [Lesson Name] and prepare for deployment"
-```
-*Note: This triggers the GitHub Action.*
+The script will:
+- Clear the current `dist/` folder.
+- Copy the Reveal.js engine (`dist/`, `plugin/`, `css/`) from `temp_reveal_repo` to `dist/`.
+- Scan `inputs/` for folders containing `index.html`.
+- Copy each into `dist/[folder-name]/`.
+- **Fix Paths**: Automatically update `index.html` to reference `../dist/` and `../plugin/`.
+- Generate a dashboard at `dist/index.html`.
 
-### 3. Synchronize Lesson Plan URL (CRITICAL)
-Once the action completes (usually 1-2 minutes), update your Typst file with the finalized live URL.
-// turbo
+### 2. Synchronize URL
+Update the Typst lesson plan with the live URL:
+
 ```powershell
-python skills/deploying-to-github-pages/scripts/sync_lesson_plan_url.py "inputs/[FOLDER]/[FILENAME].typ" "https://elwrush.github.io/actions-gh-pages/[FOLDER]/"
+python skills/deploying-to-github-pages/scripts/sync_lesson_plan_url.py [FOLDER-NAME]
+```
+
+### 3. Verify
+- Open `dist/index.html` locally to check the dashboard and links.
+- Run the validator: `python .gemini/hooks/present-validator.py inputs/[FOLDER-NAME]/presentation.json`.
+
+### 4. Commit & Push (Manual Gate)
+Ask the user for approval before committing:
+> "The build is complete and verified. Shall I commit and push to GitHub Pages?"
+
+If approved:
+```powershell
+git add dist/
+git commit -m "feat(deploy): publish [FOLDER-NAME] to GitHub Pages"
+git push origin main
 ```
 
 ## Troubleshooting
 
-### "Materials appearing on site"
-1. Run `python scripts/validate_dist_hygiene.py` locally.
-2. Check `scripts/build_dist.js` whitelists.
-3. Ensure `dist/` is NOT tracked in git: `git rm -r --cached dist`.
+### 404 Errors on Engine Assets
+Check the `index.html` in the deployed subfolder. Ensure paths like `href="../dist/reveal.css"` are correct and that the `dist/` folder exists at the root of the repository.
 
-### "404 Not Found"
-1. Verify the folder name in `inputs/` matches the URL.
-2. Check GitHub Actions tab for build failures.
-3. Ensure `index.html` exists in `inputs/[FOLDER]/published/`.
+### Broken Dashboard Links
+Ensure the `FOLDER-NAME` in the dashboard matches the actual folder in `dist/`. The `build_dist.js` handles this automatically by scanning the `inputs/` directory.
+
+## Live URL Pattern
+- **Base URL**: `https://elwrush.github.io/actions-gh-pages/`
+- **Presentation**: `https://elwrush.github.io/actions-gh-pages/[FOLDER-NAME]/`
