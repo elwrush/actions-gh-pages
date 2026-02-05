@@ -44,33 +44,47 @@ if (targetFolder) {
     console.log(`🎯 Targeted build for: ${targetFolder} (Incremental Mode)`);
 } else {
     robustClean(DIST_DIR);
+    
+    // Copy shared JS components
+    const skillsJs = path.join(PROJECT_ROOT, 'skills/creating-html-presentation/js');
+    if (fs.existsSync(skillsJs)) {
+        const destJs = path.join(DIST_DIR, 'skills/creating-html-presentation/js');
+        fs.mkdirSync(destJs, { recursive: true });
+        fs.cpSync(skillsJs, destJs, {
+            recursive: true,
+            filter: (src) => !path.basename(src).startsWith('.') && path.basename(src).toLowerCase() !== 'desktop.ini'
+        });
+        console.log('📦 Copied shared JS components.');
+    }
+
+    // Global images
+    const globalImages = path.join(PROJECT_ROOT, 'images');
+    if (fs.existsSync(globalImages)) {
+        const destImages = path.join(DIST_DIR, 'images');
+        fs.cpSync(globalImages, destImages, {
+            recursive: true,
+            filter: (src) => !path.basename(src).startsWith('.') && path.basename(src).toLowerCase() !== 'desktop.ini'
+        });
+        console.log('📦 Copied global images.');
+    }
+
+    // Global Reveal.js Engine (for shared hosting)
+    const revealRepo = path.join(PROJECT_ROOT, 'temp_reveal_repo');
+    ['dist', 'plugin', 'css'].forEach(folder => {
+        const src = path.join(revealRepo, folder);
+        const dest = path.join(DIST_DIR, folder);
+        if (fs.existsSync(src)) {
+            fs.cpSync(src, dest, {
+                recursive: true,
+                filter: (src) => !path.basename(src).startsWith('.') && path.basename(src).toLowerCase() !== 'desktop.ini'
+            });
+            console.log(`📦 Copied global Reveal engine: ${folder}`);
+        }
+    });
 }
 
 if (!fs.existsSync(DIST_DIR)) {
     fs.mkdirSync(DIST_DIR);
-}
-
-// Copy shared JS components
-const skillsJs = path.join(PROJECT_ROOT, 'skills/creating-html-presentation/js');
-if (fs.existsSync(skillsJs)) {
-    const destJs = path.join(DIST_DIR, 'skills/creating-html-presentation/js');
-    fs.mkdirSync(destJs, { recursive: true });
-    fs.cpSync(skillsJs, destJs, {
-        recursive: true,
-        filter: (src) => !path.basename(src).startsWith('.') && path.basename(src).toLowerCase() !== 'desktop.ini'
-    });
-    console.log('📦 Copied shared JS components.');
-}
-
-// Global images
-const globalImages = path.join(PROJECT_ROOT, 'images');
-if (fs.existsSync(globalImages)) {
-    const destImages = path.join(DIST_DIR, 'images');
-    fs.cpSync(globalImages, destImages, {
-        recursive: true,
-        filter: (src) => !path.basename(src).startsWith('.') && path.basename(src).toLowerCase() !== 'desktop.ini'
-    });
-    console.log('📦 Copied global images.');
 }
 
 
@@ -108,16 +122,30 @@ folders.forEach(f => {
         recursive: true,
         filter: (src) => {
             const base = path.basename(src).toLowerCase();
+            if (base.endsWith('.pdf')) return false; // GLOBAL PDF BAN
+
             const isGit = src.includes('.git');
             const isHidden = base.startsWith('.');
             const isLegacy = src.includes('reveal_presentation');
             const isSystem = base === 'desktop.ini';
-            // If copying lesson root, exclude published/ folder itself to avoid recursion if dest is inside src (not possible here but good practice)
+            // Exclude Reveal engine folders if we are in a subfolder to use the global ones
+            const isEngine = ['dist', 'plugin', 'css'].includes(base);
             // also exclude source artifacts like .typ and .json and .txt
             const isSource = base.endsWith('.typ') || base.endsWith('.json') || base.endsWith('.txt');
-            return !isGit && !isHidden && !isLegacy && !isSystem && (!hasPublished || !isSource);
+            return !isGit && !isHidden && !isLegacy && !isSystem && !isEngine && (!hasPublished || !isSource);
         }
     });
+
+    // Update index.html to point to global Reveal engine (../dist etc)
+    const indexPath = path.join(destPath, 'index.html');
+    if (fs.existsSync(indexPath)) {
+        let content = fs.readFileSync(indexPath, 'utf8');
+        content = content.replace(/href="dist\//g, 'href="../dist/');
+        content = content.replace(/src="dist\//g, 'src="../dist/');
+        content = content.replace(/href="css\//g, 'href="../css/');
+        content = content.replace(/src="plugin\//g, 'src="../plugin/');
+        fs.writeFileSync(indexPath, content);
+    }
 
     // Extract title from index.html if possible
     let title = f;

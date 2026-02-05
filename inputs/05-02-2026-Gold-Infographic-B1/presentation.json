@@ -1,0 +1,115 @@
+{
+    "meta": {
+        "title": "What's So Special About Gold?",
+        "cefr": "B1",
+        "lesson_type": "bell"
+    },
+    "slides": [
+        {
+            "layout": "title",
+            "title": "WHAT'S SO SPECIAL ABOUT GOLD?",
+            "subtitle": "OXFORD DISCOVER FUTURES: UNIT 10",
+            "video_url": "images/gold_bg.mp4",
+            "notes": "Welcome the students. Introduce the topic of gold and its value."
+        },
+        {
+            "layout": "strategy",
+            "title": "YOUR MISSION: RESOURCE MANAGEMENT",
+            "background_color": "#8B1538",
+            "icon": "fas fa-briefcase",
+            "content": "<div style='display: flex; justify-content: center; flex-wrap: wrap;'>\n    <div class='mission-badge'><i class='fas fa-search'></i><p>SCAN for information</p></div>\n    <div class='mission-badge'><i class='fas fa-database'></i><p>EXTRACT specific data</p></div>\n    <div class='mission-badge'><i class='fas fa-cog'></i><p>MASTER verb suffixes</p></div>\n</div>",
+            "notes": "Explain the objectives. Why do we need to read infographics? They are key for the PET exam and real-life data comprehension."
+        },
+        {
+            "layout": "split_table",
+            "title": "GOLD: FACT OR FICTION?",
+            "image": "images/gold_bar.jpg",
+            "content": "<h3>THE CHALLENGE:</h3>\n<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px;'>\n    <tbody>\n        <tr class='fragment'>\n            <td style='width: 40px; color: #FFD700;'>1</td>\n            <td>Gold is edible.</td>\n            <td class='fragment' style='color: #4CAF50; font-weight: bold;'>FACT</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='width: 40px; color: #FFD700;'>2</td>\n            <td>All gold ever mined fits in 2 Olympic pools.</td>\n            <td class='fragment' style='color: #F44336; font-weight: bold;'>FICTION (It's 3-4)</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='width: 40px; color: #FFD700;'>3</td>\n            <td>There is gold in your body.</td>\n            <td class='fragment' style='color: #4CAF50; font-weight: bold;'>FACT (0.2mg)</td>\n        </tr>\n    </tbody>\n</table>\n<div class='timer-display' id='timer-lead-in'>02:00</div>\n<button class='timer-btn' onclick='toggleTimer(120, \"timer-lead-in\", this)'>START</button>",
+            "notes": "Quick warmer. Students guess. Reveal the answers to spark interest."
+        },
+        {
+            "layout": "strategy",
+            "title": "DECODING THE METAL",
+            "background_color": "#1E3A8A",
+            "icon": "fas fa-book-open",
+            "content": "<p style='font-size: 1.2em;'>Before we excavate the facts, let's unlock the language.</p>",
+            "notes": "Bridge slide to vocabulary."
+        },
+        {
+            "layout": "match_reorder",
+            "title": "UNLOCK THE LANGUAGE",
+            "left_items": [
+                {"id": 1, "text": "origin"},
+                {"id": 2, "text": "excavate"},
+                {"id": 3, "text": "manipulate"},
+                {"id": 4, "text": "radiation"},
+                {"id": 5, "text": "precious"}
+            ],
+            "right_items": [
+                {"id": 4, "text": "energy sent out as waves"},
+                {"id": 1, "text": "where something comes from"},
+                {"id": 5, "text": "very valuable"},
+                {"id": 2, "text": "to dig something up"},
+                {"id": 3, "text": "to handle or control"}
+            ],
+            "notes": "Pre-teach vocabulary. Model and drill the word stress in ex-ca-vate and ma-nip-u-late."
+        },
+        {
+            "layout": "strategy",
+            "title": "THE SPEED SCAN",
+            "background_color": "#1E3A8A",
+            "icon": "fas fa-bolt",
+            "content": "<p style='font-size: 1.2em;'>Don't read every word! Look for headings and numbers.</p>",
+            "notes": "Bridge to scanning strategy."
+        },
+        {
+            "layout": "split_table",
+            "title": "SCANNING FOR ANSWERS",
+            "image": "images/infographic_preview.jpg",
+            "content": "<h3>TASK: EXERCISE 1</h3>\n<ul style='font-size: 0.8em;'>\n    <li>Where did the gold on the surface of Earth come from?</li>\n    <li>How was gold formed in the universe?</li>\n    <li>Where is most of the gold on the Earth?</li>\n    <li>How are gold deposits formed underground?</li>\n    <li>What are the five main uses of gold?</li>\n</ul>\n<div class='timer-display' id='timer-scan'>02:00</div>\n<button class='timer-btn' onclick='toggleTimer(120, \"timer-scan\", this)'>START</button>",
+            "notes": "Scanning task. Students have 2 minutes to find the answers using headings and images."
+        },
+        {
+            "layout": "strategy",
+            "title": "DATA DETECTIVES",
+            "background_color": "#8B1538",
+            "icon": "fas fa-microscope",
+            "content": "<p style='font-size: 1.2em;'>Now look deeper. What do these specific numbers tell us?</p>",
+            "notes": "Bridge to detail reading."
+        },
+        {
+            "layout": "split_table",
+            "title": "THE NUMBERS GAME",
+            "content": "<h3>WHAT DO THESE FIGURES REFER TO?</h3>\n<table style='width: 100%; font-size: 0.7em;'>\n    <tbody>\n        <tr class='fragment'>\n            <td style='color: #FFD700;'>130 million years</td>\n            <td>Age of the explosion that created gold.</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='color: #FFD700;'>99%</td>\n            <td>Gold in liquid form at Earth's center.</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='color: #FFD700;'>45 cm</td>\n            <td>Depth of gold if it covered the Earth.</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='color: #FFD700;'>1,000,000,000</td>\n            <td>Cell phones produced each year.</td>\n        </tr>\n    </tbody>\n</table>",
+            "notes": "Exercise 3. Students match the figures to their meanings."
+        },
+        {
+            "layout": "split_table",
+            "title": "THE HISTORICAL RECORD",
+            "image": "images/cleopatra.jpg",
+            "content": "<h3>THE CHALLENGE: EXERCISE 4</h3>\n<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'>\n    <tbody>\n        <tr class='fragment'>\n            <td>What were the historical uses?</td>\n            <td class='fragment' style='color: #FFD700;'>Jewelry, currency, dentistry.</td>\n        </tr>\n        <tr class='fragment'>\n            <td>What are the benefits?</td>\n            <td class='fragment' style='color: #FFD700;'>Doesn't darken, easy to manipulate.</td>\n        </tr>\n    </tbody>\n</table>",
+            "notes": "Exercise 4. Deep detail reading."
+        },
+        {
+            "layout": "strategy",
+            "title": "WORD TRANSFORMATIONS",
+            "background_color": "#1E3A8A",
+            "icon": "fas fa-magic",
+            "content": "<p style='font-size: 1.2em;'>How do we turn 'Beauty' into 'Beautify'? Suffix power!</p>",
+            "notes": "Bridge to grammar focus."
+        },
+        {
+            "layout": "split_table",
+            "title": "THE VERB FACTORY",
+            "content": "<h3>VERB SUFFIXES (-ify, -ize, -en, -ate)</h3>\n<table style='width: 100%; font-size: 0.8em;'>\n    <thead><tr><th>Suffix</th><th>Example from Text</th></tr></thead>\n    <tbody>\n        <tr class='fragment'>\n            <td style='color: #FFD700;'>-ify</td>\n            <td>beautify, solidify</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='color: #FFD700;'>-ize</td>\n            <td>moisturize, specialize</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='color: #FFD700;'>-en</td>\n            <td>brighten, harden</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='color: #FFD700;'>-ate</td>\n            <td>excavate, manipulate</td>\n        </tr>\n    </tbody>\n</table>",
+            "notes": "Vocabulary focus on verb suffixes. Students categorize words from the text."
+        },
+        {
+            "layout": "split_table",
+            "title": "VALUE & VIRTUE",
+            "image": "images/resources.jpg",
+            "content": "<h3>TALKING POINTS:</h3>\n<ul style='font-size: 0.9em;'>\n    <li class='fragment'>Is gold necessary for our lives? Why?</li>\n    <li class='fragment'>What factors make resources valuable?</li>\n    <li class='fragment'>Do we value any resources too much or too little?</li>\n</ul>",
+            "notes": "Personalization. Final discussion."
+        }
+    ]
+}
