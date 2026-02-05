@@ -50,4 +50,9 @@ node_modules/
 /dist/
 /build/
 
-
+# Large Data & Local Repos
+data/Qwen3-TTS/
+data/australian-voices/
+data/mozilla-data-collective/
+data/voice-recognition/
+temp_reveal_repo/
