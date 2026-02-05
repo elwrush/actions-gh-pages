@@ -9,16 +9,20 @@
             "layout": "title",
             "title": "WHAT'S SO SPECIAL ABOUT GOLD?",
             "subtitle": "OXFORD DISCOVER FUTURES: UNIT 10",
-            "video_url": "../images/gold_bg.mp4",
+            "video": "../images/gold_bg.mp4",
             "notes": "Welcome the students. Introduce the topic of gold and its value."
         },
         {
-            "layout": "strategy",
+            "layout": "mission",
             "title": "YOUR MISSION: RESOURCE MANAGEMENT",
-            "background_video": "../images/mission_bg_clipped.mp4",
-            "background_color": "#8B1538",
-            "icon": "fas fa-briefcase",
-            "content": "<div style='display: flex; justify-content: center; flex-wrap: wrap;'>\n    <div class='mission-badge'><i class='fas fa-search'></i><p>SCAN for information</p></div>\n    <div class='mission-badge'><i class='fas fa-database'></i><p>EXTRACT specific data</p></div>\n    <div class='mission-badge'><i class='fas fa-cog'></i><p>MASTER verb suffixes</p></div>\n</div>",
+            "intro": "Reading infographics is a key 21st-century skill.",
+            "video": "../images/mission_bg_clipped.mp4",
+            "video_loop": true,
+            "objectives": [
+                { "icon": "fa-search", "text": "SCAN for information" },
+                { "icon": "fa-database", "text": "EXTRACT specific data" },
+                { "icon": "fa-cog", "text": "MASTER verb suffixes" }
+            ],
             "notes": "Explain the objectives. Why do we need to read infographics? They are key for the PET exam and real-life data comprehension."
         },
         {
