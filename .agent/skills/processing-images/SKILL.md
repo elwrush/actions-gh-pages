@@ -1,6 +1,6 @@
 ---
 name: processing-images
-description: Best practices and tools for processing images for worksheets (trimming, transparency, resizing).
+description: Best practices and tools for processing images for worksheets (trimming, transparency, resizing). Use when the user asks to remove backgrounds, trim margins, fix fake checkerboards, or prepare icons/separators for documents.
 ---
 
 # Processing Images for Documents

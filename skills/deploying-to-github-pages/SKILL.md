@@ -17,6 +17,12 @@ This skill automates the deployment of Reveal.js Presentations to GitHub Pages. 
 > **REPOSITORY VISIBILITY**: The repository MUST be set to **Public** for free GitHub Pages hosting.
 > **PERMISSIONS**: The `GITHUB_TOKEN` in the workflow MUST have `contents: write` permissions.
 
+> [!CRITICAL]
+> **DISTRIBUTION HYGIENE**: You MUST NEVER push non-essential files to the `dist/` folder. This includes:
+> - **PDFs**: These are for offline use and do not belong on the slideshow host.
+> - **Source Files**: `.typ`, `.json`, and `.txt` files should remain in `inputs/`, not `dist/`.
+> - **Large Raw Media**: Ensure all media in `dist/` is optimized (e.g., 720p videos).
+
 ## Architectural Workflow
 
 ```mermaid
@@ -46,6 +52,13 @@ Run the build script to prepare the `dist/` directory.
 // turbo
 ```powershell
 node scripts/build_dist.js
+```
+
+### 1.5 Validate Hygiene (MANDATORY)
+Verify that no PDFs or duplicate engines are in the distribution.
+// turbo
+```powershell
+python scripts/validate_dist_hygiene.py
 ```
 
 ### 2. Commit and Push

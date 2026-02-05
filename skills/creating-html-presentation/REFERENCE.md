@@ -83,6 +83,31 @@ Themes are located in `css/themes/`.
 
 ---
 
+## 📖 Human-Readable Blueprint Template
+
+Use this format for `slide_architecture.md`. It must be clear, bold, and easy to skim.
+
+### SLIDE 1: TITLE — [Purpose: Hook & Branding]
+*   **Headline**: PRONUNCIATION: SOUNDS & SYMBOLS
+*   **Visual**: Cinematic video of a glowing digital code background.
+*   **Voice**: High-energy greeting.
+*   **Logic**: No animation. Fade-in transition.
+
+### SLIDE 2: THE CHALLENGE — [Purpose: Bridge to Phonemes]
+*   **Headline**: ENGLISH IS A LIE!
+*   **Visual**: A large, amber Warning icon on a dark maroon background.
+*   **Logic**: `auto-animate` the word "LIE" to pulse.
+*   **Bridge**: Links the frustration of spelling to the solution (the Chart).
+
+### SLIDE 3: TASK 1 (PART A) — [Purpose: Core Practice]
+*   **Headline**: LISTEN & TRANSCRIBE
+*   **Layout**: `split_table`
+*   **Visual**: Character lineup image on the left; Transcription table on the right.
+*   **Logic**: Sequential `fragments` for the audio controls.
+*   **Bridge**: Moves from global listening to specific vowel focus.
+
+---
+
 ## 🧩 Copy-Paste Snippets
 
 ### Bridge Slide (Pedagogical Scaffolding)

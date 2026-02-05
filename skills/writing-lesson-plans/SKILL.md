@@ -131,40 +131,12 @@ Based on collected information:
 
 Wait for user approval before proceeding.
 
-> [!CRITICAL]
-> ## Model Compliance Requirement
-> 
-> Before generating the lesson plan, **consult the model lesson plan** for the selected shape in `knowledge_base/shapes/shape-[letter].yaml`.
-> 
-> The generated lesson plan must:
-> 1. **Match the stage structure** of the model (not be a slavish rendering of materials)
-> 2. **Depth and Complexity**: Procedures MUST match the "thickness" and granularity of the example lesson plans in the models. If a model has multi-part lead-ins or detailed elicitation steps, the generated plan must reflect that specific pedagogical density.
-> 3. **Follow the pedagogical intent** - e.g., Shape E focuses on skills, not language
-> 4. **Use similar stage headers** - e.g., "Lead-in", "Reading for detail", "Post-reading"
-> 5. **Maintain similar timing proportions** - the model shows where to invest time
-> 6. **Consolidate activities** into logical stages rather than listing each exercise separately
-> 7. **Explicit Task Referencing**: Always reference specific task/exercise numbers (e.g., "Task 1: Pre-teaching") within the Procedure column. This ensures the lesson plan is directly anchored to the materials.
-> 
-> **Example: Shape E (Receptive Skills) model has only 3 stages:**
-> - Stage 1: Lead-in (6 min) - Multi-part warmup with prediction/discussion
-> - Stage 2: Reading for detail and specific information (22 min) - Main reading tasks
-> - Stage 3: Post-reading task (2 min) - Brief personalization or 70-word response
-> 
-> **Do NOT** create 6+ granular stages for each worksheet section. Combine related activities into coherent stages that match the model.
-
-> [!IMPORTANT]
-> ## Traditional Pedagogical Depth & Storylining
-> 
-> Do NOT slavishly and mechanistically reproduce the structure of worksheets. Avoid "thin" procedures that only list task numbers. 
-> 
-> Instead:
-> - **Pedagogical Thickness**: Procedures MUST match the granularity of the model lesson plans. Include elicitation steps, specific CCQs (Concept Check Questions), and clear transitions between activities.
-> - **Storylining**: Frame the lesson as a narrative journey. The Lead-in should "hook" the students, the middle stages should deepen their understanding, and the final stage should provide a meaningful resolution or reflection.
-> - **Similes over Metaphors**: Use professional ELT similes to guide students (e.g., "Like a detective looking for clues, scanning the text for specific dates"). 
-> - **Intrinsic Engagement**: Focus on the inherent interest of the material and the professional relevance of the task to foster motivation.
-- **Thematic Consistency**: **CRITICAL**. Ensure the "Situation" (topic/theme) remains consistent across stages. Avoid "pedagogical whiplash" (e.g., moving from a Lead-in about Art to a Diagnostic about Weather). The Initial Test in Shape C and the Lead-in in all shapes MUST be thematically linked to the core target language context.
-- **No Rewards/Dojos**: NEVER include mentions of "Dojo rewards", "stickers", or any other artificial reward systems. The focus is on intrinsic motivation and professional task engagement.
-- **No Hallucinations**: Do NOT invent visual materials (e.g., "Show photo of Thai student with EKG") unless they definitively exist in the `images/` or materials folder. Use generic references to the title/topic if unsure.
+### Step 7.5: Procedural Density Gate (MANDATORY)
+**Goal**: Prevent truncated procedures.
+Before writing any code, you **MUST** present a detailed Markdown summary of the lesson procedure. 
+- **Requirement**: Each stage must have at least 3-5 bullet points of granular teacher actions.
+- **Markers**: Include specific elicitation questions (e.g., "Elicit: What does the symbol /ə/ look like?") and interaction patterns (T-S, S-S).
+- **STOP AND WAIT**: Do not proceed until the user says "Approved" or "Expand Stage X".
 
 ### Step 8: Write Lesson Plan (Typst Format)
 
@@ -184,14 +156,16 @@ Generate the lesson plan **in Typst format** for professional PDF output. Use th
 **Canonical Folder:** `inputs/[DD-MM-YYYY-Topic-Level]/`
 
 Store ALL files in this folder using strict sub-directories:
-- **Lesson Plan:** `inputs/[Folder]/published/[DD-MM-YYYY]-LP-and-slideshow-[Level]-[Topic]-[Shape].typ`
-- **Published PDF:** `inputs/[Folder]/published/[DD-MM-YYYY]-LP-and-slideshow-[Level]-[Topic]-[Shape].pdf`
+- **Lesson Plan Source:** `inputs/[Folder]/published/[DD-MM-YYYY]-LP-and-slideshow-[Level]-[Topic]-[Shape].typ`
+- **Local PDF:** `inputs/[Folder]/published/[DD-MM-YYYY]-LP-and-slideshow-[Level]-[Topic]-[Shape].pdf`
 - **Images:** `inputs/[Folder]/images/`
 - **Audio:** `inputs/[Folder]/audio/`
 - **Quizzes:** `inputs/[Folder]/quizzes/`
 - **Presentations (JSON/HTML):** `inputs/[Folder]/`
 
 > [!CRITICAL]
+> **NO WEB PDFS**: The PDF lesson plans are **Local Artifacts** for printing and offline reference ONLY. They **MUST NEVER** be pushed to GitHub Pages or included in the `dist/` folder. The web distribution is for interactive slideshows only.
+> **NO VERSIONING**: Never create versioned filenames (e.g., `lesson-plan-v2.typ`, `lp-FINAL.pdf`). Always **OVERWRITE** the original canonical file. Version history is handled by Git, not by filenames.
 > **NO ROOT FILES**: Never save files to the `inputs/` root or the Project root. Always use the named subfolder.
 > **NO SCATTERING**: Do not create generic folders like `temp_quiz_repo`. Use the `published/` or `quizzes/` subfolder as appropriate.
 
@@ -251,17 +225,18 @@ Before finalizing the plan, you **MUST** conduct a self-evaluation:
 
 1.  **Consult the Model**: Open `knowledge_base/shapes/shape-[letter].yaml`.
 2.  **Evaluate Detail**: Does your procedure have the same level of granular detail as the `example_lesson_plan` in the model?
-3.  **Correct Truncation**: Expand procedures with specific pedagogical steps if they look too brief.
+3.  **No Slide References**: **STRICTLY BANNED**. Never refer to specific slide numbers (e.g., "Show Slide 4", "Refer to Slide 12") in the procedure. This language is mechanical and non-pedagogical. Instead, refer to the *content* or *purpose* (e.g., "Show the Lead-in visual," "Display the Task 1 sentences").
+4.  **Correct Truncation**: Expand procedures with specific pedagogical steps if they look too brief.
 4.  **🔍 CHECK FOR ORPHANS**: Ensure no "Stage Header" (maroon row) is left alone at the bottom of a page. 
     - **To Fix**: If a Stage Header is orphaned, split the `stage_table` into two separate calls and insert `#pagebreak()` between them in the `.typ` file.
 5.  **Verification**: You will be judged on whether the lesson plan feels as "thick" and professional as the model.
 
 #### 🧪 Step 9: Validate (MANDATORY)
-Run the validator before finalizing:
-```powershell
-python skills/writing-lesson-plans/scripts/validate_lesson_plan.py "inputs/[FOLDER]/published/lesson-plan.typ" --mode [bell|intensive]
-```
-- **Rule**: If the script fails, fix the issues and re-run until it passes.
+Run the validators before finalizing:
+1. **Consistency**: `python skills/writing-lesson-plans/scripts/validate_lesson_plan.py [path] --mode [bell|intensive]`
+2. **Density**: `python skills/writing-lesson-plans/scripts/validate_lp_density.py [path]`
+
+- **Rule**: If either script fails, fix the issues and re-run until it passes.
 
 > [!CRITICAL]
 > **GATE 2: POST-VALIDATION CHECK**

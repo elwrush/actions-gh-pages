@@ -34,17 +34,12 @@ def generate_presentation(json_path):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     
-    # 3. Copy Assets (Reveal Core + CSS)
+    # 3. Assets Logic (REFACTORED)
+    # Individual lessons no longer carry the Reveal engine (dist/plugin/css).
+    # These are hosted at the root level of the library for efficiency.
+    
     # Use ignore function to skip GDrive system files and hidden files
     ignore_func = shutil.ignore_patterns('desktop.ini', '.*', '.git', 'node_modules', 'test', 'examples', 'gulpfile.js', 'package.json')
-    
-    for folder in ['dist', 'plugin', 'css']:
-        src = os.path.join(reveal_source, folder)
-        dst = os.path.join(output_dir, folder)
-        
-        if os.path.exists(src):
-            shutil.copytree(src, dst, ignore=ignore_func, dirs_exist_ok=True)
-            print(f"Synchronized {folder} from {reveal_source} to: {dst}")
 
     # 3.5 Copy Lesson Images (MANDATORY for published folder portability)
     images_src = os.path.join(lesson_dir, 'images')
@@ -89,11 +84,11 @@ def generate_presentation(json_path):
                 url += f"&end={end}"
             slide['video_url'] = url
         
-        # Ensure autoplay and once-only for background videos as per request
+        # Ensure autoplay and looping for background videos as per request
         if 'video_url' in slide and slide['video_url'].endswith('.mp4'):
             # These will be used in data-background-video-* attributes
             slide['video_autoplay'] = True
-            slide['video_loop'] = False
+            slide['video_loop'] = True
 
     output_html = template.render(
         meta=config.get('meta', {}),
