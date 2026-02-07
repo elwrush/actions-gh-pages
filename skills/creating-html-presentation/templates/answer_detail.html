@@ -1,0 +1,186 @@
+<section {% if slide.background_gradient %} data-background-gradient="{{ slide.background_gradient }}" {% endif %} data-auto-animate>
+
+    <div class="answer-detail-container">
+
+        <!-- Icon-only Answer Table -->
+        <table class="answer-table">
+            <tbody>
+                <!-- Row 0: QUESTION (Standard Font) -->
+                <tr class="question-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-question-circle"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="question-text">{{ slide.title }}</p>
+                    </td>
+                </tr>
+
+                <!-- Row 1: THE ANSWER -->
+                <tr class="answer-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-check-circle"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="answer-text">{{ slide.answer | default('Answer goes here') }}</p>
+                    </td>
+                </tr>
+
+                <!-- Row 2: EVIDENCE -->
+                <tr class="evidence-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-quote-left"></i>
+                    </td>
+                    <td class="content-cell">
+                        <blockquote class="evidence-quote">{{ slide.evidence | default('Text snippet or excerpt...') }}</blockquote>
+                    </td>
+                </tr>
+
+                <!-- Row 3: EXPLANATION -->
+                <tr class="explanation-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-lightbulb"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="explanation-text">{{ slide.explanation | default('Explanation...') }}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Badge at bottom -->
+        {% if slide.badge %}
+        <div class="badge-container">
+            <span class="gold-badge">{{ slide.badge }}</span>
+        </div>
+        {% endif %}
+
+    </div>
+
+    <aside class="notes">
+        {{ slide.notes | default('Discuss the answer with the class.') }}
+    </aside>
+</section>
+
+<style>
+.answer-detail-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.answer-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 1em;
+}
+
+.answer-table tr {
+    vertical-align: top;
+}
+
+.icon-cell {
+    width: 50px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+    vertical-align: middle;
+}
+
+.icon-cell i {
+    font-size: 1.6em;
+}
+
+.content-cell {
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Question Row - Standard Font */
+.question-row .icon-cell {
+    background: rgba(255, 215, 0, 0.2);
+}
+.question-row .content-cell {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid #FFD700;
+}
+.question-row .icon-cell i {
+    color: #FFD700;
+}
+.question-text {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Answer Row */
+.answer-row .icon-cell {
+    background: rgba(76, 175, 80, 0.25);
+}
+.answer-row .content-cell {
+    background: rgba(76, 175, 80, 0.15);
+    border-left: 3px solid #4CAF50;
+}
+.answer-row .icon-cell i {
+    color: #4CAF50;
+}
+.answer-text {
+    font-size: 1.15em;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Evidence Row */
+.evidence-row .icon-cell {
+    background: rgba(135, 206, 235, 0.25);
+}
+.evidence-row .content-cell {
+    background: rgba(135, 206, 235, 0.15);
+    border-left: 3px solid #87CEEB;
+}
+.evidence-row .icon-cell i {
+    color: #87CEEB;
+}
+.evidence-quote {
+    margin: 0;
+    padding-left: 15px;
+    border-left: 3px solid #87CEEB;
+    font-style: italic;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* Explanation Row */
+.explanation-row .icon-cell {
+    background: rgba(255, 152, 0, 0.25);
+}
+.explanation-row .content-cell {
+    background: rgba(255, 152, 0, 0.15);
+    border-left: 3px solid #FF9800;
+}
+.explanation-row .icon-cell i {
+    color: #FF9800;
+}
+.explanation-text {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* Badge at bottom */
+.badge-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.gold-badge {
+    color: #FFD700;
+    font-size: 0.9em;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+</style>

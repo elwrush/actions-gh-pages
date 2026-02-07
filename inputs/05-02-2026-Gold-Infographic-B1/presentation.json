@@ -10,27 +10,113 @@
             "title": "WHAT'S SO SPECIAL ABOUT GOLD?",
             "subtitle": "OXFORD DISCOVER FUTURES: UNIT 10",
             "video": "../images/gold_bg.mp4",
+            "video_loop": true,
             "notes": "Welcome the students. Introduce the topic of gold and its value."
         },
         {
             "layout": "mission",
-            "title": "YOUR MISSION: RESOURCE MANAGEMENT",
+            "title": "YOUR MISSION",
             "intro": "Reading infographics is a key 21st-century skill.",
             "video": "../images/mission_bg_clipped.mp4",
             "video_loop": true,
             "objectives": [
-                { "icon": "fa-search", "text": "SCAN for information" },
-                { "icon": "fa-database", "text": "EXTRACT specific data" },
-                { "icon": "fa-cog", "text": "MASTER verb suffixes" }
+                {
+                    "icon": "fa-search",
+                    "text": "SCAN for information"
+                },
+                {
+                    "icon": "fa-database",
+                    "text": "EXTRACT specific data"
+                },
+                {
+                    "icon": "fa-cog",
+                    "text": "MASTER verb suffixes"
+                }
             ],
             "notes": "Explain the objectives. Why do we need to read infographics? They are key for the PET exam and real-life data comprehension."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 1",
+            "title": "MISSION START",
+            "background_gradient": "radial-gradient(circle, #8B0000 0%, #000000 100%)"
+        },
+        {
+            "layout": "impact",
+            "title": "DATA & VISUALS",
+            "background_video": "../images/gold_bg.mp4",
+            "main_text": "WHAT IS AN INFOGRAPHIC?",
+            "points": [
+                {
+                    "icon": "🎨",
+                    "text": "VISUALS: Icons & Graphs"
+                },
+                {
+                    "id": 2,
+                    "icon": "📊",
+                    "text": "DATA: Facts & Figures"
+                },
+                {
+                    "icon": "📖",
+                    "text": "STORY: Meaning & Impact"
+                }
+            ],
+            "notes": "Define infographics as a bridge between data and visual stories."
+        },
+        {
+            "layout": "split_table",
+            "title": "LET'S INVESTIGATE: THAILAND",
+            "image": "images/thailand_birth_rate_infographic.png",
+            "content": "<h3>THAILAND'S FERTILITY CRISIS</h3>\n<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px; font-size: 0.9em;'>\n    <tbody>\n        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-chart-line'></i></td><td>What is the trend in birth rates?</td></tr>\n        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-users'></i></td><td>How does this affect society?</td></tr>\n        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-icons'></i></td><td>What 'icons' do you see representing the data?</td></tr>\n    </tbody>\n</table>",
+            "notes": "Analyze the Thailand infographic. Highlighting how icons and graphs tell a story without using many words."
+        },
+        {
+            "layout": "image",
+            "image": "images/thailand_birth_rate_infographic.png",
+            "notes": "Observe the full infographic together. Point out specific data trends."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 1.5",
+            "title": "THE GOLD QUIZ",
+            "background_gradient": "radial-gradient(circle, #D4AF37 0%, #000000 100%)"
         },
         {
             "layout": "split_table",
             "title": "GOLD: FACT OR FICTION?",
             "image": "images/gold_bar.jpg",
-            "content": "<h3>THE CHALLENGE:</h3>\n<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px;'>\n    <tbody>\n        <tr class='fragment'>\n            <td style='width: 40px; color: #FFD700;'>1</td>\n            <td>Gold is edible.</td>\n            <td class='fragment' style='color: #4CAF50; font-weight: bold;'>FACT</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='width: 40px; color: #FFD700;'>2</td>\n            <td>All gold ever mined fits in 2 Olympic pools.</td>\n            <td class='fragment' style='color: #F44336; font-weight: bold;'>FICTION (It's 3-4)</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='width: 40px; color: #FFD700;'>3</td>\n            <td>There is gold in your body.</td>\n            <td class='fragment' style='color: #4CAF50; font-weight: bold;'>FACT (0.2mg)</td>\n        </tr>\n    </tbody>\n</table>\n<div class='timer-display' id='timer-lead-in'>02:00</div>\n<button class='timer-btn' onclick='toggleTimer(120, \"timer-lead-in\", this)'>START</button>",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px;'>\n    <tbody>\n        <tr>\n            <td style='width: 40px; color: #FFD700;'><i class='fas fa-utensils'></i></td>\n            <td style='text-align: left;'>Gold is edible.</td>\n        </tr>\n        <tr>\n            <td style='width: 40px; color: #FFD700;'><i class='fas fa-swimming-pool'></i></td>\n            <td style='text-align: left;'>All gold ever mined fits in 2 Olympic pools.</td>\n        </tr>\n        <tr>\n            <td style='width: 40px; color: #FFD700;'><i class='fas fa-user-circle'></i></td>\n            <td style='text-align: left;'>There is gold in your body.</td>\n        </tr>\n    </tbody>\n</table>",
             "notes": "Quick warmer. Students guess. Reveal the answers to spark interest."
+        },
+        {
+            "layout": "answer_detail",
+            "badge": "QUIZ: ANSWER 1/3",
+            "title": "Gold is edible.",
+            "answer": "✓ FACT - TRUE!",
+            "evidence": "Gold leaf is used in luxury desserts and drinks. It's safe to eat but has no taste.",
+            "explanation": "Edible gold (gold leaf or gold flakes) is classified as food-safe. It's often used to decorate chocolates, cakes, and fancy drinks. Remember: just because it's edible doesn't mean it's tasty!",
+            "background_gradient": "radial-gradient(circle, #D4AF37 0%, #1a1a1a 100%)",
+            "notes": "Gold is actually used in high-end gastronomy around the world."
+        },
+        {
+            "layout": "answer_detail",
+            "badge": "QUIZ: ANSWER 2/3",
+            "title": "All gold ever mined fits in 2 Olympic pools.",
+            "answer": "✗ FICTION - FALSE!",
+            "evidence": "If you gathered all the gold ever mined, it would fill about 3-4 Olympic swimming pools.",
+            "explanation": "This common myth is close but not quite right! While gold is very dense (heavy), the total amount mined throughout human history is larger than most people expect.",
+            "background_gradient": "radial-gradient(circle, #D4AF37 0%, #1a1a1a 100%)",
+            "notes": "This shows how valuable gold is - we've been mining it for thousands of years!"
+        },
+        {
+            "layout": "answer_detail",
+            "badge": "QUIZ: ANSWER 3/3",
+            "title": "There is gold in your body.",
+            "answer": "✓ FACT - TRUE!",
+            "evidence": "The human body contains approximately 0.2 milligrams of gold, mostly in the blood.",
+            "explanation": "Amazingly, trace amounts of gold exist naturally in our bodies! This tiny amount comes from the foods we eat and the environment. It's not enough to extract, but it's there!",
+            "background_gradient": "radial-gradient(circle, #D4AF37 0%, #1a1a1a 100%)",
+            "notes": "This is one of the most surprising facts for students!"
         },
         {
             "layout": "strategy",
@@ -41,23 +127,65 @@
             "notes": "Bridge slide to vocabulary."
         },
         {
-            "layout": "match_reorder",
-            "title": "UNLOCK THE LANGUAGE",
-            "left_items": [
-                {"id": 1, "text": "origin"},
-                {"id": 2, "text": "excavate"},
-                {"id": 3, "text": "manipulate"},
-                {"id": 4, "text": "radiation"},
-                {"id": 5, "text": "precious"}
-            ],
-            "right_items": [
-                {"id": 4, "text": "energy sent out as waves"},
-                {"id": 1, "text": "where something comes from"},
-                {"id": 5, "text": "very valuable"},
-                {"id": 2, "text": "to dig something up"},
-                {"id": 3, "text": "to handle or control"}
-            ],
-            "notes": "Pre-teach vocabulary. Model and drill the word stress in ex-ca-vate and ma-nip-u-late."
+            "layout": "vocab",
+            "word": "ORIGIN",
+            "icon": "fas fa-star",
+            "phoneme": "/ˈɒrɪdʒɪn/",
+            "thai": "ต้นกำเนิด",
+            "definition": "The point or place where something begins or is created.",
+            "image": "images/origin.jpg",
+            "example": "The detective is trying to find the <span style='color: #FFD700;'>origin</span> of the mysterious phone call.",
+            "notes": "Elicit: Where does gold come from? (Stars/Supernovae)"
+        },
+        {
+            "layout": "vocab",
+            "word": "EXCAVATE",
+            "icon": "fas fa-digging",
+            "phoneme": "/ˈekskəveɪt/",
+            "thai": "ขุดค้น",
+            "definition": "To dig a hole in the ground and remove something from it.",
+            "image": "images/resources.jpg",
+            "example": "The workers had to <span style='color: #FFD700;'>excavate</span> the old road to fix the water pipes.",
+            "notes": "Drill pronunciation: ex-ca-vate. Focus on the 'v' sound."
+        },
+        {
+            "layout": "vocab",
+            "word": "MANIPULATE",
+            "icon": "fas fa-hands",
+            "phoneme": "/məˈnɪpjuleɪt/",
+            "thai": "จัดการ/ควบคุม",
+            "definition": "To handle or control something in a skillful way.",
+            "image": "images/manipulate.jpg",
+            "example": "My friend likes to <span style='color: #FFD700;'>manipulate</span> me into doing naughty things by giving me chocolate.",
+            "notes": "Drill pronunciation: ma-nip-u-late. 4 syllables. Stress on the second."
+        },
+        {
+            "layout": "vocab",
+            "word": "RADIATION",
+            "icon": "fas fa-radiation",
+            "phoneme": "/ˌreɪdiˈeɪʃn/",
+            "thai": "รังสี",
+            "definition": "Energy that is sent out in the form of rays or waves.",
+            "image": "images/radiation.jpg",
+            "example": "You should wear sunscreen to protect your skin from the sun's <span style='color: #FFD700;'>radiation</span>.",
+            "notes": "Concept check: Is radiation always bad? (No, sun rays are radiation)."
+        },
+        {
+            "layout": "vocab",
+            "word": "PRECIOUS",
+            "icon": "fas fa-gem",
+            "phoneme": "/ˈpreʃəs/",
+            "thai": "ล้ำค่า",
+            "definition": "Rare and worth a lot of money; very valuable.",
+            "image": "images/gold_bar.jpg",
+            "example": "Don't drop that vase! It's very <span style='color: #FFD700;'>precious</span> to my grandmother.",
+            "notes": "List other precious things (Diamonds, time, memories)."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 2",
+            "title": "THE SEARCH",
+            "background_gradient": "radial-gradient(circle, #8B0000 0%, #000000 100%)"
         },
         {
             "layout": "strategy",
@@ -71,8 +199,58 @@
             "layout": "split_table",
             "title": "SCANNING FOR ANSWERS",
             "image": "images/infographic_preview.jpg",
-            "content": "<h3>TASK: EXERCISE 1</h3>\n<ul style='font-size: 0.8em;'>\n    <li>Where did the gold on the surface of Earth come from?</li>\n    <li>How was gold formed in the universe?</li>\n    <li>Where is most of the gold on the Earth?</li>\n    <li>How are gold deposits formed underground?</li>\n    <li>What are the five main uses of gold?</li>\n</ul>\n<div class='timer-display' id='timer-scan'>02:00</div>\n<button class='timer-btn' onclick='toggleTimer(120, \"timer-scan\", this)'>START</button>",
+            "content": "<h3>TASK: EXERCISE 1</h3>\n<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px; font-size: 0.8em;'>\n    <tbody>\n        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-meteor'></i></td><td>Where did the gold on the surface of Earth come from?</td></tr>\n        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-burst'></i></td><td>How was gold formed in the universe?</td></tr>\n        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-earth-asia'></i></td><td>Where is most of the gold on the Earth?</td></tr>\n        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-faucet-drip'></i></td><td>How are gold deposits formed underground?</td></tr>\n        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-list-check'></i></td><td>What are the five main uses of gold?</td></tr>\n        <tr><td colspan='2' style='text-align: center; padding-top: 20px;'>\n            <div class='timer-container'>\n                <div class='timer-display' id='timer-scan'>02:00</div>\n                <button class='timer-btn' onclick='toggleTimer(120, \"timer-scan\", this)'>START</button>\n            </div>\n        </td></tr>\n    </tbody>\n</table>",
             "notes": "Scanning task. Students have 2 minutes to find the answers using headings and images."
+        },
+        {
+            "layout": "answer_detail",
+            "badge": "SCAN: ANSWER 1/5",
+            "title": "Where did the gold on Earth's surface come from?",
+            "answer": "Asteroids and Meteorites",
+            "evidence": "\"Gold was delivered to Earth by asteroids and meteorites in a period called the Late Heavy Bombardment, about 4 billion years ago.\"",
+            "explanation": "Before asteroids brought gold, Earth's surface had very little. This 'golden rain' happened during a period when space rocks constantly hit our planet!",
+            "background_gradient": "radial-gradient(circle, #1E3A8A 0%, #000000 100%)",
+            "notes": "This explains why gold is so rare on Earth's surface today."
+        },
+        {
+            "layout": "answer_detail",
+            "badge": "SCAN: ANSWER 2/5",
+            "title": "How was gold formed in the universe?",
+            "answer": "Supernova Explosions",
+            "evidence": "\"Gold is created in the most powerful explosions in the universe: supernovae and neutron star collisions.\"",
+            "explanation": "Gold is literally STARDUST! It was forged in the extreme heat and pressure of dying stars exploding. Every gold atom in your jewelry once belonged to a star!",
+            "background_gradient": "radial-gradient(circle, #1E3A8A 0%, #000000 100%)",
+            "notes": "This connects to the ORIGIN vocabulary word from earlier."
+        },
+        {
+            "layout": "answer_detail",
+            "badge": "SCAN: ANSWER 3/5",
+            "title": "Where is most of the gold on Earth?",
+            "answer": "At Earth's Core (99%)",
+            "evidence": "\"Approximately 99% of all the gold on Earth is located in its core, thousands of kilometers below the surface.\"",
+            "explanation": "We can never access this gold! It's too deep and the pressure is too extreme. The gold we find is just the tiny fraction that stayed near the surface.",
+            "background_gradient": "radial-gradient(circle, #1E3A8A 0%, #000000 100%)",
+            "notes": "This is why gold mining is so difficult and expensive."
+        },
+        {
+            "layout": "answer_detail",
+            "badge": "SCAN: ANSWER 4/5",
+            "title": "How are gold deposits formed underground?",
+            "answer": "Hot Water Through Rock",
+            "evidence": "\"Gold deposits are formed when hot water circulates through rock, depositing gold in cracks and veins.\"",
+            "explanation": "This is called 'hydrothermal deposition.' Hot water dissolves tiny amounts of gold from rock, then cools down and leaves the gold behind in cracks!",
+            "background_gradient": "radial-gradient(circle, #1E3A8A 0%, #000000 100%)",
+            "notes": "This explains why gold is often found near hot springs or volcanic areas."
+        },
+        {
+            "layout": "answer_detail",
+            "badge": "SCAN: ANSWER 5/5",
+            "title": "What are the five main uses of gold?",
+            "answer": "Jewelry, Technology, Investment, Medicine, Dentistry",
+            "evidence": "\"Gold is used in: Jewelry, Technology (electronics), Investment (bars/coins), Medicine, and Dentistry.\"",
+            "explanation": "Gold's unique properties (doesn't rust, conducts electricity, is biocompatible) make it valuable for ALL these industries - not just jewelry!",
+            "background_gradient": "radial-gradient(circle, #1E3A8A 0%, #000000 100%)",
+            "notes": "Technology use is growing rapidly due to gold's excellent conductivity."
         },
         {
             "layout": "strategy",
@@ -104,16 +282,28 @@
             "notes": "Bridge to grammar focus."
         },
         {
+            "layout": "segue",
+            "phase": "PHASE 3",
+            "title": "WORD SYSTEMS",
+            "background_gradient": "radial-gradient(circle, #1E3A8A 0%, #000000 100%)"
+        },
+        {
             "layout": "split_table",
             "title": "THE VERB FACTORY",
             "content": "<h3>VERB SUFFIXES (-ify, -ize, -en, -ate)</h3>\n<table style='width: 100%; font-size: 0.8em;'>\n    <thead><tr><th>Suffix</th><th>Example from Text</th></tr></thead>\n    <tbody>\n        <tr class='fragment'>\n            <td style='color: #FFD700;'>-ify</td>\n            <td>beautify, solidify</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='color: #FFD700;'>-ize</td>\n            <td>moisturize, specialize</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='color: #FFD700;'>-en</td>\n            <td>brighten, harden</td>\n        </tr>\n        <tr class='fragment'>\n            <td style='color: #FFD700;'>-ate</td>\n            <td>excavate, manipulate</td>\n        </tr>\n    </tbody>\n</table>",
             "notes": "Vocabulary focus on verb suffixes. Students categorize words from the text."
         },
         {
+            "layout": "segue",
+            "phase": "PHASE 4",
+            "title": "REFLECTION",
+            "background_gradient": "radial-gradient(circle, #8B1538 0%, #000000 100%)"
+        },
+        {
             "layout": "split_table",
             "title": "VALUE & VIRTUE",
             "image": "images/resources.jpg",
-            "content": "<h3>TALKING POINTS:</h3>\n<ul style='font-size: 0.9em;'>\n    <li class='fragment'>Is gold necessary for our lives? Why?</li>\n    <li class='fragment'>What factors make resources valuable?</li>\n    <li class='fragment'>Do we value any resources too much or too little?</li>\n</ul>",
+            "content": "<h3>TALKING POINTS:</h3>\n<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px; font-size: 0.9em;'>\n    <tbody>\n        <tr class='fragment'><td style='width: 30px; color: #FFD700;'><i class='fas fa-question-circle'></i></td><td>Is gold necessary for our lives? Why?</td></tr>\n        <tr class='fragment'><td style='width: 30px; color: #FFD700;'><i class='fas fa-gears'></i></td><td>What factors make resources valuable?</td></tr>\n        <tr class='fragment'><td style='width: 30px; color: #FFD700;'><i class='fas fa-scale-balanced'></i></td><td>Do we value any resources too much or too little?</td></tr>\n    </tbody>\n</table>",
             "notes": "Personalization. Final discussion."
         }
     ]

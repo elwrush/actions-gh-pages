@@ -1,6 +1,41 @@
 
 ---
 
+## 2026-02-07 | Answer Slide Template Refactoring
+
+### Key Achievement: "No-Scroll" Answer Detail Layout
+- **Problem**: The `answer_detail` template had the question as an h2 title outside the table, and a scrolling wrapper (`max-height: 60vh; overflow-y: auto`) caused unwanted scrollbars on slides.
+- **Solution**: Refactored [`skills/creating-html-presentation/templates/answer_detail.html`](skills/creating-html-presentation/templates/answer_detail.html:1) with:
+  1. **Question in table row**: Moved the question from h2 title to the first row of the table with standard font (not bold) and gold question icon (`fa-question-circle`)
+  2. **Removed scrolling**: Eliminated the `table-wrapper` div with `max-height: 60vh; overflow-y: auto`
+  3. **Badge at bottom**: Moved the badge below the table for cleaner visual hierarchy
+
+### New Structure
+```
+┌─────────────────────────────────────────┐
+│ [?] Gold is edible.                      │ ← Question row (standard font)
+├─────────────────────────────────────────┤
+│ [✓] ✓ FACT - TRUE!                       │ ← Answer row (bold)
+├─────────────────────────────────────────┤
+│ ["] Gold leaf is used in...              │ ← Evidence row (italic)
+├─────────────────────────────────────────┤
+│ [💡] Edible gold is classified as...     │ ← Explanation row
+└─────────────────────────────────────────┘
+          QUIZ: ANSWER 1/3                 ← Badge at bottom
+```
+
+### Technical Changes
+- **Row spacing**: Reduced from `0 10px` to `0 8px` for compact fit
+- **Icon size**: Reduced from `2em` to `1.6em` for better proportions
+- **Font sizes**: Adjusted for hierarchy (question: 1.1em normal, answer: 1.15em bold, evidence/explanation: 1em)
+- **Presentation affected**: `05-02-2026-Gold-Infographic-B1` (8 answer_detail slides updated)
+
+### Files Modified
+- `skills/creating-html-presentation/templates/answer_detail.html` - Template refactored
+- `inputs/05-02-2026-Gold-Infographic-B1/presentation.json` - Fixed JSON syntax error on line 1
+
+---
+
 ## 2026-01-31 | Pedagogical Scaffolding & Asset Hardening
 
 ### Key Achievement: "The Bridge Slide" Paradigm
