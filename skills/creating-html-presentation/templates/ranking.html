@@ -1,0 +1,65 @@
+<section data-background="{{ slide.image }}" data-background-opacity="0.5" {% if slide.background_gradient %}
+    data-background-gradient="{{ slide.background_gradient }}" {% endif %} data-auto-animate>
+
+    <div
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: start; height: 100%; max-width: 1200px; margin: auto; text-align: left; padding-top: 20px;">
+
+        <!-- Container -->
+        <div
+            style="padding: 10px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+
+            <h1 data-id="task-title"
+                style="font-size: 1.8em; margin-bottom: 10px; line-height: 1.1; text-shadow: 2px 2px 4px black;">
+                {{ slide.title }}
+            </h1>
+
+            {% if slide.rationale %}
+            <div data-id="task-rationale"
+                style="font-size: 0.8em; margin-bottom: 15px; color: #eee; font-style: italic; font-weight: 300;">
+                <i class="fas fa-lightbulb" style="color: #FFD700; margin-right: 10px;"></i> {{ slide.rationale }}
+            </div>
+            {% endif %}
+
+            <!-- Columns -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; font-size: 0.9em;">
+
+                <!-- Left Column (Fixed) -->
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    {% for item in slide.left_items %}
+                    {% set text = item.text if item.text is defined else item %}
+                    {% set color = item.color if item.color is defined else 'rgba(50,50,50,0.8)' %}
+                    {% set border = item.border if item.border is defined else 'var(--accent)' %}
+
+                    <div data-id="left-{{ text }}"
+                        style="padding: 10px; background: {{ color }}; border: 1px solid {{ border }}; border-radius: 6px; text-align: center;">
+                        {{ text }}
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Right Column (Reordering) -->
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    {% for item in slide.right_items %}
+                    {% set text = item.text if item.text is defined else item %}
+                    {% set color = item.color if item.color is defined else 'rgba(50,50,50,0.8)' %}
+                    {% set border = item.border if item.border is defined else 'white' %}
+                    {% set fg = item.fg if item.fg is defined else 'white' %}
+
+                    <div data-id="right-{{ text }}" style="padding: 10px;
+                               background: {{ color }};
+                               border: none;
+                               color: {{ fg }};
+                               border-radius: 6px; text-align: center;">
+                        {{ text }}
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        {{ slide.notes | default('Monitor student progress.') }}
+    </aside>
+</section>

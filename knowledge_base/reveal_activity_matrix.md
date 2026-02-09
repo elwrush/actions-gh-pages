@@ -25,11 +25,11 @@
 *   **Why**: Keeps the learner focused on the current item while maintaining context of the whole list.
 *   **Behavior**:
     *   Use `class="fragment fade-up"`.
-    *   Current item is high contrast; previous items remain visible but dimmed (optional).
+    *   **Current item is high contrast**; previous items remain visible but dimmed (optional).
 
 ---
 
-## 4. Activity-Specific Mappings
+## 4. Pedagogical Mappings (Human Reference)
 
 | ESL Activity Type | Recommended Layout | Reveal.js Feature | Answer Strategy |
 |:---|:---|:---|:---|
@@ -41,3 +41,24 @@
 | **Multiple Choice** | `quiz` | **Auto-Animate** | Distractors fade, Key scales |
 | **Error Correction** | `text_repair` | **Auto-Animate** | Text morphs (Bad -> Good) |
 | **True/False** | `binary_choice` | **Auto-Animate** | Correct option scales/glows |
+
+---
+
+## 5. Script Mappings (Automated)
+
+*Table used by `convert_plan_to_json.py`. Keys must match Mermaid node labels.*
+
+| Activity Type | Layout |
+| :--- | :--- |
+| Sentence Ordering | ranking |
+| Verb Matching | match_reorder |
+| Mission | mission |
+| Title | title |
+| Video | video |
+| Lead-in | video |
+| Linguistic Alignment | strategy |
+| Discovery | strategy |
+| Reflection | strategy |
+| Prep & Pronunciation | split_table |
+| The Athletes | split_table |
+| Default | split_table |
