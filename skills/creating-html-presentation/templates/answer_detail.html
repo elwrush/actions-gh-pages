@@ -1,11 +1,19 @@
-<section {% if slide.background_gradient %} data-background-gradient="{{ slide.background_gradient }}" {% endif %} data-auto-animate>
+<section {% if slide.background_gradient %} data-background-gradient="{{ slide.background_gradient }}" {% endif %}
+    data-auto-animate>
 
     <div class="answer-detail-container">
+
+        <!-- Badge at TOP -->
+        {% if slide.badge %}
+        <div class="badge-container badge-top">
+            <span class="gold-badge">{{ slide.badge }}</span>
+        </div>
+        {% endif %}
 
         <!-- Icon-only Answer Table -->
         <table class="answer-table">
             <tbody>
-                <!-- Row 0: QUESTION (Standard Font) -->
+                <!-- Row 1: QUESTION -->
                 <tr class="question-row">
                     <td class="icon-cell">
                         <i class="fas fa-question-circle"></i>
@@ -15,27 +23,31 @@
                     </td>
                 </tr>
 
-                <!-- Row 1: THE ANSWER -->
+                <!-- Row 2: THE ANSWER -->
                 <tr class="answer-row">
                     <td class="icon-cell">
-                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-thumbs-up"></i>
                     </td>
                     <td class="content-cell">
-                        <p class="answer-text">{{ slide.answer | default('Answer goes here') }}</p>
+                        <p class="answer-text">{{ slide.answer | default('Answer goes here') | replace('TRUE', '<span
+                                class=\"check-symbol\"><i class=\"fas fa-check-square\"></i></span>TRUE') |
+                            replace('FALSE', '<span class=\"cross-symbol\"><i class=\"fas
+                                    fa-times-square\"></i></span>FALSE') | safe }}</p>
                     </td>
                 </tr>
 
-                <!-- Row 2: EVIDENCE -->
-                <tr class="evidence-row">
-                    <td class="icon-cell">
-                        <i class="fas fa-quote-left"></i>
-                    </td>
-                    <td class="content-cell">
-                        <blockquote class="evidence-quote">{{ slide.evidence | default('Text snippet or excerpt...') }}</blockquote>
+                <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                <tr class="evidence-row-inline">
+                    <td class="icon-cell" colspan="2">
+                        {% if slide.para %}
+                        <span class="para-badge">[Para {{ slide.para }}]</span>
+                        {% endif %}
+                        <span class="evidence-inline">{{ slide.evidence | default('Text snippet or excerpt...')
+                            }}</span>
                     </td>
                 </tr>
 
-                <!-- Row 3: EXPLANATION -->
+                <!-- Row 4: EXPLANATION -->
                 <tr class="explanation-row">
                     <td class="icon-cell">
                         <i class="fas fa-lightbulb"></i>
@@ -47,13 +59,6 @@
             </tbody>
         </table>
 
-        <!-- Badge at bottom -->
-        {% if slide.badge %}
-        <div class="badge-container">
-            <span class="gold-badge">{{ slide.badge }}</span>
-        </div>
-        {% endif %}
-
     </div>
 
     <aside class="notes">
@@ -62,125 +67,163 @@
 </section>
 
 <style>
-.answer-detail-container {
-    width: 95%;
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: left;
-}
+    .answer-detail-container {
+        width: 95%;
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: left;
+    }
 
-.answer-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 8px;
-    font-size: 1em;
-}
+    .answer-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        font-size: 0.9em;
+        text-align: left;
+    }
 
-.answer-table tr {
-    vertical-align: top;
-}
+    .answer-table tr {
+        vertical-align: top;
+        text-align: left;
+    }
 
-.icon-cell {
-    width: 50px;
-    padding: 12px;
-    text-align: center;
-    border-radius: 8px 0 0 8px;
-    vertical-align: middle;
-}
+    .icon-cell {
+        width: 50px;
+        padding: 12px;
+        text-align: left;
+        border-radius: 8px 0 0 8px;
+        vertical-align: middle;
+    }
 
-.icon-cell i {
-    font-size: 1.6em;
-}
+    .icon-cell i {
+        font-size: 1.6em;
+    }
 
-.content-cell {
-    padding: 12px 16px;
-    border-radius: 0 8px 8px 0;
-}
+    .content-cell {
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        text-align: left;
+    }
 
-/* Question Row - Standard Font */
-.question-row .icon-cell {
-    background: rgba(255, 215, 0, 0.2);
-}
-.question-row .content-cell {
-    background: rgba(255, 215, 0, 0.1);
-    border-left: 3px solid #FFD700;
-}
-.question-row .icon-cell i {
-    color: #FFD700;
-}
-.question-text {
-    font-size: 1.1em;
-    font-weight: normal;
-    margin: 0;
-    line-height: 1.4;
-}
+    /* Question Row */
+    .question-row .icon-cell {
+        background: rgba(255, 215, 0, 0.2);
+    }
 
-/* Answer Row */
-.answer-row .icon-cell {
-    background: rgba(76, 175, 80, 0.25);
-}
-.answer-row .content-cell {
-    background: rgba(76, 175, 80, 0.15);
-    border-left: 3px solid #4CAF50;
-}
-.answer-row .icon-cell i {
-    color: #4CAF50;
-}
-.answer-text {
-    font-size: 1.15em;
-    font-weight: bold;
-    margin: 0;
-    line-height: 1.4;
-}
+    .question-row .content-cell {
+        background: rgba(255, 215, 0, 0.1);
+        border-left: 3px solid #FFD700;
+    }
 
-/* Evidence Row */
-.evidence-row .icon-cell {
-    background: rgba(135, 206, 235, 0.25);
-}
-.evidence-row .content-cell {
-    background: rgba(135, 206, 235, 0.15);
-    border-left: 3px solid #87CEEB;
-}
-.evidence-row .icon-cell i {
-    color: #87CEEB;
-}
-.evidence-quote {
-    margin: 0;
-    padding-left: 15px;
-    border-left: 3px solid #87CEEB;
-    font-style: italic;
-    font-size: 1em;
-    line-height: 1.4;
-}
+    .question-row .icon-cell i {
+        color: #FFD700;
+    }
 
-/* Explanation Row */
-.explanation-row .icon-cell {
-    background: rgba(255, 152, 0, 0.25);
-}
-.explanation-row .content-cell {
-    background: rgba(255, 152, 0, 0.15);
-    border-left: 3px solid #FF9800;
-}
-.explanation-row .icon-cell i {
-    color: #FF9800;
-}
-.explanation-text {
-    margin: 0;
-    font-size: 1em;
-    line-height: 1.4;
-}
+    .question-text {
+        font-size: 0.9em;
+        font-weight: normal;
+        margin: 0;
+        line-height: 1.4;
+    }
 
-/* Badge at bottom */
-.badge-container {
-    margin-top: 15px;
-    text-align: center;
-}
+    /* Answer Row */
+    .answer-row .icon-cell {
+        background: rgba(255, 255, 255, 0.15);
+    }
 
-.gold-badge {
-    color: #FFD700;
-    font-size: 0.9em;
-    border-bottom: 2px solid #FFD700;
-    padding-bottom: 3px;
-    display: inline-block;
-}
+    .answer-row .content-cell {
+        background: rgba(255, 255, 255, 0.1);
+        border-left: 3px solid #FFFFFF;
+    }
+
+    .answer-row .icon-cell i {
+        color: #FFFFFF;
+    }
+
+    .answer-text {
+        font-size: 0.9em;
+        font-weight: bold;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Evidence Row Inline (no box) */
+    .evidence-row-inline {
+        margin: 8px 0;
+    }
+
+    .evidence-row-inline .icon-cell {
+        background: transparent;
+        padding: 4px 8px;
+        border-radius: 0;
+    }
+
+    .evidence-inline {
+        font-style: italic;
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: #87CEEB;
+    }
+
+    .para-badge {
+        background: rgba(255, 215, 0, 0.3);
+        color: #FFD700;
+        font-size: 0.9em;
+        font-weight: bold;
+        margin-right: 8px;
+        font-style: normal;
+    }
+
+    /* Explanation Row */
+    .explanation-row .icon-cell {
+        background: rgba(255, 152, 0, 0.25);
+    }
+
+    .explanation-row .content-cell {
+        background: rgba(255, 152, 0, 0.15);
+        border-left: 3px solid #FF9800;
+    }
+
+    .explanation-row .icon-cell i {
+        color: #FF9800;
+    }
+
+    .explanation-text {
+        margin: 0;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    /* Badge styling */
+    .badge-container {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .badge-top {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .gold-badge {
+        color: #FFD700;
+        font-size: 0.9em;
+        border-bottom: 2px solid #FFD700;
+        padding-bottom: 3px;
+        display: inline-block;
+    }
+
+    /* Check mark - Green */
+    .check-symbol {
+        color: #4CAF50;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    /* Cross mark - Red */
+    .cross-symbol {
+        color: #F44336;
+        font-weight: bold;
+        margin-right: 8px;
+    }
 </style>

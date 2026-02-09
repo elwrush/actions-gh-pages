@@ -1,0 +1,50 @@
+<section data-background="{{ slide.image }}" data-background-opacity="1.0" data-auto-animate>
+    <aside class="notes">{{ slide.notes }}</aside>
+
+    <div
+        style="display: flex; height: 100%; align-items: center; justify-content: flex-start; width: 100%; padding-left: 5%;">
+        <div
+            style="background: rgba(0,0,0,0.65); padding: 40px; border-radius: 12px; border: 2px solid #FFD700; max-width: 900px; width: 85%; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.8); backdrop-filter: blur(8px);">
+            <!-- Header Row - Simple title -->
+            <div
+                style="display: flex; align-items: baseline; border-bottom: 2px solid rgba(255,215,0,0.3); margin-bottom: 25px; padding-bottom: 15px;">
+                <h1 data-id="vocab-word"
+                    style="color: #FFD700; margin: 0; line-height: 1.0; font-weight: 900; font-size: 1.2em; text-transform: uppercase; white-space: nowrap;">
+                    <i class="{{ slide.icon | default('fas fa-book-open') }}"
+                        style="margin-right: 15px; color: #FFD700;"></i>{{ slide.word }}
+                </h1>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: left;">
+                <tr style="text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Phoneme</td>
+                    <td
+                        style="padding: 12px 0; color: #94A3B8; font-family: 'Segoe UI Mono', monospace; font-size: 0.9em; text-align: left;">
+                        {{ slide.phoneme }}</td>
+                </tr>
+                {% if slide.thai %}
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Thai</td>
+                    <td
+                        style="padding: 12px 0; color: #fca5a5; font-family: 'Sarabun', sans-serif; font-style: italic; font-size: 0.9em; text-align: left;">
+                        {{ slide.thai }}</td>
+                </tr>
+                {% endif %}
+                {% if slide.context_sentence %}
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Example</td>
+                    <td
+                        style="padding: 12px 0; color: #cbd5e1; font-style: italic; font-size: 0.9em; line-height: 1.4; text-align: left;">
+                        "{{ slide.context_sentence | safe }}"</td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+</section>

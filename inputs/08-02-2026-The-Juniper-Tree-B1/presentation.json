@@ -1,0 +1,269 @@
+{
+    "meta": {
+        "title": "The Juniper Tree",
+        "cefr": "B1+",
+        "lesson_type": "bell"
+    },
+    "slides": [
+        {
+            "layout": "title",
+            "title": "THE JUNIPER TREE",
+            "subtitle": "B1 Reading",
+            "video": "../images/spooky_woods_7s.mp4",
+            "video_loop": true,
+            "notes": "Hook students with the dark atmosphere of the woods."
+        },
+        {
+            "layout": "mission",
+            "title": "YOUR MISSION",
+            "video": "../images/mission_bg_clipped.mp4",
+            "objectives": [
+                {
+                    "icon": "fa-book-open",
+                    "text": "READ for detail"
+                },
+                {
+                    "icon": "fa-balance-scale",
+                    "text": "ANALYZE justice"
+                },
+                {
+                    "icon": "fa-comments",
+                    "text": "SPEAK about ethics"
+                }
+            ],
+            "notes": "State the mission directly to the students."
+        },
+        {
+            "layout": "strategy",
+            "title": "GET READY TO READ",
+            "image": "images/creepy_forest.jpg",
+            "icon": "fas fa-ghost",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-eye' style='color: #FFD700;'></i></td><td><strong>LOOK</strong> at the story title and the image.</td></tr><tr><td style='text-align: left;'><i class='fas fa-comment-dots' style='color: #FFD700;'></i></td><td><strong>PREDICT</strong>: What do you think this tale will be about?</td></tr></table>",
+            "notes": "Establishing the mood and activating schema."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 1",
+            "title": "WORDS YOU'LL NEED",
+            "notes": "Bridge to vocabulary."
+        },
+        {
+            "layout": "vocab",
+            "word": "FORTUNE",
+            "icon": "fas fa-coins",
+            "phoneme": "/ˈfɔː.tʃuːn/",
+            "image": "images/fortune.jpg",
+            "context_sentence": "He worked hard all his life and built a massive <span style='color: #FFD700;'>fortune</span> to leave to his children.",
+            "notes": "Pre-teaching blocking vocab. Relevant to the stepmother's greed."
+        },
+        {
+            "layout": "vocab",
+            "word": "SEIZED",
+            "icon": "fas fa-hand-rock",
+            "phoneme": "/siːzd/",
+            "image": "images/seized.jpg",
+            "context_sentence": "The hungry boy <span style='color: #FFD700;'>seized</span> the red apple from the table before his sister could take it.",
+            "notes": "Implies sudden force and speed. Matches the image of a hand grabbing an apple."
+        },
+        {
+            "layout": "vocab",
+            "word": "RETRIBUTION",
+            "icon": "fas fa-gavel",
+            "phoneme": "/ˌret.rɪˈbjuː.ʃən/",
+            "image": "images/retribution.jpg",
+            "context_sentence": "He stole the money, but his <span style='color: #FFD700;'>retribution</span> came when he lost his own home and had nowhere to live.",
+            "notes": "Shows the consequence/punishment for a bad deed."
+        },
+        {
+            "layout": "vocab",
+            "word": "MILLSTONE",
+            "icon": "fas fa-circle",
+            "phoneme": "/ˈmɪl.stəʊn/",
+            "image": "images/millstone.jpg",
+            "context_sentence": "The giant <span style='color: #FFD700;'>millstone</span> was so heavy that it took ten men to move it and grind the wheat into flour.",
+            "notes": "Emphasizes extreme weight and industrial function."
+        },
+        {
+            "layout": "vocab",
+            "word": "ENCHANTED",
+            "icon": "fas fa-magic",
+            "phoneme": "/ɪnˈtʃɑːn.tɪd/",
+            "image": "images/enchanted.jpg",
+            "context_sentence": "The children were <span style='color: #FFD700;'>enchanted</span> by the beautiful magic show and couldn't take their eyes off the stage.",
+            "notes": "Shows the state of being captivated/under a spell."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 2",
+            "title": "ENTER THE FOREST",
+            "notes": "Bridge to reading."
+        },
+        {
+            "layout": "strategy",
+            "title": "THE BIG PICTURE",
+            "icon": "fas fa-running",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-glasses' style='color: #FFD700;'></i></td><td><strong>TASK:</strong> Read the whole story quickly. Don't worry about difficult words.</td></tr><tr><td style='text-align: left;'><i class='fas fa-flag-checkered' style='color: #FFD700;'></i></td><td><strong>GOAL:</strong> Is the ending happy, sad, or both?</td></tr></table>",
+            "notes": "Pedagogical bridge to Gist task."
+        },
+        {
+            "layout": "split_table",
+            "title": "FIRST SCAN",
+            "image": "images/juniper_gist.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-book-open' style='color: #FFD700;'></i></td><td><strong>READ</strong> the entire story from start to finish.</td></tr><tr><td style='text-align: left;'><i class='fas fa-smile-beam' style='color: #FFD700;'></i></td><td><strong>DECIDE</strong>: Is it a happy ending?</td></tr><tr><td colspan='2' style='text-align: left;'><div class='timer-container' style='justify-content: flex-start;'><div class='timer-display' id='t_gist'>05:00</div><button class='timer-btn' onclick='toggleTimer(300, \"t_gist\", this)'>START</button><button class='timer-btn' onclick='resetTimer(300, \"t_gist\", this)'>RESET</button></div></td></tr></table>",
+            "notes": "Gist reading task."
+        },
+        {
+            "layout": "strategy",
+            "title": "SCANNING FOR CLUES",
+            "icon": "fas fa-search",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-pen-fancy' style='color: #FFD700;'></i></td><td><strong>TASK:</strong> Read paragraphs 4-7 carefully to find evidence of the crime.</td></tr><tr><td style='text-align: left;'><i class='fas fa-lightbulb' style='color: #FFD700;'></i></td><td><strong>TIP:</strong> Focus on the <strong>actions</strong> (verbs).</td></tr><tr><td style='text-align: left;'><i class='fas fa-mask' style='color: #FFD700;'></i></td><td><strong>TIP:</strong> Compare what the stepmother says vs. what she does.</td></tr></table>",
+            "notes": "Pedagogical bridge to first detail task."
+        },
+        {
+            "layout": "split_table",
+            "title": "COLLECT EVIDENCE",
+            "image": "images/apple_detail.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-pen-nib' style='color: #FFD700;'></i></td><td><strong>COMPLETE</strong> MCQ Questions 1-3.</td></tr><tr><td style='text-align: left;'><i class='fas fa-eye' style='color: #FFD700;'></i></td><td><strong>FIND</strong> the motive for the crime.</td></tr><tr><td colspan='2' style='text-align: left;'><div class='timer-container' style='justify-content: flex-start;'><div class='timer-display' id='t1'>10:00</div><button class='timer-btn' onclick='toggleTimer(600, \"t1\", this)'>START</button><button class='timer-btn' onclick='resetTimer(600, \"t1\", this)'>RESET</button></div></td></tr></table>",
+            "notes": "First detail reading task."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "Q1: Where was the first wife buried?",
+            "answer": "Under the Juniper Tree",
+            "para": "2",
+            "evidence": "Her husband buried her under the tree and mourned for a long time...",
+            "explanation": "She made a specific request to be buried there before she died.",
+            "notes": "Correcting Q1."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "Q2: In the phrase 'a beautiful and pious wife', what does 'pious' mean?",
+            "answer": "Deeply religious and moral",
+            "para": "1",
+            "evidence": "...a rich man and his beautiful, pious wife loved each other dearly...",
+            "explanation": "'Pious' refers to someone's religious devotion and virtuous character.",
+            "notes": "Correcting Q2."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "Q3: Why did the father eat the stew so hungrily?",
+            "answer": "He felt a supernatural connection to it",
+            "para": "7",
+            "evidence": "He ate until only bones remained... I feel as if it all belongs to me.",
+            "explanation": "The story implies he unknowingly felt the bond with his son through the meal.",
+            "notes": "Correcting Q3 to match worksheet."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "Q4: What is the primary theme of the story's conclusion?",
+            "answer": "Justice and retribution for evil deeds",
+            "para": "11-12",
+            "evidence": "As she stepped out, the bird dropped the heavy millstone, crushing her completely.",
+            "explanation": "The conclusion focuses on the punishment of the wicked and the restoration of life.",
+            "notes": "Added Q4 to match worksheet."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 3",
+            "title": "TRACK THE BIRD",
+            "notes": "Bridge to second detail block."
+        },
+        {
+            "layout": "strategy",
+            "title": "TASK B: THE JOURNEY",
+            "icon": "fas fa-sort-numeric-down",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-map-marked-alt' style='color: #FFD700;'></i></td><td><strong>TASK:</strong> Put the bird's visits in the correct order (1-4).</td></tr><tr><td style='text-align: left;'><i class='fas fa-search-location' style='color: #FFD700;'></i></td><td><strong>TIP:</strong> Note the names of the craftsmen the bird visits.</td></tr></table>",
+            "notes": "Bridge for Task B."
+        },
+        {
+            "layout": "split_table",
+            "title": "ORDER THE VISITS",
+            "image": "images/bird_detail.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-sort' style='color: #FFD700;'></i></td><td><strong>SEQUENCE</strong> the bird's journey (1-4).</td></tr><tr><td colspan='2' style='text-align: left;'><div class='timer-container' style='justify-content: flex-start;'><div class='timer-display' id='t2a'>03:00</div><button class='timer-btn' onclick='toggleTimer(180, \"t2a\", this)'>START</button><button class='timer-btn' onclick='resetTimer(180, \"t2a\", this)'>RESET</button></div></td></tr></table>",
+            "notes": "Task B implementation."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "Task B: The Bird's Journey",
+            "answer": "1. Rises from mist | 2. Goldsmith | 3. Shoemaker | 4. Miller",
+            "para": "8-9",
+            "evidence": "The bird flew to a goldsmith... then to a shoemaker... finally it flew to a mill.",
+            "explanation": "The bird gathers items from different people before returning home.",
+            "notes": "Answer B."
+        },
+        {
+            "layout": "strategy",
+            "title": "TASK C: THE GIFTS",
+            "icon": "fas fa-link",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-gift' style='color: #FFD700;'></i></td><td><strong>TASK:</strong> Match each gift to the character who receives it.</td></tr><tr><td style='text-align: left;'><i class='fas fa-balance-scale' style='color: #FFD700;'></i></td><td><strong>TIP:</strong> Think about the 'weight' and meaning of each gift.</td></tr></table>",
+            "notes": "Bridge for Task C."
+        },
+        {
+            "layout": "split_table",
+            "title": "MATCH THE GIFTS",
+            "image": "images/bird_detail.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-link' style='color: #FFD700;'></i></td><td><strong>MATCH</strong> the gifts to the characters.</td></tr><tr><td colspan='2' style='text-align: left;'><div class='timer-container' style='justify-content: flex-start;'><div class='timer-display' id='t2b'>03:00</div><button class='timer-btn' onclick='toggleTimer(180, \"t2b\", this)'>START</button><button class='timer-btn' onclick='resetTimer(180, \"t2b\", this)'>RESET</button></div></td></tr></table>",
+            "notes": "Task C implementation."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "Task C: Character Match",
+            "answer": "Chain: Father | Shoes: Marlinchen | Stone: Stepmother | Apple: Boy",
+            "para": "11-12",
+            "evidence": "Chain (Father), Shoes (Marlinchen), Stone (Stepmother), Apple (Boy).",
+            "explanation": "Each item is linked to the character's role or fate in the story.",
+            "notes": "Updated Task C answer to include Apple."
+        },
+        {
+            "layout": "strategy",
+            "title": "TASK D: THE SONG",
+            "icon": "fas fa-music",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-microphone' style='color: #FFD700;'></i></td><td><strong>TASK:</strong> Recall the missing verbs from the bird's song.</td></tr><tr><td style='text-align: left;'><i class='fas fa-bolt' style='color: #FFD700;'></i></td><td><strong>TIP:</strong> These are the most important actions in the story.</td></tr></table>",
+            "notes": "Bridge for Task D."
+        },
+        {
+            "layout": "split_table",
+            "title": "RECALL THE SONG",
+            "image": "images/bird_detail.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-music' style='color: #FFD700;'></i></td><td><strong>RECALL</strong>: 'My mother, she ____ me, My father, he ____ me.'</td></tr><tr><td colspan='2' style='text-align: left;'><div class='timer-container' style='justify-content: flex-start;'><div class='timer-display' id='t2c'>02:00</div><button class='timer-btn' onclick='toggleTimer(120, \"t2c\", this)'>START</button><button class='timer-btn' onclick='resetTimer(120, \"t2c\", this)'>RESET</button></div></td></tr></table>",
+            "notes": "Task D implementation."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "Task D: The Bird's Song",
+            "answer": "Killed | Ate",
+            "para": "8",
+            "evidence": "'My mother, she killed me, My father, he ate me...'",
+            "explanation": "The song is the bird's way of exposing the truth.",
+            "notes": "Answer D."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 4",
+            "title": "THE FINAL DEBATE",
+            "notes": "Bridge to speaking."
+        },
+        {
+            "layout": "strategy",
+            "title": "HOW TO DEBATE",
+            "icon": "fas fa-comments",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-bullhorn' style='color: #FFD700;'></i></td><td><strong>O-R-E Method:</strong> Build a strong argument.</td></tr><tr><td style='text-align: left;'><i class='fas fa-comment-dots' style='color: #FFD700;'></i></td><td><strong>OPINION:</strong> Say clearly what you think.</td></tr><tr><td style='text-align: left;'><i class='fas fa-brain' style='color: #FFD700;'></i></td><td><strong>REASON:</strong> Explain <em>why</em> you think that.</td></tr><tr><td style='text-align: left;'><i class='fas fa-search-plus' style='color: #FFD700;'></i></td><td><strong>EXAMPLE:</strong> Use a moment from the story.</td></tr></table>",
+            "notes": "Pedagogical bridge to the speaking task."
+        },
+        {
+            "layout": "split_table",
+            "title": "REACT TO THE STORY",
+            "image": "images/discussion_book.png",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-comments' style='color: #FFD700;'></i></td><td><strong>DISCUSS</strong>: Is this story too dark for children today?</td></tr><tr><td style='text-align: left;'><i class='fas fa-bullhorn' style='color: #FFD700;'></i></td><td><strong>USE ORE</strong>: Opinion, Reason, Example.</td></tr><tr><td colspan='2' style='text-align: left;'><div class='timer-container' style='justify-content: flex-start;'><div class='timer-display' id='t3'>10:00</div><button class='timer-btn' onclick='toggleTimer(600, \"t3\", this)'>START</button><button class='timer-btn' onclick='resetTimer(600, \"t3\", this)'>RESET</button></div></td></tr></table>",
+            "notes": "Post-reading discussion."
+        },
+        {
+            "layout": "strategy",
+            "title": "THE BIG QUESTION",
+            "image": "images/reflection.jpg",
+            "icon": "fas fa-lightbulb",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-quote-left' style='color: #FFD700;'></i></td><td><strong>DOES EVERY STORY</strong> need a happy ending?</td></tr><tr><td style='text-align: left;'><i class='fas fa-pen-fancy' style='color: #FFD700;'></i></td><td><strong>WRITE</strong> your final thought on a sticky note.</td></tr></table>",
+            "notes": "Cool down and final reflection."
+        }
+    ]
+}

@@ -1,9 +1,15 @@
-<section {% if slide.video %} data-background-video="{{ slide.video }}" data-background-video-muted {% if
-    slide.get('video_loop') %}data-background-video-loop{% endif %} {% elif slide.image %}
-    data-background="{{ slide.image }}" data-background-opacity="{{ slide.get('data-background-opacity', 1.0) }}" {%
-    endif %} {% if slide.background_gradient %} data-background-gradient="{{ slide.background_gradient }}" {% endif %}
-    {% if slide.get('data-transition') %}data-transition="{{ slide.get('data-transition') }}" {% endif %} {% if
+<section {% if slide.video %} data-background-video="{{ slide.video }}" data-background-video-muted
+    data-background-opacity="{{ slide.get('data-background-opacity', 0.8) }}" {% if slide.get('video_loop')
+    %}data-background-video-loop{% endif %} {% elif slide.image %} data-background="{{ slide.image }}"
+    data-background-opacity="{{ slide.get('data-background-opacity', 1.0) }}" {% endif %} {% if
+    slide.background_gradient %} data-background-gradient="{{ slide.background_gradient }}" {% endif %} {% if
+    slide.get('data-transition') %}data-transition="{{ slide.get('data-transition') }}" {% endif %} {% if
     slide.get('data-auto-animate') %}data-auto-animate{% endif %}>
+
+    <!-- Cinematic Overlay for Video Legibility - Softened for 80% visibility -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); z-index: -1;">
+    </div>
 
 
     <div style="padding: 30px; width: 100%; text-align: center;">

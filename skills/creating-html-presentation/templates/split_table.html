@@ -15,8 +15,10 @@
             </div>
             {% endif %}
 
-            <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">{{
+            {% if slide.title %}
+            <h1 style="font-size: 1.2em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">{{
                 slide.title }}</h1>
+            {% endif %}
 
             {% if slide.rationale %}
             <div style="font-size: 0.9em; margin-bottom: 20px; color: #eee; font-style: italic; font-weight: 300;">

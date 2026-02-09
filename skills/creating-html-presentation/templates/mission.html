@@ -1,16 +1,17 @@
-<section {% if slide.video %} data-background-video="{{ slide.video }}" data-background-video-muted {% if
-    slide.get('video_loop') %}data-background-video-loop{% endif %} {% endif %} class="mission-slide">
+<section {% if slide.video %} data-background-video="{{ slide.video }}" data-background-video-muted
+    data-background-opacity="{{ slide.get('data-background-opacity', 0.9) }}" {% if slide.get('video_loop')
+    %}data-background-video-loop{% endif %} {% endif %} class="mission-slide">
 
-    <!-- Failsafe Gradient Overlay -->
+    <!-- Failsafe Gradient Overlay - Softened for 90% visibility -->
     <div
-        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: linear-gradient(to right, rgba(0,0,0,0.95), rgba(7, 3, 3, 0.4)); z-index: -1;">
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(7, 3, 3, 0.2)); z-index: -1;">
     </div>
 
     <div style="position: relative; z-index: 2; padding: 40px; width: 100%; text-align: center;">
         <h2
-            style="color: var(--accent); margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9); white-space: nowrap; font-size: 2.2em;">
+            style="color: var(--accent); margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9); white-space: nowrap; font-size: 1.0em;">
             {{ slide.title | default('THE MISSION') }}</h2>
-        <p style="font-size: 1.1em; margin-bottom: 40px; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">{{
+        <p style="font-size: 0.9em; margin-bottom: 40px; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">{{
             slide.intro }}</p>
 
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">

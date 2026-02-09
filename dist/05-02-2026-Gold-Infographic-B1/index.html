@@ -13,12 +13,20 @@
 
     <style>
         /* TIMER UI - Native Styling */
+        .timer-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px auto;
+        }
+
         .timer-display {
             font-family: monospace;
             font-size: 2.5em;
             color: #FFD700;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 0;
         }
 
         .timer-btn {
@@ -61,9 +69,6 @@
         }
 
         /* Contrast Shadow for maximum pop on dimmed backgrounds */
-        .reveal section {
-            /* Text shadows removed to prevent blurring */
-        }
 
         /* Native Table Styling - Constrained */
         .reveal table {
@@ -92,16 +97,19 @@
         .audio-player {
             background: rgba(0, 0, 0, 0.5);
             border: 2px solid #FFD700;
-            padding: 10px 15px; /* Slightly tighter padding */
+            padding: 10px 15px;
+            /* Slightly tighter padding */
             display: flex;
             align-items: center;
             gap: 15px;
-            width: 95%; /* Responsive width */
+            width: 95%;
+            /* Responsive width */
             max-width: 600px;
             margin: 10px auto;
             border-radius: 50px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            box-sizing: border-box; /* Prevent padding from expanding width */
+            box-sizing: border-box;
+            /* Prevent padding from expanding width */
             overflow: hidden;
         }
 
@@ -134,6 +142,7 @@
 
         .audio-scrubber {
             -webkit-appearance: none;
+            appearance: none;
             width: 100%;
             height: 6px;
             background: rgba(255, 255, 255, 0.2);
@@ -166,8 +175,13 @@
     <div class="reveal">
         <div class="slides">
             
-            <section  data-background-video="../images/gold_bg.mp4" data-background-video-muted   
-     >
+            <section  data-background-video="../images/gold_bg.mp4" data-background-video-muted
+    data-background-opacity="0.8" data-background-video-loop    >
+
+    <!-- Cinematic Overlay for Video Legibility - Softened for 80% visibility -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); z-index: -1;">
+    </div>
 
 
     <div style="padding: 30px; width: 100%; text-align: center;">
@@ -183,17 +197,18 @@
     </aside>
 </section>
             
-            <section  data-background-video="../images/mission_bg_clipped.mp4" data-background-video-muted data-background-video-loop  class="mission-slide">
+            <section  data-background-video="../images/mission_bg_clipped.mp4" data-background-video-muted
+    data-background-opacity="0.9" data-background-video-loop  class="mission-slide">
 
-    <!-- Failsafe Gradient Overlay -->
+    <!-- Failsafe Gradient Overlay - Softened for 90% visibility -->
     <div
-        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: linear-gradient(to right, rgba(0,0,0,0.95), rgba(7, 3, 3, 0.4)); z-index: -1;">
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(7, 3, 3, 0.2)); z-index: -1;">
     </div>
 
     <div style="position: relative; z-index: 2; padding: 40px; width: 100%; text-align: center;">
         <h2
             style="color: var(--accent); margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9); white-space: nowrap; font-size: 2.2em;">
-            YOUR MISSION: RESOURCE MANAGEMENT</h2>
+            YOUR MISSION</h2>
         <p style="font-size: 1.1em; margin-bottom: 40px; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">Reading infographics is a key 21st-century skill.</p>
 
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
@@ -224,6 +239,63 @@
     </aside>
 </section>
             
+            <!-- SLIDE: SEGUE -->
+<section data-transition="zoom" 
+    data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)" >
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE 1</div>
+    <h1 style="color: #FFD700; font-size: 3em;">MISSION START</h1>
+    <aside class="notes">
+        Moving to next section.
+    </aside>
+</section>
+            
+            <!-- SLIDE: IMPACT (MISSION) -->
+<section data-background-video="../images/gold_bg.mp4" data-background-video-muted data-background-opacity="0.8"
+    data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: center;">
+            <h1 data-id="major-title"
+                style="color: #FFD700; font-size: 3.2em; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">DATA & VISUALS
+            </h1>
+            <p style="font-size: 1.5em; margin-bottom: 40px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">WHAT IS AN INFOGRAPHIC?</p>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                
+                <div class="mission-badge">
+                    <span style="font-size: 1.5em;">🎨</span>
+                    <span>VISUALS: Icons & Graphs</span>
+                </div>
+                
+                <div class="mission-badge">
+                    <span style="font-size: 1.5em;">📊</span>
+                    <span>DATA: Facts & Figures</span>
+                </div>
+                
+                <div class="mission-badge">
+                    <span style="font-size: 1.5em;">📖</span>
+                    <span>STORY: Meaning & Impact</span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Define infographics as a bridge between data and visual stories.
+    </aside>
+</section>
+            
+            <!-- SLIDE: SEGUE -->
+<section data-transition="zoom" 
+    data-background-gradient="radial-gradient(circle, #D4AF37 0%, #000000 100%)" >
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE 1.5</div>
+    <h1 style="color: #FFD700; font-size: 3em;">THE GOLD QUIZ</h1>
+    <aside class="notes">
+        Moving to next section.
+    </aside>
+</section>
+            
             <section data-background="images/gold_bar.jpg" data-background-opacity="0.5" >
 
     <div
@@ -234,33 +306,29 @@
             style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
             
 
+            
             <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">GOLD: FACT OR FICTION?</h1>
+            
 
             
 
             <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
-                <h3>THE CHALLENGE:</h3>
-<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px;'>
+                <table style='width: 100%; border-collapse: separate; border-spacing: 0 10px; font-size: 1em;'>
     <tbody>
-        <tr class='fragment'>
-            <td style='width: 40px; color: #FFD700;'>1</td>
-            <td>Gold is edible.</td>
-            <td class='fragment' style='color: #4CAF50; font-weight: bold;'>FACT</td>
+        <tr>
+            <td style='width: 40px; color: #FFD700;'><i class='fas fa-utensils'></i></td>
+            <td style='text-align: left;'>Gold is edible.</td>
         </tr>
-        <tr class='fragment'>
-            <td style='width: 40px; color: #FFD700;'>2</td>
-            <td>All gold ever mined fits in 2 Olympic pools.</td>
-            <td class='fragment' style='color: #F44336; font-weight: bold;'>FICTION (It's 3-4)</td>
+        <tr>
+            <td style='width: 40px; color: #FFD700;'><i class='fas fa-swimming-pool'></i></td>
+            <td style='text-align: left;'>All gold ever mined fits in 2 Olympic pools.</td>
         </tr>
-        <tr class='fragment'>
-            <td style='width: 40px; color: #FFD700;'>3</td>
-            <td>There is gold in your body.</td>
-            <td class='fragment' style='color: #4CAF50; font-weight: bold;'>FACT (0.2mg)</td>
+        <tr>
+            <td style='width: 40px; color: #FFD700;'><i class='fas fa-user-circle'></i></td>
+            <td style='text-align: left;'>There is gold in your body.</td>
         </tr>
     </tbody>
 </table>
-<div class='timer-display' id='timer-lead-in'>02:00</div>
-<button class='timer-btn' onclick='toggleTimer(120, "timer-lead-in", this)'>START</button>
             </div>
 
             
@@ -272,6 +340,639 @@
     </aside>
 </section>
             
+            <section  data-background-gradient="radial-gradient(circle, #D4AF37 0%, #1a1a1a 100%)"  data-auto-animate>
+
+    <div class="answer-detail-container">
+
+        <!-- Badge at TOP -->
+        
+        <div class="badge-container badge-top">
+            <span class="gold-badge">QUIZ: ANSWER 1/3</span>
+        </div>
+        
+
+        <!-- Icon-only Answer Table -->
+        <table class="answer-table">
+            <tbody>
+                <!-- Row 1: QUESTION -->
+                <tr class="question-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-question-circle"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="question-text">Gold is edible.</p>
+                    </td>
+                </tr>
+
+                <!-- Row 2: THE ANSWER -->
+                <tr class="answer-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-reply"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="answer-text"><span class="check-symbol"><i class="fas fa-check-square"></i></span>TRUE - FACT</p>
+                    </td>
+                </tr>
+
+                <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                <tr class="evidence-row-inline">
+                    <td class="icon-cell" colspan="2">
+                        
+                        <span class="evidence-inline">Gold leaf is used in luxury desserts and drinks. It's safe to eat but has no taste.</span>
+                    </td>
+                </tr>
+
+                <!-- Row 4: EXPLANATION -->
+                <tr class="explanation-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-lightbulb"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="explanation-text">Edible gold (gold leaf or gold flakes) is classified as food-safe. It's often used to decorate chocolates, cakes, and fancy drinks. Remember: just because it's edible doesn't mean it's tasty!</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <aside class="notes">
+        Gold is actually used in high-end gastronomy around the world.
+    </aside>
+</section>
+
+<style>
+.answer-detail-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.answer-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 1em;
+}
+
+.answer-table tr {
+    vertical-align: top;
+}
+
+.icon-cell {
+    width: 50px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+    vertical-align: middle;
+}
+
+.icon-cell i {
+    font-size: 1.6em;
+}
+
+.content-cell {
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Question Row */
+.question-row .icon-cell {
+    background: rgba(255, 215, 0, 0.2);
+}
+.question-row .content-cell {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid #FFD700;
+}
+.question-row .icon-cell i {
+    color: #FFD700;
+}
+.question-text {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Answer Row */
+.answer-row .icon-cell {
+    background: rgba(255, 255, 255, 0.15);
+}
+.answer-row .content-cell {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 3px solid #FFFFFF;
+}
+.answer-row .icon-cell i {
+    color: #FFFFFF;
+}
+.answer-text {
+    font-size: 1.15em;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Evidence Row Inline (no box) */
+.evidence-row-inline {
+    margin: 8px 0;
+}
+
+.evidence-row-inline .icon-cell {
+    background: transparent;
+    padding: 4px 8px;
+    border-radius: 0;
+}
+
+.evidence-inline {
+    font-style: italic;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #87CEEB;
+}
+
+.para-badge {
+    background: rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-right: 8px;
+    font-style: normal;
+}
+
+/* Explanation Row */
+.explanation-row .icon-cell {
+    background: rgba(255, 152, 0, 0.25);
+}
+.explanation-row .content-cell {
+    background: rgba(255, 152, 0, 0.15);
+    border-left: 3px solid #FF9800;
+}
+.explanation-row .icon-cell i {
+    color: #FF9800;
+}
+.explanation-text {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* Badge styling */
+.badge-container {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.badge-top {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.gold-badge {
+    color: #FFD700;
+    font-size: 0.9em;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+
+/* Check mark - Green */
+.check-symbol {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* Cross mark - Red */
+.cross-symbol {
+    color: #F44336;
+    font-weight: bold;
+    margin-right: 8px;
+}
+</style>
+            
+            <section  data-background-gradient="radial-gradient(circle, #D4AF37 0%, #1a1a1a 100%)"  data-auto-animate>
+
+    <div class="answer-detail-container">
+
+        <!-- Badge at TOP -->
+        
+        <div class="badge-container badge-top">
+            <span class="gold-badge">QUIZ: ANSWER 2/3</span>
+        </div>
+        
+
+        <!-- Icon-only Answer Table -->
+        <table class="answer-table">
+            <tbody>
+                <!-- Row 1: QUESTION -->
+                <tr class="question-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-question-circle"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="question-text">All gold ever mined fits in 2 Olympic pools.</p>
+                    </td>
+                </tr>
+
+                <!-- Row 2: THE ANSWER -->
+                <tr class="answer-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-reply"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="answer-text"><span class="cross-symbol"><i class="fas fa-times-square"></i></span>FALSE - FICTION</p>
+                    </td>
+                </tr>
+
+                <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                <tr class="evidence-row-inline">
+                    <td class="icon-cell" colspan="2">
+                        
+                        <span class="evidence-inline">If you gathered all the gold ever mined, it would fill about 3-4 Olympic swimming pools.</span>
+                    </td>
+                </tr>
+
+                <!-- Row 4: EXPLANATION -->
+                <tr class="explanation-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-lightbulb"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="explanation-text">This common myth is close but not quite right! While gold is very dense (heavy), the total amount mined throughout human history is larger than most people expect.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <aside class="notes">
+        This shows how valuable gold is - we've been mining it for thousands of years!
+    </aside>
+</section>
+
+<style>
+.answer-detail-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.answer-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 1em;
+}
+
+.answer-table tr {
+    vertical-align: top;
+}
+
+.icon-cell {
+    width: 50px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+    vertical-align: middle;
+}
+
+.icon-cell i {
+    font-size: 1.6em;
+}
+
+.content-cell {
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Question Row */
+.question-row .icon-cell {
+    background: rgba(255, 215, 0, 0.2);
+}
+.question-row .content-cell {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid #FFD700;
+}
+.question-row .icon-cell i {
+    color: #FFD700;
+}
+.question-text {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Answer Row */
+.answer-row .icon-cell {
+    background: rgba(255, 255, 255, 0.15);
+}
+.answer-row .content-cell {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 3px solid #FFFFFF;
+}
+.answer-row .icon-cell i {
+    color: #FFFFFF;
+}
+.answer-text {
+    font-size: 1.15em;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Evidence Row Inline (no box) */
+.evidence-row-inline {
+    margin: 8px 0;
+}
+
+.evidence-row-inline .icon-cell {
+    background: transparent;
+    padding: 4px 8px;
+    border-radius: 0;
+}
+
+.evidence-inline {
+    font-style: italic;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #87CEEB;
+}
+
+.para-badge {
+    background: rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-right: 8px;
+    font-style: normal;
+}
+
+/* Explanation Row */
+.explanation-row .icon-cell {
+    background: rgba(255, 152, 0, 0.25);
+}
+.explanation-row .content-cell {
+    background: rgba(255, 152, 0, 0.15);
+    border-left: 3px solid #FF9800;
+}
+.explanation-row .icon-cell i {
+    color: #FF9800;
+}
+.explanation-text {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* Badge styling */
+.badge-container {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.badge-top {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.gold-badge {
+    color: #FFD700;
+    font-size: 0.9em;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+
+/* Check mark - Green */
+.check-symbol {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* Cross mark - Red */
+.cross-symbol {
+    color: #F44336;
+    font-weight: bold;
+    margin-right: 8px;
+}
+</style>
+            
+            <section  data-background-gradient="radial-gradient(circle, #D4AF37 0%, #1a1a1a 100%)"  data-auto-animate>
+
+    <div class="answer-detail-container">
+
+        <!-- Badge at TOP -->
+        
+        <div class="badge-container badge-top">
+            <span class="gold-badge">QUIZ: ANSWER 3/3</span>
+        </div>
+        
+
+        <!-- Icon-only Answer Table -->
+        <table class="answer-table">
+            <tbody>
+                <!-- Row 1: QUESTION -->
+                <tr class="question-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-question-circle"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="question-text">There is gold in your body.</p>
+                    </td>
+                </tr>
+
+                <!-- Row 2: THE ANSWER -->
+                <tr class="answer-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-reply"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="answer-text"><span class="check-symbol"><i class="fas fa-check-square"></i></span>TRUE - FACT</p>
+                    </td>
+                </tr>
+
+                <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                <tr class="evidence-row-inline">
+                    <td class="icon-cell" colspan="2">
+                        
+                        <span class="evidence-inline">The human body contains approximately 0.2 milligrams of gold, mostly in the blood.</span>
+                    </td>
+                </tr>
+
+                <!-- Row 4: EXPLANATION -->
+                <tr class="explanation-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-lightbulb"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="explanation-text">Amazingly, trace amounts of gold exist naturally in our bodies! This tiny amount comes from the foods we eat and the environment. It's not enough to extract, but it's there!</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <aside class="notes">
+        This is one of the most surprising facts for students!
+    </aside>
+</section>
+
+<style>
+.answer-detail-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.answer-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 1em;
+}
+
+.answer-table tr {
+    vertical-align: top;
+}
+
+.icon-cell {
+    width: 50px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+    vertical-align: middle;
+}
+
+.icon-cell i {
+    font-size: 1.6em;
+}
+
+.content-cell {
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Question Row */
+.question-row .icon-cell {
+    background: rgba(255, 215, 0, 0.2);
+}
+.question-row .content-cell {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid #FFD700;
+}
+.question-row .icon-cell i {
+    color: #FFD700;
+}
+.question-text {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Answer Row */
+.answer-row .icon-cell {
+    background: rgba(255, 255, 255, 0.15);
+}
+.answer-row .content-cell {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 3px solid #FFFFFF;
+}
+.answer-row .icon-cell i {
+    color: #FFFFFF;
+}
+.answer-text {
+    font-size: 1.15em;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Evidence Row Inline (no box) */
+.evidence-row-inline {
+    margin: 8px 0;
+}
+
+.evidence-row-inline .icon-cell {
+    background: transparent;
+    padding: 4px 8px;
+    border-radius: 0;
+}
+
+.evidence-inline {
+    font-style: italic;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #87CEEB;
+}
+
+.para-badge {
+    background: rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-right: 8px;
+    font-style: normal;
+}
+
+/* Explanation Row */
+.explanation-row .icon-cell {
+    background: rgba(255, 152, 0, 0.25);
+}
+.explanation-row .content-cell {
+    background: rgba(255, 152, 0, 0.15);
+    border-left: 3px solid #FF9800;
+}
+.explanation-row .icon-cell i {
+    color: #FF9800;
+}
+.explanation-text {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* Badge styling */
+.badge-container {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.badge-top {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.gold-badge {
+    color: #FFD700;
+    font-size: 0.9em;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+
+/* Check mark - Green */
+.check-symbol {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* Cross mark - Red */
+.cross-symbol {
+    color: #F44336;
+    font-weight: bold;
+    margin-right: 8px;
+}
+</style>
+            
             <!-- SLIDE: STRATEGY (BLOCKQUOTE) -->
 <section data-background-color="#1E3A8A" data-auto-animate>
 
@@ -281,7 +982,7 @@
             <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">DECODING THE METAL</h2>
 
             <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
-                <p style='font-size: 1.2em;'>Before we excavate the facts, let's unlock the language.</p>
+                <p style='font-size: 1.2em;'>Before we excavate the facts, we need to unlock the vocabulary.</p><p style='font-size: 1em; margin-top: 20px;'>These key words will help us understand the gold infographic.</p>
             </blockquote>
         </div>
     </div>
@@ -291,151 +992,268 @@
     </aside>
 </section>
             
-            <section data-background="" data-background-opacity="0.5"  data-auto-animate>
+            <section data-background="images/origin.jpg" data-background-opacity="1.0" data-auto-animate>
+    <aside class="notes">Elicit: Where does gold come from? (Stars/Supernovae)</aside>
 
     <div
-        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: start; height: 100%; max-width: 1200px; margin: auto; text-align: left; padding-top: 20px;">
-
-        <!-- Container -->
+        style="display: flex; height: 100%; align-items: center; justify-content: flex-start; width: 100%; padding-left: 5%;">
         <div
-            style="padding: 10px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
-
-            <h1 data-id="task-title"
-                style="font-size: 1.8em; margin-bottom: 10px; line-height: 1.1; text-shadow: 2px 2px 4px black;">
-                UNLOCK THE LANGUAGE
-            </h1>
-
-            
-
-            <!-- Columns -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; font-size: 0.9em;">
-
-                <!-- Left Column (Fixed) -->
-                <div style="display: flex; flex-direction: column; gap: 10px;">
-                    
-                    
-                    
-                    
-
-                    <div data-id="left-origin"
-                        style="padding: 10px; background: rgba(50,50,50,0.8); border: 1px solid var(--accent); border-radius: 6px; text-align: center;">
-                        origin
-                    </div>
-                    
-                    
-                    
-                    
-
-                    <div data-id="left-excavate"
-                        style="padding: 10px; background: rgba(50,50,50,0.8); border: 1px solid var(--accent); border-radius: 6px; text-align: center;">
-                        excavate
-                    </div>
-                    
-                    
-                    
-                    
-
-                    <div data-id="left-manipulate"
-                        style="padding: 10px; background: rgba(50,50,50,0.8); border: 1px solid var(--accent); border-radius: 6px; text-align: center;">
-                        manipulate
-                    </div>
-                    
-                    
-                    
-                    
-
-                    <div data-id="left-radiation"
-                        style="padding: 10px; background: rgba(50,50,50,0.8); border: 1px solid var(--accent); border-radius: 6px; text-align: center;">
-                        radiation
-                    </div>
-                    
-                    
-                    
-                    
-
-                    <div data-id="left-precious"
-                        style="padding: 10px; background: rgba(50,50,50,0.8); border: 1px solid var(--accent); border-radius: 6px; text-align: center;">
-                        precious
-                    </div>
-                    
-                </div>
-
-                <!-- Right Column (Reordering) -->
-                <div style="display: flex; flex-direction: column; gap: 10px;">
-                    
-                    
-                    
-                    
-                    
-
-                    <div data-id="right-energy sent out as waves" style="padding: 10px; 
-                               background: rgba(50,50,50,0.8); 
-                               border: none; 
-                               color: white;
-                               border-radius: 6px; text-align: center;">
-                        energy sent out as waves
-                    </div>
-                    
-                    
-                    
-                    
-                    
-
-                    <div data-id="right-where something comes from" style="padding: 10px; 
-                               background: rgba(50,50,50,0.8); 
-                               border: none; 
-                               color: white;
-                               border-radius: 6px; text-align: center;">
-                        where something comes from
-                    </div>
-                    
-                    
-                    
-                    
-                    
-
-                    <div data-id="right-very valuable" style="padding: 10px; 
-                               background: rgba(50,50,50,0.8); 
-                               border: none; 
-                               color: white;
-                               border-radius: 6px; text-align: center;">
-                        very valuable
-                    </div>
-                    
-                    
-                    
-                    
-                    
-
-                    <div data-id="right-to dig something up" style="padding: 10px; 
-                               background: rgba(50,50,50,0.8); 
-                               border: none; 
-                               color: white;
-                               border-radius: 6px; text-align: center;">
-                        to dig something up
-                    </div>
-                    
-                    
-                    
-                    
-                    
-
-                    <div data-id="right-to handle or control" style="padding: 10px; 
-                               background: rgba(50,50,50,0.8); 
-                               border: none; 
-                               color: white;
-                               border-radius: 6px; text-align: center;">
-                        to handle or control
-                    </div>
-                    
-                </div>
-
+            style="background: rgba(0,0,0,0.85); padding: 40px; border-radius: 12px; border: 2px solid #FFD700; max-width: 900px; width: 85%; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.8); backdrop-filter: blur(8px);">
+            <!-- Header Row - Simple title -->
+            <div
+                style="display: flex; align-items: baseline; border-bottom: 2px solid rgba(255,215,0,0.3); margin-bottom: 25px; padding-bottom: 15px;">
+                <h1 data-id="vocab-word"
+                    style="color: #FFD700; margin: 0; line-height: 1.0; font-weight: 900; font-size: 2.1em; text-transform: uppercase; white-space: nowrap;">
+                    <i class="fas fa-star"
+                        style="margin-right: 15px; color: #FFD700;"></i>ORIGIN
+                </h1>
             </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: left;">
+                <tr style="text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Phoneme</td>
+                    <td
+                        style="padding: 12px 0; color: #94A3B8; font-family: 'Segoe UI Mono', monospace; font-size: 1.5em; text-align: left;">
+                        /ˈɒrɪdʒɪn/</td>
+                </tr>
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Thai</td>
+                    <td
+                        style="padding: 12px 0; color: #fca5a5; font-family: 'Sarabun', sans-serif; font-style: italic; font-size: 1.5em; text-align: left;">
+                        ต้นกำเนิด</td>
+                </tr>
+                
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Example</td>
+                    <td
+                        style="padding: 12px 0; color: #cbd5e1; font-style: italic; font-size: 1.15em; line-height: 1.4; text-align: left;">
+                        "The detective is trying to find the <span style='color: #FFD700;'>origin</span> of the mysterious phone call."</td>
+                </tr>
+                
+            </table>
         </div>
     </div>
+</section>
+            
+            <section data-background="images/resources.jpg" data-background-opacity="1.0" data-auto-animate>
+    <aside class="notes">Drill pronunciation: ex-ca-vate. Focus on the 'v' sound.</aside>
 
+    <div
+        style="display: flex; height: 100%; align-items: center; justify-content: flex-start; width: 100%; padding-left: 5%;">
+        <div
+            style="background: rgba(0,0,0,0.85); padding: 40px; border-radius: 12px; border: 2px solid #FFD700; max-width: 900px; width: 85%; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.8); backdrop-filter: blur(8px);">
+            <!-- Header Row - Simple title -->
+            <div
+                style="display: flex; align-items: baseline; border-bottom: 2px solid rgba(255,215,0,0.3); margin-bottom: 25px; padding-bottom: 15px;">
+                <h1 data-id="vocab-word"
+                    style="color: #FFD700; margin: 0; line-height: 1.0; font-weight: 900; font-size: 2.1em; text-transform: uppercase; white-space: nowrap;">
+                    <i class="fas fa-digging"
+                        style="margin-right: 15px; color: #FFD700;"></i>EXCAVATE
+                </h1>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: left;">
+                <tr style="text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Phoneme</td>
+                    <td
+                        style="padding: 12px 0; color: #94A3B8; font-family: 'Segoe UI Mono', monospace; font-size: 1.5em; text-align: left;">
+                        /ˈekskəveɪt/</td>
+                </tr>
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Thai</td>
+                    <td
+                        style="padding: 12px 0; color: #fca5a5; font-family: 'Sarabun', sans-serif; font-style: italic; font-size: 1.5em; text-align: left;">
+                        ขุดค้น</td>
+                </tr>
+                
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Example</td>
+                    <td
+                        style="padding: 12px 0; color: #cbd5e1; font-style: italic; font-size: 1.15em; line-height: 1.4; text-align: left;">
+                        "The workers had to <span style='color: #FFD700;'>excavate</span> the old road to fix the water pipes."</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</section>
+            
+            <section data-background="images/manipulate.jpg" data-background-opacity="1.0" data-auto-animate>
+    <aside class="notes">Drill pronunciation: ma-nip-u-late. 4 syllables. Stress on the second.</aside>
+
+    <div
+        style="display: flex; height: 100%; align-items: center; justify-content: flex-start; width: 100%; padding-left: 5%;">
+        <div
+            style="background: rgba(0,0,0,0.85); padding: 40px; border-radius: 12px; border: 2px solid #FFD700; max-width: 900px; width: 85%; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.8); backdrop-filter: blur(8px);">
+            <!-- Header Row - Simple title -->
+            <div
+                style="display: flex; align-items: baseline; border-bottom: 2px solid rgba(255,215,0,0.3); margin-bottom: 25px; padding-bottom: 15px;">
+                <h1 data-id="vocab-word"
+                    style="color: #FFD700; margin: 0; line-height: 1.0; font-weight: 900; font-size: 2.1em; text-transform: uppercase; white-space: nowrap;">
+                    <i class="fas fa-hands"
+                        style="margin-right: 15px; color: #FFD700;"></i>MANIPULATE
+                </h1>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: left;">
+                <tr style="text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Phoneme</td>
+                    <td
+                        style="padding: 12px 0; color: #94A3B8; font-family: 'Segoe UI Mono', monospace; font-size: 1.5em; text-align: left;">
+                        /məˈnɪpjuleɪt/</td>
+                </tr>
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Thai</td>
+                    <td
+                        style="padding: 12px 0; color: #fca5a5; font-family: 'Sarabun', sans-serif; font-style: italic; font-size: 1.5em; text-align: left;">
+                        จัดการ/ควบคุม</td>
+                </tr>
+                
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Example</td>
+                    <td
+                        style="padding: 12px 0; color: #cbd5e1; font-style: italic; font-size: 1.15em; line-height: 1.4; text-align: left;">
+                        "My friend likes to <span style='color: #FFD700;'>manipulate</span> me into doing naughty things by giving me chocolate."</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</section>
+            
+            <section data-background="images/radiation.jpg" data-background-opacity="1.0" data-auto-animate>
+    <aside class="notes">Concept check: Is radiation always bad? (No, sun rays are radiation).</aside>
+
+    <div
+        style="display: flex; height: 100%; align-items: center; justify-content: flex-start; width: 100%; padding-left: 5%;">
+        <div
+            style="background: rgba(0,0,0,0.85); padding: 40px; border-radius: 12px; border: 2px solid #FFD700; max-width: 900px; width: 85%; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.8); backdrop-filter: blur(8px);">
+            <!-- Header Row - Simple title -->
+            <div
+                style="display: flex; align-items: baseline; border-bottom: 2px solid rgba(255,215,0,0.3); margin-bottom: 25px; padding-bottom: 15px;">
+                <h1 data-id="vocab-word"
+                    style="color: #FFD700; margin: 0; line-height: 1.0; font-weight: 900; font-size: 2.1em; text-transform: uppercase; white-space: nowrap;">
+                    <i class="fas fa-radiation"
+                        style="margin-right: 15px; color: #FFD700;"></i>RADIATION
+                </h1>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: left;">
+                <tr style="text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Phoneme</td>
+                    <td
+                        style="padding: 12px 0; color: #94A3B8; font-family: 'Segoe UI Mono', monospace; font-size: 1.5em; text-align: left;">
+                        /ˌreɪdiˈeɪʃn/</td>
+                </tr>
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Thai</td>
+                    <td
+                        style="padding: 12px 0; color: #fca5a5; font-family: 'Sarabun', sans-serif; font-style: italic; font-size: 1.5em; text-align: left;">
+                        รังสี</td>
+                </tr>
+                
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Example</td>
+                    <td
+                        style="padding: 12px 0; color: #cbd5e1; font-style: italic; font-size: 1.15em; line-height: 1.4; text-align: left;">
+                        "You should wear sunscreen to protect your skin from the sun's <span style='color: #FFD700;'>radiation</span>."</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</section>
+            
+            <section data-background="images/gold_bar.jpg" data-background-opacity="1.0" data-auto-animate>
+    <aside class="notes">List other precious things (Diamonds, time, memories).</aside>
+
+    <div
+        style="display: flex; height: 100%; align-items: center; justify-content: flex-start; width: 100%; padding-left: 5%;">
+        <div
+            style="background: rgba(0,0,0,0.85); padding: 40px; border-radius: 12px; border: 2px solid #FFD700; max-width: 900px; width: 85%; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.8); backdrop-filter: blur(8px);">
+            <!-- Header Row - Simple title -->
+            <div
+                style="display: flex; align-items: baseline; border-bottom: 2px solid rgba(255,215,0,0.3); margin-bottom: 25px; padding-bottom: 15px;">
+                <h1 data-id="vocab-word"
+                    style="color: #FFD700; margin: 0; line-height: 1.0; font-weight: 900; font-size: 2.1em; text-transform: uppercase; white-space: nowrap;">
+                    <i class="fas fa-gem"
+                        style="margin-right: 15px; color: #FFD700;"></i>PRECIOUS
+                </h1>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: left;">
+                <tr style="text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Phoneme</td>
+                    <td
+                        style="padding: 12px 0; color: #94A3B8; font-family: 'Segoe UI Mono', monospace; font-size: 1.5em; text-align: left;">
+                        /ˈpreʃəs/</td>
+                </tr>
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Thai</td>
+                    <td
+                        style="padding: 12px 0; color: #fca5a5; font-family: 'Sarabun', sans-serif; font-style: italic; font-size: 1.5em; text-align: left;">
+                        ล้ำค่า</td>
+                </tr>
+                
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Example</td>
+                    <td
+                        style="padding: 12px 0; color: #cbd5e1; font-style: italic; font-size: 1.15em; line-height: 1.4; text-align: left;">
+                        "Don't drop that vase! It's very <span style='color: #FFD700;'>precious</span> to my grandmother."</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: SEGUE -->
+<section data-transition="zoom" 
+    data-background-gradient="radial-gradient(circle, #8B0000 0%, #000000 100%)" >
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE 2</div>
+    <h1 style="color: #FFD700; font-size: 3em;">THE SEARCH</h1>
     <aside class="notes">
-        Pre-teach vocabulary. Model and drill the word stress in ex-ca-vate and ma-nip-u-late.
+        Moving to next section.
     </aside>
 </section>
             
@@ -448,7 +1266,7 @@
             <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">THE SPEED SCAN</h2>
 
             <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
-                <p style='font-size: 1.2em;'>Don't read every word! Look for headings and numbers.</p>
+                <p style='font-size: 1.2em;'>Now we're going to read for gist. This means we read for general understanding, not detail.</p><p style='font-size: 1em; margin-top: 20px;'><strong style='color: #FFD700;'>TIP:</strong> Don't read every word! Look for headings and numbers.</p>
             </blockquote>
         </div>
     </div>
@@ -468,21 +1286,25 @@
             style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
             
 
-            <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">SCANNING FOR ANSWERS</h1>
+            
 
             
 
             <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
-                <h3>TASK: EXERCISE 1</h3>
-<ul style='font-size: 0.8em;'>
-    <li>Where did the gold on the surface of Earth come from?</li>
-    <li>How was gold formed in the universe?</li>
-    <li>Where is most of the gold on the Earth?</li>
-    <li>How are gold deposits formed underground?</li>
-    <li>What are the five main uses of gold?</li>
-</ul>
-<div class='timer-display' id='timer-scan'>02:00</div>
-<button class='timer-btn' onclick='toggleTimer(120, "timer-scan", this)'>START</button>
+                <h3>TASK: EXERCISE 1 (PART 1)</h3>
+<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px; font-size: 0.9em;'>
+    <tbody>
+        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-meteor'></i></td><td>Where did the gold on the surface of Earth come from?</td></tr>
+        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-burst'></i></td><td>How was gold formed in the universe?</td></tr>
+        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-earth-asia'></i></td><td>Where is most of the gold on the Earth?</td></tr>
+        <tr><td colspan='2' style='text-align: center; padding-top: 20px;'>
+            <div class='timer-container'>
+                <div class='timer-display' id='timer-scan-1'>01:00</div>
+                <button class='timer-btn' onclick='toggleTimer(60, "timer-scan-1", this)'>START</button>
+            </div>
+        </td></tr>
+    </tbody>
+</table>
             </div>
 
             
@@ -490,9 +1312,1113 @@
     </div>
 
     <aside class="notes">
-        Scanning task. Students have 2 minutes to find the answers using headings and images.
+        Scanning task Part 1. Focus on origin and location.
     </aside>
 </section>
+            
+            <section  data-background-gradient="radial-gradient(circle, #1E3A8A 0%, #000000 100%)"  data-auto-animate>
+
+    <div class="answer-detail-container">
+
+        <!-- Badge at TOP -->
+        
+        <div class="badge-container badge-top">
+            <span class="gold-badge">SCAN: ANSWER 1/5</span>
+        </div>
+        
+
+        <!-- Icon-only Answer Table -->
+        <table class="answer-table">
+            <tbody>
+                <!-- Row 1: QUESTION -->
+                <tr class="question-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-question-circle"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="question-text">Where did the gold on Earth's surface come from?</p>
+                    </td>
+                </tr>
+
+                <!-- Row 2: THE ANSWER -->
+                <tr class="answer-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-reply"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="answer-text">Asteroids and Meteorites</p>
+                    </td>
+                </tr>
+
+                <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                <tr class="evidence-row-inline">
+                    <td class="icon-cell" colspan="2">
+                        
+                        <span class="para-badge">[Para 1]</span>
+                        
+                        <span class="evidence-inline">"Gold was delivered to Earth by asteroids and meteorites in a period called the Late Heavy Bombardment, about 4 billion years ago."</span>
+                    </td>
+                </tr>
+
+                <!-- Row 4: EXPLANATION -->
+                <tr class="explanation-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-lightbulb"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="explanation-text">Before asteroids brought gold, Earth's surface had very little. This 'golden rain' happened during a period when space rocks constantly hit our planet!</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <aside class="notes">
+        This explains why gold is so rare on Earth's surface today.
+    </aside>
+</section>
+
+<style>
+.answer-detail-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.answer-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 1em;
+}
+
+.answer-table tr {
+    vertical-align: top;
+}
+
+.icon-cell {
+    width: 50px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+    vertical-align: middle;
+}
+
+.icon-cell i {
+    font-size: 1.6em;
+}
+
+.content-cell {
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Question Row */
+.question-row .icon-cell {
+    background: rgba(255, 215, 0, 0.2);
+}
+.question-row .content-cell {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid #FFD700;
+}
+.question-row .icon-cell i {
+    color: #FFD700;
+}
+.question-text {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Answer Row */
+.answer-row .icon-cell {
+    background: rgba(255, 255, 255, 0.15);
+}
+.answer-row .content-cell {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 3px solid #FFFFFF;
+}
+.answer-row .icon-cell i {
+    color: #FFFFFF;
+}
+.answer-text {
+    font-size: 1.15em;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Evidence Row Inline (no box) */
+.evidence-row-inline {
+    margin: 8px 0;
+}
+
+.evidence-row-inline .icon-cell {
+    background: transparent;
+    padding: 4px 8px;
+    border-radius: 0;
+}
+
+.evidence-inline {
+    font-style: italic;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #87CEEB;
+}
+
+.para-badge {
+    background: rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-right: 8px;
+    font-style: normal;
+}
+
+/* Explanation Row */
+.explanation-row .icon-cell {
+    background: rgba(255, 152, 0, 0.25);
+}
+.explanation-row .content-cell {
+    background: rgba(255, 152, 0, 0.15);
+    border-left: 3px solid #FF9800;
+}
+.explanation-row .icon-cell i {
+    color: #FF9800;
+}
+.explanation-text {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* Badge styling */
+.badge-container {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.badge-top {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.gold-badge {
+    color: #FFD700;
+    font-size: 0.9em;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+
+/* Check mark - Green */
+.check-symbol {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* Cross mark - Red */
+.cross-symbol {
+    color: #F44336;
+    font-weight: bold;
+    margin-right: 8px;
+}
+</style>
+            
+            <section  data-background-gradient="radial-gradient(circle, #1E3A8A 0%, #000000 100%)"  data-auto-animate>
+
+    <div class="answer-detail-container">
+
+        <!-- Badge at TOP -->
+        
+        <div class="badge-container badge-top">
+            <span class="gold-badge">SCAN: ANSWER 2/5</span>
+        </div>
+        
+
+        <!-- Icon-only Answer Table -->
+        <table class="answer-table">
+            <tbody>
+                <!-- Row 1: QUESTION -->
+                <tr class="question-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-question-circle"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="question-text">How was gold formed in the universe?</p>
+                    </td>
+                </tr>
+
+                <!-- Row 2: THE ANSWER -->
+                <tr class="answer-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-reply"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="answer-text">Supernova Explosions</p>
+                    </td>
+                </tr>
+
+                <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                <tr class="evidence-row-inline">
+                    <td class="icon-cell" colspan="2">
+                        
+                        <span class="para-badge">[Para 2]</span>
+                        
+                        <span class="evidence-inline">"Gold is created in the most powerful explosions in the universe: supernovae and neutron star collisions."</span>
+                    </td>
+                </tr>
+
+                <!-- Row 4: EXPLANATION -->
+                <tr class="explanation-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-lightbulb"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="explanation-text">Gold is literally STARDUST! It was forged in the extreme heat and pressure of dying stars exploding. Every gold atom in your jewelry once belonged to a star!</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <aside class="notes">
+        This connects to the ORIGIN vocabulary word from earlier.
+    </aside>
+</section>
+
+<style>
+.answer-detail-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.answer-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 1em;
+}
+
+.answer-table tr {
+    vertical-align: top;
+}
+
+.icon-cell {
+    width: 50px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+    vertical-align: middle;
+}
+
+.icon-cell i {
+    font-size: 1.6em;
+}
+
+.content-cell {
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Question Row */
+.question-row .icon-cell {
+    background: rgba(255, 215, 0, 0.2);
+}
+.question-row .content-cell {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid #FFD700;
+}
+.question-row .icon-cell i {
+    color: #FFD700;
+}
+.question-text {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Answer Row */
+.answer-row .icon-cell {
+    background: rgba(255, 255, 255, 0.15);
+}
+.answer-row .content-cell {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 3px solid #FFFFFF;
+}
+.answer-row .icon-cell i {
+    color: #FFFFFF;
+}
+.answer-text {
+    font-size: 1.15em;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Evidence Row Inline (no box) */
+.evidence-row-inline {
+    margin: 8px 0;
+}
+
+.evidence-row-inline .icon-cell {
+    background: transparent;
+    padding: 4px 8px;
+    border-radius: 0;
+}
+
+.evidence-inline {
+    font-style: italic;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #87CEEB;
+}
+
+.para-badge {
+    background: rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-right: 8px;
+    font-style: normal;
+}
+
+/* Explanation Row */
+.explanation-row .icon-cell {
+    background: rgba(255, 152, 0, 0.25);
+}
+.explanation-row .content-cell {
+    background: rgba(255, 152, 0, 0.15);
+    border-left: 3px solid #FF9800;
+}
+.explanation-row .icon-cell i {
+    color: #FF9800;
+}
+.explanation-text {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* Badge styling */
+.badge-container {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.badge-top {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.gold-badge {
+    color: #FFD700;
+    font-size: 0.9em;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+
+/* Check mark - Green */
+.check-symbol {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* Cross mark - Red */
+.cross-symbol {
+    color: #F44336;
+    font-weight: bold;
+    margin-right: 8px;
+}
+</style>
+            
+            <section  data-background-gradient="radial-gradient(circle, #1E3A8A 0%, #000000 100%)"  data-auto-animate>
+
+    <div class="answer-detail-container">
+
+        <!-- Badge at TOP -->
+        
+        <div class="badge-container badge-top">
+            <span class="gold-badge">SCAN: ANSWER 3/5</span>
+        </div>
+        
+
+        <!-- Icon-only Answer Table -->
+        <table class="answer-table">
+            <tbody>
+                <!-- Row 1: QUESTION -->
+                <tr class="question-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-question-circle"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="question-text">Where is most of the gold on Earth?</p>
+                    </td>
+                </tr>
+
+                <!-- Row 2: THE ANSWER -->
+                <tr class="answer-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-reply"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="answer-text">At Earth's Core (99%)</p>
+                    </td>
+                </tr>
+
+                <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                <tr class="evidence-row-inline">
+                    <td class="icon-cell" colspan="2">
+                        
+                        <span class="para-badge">[Para 3]</span>
+                        
+                        <span class="evidence-inline">"Approximately 99% of all the gold on Earth is located in its core, thousands of kilometers below the surface."</span>
+                    </td>
+                </tr>
+
+                <!-- Row 4: EXPLANATION -->
+                <tr class="explanation-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-lightbulb"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="explanation-text">We can never access this gold! It's too deep and the pressure is too extreme. The gold we find is just the tiny fraction that stayed near the surface.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <aside class="notes">
+        This is why gold mining is so difficult and expensive.
+    </aside>
+</section>
+
+<style>
+.answer-detail-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.answer-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 1em;
+}
+
+.answer-table tr {
+    vertical-align: top;
+}
+
+.icon-cell {
+    width: 50px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+    vertical-align: middle;
+}
+
+.icon-cell i {
+    font-size: 1.6em;
+}
+
+.content-cell {
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Question Row */
+.question-row .icon-cell {
+    background: rgba(255, 215, 0, 0.2);
+}
+.question-row .content-cell {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid #FFD700;
+}
+.question-row .icon-cell i {
+    color: #FFD700;
+}
+.question-text {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Answer Row */
+.answer-row .icon-cell {
+    background: rgba(255, 255, 255, 0.15);
+}
+.answer-row .content-cell {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 3px solid #FFFFFF;
+}
+.answer-row .icon-cell i {
+    color: #FFFFFF;
+}
+.answer-text {
+    font-size: 1.15em;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Evidence Row Inline (no box) */
+.evidence-row-inline {
+    margin: 8px 0;
+}
+
+.evidence-row-inline .icon-cell {
+    background: transparent;
+    padding: 4px 8px;
+    border-radius: 0;
+}
+
+.evidence-inline {
+    font-style: italic;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #87CEEB;
+}
+
+.para-badge {
+    background: rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-right: 8px;
+    font-style: normal;
+}
+
+/* Explanation Row */
+.explanation-row .icon-cell {
+    background: rgba(255, 152, 0, 0.25);
+}
+.explanation-row .content-cell {
+    background: rgba(255, 152, 0, 0.15);
+    border-left: 3px solid #FF9800;
+}
+.explanation-row .icon-cell i {
+    color: #FF9800;
+}
+.explanation-text {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* Badge styling */
+.badge-container {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.badge-top {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.gold-badge {
+    color: #FFD700;
+    font-size: 0.9em;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+
+/* Check mark - Green */
+.check-symbol {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* Cross mark - Red */
+.cross-symbol {
+    color: #F44336;
+    font-weight: bold;
+    margin-right: 8px;
+}
+</style>
+            
+            <section data-background="images/infographic_preview.jpg" data-background-opacity="0.5" >
+
+    <div
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+
+            
+
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <h3>TASK: EXERCISE 1 (PART 2)</h3>
+<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px; font-size: 0.9em;'>
+    <tbody>
+        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-faucet-drip'></i></td><td>How are gold deposits formed underground?</td></tr>
+        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-list-check'></i></td><td>What are the five main uses of gold?</td></tr>
+        <tr><td colspan='2' style='text-align: center; padding-top: 20px;'>
+            <div class='timer-container'>
+                <div class='timer-display' id='timer-scan-2'>01:00</div>
+                <button class='timer-btn' onclick='toggleTimer(60, "timer-scan-2", this)'>START</button>
+            </div>
+        </td></tr>
+    </tbody>
+</table>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Scanning task Part 2. Focus on formation and uses.
+    </aside>
+</section>
+            
+            <section  data-background-gradient="radial-gradient(circle, #1E3A8A 0%, #000000 100%)"  data-auto-animate>
+
+    <div class="answer-detail-container">
+
+        <!-- Badge at TOP -->
+        
+        <div class="badge-container badge-top">
+            <span class="gold-badge">SCAN: ANSWER 4/5</span>
+        </div>
+        
+
+        <!-- Icon-only Answer Table -->
+        <table class="answer-table">
+            <tbody>
+                <!-- Row 1: QUESTION -->
+                <tr class="question-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-question-circle"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="question-text">How are gold deposits formed underground?</p>
+                    </td>
+                </tr>
+
+                <!-- Row 2: THE ANSWER -->
+                <tr class="answer-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-reply"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="answer-text">Hot Water Through Rock</p>
+                    </td>
+                </tr>
+
+                <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                <tr class="evidence-row-inline">
+                    <td class="icon-cell" colspan="2">
+                        
+                        <span class="para-badge">[Para 4]</span>
+                        
+                        <span class="evidence-inline">"Gold deposits are formed when hot water circulates through rock, depositing gold in cracks and veins."</span>
+                    </td>
+                </tr>
+
+                <!-- Row 4: EXPLANATION -->
+                <tr class="explanation-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-lightbulb"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="explanation-text">This is called 'hydrothermal deposition.' Hot water dissolves tiny amounts of gold from rock, then cools down and leaves the gold behind in cracks!</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <aside class="notes">
+        This explains why gold is often found near hot springs or volcanic areas.
+    </aside>
+</section>
+
+<style>
+.answer-detail-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.answer-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 1em;
+}
+
+.answer-table tr {
+    vertical-align: top;
+}
+
+.icon-cell {
+    width: 50px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+    vertical-align: middle;
+}
+
+.icon-cell i {
+    font-size: 1.6em;
+}
+
+.content-cell {
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Question Row */
+.question-row .icon-cell {
+    background: rgba(255, 215, 0, 0.2);
+}
+.question-row .content-cell {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid #FFD700;
+}
+.question-row .icon-cell i {
+    color: #FFD700;
+}
+.question-text {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Answer Row */
+.answer-row .icon-cell {
+    background: rgba(255, 255, 255, 0.15);
+}
+.answer-row .content-cell {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 3px solid #FFFFFF;
+}
+.answer-row .icon-cell i {
+    color: #FFFFFF;
+}
+.answer-text {
+    font-size: 1.15em;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Evidence Row Inline (no box) */
+.evidence-row-inline {
+    margin: 8px 0;
+}
+
+.evidence-row-inline .icon-cell {
+    background: transparent;
+    padding: 4px 8px;
+    border-radius: 0;
+}
+
+.evidence-inline {
+    font-style: italic;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #87CEEB;
+}
+
+.para-badge {
+    background: rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-right: 8px;
+    font-style: normal;
+}
+
+/* Explanation Row */
+.explanation-row .icon-cell {
+    background: rgba(255, 152, 0, 0.25);
+}
+.explanation-row .content-cell {
+    background: rgba(255, 152, 0, 0.15);
+    border-left: 3px solid #FF9800;
+}
+.explanation-row .icon-cell i {
+    color: #FF9800;
+}
+.explanation-text {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* Badge styling */
+.badge-container {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.badge-top {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.gold-badge {
+    color: #FFD700;
+    font-size: 0.9em;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+
+/* Check mark - Green */
+.check-symbol {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* Cross mark - Red */
+.cross-symbol {
+    color: #F44336;
+    font-weight: bold;
+    margin-right: 8px;
+}
+</style>
+            
+            <section  data-background-gradient="radial-gradient(circle, #1E3A8A 0%, #000000 100%)"  data-auto-animate>
+
+    <div class="answer-detail-container">
+
+        <!-- Badge at TOP -->
+        
+        <div class="badge-container badge-top">
+            <span class="gold-badge">SCAN: ANSWER 5/5</span>
+        </div>
+        
+
+        <!-- Icon-only Answer Table -->
+        <table class="answer-table">
+            <tbody>
+                <!-- Row 1: QUESTION -->
+                <tr class="question-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-question-circle"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="question-text">What are the five main uses of gold?</p>
+                    </td>
+                </tr>
+
+                <!-- Row 2: THE ANSWER -->
+                <tr class="answer-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-reply"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="answer-text">Jewelry, Technology, Investment, Medicine, Dentistry</p>
+                    </td>
+                </tr>
+
+                <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                <tr class="evidence-row-inline">
+                    <td class="icon-cell" colspan="2">
+                        
+                        <span class="para-badge">[Para 5]</span>
+                        
+                        <span class="evidence-inline">"Gold is used in: Jewelry, Technology (electronics), Investment (bars/coins), Medicine, and Dentistry."</span>
+                    </td>
+                </tr>
+
+                <!-- Row 4: EXPLANATION -->
+                <tr class="explanation-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-lightbulb"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="explanation-text">Gold's unique properties (doesn't rust, conducts electricity, is biocompatible) make it valuable for ALL these industries - not just jewelry!</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <aside class="notes">
+        Technology use is growing rapidly due to gold's excellent conductivity.
+    </aside>
+</section>
+
+<style>
+.answer-detail-container {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.answer-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 1em;
+}
+
+.answer-table tr {
+    vertical-align: top;
+}
+
+.icon-cell {
+    width: 50px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+    vertical-align: middle;
+}
+
+.icon-cell i {
+    font-size: 1.6em;
+}
+
+.content-cell {
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Question Row */
+.question-row .icon-cell {
+    background: rgba(255, 215, 0, 0.2);
+}
+.question-row .content-cell {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid #FFD700;
+}
+.question-row .icon-cell i {
+    color: #FFD700;
+}
+.question-text {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Answer Row */
+.answer-row .icon-cell {
+    background: rgba(255, 255, 255, 0.15);
+}
+.answer-row .content-cell {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 3px solid #FFFFFF;
+}
+.answer-row .icon-cell i {
+    color: #FFFFFF;
+}
+.answer-text {
+    font-size: 1.15em;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Evidence Row Inline (no box) */
+.evidence-row-inline {
+    margin: 8px 0;
+}
+
+.evidence-row-inline .icon-cell {
+    background: transparent;
+    padding: 4px 8px;
+    border-radius: 0;
+}
+
+.evidence-inline {
+    font-style: italic;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #87CEEB;
+}
+
+.para-badge {
+    background: rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-right: 8px;
+    font-style: normal;
+}
+
+/* Explanation Row */
+.explanation-row .icon-cell {
+    background: rgba(255, 152, 0, 0.25);
+}
+.explanation-row .content-cell {
+    background: rgba(255, 152, 0, 0.15);
+    border-left: 3px solid #FF9800;
+}
+.explanation-row .icon-cell i {
+    color: #FF9800;
+}
+.explanation-text {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* Badge styling */
+.badge-container {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.badge-top {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.gold-badge {
+    color: #FFD700;
+    font-size: 0.9em;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+
+/* Check mark - Green */
+.check-symbol {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* Cross mark - Red */
+.cross-symbol {
+    color: #F44336;
+    font-weight: bold;
+    margin-right: 8px;
+}
+</style>
             
             <!-- SLIDE: STRATEGY (BLOCKQUOTE) -->
 <section data-background-color="#8B1538" data-auto-animate>
@@ -503,7 +2429,7 @@
             <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">DATA DETECTIVES</h2>
 
             <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
-                <p style='font-size: 1.2em;'>Now look deeper. What do these specific numbers tell us?</p>
+                <p style='font-size: 1.2em;'>Now we're going to read for detail. Let's see what these specific numbers tell us!</p>
             </blockquote>
         </div>
     </div>
@@ -523,29 +2449,31 @@
             style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
             
 
+            
             <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">THE NUMBERS GAME</h1>
+            
 
             
 
             <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
-                <h3>WHAT DO THESE FIGURES REFER TO?</h3>
+                <h3>OXFORD DISCOVER: EXERCISE 3 (P. 131)</h3>
 <table style='width: 100%; font-size: 0.7em;'>
     <tbody>
-        <tr class='fragment'>
+        <tr>
             <td style='color: #FFD700;'>130 million years</td>
-            <td>Age of the explosion that created gold.</td>
+            <td class='fragment'>Age of the explosion that created gold.</td>
         </tr>
-        <tr class='fragment'>
+        <tr>
             <td style='color: #FFD700;'>99%</td>
-            <td>Gold in liquid form at Earth's center.</td>
+            <td class='fragment'>Gold in liquid form at Earth's center.</td>
         </tr>
-        <tr class='fragment'>
+        <tr>
             <td style='color: #FFD700;'>45 cm</td>
-            <td>Depth of gold if it covered the Earth.</td>
+            <td class='fragment'>Depth of gold if it covered the Earth.</td>
         </tr>
-        <tr class='fragment'>
+        <tr>
             <td style='color: #FFD700;'>1,000,000,000</td>
-            <td>Cell phones produced each year.</td>
+            <td class='fragment'>Cell phones produced each year.</td>
         </tr>
     </tbody>
 </table>
@@ -560,6 +2488,25 @@
     </aside>
 </section>
             
+            <!-- SLIDE: STRATEGY (BLOCKQUOTE) -->
+<section data-background-color="#1E3A8A" data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: left; max-width: 1000px;">
+            
+            <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">DIGGING DEEPER</h2>
+
+            <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
+                <p style='font-size: 1.2em;'>We know the <strong>statistics</strong>. Now we need the <strong>stories</strong>.</p><div style='margin-top: 30px; text-align: left; display: inline-block; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px;'><p style='margin-bottom: 15px;'><i class='fas fa-history' style='color: #FFD700; margin-right: 15px;'></i><strong>HISTORICAL USES:</strong> What did people <em>do</em> with it?</p><p><i class='fas fa-thumbs-up' style='color: #FFD700; margin-right: 15px;'></i><strong>BENEFITS:</strong> <em>Why</em> was it good?</p></div>
+            </blockquote>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Bridge to deep detail reading. Focus on specific scanning questions.
+    </aside>
+</section>
+            
             <section data-background="images/cleopatra.jpg" data-background-opacity="0.5" >
 
     <div
@@ -570,22 +2517,30 @@
             style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
             
 
+            
             <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">THE HISTORICAL RECORD</h1>
+            
 
             
 
             <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
-                <h3>THE CHALLENGE: EXERCISE 4</h3>
-<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'>
+                <h3>OXFORD DISCOVER: EXERCISE 4 (P. 131)</h3>
+<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px; font-size: 0.9em;'>
     <tbody>
-        <tr class='fragment'>
+        <tr>
             <td>What were the historical uses?</td>
             <td class='fragment' style='color: #FFD700;'>Jewelry, currency, dentistry.</td>
         </tr>
-        <tr class='fragment'>
+        <tr>
             <td>What are the benefits?</td>
             <td class='fragment' style='color: #FFD700;'>Doesn't darken, easy to manipulate.</td>
         </tr>
+        <tr><td colspan='2' style='text-align: center; padding-top: 20px;'>
+            <div class='timer-container'>
+                <div class='timer-display' id='timer-history'>01:00</div>
+                <button class='timer-btn' onclick='toggleTimer(60, "timer-history", this)'>START</button>
+            </div>
+        </td></tr>
     </tbody>
 </table>
             </div>
@@ -595,7 +2550,17 @@
     </div>
 
     <aside class="notes">
-        Exercise 4. Deep detail reading.
+        Exercise 4. Deep detail reading. Questions are visible; answers reveal on click.
+    </aside>
+</section>
+            
+            <!-- SLIDE: SEGUE -->
+<section data-transition="zoom" 
+    data-background-gradient="radial-gradient(circle, #1E3A8A 0%, #000000 100%)" >
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE 3</div>
+    <h1 style="color: #FFD700; font-size: 3em;">WORD SYSTEMS</h1>
+    <aside class="notes">
+        Moving to next section.
     </aside>
 </section>
             
@@ -608,13 +2573,13 @@
             <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">WORD TRANSFORMATIONS</h2>
 
             <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
-                <p style='font-size: 1.2em;'>How do we turn 'Beauty' into 'Beautify'? Suffix power!</p>
+                <p style='font-size: 1.2em; margin-bottom: 30px;'>We can change a <strong>Noun</strong> (thing) into a <strong>Verb</strong> (action).</p><div style='display: flex; justify-content: center; align-items: center; gap: 20px; font-size: 1.3em;'><div style='background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px;'>Beauty<br><span style='font-size: 0.6em; opacity: 0.7;'>(Noun)</span></div><i class='fas fa-arrow-right' style='color: #FFD700;'></i><div style='background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; border: 2px solid #FFD700;'>Beaut<span style='color: #FFD700; font-weight: bold;'>ify</span><br><span style='font-size: 0.6em; opacity: 0.7;'>(Verb)</span></div></div><p style='font-size: 1em; margin-top: 30px;'><strong style='color: #FFD700;'>SUFFIX POWER:</strong> -ify, -ize, -en, -ate</p>
             </blockquote>
         </div>
     </div>
 
     <aside class="notes">
-        Bridge to grammar focus.
+        Bridge to grammar focus. Explain how suffixes change the part of speech.
     </aside>
 </section>
             
@@ -628,31 +2593,39 @@
             style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
             
 
+            
             <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">THE VERB FACTORY</h1>
+            
 
             
 
             <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
-                <h3>VERB SUFFIXES (-ify, -ize, -en, -ate)</h3>
+                <h3>OXFORD DISCOVER: EXERCISE 5 (P. 131)</h3>
 <table style='width: 100%; font-size: 0.8em;'>
     <thead><tr><th>Suffix</th><th>Example from Text</th></tr></thead>
     <tbody>
-        <tr class='fragment'>
+        <tr>
             <td style='color: #FFD700;'>-ify</td>
-            <td>beautify, solidify</td>
+            <td class='fragment'>beautify, solidify</td>
         </tr>
-        <tr class='fragment'>
+        <tr>
             <td style='color: #FFD700;'>-ize</td>
-            <td>moisturize, specialize</td>
+            <td class='fragment'>moisturize, specialize</td>
         </tr>
-        <tr class='fragment'>
+        <tr>
             <td style='color: #FFD700;'>-en</td>
-            <td>brighten, harden</td>
+            <td class='fragment'>brighten, harden</td>
         </tr>
-        <tr class='fragment'>
+        <tr>
             <td style='color: #FFD700;'>-ate</td>
-            <td>excavate, manipulate</td>
+            <td class='fragment'>excavate, manipulate</td>
         </tr>
+        <tr><td colspan='2' style='text-align: center; padding-top: 20px;'>
+            <div class='timer-container'>
+                <div class='timer-display' id='timer-verb'>01:00</div>
+                <button class='timer-btn' onclick='toggleTimer(60, "timer-verb", this)'>START</button>
+            </div>
+        </td></tr>
     </tbody>
 </table>
             </div>
@@ -666,6 +2639,35 @@
     </aside>
 </section>
             
+            <!-- SLIDE: SEGUE -->
+<section data-transition="zoom" 
+    data-background-gradient="radial-gradient(circle, #8B1538 0%, #000000 100%)" >
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE 4</div>
+    <h1 style="color: #FFD700; font-size: 3em;">REFLECTION</h1>
+    <aside class="notes">
+        Moving to next section.
+    </aside>
+</section>
+            
+            <!-- SLIDE: STRATEGY (BLOCKQUOTE) -->
+<section data-background-color="#1E3A8A" data-auto-animate>
+
+    <div class="r-stack">
+        <div style="text-align: left; max-width: 1000px;">
+            
+            <h2 data-id="strategy-title" style="font-size: 2.2em; margin-bottom: 40px;">SPEAKING STRATEGY</h2>
+
+            <blockquote style="background: rgba(0,0,0,0.3); padding: 30px; width: 100%; box-sizing: border-box;">
+                <p style='font-size: 1.2em; margin-bottom: 30px;'>Don't just say 'Yes' or 'No'. <strong>Build</strong> your answer!</p><div style='display: flex; flex-direction: column; gap: 15px; width: 80%; margin: 0 auto; font-size: 1em;'><div style='background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; text-align: left; border-left: 5px solid #FFD700;'><i class='fas fa-comment-dots' style='color: #FFD700; width: 40px;'></i> <strong>1. OPINION:</strong> &quot;I think...&quot;</div><div style='background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; text-align: left; border-left: 5px solid #FFD700;'><i class='fas fa-lightbulb' style='color: #FFD700; width: 40px;'></i> <strong>2. REASON:</strong> &quot;...because...&quot;</div><div style='background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; text-align: left; border-left: 5px solid #FFD700;'><i class='fas fa-star' style='color: #FFD700; width: 40px;'></i> <strong>3. EXAMPLE:</strong> &quot;For example...&quot;</div></div>
+            </blockquote>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Teach the O-R-E structure (Opinion, Reason, Example) to help students expand their answers.
+    </aside>
+</section>
+            
             <section data-background="images/resources.jpg" data-background-opacity="0.5" >
 
     <div
@@ -676,17 +2678,21 @@
             style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
             
 
+            
             <h1 style="font-size: 2.0em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">VALUE & VIRTUE</h1>
+            
 
             
 
             <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
                 <h3>TALKING POINTS:</h3>
-<ul style='font-size: 0.9em;'>
-    <li class='fragment'>Is gold necessary for our lives? Why?</li>
-    <li class='fragment'>What factors make resources valuable?</li>
-    <li class='fragment'>Do we value any resources too much or too little?</li>
-</ul>
+<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px; font-size: 0.9em;'>
+    <tbody>
+        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-question-circle'></i></td><td>Is gold necessary for our lives? Why?</td></tr>
+        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-gears'></i></td><td>What factors make resources valuable?</td></tr>
+        <tr><td style='width: 30px; color: #FFD700;'><i class='fas fa-scale-balanced'></i></td><td>Do we value any resources too much or too little?</td></tr>
+    </tbody>
+</table>
             </div>
 
             
@@ -790,9 +2796,9 @@
         const AudioFX = {
             beep: new Audio('audio/beep.mp3'),
             bell: new Audio('audio/bell.mp3'),
-            warning: new Audio('audio/warning.mp3'),
+            heartbeat: new Audio('audio/freesound_254366_Heartbeat_Fast.mp3'),
             init() {
-                this.beep.load(); this.bell.load(); this.warning.load();
+                this.beep.load(); this.bell.load(); this.heartbeat.load();
             }
         };
 
@@ -826,7 +2832,7 @@
                         AudioFX.bell.play().catch(e => console.warn(e));
                         display.textContent = "DONE!";
                     } else if (timer === 30) {
-                        AudioFX.warning.play().catch(e => console.warn(e));
+                        AudioFX.heartbeat.play().catch(e => console.warn(e));
                     } else if (timer < 10 && timer >= 0) {
                         AudioFX.beep.play().catch(e => console.warn(e));
                     }

@@ -1,11 +1,14 @@
 <!-- SLIDE: IMPACT (MISSION) -->
-<section data-background-video="{{ slide.background_video }}" data-background-video-muted data-background-opacity="0.5"
+<section data-background-video="{{ slide.background_video }}" data-background-video-muted data-background-opacity="0.8"
     data-auto-animate>
 
     <div class="r-stack">
         <div style="text-align: center;">
-            <h1 data-id="major-title" style="color: #FFD700; font-size: 3.2em;">{{ slide.title }}</h1>
-            <p style="font-size: 1.5em; margin-bottom: 40px;">{{ slide.main_text }}</p>
+            <h1 data-id="major-title"
+                style="color: #FFD700; font-size: 1.2em; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">{{ slide.title }}
+            </h1>
+            <p style="font-size: 0.9em; margin-bottom: 40px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">{{
+                slide.main_text }}</p>
 
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
                 {% for point in slide.points %}
