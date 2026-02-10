@@ -1,0 +1,2412 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Frankenstein B1 Reading</title>
+    <link rel="stylesheet" href="../dist/reset.css">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .reveal .slides {
+            font-size: 0.9em;
+        }
+
+        /* TIMER UI - Native Styling */
+        .timer-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 5px auto;
+        }
+
+        .timer-display {
+            font-family: monospace;
+            font-size: 2.5em;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .timer-btn {
+            background: #FFD700;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 5px;
+            font-size: 0.8em;
+        }
+
+        .timer-btn.reset {
+            background: #444;
+            color: white;
+        }
+
+        /* Mission Badge Styling - Square, 10% smaller */
+        .mission-badge {
+            background-color: rgba(255, 215, 0, 0.15);
+            border: 2px solid #FFD700;
+            padding: 15px;
+            border-radius: 4px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin: 10px;
+            width: 220px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .mission-badge i {
+            font-size: 2em;
+            color: #FFD700;
+        }
+
+        /* Contrast Shadow for maximum pop on dimmed backgrounds */
+
+        /* Native Table Styling - Constrained */
+        .reveal table {
+            margin-top: 10px;
+            border-collapse: collapse;
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.2em;
+            background: rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        .reveal table th,
+        .reveal table td {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            text-align: left;
+        }
+
+        .reveal table th {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+        }
+
+        /* AUDIO PLAYER - Gold Standard Scrubber */
+        .audio-player {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #FFD700;
+            padding: 10px 15px;
+            /* Slightly tighter padding */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 95%;
+            /* Responsive width */
+            max-width: 600px;
+            margin: 10px auto;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+            /* Prevent padding from expanding width */
+            overflow: hidden;
+        }
+
+        .audio-play-btn {
+            background: #FFD700;
+            color: black;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+
+        .audio-play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-scrubber-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .audio-scrubber {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .audio-scrubber::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #FFD700;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px #FFD700;
+        }
+
+        .audio-time {
+            font-family: monospace;
+            font-size: 0.7em;
+            color: #FFD700;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <section  data-background-video="/images/horror_house_7s.mp4" data-background-video-muted
+    data-background-opacity="0.8" data-background-video-loop    >
+
+    <!-- Cinematic Overlay for Video Legibility - Softened for 80% visibility -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); z-index: -1;">
+    </div>
+
+
+    <div class="slide-canvas" style="padding: 30px; width: 100%; text-align: center;">
+        <img src="images/ACT.png" class="inset-media" style="height: 120px; margin-bottom: 20px;">
+        <h4 style="color: var(--accent); letter-spacing: 2px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">ASSUMPTION
+            COLLEGE MATHAYOM</h4>
+        <h1 style="font-size: 3.5em; margin: 10px 0; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">FRANKENSTEIN</h1>
+        <h3 style="opacity: 0.8; font-weight: normal; color: #FFD700; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">B1 Reading</h3>
+    </div>
+
+    <aside class="notes">
+        
+    </aside>
+</section>
+            
+            <!-- SLIDE: SCHEMA ACTIVATION -->
+<section  data-background="images/creature.png" data-background-opacity="1.0" 
+    data-auto-animate>
+
+    <div class="slide-canvas">
+        <div
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%; padding: 60px 0;">
+
+            <div style="display: flex; flex-direction: row; justify-content: center; gap: 80px;">
+                
+                <div
+                    style="background: rgba(0, 0, 0, 0.6); border: 4px solid #FFD700; border-radius: 50%; width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 40px rgba(0,0,0,0.8); backdrop-filter: blur(5px);">
+                    <i class="fas fa-fire fa-5x" style="color: #FFD700;"></i>
+                </div>
+                
+                <div
+                    style="background: rgba(0, 0, 0, 0.6); border: 4px solid #FFD700; border-radius: 50%; width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 40px rgba(0,0,0,0.8); backdrop-filter: blur(5px);">
+                    <i class="fas fa-flask fa-5x" style="color: #FFD700;"></i>
+                </div>
+                
+                <div
+                    style="background: rgba(0, 0, 0, 0.6); border: 4px solid #FFD700; border-radius: 50%; width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 40px rgba(0,0,0,0.8); backdrop-filter: blur(5px);">
+                    <i class="fas fa-sad-tear fa-5x" style="color: #FFD700;"></i>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Elicit student interest using only the icons as visual prompts.
+    </aside>
+</section>
+            
+            <section  data-background-video="/images/mission_bg_clipped.mp4" data-background-video-muted
+    data-background-opacity="0.9"   class="mission-slide">
+
+    <div class="slide-canvas">
+        <!-- Failsafe Gradient Overlay -->
+        <div
+            style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(7, 3, 3, 0.2)); z-index: -1;">
+        </div>
+
+        <div style="position: relative; z-index: 2; padding: 40px; width: 100%; text-align: center;">
+            <h1
+                style="color: var(--accent); margin-bottom: 30px; text-shadow: 2px 2px 12px rgba(0,0,0,1); font-size: 3em;">
+                YOUR MISSION</h1>
+
+            
+            <!-- HORIZONTAL STACKING MANDATE #34 -->
+            <div
+                style="display: flex; flex-direction: row; justify-content: center; gap: 20px; margin-top: 20px; width: 100%;">
+                
+                <div class="mission-badge"
+                    style="flex: 1; background: rgba(139, 21, 56, 0.8); border: 2px solid #FFD700; border-radius: 12px; padding: 20px; min-width: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i class="fas fa-search fa-3x" style="color: #FFD700; margin-bottom: 12px;"></i>
+                    <h3 style="color: #FFD700; font-size: 1.2em; margin: 8px 0; text-transform: uppercase;">Analyze</h3>
+                    <div style="color: white; font-size: 0.9em; line-height: 1.2; font-weight: 500;">Identify the genre
+                    </div>
+                </div>
+                
+                <div class="mission-badge"
+                    style="flex: 1; background: rgba(139, 21, 56, 0.8); border: 2px solid #FFD700; border-radius: 12px; padding: 20px; min-width: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i class="fas fa-user-edit fa-3x" style="color: #FFD700; margin-bottom: 12px;"></i>
+                    <h3 style="color: #FFD700; font-size: 1.2em; margin: 8px 0; text-transform: uppercase;">Profile</h3>
+                    <div style="color: white; font-size: 0.9em; line-height: 1.2; font-weight: 500;">The author's life
+                    </div>
+                </div>
+                
+                <div class="mission-badge"
+                    style="flex: 1; background: rgba(139, 21, 56, 0.8); border: 2px solid #FFD700; border-radius: 12px; padding: 20px; min-width: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i class="fas fa-mask fa-3x" style="color: #FFD700; margin-bottom: 12px;"></i>
+                    <h3 style="color: #FFD700; font-size: 1.2em; margin: 8px 0; text-transform: uppercase;">Grade</h3>
+                    <div style="color: white; font-size: 0.9em; line-height: 1.2; font-weight: 500;">Victor's choices
+                    </div>
+                </div>
+                
+                <div class="mission-badge"
+                    style="flex: 1; background: rgba(139, 21, 56, 0.8); border: 2px solid #FFD700; border-radius: 12px; padding: 20px; min-width: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i class="fas fa-brain fa-3x" style="color: #FFD700; margin-bottom: 12px;"></i>
+                    <h3 style="color: #FFD700; font-size: 1.2em; margin: 8px 0; text-transform: uppercase;">Uncover</h3>
+                    <div style="color: white; font-size: 0.9em; line-height: 1.2; font-weight: 500;">The hidden themes
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        
+    </aside>
+</section>
+            
+            <!-- SLIDE: SEGUE -->
+<section data-transition="zoom" >
+    <div class="slide-canvas">
+        <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE ONE</div>
+        <h1 style="color: #FFD700; font-size: 3em;">The Story</h1>
+        
+        <h2 style="font-size: 1.5em; color: white;">Before we read, we need to understand the 'mood' of our novel. Let's find out what kind of story this is!</h2>
+        
+    </div>
+    <aside class="notes">
+        Moving to next section.
+    </aside>
+</section>
+            
+            <!-- SLIDE: STRATEGY (PEDAGOGICAL BRIDGE) -->
+<section data-background="" data-background-opacity="0.5"  data-auto-animate>
+
+    <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+        
+        <h2 data-id="strategy-title" style="font-size: 1.0em; margin-bottom: 30px; text-shadow: 2px 2px 8px black;">HOW TO: Identify Genre</h2>
+
+        <div
+            style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: 0.9em;">
+            <table style='width: 100%; border-collapse: separate; border-spacing: 0 10px;'><tr><td style='width: 50px;'><i class='fas fa-search-plus' style='color: #FFD700;'></i></td><td><strong>Keyword Hunt:</strong> Scan <u>'About the Author' (p.144)</u> Para 2 & 3 for descriptors. Look for specific literary traditions mentioned in the text.</td></tr></table>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss the strategy with students.
+    </aside>
+</section>
+            
+            <section 
+    data-background-gradient="radial-gradient(circle, #004d00 0%, #000000 100%)">
+
+    <div class="slide-canvas"
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+            <div>
+                <h3
+                    style="color: #FFD700; margin-bottom: 10px; font-size: 1.2em; border-bottom: 2px solid #FFD700; display: inline-block;">
+                    IDENTIFICATION</h3>
+            </div>
+            
+
+            
+            <h1 style="font-size: 1.2em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">TASK 1 | Genre Check</h1>
+            
+
+            
+            <div style="font-size: 0.9em; margin-bottom: 20px; color: #eee; font-style: italic; font-weight: 300;">
+                <i class="fas fa-lightbulb" style="color: #FFD700; margin-right: 10px;"></i> Decide if this is horror, sci-fi, or comedy. (Scan 'About the Author' p.144)
+            </div>
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <table style='width: 100%; border-collapse: collapse; font-size: 0.9em; table-layout: fixed; min-height: 400px;'><tr style='border-bottom: 2px solid rgba(255,255,255,0.1);'><td style='width: 50%; padding: 25px; border-right: 2px solid rgba(255,255,255,0.1); color: white;'><i class='fas fa-ghost' style='color: #FFD700; margin-right: 15px;'></i>Classic horror story</td><td class='fragment strike' data-fragment-index='1' style='width: 50%; padding: 25px; color: white;'><i class='fas fa-theater-masks' style='color: #FFD700; margin-right: 15px;'></i>Comedy</td></tr><tr style='border-bottom: 2px solid rgba(255,255,255,0.1);'><td class='fragment strike' data-fragment-index='2' style='width: 50%; padding: 25px; border-right: 2px solid rgba(255,255,255,0.1); color: white;'><i class='fas fa-user-pen' style='color: #FFD700; margin-right: 15px;'></i>Biography</td><td style='width: 50%; padding: 25px; color: white;'><i class='fas fa-robot' style='color: #FFD700; margin-right: 15px;'></i>Early science fiction</td></tr><tr><td class='fragment strike' data-fragment-index='3' style='width: 50%; padding: 25px; border-right: 2px solid rgba(255,255,255,0.1); color: white;'><i class='fas fa-monument' style='color: #FFD700; margin-right: 15px;'></i>History book</td><td class='fragment strike' data-fragment-index='4' style='width: 50%; padding: 25px; color: white;'><i class='fas fa-plane-departure' style='color: #FFD700; margin-right: 15px;'></i>Travel writing</td></tr></table><style>.fragment.strike { opacity: 1; }.fragment.strike.visible { text-decoration: line-through; opacity: 0.4; color: #ff4444 !important; }</style>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Monitor student progress.
+    </aside>
+</section>
+            
+            <section 
+    data-auto-animate>
+
+    <div class="slide-canvas">
+        <div class="answer-detail-container">
+
+            <!-- Badge at TOP -->
+            
+
+            <!-- Icon-only Answer Table -->
+            <table class="answer-table">
+                <tbody>
+                    <!-- Row 1: QUESTION -->
+                    <tr class="question-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-question-circle"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="question-text">ANSWER 1</p>
+                        </td>
+                    </tr>
+
+                    <!-- Row 2: THE ANSWER -->
+                    <tr class="answer-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-thumbs-up"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="answer-text">Classic horror story & Early science fiction</p>
+                        </td>
+                    </tr>
+
+                    <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                    <tr class="evidence-row-inline">
+                        <td class="icon-cell" colspan="2">
+                            
+                            <span class="evidence-inline">[Para 3] 'often called the first science fiction novel... follows the Gothic tradition.'</span>
+                        </td>
+                    </tr>
+
+                    <!-- Row 4: EXPLANATION -->
+                    <tr class="explanation-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-lightbulb"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="explanation-text">Mary Shelley combined old scary 'Gothic' elements with new scientific ideas to create something completely new.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss the answer with the class.
+    </aside>
+</section>
+
+<style>
+    .answer-detail-container {
+        width: 95%;
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .answer-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        font-size: 0.9em;
+        text-align: left;
+    }
+
+    .answer-table tr {
+        vertical-align: top;
+        text-align: left;
+    }
+
+    .icon-cell {
+        width: 50px;
+        padding: 12px;
+        text-align: left;
+        border-radius: 8px 0 0 8px;
+        vertical-align: middle;
+    }
+
+    .icon-cell i {
+        font-size: 1.6em;
+    }
+
+    .content-cell {
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        text-align: left;
+    }
+
+    /* Question Row */
+    .question-row .icon-cell {
+        background: rgba(255, 215, 0, 0.2);
+    }
+
+    .question-row .content-cell {
+        background: rgba(255, 215, 0, 0.1);
+        border-left: 3px solid #FFD700;
+    }
+
+    .question-row .icon-cell i {
+        color: #FFD700;
+    }
+
+    .question-text {
+        font-size: 0.9em;
+        font-weight: normal;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Answer Row */
+    .answer-row .icon-cell {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .answer-row .content-cell {
+        background: rgba(255, 255, 255, 0.1);
+        border-left: 3px solid #FFFFFF;
+    }
+
+    .answer-row .icon-cell i {
+        color: #FFFFFF;
+    }
+
+    .answer-text {
+        font-size: 0.9em;
+        font-weight: bold;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Evidence Row Inline (no box) */
+    .evidence-row-inline {
+        margin: 8px 0;
+    }
+
+    .evidence-row-inline .icon-cell {
+        background: transparent;
+        padding: 4px 8px;
+        border-radius: 0;
+    }
+
+    .evidence-inline {
+        font-style: italic;
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: #87CEEB;
+    }
+
+    .para-badge {
+        background: rgba(255, 215, 0, 0.3);
+        color: #FFD700;
+        font-size: 0.9em;
+        font-weight: bold;
+        margin-right: 8px;
+        font-style: normal;
+    }
+
+    /* Explanation Row */
+    .explanation-row .icon-cell {
+        background: rgba(255, 152, 0, 0.25);
+    }
+
+    .explanation-row .content-cell {
+        background: rgba(255, 152, 0, 0.15);
+        border-left: 3px solid #FF9800;
+    }
+
+    .explanation-row .icon-cell i {
+        color: #FF9800;
+    }
+
+    .explanation-text {
+        margin: 0;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    /* Badge styling */
+    .badge-container {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .badge-top {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .gold-badge {
+        color: #FFD700;
+        font-size: 0.9em;
+        border-bottom: 2px solid #FFD700;
+        padding-bottom: 3px;
+        display: inline-block;
+    }
+
+    /* Check mark - Green */
+    .check-symbol {
+        color: #4CAF50;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    /* Cross mark - Red */
+    .cross-symbol {
+        color: #F44336;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+</style>
+            
+            <!-- SLIDE: STRATEGY (PEDAGOGICAL BRIDGE) -->
+<section data-background="images/mary_shelley.png" data-background-opacity="0.5"  data-auto-animate>
+
+    <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+        
+        <h2 data-id="strategy-title" style="font-size: 1.0em; margin-bottom: 30px; text-shadow: 2px 2px 8px black;">HOW TO: Scan for Bio</h2>
+
+        <div
+            style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: 0.9em;">
+            <table style='width: 100%; border-collapse: separate; border-spacing: 0 10px;'><tr><td style='width: 50px;'><i class='fas fa-stopwatch' style='color: #FFD700;'></i></td><td><strong>Scan Facts:</strong> Don't read every word! Find the names and years first. Where was Mary born? Where was she in 1816?</td></tr></table>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss the strategy with students.
+    </aside>
+</section>
+            
+            <section 
+    data-background-gradient="radial-gradient(circle, #004d00 0%, #000000 100%)">
+
+    <div class="slide-canvas"
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+            <div>
+                <h3
+                    style="color: #FFD700; margin-bottom: 10px; font-size: 1.2em; border-bottom: 2px solid #FFD700; display: inline-block;">
+                    SCANNING</h3>
+            </div>
+            
+
+            
+            <h1 style="font-size: 1.2em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">TASK 2 | The Idea</h1>
+            
+
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <h3>Mary Shelley Profile</h3><div style='display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;'><div style='padding: 15px; background: rgba(255,255,100,0.1); border-left: 4px solid #FFD700; border-radius: 4px;'><strong>WHEN</strong><br><span style='font-size: 1.3em; color: #FFD700;'>?</span></div><div style='padding: 15px; background: rgba(255,215,0,0.1); border-left: 4px solid #FFD700; border-radius: 4px;'><strong>WHERE</strong><br><span style='font-size: 1.3em; color: #FFD700;'>?</span></div><div style='padding: 15px; background: rgba(0,255,100,0.1); border-left: 4px solid #FFD700; border-radius: 4px;'><strong>HOW</strong><br><span style='font-size: 1.3em; color: #FFD700;'>?</span></div></div><p style='margin-top: 20px; font-size: 0.8em;'><i class='fas fa-search'></i> Scan Paras 1-2 for when, where and how Mary got the idea.</p>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Monitor student progress.
+    </aside>
+</section>
+            
+            <section 
+    data-auto-animate>
+
+    <div class="slide-canvas">
+        <div class="answer-detail-container">
+
+            <!-- Badge at TOP -->
+            
+
+            <!-- Icon-only Answer Table -->
+            <table class="answer-table">
+                <tbody>
+                    <!-- Row 1: QUESTION -->
+                    <tr class="question-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-question-circle"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="question-text">ANSWER 2</p>
+                        </td>
+                    </tr>
+
+                    <!-- Row 2: THE ANSWER -->
+                    <tr class="answer-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-thumbs-up"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="answer-text">WHEN: Summer 1816 | WHERE: Near Geneva | HOW: A powerful vision</p>
+                        </td>
+                    </tr>
+
+                    <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                    <tr class="evidence-row-inline">
+                        <td class="icon-cell" colspan="2">
+                            
+                            <span class="evidence-inline">[Para 2] 'stormy night in the summer of 1816... staying with... Lord Byron near Geneva... had a powerful vision'</span>
+                        </td>
+                    </tr>
+
+                    <!-- Row 4: EXPLANATION -->
+                    <tr class="explanation-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-lightbulb"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="explanation-text">Mary was only 19 when she had the vision during a ghost story competition with friends.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss the answer with the class.
+    </aside>
+</section>
+
+<style>
+    .answer-detail-container {
+        width: 95%;
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .answer-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        font-size: 0.9em;
+        text-align: left;
+    }
+
+    .answer-table tr {
+        vertical-align: top;
+        text-align: left;
+    }
+
+    .icon-cell {
+        width: 50px;
+        padding: 12px;
+        text-align: left;
+        border-radius: 8px 0 0 8px;
+        vertical-align: middle;
+    }
+
+    .icon-cell i {
+        font-size: 1.6em;
+    }
+
+    .content-cell {
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        text-align: left;
+    }
+
+    /* Question Row */
+    .question-row .icon-cell {
+        background: rgba(255, 215, 0, 0.2);
+    }
+
+    .question-row .content-cell {
+        background: rgba(255, 215, 0, 0.1);
+        border-left: 3px solid #FFD700;
+    }
+
+    .question-row .icon-cell i {
+        color: #FFD700;
+    }
+
+    .question-text {
+        font-size: 0.9em;
+        font-weight: normal;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Answer Row */
+    .answer-row .icon-cell {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .answer-row .content-cell {
+        background: rgba(255, 255, 255, 0.1);
+        border-left: 3px solid #FFFFFF;
+    }
+
+    .answer-row .icon-cell i {
+        color: #FFFFFF;
+    }
+
+    .answer-text {
+        font-size: 0.9em;
+        font-weight: bold;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Evidence Row Inline (no box) */
+    .evidence-row-inline {
+        margin: 8px 0;
+    }
+
+    .evidence-row-inline .icon-cell {
+        background: transparent;
+        padding: 4px 8px;
+        border-radius: 0;
+    }
+
+    .evidence-inline {
+        font-style: italic;
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: #87CEEB;
+    }
+
+    .para-badge {
+        background: rgba(255, 215, 0, 0.3);
+        color: #FFD700;
+        font-size: 0.9em;
+        font-weight: bold;
+        margin-right: 8px;
+        font-style: normal;
+    }
+
+    /* Explanation Row */
+    .explanation-row .icon-cell {
+        background: rgba(255, 152, 0, 0.25);
+    }
+
+    .explanation-row .content-cell {
+        background: rgba(255, 152, 0, 0.15);
+        border-left: 3px solid #FF9800;
+    }
+
+    .explanation-row .icon-cell i {
+        color: #FF9800;
+    }
+
+    .explanation-text {
+        margin: 0;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    /* Badge styling */
+    .badge-container {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .badge-top {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .gold-badge {
+        color: #FFD700;
+        font-size: 0.9em;
+        border-bottom: 2px solid #FFD700;
+        padding-bottom: 3px;
+        display: inline-block;
+    }
+
+    /* Check mark - Green */
+    .check-symbol {
+        color: #4CAF50;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    /* Cross mark - Red */
+    .cross-symbol {
+        color: #F44336;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+</style>
+            
+            <!-- SLIDE: SEGUE -->
+<section data-transition="zoom" >
+    <div class="slide-canvas">
+        <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE TWO</div>
+        <h1 style="color: #FFD700; font-size: 3em;">New Words</h1>
+        
+        <h2 style="font-size: 1.5em; color: white;">Let's master 5 tricky words so the story is easy to understand. Ready?</h2>
+        
+    </div>
+    <aside class="notes">
+        Moving to next section.
+    </aside>
+</section>
+            
+            <section data-background="images/mast.jpg" data-background-opacity="1.0" data-auto-animate>
+    <aside class="notes"></aside>
+
+    <div class="slide-canvas"
+        style="display: flex; height: 100%; align-items: center; justify-content: flex-start; width: 100%; padding-left: 5%;">
+        <div
+            style="background: rgba(0,0,0,0.65); padding: 40px; border-radius: 12px; border: 2px solid #FFD700; max-width: 900px; width: 85%; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.8); backdrop-filter: blur(8px);">
+            <!-- Header Row - Simple title -->
+            <div
+                style="display: flex; align-items: baseline; border-bottom: 2px solid rgba(255,215,0,0.3); margin-bottom: 25px; padding-bottom: 15px;">
+                <h1 data-id="vocab-word"
+                    style="color: #FFD700; margin: 0; line-height: 1.0; font-weight: 900; font-size: 1.2em; text-transform: uppercase; white-space: nowrap;">
+                    <i class="fas fa-book-open"
+                        style="margin-right: 15px; color: #FFD700;"></i>MAST
+                </h1>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: left;">
+                <tr style="text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Phoneme</td>
+                    <td
+                        style="padding: 12px 0; color: #94A3B8; font-family: 'Segoe UI Mono', monospace; font-size: 0.9em; text-align: left;">
+                        /mæst/</td>
+                </tr>
+                
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Context</td>
+                    <td
+                        style="padding: 12px 0; color: #cbd5e1; font-style: italic; font-size: 0.9em; line-height: 1.4; text-align: left;">
+                        "Victor built a 150-meter metal <span style='color: var(--accent);'>mast</span> above his laboratory to catch the lightning."</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</section>
+            
+            <section data-background="images/awful.jpg" data-background-opacity="1.0" data-auto-animate>
+    <aside class="notes"></aside>
+
+    <div class="slide-canvas"
+        style="display: flex; height: 100%; align-items: center; justify-content: flex-start; width: 100%; padding-left: 5%;">
+        <div
+            style="background: rgba(0,0,0,0.65); padding: 40px; border-radius: 12px; border: 2px solid #FFD700; max-width: 900px; width: 85%; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.8); backdrop-filter: blur(8px);">
+            <!-- Header Row - Simple title -->
+            <div
+                style="display: flex; align-items: baseline; border-bottom: 2px solid rgba(255,215,0,0.3); margin-bottom: 25px; padding-bottom: 15px;">
+                <h1 data-id="vocab-word"
+                    style="color: #FFD700; margin: 0; line-height: 1.0; font-weight: 900; font-size: 1.2em; text-transform: uppercase; white-space: nowrap;">
+                    <i class="fas fa-book-open"
+                        style="margin-right: 15px; color: #FFD700;"></i>AWFUL
+                </h1>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: left;">
+                <tr style="text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Phoneme</td>
+                    <td
+                        style="padding: 12px 0; color: #94A3B8; font-family: 'Segoe UI Mono', monospace; font-size: 0.9em; text-align: left;">
+                        /ˈɔːfəl/</td>
+                </tr>
+                
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Context</td>
+                    <td
+                        style="padding: 12px 0; color: #cbd5e1; font-style: italic; font-size: 0.9em; line-height: 1.4; text-align: left;">
+                        "Victor looked at the creature's thin, yellow skin and saw an <span style='color: var(--accent);'>awful</span> smile on its face."</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</section>
+            
+            <section data-background="images/irresponsible.jpg" data-background-opacity="1.0" data-auto-animate>
+    <aside class="notes"></aside>
+
+    <div class="slide-canvas"
+        style="display: flex; height: 100%; align-items: center; justify-content: flex-start; width: 100%; padding-left: 5%;">
+        <div
+            style="background: rgba(0,0,0,0.65); padding: 40px; border-radius: 12px; border: 2px solid #FFD700; max-width: 900px; width: 85%; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.8); backdrop-filter: blur(8px);">
+            <!-- Header Row - Simple title -->
+            <div
+                style="display: flex; align-items: baseline; border-bottom: 2px solid rgba(255,215,0,0.3); margin-bottom: 25px; padding-bottom: 15px;">
+                <h1 data-id="vocab-word"
+                    style="color: #FFD700; margin: 0; line-height: 1.0; font-weight: 900; font-size: 1.2em; text-transform: uppercase; white-space: nowrap;">
+                    <i class="fas fa-book-open"
+                        style="margin-right: 15px; color: #FFD700;"></i>IRRESPONSIBLE
+                </h1>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: left;">
+                <tr style="text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Phoneme</td>
+                    <td
+                        style="padding: 12px 0; color: #94A3B8; font-family: 'Segoe UI Mono', monospace; font-size: 0.9em; text-align: left;">
+                        /ˌɪrɪˈspɒnsəbl̩/</td>
+                </tr>
+                
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Context</td>
+                    <td
+                        style="padding: 12px 0; color: #cbd5e1; font-style: italic; font-size: 0.9em; line-height: 1.4; text-align: left;">
+                        "Victor was <span style='color: var(--accent);'>irresponsible</span> because he forgot about his family and letters for two years."</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</section>
+            
+            <section data-background="images/obsessive.jpg" data-background-opacity="1.0" data-auto-animate>
+    <aside class="notes"></aside>
+
+    <div class="slide-canvas"
+        style="display: flex; height: 100%; align-items: center; justify-content: flex-start; width: 100%; padding-left: 5%;">
+        <div
+            style="background: rgba(0,0,0,0.65); padding: 40px; border-radius: 12px; border: 2px solid #FFD700; max-width: 900px; width: 85%; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.8); backdrop-filter: blur(8px);">
+            <!-- Header Row - Simple title -->
+            <div
+                style="display: flex; align-items: baseline; border-bottom: 2px solid rgba(255,215,0,0.3); margin-bottom: 25px; padding-bottom: 15px;">
+                <h1 data-id="vocab-word"
+                    style="color: #FFD700; margin: 0; line-height: 1.0; font-weight: 900; font-size: 1.2em; text-transform: uppercase; white-space: nowrap;">
+                    <i class="fas fa-book-open"
+                        style="margin-right: 15px; color: #FFD700;"></i>OBSESSIVE
+                </h1>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: left;">
+                <tr style="text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Phoneme</td>
+                    <td
+                        style="padding: 12px 0; color: #94A3B8; font-family: 'Segoe UI Mono', monospace; font-size: 0.9em; text-align: left;">
+                        /əbˈsesɪv/</td>
+                </tr>
+                
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Context</td>
+                    <td
+                        style="padding: 12px 0; color: #cbd5e1; font-style: italic; font-size: 0.9em; line-height: 1.4; text-align: left;">
+                        "Victor's work was <span style='color: var(--accent);'>obsessive</span>; he worked every day and night without a single holiday."</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</section>
+            
+            <section data-background="images/reckless.jpg" data-background-opacity="1.0" data-auto-animate>
+    <aside class="notes"></aside>
+
+    <div class="slide-canvas"
+        style="display: flex; height: 100%; align-items: center; justify-content: flex-start; width: 100%; padding-left: 5%;">
+        <div
+            style="background: rgba(0,0,0,0.65); padding: 40px; border-radius: 12px; border: 2px solid #FFD700; max-width: 900px; width: 85%; text-align: left; box-shadow: 0 20px 50px rgba(0,0,0,0.8); backdrop-filter: blur(8px);">
+            <!-- Header Row - Simple title -->
+            <div
+                style="display: flex; align-items: baseline; border-bottom: 2px solid rgba(255,215,0,0.3); margin-bottom: 25px; padding-bottom: 15px;">
+                <h1 data-id="vocab-word"
+                    style="color: #FFD700; margin: 0; line-height: 1.0; font-weight: 900; font-size: 1.2em; text-transform: uppercase; white-space: nowrap;">
+                    <i class="fas fa-book-open"
+                        style="margin-right: 15px; color: #FFD700;"></i>RECKLESS
+                </h1>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: left;">
+                <tr style="text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Phoneme</td>
+                    <td
+                        style="padding: 12px 0; color: #94A3B8; font-family: 'Segoe UI Mono', monospace; font-size: 0.9em; text-align: left;">
+                        /ˈrekləs/</td>
+                </tr>
+                
+                
+                <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                    <td
+                        style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
+                        Context</td>
+                    <td
+                        style="padding: 12px 0; color: #cbd5e1; font-style: italic; font-size: 0.9em; line-height: 1.4; text-align: left;">
+                        "Instead of being careful, Victor's <span style='color: var(--accent);'>reckless</span> use of electricity caused a huge disaster."</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</section>
+            
+            <!-- SLIDE: SEGUE -->
+<section data-transition="zoom" >
+    <div class="slide-canvas">
+        <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE THREE</div>
+        <h1 style="color: #FFD700; font-size: 3em;">The Big Secret</h1>
+        
+        <h2 style="font-size: 1.5em; color: white;">We are now going to read about Victor and his creation of Frankenstein! As you read, take a note of how the story unfolds and get ready to do exercise Task 5 in your book.</h2>
+        
+    </div>
+    <aside class="notes">
+        Moving to next section.
+    </aside>
+</section>
+            
+            <section 
+    data-background-gradient="radial-gradient(circle, #004d00 0%, #000000 100%)">
+
+    <div class="slide-canvas"
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+
+            
+            <h1 style="font-size: 1.2em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">Reading Time</h1>
+            
+
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <table style='width: 100%; border-collapse: separate; border-spacing: 0 15px; font-size: 1.2em; text-align: left;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-book-open' style='color: #FFD700;'></i></td><td><strong>READ</strong> for pleasure! Pages 144-147.</td></tr><tr><td colspan='2' style='text-align: left;'><div class='timer-container' style='justify-content: flex-start;'><div class='timer-display' id='t_read'>05:00</div><button class='timer-btn' onclick='toggleTimer(300, &quot;t_read&quot;, this)'>START</button><button class='timer-btn' onclick='resetTimer(300, &quot;t_read&quot;, this)'>RESET</button></div></td></tr></table>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Monitor student progress.
+    </aside>
+</section>
+            
+            <section 
+    data-background-gradient="radial-gradient(circle, #004d00 0%, #000000 100%)"
+    data-auto-animate>
+
+    <div class="slide-canvas">
+        <div
+            style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 100%; width: 100%; padding-top: 15px;">
+
+            <h1 data-id="task-title"
+                style="font-size: 1.8em; margin-bottom: 10px; line-height: 1.1; text-shadow: 2px 2px 4px black; color: #FFD700; width: 90%; text-align: left;">
+                TASK 3 | The Journey
+            </h1>
+
+            <div class="ranking-container" style="width: 92%; display: flex; flex-direction: column; gap: 8px;">
+                
+                
+                <div style="display: flex; gap: 10px; align-items: stretch; width: 100%;">
+
+                    <!-- Left: Number Badge -->
+                    <div data-id="indicator-0"
+                        style="flex: 0 0 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.3); border-left: 4px solid var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; color: var(--accent); text-shadow: 1px 1px 2px black;">
+                        ?
+                    </div>
+
+                    <!-- Right: Text Item -->
+                    
+                    
+                    <div data-id="right-A. He worked hard on his machine."
+                        style="flex: 1; padding: 10px 20px; background: rgba(100, 149, 237, 0.2); border-left: 4px solid #888; color: white; border-radius: 6px; text-align: left; font-size: 1.0em; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; line-height: 1.2; backdrop-filter: blur(5px);">
+                        A. He worked hard on his machine.
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: stretch; width: 100%;">
+
+                    <!-- Left: Number Badge -->
+                    <div data-id="indicator-1"
+                        style="flex: 0 0 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.3); border-left: 4px solid var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; color: var(--accent); text-shadow: 1px 1px 2px black;">
+                        ?
+                    </div>
+
+                    <!-- Right: Text Item -->
+                    
+                    
+                    <div data-id="right-B. He was given his own laboratory."
+                        style="flex: 1; padding: 10px 20px; background: rgba(144, 238, 144, 0.2); border-left: 4px solid #888; color: white; border-radius: 6px; text-align: left; font-size: 1.0em; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; line-height: 1.2; backdrop-filter: blur(5px);">
+                        B. He was given his own laboratory.
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: stretch; width: 100%;">
+
+                    <!-- Left: Number Badge -->
+                    <div data-id="indicator-2"
+                        style="flex: 0 0 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.3); border-left: 4px solid var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; color: var(--accent); text-shadow: 1px 1px 2px black;">
+                        ?
+                    </div>
+
+                    <!-- Right: Text Item -->
+                    
+                    
+                    <div data-id="right-C. He woke up and saw the creature."
+                        style="flex: 1; padding: 10px 20px; background: rgba(255, 182, 193, 0.2); border-left: 4px solid #888; color: white; border-radius: 6px; text-align: left; font-size: 1.0em; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; line-height: 1.2; backdrop-filter: blur(5px);">
+                        C. He woke up and saw the creature.
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: stretch; width: 100%;">
+
+                    <!-- Left: Number Badge -->
+                    <div data-id="indicator-3"
+                        style="flex: 0 0 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.3); border-left: 4px solid var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; color: var(--accent); text-shadow: 1px 1px 2px black;">
+                        ?
+                    </div>
+
+                    <!-- Right: Text Item -->
+                    
+                    
+                    <div data-id="right-D. He learned about death in hospitals."
+                        style="flex: 1; padding: 10px 20px; background: rgba(255, 255, 186, 0.2); border-left: 4px solid #888; color: white; border-radius: 6px; text-align: left; font-size: 1.0em; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; line-height: 1.2; backdrop-filter: blur(5px);">
+                        D. He learned about death in hospitals.
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: stretch; width: 100%;">
+
+                    <!-- Left: Number Badge -->
+                    <div data-id="indicator-4"
+                        style="flex: 0 0 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.3); border-left: 4px solid var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; color: var(--accent); text-shadow: 1px 1px 2px black;">
+                        ?
+                    </div>
+
+                    <!-- Right: Text Item -->
+                    
+                    
+                    <div data-id="right-E. He met Professor Waldman."
+                        style="flex: 1; padding: 10px 20px; background: rgba(221, 160, 221, 0.2); border-left: 4px solid #888; color: white; border-radius: 6px; text-align: left; font-size: 1.0em; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; line-height: 1.2; backdrop-filter: blur(5px);">
+                        E. He met Professor Waldman.
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: stretch; width: 100%;">
+
+                    <!-- Left: Number Badge -->
+                    <div data-id="indicator-5"
+                        style="flex: 0 0 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.3); border-left: 4px solid var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; color: var(--accent); text-shadow: 1px 1px 2px black;">
+                        ?
+                    </div>
+
+                    <!-- Right: Text Item -->
+                    
+                    
+                    <div data-id="right-F. The electricity brought the creature to life."
+                        style="flex: 1; padding: 10px 20px; background: rgba(175, 238, 238, 0.2); border-left: 4px solid #888; color: white; border-radius: 6px; text-align: left; font-size: 1.0em; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; line-height: 1.2; backdrop-filter: blur(5px);">
+                        F. The electricity brought the creature to life.
+                    </div>
+                </div>
+                
+            </div>
+
+            
+
+        </div>
+    </div>
+
+    <aside class="notes">
+        Have students discuss the order in pairs before you click to reveal.
+    </aside>
+</section>
+            
+            <section 
+    data-background-gradient="radial-gradient(circle, #004d00 0%, #000000 100%)"
+    data-auto-animate>
+
+    <div class="slide-canvas">
+        <div
+            style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 100%; width: 100%; padding-top: 15px;">
+
+            <h1 data-id="task-title"
+                style="font-size: 1.8em; margin-bottom: 10px; line-height: 1.1; text-shadow: 2px 2px 4px black; color: #FFD700; width: 90%; text-align: left;">
+                TASK 3 | Correct Order
+            </h1>
+
+            <div class="ranking-container" style="width: 92%; display: flex; flex-direction: column; gap: 8px;">
+                
+                
+                <div style="display: flex; gap: 10px; align-items: stretch; width: 100%;">
+
+                    <!-- Left: Number Badge -->
+                    <div data-id="indicator-0"
+                        style="flex: 0 0 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.3); border-left: 4px solid var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; color: var(--accent); text-shadow: 1px 1px 2px black;">
+                        1
+                    </div>
+
+                    <!-- Right: Text Item -->
+                    
+                    
+                    <div data-id="right-E. He met Professor Waldman."
+                        style="flex: 1; padding: 10px 20px; background: rgba(100, 149, 237, 0.2); border-left: 4px solid #888; color: white; border-radius: 6px; text-align: left; font-size: 1.0em; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; line-height: 1.2; backdrop-filter: blur(5px);">
+                        E. He met Professor Waldman.
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: stretch; width: 100%;">
+
+                    <!-- Left: Number Badge -->
+                    <div data-id="indicator-1"
+                        style="flex: 0 0 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.3); border-left: 4px solid var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; color: var(--accent); text-shadow: 1px 1px 2px black;">
+                        2
+                    </div>
+
+                    <!-- Right: Text Item -->
+                    
+                    
+                    <div data-id="right-D. He learned about death in hospitals."
+                        style="flex: 1; padding: 10px 20px; background: rgba(144, 238, 144, 0.2); border-left: 4px solid #888; color: white; border-radius: 6px; text-align: left; font-size: 1.0em; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; line-height: 1.2; backdrop-filter: blur(5px);">
+                        D. He learned about death in hospitals.
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: stretch; width: 100%;">
+
+                    <!-- Left: Number Badge -->
+                    <div data-id="indicator-2"
+                        style="flex: 0 0 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.3); border-left: 4px solid var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; color: var(--accent); text-shadow: 1px 1px 2px black;">
+                        3
+                    </div>
+
+                    <!-- Right: Text Item -->
+                    
+                    
+                    <div data-id="right-B. He was given his own laboratory."
+                        style="flex: 1; padding: 10px 20px; background: rgba(255, 182, 193, 0.2); border-left: 4px solid #888; color: white; border-radius: 6px; text-align: left; font-size: 1.0em; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; line-height: 1.2; backdrop-filter: blur(5px);">
+                        B. He was given his own laboratory.
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: stretch; width: 100%;">
+
+                    <!-- Left: Number Badge -->
+                    <div data-id="indicator-3"
+                        style="flex: 0 0 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.3); border-left: 4px solid var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; color: var(--accent); text-shadow: 1px 1px 2px black;">
+                        4
+                    </div>
+
+                    <!-- Right: Text Item -->
+                    
+                    
+                    <div data-id="right-A. He worked hard on his machine."
+                        style="flex: 1; padding: 10px 20px; background: rgba(255, 255, 186, 0.2); border-left: 4px solid #888; color: white; border-radius: 6px; text-align: left; font-size: 1.0em; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; line-height: 1.2; backdrop-filter: blur(5px);">
+                        A. He worked hard on his machine.
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: stretch; width: 100%;">
+
+                    <!-- Left: Number Badge -->
+                    <div data-id="indicator-4"
+                        style="flex: 0 0 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.3); border-left: 4px solid var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; color: var(--accent); text-shadow: 1px 1px 2px black;">
+                        5
+                    </div>
+
+                    <!-- Right: Text Item -->
+                    
+                    
+                    <div data-id="right-F. The electricity brought the creature to life."
+                        style="flex: 1; padding: 10px 20px; background: rgba(221, 160, 221, 0.2); border-left: 4px solid #888; color: white; border-radius: 6px; text-align: left; font-size: 1.0em; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; line-height: 1.2; backdrop-filter: blur(5px);">
+                        F. The electricity brought the creature to life.
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: stretch; width: 100%;">
+
+                    <!-- Left: Number Badge -->
+                    <div data-id="indicator-5"
+                        style="flex: 0 0 60px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.3); border-left: 4px solid var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3em; color: var(--accent); text-shadow: 1px 1px 2px black;">
+                        6
+                    </div>
+
+                    <!-- Right: Text Item -->
+                    
+                    
+                    <div data-id="right-C. He woke up and saw the creature."
+                        style="flex: 1; padding: 10px 20px; background: rgba(175, 238, 238, 0.2); border-left: 4px solid #888; color: white; border-radius: 6px; text-align: left; font-size: 1.0em; box-shadow: 4px 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; line-height: 1.2; backdrop-filter: blur(5px);">
+                        C. He woke up and saw the creature.
+                    </div>
+                </div>
+                
+            </div>
+
+            
+
+        </div>
+    </div>
+
+    <aside class="notes">
+        Notice how Victor's ambition led him from education to isolation.
+    </aside>
+</section>
+            
+            <section 
+    data-auto-animate>
+
+    <div class="slide-canvas">
+        <div class="answer-detail-container">
+
+            <!-- Badge at TOP -->
+            
+
+            <!-- Icon-only Answer Table -->
+            <table class="answer-table">
+                <tbody>
+                    <!-- Row 1: QUESTION -->
+                    <tr class="question-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-question-circle"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="question-text">ANSWER 3</p>
+                        </td>
+                    </tr>
+
+                    <!-- Row 2: THE ANSWER -->
+                    <tr class="answer-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-thumbs-up"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="answer-text">E -> D -> B -> A -> F -> C</p>
+                        </td>
+                    </tr>
+
+                    <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                    <tr class="evidence-row-inline">
+                        <td class="icon-cell" colspan="2">
+                            
+                            <span class="evidence-inline">[Para 1] Met Waldman → [Para 5] Learned about death → [Para 8] Given laboratory → [Para 4] Two years work → [Para 17] Body came alive → [Para 20] Woke to see creature.</span>
+                        </td>
+                    </tr>
+
+                    <!-- Row 4: EXPLANATION -->
+                    <tr class="explanation-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-lightbulb"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="explanation-text">Victor's journey: First Waldman inspired him, then he studied death, got a lab, worked obsessively, succeeded with electricity, and finally faced his creation in fear.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss the answer with the class.
+    </aside>
+</section>
+
+<style>
+    .answer-detail-container {
+        width: 95%;
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .answer-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        font-size: 0.9em;
+        text-align: left;
+    }
+
+    .answer-table tr {
+        vertical-align: top;
+        text-align: left;
+    }
+
+    .icon-cell {
+        width: 50px;
+        padding: 12px;
+        text-align: left;
+        border-radius: 8px 0 0 8px;
+        vertical-align: middle;
+    }
+
+    .icon-cell i {
+        font-size: 1.6em;
+    }
+
+    .content-cell {
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        text-align: left;
+    }
+
+    /* Question Row */
+    .question-row .icon-cell {
+        background: rgba(255, 215, 0, 0.2);
+    }
+
+    .question-row .content-cell {
+        background: rgba(255, 215, 0, 0.1);
+        border-left: 3px solid #FFD700;
+    }
+
+    .question-row .icon-cell i {
+        color: #FFD700;
+    }
+
+    .question-text {
+        font-size: 0.9em;
+        font-weight: normal;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Answer Row */
+    .answer-row .icon-cell {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .answer-row .content-cell {
+        background: rgba(255, 255, 255, 0.1);
+        border-left: 3px solid #FFFFFF;
+    }
+
+    .answer-row .icon-cell i {
+        color: #FFFFFF;
+    }
+
+    .answer-text {
+        font-size: 0.9em;
+        font-weight: bold;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Evidence Row Inline (no box) */
+    .evidence-row-inline {
+        margin: 8px 0;
+    }
+
+    .evidence-row-inline .icon-cell {
+        background: transparent;
+        padding: 4px 8px;
+        border-radius: 0;
+    }
+
+    .evidence-inline {
+        font-style: italic;
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: #87CEEB;
+    }
+
+    .para-badge {
+        background: rgba(255, 215, 0, 0.3);
+        color: #FFD700;
+        font-size: 0.9em;
+        font-weight: bold;
+        margin-right: 8px;
+        font-style: normal;
+    }
+
+    /* Explanation Row */
+    .explanation-row .icon-cell {
+        background: rgba(255, 152, 0, 0.25);
+    }
+
+    .explanation-row .content-cell {
+        background: rgba(255, 152, 0, 0.15);
+        border-left: 3px solid #FF9800;
+    }
+
+    .explanation-row .icon-cell i {
+        color: #FF9800;
+    }
+
+    .explanation-text {
+        margin: 0;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    /* Badge styling */
+    .badge-container {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .badge-top {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .gold-badge {
+        color: #FFD700;
+        font-size: 0.9em;
+        border-bottom: 2px solid #FFD700;
+        padding-bottom: 3px;
+        display: inline-block;
+    }
+
+    /* Check mark - Green */
+    .check-symbol {
+        color: #4CAF50;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    /* Cross mark - Red */
+    .cross-symbol {
+        color: #F44336;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+</style>
+            
+            <!-- SLIDE: SEGUE -->
+<section data-transition="zoom" >
+    <div class="slide-canvas">
+        <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE FOUR</div>
+        <h1 style="color: #FFD700; font-size: 3em;">The Lessons</h1>
+        
+        <h2 style="font-size: 1.5em; color: white;">Now we know the plot, let's look closer at Victor's big mistakes.</h2>
+        
+    </div>
+    <aside class="notes">
+        Moving to next section.
+    </aside>
+</section>
+            
+            <!-- SLIDE: STRATEGY (PEDAGOGICAL BRIDGE) -->
+<section data-background="" data-background-opacity="0.5"  data-auto-animate>
+
+    <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+        
+        <h2 data-id="strategy-title" style="font-size: 1.0em; margin-bottom: 30px; text-shadow: 2px 2px 8px black;">STRATEGY: Probing the Protagonist</h2>
+
+        <div
+            style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: 0.9em;">
+            <table style='width: 100%; border-collapse: separate; border-spacing: 0 10px;'><tr><td style='width: 50px;'><i class='fas fa-id-card' style='color: #FFD700;'></i></td><td><strong>WHAT:</strong> Analyzing 'Character Flaws' (Hubris).</td></tr><tr><td><i class='fas fa-question-circle' style='color: #FFD700;'></i></td><td><strong>WHY:</strong> To understand how Victor’s internal choices drive the external tragedy.</td></tr><tr><td><i class='fas fa-search' style='color: #FFD700;'></i></td><td><strong>HOW:</strong> Scan the text for descriptors of Victor’s <u>work habits</u> and <u>decisions</u> (Page 147).</td></tr></table>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss the strategy with students.
+    </aside>
+</section>
+            
+            <section 
+    data-background-gradient="radial-gradient(circle, #004d00 0%, #000000 100%)">
+
+    <div class="slide-canvas"
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+            <div>
+                <h3
+                    style="color: #FFD700; margin-bottom: 10px; font-size: 1.2em; border-bottom: 2px solid #FFD700; display: inline-block;">
+                    ANALYSIS</h3>
+            </div>
+            
+
+            
+            <h1 style="font-size: 1.2em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">TASK 8 | Victor's Flaws</h1>
+            
+
+            
+            <div style="font-size: 0.9em; margin-bottom: 20px; color: #eee; font-style: italic; font-weight: 300;">
+                <i class="fas fa-lightbulb" style="color: #FFD700; margin-right: 10px;"></i> Which THREE words describe Victor's bad character? (Page 147)
+            </div>
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <table style='width: 100%; border-collapse: collapse; font-size: 1.1em;'><tr><td style='padding: 15px;'><i class='fas fa-times-circle fragment' style='color: #ff4444; margin-right: 10px;'></i>Ambitious</td><td style='padding: 15px;'><i class='fas fa-check-circle fragment' style='color: #00ff00; margin-right: 10px;'></i>Obsessive</td></tr><tr><td style='padding: 15px;'><i class='fas fa-check-circle fragment' style='color: #00ff00; margin-right: 10px;'></i>Reckless</td><td style='padding: 15px;'><i class='fas fa-times-circle fragment' style='color: #ff4444; margin-right: 10px;'></i>Brave</td></tr><tr><td style='padding: 15px;'><i class='fas fa-check-circle fragment' style='color: #00ff00; margin-right: 10px;'></i>Irresponsible</td><td style='padding: 15px;'><i class='fas fa-times-circle fragment' style='color: #ff4444; margin-right: 10px;'></i>Selfish</td></tr></table>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Monitor student progress.
+    </aside>
+</section>
+            
+            <section 
+    data-auto-animate>
+
+    <div class="slide-canvas">
+        <div class="answer-detail-container">
+
+            <!-- Badge at TOP -->
+            
+
+            <!-- Icon-only Answer Table -->
+            <table class="answer-table">
+                <tbody>
+                    <!-- Row 1: QUESTION -->
+                    <tr class="question-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-question-circle"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="question-text">ANSWER 8</p>
+                        </td>
+                    </tr>
+
+                    <!-- Row 2: THE ANSWER -->
+                    <tr class="answer-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-thumbs-up"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="answer-text">Obsessive, Irresponsible, and Reckless</p>
+                        </td>
+                    </tr>
+
+                    <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                    <tr class="evidence-row-inline">
+                        <td class="icon-cell" colspan="2">
+                            
+                            <span class="evidence-inline">[Page 147] 'Victor's flawed character leads him to take the disastrous path...' The text identifies these three specific character flaws.</span>
+                        </td>
+                    </tr>
+
+                    <!-- Row 4: EXPLANATION -->
+                    <tr class="explanation-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-lightbulb"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="explanation-text">Victor was obsessive (worked without holidays), irresponsible (ignored his family), and reckless (used dangerous electricity without thinking).</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss the answer with the class.
+    </aside>
+</section>
+
+<style>
+    .answer-detail-container {
+        width: 95%;
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .answer-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        font-size: 0.9em;
+        text-align: left;
+    }
+
+    .answer-table tr {
+        vertical-align: top;
+        text-align: left;
+    }
+
+    .icon-cell {
+        width: 50px;
+        padding: 12px;
+        text-align: left;
+        border-radius: 8px 0 0 8px;
+        vertical-align: middle;
+    }
+
+    .icon-cell i {
+        font-size: 1.6em;
+    }
+
+    .content-cell {
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        text-align: left;
+    }
+
+    /* Question Row */
+    .question-row .icon-cell {
+        background: rgba(255, 215, 0, 0.2);
+    }
+
+    .question-row .content-cell {
+        background: rgba(255, 215, 0, 0.1);
+        border-left: 3px solid #FFD700;
+    }
+
+    .question-row .icon-cell i {
+        color: #FFD700;
+    }
+
+    .question-text {
+        font-size: 0.9em;
+        font-weight: normal;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Answer Row */
+    .answer-row .icon-cell {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .answer-row .content-cell {
+        background: rgba(255, 255, 255, 0.1);
+        border-left: 3px solid #FFFFFF;
+    }
+
+    .answer-row .icon-cell i {
+        color: #FFFFFF;
+    }
+
+    .answer-text {
+        font-size: 0.9em;
+        font-weight: bold;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Evidence Row Inline (no box) */
+    .evidence-row-inline {
+        margin: 8px 0;
+    }
+
+    .evidence-row-inline .icon-cell {
+        background: transparent;
+        padding: 4px 8px;
+        border-radius: 0;
+    }
+
+    .evidence-inline {
+        font-style: italic;
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: #87CEEB;
+    }
+
+    .para-badge {
+        background: rgba(255, 215, 0, 0.3);
+        color: #FFD700;
+        font-size: 0.9em;
+        font-weight: bold;
+        margin-right: 8px;
+        font-style: normal;
+    }
+
+    /* Explanation Row */
+    .explanation-row .icon-cell {
+        background: rgba(255, 152, 0, 0.25);
+    }
+
+    .explanation-row .content-cell {
+        background: rgba(255, 152, 0, 0.15);
+        border-left: 3px solid #FF9800;
+    }
+
+    .explanation-row .icon-cell i {
+        color: #FF9800;
+    }
+
+    .explanation-text {
+        margin: 0;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    /* Badge styling */
+    .badge-container {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .badge-top {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .gold-badge {
+        color: #FFD700;
+        font-size: 0.9em;
+        border-bottom: 2px solid #FFD700;
+        padding-bottom: 3px;
+        display: inline-block;
+    }
+
+    /* Check mark - Green */
+    .check-symbol {
+        color: #4CAF50;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    /* Cross mark - Red */
+    .cross-symbol {
+        color: #F44336;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+</style>
+            
+            <!-- SLIDE: STRATEGY (PEDAGOGICAL BRIDGE) -->
+<section data-background="" data-background-opacity="0.5"  data-auto-animate>
+
+    <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+        
+        <h2 data-id="strategy-title" style="font-size: 1.0em; margin-bottom: 30px; text-shadow: 2px 2px 8px black;">STRATEGY: Identifying Themes</h2>
+
+        <div
+            style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: 0.9em;">
+            <table style='width: 100%; border-collapse: separate; border-spacing: 0 10px;'><tr><td style='width: 50px;'><i class='fas fa-lightbulb' style='color: #FFD700;'></i></td><td><strong>WHAT:</strong> Discovering the 'Moral of the Story'.</td></tr><tr><td><i class='fas fa-link' style='color: #FFD700;'></i></td><td><strong>WHY:</strong> To connect the character's actions to universal warnings.</td></tr><tr><td><i class='fas fa-search-location' style='color: #FFD700;'></i></td><td><strong>HOW:</strong> Look for paragraphs where the author addresses the <u>reader</u> directly (Page 147).</td></tr></table>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss the strategy with students.
+    </aside>
+</section>
+            
+            <section 
+    data-background-gradient="radial-gradient(circle, #004d00 0%, #000000 100%)">
+
+    <div class="slide-canvas"
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+            <div>
+                <h3
+                    style="color: #FFD700; margin-bottom: 10px; font-size: 1.2em; border-bottom: 2px solid #FFD700; display: inline-block;">
+                    THEMES</h3>
+            </div>
+            
+
+            
+            <h1 style="font-size: 1.2em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">TASK 9 | Big Ideas</h1>
+            
+
+            
+            <div style="font-size: 0.9em; margin-bottom: 20px; color: #eee; font-style: italic; font-weight: 300;">
+                <i class="fas fa-lightbulb" style="color: #FFD700; margin-right: 10px;"></i> Which TWO themes does Mary Shelley want us to think about? (Page 147)
+            </div>
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <table style='width: 100%; border-collapse: collapse; font-size: 1.1em;'><tr><td style='padding: 15px;'><i class='fas fa-times-circle fragment' style='color: #ff4444; margin-right: 10px;'></i>Love conquers all</td><td style='padding: 15px;'><i class='fas fa-check-circle fragment' style='color: #00ff00; margin-right: 10px;'></i>Dangerous Knowledge</td></tr><tr><td style='padding: 15px;'><i class='fas fa-check-circle fragment' style='color: #00ff00; margin-right: 10px;'></i>Morality</td><td style='padding: 15px;'><i class='fas fa-times-circle fragment' style='color: #ff4444; margin-right: 10px;'></i>Technology is evil</td></tr></table>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Monitor student progress.
+    </aside>
+</section>
+            
+            <section 
+    data-auto-animate>
+
+    <div class="slide-canvas">
+        <div class="answer-detail-container">
+
+            <!-- Badge at TOP -->
+            
+
+            <!-- Icon-only Answer Table -->
+            <table class="answer-table">
+                <tbody>
+                    <!-- Row 1: QUESTION -->
+                    <tr class="question-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-question-circle"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="question-text">ANSWER 9</p>
+                        </td>
+                    </tr>
+
+                    <!-- Row 2: THE ANSWER -->
+                    <tr class="answer-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-thumbs-up"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="answer-text">Dangerous Knowledge & Morality</p>
+                        </td>
+                    </tr>
+
+                    <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                    <tr class="evidence-row-inline">
+                        <td class="icon-cell" colspan="2">
+                            
+                            <span class="evidence-inline">[Page 147] 'dangerous and forbidden knowledge' and 'morals and distinguishing right from wrong'</span>
+                        </td>
+                    </tr>
+
+                    <!-- Row 4: EXPLANATION -->
+                    <tr class="explanation-row">
+                        <td class="icon-cell">
+                            <i class="fas fa-lightbulb"></i>
+                        </td>
+                        <td class="content-cell">
+                            <p class="explanation-text">Shelley warns us: some knowledge is dangerous, and we must always ask 'is this right?' before we act.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <aside class="notes">
+        Discuss the answer with the class.
+    </aside>
+</section>
+
+<style>
+    .answer-detail-container {
+        width: 95%;
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .answer-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        font-size: 0.9em;
+        text-align: left;
+    }
+
+    .answer-table tr {
+        vertical-align: top;
+        text-align: left;
+    }
+
+    .icon-cell {
+        width: 50px;
+        padding: 12px;
+        text-align: left;
+        border-radius: 8px 0 0 8px;
+        vertical-align: middle;
+    }
+
+    .icon-cell i {
+        font-size: 1.6em;
+    }
+
+    .content-cell {
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        text-align: left;
+    }
+
+    /* Question Row */
+    .question-row .icon-cell {
+        background: rgba(255, 215, 0, 0.2);
+    }
+
+    .question-row .content-cell {
+        background: rgba(255, 215, 0, 0.1);
+        border-left: 3px solid #FFD700;
+    }
+
+    .question-row .icon-cell i {
+        color: #FFD700;
+    }
+
+    .question-text {
+        font-size: 0.9em;
+        font-weight: normal;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Answer Row */
+    .answer-row .icon-cell {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .answer-row .content-cell {
+        background: rgba(255, 255, 255, 0.1);
+        border-left: 3px solid #FFFFFF;
+    }
+
+    .answer-row .icon-cell i {
+        color: #FFFFFF;
+    }
+
+    .answer-text {
+        font-size: 0.9em;
+        font-weight: bold;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Evidence Row Inline (no box) */
+    .evidence-row-inline {
+        margin: 8px 0;
+    }
+
+    .evidence-row-inline .icon-cell {
+        background: transparent;
+        padding: 4px 8px;
+        border-radius: 0;
+    }
+
+    .evidence-inline {
+        font-style: italic;
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: #87CEEB;
+    }
+
+    .para-badge {
+        background: rgba(255, 215, 0, 0.3);
+        color: #FFD700;
+        font-size: 0.9em;
+        font-weight: bold;
+        margin-right: 8px;
+        font-style: normal;
+    }
+
+    /* Explanation Row */
+    .explanation-row .icon-cell {
+        background: rgba(255, 152, 0, 0.25);
+    }
+
+    .explanation-row .content-cell {
+        background: rgba(255, 152, 0, 0.15);
+        border-left: 3px solid #FF9800;
+    }
+
+    .explanation-row .icon-cell i {
+        color: #FF9800;
+    }
+
+    .explanation-text {
+        margin: 0;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    /* Badge styling */
+    .badge-container {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .badge-top {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .gold-badge {
+        color: #FFD700;
+        font-size: 0.9em;
+        border-bottom: 2px solid #FFD700;
+        padding-bottom: 3px;
+        display: inline-block;
+    }
+
+    /* Check mark - Green */
+    .check-symbol {
+        color: #4CAF50;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    /* Cross mark - Red */
+    .cross-symbol {
+        color: #F44336;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+</style>
+            
+            <!-- SLIDE: SEGUE -->
+<section data-transition="zoom" >
+    <div class="slide-canvas">
+        <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE FIVE</div>
+        <h1 style="color: #FFD700; font-size: 3em;">The Verdict</h1>
+        
+        <h2 style="font-size: 1.5em; color: white;">Victor made his choice, then he ran away in fear. Now it's your turn to judge his actions.</h2>
+        
+    </div>
+    <aside class="notes">
+        Moving to next section.
+    </aside>
+</section>
+            
+            <section 
+    data-background-gradient="radial-gradient(circle, #004d00 0%, #000000 100%)">
+
+    <div class="slide-canvas"
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+        <!-- Fixed min-height ensures consistent vertical centering across paginated slides -->
+        <div
+            style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+            
+            <div>
+                <h3
+                    style="color: #FFD700; margin-bottom: 10px; font-size: 1.2em; border-bottom: 2px solid #FFD700; display: inline-block;">
+                    DISCUSSION</h3>
+            </div>
+            
+
+            
+            <h1 style="font-size: 1.2em; margin-bottom: 20px; line-height: 1.1; text-shadow: 2px 2px 4px black;">DEBATE | Who is the Monster?</h1>
+            
+
+            
+
+            <div style="font-size: 0.9em; line-height: 1.4; flex-grow: 1;">
+                <table style='width: 100%; border-collapse: separate; border-spacing: 0 20px;'><tr><td colspan='2' style='text-align: center; font-size: 1.25em; padding-bottom: 20px;'><strong>Who is more to blame for the tragedy?</strong></td></tr><tr><td style='width: 50%; padding: 25px; background: rgba(255,215,0,0.1); border-left: 5px solid #FFD700; border-radius: 8px;'><strong>VICTOR</strong><br><small>He played God but was <u>irresponsible</u> and <u>reckless</u>.</small></td><td style='width: 50%; padding: 25px; background: rgba(255,68,68,0.1); border-left: 5px solid #ff4444; border-radius: 8px;'><strong>THE CREATURE</strong><br><small>He is 2.5 meters tall, <u>awful</u> to look at, and scary.</small></td></tr><tr><td colspan='2' style='text-align: center;'><div class='timer-container' style='justify-content: center;'><div class='timer-display' id='t_final'>03:00</div><button class='timer-btn' onclick='toggleTimer(180, &quot;t_final&quot;, this)'>DEBATE!</button></div></td></tr></table>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Encourage students to use the vocabulary from Phase 2 (reckless, obsessive, irresponsible) in their arguments.
+    </aside>
+</section>
+            
+        </div>
+    </div>
+
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+    <script>
+        // AUDIO PLAYER COMPONENT
+        class AudioPlayer extends HTMLElement {
+            constructor() {
+                super();
+                this.audio = new Audio();
+                this.isPlaying = false;
+            }
+
+            connectedCallback() {
+                const src = this.getAttribute('src');
+                if (!src) return;
+                this.audio.src = src;
+
+                this.innerHTML = `
+                    <div class="audio-player">
+                        <button class="audio-play-btn"><i class="fas fa-play"></i></button>
+                        <div class="audio-scrubber-container">
+                            <input type="range" class="audio-scrubber" value="0" min="0" max="100">
+                            <div class="audio-time">
+                                <span class="current">00:00</span>
+                                <span class="total">00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                this.playBtn = this.querySelector('.audio-play-btn');
+                this.scrubber = this.querySelector('.audio-scrubber');
+                this.currentTimeDisplay = this.querySelector('.current');
+                this.totalTimeDisplay = this.querySelector('.total');
+
+                this.playBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    this.togglePlay();
+                };
+
+                this.scrubber.oninput = (e) => {
+                    if (this.audio.duration) {
+                        const time = (this.scrubber.value / 100) * this.audio.duration;
+                        this.audio.currentTime = time;
+                    }
+                };
+
+                this.audio.ontimeupdate = () => {
+                    if (this.audio.duration) {
+                        const progress = (this.audio.currentTime / this.audio.duration) * 100;
+                        this.scrubber.value = progress || 0;
+                        this.currentTimeDisplay.textContent = this.formatTime(this.audio.currentTime);
+                    }
+                };
+
+                this.audio.onloadedmetadata = () => {
+                    this.totalTimeDisplay.textContent = this.formatTime(this.audio.duration);
+                };
+
+                this.audio.onended = () => {
+                    this.isPlaying = false;
+                    this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                };
+            }
+
+            togglePlay() {
+                if (this.isPlaying) {
+                    this.audio.pause();
+                    this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                } else {
+                    this.audio.play();
+                    this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+                this.isPlaying = !this.isPlaying;
+            }
+
+            formatTime(seconds) {
+                if (isNaN(seconds)) return "00:00";
+                const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+                const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+                return `${m}:${s}`;
+            }
+        }
+        customElements.define('audio-player', AudioPlayer);
+
+        const AudioFX = {
+            beep: new Audio('audio/beep.mp3'),
+            bell: new Audio('audio/bell.mp3'),
+            heartbeat: new Audio('audio/freesound_254366_Heartbeat_Fast.mp3'),
+            init() {
+                this.beep.load(); this.bell.load(); this.heartbeat.load();
+            }
+        };
+
+        const TimerRegistry = {};
+
+        function toggleTimer(durationSeconds, displayId, btn) {
+            if (TimerRegistry[displayId] && TimerRegistry[displayId].interval) {
+                clearInterval(TimerRegistry[displayId].interval);
+                TimerRegistry[displayId].interval = null;
+                btn.textContent = 'START';
+            } else {
+                btn.textContent = 'PAUSE';
+                const display = document.getElementById(displayId);
+                AudioFX.init();
+                AudioFX.beep.play().catch(e => console.warn(e));
+
+                if (!TimerRegistry[displayId]) {
+                    TimerRegistry[displayId] = { original: durationSeconds, current: durationSeconds };
+                }
+
+                const tick = () => {
+                    let timer = --TimerRegistry[displayId].current;
+                    let minutes = parseInt(timer / 60, 10);
+                    let seconds = parseInt(timer % 60, 10);
+                    display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+
+                    if (timer <= 0) {
+                        clearInterval(TimerRegistry[displayId].interval);
+                        TimerRegistry[displayId].interval = null;
+                        btn.textContent = 'START';
+                        AudioFX.bell.play().catch(e => console.warn(e));
+                        display.textContent = "DONE!";
+                    } else if (timer === 30) {
+                        AudioFX.heartbeat.play().catch(e => console.warn(e));
+                    } else if (timer < 10 && timer >= 0) {
+                        AudioFX.beep.play().catch(e => console.warn(e));
+                    }
+                };
+
+                // Run once immediately, then start interval
+                tick();
+                TimerRegistry[displayId].interval = setInterval(tick, 1000);
+            }
+        }
+
+        function resetTimer(durationSeconds, displayId) {
+            if (TimerRegistry[displayId]) {
+                clearInterval(TimerRegistry[displayId].interval);
+            }
+            const display = document.getElementById(displayId);
+            // Reset button text in the same slide
+            const section = display.closest('section');
+            const startBtn = section.querySelector('.timer-btn:not(.reset)');
+            if (startBtn) startBtn.textContent = 'START';
+
+            let minutes = parseInt(durationSeconds / 60, 10);
+            let seconds = parseInt(durationSeconds % 60, 10);
+            display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+            TimerRegistry[displayId] = { original: durationSeconds, current: durationSeconds, interval: null };
+        }
+
+        Reveal.initialize({
+            hash: true,
+            width: 1280,
+            height: 720,
+            margin: 0.1,
+            center: true,
+            autoAnimateDuration: 1.2,
+            autoAnimateEasing: 'ease-in-out',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>
