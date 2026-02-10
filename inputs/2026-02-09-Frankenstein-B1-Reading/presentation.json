@@ -1,0 +1,243 @@
+{
+    "meta": {
+        "title": "Literature: A Classic Story",
+        "cefr": "B1",
+        "lesson_type": "bell"
+    },
+    "slides": [
+        {
+            "layout": "title",
+            "title": "FRANKENSTEIN",
+            "subtitle": "B1 Reading",
+            "video": "../images/horror_house_7s.mp4",
+            "video_opacity": 0.6
+        },
+        {
+            "layout": "mission",
+            "title": "YOUR MISSION",
+            "video": "../images/mission_bg_clipped.mp4",
+            "objectives": [
+                {
+                    "icon": "fa-book-open",
+                    "text": "ANALYZE genre"
+                },
+                {
+                    "icon": "fa-user-secret",
+                    "text": "PROFILE the author"
+                },
+                {
+                    "icon": "fa-list-ol",
+                    "text": "SEQUENCE events"
+                },
+                {
+                    "icon": "fa-mask",
+                    "text": "DECODE flaws"
+                }
+            ]
+        },
+        {
+            "layout": "segue",
+            "title": "PHASE 1: CONTEXT",
+            "subtitle": "Analyze the creator and his creation.",
+            "background_image": "images/creature.png"
+        },
+        {
+            "layout": "strategy",
+            "title": "TASK 1: GENRE",
+            "icon": "fas fa-compass",
+            "content": "<table>\n<tr><td><i class='fas fa-lightbulb'></i></td><td><b>WHY?</b></td><td>Genre tells us what rules the story follows.</td></tr>\n<tr><td><i class='fas fa-graduation-cap'></i></td><td><b>PRO-TIP</b></td><td>Look for 'dark' words or 'science' words.</td></tr>\n</table>"
+        },
+        {
+            "layout": "split_table",
+            "title": "WHAT'S THE GENRE?",
+            "background_color": "#1a1a1a",
+            "image": "images/page-144.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px; font-size: 1.1em;'>\n<tr><td><i class='fas fa-ghost'></i></td><td>Classic Horror Story</td></tr>\n<tr><td><i class='fas fa-rocket'></i></td><td>Early Science Fiction</td></tr>\n<tr><td><i class='fas fa-magic'></i></td><td>Traditional Fairy Tale</td></tr>\n<tr><td><i class='fas fa-search'></i></td><td>Detective Fiction</td></tr>\n<tr><td><i class='fas fa-laugh'></i></td><td>Comedy and Humor</td></tr>\n<tr><td colspan='2' style='padding-top: 5px;'><div class='timer-container' style='gap: 10px;'><div class='timer-display' id='t1' style='font-size: 1.1em; padding: 5px 15px;'>02:00</div><button class='timer-btn' style='font-size: 1.1em; padding: 5px 15px;' onclick='toggleTimer(120, \"t1\", this)'>START</button><button class='timer-btn' style='font-size: 1.1em; padding: 5px 15px;' onclick='resetTimer(120, \"t1\", this)'>RESET</button></div></td></tr>\n</table>"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "THE GENRE",
+            "answer": "Early Science Fiction / Classic Horror",
+            "evidence": "Written in 1818... scientific speculation.",
+            "explanation": "It combines the fear of the unknown with the power of science."
+        },
+        {
+            "layout": "strategy",
+            "title": "TASK 2: AUTHOR PROFILE",
+            "icon": "fas fa-user-edit",
+            "content": "<table>\n<tr><td><i class='fas fa-sync'></i></td><td><b>WHY?</b></td><td>The author's life often inspires the story.</td></tr>\n<tr><td><i class='fas fa-glasses'></i></td><td><b>PRO-TIP</b></td><td>Scan for dates (1816) and names (Byron).</td></tr>\n</table>"
+        },
+        {
+            "layout": "split_table",
+            "title": "MARY SHELLEY",
+            "image": "images/mary_shelley.png",
+            "content": "<h3>Scan the text for:</h3>\n<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'>\n<tr><td><i class='fas fa-user'></i></td><td><b>WHO?</b> Name & Dates?</td></tr>\n<tr><td><i class='fas fa-map-marker-alt'></i></td><td><b>WHERE?</b> Near which city?</td></tr>\n<tr><td><i class='fas fa-calendar-alt'></i></td><td><b>WHEN?</b> Which summer?</td></tr>\n<tr><td><i class='fas fa-question'></i></td><td><b>HOW?</b> Why did she write it?</td></tr>\n<tr><td colspan='2'><div class='timer-container'><div class='timer-display' id='t2'>03:00</div><button class='timer-btn' onclick='toggleTimer(180, \"t2\", this)'>START</button><button class='timer-btn' onclick='resetTimer(180, \"t2\", this)'>RESET</button></div></td></tr>\n</table>"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "AUTHOR PROFILE",
+            "answer": "Mary Shelley (1797-1851), Near Geneva, Summer 1816.",
+            "evidence": "'Summer of 1816... ghost story challenge.'",
+            "explanation": "The idea came from a nightmare during a stormy night in Geneva."
+        },
+        {
+            "layout": "segue",
+            "title": "PHASE 2: VOCABULARY",
+            "subtitle": "Guess the meaning from context.",
+            "background_image": "images/creature.png"
+        },
+        {
+            "layout": "vocab",
+            "word": "PROMISING",
+            "icon": "fas fa-star",
+            "phoneme": "/ˈprɒmɪsɪŋ/",
+            "image": "images/promising.jpg",
+            "example": "Victor shows himself to be a <span style='color: #FFD700;'>promising</span> student at university.",
+            "notes": "Showing signs of being successful or good in the future."
+        },
+        {
+            "layout": "vocab",
+            "word": "ISOLATED",
+            "icon": "fas fa-house-user",
+            "phoneme": "/ˈaɪsəleɪtɪd/",
+            "image": "images/isolated.jpg",
+            "example": "He becomes <span style='color: #FFD700;'>isolated</span> while working in his laboratory.",
+            "notes": "Far away from other places, buildings, or people; lonely."
+        },
+        {
+            "layout": "vocab",
+            "word": "STORM",
+            "icon": "fas fa-bolt",
+            "phoneme": "/stɔːm/",
+            "image": "images/storm.jpg",
+            "example": "He uses the power of a <span style='color: #FFD700;'>storm</span> to bring his creation to life.",
+            "notes": "Very bad weather with strong winds and rain, and often thunder and lightning."
+        },
+        {
+            "layout": "strategy",
+            "title": "TASK 3: GUESS THE WORDS",
+            "icon": "fas fa-brain",
+            "content": "<table>\n<tr><td><i class='fas fa-crystal-ball'></i></td><td><b>WHAT?</b></td><td>Choose the best word to complete the sentence.</td></tr>\n<tr><td><i class='fas fa-lightbulb'></i></td><td><b>PRO-TIP</b></td><td>Use the context of Victor's journey.</td></tr>\n</table>"
+        },
+        {
+            "layout": "split_table",
+            "title": "COMPLETE (1/2)",
+            "image": "images/page-144.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'>\n<tr><td><i class='fas fa-graduation-cap'></i></td><td>1. Victor is a [promising / lazy] student.</td></tr>\n<tr><td><i class='fas fa-microscope'></i></td><td>2. He studies [weather / how life begins].</td></tr>\n<tr><td><i class='fas fa-door-closed'></i></td><td>3. He becomes [sociable / isolated].</td></tr>\n<tr><td colspan='2'><div class='timer-container'><div class='timer-display' id='t3'>04:00</div><button class='timer-btn' onclick='toggleTimer(240, \"t3\", this)'>START</button><button class='timer-btn' onclick='resetTimer(240, \"t3\", this)'>RESET</button></div></td></tr>\n</table>"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "VOCAB CHECK (1/2)",
+            "answer": "1. Promising, 2. How life begins, 3. Isolated.",
+            "evidence": "Victor shows himself to be a promising student... becomes isolated.",
+            "explanation": "These words describe Victor's shift from a bright student to a lonely creator."
+        },
+        {
+            "layout": "split_table",
+            "title": "COMPLETE (2/2)",
+            "image": "images/page-144.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'>\n<tr><td><i class='fas fa-bolt'></i></td><td>4. He uses a [storm / sea].</td></tr>\n<tr><td><i class='fas fa-exclamation-triangle'></i></td><td>5. His first feeling is [anger / fear].</td></tr>\n<tr><td colspan='2'><div class='timer-container'><div class='timer-display' id='t4'>02:00</div><button class='timer-btn' onclick='toggleTimer(120, \"t4\", this)'>START</button><button class='timer-btn' onclick='resetTimer(120, \"t4\", this)'>RESET</button></div></td></tr>\n</table>"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "VOCAB CHECK (2/2)",
+            "answer": "4. A storm, 5. Fear.",
+            "evidence": "Uses the power of a storm... first feeling is fear.",
+            "explanation": "The creature's birth is chaotic and terrifying."
+        },
+        {
+            "layout": "segue",
+            "title": "PHASE 3: THE STORY",
+            "subtitle": "Reconstruct the narrative arc.",
+            "background_image": "images/page-145.jpg"
+        },
+        {
+            "layout": "strategy",
+            "title": "TASK 4: ORDER EVENTS",
+            "icon": "fas fa-history",
+            "content": "<table>\n<tr><td><i class='fas fa-link'></i></td><td><b>WHY?</b></td><td>Understanding sequence helps you retell the story.</td></tr>\n<tr><td><i class='fas fa-map-signs'></i></td><td><b>PRO-TIP</b></td><td>Look for 'First', 'Then', 'After'.</td></tr>\n</table>"
+        },
+        {
+            "layout": "split_table",
+            "title": "SEQUENCE (1/2)",
+            "image": "images/page-145.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'>\n<tr><td><i class='fas fa-cog'></i></td><td>A. Victor creates an advanced machine.</td></tr>\n<tr><td><i class='fas fa-hammer'></i></td><td>B. Victor builds a mast.</td></tr>\n<tr><td><i class='fas fa-eye'></i></td><td>C. Victor wakes up scared.</td></tr>\n<tr><td colspan='2'><div class='timer-container'><div class='timer-display' id='t5'>05:00</div><button class='timer-btn' onclick='toggleTimer(300, \"t5\", this)'>START</button><button class='timer-btn' onclick='resetTimer(300, \"t5\", this)'>RESET</button></div></td></tr>\n</table>"
+        },
+        {
+            "layout": "split_table",
+            "title": "SEQUENCE (2/2)",
+            "image": "images/page-145.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'>\n<tr><td><i class='fas fa-skull'></i></td><td>D. Victor learns about death.</td></tr>\n<tr><td><i class='fas fa-user-friends'></i></td><td>E. Victor meets Professor Waldman.</td></tr>\n<tr><td><i class='fas fa-bolt'></i></td><td>F. Electricity brings body to life.</td></tr>\n</table>"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "CORRECT ORDER",
+            "answer": "1.E, 2.A, 3.D, 4.B, 5.F, 6.C.",
+            "evidence": "'Met Waldman... Works hard... Discovers things... Builds mast... Lightning... Fear.'",
+            "explanation": "Victor meets his mentor, builds his lab, discovers the secret, and finally creates the monster."
+        },
+        {
+            "layout": "segue",
+            "title": "PHASE 4: ANALYSIS",
+            "subtitle": "Think deeper about characters and themes.",
+            "background_image": "images/page-146.jpg"
+        },
+        {
+            "layout": "strategy",
+            "title": "TASK 5: ANALYSIS",
+            "icon": "fas fa-microscope",
+            "content": "<table>\n<tr><td><i class='fas fa-eye'></i></td><td><b>WHY?</b></td><td>The 'Voice' of the story changes how we feel.</td></tr>\n<tr><td><i class='fas fa-search-plus'></i></td><td><b>PRO-TIP</b></td><td>Is the narrator happy or sad about the past?</td></tr>\n</table>"
+        },
+        {
+            "layout": "split_table",
+            "title": "ANALYSIS QUESTIONS",
+            "image": "images/page-146.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'>\n<tr><td><i class='fas fa-microphone'></i></td><td>1. Who is the narrator?</td></tr>\n<tr><td><i class='fas fa-clock'></i></td><td>2. When is it told: now or later?</td></tr>\n<tr><td><i class='fas fa-biohazard'></i></td><td>3. Any indications of tragedy?</td></tr>\n<tr><td colspan='2'><div class='timer-container'><div class='timer-display' id='t6'>03:00</div><button class='timer-btn' onclick='toggleTimer(180, \"t6\", this)'>START</button><button class='timer-btn' onclick='resetTimer(180, \"t6\", this)'>RESET</button></div></td></tr>\n</table>"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "ANALYSIS ANSWERS",
+            "answer": "Victor (Narrator) / Later date (regret).",
+            "evidence": "'I did not know then... I was making a terrible mistake.'",
+            "explanation": "Victor is looking back with regret, warning us about his mistakes."
+        },
+        {
+            "layout": "strategy",
+            "title": "TASK 7: CHARACTER FLAWS",
+            "icon": "fas fa-user-ninja",
+            "content": "<table>\n<tr><td><i class='fas fa-bomb'></i></td><td><b>WHY?</b></td><td>Flaws create conflict and tragedy.</td></tr>\n<tr><td><i class='fas fa-key'></i></td><td><b>PRO-TIP</b></td><td>Does Victor think about the consequences?</td></tr>\n</table>"
+        },
+        {
+            "layout": "split_table",
+            "title": "VICTOR'S FLAWS",
+            "image": "images/page-146.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'>\n<tr><td><i class='fas fa-check-circle'></i></td><td>Obsessive</td></tr>\n<tr><td><i class='fas fa-check-circle'></i></td><td>Irresponsible</td></tr>\n<tr><td><i class='fas fa-check-circle'></i></td><td>Reckless</td></tr>\n<tr><td colspan='2'><div class='timer-container'><div class='timer-display' id='t7'>02:00</div><button class='timer-btn' onclick='toggleTimer(120, \"t7\", this)'>START</button><button class='timer-btn' onclick='resetTimer(120, \"t7\", this)'>RESET</button></div></td></tr>\n</table>"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "CHARACTER FLAWS",
+            "answer": "Obsessive, Irresponsible, Reckless.",
+            "evidence": "He becomes isolated... reckless pursuit of science.",
+            "explanation": "His obsession with science makes him reckless and irresponsible for his creation."
+        },
+        {
+            "layout": "strategy",
+            "title": "TASK 8: THEMES",
+            "icon": "fas fa-palette",
+            "content": "<table>\n<tr><td><i class='fas fa-link'></i></td><td><b>WHY?</b></td><td>Themes apply the story to real life.</td></tr>\n<tr><td><i class='fas fa-lightbulb'></i></td><td><b>PRO-TIP</b></td><td>What is the main warning of the story?</td></tr>\n</table>"
+        },
+        {
+            "layout": "split_table",
+            "title": "CENTRAL THEMES",
+            "image": "images/page-146.jpg",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'>\n<tr><td><i class='fas fa-skull-crossbones'></i></td><td>Dangerous knowledge</td></tr>\n<tr><td><i class='fas fa-gavel'></i></td><td>Morals (Right vs Wrong)</td></tr>\n<tr><td colspan='2'><div class='timer-container'><div class='timer-display' id='t8'>02:00</div><button class='timer-btn' onclick='toggleTimer(120, \"t8\", this)'>START</button><button class='timer-btn' onclick='resetTimer(120, \"t8\", this)'>RESET</button></div></td></tr>\n</table>"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "KEY THEMES",
+            "answer": "Dangerous Knowledge & Morality.",
+            "evidence": "Dangerous and forbidden knowledge... Morals and distinguishing right from wrong.",
+            "explanation": "The story warns us about the dangers of playing God without a conscience."
+        }
+    ]
+}

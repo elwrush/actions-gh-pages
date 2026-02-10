@@ -1,0 +1,267 @@
+W need to refactor the answer sli{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://elwrush.github.io/actions-gh-pages/schemas/presentation.schema.json",
+  "title": "Presentation Schema",
+  "description": "Validates presentation.json files for the Lesson Plan Agent & Slideshow Factory",
+  "type": "object",
+  "required": ["meta", "slides"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The main title of the presentation"
+        },
+        "subtitle": {
+          "type": "string",
+          "description": "Optional subtitle"
+        },
+        "theme": {
+          "type": "string",
+          "enum": ["noir", "thai-heritage", "indonesia", "amazon", "noir"],
+          "description": "Visual theme for the presentation"
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["bell", "intensive", "standard"],
+          "description": "Presentation mode"
+        },
+        "palette": {
+          "type": "string",
+          "description": "Color palette variant"
+        }
+      },
+      "additionalProperties": false
+    },
+    "slides": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/slide"
+      }
+    }
+  },
+  "$defs": {
+    "allowed_layouts": {
+      "type": "string",
+      "enum": [
+        "title",
+        "segue",
+        "split_task",
+        "strategy",
+        "matching",
+        "answer",
+        "video",
+        "impact",
+        "vocab",
+        "mission",
+        "split_table",
+        "video_answer",
+        "checklist",
+        "table",
+        "match_reorder",
+        "answer_list",
+        "answer_detail",
+        "image"
+      ]
+    },
+    "allowed_badges": {
+      "type": "string",
+      "enum": [
+        "B1 READING SKILLS",
+        "B1 INTENSIVE LISTENING",
+        "B1 SPEAKING & INTERVIEW",
+        "LEAD-IN",
+        "PHASE 1",
+        "PHASE 2",
+        "PHASE 3",
+        "PHASE 4",
+        "PHASE 5",
+        "TASK 1",
+        "TASK 2",
+        "TASK 3",
+        "TASK 4",
+        "TASK 5",
+        "TASK 6",
+        "TIPS",
+        "SKIM",
+        "SCAN",
+        "GIST",
+        "DETAIL",
+        "ANSWERS",
+        "EVIDENCE",
+        "CONTEXT",
+        "PREDICTION",
+        "DISCUSSION",
+        "LITERARY DEVICE",
+        "IRONY",
+        "SKILLS",
+        "STRATEGY"
+      ]
+    },
+    "slide": {
+      "type": "object",
+      "required": ["layout", "title"],
+      "properties": {
+        "layout": {
+          "$ref": "#/$defs/allowed_layouts",
+          "description": "Must be one of the approved layouts"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Slide title is required"
+        },
+        "badge": {
+          "$ref": "#/$defs/allowed_badges",
+          "description": "Optional badge for the slide"
+        },
+        "subtitle": {
+          "type": "string",
+          "description": "Optional subtitle"
+        },
+        "image": {
+          "type": "string",
+          "pattern": "^(images/|published/images/)",
+          "description": "Image path must start with images/ or published/images/"
+        },
+        "background_video": {
+          "type": "string",
+          "description": "Background video URL"
+        },
+        "video_url": {
+          "type": "string",
+          "description": "Video URL (YouTube embed or local path)"
+        },
+        "timer": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 60,
+          "description": "Timer duration in minutes"
+        },
+        "content": {
+          "type": "string",
+          "description": "HTML content for the slide"
+        },
+        "is_answer": {
+          "type": "boolean",
+          "description": "If true, this is an answer/reveal slide"
+        },
+        "data_id": {
+          "type": "string",
+          "description": "Data identifier for matching exercises"
+        },
+        "pairs": {
+          "type": "array",
+          "description": "Matching pairs for matching layout"
+        },
+        "shuffled": {
+          "type": "array",
+          "description": "Shuffled items for matching layout"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Teacher notes (not displayed to students)"
+        },
+        "points": {
+          "type": "array",
+          "description": "List items with icons for impact layout"
+        },
+        "word": {
+          "type": "string",
+          "description": "Vocabulary word for vocab layout"
+        },
+        "phoneme": {
+          "type": "string",
+          "description": "Phonetic pronunciation"
+        },
+        "context_sentence": {
+          "type": "string",
+          "description": "Example sentence with the word"
+        },
+        "answer": {
+          "type": "string",
+          "description": "Correct answer for answer layout"
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Explanation for the answer"
+        },
+        "para": {
+          "type": "string",
+          "description": "Paragraph reference"
+        },
+        "phase": {
+          "type": "string",
+          "description": "Phase label for segue layout"
+        },
+        "main_text": {
+          "type": "string",
+          "description": "Main text for impact layout"
+        },
+        "questions": {
+          "type": "array",
+          "description": "List of questions for video layout"
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "properties": { "layout": { "const": "matching" } } },
+          "then": {
+            "required": ["pairs", "shuffled"],
+            "properties": {
+              "pairs": { "type": "array" },
+              "shuffled": { "type": "array" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "layout": { "const": "vocab" } } },
+          "then": {
+            "required": ["word", "phoneme", "context_sentence"],
+            "properties": {
+              "word": { "type": "string" },
+              "phoneme": { "type": "string" },
+              "context_sentence": { "type": "string" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "layout": { "const": "split_task" } } },
+          "then": {
+            "required": ["content"],
+            "properties": {
+              "content": { "type": "string" },
+              "timer": { "type": "number" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "layout": { "const": "answer" } } },
+          "then": {
+            "required": ["answer"],
+            "properties": {
+              "answer": { "type": "string" },
+              "explanation": { "type": "string" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "layout": { "const": "impact" } } },
+          "then": {
+            "required": ["main_text", "points"],
+            "properties": {
+              "main_text": { "type": "string" },
+              "points": { "type": "array" }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
