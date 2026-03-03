@@ -1,0 +1,344 @@
+{
+  "lesson_title": "The Food of the Future - Today",
+  "lesson_folder": "10-Feb-2026-Reading",
+  "slides": [
+    {
+      "layout": "title",
+      "title": "THE FOOD OF THE FUTURE - TODAY",
+      "subtitle": "How do we choose what we eat?",
+      "video": "images/title_video.mp4",
+      "video_loop": true
+    },
+    {
+      "layout": "mission",
+      "title": "YOUR MISSION",
+      "video": "images/mission_bg_clipped.mp4",
+      "items": [
+        {
+          "icon": "fa-magnifying-glass",
+          "text": "SCAN THE FEED FOR FUTURE FOODS"
+        },
+        {
+          "icon": "fa-book-open",
+          "text": "INFER MEANING FROM CONTEXT CLUES"
+        },
+        {
+          "icon": "fa-comment-dots",
+          "text": "EVALUATE YOUR NEXT MEAL CHOICE"
+        }
+      ]
+    },
+    {
+      "layout": "segue",
+      "title": "SYSTEMS CHECK"
+    },
+    {
+      "layout": "strategy",
+      "badge": "GET READY",
+      "title": "FACT OR FICTION?",
+      "strategy_items": [
+        {
+          "icon": "fa-question-circle",
+          "text": "Look at the statements. Do they sound like science or science-fiction?"
+        },
+        {
+          "icon": "fa-users",
+          "text": "Consult your partner. Use your background knowledge!"
+        },
+        {
+          "icon": "fa-vote-yea",
+          "text": "Prepare to vote!"
+        }
+      ]
+    },
+    {
+      "layout": "split_table",
+      "badge": "GET READY",
+      "title": "FACT OR FICTION?",
+      "rationale": "Activate your background knowledge about unusual future foods.",
+      "content": "<table><thead><tr><th>STATEMENT</th><th>VERDICT</th></tr></thead><tbody><tr><td>1. Future burgers will be made of 100% bugs.</td><td class='fragment' style='color: #FFD700;'>FACT (Insect protein)</td></tr><tr><td>2. You can grow a steak in a laboratory.</td><td class='fragment' style='color: #FFD700;'>FACT (Cultured meat)</td></tr><tr><td>3. Digital food can be tasted through a screen.</td><td class='fragment' style='color: #FFD700;'>FICTION (Not yet!)</td></tr></tbody></table>"
+    },
+    {
+      "layout": "segue",
+      "title": "LAB ANALYSIS"
+    },
+    {
+      "layout": "strategy",
+      "badge": "VOCABULARY",
+      "title": "THE WORD DETECTIVE",
+      "strategy_items": [
+        {
+          "icon": "fa-eye",
+          "text": "<b>Context is King</b>: Read the whole sentence, not just the word."
+        },
+        {
+          "icon": "fa-image",
+          "text": "<b>Visual Proof</b>: Every image on the screen is a clue to the definition."
+        },
+        {
+          "icon": "fa-brain",
+          "text": "<b>Morphology</b>: Look for prefixes like 'un-' to flip the meaning."
+        }
+      ]
+    },
+    {
+      "layout": "vocab",
+      "word": "algae",
+      "phoneme": "/ˈældʒiː/",
+      "context_sentence": "Japanese food uses sea plants – <span style='color: #FFD700;'>algae</span> and others.",
+      "image": "images/algae.jpg",
+      "notes": "Algae: simple non-flowering plants of a large group that includes the seaweeds."
+    },
+    {
+      "layout": "vocab",
+      "word": "unexceptional",
+      "phoneme": "/ˌʌnɪkˈsepʃənl/",
+      "context_sentence": "To be honest, the flavor is <span style='color: #FFD700;'>unexceptional</span> for a snack bar – you know, nothing special.",
+      "image": "images/unexceptional.jpg",
+      "notes": "Unexceptional: not out of the ordinary; ordinary."
+    },
+    {
+      "layout": "vocab",
+      "word": "crickets",
+      "phoneme": "/ˈkrɪkɪts/",
+      "context_sentence": "The <span style='color: #FFD700;'>crickets</span> are made into flour. You can buy the flour online.",
+      "image": "images/cricket.jpg",
+      "notes": "Crickets: leaping insects related to the grasshoppers."
+    },
+    {
+      "layout": "vocab",
+      "word": "molecules",
+      "phoneme": "/ˈmɒlɪkjuːlz/",
+      "context_sentence": "Everything is made up of <span style='color: #FFD700;'>molecules</span> – tiny pieces of chemicals.",
+      "image": "images/molecule.jpg",
+      "notes": "Molecules: the smallest physical unit of an element or compound."
+    },
+    {
+      "layout": "vocab",
+      "word": "extract",
+      "phoneme": "/ɪkˈstrækt/",
+      "context_sentence": "They <span style='color: #FFD700;'>extract</span> heme from plants, and put it into their food product.",
+      "image": "images/extract.jpg",
+      "notes": "Extract: to remove or take out, especially by effort or force."
+    },
+    {
+      "layout": "segue",
+      "title": "THE SOCIAL STREAM"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 1",
+      "title": "RACING THE CLOCK",
+      "strategy_items": [
+        {
+          "icon": "fa-bolt",
+          "text": "Don't read for meaning yet! Look for keywords and layout features."
+        },
+        {
+          "icon": "fa-eye",
+          "text": "Your eyes should 'bounce' across the page."
+        },
+        {
+          "icon": "fa-stopwatch",
+          "text": "Find the 3 foods and STOP."
+        }
+      ]
+    },
+    {
+      "layout": "impact",
+      "badge": "TASK 1",
+      "title": "SCAN THE FEED",
+      "text": "SCAN THE FEED! Which 3 future foods are discussed?",
+      "image": "images/hero_image.jpg",
+      "timer": 120
+    },
+    {
+      "layout": "ranking",
+      "badge": "TASK 1",
+      "title": "TARGETS ACQUIRED",
+      "left_items": ["1", "2", "3"],
+      "right_items": ["ALGAE SNACK BARS", "CRICKET FLOUR", "THE IMPOSSIBLE BURGER"]
+    },
+    {
+      "layout": "segue",
+      "title": "WORD POWER"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 2",
+      "title": "MORPHOLOGY MATTERS",
+      "strategy_items": [
+        {
+          "icon": "fa-font",
+          "text": "Is it a Noun (thing), Verb (action), or Adjective (description)?"
+        },
+        {
+          "icon": "fa-search-plus",
+          "text": "Find synonyms in the text to confirm your guess."
+        }
+      ]
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 2",
+      "title": "VOCABULARY IN CONTEXT",
+      "timer": 180,
+      "content": "<table><thead><tr><th>WORD</th><th>PART OF SPEECH</th><th>CLUE / MEANING</th></tr></thead><tbody><tr><td>1. algae</td><td class='fragment' style='color: #FFD700;'>Noun</td><td class='fragment' style='color: #FFD700;'>Sea plants (synonym)</td></tr><tr><td>2. unexceptional</td><td class='fragment' style='color: #FFD700;'>Adjective</td><td class='fragment' style='color: #FFD700;'>'un-' = not / Nothing special</td></tr><tr><td>3. crickets</td><td class='fragment' style='color: #FFD700;'>Noun</td><td class='fragment' style='color: #FFD700;'>Insects (explanation)</td></tr><tr><td>4. extract</td><td class='fragment' style='color: #FFD700;'>Verb</td><td class='fragment' style='color: #FFD700;'>'Put into' (opposite)</td></tr></tbody></table>"
+    },
+    {
+      "layout": "segue",
+      "title": "VERIFYING THE FEED"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 3",
+      "title": "HUNTING FOR TRUTH",
+      "strategy_items": [
+        {
+          "icon": "fa-search",
+          "text": "'I think it's true' isn't enough. Find the exact sentence!"
+        },
+        {
+          "icon": "fa-pencil-alt",
+          "text": "If it's FALSE, what is the correct information?"
+        }
+      ]
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 3",
+      "title": "FACT OR FICTION?",
+      "timer": 300,
+      "content": "<table><thead><tr><th>STATEMENT</th><th>VERDICT</th></tr></thead><tbody><tr><td>1. Typical Japanese dish?</td><td class='fragment' style='color: #FFD700;'>FALSE</td></tr><tr><td>2. Juice makes them unexceptional?</td><td class='fragment' style='color: #FFD700;'>FALSE</td></tr><tr><td>3. Cricket flour has protein?</td><td class='fragment' style='color: #FFD700;'>TRUE</td></tr><tr><td>4. Heme from real beef?</td><td class='fragment' style='color: #FFD700;'>FALSE</td></tr></tbody></table>"
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 3",
+      "number": "1.",
+      "question": "The food in the photo is a typical Japanese dish.",
+      "answer": "FALSE",
+      "evidence": "<span style='color: #FFD700;'>[Para 1] \"I know Japanese food... uses sea plants – algae and others. But this is the first time I've used it in a snack bar recipe!\"</span>",
+      "explanation": "Algae is Japanese, but the snack bar is a new invention."
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 3",
+      "number": "2.",
+      "question": "Using orange juice makes the bars unexceptional.",
+      "answer": "FALSE",
+      "evidence": "<span style='color: #FFD700;'>[Para 3] \"the sweetener is orange juice! ... To be honest, the flavor is unexceptional for a snack bar.\"</span>",
+      "explanation": "The flavor is unexceptional (ordinary), but the orange juice is just the sweetener."
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 3",
+      "number": "3.",
+      "question": "Cricket flour contains a lot of protein.",
+      "answer": "TRUE",
+      "evidence": "<span style='color: #FFD700;'>[Para 6] \"Apparently insects are also a great source of protein... The crickets are made into flour.\"</span>",
+      "explanation": "The text confirms insects (crickets) are a 'perfect protein'."
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 3",
+      "number": "4.",
+      "question": "Heme for artificial beef is extracted from real beef.",
+      "answer": "FALSE",
+      "evidence": "<span style='color: #FFD700;'>[Para 8] \"They extract heme from plants, and put it into their food product...\"</span>",
+      "explanation": "Heme is found in all living things, and they extract it from plants for the burger."
+    },
+    {
+      "layout": "segue",
+      "title": "DEEP ANALYSIS"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 4",
+      "title": "BEYOND THE SURFACE",
+      "strategy_items": [
+        {
+          "icon": "fa-book-reader",
+          "text": "Read the 'Why' and the 'How'."
+        },
+        {
+          "icon": "fa-quote-left",
+          "text": "Quote specific environmental or taste data from the social feed."
+        }
+      ]
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 4",
+      "title": "THE FINAL VERDICT",
+      "timer": 300,
+      "content": "<table><thead><tr><th>QUESTION</th><th>ANSWER</th></tr></thead><tbody><tr><td>1. Better for environment?</td><td class='fragment' style='color: #FFD700;'>YES</td></tr><tr><td>2. Evidence it tastes like beef?</td><td class='fragment' style='color: #FFD700;'>YES</td></tr></tbody></table>"
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4",
+      "number": "1.",
+      "question": "Is growing algae better for the environment than traditional farming?",
+      "answer": "YES",
+      "evidence": "<span style='color: #FFD700;'>[Para 5] \"Traditional farming has a big carbon footprint. Algae doesn't. Also it's very easy to grow, and doesn't use a lot of fresh water.\"</span>",
+      "explanation": "Algae has a lower carbon footprint and uses less fresh water."
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4",
+      "number": "2.",
+      "question": "Is there any evidence that The Impossible Burger tastes like 'real' beef?",
+      "answer": "YES",
+      "evidence": "<span style='color: #FFD700;'>[Para 15] \"But I've seen online videos of people who have tried it, and they say it tastes just like real beef!\"</span>",
+      "explanation": "The speaker cites video evidence of people's reactions."
+    },
+    {
+      "layout": "segue",
+      "title": "THE FUTURE MENU"
+    },
+    {
+      "layout": "strategy",
+      "badge": "POST-TASK",
+      "title": "CHOOSE YOUR FUTURE",
+      "strategy_items": [
+        {
+          "icon": "fa-balance-scale",
+          "text": "Evaluate flavor vs. ethics (the environment)."
+        },
+        {
+          "icon": "fa-medal",
+          "text": "Which food wins the 'Gold Badge' of the future?"
+        }
+      ]
+    },
+    {
+      "layout": "ranking",
+      "badge": "POST-TASK",
+      "title": "YOUR PREFERENCES",
+      "left_items": ["MOST", "NEXT", "LEAST"],
+      "right_items": ["ALGAE BARS", "CRICKET FLOUR", "IMPOSSIBLE BURGER"],
+      "content": "<p style='text-align: center; margin-top: 20px;'>Which would you eat? Why?</p>",
+      "timer": 180
+    },
+    {
+      "layout": "impact",
+      "badge": "MISSION COMPLETE",
+      "title": "FUTURE FOOD REVIEW",
+      "text": "Write your 40-60 word review.<br>Mention <b>Flavor</b>, <b>Texture</b>, and the <b>Planet</b>.",
+      "image": "images/hero_image.jpg",
+      "timer": 600
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "MISSION COMPLETE",
+      "number": "MODEL",
+      "question": "Review Model",
+      "answer": "5 STARS!",
+      "evidence": "<span style='color: #FFD700;'>[Para 1] \"I just tried the algae snack bar! The nutty flavor is unexceptional but the texture is great. Plus, it's better for the planet than traditional snacks!\"</span>",
+      "explanation": "A concise social media review hitting all criteria."
+    },
+    {
+      "layout": "segue",
+      "title": "INVESTIGATION COMPLETE"
+    }
+  ]
+}

@@ -41,7 +41,8 @@ ALLOWED_LAYOUTS = {
     "title", "segue", "split_task", "strategy", 
     "matching", "answer", "video", "impact", "vocab",
     "mission", "split_table", "video_answer", "checklist", 
-    "table", "match_reorder", "answer_list", "answer_detail", "image"
+    "table", "match_reorder", "answer_list", "answer_detail", "image",
+    "audio_experience", "cross_out", "schema_activation"
 }
 
 # Required fields per layout (answer slides may not require some fields)
@@ -63,7 +64,10 @@ LAYOUT_REQUIREMENTS = {
     "match_reorder": [],
     "answer_list": [],
     "answer_detail": [],
-    "image": []
+    "image": [],
+    "audio_experience": ["audio", "background"],
+    "cross_out": ["cross_out_items"],
+    "schema_activation": ["question"]
 }
 
 # Layout-specific field requirements
@@ -184,6 +188,13 @@ def validate_file(filepath, schema, strict=False):
         # Banned Teacher-Facing Words (for student-centric voice check)
         BANNED_WORDS = ["lead-in", "warmer", "gist", "detail", "rationale", "the tools", "the crime", "objective", "procedure"]
         
+        # Banned Placeholder Images (to prevent generic placeholder reuse)
+        BANNED_PLACEHOLDERS = [
+            "lion_sitting.png", "bird_gifts.png", "discussion_book.png", 
+            "relativity.jpg", "gold_bar.jpg", "prototype.jpg",
+            "basement.jpg", "lever.jpg"
+        ]
+        
         for i, slide in enumerate(data["slides"]):
             slide = normalize_slide(slide)
             slide_path = f"slides[{i}]"
@@ -195,6 +206,12 @@ def validate_file(filepath, schema, strict=False):
                 if word in title:
                     errors.append(f"{slide_path}: Banned teacher-facing word '{word}' found in title '{slide.get('title')}'. Use student-centric action titles instead.")
             
+            # Check for Placeholder Image Abuse
+            for field in ["image", "video", "background"]:
+                val = slide.get(field, "")
+                if any(placeholder in val for placeholder in BANNED_PLACEHOLDERS):
+                    errors.append(f"{slide_path}: Banned placeholder asset detected: '{val}'. You must download a task-specific image using 'searching-pixabay'.")
+
             # Check required fields
             if not layout:
                 errors.append(f"{slide_path}: Missing required 'layout'")
@@ -205,6 +222,10 @@ def validate_file(filepath, schema, strict=False):
             if layout == "vocab":
                 if "word" not in slide:
                     errors.append(f"{slide_path}: Missing required 'word' for vocab layout")
+                # MANDATE: Vocab images MUST be lesson-specific (not root /images/)
+                img = slide.get("image", "")
+                if img.startswith("/images/") or img.startswith("../images/"):
+                    errors.append(f"{slide_path}: Vocab images MUST be lesson-specific. Found root path '{img}'. Use 'searching-pixabay' to acquire lesson-specific assets.")
             else:
                 if "title" not in slide:
                     errors.append(f"{slide_path}: Missing required 'title'")

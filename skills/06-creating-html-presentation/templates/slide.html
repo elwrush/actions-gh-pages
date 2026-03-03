@@ -1,0 +1,15 @@
+{% from "macros.html" import render_background %}
+
+{% if slide.layout == 'editing' %}
+    {# Layouts that manage their own multiple sections #}
+    {% include 'layouts/' + slide.layout + '.html' %}
+{% else %}
+    <section 
+        {{ render_background(current_bg) }}
+        {% if slide.animation and slide.animation.type == 'auto-animate' %}data-auto-animate{% endif %}
+        {% if slide.animation and slide.animation.duration %}data-auto-animate-duration="{{ slide.animation.duration }}"{% endif %}
+        {% if slide.slide_id %}id="{{ slide.slide_id }}"{% endif %}
+    >
+        {% include 'layouts/' + slide.layout + '.html' %}
+    </section>
+{% endif %}

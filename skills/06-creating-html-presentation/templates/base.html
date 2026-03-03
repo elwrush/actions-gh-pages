@@ -168,10 +168,12 @@
 
         .audio-time {
             font-family: monospace;
-            font-size: 0.7em;
+            font-size: 0.9em;
             color: #FFD700;
             display: flex;
             justify-content: space-between;
+            width: 100%;
+            margin-top: 2px;
         }
     </style>
 </head>
@@ -179,8 +181,19 @@
 <body>
     <div class="reveal">
         <div class="slides">
+            {% set last_bg = namespace(src=None, type=None) %}
             {% for slide in slides %}
-            {% include slide.layout + '.html' %}
+                {% if slide.background and slide.background.retain_from_previous and last_bg.src %}
+                    {% set current_bg = {'type': last_bg.type, 'src': last_bg.src} %}
+                {% else %}
+                    {% set current_bg = slide.background %}
+                    {% if slide.background %}
+                        {% set last_bg.src = slide.background.src %}
+                        {% set last_bg.type = slide.background.type %}
+                    {% endif %}
+                {% endif %}
+                
+                {% include 'slide.html' %}
             {% endfor %}
         </div>
     </div>
@@ -210,6 +223,7 @@
                             <input type="range" class="audio-scrubber" value="0" min="0" max="100">
                             <div class="audio-time">
                                 <span class="current">00:00</span>
+                                <span class="separator" style="opacity: 0.5;">/</span>
                                 <span class="total">00:00</span>
                             </div>
                         </div>
@@ -272,11 +286,11 @@
         customElements.define('audio-player', AudioPlayer);
 
         const AudioFX = {
-            beep: new Audio('{{ root_path }}audio/beep.mp3'),
+            blip: new Audio('{{ root_path }}audio/blip.mp3'),
             bell: new Audio('{{ root_path }}audio/bell.mp3'),
             heartbeat: new Audio('{{ root_path }}audio/30-seconds.mp3'),
             init() {
-                this.beep.load(); this.bell.load(); this.heartbeat.load();
+                this.blip.load(); this.bell.load(); this.heartbeat.load();
             }
         };
 
@@ -291,7 +305,7 @@
                 btn.textContent = 'PAUSE';
                 const display = document.getElementById(displayId);
                 AudioFX.init();
-                AudioFX.beep.play().catch(e => console.warn(e));
+                AudioFX.blip.play().catch(e => console.warn(e));
 
                 if (!TimerRegistry[displayId]) {
                     TimerRegistry[displayId] = { original: durationSeconds, current: durationSeconds };
@@ -312,7 +326,7 @@
                     } else if (timer === 30) {
                         AudioFX.heartbeat.play().catch(e => console.warn(e));
                     } else if (timer < 10 && timer >= 0) {
-                        AudioFX.beep.play().catch(e => console.warn(e));
+                        AudioFX.blip.play().catch(e => console.warn(e));
                     }
                 };
 

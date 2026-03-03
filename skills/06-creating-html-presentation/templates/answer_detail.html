@@ -20,7 +20,7 @@
                             {{ slide.number if slide.number else '?' }}
                         </td>
                         <td class="content-cell">
-                            <p class="question-text">{{ slide.title }}</p>
+                            <p class="question-text">{{ slide.question | default(slide.title) }}</p>
                         </td>
                     </tr>
 
@@ -43,7 +43,7 @@
                             {% if slide.para %}
                             <span class="para-badge">[Para {{ slide.para }}]</span>
                             {% endif %}
-                            <span class="evidence-inline">{{ slide.evidence | default('Text snippet or excerpt...')
+                            <span class="evidence-inline">{{ slide.evidence | default(slide.detail) | default('Text snippet or excerpt...')
                                 }}</span>
                         </td>
                     </tr>
@@ -54,7 +54,7 @@
                             <i class="fas fa-lightbulb"></i>
                         </td>
                         <td class="content-cell">
-                            <p class="explanation-text">{{ slide.explanation | default('Explanation...') }}</p>
+                            <p class="explanation-text">{{ slide.explanation | default(slide.detail if slide.evidence else 'Explanation...') }}</p>
                         </td>
                     </tr>
                 </tbody>

@@ -1,0 +1,66 @@
+# GATED ROBUST WORKFLOW: The 5-Phase Pipeline
+# GOAL: Zero Hallucinations, 100% Pedagogical Accuracy
+
+-------------------------------------------------------------------------------
+PHASE 1: INGESTION & VERIFICATION (The Source Gate)
+-------------------------------------------------------------------------------
+1. INPUT: PDF, Typst file, or raw text.
+2. ACTION: Agent extracts ALL teachable content into `content_checklist.md`.
+   - Must capture: Exact vocabulary, definitions, task instructions, Q&A pairs.
+   - Must capture: Sequence of activities.
+3. GATE: STOP & WAIT.
+   - User must verify `content_checklist.md` matches the source 100%.
+   - "Does this checklist contain every single question and answer needed?"
+
+-------------------------------------------------------------------------------
+PHASE 2: PEDAGOGICAL BLUEPRINT (The Lesson Plan Gate)
+-------------------------------------------------------------------------------
+1. INPUT: Verified `content_checklist.md`.
+2. ACTION: Agent writes the Typst Lesson Plan (`[Date]-LP-[Name].typ`).
+   - Define Stages: Lead-in, Strategy/Bridge, Task, Feedback.
+   - Define Logic: How do we teach this? (e.g., "Show word first," vs "Show definition first").
+   - Define Mechanics: "Auto-Animate" vs "Static Slide".
+3. VALIDATION: Run `python skills/writing-lesson-plans/hooks/plan-validator.py`.
+4. GATE: STOP & WAIT.
+   - User compiles and reads the PDF.
+   - "Is the teaching logic sound? Is the CEFR level appropriate?"
+
+-------------------------------------------------------------------------------
+PHASE 3: VISUAL ROADMAP (The Structural Gate)
+-------------------------------------------------------------------------------
+1. INPUT: Approved Lesson Plan PDF.
+2. ACTION: Agent creates `visual_plan.md`.
+   - Map every Lesson Stage to a specific Slide Layout (e.g., "Task 1 -> split_table").
+   - Define Assets: "Needs 7s loop of busy street," "Needs icon of broken phone."
+   - Check Rules: "Rule of 3 Lines," "Horizontal Layouts."
+3. GATE: STOP & WAIT.
+   - Agent MUST provide a clickable link to `visual_plan.md`.
+   - User reviews and edits the markdown file directly to finalize the design.
+   - User approves the visual flow.
+
+-------------------------------------------------------------------------------
+PHASE 4: ASSET GENERATION (The Content Phase)
+-------------------------------------------------------------------------------
+1. INPUT: Approved `visual_plan.md`.
+2. ACTION: PROMPT THE USER.
+   - "I am about to acquire assets. Do you have any specific images, videos, or files you want me to use?"
+3. ACTION: Agent acquires and processes assets.
+   - Run `skills/searching-pixabay` for images/videos.
+   - Process Videos: 720p, 7 seconds, muted.
+   - Generate AI Assets: Diagram generation if needed.
+   - Write `presentation.json`: The data structure.
+4. GATE: STOP & WAIT.
+   - Agent self-checks against `content_checklist.md`.
+   - "Did I include every question from Phase 1?"
+
+-------------------------------------------------------------------------------
+PHASE 5: CODE ASSEMBLY (The Construction Phase)
+-------------------------------------------------------------------------------
+1. INPUT: `presentation.json` + Assets.
+2. ACTION: Agent builds the HTML.
+   - Run `generate_presentation.py` (Constructs `inputs/[Lesson]/published/index.html`).
+   - Run `.gemini/hooks/present-validator.py` (Checks for errors).
+   - Run `fast_edit.py` (Builds to `dist/` and launches server).
+3. GATE: FINAL REVIEW.
+   - Open localhost preview.
+   - Verify animations, timers, and layout physics.

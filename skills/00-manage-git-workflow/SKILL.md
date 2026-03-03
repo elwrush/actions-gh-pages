@@ -12,7 +12,7 @@ This skill provides a deterministic way to interact with the project's source re
 
 ## Core Mandates
 1.  **NO AUTOMATIC COMMITS**: You MUST NOT run the `commit` command unless the user explicitly uses a **Directive** (e.g., "Commit the work").
-2.  **Scrubbing**: The `scrub` command aggressively removes reserved device names (nul) and system junk (desktop.ini).
+2.  **Scrubbing & Ignoring**: The `scrub` command aggressively removes system junk (desktop.ini). The script also automatically ensures Windows device files (`nul`, `NUL`) are placed in `.gitignore` to prevent fatal Git indexing errors.
 3.  **Safety First**: The script automatically un-stages `dist/` to prevent repository pollution.
 
 ## Workflow

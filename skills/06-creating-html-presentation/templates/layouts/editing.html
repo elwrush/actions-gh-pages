@@ -1,0 +1,80 @@
+{% set all_mistakes = [] %}
+{% for item in slide['items'] %}
+{% for part in item.parts %}
+{% if part.wrong %}
+{# We just need to know how many there are #}
+{% set _ = all_mistakes.append(1) %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% set total_mistakes = all_mistakes | length %}
+
+{# Slide 0: The "Task" slide where students look for mistakes. No corrections shown yet. #}
+<section data-auto-animate>
+    <div
+        style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; max-width: 1100px; margin: auto;">
+        {% if slide.badge %}
+        <h3
+            style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em; text-transform: uppercase; border-bottom: 2px solid #FFD700; display: inline-block;">
+            {{ slide.badge }}</h3>
+        {% endif %}
+        <h2 data-id="editing-title" style="font-size: 1.2em; margin-bottom: 30px; text-shadow: 2px 2px 8px black;">{{
+            slide.title | parse_directives | safe }}</h2>
+
+        <div
+            style="background: rgba(0,0,0,0.4); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: 0.9em; line-height: 1.6;">
+            {% for item in slide['items'] %}
+            <div style="margin-bottom: 15px;">
+                {% for part in item.parts %}
+                {% if part.wrong %}
+                <span style="color: #bbb; text-decoration: underline dashed #666;">{{ part.text | parse_directives | safe }}</span>
+                {% else %}
+                {{ part.text | parse_directives | safe }}
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <aside class="notes">
+        Find the mistakes in the text. There are {{ total_mistakes }} mistakes to fix.
+    </aside>
+</section>
+
+{# Slides 1 to N: Sequential correction slides #}
+{% for step in range(1, total_mistakes + 1) %}
+<section data-auto-animate>
+    <div
+        style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; max-width: 1100px; margin: auto;">
+        {% if slide.badge %}
+        <h3
+            style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em; text-transform: uppercase; border-bottom: 2px solid #FFD700; display: inline-block;">
+            {{ slide.badge }}</h3>
+        {% endif %}
+        <h2 data-id="editing-title" style="font-size: 1.2em; margin-bottom: 30px; text-shadow: 2px 2px 8px black;">{{
+            slide.title | parse_directives | safe }}</h2>
+
+        <div
+            style="background: rgba(0,0,0,0.4); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: 0.9em; line-height: 1.6;">
+            {% set ns = namespace(current_idx=0) %}
+            {% for item in slide['items'] %}
+            <div style="margin-bottom: 15px;">
+                {% for part in item.parts %}
+                {% if part.wrong %}
+                {% if ns.current_idx < step %} <span
+                    style="color: #00ff00; font-weight: bold; background: rgba(0,255,0,0.1); padding: 2px 5px; border-radius: 4px;">
+                    {{ part.correct | parse_directives | safe }}</span>
+                    {% else %}
+                    <span style="color: #bbb; text-decoration: underline dashed #666;">{{ part.text | parse_directives | safe }}</span>
+                    {% endif %}
+                    {% set ns.current_idx = ns.current_idx + 1 %}
+                    {% else %}
+                    {{ part.text | parse_directives | safe }}
+                    {% endif %}
+                    {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endfor %}

@@ -1,74 +1,68 @@
 #import "../../../skills/writing-lesson-plans/templates/lesson-plan-components.typ": *
 
-// DOCUMENT SETUP
-#set page(
-  paper: "a4",
-  margin: (x: 2cm, y: 2cm),
-)
-#set text(font: "Arial", size: 11pt)
+#set page(paper: "a4", margin: (top: 1.5cm, bottom: 2cm, x: 2cm))
+#set text(font: "Arial", size: 10pt, fill: rgb("#333333"))
+#set par(leading: 0.65em, justify: false)
 
-// HEADER
 #lesson_header("bell")
 
-// METADATA
 #metadata_table((
   teacher: "Ed Rush",
-  date: "09-02-2026",
+  date: "2026-02-10",
   cefr: "B1",
-  duration: "50 mins",
+  duration: "60 Minutes",
   shape: "E (Receptive Skills)",
-  assessment: "Reading Comprehension",
-  focus: "Reading for Detail & Scanning",
-  materials: "Frankenstein Excerpt, Slideshow, Mini-Whiteboards",
+  assessment: "N/A",
+  focus: "Reading",
+  materials: "Oxford Discover Futures 3, pp 144-145",
 ))
 
-// MAIN AIM
 #v(0.5cm)
-#main_aim_box("By the end of the lesson, learners will have practiced the sub-skills of scanning for facts and reading for detail in the context of an excerpt from the novel Frankenstein.")
 
-// DIFFERENTIATION
+#main_aim_box[
+  By the end of the lesson, learners will have practiced the sub-skills of scanning for information and reading for specific detail in the context of the Gothic novel Frankenstein by Mary Shelley.
+]
+
 #v(0.5cm)
-#differentiation_box("Students can choose to read the text alone or in pairs. Key vocabulary is pre-taught visually to support lower-level learners.")
 
-// SLIDESHOW LINK
-#slideshow_link("https://lesson-slideshows.pages.dev/2026-02-09-Frankenstein-B1-Reading/")
+#differentiation_box[
+  Support is provided through pre-teaching high-frequency literary and sci-fi vocabulary (e.g., promising, isolated) and using a "Strategy Bridge" for genre identification. Fast finishers are encouraged to identify Victor's character flaws and their consequences within the text.
+]
 
-// STAGES
 #v(0.5cm)
-= Lesson Procedure
+#slideshow_link("https://elwrush.github.io/actions-gh-pages/2026-02-09-Frankenstein-B1-Reading/")
+
+#v(0.5cm)
 
 #stage_table((
-  stage("1", "Lead-in", "7", "To engage Ss and activate schema", [
-    - *Part 1* – Mini WB. 1 per student. Ss work in teams to answer: "Who is Frankenstein: the Man or the Monster?" and "What is his first name?" 1 min. Feedback.
-    - *Part 2* – Display 6 genre icons. In pairs, Ss negotiate which two best describe a story about a scientist creating life in 1818. 2 min. Feedback.
-    - *Part 3* – Show title "FRANKENSTEIN" with lightning visual. Ss tell partner one thing they know about the story. 1 min. Feedback.
-  ], "T-Ss"),
+  stage("ONE", "Context & Genre", "10", "To orient students to the Gothic/Sci-Fi genre and the author", [
+    - *Title*: Show "FRANKENSTEIN". Elicit what they know (Monster? Green?).
+    - *Mission*: Present "Your Mission" badges (Analyze, Profile, Sequence, Decode).
+    - *Bridge*: Strategy for Genre (Look for "dark" or "science" words).
+    - *Task 1 (Genre)*: Students choose TWO genres from list (Horror, Sci-Fi, Fairy Tale, etc.).
+    - *Task 2 (Profile)*: Scan "About the Author" text for Mary Shelley facts (1816, Geneva).
+    - *Feedback*: Review author facts and genre identification.
+  ], "T-Ss / Ss-Ss"),
 
-  stage("2", "Pre-teach Vocabulary", "10", "To remove blocking vocabulary", [
-    - *Part 1* – Present 5 context sentences on PP (seized, isolated, disappointment, promising, tragedy). Ss in pairs guess meanings based on narrative clues. 4 min.
-    - *Part 2* – Drill pronunciation of target words. Focus on word stress for 'disappointment' and 'isolated'. 2 min.
-    - *Part 3* – Mini WB Check. T says a definition, Ss race to write the correct word. 2 min. Feedback.
-  ], "T-Ss"),
+  stage("TWO", "Vocab & Prediction", "15", "To pre-teach keywords and remove barriers to the text", [
+    - *Contextual Discovery*: Present 5 target words: *promising, how life begins, isolated, a storm, fear*.
+    - T provides English context sentences derived from the story.
+    - *Task 3 (Gap Fill)*: Ss complete sentences using the target words (S).
+    - *Answer 3*: Review answers with definitions and model pronunciation (T-S).
+    - *Prediction*: Ss guess Victor's secret based on the keywords.
+  ], "T-Ss / Ss-Ss"),
 
-  stage("3", "Reading for detail and specific information", "25", "To practice scanning & sequencing", [
-    - *Part 1 (Scanning Race)* – Ss open texts to Mary Shelley biography. Task: Find Who, Where, When, and How. First team to finish all four wins. 4 min. Feedback.
-    - *Part 2 (Prediction)* – Ss read the first two paragraphs of narrative. Use Task 3 "Guess the Words" to check initial impressions of Victor's character. 5 min. Feedback.
-    - *Part 3 (Sequencing)* – Ss read the full excerpt. Task: Put events A-F in order. 8 min. Pairs swap worksheets and check against the key on PP. 3 min. Feedback.
-  ], "S/Ss-Ss"),
+  stage("THREE", "The Story (Gist)", "20", "To reconstruct the narrative arc", [
+    - *Reading*: Students read the text chunks on pp. 144-145.
+    - *Bridge*: Strategy for Ordering (Look for time markers: "First", "Then", "After two years").
+    - *Task 5 (Sequence)*: Ss order events A-F (S).
+    - *Feedback*: Review the correct sequence and discuss the mood of the story.
+  ], "Ss / T-Ss"),
 
-  stage("4", "Post-reading speaking task", "8", "To react to the content", [
-    - *Part 1* – In pairs, Ss discuss Victor's 'flaws'. "Was he reckless or just ambitious?" "Is he responsible for what happened?" 4 min.
-    - *Part 2* – Whole class feedback. T collects 3-4 opinions on the main theme (Dangerous Knowledge). 2 min. Content + language feedback.
-  ], "Ss-Ss")
+  stage("FOUR", "Deep Analysis", "15", "To analyze character flaws and themes", [
+    - *Task 5 (Analysis)*: Questions about Victor's narrator voice and timing.
+    - *Task 7 (Flaws)*: Ss use a checklist to identify Victor's flaws (Obsessive, Irresponsible).
+    - *Task 8 (Themes)*: Ss identify core themes (Dangerous Knowledge).
+    - *Final Discussion*: "Was Victor a bad person or just curious?" (T-S).
+  ], "Ss-Ss / T-Ss"),
 ))
-
-// ANSWER KEY
-#answer_key([
-  *Task 1 (Genre)*: Early Science Fiction / Classic Horror \
-  *Task 2 (Profile)*: Mary Shelley, Near Geneva, Summer 1816, Ghost story challenge. \
-  *Task 3 (Prediction)*: 1. Promising, 2. How life begins, 3. Isolated, 4. A storm, 5. Fear. \
-  *Task 4 (Sequence)*: 1.e, 2.a, 3.d, 4.b, 5.f, 6.c \
-  *Task 5 (Narrator)*: Victor Frankenstein (Later date/regretful tone). \
-  *Task 7 (Flaws)*: Obsessive, Irresponsible, Reckless. \
-  *Task 8 (Themes)*: Dangerous Knowledge, Morality.
-])

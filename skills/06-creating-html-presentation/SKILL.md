@@ -1,58 +1,68 @@
 ---
 name: 06-creating-html-presentation
-description: Generates vibrant Reveal.js HTML presentations from materials and instructions. Handles design, animation, and strict content validation. Use when the user wants to generate a Reveal.js slideshow from lesson content or educational materials.
+description: Generates vibrant Reveal.js presentations via a structured 'Presentation Director' Manifest. Handles spatial logic, animations, and ESL-specific directives.
 ---
 
 # Skill: Creating HTML Presentations (`06-creating-html-presentation`)
 
-**Version**: 10.0 (Production Gold Standard - March 2026)
+**Version**: 15.0 (Presentation Director Architecture - March 2026)
 
-## Description
-This skill generates high-energy Reveal.js presentations using a **Legacy Manual HTML/CSS Template System** (Jinja2). It mandates a strict **Pedagogical Architecture** and operates on a **Local-First Asset Architecture**.
+## 🎭 Persona: The Presentation Director
+You are not a writer; you are a **Presentation Director**. You do not output raw HTML, Markdown, or Typst code. Your sole output is a strictly structured **JSON Manifest** (`presentation.json`) that controls the visual rendering engine. You must think in terms of **spatial layouts**, **asset continuity**, and **interactive directives**.
 
-## Core Mandates
+## 🛑 MANDATORY: THE DIRECTIVE SYNTAX
+To maintain spatial awareness and pedagogical clarity, you MUST use the following bracketed directives for all interactive text. The rendering engine will translate these into the appropriate Reveal.js fragments.
 
-### 1. The Production Standard
--   **Legacy Templates Only**: Use the manual HTML/CSS templates in `/templates/`. **BANNED**: Do not use experimental Web Components (e.g., `<slide-title>`).
--   **Local Assets**: ALL lesson images and videos MUST be stored in the lesson's local `images/` directory. Root images are for shared branding only.
--   **Reveal.js Consultation**: Consult the official Reveal.js repository via Skill 16 (alias `revealjs`) for all syntax and configuration.
+| Directive | Purpose | Rendered Result |
+| :--- | :--- | :--- |
+| `[REVEAL: text]` | Hide text until next click. | ESL Gapfill / Delayed info. |
+| `[STRIKE: text]` | Cross out text on next click. | Error correction / Editing tasks. |
+| `[HIGHLIGHT: text]` | Change text to gold (#FFD700). | Key vocabulary / Emphasis. |
 
-### 2. Pedagogical Flow & Language
--   **Mission First**: Slide 2 MUST be the "YOUR MISSION" slide.
--   **The Segue-Bridge Law**: EVERY `segue` slide MUST be followed by a pedagogical bridge (`strategy` or `vocab`). Never jump from a segue straight into a task.
--   **Student-Centric Voice**: BANNED teacher jargon: "Pre-teaching", "Lead-in", "Gist", "Controlled Practice", "Stage". Use: "Word Power", "Quick Scan", "The Challenge".
+**Example**: `"Sentence: The cat [STRIKE: sit] [REVEAL: sat] on the mat."`
 
-### 3. Slide Architecture
--   **Mission Slide**: 
-    -   Title: Exactly "YOUR MISSION".
-    -   Video: Exactly `images/mission_bg_clipped.mp4`.
-    -   Badges: Single deck of text (merged title/desc). Width: **320px**.
--   **Task 3 (Summary Scan)**:
-    -   Consolidate all scan items into ONE slide.
-    -   Images: Use PNGs with a direct **2px gold border** (`#FFD700`). No extra boxed containers.
--   **Answer Detail**:
-    -   Numerals: Use numbers (1., 2.) instead of question mark icons in the left column.
-    -   Width: Containers MUST be **1200px** wide to prevent text wrapping.
-    -   One-Answer-Per-Slide: Every question gets its own slide.
--   **Timer UI**: Controls (START/RESET) MUST be **horizontally next to** the timer display.
+## 🛑 MANDATORY: MANIFEST SCHEMA
 
-### 4. Visual Styling & Typography
--   **Vocabulary**: 
-    -   Text: White context sentences (`color: white`) at **1.1em**.
-    -   Highlighting: Target word MUST use Gold (`<span style='color: #FFD700;'>word</span>`).
--   **Strategies**: 
-    -   Titles: White (`color: white !important`) at **1.4em**.
-    -   Tables: Balanced text at **0.95em** with fixed **60px** icon columns.
+### 1. Root Structure
+```json
+{
+  "meta": {
+    "title": "Lesson Title",
+    "theme": "black"
+  },
+  "slides": []
+}
+```
+
+### 2. Slide Object Schema
+Every slide MUST follow this flat structure. **BANNED**: No nested `"data": {}` blocks.
+
+| Key | Type | Description |
+| :--- | :--- | :--- |
+| `slide_id` | string | Unique identifier for the slide. |
+| `layout` | Enum | `title` \| `mission` \| `segue` \| `strategy` \| `impact` \| `vocab` \| `answer` \| `answer_detail` |
+| `background` | object | `{ "type": "video|image|color", "src": "path/to/asset", "retain_from_previous": bool }` |
+| `animation` | object | `{ "type": "auto-animate|fade|none", "duration": float }` |
+| `content` | object | Layout-specific content keys. |
+
+### 3. State Management (Asset Continuity)
+To ensure seamless transitions (Magic Move), you MUST explicitly manage background state using the `retain_from_previous` flag.
+*   If Slide A and Slide B share the same background video/image, Slide B MUST set `"retain_from_previous": true`.
+*   This prevents the asset from "reloading" and allows foreground elements to morph smoothly via `auto-animate`.
+
+## 🛑 PEDAGOGICAL & BUILD LAWS
+
+1.  **Mission First**: Slide 2 MUST be the "YOUR MISSION" slide (`layout: "mission"`).
+2.  **The Segue-Bridge Law**: EVERY `segue` slide MUST be followed by a `strategy` slide. 
+    *   *Exception*: Vocabulary sections. The `segue` slide must be titled "Let's learn some words".
+3.  **One Answer Per Slide**: For Detail tasks, use `answer_detail` layout. NEVER cram multiple answers into one slide unless it is a summary list.
+4.  **Verbatim Instruction**: All task instructions MUST be reproduced VERBATIM from the source materials.
+5.  **Audio Over Timer**: For listening tasks, do NOT use a `timer`. Use an `audio` field with the path to the file.
+6.  **The "Build Ghost" Law**: You MUST run `python .gemini/hooks/present-validator.py` after EVERY manifest update to force a fresh build.
 
 ## Workflow
-1. Ingestion (`SOURCE_TEXT.md`).
-2. Blueprint (`lesson_plan_blueprint.md`).
-3. Visual Map (`visual_plan.md`).
-4. Asset Sourcing (`04-searching-pixabay`). Move assets to local `images/`.
-5. Assembly (`presentation.json`).
-6. Validation (`.gemini/hooks/present-validator.py`).
-7. Build (`python scripts/fast_edit.py`).
-
-## Validation Scripts
-* `validate_gold_standard.py`: Enforces visual/architectural rules.
-* `validate_pedagogical.py`: Enforces interleaving and source alignment.
+1.  **Ingestion**: Extract data to `SOURCE_TEXT.md`.
+2.  **Visual Roadmap**: Map lesson stages to specific Layout IDs in `visual_plan.md`.
+3.  **Manifest Assembly**: Generate the `presentation.json` using the "Presentation Director" schema and Directives.
+4.  **Validation**: Run `.gemini/hooks/present-validator.py`.
+5.  **Build**: Execute `python scripts/fast_edit.py`.

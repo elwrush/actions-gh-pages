@@ -1,5 +1,35 @@
 ---
 
+## 2026-02-10 | The Source Gate & Workflow Hardening
+
+### Crisis: Hallucination Discovery (Frankenstein)
+- **Issue**: Detected "hallucinated" content in the initial Frankenstein lesson (misplaced paragraph references and non-existent vocabulary like 'Dread').
+- **Response**: Executed the **Nuke Clause**. Deleted all lesson artifacts and restarted from the zero-assumption OCR phase.
+
+### Key Achievement: "The Source Gate" Workflow
+- **Standard**: Established `SOURCE_TEXT.md` as the absolute pedagogical authority. It contains verbatim OCR text with strict paragraph numbering and a verified answer key with location markers.
+- **Selection Gate**: Implemented a mandatory "Stop & Check" where the user selects specific exercises (1-5, 8-9) before planning begins.
+- **Workflow Hardening**:
+    - **AGENTS.md**: Updated with the Iron Laws (Source Gate, Selection Gate, Nuke Clause).
+    - **Hook Enforcement**: Modified `.gemini/hooks/present-validator.py` to block any lesson missing a `SOURCE_TEXT.md`.
+
+### Technical Refinements & Bug Fixes
+- **JSON Stability**: Fixed `JSONDecodeError` in `presentation.json` by escaping literal newlines with `\n`.
+- **Script Hardening**:
+    - Fixed syntax errors in `validate_hygiene.py` print statements.
+    - Resolved path resolution errors in `generate_presentation.py` and the master validator hook.
+- **Pedagogical Standards**:
+    - Split multi-answer slides into individual `answer_detail` slides.
+    - Mandated `[Para X]` location markers for all evidence snippets.
+- **UI/UX (Persona Alignment)**:
+    - **Segue Template**: Updated `segue.html` to include an `h2` subhead.
+    - **Teacher Persona**: Replaced dry, academic segue subtitles with warm, student-centric pedagogical foreshadowing (e.g., "Reading is much easier when we know the special words!").
+
+### Status
+- **Result**: `ALL SYSTEMS GO!` - The Frankenstein lesson passed all 7 validation gates and is fully synced with the verified source text.
+
+---
+
 ## 2026-02-09 | Architectural Migration & Standalone Portability
 
 ### Pending Task: GitHub Repository Architecture Overhaul
@@ -818,3 +848,20 @@ Development of the **"Pro" Worksheet Template** for the Bondi Beach Attack lesso
 - **Solution**: Formulated an **Ideal Workflow** that separates Ingestion, Pedagogical Planning, Visual Mapping, and Code Assembly into distinct phases separated by **Human-in-the-Loop (HITL) Gates**.
 - **Status**: Details saved to update.md. Future lessons should be built using this multi-stage validation pipeline to ensure 100% verbatim accuracy and pedagogical 'intelligence'.
 - **Next Step**: Create or update skills to enforce these Gates (Source Gate, Pedagogical Gate, Structural Gate).
+## 2026-02-10 (Evening) | Time Machine Presentation Refinement
+
+### Pedagogical & Visual Adjustments
+- **Mission Slide**: Fixed the "Broken" mission slide by reverting to a robust template and reducing the enormous `3.5em` title font to a balanced `2.5em`.
+- **H.G. Wells Profile**: 
+    - Moved the H.G. Wells biographical slide to immediately follow the Phase 1 segue.
+    - **Evolution**: 
+        1. Attempted `split_table` with inline image.
+        2. Switched to `info_panel` with background image (requested "slide backer").
+        3. **Final Decision**: Reverted to `split_table` using the portrait as a side image (`image` field) and a structured HTML table with FontAwesome icons for the biographical data, per strict user instruction.
+- **Audio Experience**: 
+    - Created a specialized `audio_experience.html` layout.
+    - Features a **Tape Player** visual (`tape_player_transparent.png`) alongside the audio controls to creating an immersive listening environment.
+- **Path Resolution**: Fixed multiple `cp` command failures by creating the missing `images/` directory in the source folder and ensuring strictly correct paths.
+
+### Status
+- **Result**: `ALL SYSTEMS GO` - The presentation build is successful, with verified visuals for the Mission, H.G. Wells Profile, and Audio Experience slides.

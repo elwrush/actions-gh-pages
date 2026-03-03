@@ -17,7 +17,7 @@
 #hero_strap(
   "The Food of the Future",
   "How do we choose what we eat? Explore the science of future foods.",
-  hero_image: image("hero_image.jpg"),
+  hero_image: image("images/hero_image.jpg"),
   badges: ("B1", "Reading", "Future Foods")
 )
 
@@ -191,7 +191,7 @@
   stroke: 1pt + maroon,
   radius: 4pt,
   clip: true,
-  image("algae_bars.jpg")
+  image("images/algae_bars.jpg")
 ))
 
 #task_header(3, "Fact Check")

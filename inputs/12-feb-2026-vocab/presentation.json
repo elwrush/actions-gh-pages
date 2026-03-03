@@ -1,0 +1,216 @@
+{
+    "theme": "bell",
+    "slides": [
+        {
+            "layout": "title",
+            "badge": "B1: VOCABULARY",
+            "title": "Fitting In",
+            "tagline": "Genius, Peer Pressure, and Emotional Intelligence",
+            "background_video": "images/final_video_7s.mp4",
+            "video_loop": true
+        },
+        {
+            "layout": "mission",
+            "badge": "YOUR MISSION",
+            "title": "YOUR MISSION",
+            "video": "mission_bg_clipped.mp4",
+            "items": [
+                {
+                    "icon": "fa-brain",
+                    "text": "Master Vocab"
+                },
+                {
+                    "icon": "fa-pen-to-square",
+                    "text": "Form Nouns"
+                },
+                {
+                    "icon": "fa-face-smile",
+                    "text": "Read Emotions"
+                }
+            ]
+        },
+        {
+            "layout": "segue",
+            "title": "Let's Get Started"
+        },
+        {
+            "layout": "strategy",
+            "badge": "START",
+            "strategy_items": [
+                {
+                    "icon": "fa-star",
+                    "text": "What makes her an entertainment genius?"
+                },
+                {
+                    "icon": "fa-comments",
+                    "text": "Brainstorm qualities with a partner"
+                }
+            ],
+            "image": "images/lisa.jpg"
+        },
+        {
+            "layout": "impact",
+            "badge": "START",
+            "text": "Discuss the qualities of genius with your partner.",
+            "image": "images/lisa.jpg",
+            "timer": 120
+        },
+        {
+            "layout": "segue",
+            "title": "TASK 1: THE SOCIAL PRESSURE"
+        },
+        {
+            "layout": "strategy",
+            "badge": "TASK 1",
+            "strategy_items": [
+                {
+                    "icon": "fa-scale-balanced",
+                    "text": "How much do you agree with these sentences?"
+                },
+                {
+                    "icon": "fa-comments",
+                    "text": "1 = completely disagree; 5 = completely agree. Discuss with your partner."
+                }
+            ]
+        },
+        {
+            "layout": "impact",
+            "badge": "TASK 1",
+            "text": "Discuss the sentences with your partner.",
+            "image": "images/genius_hero.jpg",
+            "timer": 180
+        },
+        {
+            "layout": "segue",
+            "title": "TASK 2: THE GENIUS OF DOING YOUR OWN THING"
+        },
+        {
+            "layout": "strategy",
+            "badge": "TASK 2",
+            "strategy_items": [
+                {
+                    "icon": "fa-book-open",
+                    "text": "Read the Albert Einstein text."
+                },
+                {
+                    "icon": "fa-pen",
+                    "text": "Choose the correct words."
+                }
+            ]
+        },
+        {
+            "layout": "impact",
+            "badge": "TASK 2",
+            "text": "Read the Albert Einstein text. Choose the correct words. \n\n<span style=\"color:#FFD700;\">Challenge:</span> Find one thing Einstein \"rebelled\" against.",
+            "image": "images/genius_hero.jpg",
+            "timer": 600
+        },
+        {
+            "layout": "answer",
+            "badge": "TASK 2",
+            "answers": [
+                "1. b (peer)",
+                "2. a (follow)",
+                "3. c (stand)",
+                "4. b (an outsider)",
+                "5. a (rebel)",
+                "6. a (common)",
+                "7. b (conform)",
+                "8. b (a conformist)",
+                "9. c (do)"
+            ]
+        },
+        {
+            "layout": "segue",
+            "title": "TASK 3 & 4: PLANNING & NOUN / VERB FOCUS"
+        },
+        {
+            "layout": "strategy",
+            "badge": "TASK 3 & 4",
+            "strategy_items": [
+                {
+                    "icon": "fa-magnifying-glass",
+                    "text": "Complete the texts about Stella Young and Emotions."
+                },
+                {
+                    "icon": "fa-check",
+                    "text": "Focus specifically on choosing the correct form (noun vs. verb)."
+                }
+            ]
+        },
+        {
+            "layout": "impact",
+            "badge": "TASK 3 & 4",
+            "text": "Complete the texts about Stella Young and Emotions.\n\nFocus specifically on choosing the correct form <span style=\"color:#FFD700;\">(noun vs. verb)</span>.",
+            "image": "images/genius_hero.jpg",
+            "timer": 480
+        },
+        {
+            "layout": "answer",
+            "badge": "TASK 3",
+            "answers": [
+                "1. appearance (noun)",
+                "2. reaction (noun)",
+                "3. understand (verb)",
+                "4. treat (verb)",
+                "5. expression (noun)"
+            ]
+        },
+        {
+            "layout": "answer",
+            "badge": "TASK 4",
+            "answers": [
+                "1. reacts (verb)",
+                "2. practice (verb)",
+                "3. appears (verb)",
+                "4. treat (verb)",
+                "5. understanding (noun)",
+                "6. expression (noun)"
+            ]
+        },
+        {
+            "layout": "segue",
+            "title": "THE GRID: SUFFIXES"
+        },
+        {
+            "layout": "impact",
+            "badge": "ANALYSIS",
+            "text": "Look at the table of verbs vs nouns on the board.\nIdentify the suffixes used to change verbs to nouns (-ance, -ion, -ing).\nMark the word stress (e.g. 'RE-act' vs 're-AC-tion').",
+            "image": "images/genius_hero.jpg",
+            "timer": 600
+        },
+        {
+            "layout": "segue",
+            "title": "TASK 5: YOUR INNER GENIUS"
+        },
+        {
+            "layout": "strategy",
+            "badge": "TASK 5",
+            "strategy_items": [
+                {
+                    "icon": "fa-pen-nib",
+                    "text": "Write 3 sentences about a time you didn't follow the crowd."
+                },
+                {
+                    "icon": "fa-spell-check",
+                    "text": "Use at least three nouns/verbs from today's lesson."
+                }
+            ]
+        },
+        {
+            "layout": "impact",
+            "badge": "TASK 5",
+            "text": "Write 3 sentences about a time you didn't follow the crowd.\n\nUse at least <span style=\"color:#FFD700;\">three</span> nouns/verbs from today's lesson.",
+            "image": "images/genius_hero.jpg",
+            "timer": 300
+        },
+        {
+            "layout": "answer",
+            "badge": "TASK 5",
+            "answers": [
+                "Check your own sentences!",
+                "Did you use correct nouns and verbs?"
+            ]
+        }
+    ]
+}

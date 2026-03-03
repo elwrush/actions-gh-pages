@@ -74,10 +74,16 @@ def validate_media_paths(json_path):
         # Check audio
         audio = slide.get('audio')
         if audio:
-            # Audio is relative to lesson root (audio/file.mp3)
-            audio_path = lesson_dir / audio
-            if not audio_path.exists():
-                errors.append(f"Slide {i} ({slide_title}): audio '{audio}' does not exist at {audio_path}")
+            # Handle both /audio/ and audio/
+            filename = audio.replace('/audio/', '').replace('audio/', '')
+            
+            # Check Priority 1: Lesson-specific audio
+            local_audio_path = lesson_dir / "audio" / filename
+            # Check Priority 2: Root shared audio
+            root_audio_path = Path(os.getcwd()) / "audio" / filename
+            
+            if not local_audio_path.exists() and not root_audio_path.exists():
+                errors.append(f"Slide {i} ({slide_title}): audio '{audio}' does not exist (checked {local_audio_path} and {root_audio_path})")
 
     if errors:
         print("\n[X] MEDIA PATH VALIDATION FAILED:")

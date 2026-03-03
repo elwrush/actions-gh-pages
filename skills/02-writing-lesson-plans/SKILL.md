@@ -11,9 +11,11 @@ description: >
 This skill guides you through a strictly interactive 7-step workflow to create professional, pedagogically robust lesson plans.
 
 ## 🛑 MANDATORY: ZERO HALLUCINATION POLICY
-**You MUST NOT guess Typst syntax.** Before you write or edit any `.typ` file (Step 6), if you are unsure of a layout, table, or list implementation, you **MUST** use the `consult_repo` tool (from skill 16) to check the official Typst repository (`typst:crates/typst-library/src/`). 
+**You MUST NOT guess Typst syntax.** Before you write or edit any `.typ` file (Step 6), if you are unsure of a layout, table, or list implementation, you **MUST** use the **GitHub API (Skill 16)** to consult the official Typst repository (`typst/typst`). For the local project library, use `read_file` on `lib/typst/lib.typ`. 
 
 ## 🛑 THE INTERACTIVE WORKFLOW (MANDATORY)
+
+-   **Source Folder Continuity Law**: **CRITICAL**. If the user provides a source folder (e.g., `inputs/My_Source_Folder`), you MUST use that folder for all outputs. You are FORBIDDEN from creating a new lesson folder. If the source folder name violates URL-friendly standards (contains spaces or underscores), you MUST rename the folder using `run_shell_command` (e.g., `mv "inputs/Source_Folder" "inputs/source-folder"`) before proceeding.
 
 You must use the `ask_user` tool to complete the following steps in sequence. Do not assume any defaults (e.g., topic, level) unless explicitly provided by the user in the current session.
 

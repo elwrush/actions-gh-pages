@@ -12,8 +12,8 @@ ENGINE_ROOT = PROJECT_ROOT / "lib" / "reveal"
 GLOBAL_IMAGES = PROJECT_ROOT / "images"
 
 # File extensions to skip during asset copy (handled by range requests or too large)
-SKIP_EXTENSIONS = {'.mp4', '.webm', '.mov', '.avi'}
-MAX_FILE_SIZE = 1024 * 1024  # 1MB limit for individual assets in dist
+SKIP_EXTENSIONS = {'.webm', '.mov', '.avi'}
+MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB limit for individual assets in dist
 
 def log(msg, symbol="[*]"):
     """Terminal-safe logging without emojis to avoid Windows encoding issues."""
@@ -87,25 +87,7 @@ def build(target_folder=None):
         target_dist.mkdir(parents=True, exist_ok=True)
         log(f"Cleaned target dist: {target_folder}", "[CLEAN]")
 
-    # 2. Copy Shared Reveal.js Engine
-    log("Copying shared Reveal.js engine...", "[ENGINE]")
-    engine_folders = ['dist', 'plugin', 'css']
-    for folder in engine_folders:
-        src = ENGINE_ROOT / folder
-        dest = DIST_ROOT / folder
-        if src.exists():
-            copy_filtered(src, dest)
-            log(f"Copied {folder}/", "[OK]")
-        else:
-            log(f"Warning: {folder} not found in {ENGINE_ROOT}", "[WARN]")
-
-    # 3. Copy Shared Global Assets
-    log("Copying shared global assets...", "[ASSETS]")
-    if GLOBAL_IMAGES.exists():
-        copy_filtered(GLOBAL_IMAGES, DIST_ROOT / "images")
-        log("Copied root images/", "[OK]")
-
-    # 4. Process Lessons
+    # 2. Process Lessons (Bundled Architecture - each lesson is self-contained)
     log("Aggregating presentations...", "[PROCESS]")
     if target_folder:
         lessons_to_process = [target_folder]
@@ -128,20 +110,12 @@ def build(target_folder=None):
         if index_html.exists():
             log(f"Processing lesson: {folder}", "[OK]")
             dest_lesson_dir = DIST_ROOT / folder
-            dest_lesson_dir.mkdir(parents=True, exist_ok=True)
 
             try:
-                content = index_html.read_text(encoding='utf-8')
-                content = re.sub(r'(href|src)=["\']/?dist/', r'\1="../dist/', content)
-                content = re.sub(r'(href|src)=["\']/?plugin/', r'\1="../plugin/', content)
-                (dest_lesson_dir / "index.html").write_text(content, encoding='utf-8')
-
-                for asset_folder in ['images', 'audio']:
-                    src_asset = source_dir / asset_folder
-                    if src_asset.exists():
-                        def asset_filter(p):
-                            return p.suffix.lower() not in SKIP_EXTENSIONS
-                        copy_filtered(src_asset, dest_lesson_dir / asset_folder, asset_filter)
+                # Copy entire published folder as-is (self-contained bundle)
+                def asset_filter(p):
+                    return p.suffix.lower() not in SKIP_EXTENSIONS
+                copy_filtered(source_dir, dest_lesson_dir, asset_filter)
             except Exception as e:
                  log(f"Error processing {folder}: {e}", "[ERROR]")
 

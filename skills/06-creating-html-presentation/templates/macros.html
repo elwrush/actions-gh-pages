@@ -1,0 +1,19 @@
+{# Reusable Macros for Reveal.js #}
+
+{% macro auto_element(id, tag='div', class='') %}
+<{{ tag }} data-id="{{ id }}" {% if class %}class="{{ class }}"{% endif %}>
+    {{ caller() }}
+</{{ tag }}>
+{% endmacro %}
+
+{% macro render_background(bg) %}
+    {% if bg %}
+        {% if bg.type == 'video' %}
+            data-background-video="{{ bg.src }}" data-background-video-loop
+        {% elif bg.type == 'image' %}
+            data-background-image="{{ bg.src }}"
+        {% elif bg.type == 'color' %}
+            data-background-color="{{ bg.src }}"
+        {% endif %}
+    {% endif %}
+{% endmacro %}

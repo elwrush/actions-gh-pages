@@ -1,0 +1,260 @@
+{
+    "title": "THE TIME MACHINE",
+    "subtitle": "B1 READING | Play Script",
+    "config": {
+        "root_path": "",
+        "accent_color": "#A62D26",
+        "background_video": "images/time_machine_bg.mp4"
+    },
+    "slides": [
+        {
+            "layout": "title",
+            "title": "THE TIME MACHINE",
+            "subtitle": "B1 READING",
+            "video": "images/time_machine_bg.mp4"
+        },
+        {
+            "layout": "mission",
+            "title": "YOUR MISSION: BREAK THE BARRIERS!",
+            "video": "images/mission_bg_clipped.mp4",
+            "items": [
+                {
+                    "icon": "fa-vial",
+                    "title": "THEORY",
+                    "text": "Master words like Relativity and Prototype."
+                },
+                {
+                    "icon": "fa-play",
+                    "title": "EXPERIENCE",
+                    "text": "Listen to the performance of the play script."
+                },
+                {
+                    "icon": "fa-user-secret",
+                    "title": "TRACKING",
+                    "text": "Follow character actions to solve the mystery."
+                }
+            ],
+            "notes": "Brief the students on the three main goals for this reading block."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 1",
+            "title": "THE FATHER OF SCI-FI",
+            "subtitle": "Before we time travel, let's meet the man who invented the machine."
+        },
+        {
+            "layout": "split_table",
+            "title": "H.G. WELLS | The Man Who Saw Tomorrow",
+            "image": "images/hgwELLS.png",
+            "badge": "PROFILE",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-user' style='color: #FFD700; font-size: 1.5em;'></i></td><td><strong>Name:</strong> Herbert George Wells</td></tr><tr><td style='width: 60px; text-align: left;'><i class='fas fa-birthday-cake' style='color: #FFD700; font-size: 1.5em;'></i></td><td><strong>Born:</strong> 1866 (England)</td></tr><tr><td style='width: 60px; text-align: left;'><i class='fas fa-star' style='color: #FFD700; font-size: 1.5em;'></i></td><td><strong>Famous For:</strong> Inventing modern Science Fiction.</td></tr><tr><td style='width: 60px; text-align: left;'><i class='fas fa-brain' style='color: #FFD700; font-size: 1.5em;'></i></td><td><strong>Big Ideas:</strong> He predicted space travel, atomic bombs, and the internet long before they happened.</td></tr></table>"
+        },
+        {
+            "layout": "strategy",
+            "title": "STRATEGY | Scanning for Facts",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px;'><tr><td style='width: 50px; color: #FFD700;'>&#x2318;</td><td><strong>WHAT:</strong> Find specific dates and names quickly.</td></tr><tr><td style='color: #FFD700;'>&#x26A1;</td><td><strong>WHY:</strong> To answer questions without reading every single word.</td></tr><tr><td style='color: #FFD700;'>&#x1F448;</td><td><strong>HOW:</strong> Move your eyes fast! Do not stop to read sentences. Look for Capital Letters and Numbers.</td></tr></table>"
+        },
+        {
+            "layout": "split_table",
+            "title": "TASK 1 | Who is H.G. Wells?",
+            "image": "images/hgwELLS.png",
+            "badge": "SCANNING",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px; font-size: 1.0em; text-align: left;'><tr><td colspan='3' style='padding-bottom: 10px;'><strong style='color: #FFD700;'>Scan SECTION 1 to answer:</strong></td></tr><tr><td style='width: 50px;'><i class='fas fa-question-circle'></i></td><td style='white-space: nowrap;'>1. When was the novel published?</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>1895</td></tr><tr><td><i class='fas fa-question-circle'></i></td><td style='white-space: nowrap;'>2. What idea did it make popular?</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>Time Travel Machine</td></tr><tr><td><i class='fas fa-question-circle'></i></td><td style='white-space: nowrap;'>3. Who is the other 'father' of Sci-Fi?</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>Jules Verne</td></tr></table>",
+            "timer": 120
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 1 CHECK | Novel Date",
+            "answer": "1895",
+            "evidence": "[Para 1] 'published in 1895'",
+            "explanation": "This was the year H.G. Wells changed Science Fiction forever."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 1 CHECK | Big Idea",
+            "answer": "Time Travel Machine",
+            "evidence": "[Para 1] 'popularize the idea of time travel'",
+            "explanation": "While others wrote about the future, Wells was the first to use a 'machine' to get there."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 1 CHECK | The Other 'Father'",
+            "answer": "Jules Verne",
+            "evidence": "[Para 1] 'along with Jules Verne'",
+            "explanation": "Wells and Verne are the two giants of early Science Fiction."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 2",
+            "title": "ENTERING THE MACHINE",
+            "subtitle": "Grab your scripts! We're heading into the basement to witness a miracle."
+        },
+        {
+            "layout": "audio_experience",
+            "title": "EXPERIENCE | The Play Script",
+            "instruction": "Sit back and follow the text as we listen to the performance.",
+            "audio": "audio/ODF2_SB_2.26.mp3",
+            "background": "images/headphones.jpg"
+        },
+        {
+            "layout": "strategy",
+            "title": "STRATEGY | True, False, or Not Mentioned?",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'><tr><td style='width: 50px; color: #00ff00;'><i class='fas fa-check-circle'></i></td><td><strong>TRUE:</strong> The text says exactly this (or uses synonyms).</td></tr><tr><td style='color: #ff4444;'><i class='fas fa-times-circle'></i></td><td><strong>FALSE:</strong> The text says the <u>opposite</u> or something different.</td></tr><tr><td style='color: #FFD700;'><i class='fas fa-question-circle'></i></td><td><strong>NOT MENTIONED:</strong> The text doesn't say anything about this at all.</td></tr></table>"
+        },
+        {
+            "layout": "split_table",
+            "title": "TASK 2 | Detail Check",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px; font-size: 0.8em; text-align: left;'><tr><td style='width: 40px;'><i class='fas fa-question-circle'></i></td><td style='white-space: nowrap;'>1. Dan's friends visit him for dinner every couple of weeks.</td><td class='fragment' style='color: #ff4444; font-weight: bold;'>FALSE</td></tr><tr><td><i class='fas fa-question-circle'></i></td><td style='white-space: nowrap;'>2. Dan and his friends have to design a product related to time...</td><td class='fragment' style='color: #ff4444; font-weight: bold;'>FALSE</td></tr><tr><td><i class='fas fa-question-circle'></i></td><td style='white-space: nowrap;'>3. When Dan shows his design, his friends have mixed reactions...</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>TRUE</td></tr><tr><td><i class='fas fa-question-circle'></i></td><td style='white-space: nowrap;'>4. Dan completed a model of his machine before building the real one.</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>TRUE</td></tr><tr><td><i class='fas fa-question-circle'></i></td><td style='white-space: nowrap;'>5. When the friends next visit, he tells them about his adventures...</td><td class='fragment' style='color: #FFD700; font-weight: bold;'>NOT MENTIONED</td></tr></table>"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 2 | Question 1",
+            "answer": "FALSE",
+            "evidence": "[Para 1] 'we love meeting here for pizza and to hang out every week.'",
+            "explanation": "The text says 'every week', not 'every couple of weeks'."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 2 | Question 2",
+            "answer": "FALSE",
+            "evidence": "[Para 1] 'Our design project, Kai...'",
+            "explanation": "There is no mention of a 'time' requirement for everyone, and it's implied they choose their own projects."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 2 | Question 3",
+            "answer": "TRUE",
+            "evidence": "[Para 2] Jasmine says 'Wow' (Positive). Kai says 'useful?' (Negative).",
+            "explanation": "The group has mixed reactions to his invention."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 2 | Question 4",
+            "answer": "TRUE",
+            "evidence": "[Para 2] 'Here's the design prototype... I'm building a full-sized time machine over there.'",
+            "explanation": "He built the small one (prototype) first."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 2 | Question 5",
+            "answer": "NOT MENTIONED",
+            "evidence": "[Para 4] The text ends as he says 'I'll tell you my story'.",
+            "explanation": "We don't know if he *actually* tells them, or if the scene cuts, or what happens next."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 3",
+            "title": "CASE FILES",
+            "subtitle": "Let's track the characters. Who said what? Who felt what?"
+        },
+        {
+            "layout": "strategy",
+            "title": "STRATEGY | Tracking Speakers",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'><tr><td style='width: 50px; color: #FFD700;'>🗣️</td><td><strong>WHAT:</strong> Identifying which character said specific lines.</td></tr><tr><td style='color: #FFD700;'>📜</td><td><strong>WHY:</strong> To understand their personalities and feelings.</td></tr><tr><td style='color: #FFD700;'>👈</td><td><strong>HOW:</strong> Look at the <strong>Bold Name</strong> before the dialogue line.</td></tr></table>"
+        },
+        {
+            "layout": "split_table",
+            "title": "TASK 3 | Character Recall",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px; font-size: 0.8em; text-align: left;'><tr><td style='width: 40px;'>1.</td><td style='white-space: nowrap;'>Who has a vague idea about his design?</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>Mother</td></tr><tr><td>2.</td><td style='white-space: nowrap;'>Who is the most critical/negative?</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>Kai</td></tr><tr><td>3.</td><td style='white-space: nowrap;'>Who notices the clock moving?</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>Jasmine</td></tr><tr><td>4.</td><td style='white-space: nowrap;'>Who is very serious about the future?</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>Dan</td></tr><tr><td>5.</td><td style='white-space: nowrap;'>Who breaks the bad news?</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>Maya</td></tr></table>"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 3 CHECK | Character Order",
+            "answer": "1. Mother | 2. Kai | 3. Jasmine | 4. Dan | 5. Maya",
+            "evidence": "[Para 1] Mother ('I think...'), Kai ('Useful?'), Jasmine ('Look!'), Dan ('Serious'), Maya ('Gone').",
+            "explanation": "Each character has a distinct role: The Skeptic (Kai), The Believer (Jasmine), The Observer (Maya)."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 4",
+            "title": "TIMELINE LOGIC",
+            "subtitle": "Can you put the story back in order?"
+        },
+        {
+            "layout": "match_reorder",
+            "title": "TASK 4 | Match the Scene",
+            "instruction": "Can you match the action to the correct scene?",
+            "left_items": [
+                "Scene One",
+                "Scene Two",
+                "Scene Three",
+                "Scene Four"
+            ],
+            "right_items": [
+                "Dan returns",
+                "Discussing the prototype",
+                "Discussion of projects",
+                "Small machine demo"
+            ]
+        },
+        {
+            "layout": "match_reorder",
+            "title": "TASK 4 | Match the Scene",
+            "instruction": "CHECK | Correct Timeline Matching",
+            "left_items": [
+                {
+                    "text": "Scene One",
+                    "color": "#A7C7E7",
+                    "fg": "#000"
+                },
+                {
+                    "text": "Scene Two",
+                    "color": "#C1E1C1",
+                    "fg": "#000"
+                },
+                {
+                    "text": "Scene Three",
+                    "color": "#FAC898",
+                    "fg": "#000"
+                },
+                {
+                    "text": "Scene Four",
+                    "color": "#FFC0CB",
+                    "fg": "#000"
+                }
+            ],
+            "right_items": [
+                {
+                    "text": "Discussion of projects",
+                    "color": "#A7C7E7",
+                    "fg": "#000"
+                },
+                {
+                    "text": "Small machine demo",
+                    "color": "#C1E1C1",
+                    "fg": "#000"
+                },
+                {
+                    "text": "Discussing the prototype",
+                    "color": "#FAC898",
+                    "fg": "#000"
+                },
+                {
+                    "text": "Dan returns",
+                    "color": "#FFC0CB",
+                    "fg": "#000"
+                }
+            ]
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 4 CHECK | Timeline Sequence",
+            "answer": "1. Discussion | 2. Demo | 3. Prototype Talk | 4. Return",
+            "evidence": "[Page 4] Scene Headers match the action summaries.",
+            "explanation": "The story moves from the Living Room -> Basement -> Upstairs -> Return."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 5",
+            "title": "THE VERDICT",
+            "subtitle": "Dan risked his life to travel time. Was it worth it?"
+        },
+        {
+            "layout": "split_table",
+            "title": "DEBATE | Brave or Foolish?",
+            "badge": "DISCUSSION",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px;'><tr><td colspan='2' style='text-align: center; font-size: 1.25em; padding-bottom: 20px;'><strong>What do you think of Dan's actions?</strong></td></tr><tr><td style='width: 50%; padding: 25px; background: rgba(0,255,0,0.1); border-left: 5px solid #00ff00; border-radius: 8px;'><strong>BRAVE PIONEER</strong><br><small>He pushed science forward. Risks are necessary for progress.</small></td><td style='width: 50%; padding: 25px; background: rgba(255,68,68,0.1); border-left: 5px solid #ff4444; border-radius: 8px;'><strong>RECKLESS FOOL</strong><br><small>He worried his mother and friends. He could have died for nothing.</small></td></tr><tr><td colspan='2' style='text-align: center;'><div class='timer-container' style='justify-content: center;'><div class='timer-display' id='t_final'>03:00</div><button class='timer-btn' onclick='toggleTimer(180, &quot;t_final&quot;, this)'>DEBATE!</button></div></td></tr></table>",
+            "notes": "Encourage students to use words like 'Innovation', 'Risk', 'Responsibility'."
+        }
+    ]
+}

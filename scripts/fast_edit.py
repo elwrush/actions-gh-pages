@@ -55,7 +55,7 @@ def main():
     print("\n[*] Generating HTML from presentation.json...")
     generate_cmd = [
         sys.executable, 
-        os.path.join(project_root, 'skills', 'creating-html-presentation', 'scripts', 'generate_presentation.py'),
+        os.path.join(project_root, 'skills', '06-creating-html-presentation', 'scripts', 'generate_presentation.py'),
         json_path
     ]
     

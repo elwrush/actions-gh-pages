@@ -41,6 +41,7 @@ python skills/16-consulting-global-repos/scripts/gh_fetch.py <alias>:<path>
 | `revealjs` | `hakimel/reveal.js` | Presentation framework core. |
 | `fontawesome` | `FortAwesome/Font-Awesome` | Icon metadata and SVG paths. |
 | `reference` | `elwrush/lesson-plan-references` | Project-specific pedagogical templates. |
+| `meander` | `Vanille-N/meander.typ` | Meander package for text wrapping. |
 
 ## Troubleshooting
 - **401 Unauthorized**: Ensure `GITHUB_MCP_PAT` is correctly set in your environment.

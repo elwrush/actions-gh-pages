@@ -1,0 +1,305 @@
+{
+  "lesson_title": "Car-Free Zones",
+  "lesson_folder": "11-feb-2026-listening-car-free-zones",
+  "slides": [
+    {
+      "layout": "title",
+      "title": "THE BEST WAY TO TOWN",
+      "subtitle": "Navigating the Car-Free Zone",
+      "video": "images/title_traffic.mp4",
+      "video_loop": true
+    },
+    {
+      "layout": "mission",
+      "title": "YOUR MISSION",
+      "video": "images/mission_bg_clipped.mp4",
+      "items": [
+        {
+          "icon": "fa-map-location-dot",
+          "text": "MAP THE ZONE: Identify the car-free city center"
+        },
+        {
+          "icon": "fa-ear-listen",
+          "text": "DECODE PROS & CONS: Listen for advantages and challenges"
+        },
+        {
+          "icon": "fa-signs-post",
+          "text": "NAVIGATE STREETS: Master directions and landmarks"
+        }
+      ]
+    },
+    {
+      "layout": "segue",
+      "title": "Let's Get Started"
+    },
+    {
+      "layout": "strategy",
+      "badge": "START",
+      "title": "THE MAP CHALLENGE",
+      "image": "images/workbook_map.png",
+      "strategy_items": [
+        {
+          "icon": "fa-map",
+          "text": "Look at the map on the board (WB p. 19)."
+        },
+        {
+          "icon": "fa-magnifying-glass",
+          "text": "Can you find the gray area? What do you think it is?"
+        }
+      ]
+    },
+    {
+      "layout": "impact",
+      "badge": "START",
+      "title": "MAP DISCOVERY",
+      "text": "Look at the map in your workbook (p. 19). Find the gray area and discuss with your partner what it might be.",
+      "image": "images/workbook_map.png",
+      "timer": 120
+    },
+    {
+      "layout": "segue",
+      "title": "TASK 1: PREDICTION"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 1",
+      "title": "THE URBAN GRID",
+      "image": "images/workbook_map.png",
+      "strategy_items": [
+        {
+          "icon": "fa-comments",
+          "text": "<b>PREDICT</b>: Look at the gray car-free zone. What are the advantages and disadvantages?"
+        }
+      ]
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 1",
+      "title": "ADVANTAGES & DISADVANTAGES?",
+      "timer": 180,
+      "content": "<table><thead><tr><th>ADVANTAGES?</th><th>DISADVANTAGES?</th></tr></thead><tbody><tr><td class='fragment' style='color: #FFD700;'>Better air / Healthier</td><td class='fragment' style='color: #FFD700;'>Harder to get around</td></tr><tr><td class='fragment' style='color: #FFD700;'>Safer for walking</td><td class='fragment' style='color: #FFD700;'>Inconvenient for cars</td></tr><tr><td class='fragment' style='color: #FFD700;'>Quieter city center</td><td class='fragment' style='color: #FFD700;'>Problems for some users</td></tr></tbody></table>"
+    },
+    {
+      "layout": "segue",
+      "title": "Let's learn some words"
+    },
+    {
+      "layout": "vocab",
+      "word": "pedestrians",
+      "phoneme": "/pəˈdestriənz/",
+      "context_sentence": "It's much safer for <span style='color: #FFD700;'>pedestrians</span> with no cars there.",
+      "image": "images/pedestrians.jpg"
+    },
+    {
+      "layout": "vocab",
+      "word": "air pollution",
+      "phoneme": "/eə pəˈluːʃn/",
+      "context_sentence": "They'll appreciate the cleaner air – there isn't nearly as much <span style='color: #FFD700;'>air pollution</span>.",
+      "image": "images/air_pollution.jpg"
+    },
+    {
+      "layout": "vocab",
+      "word": "handicapped",
+      "phoneme": "/ˈhændikæpt/",
+      "context_sentence": "When he needs to go out, he can park in a <span style='color: #FFD700;'>handicapped</span> parking space.",
+      "image": "images/handicapped.jpg"
+    },
+    {
+      "layout": "vocab",
+      "word": "carbon footprint",
+      "phoneme": "/ˌkɑːbən ˈfʊtprɪnt/",
+      "context_sentence": "They'll appreciate the cleaner air – there isn't nearly as much <span style='color: #FFD700;'>air pollution</span>.",
+      "image": "images/carbon_footprint.jpg"
+    },
+    {
+      "layout": "segue",
+      "title": "TASK 2: LISTENING"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 2",
+      "title": "THE ADVANTAGE AUDIT",
+      "image": "images/workbook_map.png",
+      "strategy_items": [
+        {
+          "icon": "fa-ear-listen",
+          "text": "<b>ACTIVE LISTENING</b>: Listen for words like 'nice', 'safe', or 'healthier' to spot advantages."
+        },
+        {
+          "icon": "fa-triangle-exclamation",
+          "text": "<b>SIGNAL WORDS</b>: Watch out for 'but', 'hard', or 'difficult'—these often signal a disadvantage."
+        },
+        {
+          "icon": "fa-pen-clip",
+          "text": "<b>SUMMARIZE</b>: Don't write every word! Use short phrases (e.g., 'no cars = quiet') to fill your chart."
+        }
+      ]
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 2",
+      "title": "THE ADVANTAGE AUDIT",
+      "audio": "audio/ODF3_WB_2.01.mp3",
+      "content": "<div style='display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px;'><div class='mission-badge' style='width: auto; margin: 0; background: rgba(255,215,0,0.1);'><i class='fas fa-people-group' style='font-size: 1.5em;'></i><br><b>THE VOICES</b><p style='font-size: 0.8em; font-weight: normal; margin-top: 10px;'>Listen to a host mother talking about the map with an exchange student.</p></div><div class='mission-badge' style='width: auto; margin: 0; background: rgba(255,215,0,0.1);'><i class='fas fa-list-check' style='font-size: 1.5em;'></i><br><b>THE MISSION</b><p style='font-size: 0.8em; font-weight: normal; margin-top: 10px;'>Complete the chart with the advantages and disadvantages of the car-free zone that they mention.</p></div></div>"
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 2",
+      "title": "THE CAR-FREE CHART",
+      "audio": "audio/ODF3_WB_2.01.mp3",
+      "content": "<table><thead><tr><th>ADVANTAGES</th><th>DISADVANTAGES</th></tr></thead><tbody><tr><td class='fragment' style='color: #FFD700;'>Nice for walking / Safer</td><td class='fragment' style='color: #FFD700;'>Hard for wheelchair users</td></tr><tr><td class='fragment' style='color: #FFD700;'>Quieter / Healthier</td><td class='fragment' style='color: #FFD700;'>Difficult for small kids</td></tr><tr><td class='fragment' style='color: #FFD700;'>Cleaner air (less pollution)</td><td class='fragment' style='color: #FFD700;'>Transport problems</td></tr></tbody></table>"
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 2",
+      "number": "ADV",
+      "question": "What are the advantages mentioned?",
+      "answer": "SAFER, QUIETER, HEALTHIER",
+      "evidence": "<span style='color: #FFD700;'>[Para 16]</span> \"And being car-free makes the area really nice for walking. It’s much safer for pedestrians... it’s a lot quieter without cars.\""
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 2",
+      "number": "DIS",
+      "question": "What are the disadvantages mentioned?",
+      "answer": "ACCESSIBILITY & FAMILIES",
+      "evidence": "<span style='color: #FFD700;'>[Para 21]</span> \"Well, my uncle uses a wheelchair... he can’t go into the car-free zone... what about people with small children?\""
+    },
+    {
+      "layout": "segue",
+      "title": "TASK 3: MAP CODE"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 3",
+      "title": "MASTERING PREPOSITIONS",
+      "image": "images/workbook_map.png",
+      "strategy_items": [
+        {
+          "icon": "fa-map-pin",
+          "text": "<b>LANDMARK FOCUS</b>: Identify the building first (e.g., school), then find the preposition that connects it to the road."
+        },
+        {
+          "icon": "fa-compass",
+          "text": "<b>PATH TRACKING</b>: Use 'ALONG' for movement on a road and 'FOR' when scanning the horizon for a specific target."
+        },
+        {
+          "icon": "fa-turn-up",
+          "text": "<b>DIRECTIONAL CUES</b>: Listen for 'IN' to specify the general orientation before confirming the exact spot."
+        }
+      ]
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 3",
+      "title": "NAVIGATION PHRASES",
+      "audio": "audio/ODF3_WB_2.01.mp3",
+      "content": "<table><thead><tr><th>ITEM</th><th>CORRECT WORD</th></tr></thead><tbody><tr><td>a) According...</td><td class='fragment' style='color: #FFD700;'>TO the scale</td></tr><tr><td>b) ... the key</td><td class='fragment' style='color: #FFD700;'>CHECK the key</td></tr><tr><td>c) go... direction</td><td class='fragment' style='color: #FFD700;'>IN this direction</td></tr><tr><td>d) go east... road</td><td class='fragment' style='color: #FFD700;'>ALONG this road</td></tr><tr><td>e) look out...</td><td class='fragment' style='color: #FFD700;'>FOR the supermarket</td></tr><tr><td>f) what... mean</td><td class='fragment' style='color: #FFD700;'>DOES this symbol mean</td></tr><tr><td>g) ... a shortcut</td><td class='fragment' style='color: #FFD700;'>TAKE a shortcut</td></tr></tbody></table>"
+    },
+    {
+      "layout": "segue",
+      "title": "TASK 4: URBAN DIALOGUE"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 4",
+      "title": "CONVERSATION FLOW",
+      "image": "images/workbook_map.png",
+      "strategy_items": [
+        {
+          "icon": "fa-quote-left",
+          "text": "<b>CONTEXT SCAN</b>: Look at who is speaking. Is it Rob or Kim? What are they trying to do?"
+        }
+      ]
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4",
+      "number": "1",
+      "question": "Dialogue Completion (Kim & Rob)",
+      "answer": "1. d) Go east along this road",
+      "evidence": "<span style='color: #FFD700;'>[Para 5]</span> \"you go east along this road\""
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4",
+      "number": "2",
+      "question": "Dialogue Completion (Kim & Rob)",
+      "answer": "2. f) what does this symbol mean",
+      "evidence": "<span style='color: #FFD700;'>[Para 6]</span> \"And what does this symbol mean?\""
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4",
+      "number": "3",
+      "question": "Dialogue Completion (Kim & Rob)",
+      "answer": "3. b) check the key",
+      "evidence": "<span style='color: #FFD700;'>[Para 144]</span> \"check the key\""
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4",
+      "number": "4",
+      "question": "Dialogue Completion (Kim & Rob)",
+      "answer": "4. g) take a shortcut",
+      "evidence": "<span style='color: #FFD700;'>[Para 144]</span> \"take a shortcut\""
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4",
+      "number": "5",
+      "question": "Dialogue Completion (Kim & Rob)",
+      "answer": "5. a) according to the scale",
+      "evidence": "<span style='color: #FFD700;'>[Para 144]</span> \"According to the scale\""
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4",
+      "number": "6",
+      "question": "Dialogue Completion (Kim & Rob)",
+      "answer": "6. e) look out for the supermarket",
+      "evidence": "<span style='color: #FFD700;'>[Para 5]</span> \"look out for the school\""
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4",
+      "number": "7",
+      "question": "Dialogue Completion (Kim & Rob)",
+      "answer": "7. c) go in this direction",
+      "evidence": "<span style='color: #FFD700;'>[Para 10]</span> \"Well, if you go in this direction\""
+    },
+    {
+      "layout": "segue",
+      "title": "TASK 5: CITY NAVIGATORS"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 5",
+      "title": "CREATING THE ROUTE",
+      "image": "images/workbook_map.png",
+      "strategy_items": [
+        {
+          "icon": "fa-location-dot",
+          "text": "Choose your destination: Theater, Beach, or Park."
+        },
+        {
+          "icon": "fa-comments",
+          "text": "Use the navigation phrases from today."
+        },
+        {
+          "icon": "fa-route",
+          "text": "Trace the path on the map as you speak!"
+        }
+      ]
+    },
+    {
+      "layout": "ranking",
+      "badge": "DISCUSSION",
+      "title": "CAR-FREE CITIES?",
+      "left_items": ["FOR", "NEUTRAL", "AGAINST"],
+      "right_items": ["Healthy, Safe, Quiet", "Depends on the city", "Inconvenient, Hard for some"],
+      "content": "<p style='text-align: center; margin-top: 20px;'>Do you think the advantages outweigh the disadvantages? Why?</p>",
+      "audio": "audio/ODF3_WB_2.01.mp3"
+    }
+  ]
+}

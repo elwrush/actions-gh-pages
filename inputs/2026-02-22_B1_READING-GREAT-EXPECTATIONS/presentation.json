@@ -1,0 +1,431 @@
+{
+    "meta": {
+        "title": "GREAT EXPECTATIONS",
+        "subtitle": "B1 READING | Charles Dickens"
+    },
+    "config": {
+        "root_path": "/",
+        "accent_color": "#A62D26",
+        "background_video": "images/graveyard.mp4"
+    },
+    "slides": [
+        {
+            "layout": "title",
+            "title": "GREAT EXPECTATIONS",
+            "subtitle": "B1 READING",
+            "video": "images/graveyard.mp4",
+            "video_loop": true
+        },
+        {
+            "layout": "split_table",
+            "title": "FACT OR FICTION? | Victorian Prisons",
+            "image": "images/prison.jpg",
+            "badge": "HOOK",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'><tr><td colspan='2' style='color: #FFD700;'>Are these true? Vote with your partner!</td></tr><tr><td>1. Prisoners lived on old wooden ships (Hulks).</td><td class='fragment' style='color: #00ff00;'>TRUE</td></tr><tr><td>2. Children were often sent to adult prisons.</td><td class='fragment' style='color: #00ff00;'>TRUE</td></tr><tr><td>3. Prisoners had to work 12 hours a day.</td><td class='fragment' style='color: #00ff00;'>TRUE</td></tr></table>",
+            "source_reference": "[Blueprint Slide 2]"
+        },
+        {
+            "layout": "mission",
+            "title": "YOUR MISSION: ENJOY CLASSIC LITERATURE",
+            "video": "images/mission_bg_clipped.mp4",
+            "items": [
+                {
+                    "icon": "fa-pen-nib",
+                    "title": "MEET",
+                    "text": "Discover the life of Charles Dickens."
+                },
+                {
+                    "icon": "fa-book-open",
+                    "title": "UNDERSTAND",
+                    "text": "Unlock the secrets of the story."
+                },
+                {
+                    "icon": "fa-comments",
+                    "title": "DISCUSS",
+                    "text": "Share your thoughts on the themes."
+                }
+            ],
+            "notes": "Brief the students on the mission: Enjoying classic literature through Dickens.",
+            "source_reference": "[Blueprint Slide 3]"
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 1",
+            "title": "THE AUTHOR",
+            "subtitle": "Let's find out about Charles Dickens",
+            "source_reference": "[Blueprint Slide 4]"
+        },
+        {
+            "layout": "split_table",
+            "title": "CHARLES DICKENS | Mirror of Society",
+            "image": "images/dickens.jpg",
+            "badge": "BIO",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-pen-nib' style='color: #FFD700; font-size: 1.5em;'></i></td><td><strong>Career:</strong> English novelist and journalist. Known for 15 major novels.</td></tr><tr><td style='width: 60px; text-align: left;'><i class='fas fa-child' style='color: #FFD700; font-size: 1.5em;'></i></td><td><strong>Background:</strong> Had to work in a factory at age 12 because his family had money problems and his father went to prison for debt.</td></tr><tr><td style='width: 60px; text-align: left;'><i class='fas fa-users' style='color: #FFD700; font-size: 1.5em;'></i></td><td><strong>Legacy:</strong> Famous for memorable characters and showing the hard lives of working people.</td></tr></table>",
+            "source_reference": "SOURCE_TEXT.MD [About the Author]"
+        },
+        {
+            "layout": "strategy",
+            "title": "STRATEGY | Scanning for Specifics",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px;'><tr><td style='width: 50px; color: #FFD700;'><i class='fas fa-search'></i></td><td><strong>WHAT:</strong> Find specific dates and names quickly.</td></tr><tr><td style='color: #FFD700;'><i class='fas fa-bolt'></i></td><td><strong>WHY:</strong> To answer questions without reading every single word.</td></tr><tr><td style='color: #FFD700;'><i class='fas fa-hand-point-right'></i></td><td><strong>HOW:</strong> Look for Capital Letters and Numbers. Move your eyes fast!</td></tr></table>",
+            "source_reference": "[Blueprint Slide 6]"
+        },
+        {
+            "layout": "split_table",
+            "title": "TASK 1 | Who is Charles Dickens?",
+            "image": "images/dickens.jpg",
+            "badge": "SCANNING",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px; font-size: 0.9em; text-align: left;'><tr><td colspan='3' style='padding-bottom: 10px;'><strong style='color: #FFD700;'>Scan SECTION 1 to answer:</strong></td></tr><tr><td style='width: 50px;'><i class='fas fa-question-circle'></i></td><td style='white-space: nowrap;'>1. How did experiences influence him?</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>Hard lives in novels</td></tr><tr><td><i class='fas fa-question-circle'></i></td><td style='white-space: nowrap;'>2. Why have his novels become famous?</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>Memorable characters</td></tr><tr><td><i class='fas fa-question-circle'></i></td><td style='white-space: nowrap;'>3. What is Great Expectations about?</td><td class='fragment' style='color: #00ff00; font-weight: bold;'>Boy to a man</td></tr></table>",
+            "timer": 90,
+            "source_reference": "SOURCE_TEXT.MD [About the Author]"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 1 CHECK | Experience",
+            "answer": "Hard lives of working people",
+            "evidence": "[About the Author] 'This difficult experience influenced his novels, which often show the hard lives of working British people...'",
+            "explanation": "Dickens used his own pain to tell the stories of those who couldn't speak for themselves.",
+            "source_reference": "SOURCE_TEXT.MD [About the Author]"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 1 CHECK | Fame",
+            "answer": "Memorable characters",
+            "evidence": "[About the Author] 'Dickens’ memorable characters have made his novels famous...'",
+            "explanation": "Characters like Pip and Magwitch are so vivid they feel real to readers even today.",
+            "source_reference": "SOURCE_TEXT.MD [About the Author]"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 1 CHECK | Theme",
+            "answer": "Development from a boy to a man",
+            "evidence": "[About the Author] 'The story shows the development of the main character from a boy to a man.'",
+            "explanation": "It is a 'Bildungsroman'—a story of growing up and finding one's place in the world.",
+            "source_reference": "SOURCE_TEXT.MD [About the Author]"
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 2",
+            "title": "GETTING READY",
+            "subtitle": "It's always much easier to understand a story if you have some knowledge about it first.",
+            "source_reference": "[Blueprint Slide 10]"
+        },
+        {
+            "layout": "strategy",
+            "title": "STRATEGY | Visual Analysis",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px;'><tr><td style='width: 50px; color: #FFD700;'><i class='fas fa-image'></i></td><td><strong>LOOK:</strong> Scan the image for characters, setting, and mood.</td></tr><tr><td style='color: #FFD700;'><i class='fas fa-pen-to-square'></i></td><td><strong>NOTE:</strong> Jot down quick labels instead of full sentences.</td></tr></table>",
+            "source_reference": "[Blueprint Slide 11]"
+        },
+        {
+            "layout": "split_table",
+            "title": "TASK 2 | Describe the Scene",
+            "image": "images/throttling.png",
+            "badge": "PREDICTION",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px; font-size: 0.8em;'><thead><tr><th>Category</th><th>The Man</th><th>The Boy</th></tr></thead><tr><td>Description</td><td class='fragment'>Dirty, iron chain</td><td class='fragment'>Young, small</td></tr><tr><td>Feelings</td><td class='fragment'>Fierce, hungry</td><td class='fragment'>Badly frightened</td></tr><tr><td>Saying</td><td class='fragment'>'Don't say a word!'</td><td class='fragment'>'Don't hurt me!'</td></tr></table>",
+            "source_reference": "SOURCE_TEXT.MD [Ex 2 & 3]"
+        },
+        {
+            "layout": "split_table",
+            "title": "TASK 3 | Who is it? | Don't read yet! Guess from the Picture",
+            "image": "images/throttling.png",
+            "badge": "MATCHING",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px; font-size: 0.8em;'><tr><td>Badly frightened</td><td class='fragment' style='color: #FFD700;'>BOY (B)</td></tr><tr><td>Very fierce</td><td class='fragment' style='color: #FFD700;'>MAN (M)</td></tr><tr><td>A terrible voice</td><td class='fragment' style='color: #FFD700;'>MAN (M)</td></tr><tr><td>Begged in terror</td><td class='fragment' style='color: #FFD700;'>BOY (B)</td></tr><tr><td>Exhausted and hungry</td><td class='fragment' style='color: #FFD700;'>MAN (M)</td></tr><tr><td>Whole body trembling</td><td class='fragment' style='color: #FFD700;'>BOY (B)</td></tr></table>",
+            "source_reference": "SOURCE_TEXT.MD [Ex 3]"
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 3",
+            "title": "VOCABULARY",
+            "subtitle": "We're about to read... but let's learn some difficult words first.",
+            "source_reference": "[Blueprint Slide 15]"
+        },
+        {
+            "layout": "vocab",
+            "word": "CHURCHYARD",
+            "phoneme": "/ˈtʃɜːtʃjɑːd/",
+            "image": "images/cemetery.jpg",
+            "context_sentence": "I used to visit the <span style='color: var(--accent);'>churchyard</span> to look at my parents' names on the gravestones.",
+            "source_reference": "SOURCE_TEXT.MD [Glossary]"
+        },
+        {
+            "layout": "vocab",
+            "word": "GRAVESTONE",
+            "phoneme": "/ˈɡreɪvstəʊn/",
+            "image": "images/gravestone.jpg",
+            "context_sentence": "We placed a flower on the old <span style='color: var(--accent);'>gravestone</span> in the corner of the cemetery.",
+            "source_reference": "SOURCE_TEXT.MD [Glossary]"
+        },
+        {
+            "layout": "vocab",
+            "word": "MARSH",
+            "phoneme": "/mɑːʃ/",
+            "image": "images/marsh.jpg",
+            "context_sentence": "The land was flat and wet; it was a wild <span style='color: var(--accent);'>marsh</span> near the river.",
+            "source_reference": "SOURCE_TEXT.MD [Glossary]"
+        },
+        {
+            "layout": "vocab",
+            "word": "BLACKSMITH",
+            "phoneme": "/ˈblæksmɪθ/",
+            "image": "images/blacksmith.jpg",
+            "context_sentence": "Joe Gargery was a <span style='color: var(--accent);'>blacksmith</span> who made things from metal by hand.",
+            "source_reference": "SOURCE_TEXT.MD [Glossary]"
+        },
+        {
+            "layout": "vocab",
+            "word": "FILE",
+            "phoneme": "/faɪl/",
+            "image": "images/metal_file.jpg",
+            "context_sentence": "The prisoner used a long metal <span style='color: var(--accent);'>file</span> to cut the chain on his leg.",
+            "source_reference": "SOURCE_TEXT.MD [Glossary]"
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 4",
+            "title": "THE STORY",
+            "subtitle": "Sit back and read along to this very famous story of hardship and growth.",
+            "source_reference": "[Blueprint Slide 21]"
+        },
+        {
+            "layout": "audio_experience",
+            "title": "EXPERIENCE | Great Expectations",
+            "instruction": "Sit back and follow the text as we listen to the performance.",
+            "audio": "images/ODF2_SB_2.24.mp3",
+            "background": "images/throttling.png",
+            "source_reference": "[Blueprint Slide 22]"
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 5",
+            "title": "KNOWLEDGE CHECK",
+            "subtitle": "How much did you understand? Let's check.",
+            "source_reference": "[Blueprint Slide 23]"
+        },
+        {
+            "layout": "strategy",
+            "title": "STRATEGY | Short Answers",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px;'><tr><td style='width: 50px; color: #FFD700;'><i class='fas fa-question-circle'></i></td><td><strong>UNDERSTAND:</strong> Identify the question word (Who, What, Why).</td></tr><tr><td style='color: #FFD700;'><i class='fas fa-scissors'></i></td><td><strong>TRIM:</strong> Keep your answers short. Don't repeat the question.</td></tr></table>",
+            "source_reference": "[Blueprint Slide 24]"
+        },
+        {
+            "layout": "split_table",
+            "title": "TASK 4 | The Encounter",
+            "image": "images/throttling.png",
+            "badge": "RECALL",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px; font-size: 0.85em;'><tr><td>1. What type of person is the man?</td><td class='fragment' style='color: #00ff00;'>Escaped prisoner / fierce</td></tr><tr><td>2. What does he ask Pip for? Why?</td><td class='fragment' style='color: #00ff00;'>A file and food (to escape/survive)</td></tr><tr><td>3. What does Pip do?</td><td class='fragment' style='color: #00ff00;'>Promises to help / steals food</td></tr></table>",
+            "source_reference": "SOURCE_TEXT.MD [Ex 4]"
+        },
+        {
+            "layout": "split_table",
+            "title": "TASK 4 | Reaction",
+            "image": "images/marsh.jpg",
+            "badge": "REFLECTION",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 15px; font-size: 0.85em;'><tr><td>4. Would you do the same as Pip? Why?</td><td class='fragment' style='color: #FFD700;'>[Student's own answer]</td></tr><tr><td>5. Were your predictions correct?</td><td class='fragment' style='color: #FFD700;'>[Student's own answer]</td></tr></table>",
+            "source_reference": "SOURCE_TEXT.MD [Ex 4]"
+        },
+        {
+            "layout": "strategy",
+            "title": "STRATEGY | Finding Mistakes",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px;'><tr><td style='width: 50px; color: #FFD700;'><i class='fas fa-eye'></i></td><td><strong>EYE:</strong> Compare the summary to the text word by word.</td></tr><tr><td style='color: #FFD700;'><i class='fas fa-pen-nib'></i></td><td><strong>FIX:</strong> Cross out the wrong word and write the correct one.</td></tr></table>",
+            "source_reference": "[Blueprint Slide 27]"
+        },
+        {
+            "layout": "editing",
+            "title": "TASK 5 | Find the Mistakes",
+            "badge": "EDITING",
+            "items": [
+                {
+                    "parts": [
+                        {
+                            "text": "One "
+                        },
+                        {
+                            "wrong": true,
+                            "text": "morning",
+                            "correct": "afternoon"
+                        },
+                        {
+                            "text": ", young Pip was in the local "
+                        },
+                        {
+                            "wrong": true,
+                            "text": "market",
+                            "correct": "churchyard"
+                        },
+                        {
+                            "text": " when he met a strange man..."
+                        }
+                    ]
+                },
+                {
+                    "parts": [
+                        {
+                            "text": "He told Pip that he was traveling with a young man."
+                        }
+                    ]
+                },
+                {
+                    "parts": [
+                        {
+                            "text": "Pip lived with his "
+                        },
+                        {
+                            "wrong": true,
+                            "text": "aunt",
+                            "correct": "sister"
+                        },
+                        {
+                            "text": " and her husband Joe Gargery."
+                        }
+                    ]
+                },
+                {
+                    "parts": [
+                        {
+                            "text": "That evening, they heard "
+                        },
+                        {
+                            "wrong": true,
+                            "text": "music",
+                            "correct": "a gun"
+                        },
+                        {
+                            "text": " because a prisoner had escaped."
+                        }
+                    ]
+                },
+                {
+                    "parts": [
+                        {
+                            "text": "The next "
+                        },
+                        {
+                            "wrong": true,
+                            "text": "evening",
+                            "correct": "morning"
+                        },
+                        {
+                            "text": ", Pip went out onto the marshes."
+                        }
+                    ]
+                },
+                {
+                    "parts": [
+                        {
+                            "text": "Pip touched the man's "
+                        },
+                        {
+                            "wrong": true,
+                            "text": "head",
+                            "correct": "shoulder"
+                        },
+                        {
+                            "text": ", but it was the wrong man!"
+                        }
+                    ]
+                },
+                {
+                    "parts": [
+                        {
+                            "text": "The older man suddenly became "
+                        },
+                        {
+                            "wrong": true,
+                            "text": "ill",
+                            "correct": "angry"
+                        },
+                        {
+                            "text": ", so Pip went home."
+                        }
+                    ]
+                }
+            ],
+            "timer": 300,
+            "source_reference": "SOURCE_TEXT.MD [Ex 5]"
+        },
+        {
+            "layout": "strategy",
+            "title": "STRATEGY | Opinion & Evidence",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px;'><tr><td style='width: 50px; color: #FFD700;'><i class='fas fa-check'></i></td><td><strong>STANCE:</strong> Decide if you agree or disagree.</td></tr><tr><td style='color: #FFD700;'><i class='fas fa-file-alt'></i></td><td><strong>PROVE:</strong> Find a specific quote in the text that supports you.</td></tr></table>",
+            "source_reference": "[Blueprint Slide 30]"
+        },
+        {
+            "layout": "split_table",
+            "title": "TASK 6 | Agree or Disagree?",
+            "image": "images/prison.jpg",
+            "badge": "ANALYSIS",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 10px; font-size: 0.8em;'><tr><td>1. Pip seems lonely.</td><td class='fragment' style='color: #FFD700;'>AGREE (A)</td></tr><tr><td>2. Pip has a happy home life.</td><td class='fragment' style='color: #FFD700;'>DISAGREE (D)</td></tr><tr><td>3. The young man is a prisoner too.</td><td class='fragment' style='color: #FFD700;'>AGREE (A)</td></tr><tr><td>4. The older man is truly bad.</td><td class='fragment' style='color: #FFD700;'>DISAGREE (D)</td></tr><tr><td>5. The men are enemies.</td><td class='fragment' style='color: #FFD700;'>AGREE (A)</td></tr></table>",
+            "source_reference": "SOURCE_TEXT.MD [Ex 6]"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 6 CHECK | Lonely Child",
+            "answer": "AGREE (A)",
+            "evidence": "[Para 1] 'My parents had died... I used to visit the churchyard... to look at their names.'",
+            "explanation": "Visiting graves alone as a child suggests a deep sense of isolation.",
+            "source_reference": "SOURCE_TEXT.MD [Para 1]"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 6 CHECK | Happy Home",
+            "answer": "DISAGREE (D)",
+            "evidence": "[Para 9] 'She clearly felt that Joe and I caused her trouble, and she frequently complained about it.'",
+            "explanation": "Pip's sister is very harsh and makes him feel like a burden.",
+            "source_reference": "SOURCE_TEXT.MD [Para 9]"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 6 CHECK | The Young Man",
+            "answer": "AGREE (A)",
+            "evidence": "[Para 17] 'He was dressed in grey, too, and had an iron chain on his leg.'",
+            "explanation": "The matching chains and grey clothes prove he is also an escapee.",
+            "source_reference": "SOURCE_TEXT.MD [Para 17]"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 6 CHECK | Truly Bad?",
+            "answer": "DISAGREE (D)",
+            "evidence": "[Para 19] 'Thank you, my boy. You've been good to a poor man.'",
+            "explanation": "He shows gratitude to Pip, hinting at a hidden spark of humanity.",
+            "source_reference": "SOURCE_TEXT.MD [Para 19]"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "TASK 6 CHECK | Enemies",
+            "answer": "AGREE (A)",
+            "evidence": "[Para 21] 'I'll find him, and I'll finish with him! That villain!'",
+            "explanation": "The older man is furious and wants to 'finish' the younger one.",
+            "source_reference": "SOURCE_TEXT.MD [Para 21]"
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 6",
+            "title": "DISCUSSION",
+            "subtitle": "Let's discuss.",
+            "source_reference": "[Blueprint Slide 38]"
+        },
+        {
+            "layout": "mission",
+            "title": "WHY IS IT FAMOUS?",
+            "video": "images/graveyard.mp4",
+            "items": [
+                {
+                    "icon": "fa-comment-alt",
+                    "title": "OPINION",
+                    "text": "What do you think is special about it?"
+                },
+                {
+                    "icon": "fa-lightbulb",
+                    "title": "REASON",
+                    "text": "Why do you hold this view?"
+                },
+                {
+                    "icon": "fa-search",
+                    "title": "EXAMPLE",
+                    "text": "Point to something in the story."
+                }
+            ],
+            "notes": "Encourage students to use the O-R-E framework for their discussion.",
+            "source_reference": "[Blueprint Slide 31]"
+        }
+    ]
+}

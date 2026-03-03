@@ -1,6 +1,5 @@
 <section {% if slide.video %} data-background-video="{{ slide.video }}" data-background-video-muted
-    data-background-opacity="{{ slide.get('data-background-opacity', 0.8) }}" {% if slide.get('video_loop')
-    %}data-background-video-loop{% endif %} {% elif slide.image %} data-background="{{ slide.image }}"
+    data-background-opacity="{{ slide.get('data-background-opacity', 0.8) }}" {% if slide.get('video_loop', true) %}data-background-video-loop{% endif %} {% elif slide.image %} data-background="{{ slide.image }}"
     data-background-opacity="{{ slide.get('data-background-opacity', 1.0) }}" {% endif %} {% if
     slide.background_gradient %} data-background-gradient="{{ slide.background_gradient }}" {% endif %} {% if
     slide.get('data-transition') %}data-transition="{{ slide.get('data-transition') }}" {% endif %} {% if

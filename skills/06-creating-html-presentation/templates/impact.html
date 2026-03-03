@@ -1,27 +1,66 @@
-<!-- SLIDE: IMPACT (MISSION) -->
-<section data-background-video="{{ slide.background_video }}" data-background-video-muted data-background-opacity="0.8"
-    data-auto-animate>
+<!-- SLIDE: IMPACT (THEMATIC) -->
+<section data-background="{{ slide.image }}" data-background-opacity="0.8" data-auto-animate>
 
-    <div class="r-stack">
-        <div style="text-align: center;">
-            <h1 data-id="major-title"
-                style="color: #FFD700; font-size: 1.2em; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">{{ slide.title }}
+    <div class="slide-canvas">
+        <!-- Cinematic Overlay -->
+        <div
+            style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%); z-index: -1;">
+        </div>
+
+        <div style="text-align: center; width: 100%; max-width: 1200px; margin: auto;">
+            {% if slide.badge %}
+            <div class="mission-badge" style="display: inline-block; margin-bottom: 20px; min-width: auto; padding: 10px 30px;">
+                <span style="font-weight: 800; letter-spacing: 2px;">{{ slide.badge }}</span>
+            </div>
+            {% endif %}
+
+            <h1 data-id="impact-title"
+                style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 40px;">
+                {{ slide.title }}
             </h1>
-            <p style="font-size: 0.9em; margin-bottom: 40px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">{{
-                slide.main_text }}</p>
+            
+            <div style="background: rgba(0,0,0,0.6); padding: 50px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
+                <p style="font-size: 1.4em; color: white; line-height: 1.4; margin: 0;">
+                    {{ slide.text | default(slide.main_text) }}
+                </p>
+            </div>
 
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+            {% if slide.audio %}
+            <div style="margin-top: 30px; display: flex; justify-content: center;">
+                <audio-player src="{{ slide.audio }}"></audio-player>
+            </div>
+            {% endif %}
+
+            {% if slide.timer %}
+            <div class="timer-container" style="margin-top: 40px; justify-content: center; gap: 30px;">
+                <div class="timer-display" id="timer-{{ slide.timer }}-display"
+                    style="font-size: 2.5em; font-family: monospace; color: #FFD700; text-shadow: 0 0 15px rgba(0,0,0,0.9);">
+                    {% set mins = (slide.timer / 60) | int %}{% set secs = (slide.timer % 60) | int %}
+                    {{ "%02d"|format(mins) }}:{{ "%02d"|format(secs) }}
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="timer-btn"
+                        onclick="toggleTimer({{ slide.timer }}, 'timer-{{ slide.timer }}-display', this)">START</button>
+                    <button class="timer-btn reset"
+                        onclick="resetTimer({{ slide.timer }}, 'timer-{{ slide.timer }}-display')">RESET</button>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if slide.points %}
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 50px;">
                 {% for point in slide.points %}
-                <div class="mission-badge">
-                    <span style="font-size: 1.5em;">{{ point.icon }}</span>
-                    <span>{{ point.text }}</span>
+                <div class="mission-badge" style="min-width: 250px;">
+                    <i class="fas {{ point.icon | default('fa-check') }}" style="font-size: 1.5em; color: #FFD700;"></i>
+                    <span style="display: block; margin-top: 10px;">{{ point.text }}</span>
                 </div>
                 {% endfor %}
             </div>
+            {% endif %}
         </div>
     </div>
 
     <aside class="notes">
-        {{ slide.notes | default('Introduce the mission.') }}
+        {{ slide.notes | default('Introduce the task or discussion.') }}
     </aside>
 </section>

@@ -1,0 +1,198 @@
+{
+    "meta": {
+        "title": "DIGITAL INFLUENCE | THE GENERATION GAP",
+        "subtitle": "B1 LISTENING",
+        "cefr": "B1",
+        "program": "intensive",
+        "teacher": "Ed Rush",
+        "date": "02-03-2026"
+    },
+    "title": "DIGITAL INFLUENCE | THE GENERATION GAP",
+    "subtitle": "B1 LISTENING",
+    "theme": "thai-heritage.css",
+    "slides": [
+        {
+            "layout": "title",
+            "title": "DIGITAL INFLUENCE",
+            "subtitle": "B1 LISTENING",
+            "video": "images/title_video_7s.mp4"
+        },
+        {
+            "layout": "mission",
+            "title": "YOUR MISSION",
+            "video": "images/mission_bg_clipped.mp4",
+            "vignette": true,
+            "relevance": "In your B1 PET test, you'll need to listen for specific details in interviews. This lesson prepares you for that.",
+            "objectives": [
+                {"icon": "fas fa-headphones", "text": "Listen for Gist"},
+                {"icon": "fas fa-search-plus", "text": "Extract Details"},
+                {"icon": "fas fa-comments", "text": "Debate Influence"}
+            ]
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 1",
+            "title": "WARM UP & VOCAB",
+            "subtitle": "GETTING READY"
+        },
+        {
+            "layout": "schema_activation",
+            "title": "DIGITAL TRUTHS",
+            "image": "images/digital_display.jpg",
+            "icon": "fab fa-youtube",
+            "question": "Fact or Fiction: 70% of teens trust YouTubers more than traditional celebrities?"
+        },
+        {
+            "layout": "answer_detail",
+            "is_answer": true,
+            "title": "THE VERDICT",
+            "answer": "FACT!",
+            "evidence": "Research by Google/Ipsos shows that 70% of teenage YouTube subscribers say they relate to YouTube creators more than traditional celebrities.",
+            "explanation": "Online personalities often feel more authentic and relatable to younger audiences than distant movie stars."
+        },
+        {
+            "layout": "strategy",
+            "title": "BARRIER REMOVAL",
+            "icon": "fas fa-key",
+            "content": "<table style='width: 100%; text-align: left;'><tr><td style='width: 60px;'><i class='fas fa-book'></i></td><td>We are going to learn 5 key words to help us understand the podcast.</td></tr></table>"
+        },
+        {
+            "layout": "vocab",
+            "word": "GENERATION GAP",
+            "phoneme": "/ˌdʒen.əˈreɪ.ʃən ɡæp/",
+            "thai": "ช่องว่างระหว่างวัย",
+            "context_sentence": "The <span style='color: var(--accent);'>generation gap</span> makes it hard for my grandma to understand TikTok.",
+            "image": "images/generation_gap_refined.jpg"
+        },
+        {
+            "layout": "vocab",
+            "word": "PSYCHOLOGIST",
+            "phoneme": "/saɪˈkɒl.ə.dʒɪst/",
+            "thai": "นักจิตวิทยา",
+            "context_sentence": "A <span style='color: var(--accent);'>psychologist</span> studies how people think and behave.",
+            "image": "images/psychologist.jpg"
+        },
+        {
+            "layout": "vocab",
+            "word": "INFLUENCE",
+            "phoneme": "/ˈɪn.flu.əns/",
+            "thai": "อิทธิพล",
+            "context_sentence": "Social media has a huge <span style='color: var(--accent);'>influence</span> on what teenagers buy.",
+            "image": "images/influence.jpg"
+        },
+        {
+            "layout": "vocab",
+            "word": "WELL-BEING",
+            "phoneme": "/ˈwelˌbiː.ɪŋ/",
+            "thai": "สุขภาวะ",
+            "context_sentence": "Exercise and sleep are very important for your mental <span style='color: var(--accent);'>well-being</span>.",
+            "image": "images/well_being_refined.jpg"
+        },
+        {
+            "layout": "vocab",
+            "word": "FINANCE",
+            "phoneme": "/ˈfaɪ.næns/",
+            "thai": "การเงิน",
+            "context_sentence": "You need to learn about personal <span style='color: var(--accent);'>finance</span> to manage your money.",
+            "image": "images/finance.jpg"
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 2",
+            "title": "GLOBAL LISTENING",
+            "subtitle": "THE BIG PICTURE"
+        },
+        {
+            "layout": "audio_experience",
+            "title": "TOM'S WORLD PODCAST",
+            "instruction": "Listen for the MAIN TOPIC and Dr. Schmidt's JOB.",
+            "audio": "audio/ODF3_WB_1.01.mp3",
+            "background": "images/audio_bg.jpg"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "EX 1: MAIN TOPIC",
+            "answer": "Teenagers and their parents",
+            "evidence": "[Line 3] Today I’m looking at family life – specifically at teens and whether or not teenagers and their parents can ever really understand each other.",
+            "explanation": "Tom explicitly states he is looking at the relationship between teens and parents."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "EX 2: DR. SCHMIDT'S JOB",
+            "answer": "Psychologist",
+            "evidence": "[Line 7] I’m here today with psychologist Doctor Lisa Schmidt...",
+            "explanation": "Tom introduces her using her professional title."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 3",
+            "title": "YOUR CHALLENGE",
+            "subtitle": "LISTEN FOR DATA"
+        },
+        {
+            "layout": "strategy",
+            "title": "EXAM STRATEGY: MCQ",
+            "icon": "fas fa-tasks",
+            "content": "<table style='width: 100%; text-align: left;'><tr><td style='width: 60px;'><i class='fas fa-bullseye'></i></td><td>Read the questions carefully before you listen. Look for keywords!</td></tr></table>"
+        },
+        {
+            "layout": "audio_experience",
+            "title": "DETECTION MISSION",
+            "instruction": "Listen and choose the correct option (Ex 3).",
+            "audio": "audio/ODF3_WB_1.01.mp3",
+            "background": "images/audio_bg.jpg"
+        },
+        {
+            "layout": "answer_detail",
+            "title": "EX 3: QUESTION 1",
+            "answer": "Option B",
+            "evidence": "[Dr. Schmidt] ...but my own research shows that there’s more to the story.",
+            "explanation": "She agrees online personalities are important but notes her research adds a different perspective."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "EX 3: QUESTION 2",
+            "answer": "Option D",
+            "evidence": "[Tom] ...if my mom tried to tell me what to wear ... [Dr. Schmidt] ...for questions of clothes and style, of course teens turn to the internet a lot.",
+            "explanation": "They agree that for style, the internet is the primary influence."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "EX 3: QUESTION 3",
+            "answer": "Option D",
+            "evidence": "[Tom] ...we talk about it a lot – because they’re going to pay for it.",
+            "explanation": "Tom admits discussing university with parents because of the financial support."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "EX 3: QUESTION 4",
+            "answer": "Option A",
+            "evidence": "[Dr. Schmidt] ...when it comes to some big things in life – career choice, education, finance, health and well-being – parents actually still have a lot of influence...",
+            "explanation": "The research lists these specific areas where parents remain influential."
+        },
+        {
+            "layout": "answer_detail",
+            "title": "EX 3: QUESTION 5",
+            "answer": "Option C",
+            "evidence": "[Dr. Schmidt] Everyone’s always ready to say that the generation gap means parents and teens simply can’t communicate...",
+            "explanation": "She observes that the common perception is a complete lack of communication."
+        },
+        {
+            "layout": "segue",
+            "phase": "PHASE 4",
+            "title": "DISCUSSION",
+            "subtitle": "YOUR OPINION"
+        },
+        {
+            "layout": "strategy",
+            "title": "YOUR TURN",
+            "icon": "fas fa-comments",
+            "content": "<table style='width: 100%; text-align: left;'><tr><td style='width: 60px;'><i class='fas fa-microphone'></i></td><td>Discuss the four big areas with your partner. Who do you listen to?</td></tr></table>"
+        },
+        {
+            "layout": "split_table",
+            "title": "THE INFLUENCE DEBATE",
+            "content": "<table style='width: 100%; border-collapse: separate; border-spacing: 0 20px; font-size: 1.2em; text-align: left;'><tbody><tr><td style='width: 60px; color: #FFD700;'><i class='fas fa-graduation-cap'></i></td><td>EDUCATION</td></tr><tr><td style='color: #FFD700;'><i class='fas fa-wallet'></i></td><td>FINANCE</td></tr><tr><td style='color: #FFD700;'><i class='fas fa-heartbeat'></i></td><td>HEALTH</td></tr><tr><td style='color: #FFD700;'><i class='fas fa-smile'></i></td><td>WELL-BEING</td></tr></tbody></table>"
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+<div class="slide-canvas">
+    <!-- Cinematic Overlay for Video Legibility -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%); z-index: -1;">
+    </div>
+
+    <div style="position: relative; z-index: 2; padding: 40px; width: 100%; text-align: center;">
+        <h1
+            style="font-family: 'Outfit', sans-serif; color: white; margin-bottom: 40px; text-shadow: 2px 2px 15px rgba(0,0,0,1); font-size: 2.5em; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">
+            {{ slide.title | default('YOUR MISSION') }}</h1>
+
+        {% set mission_items = slide.get('items') or slide.get('objectives') %}
+        <!-- HORIZONTAL STACKING -->
+        <div
+            style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px; width: 100%;">
+            {% for item in mission_items %}
+            <div class="mission-badge">
+                <i class="fas {{ item.icon | default('fa-bullseye') }}"></i>
+                <div style="color: white; font-size: 1.1em; line-height: 1.3; margin-top: 10px; text-align: center;">
+                    {% if item.title %}<span style="color: #FFD700; font-weight: 800; text-transform: uppercase;">{{ item.title }}:</span><br>{% endif %}
+                    {{ (item.text if item.text is defined else item) | parse_directives | safe }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<aside class="notes">
+    {{ slide.notes }}
+</aside>

@@ -11,7 +11,18 @@
 
         <div
             style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: 1.0em;">
-            {{ slide.content | safe if slide.content else slide.table | safe }}
+            {% if slide.strategy_items %}
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                {% for item in slide.strategy_items %}
+                    <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                        <i class="fas {{ item.icon | default('fa-lightbulb') }}" style="color: #FFD700; font-size: 1.2em;"></i>
+                        <span>{{ item.text | safe }}</span>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                {{ slide.content | safe if slide.content else slide.table | safe }}
+            {% endif %}
         </div>
 
         {% if slide.timer %}

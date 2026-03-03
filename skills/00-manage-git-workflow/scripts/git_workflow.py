@@ -26,15 +26,27 @@ def scrub():
 def commit(message):
     """Commits and pushes changes. MANDATORY: Only call if user explicitly asked to commit."""
     scrub()
+    
+    # Ensure nul is in .gitignore to prevent git from crashing on Windows
+    ensure_nul_ignored()
+    
     print(f"[COMMIT] Staging and committing: {message}...")
     run_command("git add .")
     run_command("git reset dist/")
-    # Re-verify nul is gone before final add
-    run_command("git reset nul") 
     run_command('git commit -m "' + message + '"')
     print("[PUSH] Pushing to source...")
     run_command("git push source main")
     print("✅ Changes saved to source repository.")
+
+def ensure_nul_ignored():
+    """Ensure the reserved 'nul' device name is in .gitignore."""
+    gitignore_path = os.path.join(os.getcwd(), ".gitignore")
+    if os.path.exists(gitignore_path):
+        with open(gitignore_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        if "nul" not in content.lower():
+            with open(gitignore_path, "a", encoding="utf-8") as f:
+                f.write("\n# Problematic Windows Device Files\nnul\nNUL\n")
 
 def release(version, description):
     scrub()

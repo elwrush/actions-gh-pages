@@ -1,0 +1,244 @@
+{
+  "title": "Legendary Cities",
+  "subtitle": "B1 Reading | Unit 2",
+  "teacher": "Ed Rush",
+  "date": "29-01-2026",
+  "logo": "images/Bell_transparent.png",
+  "accent_color": "#800000",
+  "slides": [
+    {
+      "layout": "title",
+      "title": "Legendary Cities",
+      "subtitle": "B1 Reading | Unit 2",
+      "video": "images/title_legendary_cities_7s.mp4",
+      "source_reference": "Blueprint"
+    },
+    {
+      "layout": "mission",
+      "title": "YOUR MISSION",
+      "video": "images/mission_bg_clipped.mp4",
+      "objectives": [
+        {
+          "title": "DECODE",
+          "text": "Master the ancient words of the philosophers.",
+          "icon": "fa-scroll"
+        },
+        {
+          "title": "SCAN",
+          "text": "Find the hidden dates and names in the ruins.",
+          "icon": "fa-search-location"
+        },
+        {
+          "title": "DETECT",
+          "text": "Prove the truth about the world's greatest legends.",
+          "icon": "fa-user-secret"
+        }
+      ],
+      "source_reference": "Blueprint Aim"
+    },
+    {
+      "layout": "segue",
+      "title": "THE LANGUAGE OF LEGENDS",
+      "phase": "PHASE 1",
+      "subtitle": "Let's learn some useful words before we read.",
+      "source_reference": "Blueprint Stage 2"
+    },
+    {
+      "layout": "strategy",
+      "badge": "",
+      "title": "Word Power: Learning New Words",
+      "table": "<table style='width: 100%; font-size: 0.95em; border-collapse: separate; border-spacing: 0 15px;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-eye' style='color: #FFD700;'></i></td><td><b>Observe</b>: Look at the image and the context sentence.</td></tr><tr><td style='text-align: left;'><i class='fas fa-headphones' style='color: #FFD700;'></i></td><td><b>Listen</b>: Repeat the pronunciation and check the stress.</td></tr><tr><td style='text-align: left;'><i class='fas fa-brain' style='color: #FFD700;'></i></td><td><b>Connect</b>: How does this word relate to legendary cities?</td></tr></table>",
+      "source_reference": "Blueprint Stage 2"
+    },
+    {
+      "layout": "vocab",
+      "word": "PHILOSOPHER",
+      "phoneme": "/fɪˈlɒsəfə(r)/",
+      "image": "images/philosopher.jpg",
+      "context_sentence": "Plato was a famous Greek <span style='color: #FFD700;'>philosopher</span> who wrote about Atlantis.",
+      "source_reference": "SOURCE_TEXT Vocab 1"
+    },
+    {
+      "layout": "vocab",
+      "word": "EARTHQUAKE",
+      "phoneme": "/ˈɜːθkweɪk/",
+      "image": "images/earthquake.jpg",
+      "context_sentence": "A huge <span style='color: #FFD700;'>earthquake</span> struck, and the city disappeared beneath the sea.",
+      "source_reference": "SOURCE_TEXT Vocab 2"
+    },
+    {
+      "layout": "vocab",
+      "word": "RITUAL",
+      "phoneme": "/ˈrɪtʃuəl/",
+      "image": "images/ritual.jpg",
+      "context_sentence": "Outsiders knew about the gold <span style='color: #FFD700;'>ritual</span> and the story spread.",
+      "source_reference": "SOURCE_TEXT Vocab 3"
+    },
+    {
+      "layout": "vocab",
+      "word": "FICTIONAL",
+      "phoneme": "/ˈfɪkʃənl/",
+      "image": "images/fictional.jpg",
+      "context_sentence": "Unlike other cities, we know that Shangri-La is <span style='color: #FFD700;'>fictional</span> because it comes from a novel.",
+      "source_reference": "SOURCE_TEXT Vocab 4"
+    },
+    {
+      "layout": "vocab",
+      "word": "PARADISE",
+      "phoneme": "/ˈpærədaɪs/",
+      "image": "images/paradise.jpg",
+      "context_sentence": "The city is a <span style='color: #FFD700;'>paradise</span> where everything is happy and perfect.",
+      "source_reference": "SOURCE_TEXT Vocab 5"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 1: VOCAB MATCHING",
+      "title": "Strategy: Matching Words",
+      "table": "<table style='width: 100%; font-size: 0.95em; border-collapse: separate; border-spacing: 0 10px;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-sync' style='color: #FFD700;'></i></td><td><b>Connect</b>: Match the word to its definition.</td></tr><tr><td style='text-align: left;'><i class='fas fa-search' style='color: #FFD700;'></i></td><td><b>Clues</b>: Look for keywords in the definition that match the context.</td></tr><tr><td style='text-align: left;'><i class='fas fa-comments' style='color: #FFD700;'></i></td><td><b>Check</b>: Compare with your partner before we check as a class.</td></tr></table>",
+      "source_reference": "Blueprint Stage 2"
+    },
+    {
+      "layout": "match_reorder",
+      "badge": "TASK 1: VOCAB MATCHING",
+      "title": "Vocab Check | Definitions",
+      "left_items": [
+        "1. philosopher",
+        "2. earthquake",
+        "3. ritual",
+        "4. fictional",
+        "5. paradise"
+      ],
+      "right_items": [
+        "a. a ceremony performed in the same way",
+        "b. a person who studies ideas about knowledge",
+        "c. a place or state of great happiness",
+        "d. a sudden shaking of the Earth's surface",
+        "e. not real; existing only in stories"
+      ],
+      "rationale": "Definitions (a-e) are in order. Words (1-5) are scrambled. Can you fix them?"
+    },
+    {
+      "layout": "match_reorder",
+      "badge": "TASK 1: VOCAB MATCHING",
+      "title": "Vocab Check | Corrected!",
+      "left_items": [
+        "3. ritual",
+        "1. philosopher",
+        "5. paradise",
+        "2. earthquake",
+        "4. fictional"
+      ],
+      "right_items": [
+        "a. a ceremony performed in the same way",
+        "b. a person who studies ideas about knowledge",
+        "c. a place or state of great happiness",
+        "d. a sudden shaking of the Earth's surface",
+        "e. not real; existing only in stories"
+      ],
+      "rationale": "Words (1-5) have flown into their correct matching positions!"
+    },
+    {
+      "layout": "segue",
+      "title": "SCANNING FOR FACTS",
+      "phase": "PHASE 2",
+      "subtitle": "Can you find the names and numbers in just 4 minutes?",
+      "source_reference": "Blueprint Stage 3"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 3: SUMMARY COMPLETION",
+      "title": "Strategy: Speed Scanning",
+      "table": "<table style='width: 100%; font-size: 0.95em; border-collapse: separate; border-spacing: 0 10px;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-bolt' style='color: #FFD700;'></i></td><td><b>Speed</b>: Do not read every word. Look for capital letters and numbers.</td></tr><tr><td style='text-align: left;'><i class='fas fa-hourglass-half' style='color: #FFD700;'></i></td><td><b>Timer</b>: You have only 4 minutes for 10 gaps!</td></tr><tr><td style='text-align: left;'><i class='fas fa-pen-nib' style='color: #FFD700;'></i></td><td><b>Fill</b>: Complete the summary on page 15.</td></tr></table>",
+      "source_reference": "Blueprint Stage 3"
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 3: SUMMARY COMPLETION",
+      "title": "",
+      "timer": 240,
+      "content": "<div style='display: flex; gap: 20px; justify-content: center; margin-bottom: 30px;'><img src='images/atlantis.png' style='border: 2px solid #FFD700; border-radius: 4px; width: 350px; height: 220px; object-fit: cover;'><img src='images/el-dorado.png' style='border: 2px solid #FFD700; border-radius: 4px; width: 350px; height: 220px; object-fit: cover;'><img src='images/shangri-la.png' style='border: 2px solid #FFD700; border-radius: 4px; width: 350px; height: 220px; object-fit: cover;'></div><table style='width: 100%; font-size: 0.8em; border-collapse: collapse; background: transparent;'><thead><tr><th style='width: 33%; background: rgba(255,215,0,0.1);'>ATLANTIS</th><th style='width: 33%; background: rgba(255,215,0,0.1);'>EL DORADO</th><th style='width: 33%; background: rgba(255,215,0,0.1);'>SHANGRI-LA</th></tr></thead><tbody><tr><td style='vertical-align: top;'>1. Years: <span class='fragment' style='color: #00ff00;'>2,000</span><br>2. Destroyed: <span class='fragment' style='color: #00ff00;'>earthquake</span><br>3. Near: <span class='fragment' style='color: #00ff00;'>India</span><br>4. Near: <span class='fragment' style='color: #00ff00;'>Japan</span><br>5. Near: <span class='fragment' style='color: #00ff00;'>Greece</span></td><td style='vertical-align: top;'>6. Dates: <span class='fragment' style='color: #00ff00;'>1500s</span><br>7. People: <span class='fragment' style='color: #00ff00;'>Muisca</span></td><td style='vertical-align: top;'>8. Mountains: <span class='fragment' style='color: #00ff00;'>Kunlun</span><br>9. Book: <span class='fragment' style='color: #00ff00;'>Lost Horizon</span><br>10. Published: <span class='fragment' style='color: #00ff00;'>1933</span></td></tr></tbody></table>",
+      "source_reference": "SOURCE_TEXT Task 3"
+    },
+    {
+      "layout": "segue",
+      "title": "DATA DETECTIVES",
+      "phase": "PHASE 3",
+      "subtitle": "Now, let's look closer at the details of each story.",
+      "source_reference": "Blueprint Stage 4"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 4: DETAILED READING",
+      "title": "Strategy: Finding Evidence",
+      "table": "<table style='width: 100%; font-size: 0.95em; border-collapse: separate; border-spacing: 0 10px;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-crosshairs' style='color: #FFD700;'></i></td><td><b>Locate</b>: Find the paragraph mentioned in the question.</td></tr><tr><td style='text-align: left;'><i class='fas fa-highlighter' style='color: #FFD700;'></i></td><td><b>Underline</b>: Mark the exact sentence that gives the answer.</td></tr><tr><td style='text-align: left;'><i class='fas fa-check-double' style='color: #FFD700;'></i></td><td><b>Verify</b>: Does the text really say what you think?</td></tr></table>",
+      "source_reference": "Blueprint Stage 4"
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 4: DETAILED READING",
+      "title": "Task 4 | Detail Check",
+      "timer": 300,
+      "content": "<table><tr><td style='width: 50px; color: #FFD700; font-weight: 800;'>1.</td><td>Atlantis story?</td><td class='fragment' style='color: #00ff00;'>b. Lesson</td></tr><tr><td style='color: #FFD700; font-weight: 800;'>2.</td><td>Nowadays...</td><td class='fragment' style='color: #00ff00;'>a. Looking</td></tr><tr><td style='color: #FFD700; font-weight: 800;'>3.</td><td>Muisca gold?</td><td class='fragment' style='color: #00ff00;'>b. A lot</td></tr><tr><td style='color: #FFD700; font-weight: 800;'>4.</td><td>Shangri-La name?</td><td class='fragment' style='color: #00ff00;'>b. Fiction</td></tr></table>",
+      "source_reference": "SOURCE_TEXT Task 4"
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4: DETAILED READING",
+      "title": "Detail | Atlantis Story",
+      "number": 1,
+      "question": "What does Plato's story about Atlantis tell us?",
+      "answer": "b. It's a lesson about the importance of fairness.",
+      "evidence": "[Para 2] \"But Plato’s story wasn’t written as history – it was a lesson about fairness.\"",
+      "explanation": "The text explicitly states that the story was intended as a lesson on fairness, not as a real historical record.",
+      "source_reference": "SOURCE_TEXT Task 4 Q1"
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4: DETAILED READING",
+      "title": "Detail | Modern Search",
+      "number": 2,
+      "question": "Nowadays, ... Atlantis.",
+      "answer": "a. some people are still looking for",
+      "evidence": "[Para 2] \"However, people have long talked of the city as though it actually existed, and some are still looking for it.\"",
+      "explanation": "Because the story has been told for so long, many people still believe the city might exist and continue the search.",
+      "source_reference": "SOURCE_TEXT Task 4 Q2"
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4: DETAILED READING",
+      "title": "Detail | Muisca Gold",
+      "number": 3,
+      "question": "It seemed to Europeans that the Muisca ... gold.",
+      "answer": "b. had a lot of",
+      "evidence": "[Para 4] \"leaders were covered in gold dust before washing in a lake and throwing small pieces of gold into the water.\"",
+      "explanation": "Seeing leaders covered in gold and throwing it away made Europeans believe the group possessed massive amounts of the metal.",
+      "source_reference": "SOURCE_TEXT Task 4 Q3"
+    },
+    {
+      "layout": "answer_detail",
+      "badge": "TASK 4: DETAILED READING",
+      "title": "Detail | Shangri-La Origin",
+      "number": 4,
+      "question": "Shangri-La is a name that comes from ....",
+      "answer": "d. a work of fiction",
+      "evidence": "[Para 5] \"it comes from a 1933 novel by James Hilton, called Lost Horizon.\"",
+      "explanation": "Unlike the other legends, the name Shangri-La was specifically invented for a novel, making it a pure work of fiction.",
+      "source_reference": "SOURCE_TEXT Task 4 Q4"
+    },
+    {
+      "layout": "segue",
+      "title": "YOUR SHANGRI-LA",
+      "phase": "PHASE 4",
+      "subtitle": "What does your dream city look like?",
+      "source_reference": "Blueprint Stage 5"
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 5: YOUR SHANGRI-LA",
+      "title": "Discussion: Dream Cities",
+      "timer": 480,
+      "table": "<table style='width: 100%; font-size: 0.95em; border-collapse: separate; border-spacing: 0 10px;'><tr><td style='width: 60px; text-align: left;'><i class='fas fa-map' style='color: #FFD700;'></i></td><td><b>Dream City</b>: What would your dream city look like?</td></tr><tr><td style='text-align: left;'><i class='fas fa-plus-circle' style='color: #FFD700;'></i></td><td><b>Must Have</b>: What items or features are essential?</td></tr><tr><td style='text-align: left;'><i class='fas fa-minus-circle' style='color: #FFD700;'></i></td><td><b>Must Not Have</b>: What would you banish from your city?</td></tr></table>",
+      "source_reference": "Blueprint Stage 5"
+    }
+  ]
+}

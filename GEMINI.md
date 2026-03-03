@@ -38,7 +38,7 @@ Before starting ANY task, identify the task type and read the corresponding skil
 ### 2. Guardrails & Hooks
 Automated validation is enforced via `.gemini/hooks/`:
 - `lp_gatekeeper.py`: Blocks `.typ` generation until blueprint approval.
-- `present-validator.py`: Enforces presentation JSON schema and verbatim alignment.
+- `present-validator.py`: Enforces presentation JSON schema and verbatim alignment. **MANDATORY**: This hook MUST always force a fresh HTML build to prevent "Build Ghost" sync errors.
 - `typst_guard.py`: Prevents forbidden Typst syntax, layout regressions, and enforces worksheet standards (Badges, Exam Hooks, Q&A Integrity).
 - `validate_paths.py`: Ensures asset path resolution within bundles.
 
@@ -54,7 +54,7 @@ Automated validation is enforced via `.gemini/hooks/`:
 - **The File Separation Law**: The source `.typ` files MUST remain in the root of the lesson folder. ONLY compiled `.pdf` files and the final presentation HTML/assets go into the `published/` folder.
 - **Strict Naming Standard**: Lesson plans must be named `DD-MM-YYYY-[LEVEL]-[TITLE]-LP.typ` (and `.pdf`). Worksheets must be `DD-MM-YYYY-[LEVEL]-[TITLE]-WS.typ` (and `.pdf`).
 - **URL-Friendly Naming**: Lesson folders MUST use lowercase alphanumeric characters and hyphens only (e.g., `28jan-listening-wb-p9`). **Spaces and underscores are FORBIDDEN**.
-- **Typst Consultation Law**: Never "guess" Typst syntax. You MUST consult the official Typst GitHub repo and the local library (`lib/typst/lib.typ`) every 30 minutes via `15-consulting-typst-repo`.
+- **Typst Consultation Law**: Never "guess" Typst syntax. You MUST consult the official Typst GitHub repo and the local library (`lib/typst/lib.typ`) every 30 minutes via `15-consulting-typst-repo`. All `.typ` Lesson Plans MUST start by importing the standard template components via `#import "../../skills/02-writing-lesson-plans/templates/lesson-plan-components.typ": *`.
 - **Root-Relative Imports**: All Typst files and presentation logic must use root-relative pathing (`/images/`, `/skills/`) to support project-level automation.
 - **Worksheet Permission Gate**: DO NOT create worksheets automatically as part of the lesson planning phase. You MUST ask for explicit permission before initiating the `03-producing-educational-materials` skill.
 
@@ -80,10 +80,15 @@ Automated validation is enforced via `.gemini/hooks/`:
 - **Dual Coding**: Use FontAwesome icons paired with key text.
 - **Student-Centric Persona**: Use warm, encouraging ESL persona. Avoid teacher-facing jargon (Gist, Lead-in).
 
-### 5. Security & Git Governance
+### 5. Security, Git & Technical Governance
 - **Secret Protection**: `token.json`, `.env`, and `.credentials/` MUST be present in `.gitignore`.
 - **Dual-Repo Workflow**: Use `00` for source code and `00a` for live deployments.
 - **Banned Filenames**: Files named `nul`, `con`, `prn`, or other reserved OS names are strictly forbidden.
+- **JSON Schema Integrity**: Presentation data MUST follow the **Flat Schema Law**:
+    - Use `layout` instead of `template`.
+    - ALL slide data must be at the root level (No nesting in `data: {}`).
+    - Use strict types: `timer` (int), `video_loop` (bool).
+- **Asset Discovery**: Use non-greedy regex for media collection to ensure filename precision.
 
 ## Key Files for Context
 - `AGENTS.md`: The "Source of Truth" for persona and core mandates.

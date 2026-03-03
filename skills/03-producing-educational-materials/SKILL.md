@@ -89,15 +89,19 @@ To prevent LLM "probabilistic laziness" in option placement:
 
 ### Step 3: Dependency Discovery (Pre-Production)
 Before writing any code, you MUST verify the environment:
-- **Library Audit**: Use `view_file` on the target library: `C:\Users\elwru\AppData\Roaming\typst\packages\local\bell-sheets\0.1.0\lib.typ`.
-  - **Verify**: Correct function names and argument types.
-- **Path Verification**: Ensure images are downloaded using Pixabay Skill: `C:\PROJECTS\LESSONS AND SLIDESHOWS 2\skills\searching-pixabay\scripts\download_image.py`.
+- **Library Audit**: You MUST use the **GitHub API (Skill 16)** to consult the official Typst repository (`typst/typst`) for syntax verification. For the local project library, use `read_file` on `lib/typst/lib.typ`.
+- **Path Verification**: Ensure images are downloaded using Pixabay Skill: `C:\PROJECTS\LESSONS AND SLIDESHOWS 2\skills\04-searching-pixabay\scripts\download_image.py`.
 
 ### Step 4: Content & Layout Strategy
 - **Rule: Verbatim Mandate**: **CRITICAL**. You MUST use the source text EXACTLY as provided in the raw files.
-  - NEVER abbreviate long definitions.
-  - NEVER truncate lists of examples.
-  - NEVER change punctuation or tone.
+- **Rule: Meander for Maps & Visuals**: **MANDATORY**. You MUST use the **Meander (Skill 08)** package to insert maps or large hero images into the worksheet. This ensures text wraps professionally around the visual and provides maximum visibility for student reference.
+- **Rule: No Illegal Page Breaks**: **MANDATORY**. Do NOT put a manual page break (`#pagebreak()`) before small tasks (e.g., Task 3, Task 4) unless they truly require a new page. Let the content flow naturally.
+- **Rule: Proper Enumeration**: **MANDATORY**. Use Typst's native enum syntax for tasks with lettered options (a, b, c). Example: `#set enum(numbering: "a)")` followed by `+ Item`. NEVER manually type `a)`.
+- **Rule: Double Spacing for Handwriting**: **MANDATORY**. Tasks requiring student handwriting (gap-fills, dialogues) MUST be double-spaced or have significantly increased leading. Use `#set par(leading: 1.2em)` or `#v(0.8cm)` between lines.
+- **Rule: ID Block Logic**: **CRITICAL**. 
+    - ONLY include the `#identity_block()` if there is a **submitted writing task**. 
+    - If the user explicitly stated "No" to a writing task (e.g., in Step 1 consultation), you MUST NOT include the ID block. 
+    - Note-taking or roleplay prep (like Task 5) does NOT count as a submitted writing task.
 - **Rule: Paragraph Numbering**: **MANDATORY**. 
   - All reading texts MUST have numbered paragraphs to facilitate classroom reference.
   - Prefix every paragraph with a bold, maroon number: `#text(fill: maroon, weight: "bold")[[1]]`.
@@ -108,9 +112,9 @@ Before writing any code, you MUST verify the environment:
 - **Rule: Handwriting Space**: **MANDATORY**.
   - All ruled lines for handwriting MUST have a minimum vertical clearance of 0.8cm (`#v(0.8cm)`).
 - **Rule: Dynamic Writing Lines**: **MANDATORY**.
-  - Writing tasks MUST use a dynamic line generator (e.g., `#writing_lines_dynamic()`) to fill the remaining vertical space on the page.
-- **Rule: Page Break Restrictions**: **MANDATORY**.
-  - NEVER put a manual page break (`#pagebreak()`) immediately after the main reading text.
+  - Writing tasks MUST use the library function `#writing_lines_dynamic()` which utilizes the `layout(size => ...)` engine.
+  - NEVER attempt to calculate remaining space manually using `page.margin` math. The `size.height` provided by the `layout` block is the only source of truth for available vertical space.
+  - The line count formula is strictly $n = \text{int}(H/S) + 1$ to ensure the last line reaches the bottom margin.
 - **Rule: Single-Column & Natural Flow (Starting State)**: **MANDATORY**. 
   - ALWAYS start the first draft with a **single-column layout**.
 

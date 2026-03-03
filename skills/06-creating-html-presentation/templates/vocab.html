@@ -34,14 +34,14 @@
                         {{ slide.thai }}</td>
                 </tr>
                 {% endif %}
-                {% if slide.example or slide.context_sentence %}
+                {% if slide.context_sentence or slide.example %}
                 <tr style="border-top: 1px solid rgba(255,255,255,0.1); text-align: left;">
                     <td
                         style="padding: 12px 0; color: #FFD700; font-weight: 800; width: 200px; text-transform: uppercase; letter-spacing: 1px; text-align: left;">
                         Context</td>
                     <td
                         style="padding: 12px 0; color: white; font-style: italic; font-size: 1.1em; line-height: 1.4; text-align: left;">
-                        "{{ slide.example | default(slide.context_sentence) | safe }}"</td>
+                        "{{ slide.context_sentence | default(slide.example) | safe }}"</td>
                 </tr>
                 {% endif %}
             </table>

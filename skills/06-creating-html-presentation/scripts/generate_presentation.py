@@ -37,6 +37,8 @@ def resize_image(src_path, dst_path, max_width=1920, quality=85):
         shutil.copy2(src_path, dst_path)
 
 
+from scripts.jinja_parser import parse_directives
+
 def generate_presentation(json_path):
     # 1. Load Configuration
     with open(json_path, "r", encoding="utf-8") as f:
@@ -58,6 +60,19 @@ def generate_presentation(json_path):
     lesson_dir = Path(json_path).resolve().parent
     output_dir = lesson_dir / "published"
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    # 2.1 Surgical Cleanup (Preserve PDFs)
+    print("  [CLEAN] Removing old slideshow assets (preserving PDFs)...")
+    for item in ["dist", "plugin", "fontawesome", "images", "audio", "css", "index.html"]:
+        target = output_dir / item
+        if target.exists():
+            if target.is_dir():
+                shutil.rmtree(target, ignore_errors=True)
+            else:
+                try:
+                    target.unlink()
+                except:
+                    pass
 
     # 3. Bundle Reveal.js Engine & UI Assets
     print("[1/4] Bundling engine & UI assets...")
@@ -83,18 +98,31 @@ def generate_presentation(json_path):
     # 4.1 Collect all referenced media from JSON content
     raw_json = json.dumps(config)
     # Match both /images/file.jpg and images/file.jpg
-    referenced_images = set(re.findall(r'/?images/([^"\'\\]+)', raw_json))
+    # Stopping before closing quotes or backslashes
+    referenced_images = set(re.findall(r'/?images/([^"\'\\]+?)(?=["\'\\])', raw_json))
     
     # Also check specific image/video/background fields
     for slide in config.get("slides", []):
         for field in ["image", "video", "background"]:
             val = slide.get(field)
-            if val:
-                # Support both absolute /images/ and relative images/
-                if val.startswith("/images/"):
-                    referenced_images.add(val.replace("/images/", ""))
-                elif val.startswith("images/"):
-                    referenced_images.add(val.replace("images/", ""))
+            if not val:
+                continue
+                
+            # Handle structured background object
+            if field == "background" and isinstance(val, dict):
+                val = val.get("src")
+                if not val:
+                    continue
+            
+            # Now val should be a string (path)
+            if not isinstance(val, str):
+                continue
+
+            # Support both absolute /images/ and relative images/
+            if val.startswith("/images/"):
+                referenced_images.add(val.replace("/images/", ""))
+            elif val.startswith("images/"):
+                referenced_images.add(val.replace("images/", ""))
 
     # 4.1.5 Scan templates for hardcoded image references (e.g., ACT.png)
     for template_file in template_dir.glob("*.html"):
@@ -148,7 +176,7 @@ def generate_presentation(json_path):
     # Standard UI sounds
     root_audio_src = project_root / "audio"
     if root_audio_src.exists():
-        for item in ["blip.mp3", "beep.mp3", "bell.mp3", "30-seconds.mp3", "warning.mp3"]:
+        for item in ["blip.mp3", "bell.mp3", "30-seconds.mp3", "warning.mp3"]:
             src_file = root_audio_src / item
             if src_file.exists():
                 shutil.copy2(src_file, audio_dst)
@@ -156,7 +184,9 @@ def generate_presentation(json_path):
     # 6. Render Template with Relative Paths
     print("[4/4] Rendering template...")
     env = Environment(loader=FileSystemLoader(str(template_dir)))
+    env.filters["parse_directives"] = parse_directives
     template = env.get_template("base.html")
+
     
     # Update slide URLs to be relative to the published folder
     # Note: In the HTML, assets like /images/foo.png should now be ./images/foo.png

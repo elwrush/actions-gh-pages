@@ -1,0 +1,29 @@
+<div class="slide-canvas"
+    style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center;">
+
+    <h3 style="color: #FFD700; font-size: 1.5em; text-transform: uppercase; margin-bottom: 20px;">LISTEN TO THE
+        STORY</h3>
+    <h1 style="font-size: 2.5em; color: white; margin-bottom: 40px; text-shadow: 2px 2px 8px black;">
+        {{ slide.title | parse_directives | safe }}</h1>
+
+    {% if slide.image %}
+    <div class="tape-player-visual" style="margin-bottom: 30px; position: relative; display: inline-block;">
+        <img src="{{ slide.image }}" style="max-width: 400px; filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));">
+        <!-- Optional Cassette Animation could go here -->
+    </div>
+    {% endif %}
+
+    <div
+        style="background: rgba(0,0,0,0.4); padding: 30px; border-radius: 12px; border: 2px solid #FFD700; width: 80%; max-width: 800px;">
+        <p style="color: #ddd; font-size: 1.2em; margin-bottom: 20px;">{{ slide.instruction | parse_directives | safe }}</p>
+
+        {% if slide.audio %}
+        <audio-player src="{{ slide.audio }}"></audio-player>
+        {% endif %}
+    </div>
+
+</div>
+
+<aside class="notes">
+    Play the audio track. Ensure volume is adequate.
+</aside>

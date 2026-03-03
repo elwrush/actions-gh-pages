@@ -1,0 +1,18 @@
+<!-- Cinematic Overlay for Video Legibility - Softened for 80% visibility -->
+<div
+    style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); z-index: -1;">
+</div>
+
+<div class="slide-canvas" style="padding: 30px; width: 100%; text-align: center;">
+    <img src="images/ACT.png" class="inset-media" style="height: 120px; margin-bottom: 20px;">
+    <h4 style="color: var(--accent); letter-spacing: 2px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">ASSUMPTION
+        COLLEGE MATHAYOM</h4>
+    <h1 style="font-size: 3.5em; margin: 10px 0; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">{{
+        slide.title | parse_directives | safe }}</h1>
+    <h3 style="opacity: 0.8; font-weight: normal; color: #FFD700; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">{{
+        slide.subtitle | parse_directives | safe }}</h3>
+</div>
+
+<aside class="notes">
+    {{ slide.notes }}
+</aside>
