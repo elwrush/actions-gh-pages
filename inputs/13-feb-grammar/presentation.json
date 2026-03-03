@@ -1,0 +1,279 @@
+{
+  "meta": {
+    "title": "The Grammar Repair Shop",
+    "theme": "thai-heritage"
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "title": "THE GRAMMAR REPAIR SHOP",
+      "subtitle": "Mastering 'Used To' vs 'Would' for Past Habits",
+      "video": "images/kid_boy_7s.mp4",
+      "video_loop": true
+    },
+    {
+      "layout": "mission",
+      "title": "YOUR MISSION",
+      "background": {
+        "type": "video",
+        "src": "/images/mission_bg_clipped.mp4",
+        "retain_from_previous": false
+      },
+      "items": [
+        {
+          "icon": "fa-solid fa-bullseye",
+          "text": "IDENTIFY: The difference between past states and past actions."
+        },
+        {
+          "icon": "fa-solid fa-hammer",
+          "text": "REPAIR: Sentences by choosing the most precise grammatical structure."
+        },
+        {
+          "icon": "fa-solid fa-microphone",
+          "text": "PRODUCE: Accurate descriptions of your own childhood habits."
+        }
+      ]
+    },
+    {
+      "layout": "segue",
+      "title": "Memories from Age 10",
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "layout": "strategy",
+      "badge": "WARM UP",
+      "title": "WHEN I WAS 10...",
+      "timer": 120,
+      "strategy_items": [
+        {
+          "icon": "fa-solid fa-pen-to-square",
+          "text": "Think of 3 things you did as a child that you don't do now."
+        },
+        {
+          "icon": "fa-solid fa-comments",
+          "text": "Share your memories with a partner using 'When I was 10, I...'"
+        }
+      ]
+    },
+    {
+      "layout": "impact",
+      "badge": "TASK 1",
+      "title": "BEN'S LIFE IN CHINA",
+      "text": "Let's look at Ben's experience living abroad. How did his habits change?",
+      "timer": 300
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 1",
+      "title": "DIALOGUE COMPLETION",
+      "strategy_items": [
+        {
+          "icon": "fa-solid fa-book-open",
+          "text": "Complete the dialogue with the correct form of <b>used to</b> and short answers."
+        }
+      ]
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 1",
+      "title": "BEN'S LIFE IN CHINA (PART 1)",
+      "content": "<div style='font-size: 0.9em; text-align: left;'><p><b>Amy:</b> Have you ever lived abroad?</p><p><b>Ben:</b> Yes, I have. I lived in China for a few years.</p><p><b>Amy:</b> (1) [REVEAL: Did you use to go] to school in China?</p><p><b>Ben:</b> Yes, I (2) [REVEAL: did].</p><p><b>Amy:</b> Wow, that's really cool. Why were you there?</p></div>"
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 1",
+      "title": "BEN'S LIFE IN CHINA (PART 2)",
+      "content": "<div style='font-size: 0.9em; text-align: left;'><p><b>Ben:</b> My mother (3) [REVEAL: used to work] for a company that had an office in Shanghai.</p><p><b>Amy:</b> Shanghai? That's so interesting.</p><p><b>Ben:</b> But you (4) [REVEAL: used to live] abroad, too, right? Was it Germany?</p><p><b>Amy:</b> No, we didn't live there. But we (5) [REVEAL: used to visit] my grandparents there every summer.</p></div>"
+    },
+    {
+      "layout": "segue",
+      "title": "The Grammar Repair Shop",
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "layout": "editing",
+      "badge": "EXPLANATION",
+      "title": "THE REPAIR SHOP: USED TO",
+      "items": [
+        {
+          "parts": [
+            { "text": "I " },
+            { "wrong": true, "text": "am use to", "correct": "used to" },
+            { "text": " play football every day." }
+          ]
+        },
+        {
+          "parts": [
+            { "text": "Did you " },
+            { "wrong": true, "text": "used to", "correct": "use to" },
+            { "text": " go to school in China?" }
+          ]
+        }
+      ]
+    },
+    {
+      "layout": "segue",
+      "title": "Action vs State",
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "layout": "impact",
+      "badge": "EXPLANATION",
+      "title": "ACTIONS <i class='fa-solid fa-person-walking'></i>",
+      "text": "Physical movements or repeated events.<br><br><i data-id='walker' class='fa-solid fa-person-walking' style='color: #FFD700; margin-right: 15px;'></i> I <b>would</b> walk to school every day.",
+      "animation": { "type": "auto-animate" }
+    },
+    {
+      "layout": "impact",
+      "badge": "EXPLANATION",
+      "title": "ACTIONS <i class='fa-solid fa-person-walking'></i>",
+      "text": "Physical movements or repeated events.<br><br>I <b>would</b> walk to school every day. <i data-id='walker' class='fa-solid fa-person-walking' style='color: #FFD700; margin-left: 15px;'></i>",
+      "animation": { "type": "auto-animate" },
+      "background": { "retain_from_previous": true }
+    },
+    {
+      "layout": "editing",
+      "badge": "EXPLANATION",
+      "title": "STATES <i class='fa-solid fa-house'></i>",
+      "animation": { "type": "auto-animate" },
+      "items": [
+        {
+          "parts": [
+            { "text": "Permanent situations or feelings.<br><br>I " },
+            { "wrong": true, "text": "would", "correct": "used to" },
+            { "text": " live in a small house." }
+          ]
+        }
+      ]
+    },
+    {
+      "layout": "impact",
+      "badge": "EXPLANATION",
+      "title": "ACTIONS <i class='fa-solid fa-table-tennis-paddle-ball'></i>",
+      "text": "Both options are correct for actions!<br><br><i data-id='tennis-ball' class='fa-solid fa-circle' style='color: #FFD700; margin-right: 15px;'></i> I <b>would</b> / <b>used to</b> play tennis.",
+      "animation": { "type": "auto-animate" }
+    },
+    {
+      "layout": "impact",
+      "badge": "EXPLANATION",
+      "title": "ACTIONS <i class='fa-solid fa-table-tennis-paddle-ball'></i>",
+      "text": "Both options are correct for actions!<br><br>I <b>split_table</b> / <b>used to</b> play tennis. <i data-id='tennis-ball' class='fa-solid fa-circle' style='color: #FFD700; margin-left: 15px;'></i>",
+      "animation": { "type": "auto-animate" },
+      "background": { "retain_from_previous": true }
+    },
+    {
+      "layout": "impact",
+      "badge": "CHECK",
+      "title": "IS IT A STATE?",
+      "text": "Can you see it moving? No? It's a State!",
+      "points": [
+        { "icon": "fa-solid fa-eye", "text": "ACTIONS: play, run, go, visit (Use 'Used to' or 'Would')" },
+        { "icon": "fa-solid fa-heart", "text": "STATES: be, live, have, know, love (Use 'Used to' ONLY)" }
+      ]
+    },
+    {
+      "layout": "segue",
+      "title": "Task 2: The Replacement Challenge",
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 2",
+      "title": "SUPER-SMART KIDS",
+      "strategy_items": [
+        {
+          "icon": "fa-solid fa-magnifying-glass",
+          "text": "Decide if <b>used to</b> can be replaced with <b>would</b>. If it's a state verb, you can't!"
+        }
+      ]
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 2",
+      "title": "THE REPLACEMENT CHALLENGE (PART 1)",
+      "timer": 420,
+      "content": "<div style='display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left;'><div style='padding-right: 15px; border-right: 1px solid gold; line-height: 1.6;'>Taylor Wilson (1) <b>used to dream</b> about space. He (2) <b>used to read</b> books about science all the time. He (3) <b>didn't use to spend</b> much time playing games. He (4) <b>used to go</b> around talking to people about his ideas. Taylor (5) <b>used to live</b> in Arkansas before he moved to a bigger city.</div><div><table style='width: 100%;'><tr><td>1. [REVEAL: ---]</td></tr><tr><td>2. [REVEAL: would]</td></tr><tr><td>3. [REVEAL: wouldn't]</td></tr><tr><td>4. [REVEAL: would]</td></tr><tr><td>5. [REVEAL: ---]</td></tr></table></div></div>"
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 2",
+      "title": "THE REPLACEMENT CHALLENGE (PART 2)",
+      "content": "<div style='display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left;'><div style='padding-right: 15px; border-right: 1px solid gold; line-height: 1.6;'>Brittany Wenger's parents (6) <b>used to tell</b> her she was too young to be a scientist. She (7) <b>used to spend</b> time looking at computer code every evening. She (8) <b>didn't use to ignore</b> her schoolwork, but she (9) <b>used to get</b> better grades in science than in history. Brittany (10) <b>used to live</b> in Ohio.</div><div><table style='width: 100%;'><tr><td>6. [REVEAL: would]</td></tr><tr><td>7. [REVEAL: would]</td></tr><tr><td>8. [REVEAL: wouldn't]</td></tr><tr><td>9. [REVEAL: would]</td></tr><tr><td>10. [REVEAL: ---]</td></tr></table></div></div>"
+    },
+    {
+      "layout": "segue",
+      "title": "Task 3: Repairing Sentences",
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "layout": "strategy",
+      "badge": "TASK 3",
+      "title": "REPAIR THE SENTENCES",
+      "strategy_items": [
+        {
+          "icon": "fa-solid fa-hammer",
+          "text": "Complete the sentences. Watch out for 'be' and 'live'!"
+        }
+      ]
+    },
+    {
+      "layout": "split_table",
+      "badge": "TASK 3",
+      "title": "SENTENCE REPAIR",
+      "timer": 300,
+      "content": "<ol style='font-size: 0.8em; text-align: left;'><li>In the summer, the kids [REVEAL: would / used to] often stay up late.</li><li>The students [REVEAL: used to] be strangers.</li><li>I [REVEAL: used to] cycle to school.</li><li>My dad [REVEAL: used to] work as a lawyer.</li><li>We [REVEAL: used to] live in a house.</li></ol>"
+    },
+    {
+      "layout": "segue",
+      "title": "Task 4: Your Past Habits",
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "layout": "impact",
+      "badge": "PRODUCTION",
+      "title": "MY LIFE, THEN AND NOW",
+      "text": "Think of a major change in your life. Write 3 sentences about your habits and states before the change using <b>used to</b> and <b>would</b>.",
+      "timer": 480
+    },
+    {
+      "layout": "answer",
+      "badge": "PRODUCTION",
+      "title": "TASK 4: STUDENT COLLABORATION",
+      "content": "<p>Share your sentences with your group. Check for correct use of <b>used to</b> (states/habits) and <b>would</b> (actions only).</p>"
+    },
+    {
+      "layout": "title",
+      "title": "MISSION ACCOMPLISHED",
+      "subtitle": "Well Done, Language Masters!",
+      "background": {
+        "type": "color",
+        "src": "#000000",
+        "retain_from_previous": false
+      }
+    }
+  ]
+}

@@ -6,30 +6,30 @@
 
     <div style="text-align: center; width: 100%; max-width: 1200px; margin: auto;">
         {% if slide.badge %}
-        <div class="mission-badge" style="display: inline-block; margin-bottom: 20px; min-width: auto; padding: 10px 30px;">
+        <div data-id="impact-badge" class="mission-badge" style="display: inline-block; margin-bottom: 20px; min-width: auto; padding: 10px 30px;">
             <span style="font-weight: 800; letter-spacing: 2px;">{{ slide.badge }}</span>
         </div>
         {% endif %}
 
-        <h1 data-id="impact-title"
-            style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 40px;">
-            {{ slide.title }}
+        <h1 data-id="header-title"
+            style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 20px;">
+            {{ slide.title | safe }}
         </h1>
         
-        <div style="background: rgba(0,0,0,0.6); padding: 50px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
-            <p style="font-size: 1.4em; color: white; line-height: 1.4; margin: 0;">
+        <div data-id="impact-text-box" style="background: rgba(0,0,0,0.6); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <p style="font-size: var(--ped-lead-in-size); color: white; line-height: 1.4; margin: 0;">
                 {{ (slide.text | default(slide.main_text)) | parse_directives | safe }}
             </p>
         </div>
 
         {% if slide.audio %}
-        <div style="margin-top: 30px; display: flex; justify-content: center;">
+        <div style="margin-top: 20px; display: flex; justify-content: center;">
             <audio-player src="{{ slide.audio }}"></audio-player>
         </div>
         {% endif %}
 
         {% if slide.timer %}
-        <div class="timer-container" style="margin-top: 40px; justify-content: center; gap: 30px;">
+        <div class="timer-container" style="margin-top: 20px; justify-content: center; gap: 30px;">
             <div class="timer-display" id="timer-{{ slide.timer }}-display"
                 style="font-size: 2.5em; font-family: monospace; color: #FFD700; text-shadow: 0 0 15px rgba(0,0,0,0.9);">
                 {% set mins = (slide.timer / 60) | int %}{% set secs = (slide.timer % 60) | int %}
@@ -45,11 +45,11 @@
         {% endif %}
 
         {% if slide.points %}
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 50px;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;">
             {% for point in slide.points %}
-            <div class="mission-badge" style="min-width: 250px;">
-                <i class="fas {{ point.icon | default('fa-check') }}" style="font-size: 1.5em; color: #FFD700;"></i>
-                <span style="display: block; margin-top: 10px;">{{ point.text | parse_directives | safe }}</span>
+            <div data-id="point-{{ loop.index0 }}" class="mission-badge" style="min-width: 850px; flex-direction: row; text-align: left; padding: 10px 25px; gap: 25px;">
+                <i class="fas {{ point.icon | default('fa-check') }}" style="font-size: 1.3em; color: #FFD700; width: 40px; text-align: center;"></i>
+                <span style="font-size: var(--ped-body-size); margin-top: 0;">{{ point.text | parse_directives | safe }}</span>
             </div>
             {% endfor %}
         </div>

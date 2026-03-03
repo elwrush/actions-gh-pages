@@ -2,25 +2,27 @@
     {% if slide.badge %}
     <h3 style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em;">{{ slide.badge }}</h3>
     {% endif %}
-    <h2 data-id="strategy-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">{{
+    <h2 data-id="header-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">{{
         slide.title | parse_directives | safe }}</h2>
+<div
+    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size);">
+    {% if slide.strategy_items %}
+        <ul style="list-style: none; padding: 0; margin: 0;">
+        {% for item in slide.strategy_items %}
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas {{ item.icon }}" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>{{ item.text | parse_directives | safe }}</span>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</div>
 
-    <div
-        style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: 1.0em;">
-        {% if slide.strategy_items %}
-            <ul style="list-style: none; padding: 0; margin: 0;">
-            {% for item in slide.strategy_items %}
-                <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
-                    <i class="fas {{ item.icon | default('fa-lightbulb') }}" style="color: #FFD700; font-size: 1.2em;"></i>
-                    <span>{{ item.text | parse_directives | safe }}</span>
-                </li>
-            {% endfor %}
-            </ul>
-        {% else %}
-            {{ (slide.content if slide.content else slide.table) | parse_directives | safe }}
-        {% endif %}
-    </div>
-
+{% if slide.content or slide.table %}
+<div style="margin-top: 30px; font-size: var(--ped-body-size);">
+    {{ (slide.content if slide.content else slide.table) | parse_directives | safe }}
+</div>
+{% endif %}
     {% if slide.timer %}
     <div class="timer-container" style="margin-top: 20px; justify-content: flex-start;">
         <div class="timer-display" id="timer-{{ slide.timer }}-display"

@@ -39,8 +39,9 @@
 
 #v(0.5cm)
 
-#task_header(1, "Complete the Dialogue")
 #block(breakable: false, [
+  #task_header(1, "Complete the Dialogue")
+  #v(0.3cm)
   #text(size: 11pt)[Complete the dialogue with the correct form of *used to* and short answers.]
   #v(0.3cm)
   #set par(leading: 1.2em)
@@ -55,10 +56,11 @@
   *Amy:* No, we didn't live there. But we (5) #box(width: 4cm, stroke: (bottom: 0.75pt + black), outset: (bottom: 2pt))[#hide[a]] (visit) my grandparents there every summer.
 ])
 
-#v(0.8cm)
+#v(0.5cm)
 
-#task_header(2, "The Replacement Challenge")
 #block(breakable: false, [
+  #task_header(2, "The Replacement Challenge")
+  #v(0.3cm)
   #text(size: 11pt)[Read the text about Two Super-Smart Kids. Decide if the numbered *used to* phrases can be replaced with *would* or *wouldn't*. If possible, write *would* or *wouldn't*. If not possible (because it is a state verb), write a dash (---).]
   #v(0.3cm)
 
@@ -100,10 +102,11 @@
   )
 ])
 
-#v(0.8cm)
+#v(0.5cm)
 
-#task_header(3, "Sentence Repair")
 #block(breakable: false, [
+  #task_header(3, "Sentence Repair")
+  #v(0.3cm)
   #text(size: 11pt)[Complete the sentences with *used to / didn't use to* or *would / wouldn't*. For some sentences, both forms are possible.]
   #v(0.3cm)
 
@@ -114,4 +117,22 @@
   + Before I got a bike, I #box(width: 4cm, stroke: (bottom: 0.75pt + black), outset: (bottom: 2pt))[#hide[a]] cycle to school. I walked every day.
   + My dad #box(width: 4cm, stroke: (bottom: 0.75pt + black), outset: (bottom: 2pt))[#hide[a]] work as a lawyer, but then he retrained to become a teacher.
   + We #box(width: 4cm, stroke: (bottom: 0.75pt + black), outset: (bottom: 2pt))[#hide[a]] live in a house, we lived in an apartment.
+])
+
+#v(0.5cm)
+
+#block(breakable: false, [
+  #task_header(4, "My Life, Then and Now")
+  #v(0.3cm)
+  #text(size: 11pt)[Think about a major change in your life (e.g., starting a new school, moving house, getting a new hobby). Write three sentences comparing your habits and states from before the change to now, using *used to* and *would*.]
+  #v(0.3cm)
+
+  #set enum(numbering: "1.")
+  #set par(leading: 1.5em)
+  + #box(width: 100%, stroke: (bottom: 0.75pt + black), outset: (bottom: 2pt))[#hide[a]]
+  + #box(width: 100%, stroke: (bottom: 0.75pt + black), outset: (bottom: 2pt))[#hide[a]]
+  + #box(width: 100%, stroke: (bottom: 0.75pt + black), outset: (bottom: 2pt))[#hide[a]]
+
+  #v(0.5cm)
+  #text(size: 11pt, weight: "bold")[Share your sentences with a partner or small group!]
 ])

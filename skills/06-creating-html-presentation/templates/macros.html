@@ -9,7 +9,7 @@
 {% macro render_background(bg) %}
     {% if bg %}
         {% if bg.type == 'video' %}
-            data-background-video="{{ bg.src }}" data-background-video-loop
+            data-background-video="{{ bg.src }}" data-background-video-loop data-background-video-muted
         {% elif bg.type == 'image' %}
             data-background-image="{{ bg.src }}"
         {% elif bg.type == 'color' %}

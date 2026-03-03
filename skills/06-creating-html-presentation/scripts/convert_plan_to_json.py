@@ -61,7 +61,11 @@ def parse_visual_plan(filepath):
             for i in range(len(ids) - 1):
                 edges.append((ids[i], ids[i+1]))
 
-    return nodes, edges
+    # Extract Title Video URL
+    title_video_match = re.search(r'\*\*Title Video:\*\* `(.*?)`', content)
+    title_video_url = title_video_match.group(1) if title_video_match else None
+
+    return nodes, edges, title_video_url
 
 def sort_nodes(nodes, edges):
     if not nodes:
@@ -113,14 +117,35 @@ def sort_nodes(nodes, edges):
 
     return ordered
 
-def generate_json(nodes, ordered_ids, mappings):
+def generate_json(nodes, ordered_ids, mappings, title_video_url):
     slides = []
-    for node_id in ordered_ids:
-        label = nodes.get(node_id, "")
+    
+    # Handle the title slide separately as it has a specific video background
+    title_slide_data = {
+        "layout": "title",
+        "title": nodes.get("Title Slide", "Generated Presentation"), # Assuming 'Title Slide' is a node ID
+        "subtitle": "Mastering 'Used To' vs 'Would' for Past Habits", # Placeholder, might need extraction
+        "background": {
+            "type": "video",
+            "src": title_video_url,
+            "retain_from_previous": False # First slide, no retention
+        }
+    }
+    slides.append(title_slide_data)
 
-        # Skip purely structural Start/End nodes
-        if label.strip().upper() in ["START", "END"]:
+    # Find the node that represents the Mission Slide from visual_plan.md
+    mission_slide_id = None
+    for node_id, label in nodes.items():
+        if "mission" in label.lower():
+            mission_slide_id = node_id
+            break
+
+    for node_id in ordered_ids:
+        # Skip purely structural Start/End nodes and Title Slide (already handled)
+        if node_id == "Title Slide" or label.strip().upper() in ["START", "END"]:
             continue
+
+        label = nodes.get(node_id, "")
 
         layout = "split_table" # Default
 
@@ -141,6 +166,23 @@ def generate_json(nodes, ordered_ids, mappings):
             "title": label,
             "content": f"<p>{label}</p>"
         }
+        
+        # Background for non-title slides (defaults to mission_bg_clipped.mp4 if it's the mission slide) 
+        if node_id == mission_slide_id:
+            slide["background"] = {
+                "type": "video",
+                "src": "/images/mission_bg_clipped.mp4",
+                "retain_from_previous": False
+            }
+            slide["title"] = "YOUR MISSION" # Explicitly set for mission slide
+            # Extract mission items from SOURCE_TEXT.md for the mission slide
+            # This is a placeholder, a more robust solution would parse SOURCE_TEXT more deeply.
+            slide["mission_items"] = [
+                {"icon": "fas fa-bullseye", "text": "Identify the difference between past states and past actions."},
+                {"icon": "fas fa-tools", "text": "Repair sentences by choosing the most precise grammatical structure."},
+                {"icon": "fas fa-microphone", "text": "Produce accurate descriptions of your own childhood habits."}
+            ]
+
 
         # Add required fields for specific layouts to prevent render errors
         if layout == "video":
@@ -153,14 +195,13 @@ def generate_json(nodes, ordered_ids, mappings):
              slide["right_items"] = [{"text": "Item A"}]
              slide["rationale"] = label
 
-        if layout == "mission":
-            slide["mission_title"] = label
-
+        # If the node is *not* the mission slide, then append it
         slides.append(slide)
 
     presentation = {
         "meta": {
-            "title": "Generated Presentation"
+            "title": nodes.get("Title Slide", "Generated Presentation"),
+            "theme": "thai-heritage" # Default theme for Bell Language Centre
         },
         "slides": slides
     }
@@ -179,9 +220,9 @@ def main():
     mapping_path = os.path.join(repo_root, "knowledge_base", "reveal_activity_matrix.md")
 
     mappings = load_mappings(mapping_path)
-    nodes, edges = parse_visual_plan(plan_path)
+    nodes, edges, title_video_url = parse_visual_plan(plan_path)
     ordered_ids = sort_nodes(nodes, edges)
-    presentation_json = generate_json(nodes, ordered_ids, mappings)
+    presentation_json = generate_json(nodes, ordered_ids, mappings, title_video_url)
 
     output_dir = os.path.dirname(plan_path)
     output_path = os.path.join(output_dir, "presentation.json")

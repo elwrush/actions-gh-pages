@@ -9,11 +9,30 @@
     <link rel="stylesheet" href="{{ root_path }}dist/reset.css">
     <link rel="stylesheet" href="{{ root_path }}dist/reveal.css">
     <link rel="stylesheet" href="{{ root_path }}dist/theme/black.css" id="theme">
-    <link rel="stylesheet" href="{{ root_path }}fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
+        :root {
+            /* FIXED FONT MATRIX */
+            --r-main-font-size: 40px;
+            --r-heading1-size: 2.4em;   /* Main Titles */
+            --r-heading2-size: 1.6em;   /* Section Headers */
+            --r-heading3-size: 1.1em;   /* Badges / Small Headers */
+            --r-heading4-size: 1.0em;
+            
+            --ped-lead-in-size: 1.5em;  /* Impact / Prompt Text */
+            --ped-body-size: 1.1em;     /* Dialogue / Exercise Text */
+            --ped-note-size: 0.8em;     /* Rationales / Footnotes */
+            
+            --r-block-margin: 20px;
+        }
+
         .reveal .slides {
-            /* Let Reveal.js handle base font scaling */
+            text-align: center;
+        }
+
+        .reveal .slides section {
+            font-size: var(--r-main-font-size);
         }
 
         /* TIMER UI - Native Styling */
@@ -183,7 +202,10 @@
         <div class="slides">
             {% set last_bg = namespace(src=None, type=None) %}
             {% for slide in slides %}
-                {% if slide.background and slide.background.retain_from_previous and last_bg.src %}
+                {# Handle both slide.video (root level) and slide.background (nested object) #}
+                {% if slide.video and not slide.background %}
+                    {% set current_bg = {'type': 'video', 'src': slide.video} %}
+                {% elif slide.background and slide.background.retain_from_previous and last_bg.src %}
                     {% set current_bg = {'type': last_bg.type, 'src': last_bg.src} %}
                 {% else %}
                     {% set current_bg = slide.background %}
@@ -356,7 +378,7 @@
             hash: true,
             width: 1280,
             height: 720,
-            margin: 0.1,
+            margin: 0.05,
             center: true,
             autoAnimateDuration: 1.2,
             autoAnimateEasing: 'ease-in-out',

@@ -61,6 +61,7 @@ For complex tasks, copy `.agent/workflows/task.md` to your lesson folder and com
 *   **Cognitive Load**:
     *   **Rule of 3 Lines**: Max 3-5 significant items per slide.
     *   **7-Second Rule**: Background videos must be ambient (7s loop), not distracting.
+    *   **The 16:9 Standard**: Presentations MUST initialize with a **1280x720** (16:9) aspect ratio and a `margin: 0.05` to ensure optimal font scaling and readability.
 
 ---
 

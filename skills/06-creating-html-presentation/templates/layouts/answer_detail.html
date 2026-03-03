@@ -1,15 +1,15 @@
 <div class="slide-canvas">
-    <div class="answer-detail-container">
+    <div data-id="answer-detail-main" class="answer-detail-container">
 
         <!-- Badge at TOP -->
         {% if slide.badge %}
-        <div class="badge-container badge-top">
-            <span class="gold-badge">{{ slide.badge }}</span>
+        <div data-id="impact-badge" class="badge-container badge-top">
+            <span class="gold-badge" style="font-size: var(--r-heading3-size);">{{ slide.badge }}</span>
         </div>
         {% endif %}
 
         <!-- Icon-only Answer Table -->
-        <table class="answer-table">
+        <table class="answer-table" style="font-size: var(--ped-body-size);">
             <tbody>
                 <!-- Row 1: QUESTION -->
                 <tr class="question-row">
@@ -40,7 +40,7 @@
                         {% if slide.para %}
                         <span class="para-badge">[Para {{ slide.para }}]</span>
                         {% endif %}
-                        <span class="evidence-inline">{{ (slide.evidence | default(slide.detail) | default('Text snippet or excerpt...')) | parse_directives | safe }}</span>
+                        <span class="evidence-inline" style="font-size: var(--ped-note-size);">{{ (slide.evidence | default(slide.detail) | default('Text snippet or excerpt...')) | parse_directives | safe }}</span>
                     </td>
                 </tr>
 

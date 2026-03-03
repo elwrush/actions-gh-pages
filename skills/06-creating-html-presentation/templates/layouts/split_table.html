@@ -2,25 +2,25 @@
     style="display: grid; grid-template-columns: 1fr; gap: 10px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
 
     <div
-        style="padding: 20px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+        style="padding: 20px 40px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
         {% if slide.badge %}
-        <div class="mission-badge" style="display: inline-block; margin-bottom: 15px; min-width: auto; padding: 8px 25px;">
-            <span style="font-weight: 800; letter-spacing: 2px; font-size: 0.8em;">{{ slide.badge }}</span>
+        <div class="mission-badge" style="display: inline-block; margin-bottom: 10px; min-width: auto; padding: 5px 20px;">
+            <span style="font-weight: 800; letter-spacing: 2px; font-size: 0.7em;">{{ slide.badge }}</span>
         </div>
         {% endif %}
 
         {% if slide.title %}
-        <h1 style="font-size: 1.1em; margin-bottom: 15px; line-height: 1.1; text-shadow: 2px 2px 4px black; color: #FFD700 !important;">{{
+        <h1 style="font-size: 1.1em; margin-bottom: 8px; line-height: 1.1; text-shadow: 2px 2px 4px black; color: #FFD700 !important;">{{
             slide.title | parse_directives | safe }}</h1>
         {% endif %}
 
         {% if slide.rationale %}
-        <div style="font-size: 0.7em; margin-bottom: 15px; color: #eee; font-style: italic; font-weight: 300;">
+        <div style="font-size: var(--ped-note-size); margin-bottom: 8px; color: #eee; font-style: italic; font-weight: 300;">
             <i class="fas fa-lightbulb" style="color: #FFD700; margin-right: 10px;"></i> {{ slide.rationale | parse_directives | safe }}
         </div>
         {% endif %}
 
-        <div class="table-container" style="font-size: 0.75em; line-height: 1.2; flex-grow: 1;">
+        <div class="table-container" style="font-size: var(--ped-body-size); line-height: 1.3; flex-grow: 1;">
             {{ slide.content | parse_directives | safe }}
         </div>
 
@@ -53,15 +53,22 @@
 </aside>
 
 <style>
+    .table-container p, .table-container div {
+        font-size: 0.75em !important;
+        line-height: 1.4 !important;
+        margin-bottom: 8px !important;
+    }
     .table-container table {
         width: 100% !important;
-        font-size: 0.9em !important;
+        font-size: var(--ped-body-size) !important;
+        border-collapse: collapse !important;
     }
     .table-container th {
         font-size: 0.8em !important;
-        padding: 10px !important;
+        padding: 8px !important;
     }
     .table-container td {
-        padding: 10px !important;
+        padding: 8px !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
     }
 </style>

@@ -69,7 +69,11 @@ Automated validation is enforced via `.gemini/hooks/`:
         - NEVER put manual page breaks immediately after the main reading text.
         - Questions and Ruled Lines MUST be wrapped in non-breakable blocks.
         - Minimum 0.8cm vertical clearance for all handwritten response lines.
-    - **Segue-Bridge Law**: EVERY `segue` slide MUST be followed by a pedagogical bridge (`strategy` or `vocab`).
+    - **The 16:9 Aspect Ratio Law**: All presentations MUST use **1280x720** (16:9) resolution with a `margin: 0.05` to ensure consistent font scaling.
+    - **The Pedagogical Font Matrix**: Standardized variables (`--ped-lead-in-size`, `--ped-body-size`) MUST be used to prevent font drift.
+    - **The Stable Matching Law**: Use consistent `data-id` attributes for structural elements and sequential IDs for dynamic items to stabilize `auto-animate`.
+    - **Segue-Bridge Law**: EVERY `segue` slide MUST be followed by a pedagogical bridge (`strategy`, `vocab`, `editing`, or a `PRODUCTION` task).
+    - **The Timer Law (Work-Only)**: Timers are MANDATORY for active student work/discussion and FORBIDDEN for transitions, titles, and explanations.
     - **No Teacher Jargon**: BANNED: "Pre-teaching", "Lead-in", "Gist", "Practice". Use student-centric terms.
     - **Vocab Standard**: White context text, 1.1em size, gold (#FFD700) highlighting for the target word.
     - **Strategy Standard**: White titles (1.4em), balanced table font (0.95em), horizontal timer layout.

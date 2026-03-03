@@ -18,15 +18,16 @@ from pathlib import Path
 
 # Known shared assets that exist in the root /images/ on gh-pages
 SHARED_MEDIA = {
-    "/images/mission_bg_clipped.mp4",
-    "/images/time_machine_bg.mp4",
-    "/images/basement.jpg",
-    "/images/discussion_book.png",
-    "/images/ACT.png",
-    "/images/gold_bg.mp4",
-    "/images/horror_house_7s.mp4",
-    "/images/spooky_woods_7s.mp4",
-    "/images/microphone_icon_transparent.png"
+    "images/mission_bg_clipped.mp4",
+    "images/time_machine_bg.mp4",
+    "images/basement.jpg",
+    "images/discussion_book.png",
+    "images/ACT.png",
+    "images/gold_bg.mp4",
+    "images/horror_house_7s.mp4",
+    "images/spooky_woods_7s.mp4",
+    "images/kid_boy_7s.mp4",
+    "images/microphone_icon_transparent.png"
 }
 
 def validate_media_paths(json_path):
@@ -36,6 +37,7 @@ def validate_media_paths(json_path):
 
     lesson_dir = Path(json_path).parent
     local_images_dir = lesson_dir / "images"
+    root_images_dir = Path(os.getcwd()) / "images"
     
     errors = []
     warnings = []
@@ -51,7 +53,7 @@ def validate_media_paths(json_path):
     config = data.get('config', {})
     bg_video = config.get('background_video')
     if bg_video:
-        if not is_valid_media_path(bg_video, local_images_dir):
+        if not is_valid_media_path(bg_video, local_images_dir, root_images_dir):
             errors.append(f"Config background_video: '{bg_video}' does not exist")
 
     # Check slide-level media
@@ -62,13 +64,13 @@ def validate_media_paths(json_path):
         # Check video
         video = slide.get('video')
         if video:
-            if not is_valid_media_path(video, local_images_dir):
+            if not is_valid_media_path(video, local_images_dir, root_images_dir):
                 errors.append(f"Slide {i} ({slide_title}): video '{video}' does not exist")
         
         # Check image
         image = slide.get('image')
         if image:
-            if not is_valid_media_path(image, local_images_dir):
+            if not is_valid_media_path(image, local_images_dir, root_images_dir):
                 errors.append(f"Slide {i} ({slide_title}): image '{image}' does not exist")
         
         # Check audio
@@ -101,26 +103,27 @@ def validate_media_paths(json_path):
     return True
 
 
-def is_valid_media_path(path, local_images_dir):
+def is_valid_media_path(path, local_images_dir, root_images_dir):
     """
     Check if media path is valid. Valid means:
       1. It's a known shared asset on gh-pages, OR
-      2. It exists in the local lesson images folder
+      2. It exists in the local lesson images folder, OR
+      3. It exists in the root images folder
     """
-    if path in SHARED_MEDIA:
+    # Normalize path by removing leading slash
+    norm_path = path.lstrip('/')
+    
+    if norm_path in SHARED_MEDIA:
         return True
     
-    # Convert /images/foo.png to local path
-    if path.startswith('/images/'):
-        filename = path.replace('/images/', '')
-        local_path = local_images_dir / filename
-        return local_path.exists()
-    
-    # Handle relative paths (e.g., "images/foo.png")
-    if path.startswith('images/'):
-        filename = path.replace('images/', '')
-        local_path = local_images_dir / filename
-        return local_path.exists()
+    # Check Priority 1: Local lesson folder
+    filename = norm_path.replace('images/', '')
+    if (local_images_dir / filename).exists():
+        return True
+        
+    # Check Priority 2: Root images folder
+    if (root_images_dir / filename).exists():
+        return True
     
     return False
 

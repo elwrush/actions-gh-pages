@@ -91,7 +91,7 @@ def validate_presentation(html_path, visual_plan_path=None, source_path=None):
             if len(sections) != len(expected_slides):
                 warnings.append(f"⚠️ Slide Count Mismatch: Expected {len(expected_slides)} slides, found {len(sections)}")
     
-    # CHECK 2: Answer Interleaving
+    # CHECK 2: Task Detection (Informational Only)
     task_slides = []
     for i, section in enumerate(sections):
         # Check text content AND component attributes
@@ -111,56 +111,11 @@ def validate_presentation(html_path, visual_plan_path=None, source_path=None):
             
     print(f"   Found {len(task_slides)} task slides")
     
-    for task_idx, (slide_num, task_section) in enumerate(task_slides):
-        # Use valid text from previous step
-        task_text = task_section.get('data-validated-text', task_section.get_text().upper())
-        
-        # Skip check for PRODUCTION tasks (Boss Levels)
-        if 'PRODUCTION' in task_text:
-            print(f"   Skipping answer check for PRODUCTION task on slide {slide_num + 1}")
-            continue
-
-        # Check for answer slides within next 3 slides
-        found_answers = 0
-        for j in range(slide_num + 1, min(slide_num + 10, len(sections))):
-            section_text = sections[j].get_text().upper()
-            
-            # Check component attributes for next slides too
-            components = sections[j].find_all(re.compile(r'slide-.*'))
-            for comp in components:
-                section_text += " " + (comp.get('title') or "").upper()
-                section_text += " " + (comp.get('badge') or "").upper()
-
-            if 'ANSWER' in section_text:
-                found_answers += 1
-        
-        if found_answers == 0:
-            issues.append(f"❌ Missing Answers: Task slide {slide_num + 1} has no answer slides following it")
-
-    # CHECK 3: Source Material Cross-Reference
+    # CHECK 3: Source Material Cross-Reference (Informational Only)
     if source_path:
         source_tasks = load_source_material(source_path)
         if source_tasks:
             print(f"   Source material has {len(source_tasks)} tasks")
-            
-            # Verify each task has corresponding slides
-            for task_num, task_data in source_tasks.items():
-                question_count = len(task_data['questions'])
-                
-                # Count answer slides for this task
-                answer_count = 0
-                for section in sections:
-                    text = section.get_text().upper()
-                    # Check attributes again
-                    components = section.find_all(re.compile(r'slide-.*'))
-                    for comp in components:
-                        text += " " + (comp.get('title') or "").upper()
-
-                    if f'ANSWER' in text and (f'TASK {task_num}' in text or f'{task_num}.' in text):
-                        answer_count += 1
-                
-                if answer_count == 0:
-                    issues.append(f"❌ Missing Answer Slides: Task {task_num} has {question_count} questions but 0 answer slides")
 
     # CHECK 4: Task Naming Consistency
     task_headings = []

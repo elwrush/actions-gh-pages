@@ -20,29 +20,61 @@ def validate_worksheet_layout(file_path):
     errors = []
 
     # 1. RED: Test for Task & Content Integrity
-    tasks = re.split(r'(#task_header\(.*?\))', content)
-    if len(tasks) > 1:
-        for i in range(1, len(tasks), 2):
-            header = tasks[i]
-            body = tasks[i+1] if (i+1) < len(tasks) else ""
-            if not body.strip().startswith("#block(breakable: false"):
-                task_name_match = re.search(r'"(.*?)"', header)
-                task_name = task_name_match.group(1) if task_name_match else "Unknown"
+    # Find all task_header calls
+    task_headers = re.finditer(r'#task_header\((.*?)\)', content)
+    for header_match in task_headers:
+        full_header_call = header_match.group(0)
+        task_name_match = re.search(r'"(.*?)"', full_header_call)
+        task_name = task_name_match.group(1) if task_name_match else "Unknown Task"
+
+        # Find the immediately preceding block(breakable: false, [...]) that encloses this task_header
+        # This regex looks backwards for the start of the block and forwards for its end, encapsulating the header.
+        # This is a challenging regex due to nested structures, so we'll use a multi-step check.
+        
+        # Step 1: Find the task_header
+        header_start = header_match.start()
+        
+        # Step 2: Search backwards for the nearest #block(breakable: false, [
+        block_start_pattern = r'#block\(breakable:\s*false,\s*\['
+        block_start_match = None
+        for match in re.finditer(block_start_pattern, content[:header_start]):
+            block_start_match = match
+
+        if block_start_match:
+            block_start_pos = block_start_match.start()
+            
+            # Step 3: Check if this block also contains the closing bracket after the header
+            # This is a heuristic, as true nested parsing is complex with regex.
+            # We'll search for the closing `])` after the `block_start_pos`
+            block_end_pattern = r'\]\)'
+            block_end_match = re.search(block_end_pattern, content[header_start:])
+            
+            if not block_end_match:
                 errors.append(
-                    f"[FAIL] Task Integrity Violation: Task '{task_name}' is not wrapped in a non-breakable block."
+                    f"[FAIL] Task Integrity Violation: Task '{task_name}' is not correctly enclosed in a non-breakable block (missing closing '}}')."
                 )
+        else:
+            errors.append(
+                f"[FAIL] Task Integrity Violation: Task '{task_name}' is not wrapped in a non-breakable block."
+            )
 
     # 2. RED: Test for Aligned Answer Lines
     # Look for grid blocks that contain enums
     grid_pattern = re.compile(r'#grid\(.*?\[(.*?)\]', re.DOTALL)
+    expected_box_pattern = r'#box\(width: (\d+cm), stroke: \(bottom: 0\.75pt \+ black\), outset: \(bottom: 2pt\)\)\[#hide\[a\]\]'
+
     for grid_match in grid_pattern.finditer(content):
         grid_content = grid_match.group(1)
         if "#set enum" in grid_content:
-            # Extract the enum items - match '+' at start of line or after newline+spaces
-            items = re.findall(r'(?:^|\n)\s*\+ (.*?)(?=\n\s*\+ |$)', grid_content, re.DOTALL)
-            for item in items:
-                clean_item = item.strip()
-                if clean_item and not (clean_item.startswith('#box') and '[#hide[a]]' in clean_item):
+            # Extract the enum items that match the expected box pattern
+            items = re.findall(r'\+ (' + expected_box_pattern + r')', grid_content)
+            
+            # Also find any items that DON'T match the pattern but are preceded by '+'
+            all_plus_items = re.findall(r'(?:^|\n)\s*\+ ([^+\n]*(?:\n[^+\n]*)*)(?=\n\s*\+ |$)', grid_content)
+            
+            for raw_item in all_plus_items:
+                clean_item = raw_item.strip()
+                if clean_item and not re.fullmatch(expected_box_pattern, clean_item):
                      errors.append(
                         f"[FAIL] Line Alignment Violation: Found an answer line not using the standard '#box...[#hide[a]]' method. Content: '{clean_item}'"
                      )

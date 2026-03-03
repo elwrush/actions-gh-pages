@@ -5,30 +5,30 @@ import shutil
 import re
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
+
 from PIL import Image
 
-
-def resize_image(src_path, dst_path, max_width=1920, quality=85):
+def resize_image_internal(src_path, dst_path, max_width=1920, quality=85):
     """Resizes an image if it exceeds max_width and saves it as optimized JPEG/PNG."""
     # Ensure they are strings for consistency
     src_path = str(src_path)
     dst_path = str(dst_path)
-    
+
     try:
         with Image.open(src_path) as img:
             # Convert to RGB if saving as JPEG
             if img.mode in ("RGBA", "P") and dst_path.lower().endswith((".jpg", ".jpeg")):
                 img = img.convert("RGB")
-            
+
             width, height = img.size
             if width > max_width:
                 ratio = max_width / float(width)
                 new_size = (max_width, int(height * ratio))
                 img = img.resize(new_size, Image.Resampling.LANCZOS)
                 print(f"  [RESIZE] {os.path.basename(src_path)}: {width}px -> {max_width}px")
-            
+
             img.save(dst_path, optimize=True, quality=quality)
-            
+
             final_size = os.path.getsize(dst_path)
             if final_size > 1024 * 1024:
                 print(f"  [WARN] {os.path.basename(dst_path)} is still large: {final_size/1024/1024:.2f}MB")
@@ -36,8 +36,17 @@ def resize_image(src_path, dst_path, max_width=1920, quality=85):
         print(f"  [ERROR] Processing {os.path.basename(src_path)}: {e}")
         shutil.copy2(src_path, dst_path)
 
-
-from scripts.jinja_parser import parse_directives
+# Manual import of jinja_parser filter
+def parse_directives(text):
+    if not isinstance(text, str):
+        return text
+    # Gapfills: [REVEAL: text] -> <span class="fragment highlight-gold">text</span>
+    text = re.sub(r'\[REVEAL:\s*(.*?)\]', r'<span class="fragment" style="color: #FFD700; font-weight: bold;">\1</span>', text)
+    # Strikethrough: [STRIKE: text] -> <span class="fragment strike-anim">text</span>
+    text = re.sub(r'\[STRIKE:\s*(.*?)\]', r'<span class="fragment strike-anim">\1</span>', text)
+    # Highlights: [HIGHLIGHT: text] -> <span style="color: #FFD700;">text</span>
+    text = re.sub(r'\[HIGHLIGHT:\s*(.*?)\]', r'<span style="color: #FFD700; font-weight: bold;">\1</span>', text)
+    return text
 
 def generate_presentation(json_path):
     # 1. Load Configuration
@@ -52,10 +61,7 @@ def generate_presentation(json_path):
 
     # Use the internal reveal.js library
     reveal_source = project_root / "lib" / "reveal"
-    if not reveal_source.exists():
-        print(f"[ERROR] Internal reveal.js engine not found in {reveal_source}")
-        sys.exit(1)
-
+    
     # Target 'published' folder within the lesson directory
     lesson_dir = Path(json_path).resolve().parent
     output_dir = lesson_dir / "published"
@@ -74,13 +80,32 @@ def generate_presentation(json_path):
                 except:
                     pass
 
+    # Implementation Choice: If lib/reveal is missing core folders, we try to clone the shallow repo
+    if not (reveal_source / "dist").exists() or not (reveal_source / "plugin").exists():
+        reveal_source.parent.mkdir(exist_ok=True)
+        print(f"  [GIT] Cloning reveal.js into {reveal_source}...")
+        os.system(f'git clone --depth 1 https://github.com/hakimel/reveal.js.git "{reveal_source}"')
+    
     # 3. Bundle Reveal.js Engine & UI Assets
     print("[1/4] Bundling engine & UI assets...")
     for folder in ["dist", "plugin", "fontawesome"]:
+        dst = output_dir / folder
         src = reveal_source / folder
+        
+        # Special case: fontawesome might be in project_root/lib/fontawesome instead of project_root/lib/reveal/fontawesome
+        if folder == "fontawesome" and not src.exists():
+            alt_src = project_root / "lib" / "fontawesome"
+            if alt_src.exists():
+                src = alt_src
+
         if src.exists():
-            dst = output_dir / folder
             shutil.copytree(src, dst, ignore=shutil.ignore_patterns(".git", "node_modules"), dirs_exist_ok=True)
+        else:
+            if folder == "fontawesome":
+                print(f"  [WARN] fontawesome not found in {reveal_source} or {project_root / 'lib' / 'fontawesome'}. UI icons might be missing.")
+            else:
+                print(f"[ERROR] Failed to acquire {folder} from {reveal_source}")
+                sys.exit(1)
 
     # Bundling shared CSS
     css_dst = output_dir / "css"
@@ -155,7 +180,7 @@ def generate_presentation(json_path):
             dst = images_dst / filename
             if filename.lower().endswith((".png", ".jpg", ".jpeg", ".webp")):
                 # Optimize/Resize Images
-                resize_image(src, dst)
+                resize_image_internal(src, dst)
             else:
                 # Copy videos/other media as-is
                 shutil.copy2(src, dst)

@@ -2,6 +2,10 @@ import json
 import sys
 import os
 import re
+import io
+
+# Fix Windows console encoding
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 def validate_gold_standard(json_path):
     if not os.path.exists(json_path):
@@ -83,9 +87,42 @@ def validate_gold_standard(json_path):
             if layout in ["impact", "split_table"] and not slide.get("audio") and any(word in slide_text_content.lower() for word in ["listen", "track", "recording"]):
                 errors.append(f"Slide {i+1} ({layout}): AUDIO MANDATE VIOLATION. Listening tasks must include an 'audio' field.")
         else:
-            # Timer Mandate for Impact (Reading/Grammar/etc)
-            if layout == "impact" and not slide.get("timer"):
-                errors.append(f"Slide {i+1} (impact): TIMER MANDATE VIOLATION. Non-listening tasks must have a 'timer' (int).")
+            # The Timer Law (Work-Only)
+            # Timers are MANDATORY for: split_table, editing, and impact slides with task keywords.
+            # Timers are FORBIDDEN for: title, segue, mission, vocab, answer_detail.
+            
+            task_keywords = ["discuss", "write", "complete", "identify", "choose", "share", "think", "pair", "brainstorm"]
+            is_work_slide = any(kw in slide_text_content.lower() for kw in task_keywords)
+            is_explanation_slide = any(kw in slide_text_content.lower() for kw in ["remember", "note", "explanation", "rule", "states vs actions", "check", "the repair shop"]) or slide.get("badge", "").lower() == "explanation"
+
+            # Check if previous slides in the same task group (by badge) had a timer
+            prev_has_timer = False
+            current_badge = slide.get("badge")
+            if current_badge and i > 0:
+                for prev_idx in range(i-1, -1, -1):
+                    prev_slide = slides[prev_idx]
+                    if prev_slide.get("badge") != current_badge:
+                        break
+                    if prev_slide.get("timer"):
+                        prev_has_timer = True
+                        break
+
+            if layout in ["split_table", "editing"]:
+                # Editing slides used for EXPLANATION (Modeling) don't need timers
+                if layout == "editing" and is_explanation_slide:
+                    if slide.get("timer"):
+                        errors.append(f"Slide {i+1} (editing): TIMER PROHIBITION VIOLATION. Explanation-focused editing slides must NOT have a 'timer'.")
+                elif not slide.get("timer") and not is_listening_slide and not prev_has_timer:
+                    errors.append(f"Slide {i+1} ({layout}): TIMER MANDATE VIOLATION. Tasks must have a 'timer' (int).")
+            
+            if layout == "impact":
+                if is_work_slide and not is_explanation_slide and not slide.get("timer") and not is_listening_slide:
+                    errors.append(f"Slide {i+1} (impact): TIMER MANDATE VIOLATION. Work/Discussion slides must have a 'timer' (int).")
+                elif is_explanation_slide and slide.get("timer"):
+                    errors.append(f"Slide {i+1} (impact): TIMER PROHIBITION VIOLATION. Explanation slides must NOT have a 'timer'.")
+            
+            if layout in ["title", "segue", "mission", "vocab", "answer_detail"] and slide.get("timer"):
+                 errors.append(f"Slide {i+1} ({layout}): TIMER PROHIBITION VIOLATION. {layout} slides must NOT have a 'timer'.")
 
         if layout == "answer":
             if not slide.get("answers") and not slide.get("content"):
@@ -127,18 +164,31 @@ def validate_gold_standard(json_path):
         else:
             if mission_slide.get("title") != "YOUR MISSION":
                 errors.append("Mission slide title MUST be exactly 'YOUR MISSION'.")
-            if "mission_bg_clipped.mp4" not in str(mission_slide.get("video", "")):
+            
+            # Support both flat 'video' and nested 'background.src'
+            video_src = mission_slide.get("video", "")
+            if not video_src and isinstance(mission_slide.get("background"), dict):
+                video_src = mission_slide.get("background", {}).get("src", "")
+            
+            if "mission_bg_clipped.mp4" not in str(video_src):
                 errors.append("Mission slide MUST use 'mission_bg_clipped.mp4'.")
 
     # 2. Segue-Bridge Mandate
     for i in range(len(slides) - 1):
         if slides[i].get("layout") == "segue":
             next_layout = slides[i+1].get("layout", "")
+            next_animation = slides[i+1].get("animation", {})
+            
             if next_layout == "vocab":
                 if slides[i].get("title") != "Let's learn some words":
                     errors.append(f"Slide {i+1} (segue) preceding vocabulary MUST have the title 'Let's learn some words'.")
-            elif next_layout != "strategy":
-                errors.append(f"Slide {i+1} (segue) MUST be followed by a 'strategy' slide for explicit instruction. Found: {next_layout}")
+            elif next_layout in ["strategy", "editing"]:
+                pass
+            # Allow impact if it's the start of an auto-animate morph sequence OR a PRODUCTION task
+            elif next_layout == "impact" and (next_animation.get("type") == "auto-animate" or slides[i+1].get("badge") == "PRODUCTION"):
+                pass
+            else:
+                errors.append(f"Slide {i+1} (segue) MUST be followed by a 'strategy', 'editing', or auto-animating 'impact' slide for explicit instruction. Found: {next_layout}")
         
         # Prohibition of Strategy before Vocab
         if slides[i].get("layout") == "strategy" and i < len(slides) - 1:
