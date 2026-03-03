@@ -1,0 +1,2108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>The Grammar Repair Shop</title>
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            /* FIXED FONT MATRIX */
+            --r-main-font-size: 40px;
+            --r-heading1-size: 2.4em;   /* Main Titles */
+            --r-heading2-size: 1.6em;   /* Section Headers */
+            --r-heading3-size: 1.1em;   /* Badges / Small Headers */
+            --r-heading4-size: 1.0em;
+            
+            --ped-lead-in-size: 1.5em;  /* Impact / Prompt Text */
+            --ped-body-size: 1.1em;     /* Dialogue / Exercise Text */
+            --ped-note-size: 0.8em;     /* Rationales / Footnotes */
+            
+            --r-block-margin: 20px;
+        }
+
+        .reveal .slides {
+            text-align: center;
+        }
+
+        .reveal .slides section {
+            font-size: var(--r-main-font-size);
+        }
+
+        /* TIMER UI - Native Styling */
+        .timer-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 5px auto;
+        }
+
+        .timer-display {
+            font-family: monospace;
+            font-size: 2.5em;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .timer-btn {
+            background: #FFD700;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 5px;
+            font-size: 0.8em;
+        }
+
+        .timer-btn.reset {
+            background: #444;
+            color: white;
+        }
+
+        /* Mission Badge Styling - Square, 10% smaller */
+        .mission-badge {
+            background-color: rgba(255, 215, 0, 0.15);
+            border: 2px solid #FFD700;
+            padding: 15px;
+            border-radius: 4px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin: 10px;
+            width: 320px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .mission-badge i {
+            font-size: 2em;
+            color: #FFD700;
+        }
+
+        /* Contrast Shadow for maximum pop on dimmed backgrounds */
+
+        /* Native Table Styling - Constrained */
+        .reveal table {
+            margin-top: 10px;
+            border-collapse: collapse;
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.2em;
+            background: rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        .reveal table th,
+        .reveal table td {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            text-align: left;
+        }
+
+        .reveal table th {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+        }
+
+        /* AUDIO PLAYER - Gold Standard Scrubber */
+        .audio-player {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #FFD700;
+            padding: 10px 15px;
+            /* Slightly tighter padding */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 95%;
+            /* Responsive width */
+            max-width: 600px;
+            margin: 10px auto;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+            /* Prevent padding from expanding width */
+            overflow: hidden;
+        }
+
+        .audio-play-btn {
+            background: #FFD700;
+            color: black;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+
+        .audio-play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-scrubber-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .audio-scrubber {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .audio-scrubber::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #FFD700;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px #FFD700;
+        }
+
+        .audio-time {
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #FFD700;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            
+                
+                
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-video="images/kid_boy_7s.mp4" data-background-video-loop data-background-video-muted
+        
+    
+
+        
+        
+        
+    >
+        <!-- Cinematic Overlay for Video Legibility - Softened for 80% visibility -->
+<div
+    style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); z-index: -1;">
+</div>
+
+<div class="slide-canvas" style="padding: 30px; width: 100%; text-align: center;">
+    <img src="images/ACT.png" class="inset-media" style="height: 120px; margin-bottom: 20px;">
+    <h4 style="color: var(--accent); letter-spacing: 2px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">ASSUMPTION
+        COLLEGE MATHAYOM</h4>
+    <h1 style="font-size: 3.5em; margin: 10px 0; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">THE GRAMMAR REPAIR SHOP</h1>
+    <h3 style="opacity: 0.8; font-weight: normal; color: #FFD700; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">Mastering 'Used To' vs 'Would' for Past Habits</h3>
+</div>
+
+<aside class="notes">
+    
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                        
+                        
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-video="images/mission_bg_clipped.mp4" data-background-video-loop data-background-video-muted
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas">
+    <!-- Cinematic Overlay for Video Legibility -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%); z-index: -1;">
+    </div>
+
+    <div style="position: relative; z-index: 2; padding: 40px; width: 100%; text-align: center;">
+        <h1
+            style="font-family: 'Outfit', sans-serif; color: white; margin-bottom: 40px; text-shadow: 2px 2px 15px rgba(0,0,0,1); font-size: 2.5em; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">
+            YOUR MISSION</h1>
+
+        
+        <!-- HORIZONTAL STACKING -->
+        <div
+            style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px; width: 100%;">
+            
+            <div class="mission-badge">
+                <i class="fas fa-solid fa-bullseye"></i>
+                <div style="color: white; font-size: 1.1em; line-height: 1.3; margin-top: 10px; text-align: center;">
+                    
+                    IDENTIFY: The difference between past states and past actions.
+                </div>
+            </div>
+            
+            <div class="mission-badge">
+                <i class="fas fa-solid fa-hammer"></i>
+                <div style="color: white; font-size: 1.1em; line-height: 1.3; margin-top: 10px; text-align: center;">
+                    
+                    REPAIR: Sentences by choosing the most precise grammatical structure.
+                </div>
+            </div>
+            
+            <div class="mission-badge">
+                <i class="fas fa-solid fa-microphone"></i>
+                <div style="color: white; font-size: 1.1em; line-height: 1.3; margin-top: 10px; text-align: center;">
+                    
+                    PRODUCE: Accurate descriptions of your own childhood habits.
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<aside class="notes">
+    
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                        
+                        
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-color="#8B1538"
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;"></div>
+    <h1 style="color: #FFD700; font-size: 3em; text-shadow: 2px 2px 15px rgba(0,0,0,1);">Memories from Age 10</h1>
+    
+</div>
+<aside class="notes">
+    Moving to next section.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+    
+    <h3 style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em;">WARM UP</h3>
+    
+    <h2 data-id="header-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">WHEN I WAS 10...</h2>
+<div
+    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size);">
+    
+        <ul style="list-style: none; padding: 0; margin: 0;">
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-solid fa-pen-to-square" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Think of 3 things you did as a child that you don't do now.</span>
+            </li>
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-solid fa-comments" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Share your memories with a partner using 'When I was 10, I...'</span>
+            </li>
+        
+        </ul>
+    
+</div>
+
+
+    
+    <div class="timer-container" style="margin-top: 20px; justify-content: flex-start;">
+        <div class="timer-display" id="timer-120-display"
+            style="font-size: 2.2em; font-family: monospace; color: #FFD700; text-shadow: 0 0 10px rgba(0,0,0,0.8); margin-right: 20px;">
+            
+            02:00
+        </div>
+        <button class="timer-btn"
+            onclick="toggleTimer(120, 'timer-120-display', this)">START</button>
+        <button class="timer-btn reset"
+            onclick="resetTimer(120, 'timer-120-display')">RESET</button>
+    </div>
+    
+</div>
+
+<aside class="notes">
+    Discuss the strategy with students.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas">
+    <!-- Cinematic Overlay -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%); z-index: -1;">
+    </div>
+
+    <div style="text-align: center; width: 100%; max-width: 1200px; margin: auto;">
+        
+        <div data-id="impact-badge" class="mission-badge" style="display: inline-block; margin-bottom: 20px; min-width: auto; padding: 10px 30px;">
+            <span style="font-weight: 800; letter-spacing: 2px;">TASK 1</span>
+        </div>
+        
+
+        <h1 data-id="header-title"
+            style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 20px;">
+            BEN'S LIFE IN CHINA
+        </h1>
+        
+        <div data-id="impact-text-box" style="background: rgba(0,0,0,0.6); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <p style="font-size: var(--ped-lead-in-size); color: white; line-height: 1.4; margin: 0;">
+                Let's look at Ben's experience living abroad. How did his habits change?
+            </p>
+        </div>
+
+        
+
+        
+        <div class="timer-container" style="margin-top: 20px; justify-content: center; gap: 30px;">
+            <div class="timer-display" id="timer-300-display"
+                style="font-size: 2.5em; font-family: monospace; color: #FFD700; text-shadow: 0 0 15px rgba(0,0,0,0.9);">
+                
+                05:00
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="timer-btn"
+                    onclick="toggleTimer(300, 'timer-300-display', this)">START</button>
+                <button class="timer-btn reset"
+                    onclick="resetTimer(300, 'timer-300-display')">RESET</button>
+            </div>
+        </div>
+        
+
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Introduce the task or discussion.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+    
+    <h3 style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em;">TASK 1</h3>
+    
+    <h2 data-id="header-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">DIALOGUE COMPLETION</h2>
+<div
+    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size);">
+    
+        <ul style="list-style: none; padding: 0; margin: 0;">
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-solid fa-book-open" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Complete the dialogue with the correct form of <b>used to</b> and short answers.</span>
+            </li>
+        
+        </ul>
+    
+</div>
+
+
+    
+</div>
+
+<aside class="notes">
+    Discuss the strategy with students.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas"
+    style="display: grid; grid-template-columns: 1fr; gap: 10px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+    <div
+        style="padding: 20px 40px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+        
+        <div class="mission-badge" style="display: inline-block; margin-bottom: 10px; min-width: auto; padding: 5px 20px;">
+            <span style="font-weight: 800; letter-spacing: 2px; font-size: 0.7em;">TASK 1</span>
+        </div>
+        
+
+        
+        <h1 style="font-size: 1.1em; margin-bottom: 8px; line-height: 1.1; text-shadow: 2px 2px 4px black; color: #FFD700 !important;">BEN'S LIFE IN CHINA (PART 1)</h1>
+        
+
+        
+
+        <div class="table-container" style="font-size: var(--ped-body-size); line-height: 1.3; flex-grow: 1;">
+            <div style='font-size: 0.9em; text-align: left;'><p><b>Amy:</b> Have you ever lived abroad?</p><p><b>Ben:</b> Yes, I have. I lived in China for a few years.</p><p><b>Amy:</b> (1) <span class="fragment" style="color: #FFD700; font-weight: bold;">Did you use to go</span> to school in China?</p><p><b>Ben:</b> Yes, I (2) <span class="fragment" style="color: #FFD700; font-weight: bold;">did</span>.</p><p><b>Amy:</b> Wow, that's really cool. Why were you there?</p></div>
+        </div>
+
+        
+
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Monitor student progress.
+</aside>
+
+<style>
+    .table-container p, .table-container div {
+        font-size: 0.75em !important;
+        line-height: 1.4 !important;
+        margin-bottom: 8px !important;
+    }
+    .table-container table {
+        width: 100% !important;
+        font-size: var(--ped-body-size) !important;
+        border-collapse: collapse !important;
+    }
+    .table-container th {
+        font-size: 0.8em !important;
+        padding: 8px !important;
+    }
+    .table-container td {
+        padding: 8px !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+    }
+</style>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas"
+    style="display: grid; grid-template-columns: 1fr; gap: 10px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+    <div
+        style="padding: 20px 40px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+        
+        <div class="mission-badge" style="display: inline-block; margin-bottom: 10px; min-width: auto; padding: 5px 20px;">
+            <span style="font-weight: 800; letter-spacing: 2px; font-size: 0.7em;">TASK 1</span>
+        </div>
+        
+
+        
+        <h1 style="font-size: 1.1em; margin-bottom: 8px; line-height: 1.1; text-shadow: 2px 2px 4px black; color: #FFD700 !important;">BEN'S LIFE IN CHINA (PART 2)</h1>
+        
+
+        
+
+        <div class="table-container" style="font-size: var(--ped-body-size); line-height: 1.3; flex-grow: 1;">
+            <div style='font-size: 0.9em; text-align: left;'><p><b>Ben:</b> My mother (3) <span class="fragment" style="color: #FFD700; font-weight: bold;">used to work</span> for a company that had an office in Shanghai.</p><p><b>Amy:</b> Shanghai? That's so interesting.</p><p><b>Ben:</b> But you (4) <span class="fragment" style="color: #FFD700; font-weight: bold;">used to live</span> abroad, too, right? Was it Germany?</p><p><b>Amy:</b> No, we didn't live there. But we (5) <span class="fragment" style="color: #FFD700; font-weight: bold;">used to visit</span> my grandparents there every summer.</p></div>
+        </div>
+
+        
+
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Monitor student progress.
+</aside>
+
+<style>
+    .table-container p, .table-container div {
+        font-size: 0.75em !important;
+        line-height: 1.4 !important;
+        margin-bottom: 8px !important;
+    }
+    .table-container table {
+        width: 100% !important;
+        font-size: var(--ped-body-size) !important;
+        border-collapse: collapse !important;
+    }
+    .table-container th {
+        font-size: 0.8em !important;
+        padding: 8px !important;
+    }
+    .table-container td {
+        padding: 8px !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+    }
+</style>
+    </section>
+
+            
+                
+                
+                    
+                    
+                        
+                        
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-color="#8B1538"
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;"></div>
+    <h1 style="color: #FFD700; font-size: 3em; text-shadow: 2px 2px 15px rgba(0,0,0,1);">The Grammar Repair Shop</h1>
+    
+</div>
+<aside class="notes">
+    Moving to next section.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section data-auto-animate>
+    <div
+        style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; max-width: 1100px; margin: auto;">
+        
+        <h3 data-id="editing-badge"
+            style="color: #FFD700; margin-bottom: 10px; font-size: var(--r-heading3-size); text-transform: uppercase; border-bottom: 2px solid #FFD700; display: inline-block;">
+            EXPLANATION</h3>
+        
+        <h2 data-id="header-title" style="font-size: var(--r-heading2-size); margin-bottom: 30px; text-shadow: 2px 2px 8px black;">THE REPAIR SHOP: USED TO</h2>
+
+        <div data-id="editing-content-box"
+            style="background: rgba(0,0,0,0.4); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size); line-height: 1.6;">
+            
+            
+            <div style="margin-bottom: 15px;">
+                
+                
+                I 
+                
+                
+                
+                <span data-id="mistake-0" style="color: #bbb; text-decoration: underline dashed #666;">am use to</span>
+                
+                
+                
+                
+                 play football every day.
+                
+                
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                
+                
+                Did you 
+                
+                
+                
+                <span data-id="mistake-1" style="color: #bbb; text-decoration: underline dashed #666;">used to</span>
+                
+                
+                
+                
+                 go to school in China?
+                
+                
+            </div>
+            
+        </div>
+    </div>
+    <aside class="notes">
+        Find the mistakes in the text. There are 2 mistakes to fix.
+    </aside>
+</section>
+
+
+
+<section data-auto-animate>
+    <div
+        style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; max-width: 1100px; margin: auto;">
+        
+        <h3 data-id="editing-badge"
+            style="color: #FFD700; margin-bottom: 10px; font-size: var(--r-heading3-size); text-transform: uppercase; border-bottom: 2px solid #FFD700; display: inline-block;">
+            EXPLANATION</h3>
+        
+        <h2 data-id="header-title" style="font-size: var(--r-heading2-size); margin-bottom: 30px; text-shadow: 2px 2px 8px black;">THE REPAIR SHOP: USED TO</h2>
+
+        <div data-id="editing-content-box"
+            style="background: rgba(0,0,0,0.4); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size); line-height: 1.6;">
+            
+            
+            <div style="margin-bottom: 15px;">
+                
+                
+                    I 
+                    
+                    
+                
+                 <span data-id="mistake-0"
+                    style="color: #00ff00; font-weight: bold; background: rgba(0,255,0,0.1); padding: 2px 5px; border-radius: 4px;">
+                    used to</span>
+                    
+                    
+                    
+                    
+                
+                     play football every day.
+                    
+                    
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                
+                
+                    Did you 
+                    
+                    
+                
+                
+                    <span data-id="mistake-1" style="color: #bbb; text-decoration: underline dashed #666;">used to</span>
+                    
+                    
+                    
+                    
+                
+                     go to school in China?
+                    
+                    
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section data-auto-animate>
+    <div
+        style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; max-width: 1100px; margin: auto;">
+        
+        <h3 data-id="editing-badge"
+            style="color: #FFD700; margin-bottom: 10px; font-size: var(--r-heading3-size); text-transform: uppercase; border-bottom: 2px solid #FFD700; display: inline-block;">
+            EXPLANATION</h3>
+        
+        <h2 data-id="header-title" style="font-size: var(--r-heading2-size); margin-bottom: 30px; text-shadow: 2px 2px 8px black;">THE REPAIR SHOP: USED TO</h2>
+
+        <div data-id="editing-content-box"
+            style="background: rgba(0,0,0,0.4); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size); line-height: 1.6;">
+            
+            
+            <div style="margin-bottom: 15px;">
+                
+                
+                    I 
+                    
+                    
+                
+                 <span data-id="mistake-0"
+                    style="color: #00ff00; font-weight: bold; background: rgba(0,255,0,0.1); padding: 2px 5px; border-radius: 4px;">
+                    used to</span>
+                    
+                    
+                    
+                    
+                
+                     play football every day.
+                    
+                    
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                
+                
+                    Did you 
+                    
+                    
+                
+                 <span data-id="mistake-1"
+                    style="color: #00ff00; font-weight: bold; background: rgba(0,255,0,0.1); padding: 2px 5px; border-radius: 4px;">
+                    use to</span>
+                    
+                    
+                    
+                    
+                
+                     go to school in China?
+                    
+                    
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+            
+                
+                
+                    
+                    
+                        
+                        
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-color="#8B1538"
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;"></div>
+    <h1 style="color: #FFD700; font-size: 3em; text-shadow: 2px 2px 15px rgba(0,0,0,1);">Action vs State</h1>
+    
+</div>
+<aside class="notes">
+    Moving to next section.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        data-auto-animate
+        
+        
+    >
+        <div class="slide-canvas">
+    <!-- Cinematic Overlay -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%); z-index: -1;">
+    </div>
+
+    <div style="text-align: center; width: 100%; max-width: 1200px; margin: auto;">
+        
+        <div data-id="impact-badge" class="mission-badge" style="display: inline-block; margin-bottom: 20px; min-width: auto; padding: 10px 30px;">
+            <span style="font-weight: 800; letter-spacing: 2px;">EXPLANATION</span>
+        </div>
+        
+
+        <h1 data-id="header-title"
+            style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 20px;">
+            ACTIONS <i class='fa-solid fa-person-walking'></i>
+        </h1>
+        
+        <div data-id="impact-text-box" style="background: rgba(0,0,0,0.6); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <p style="font-size: var(--ped-lead-in-size); color: white; line-height: 1.4; margin: 0;">
+                Physical movements or repeated events.<br><br><i data-id='walker' class='fa-solid fa-person-walking' style='color: #FFD700; margin-right: 15px;'></i> I <b>would</b> walk to school every day.
+            </p>
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Introduce the task or discussion.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-color="#8B1538"
+        
+    
+
+        data-auto-animate
+        
+        
+    >
+        <div class="slide-canvas">
+    <!-- Cinematic Overlay -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%); z-index: -1;">
+    </div>
+
+    <div style="text-align: center; width: 100%; max-width: 1200px; margin: auto;">
+        
+        <div data-id="impact-badge" class="mission-badge" style="display: inline-block; margin-bottom: 20px; min-width: auto; padding: 10px 30px;">
+            <span style="font-weight: 800; letter-spacing: 2px;">EXPLANATION</span>
+        </div>
+        
+
+        <h1 data-id="header-title"
+            style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 20px;">
+            ACTIONS <i class='fa-solid fa-person-walking'></i>
+        </h1>
+        
+        <div data-id="impact-text-box" style="background: rgba(0,0,0,0.6); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <p style="font-size: var(--ped-lead-in-size); color: white; line-height: 1.4; margin: 0;">
+                Physical movements or repeated events.<br><br>I <b>would</b> walk to school every day. <i data-id='walker' class='fa-solid fa-person-walking' style='color: #FFD700; margin-left: 15px;'></i>
+            </p>
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Introduce the task or discussion.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section data-auto-animate>
+    <div
+        style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; max-width: 1100px; margin: auto;">
+        
+        <h3 data-id="editing-badge"
+            style="color: #FFD700; margin-bottom: 10px; font-size: var(--r-heading3-size); text-transform: uppercase; border-bottom: 2px solid #FFD700; display: inline-block;">
+            EXPLANATION</h3>
+        
+        <h2 data-id="header-title" style="font-size: var(--r-heading2-size); margin-bottom: 30px; text-shadow: 2px 2px 8px black;">STATES <i class='fa-solid fa-house'></i></h2>
+
+        <div data-id="editing-content-box"
+            style="background: rgba(0,0,0,0.4); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size); line-height: 1.6;">
+            
+            
+            <div style="margin-bottom: 15px;">
+                
+                
+                Permanent situations or feelings.<br><br>I 
+                
+                
+                
+                <span data-id="mistake-0" style="color: #bbb; text-decoration: underline dashed #666;">would</span>
+                
+                
+                
+                
+                 live in a small house.
+                
+                
+            </div>
+            
+        </div>
+    </div>
+    <aside class="notes">
+        Find the mistakes in the text. There are 1 mistakes to fix.
+    </aside>
+</section>
+
+
+
+<section data-auto-animate>
+    <div
+        style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; max-width: 1100px; margin: auto;">
+        
+        <h3 data-id="editing-badge"
+            style="color: #FFD700; margin-bottom: 10px; font-size: var(--r-heading3-size); text-transform: uppercase; border-bottom: 2px solid #FFD700; display: inline-block;">
+            EXPLANATION</h3>
+        
+        <h2 data-id="header-title" style="font-size: var(--r-heading2-size); margin-bottom: 30px; text-shadow: 2px 2px 8px black;">STATES <i class='fa-solid fa-house'></i></h2>
+
+        <div data-id="editing-content-box"
+            style="background: rgba(0,0,0,0.4); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size); line-height: 1.6;">
+            
+            
+            <div style="margin-bottom: 15px;">
+                
+                
+                    Permanent situations or feelings.<br><br>I 
+                    
+                    
+                
+                 <span data-id="mistake-0"
+                    style="color: #00ff00; font-weight: bold; background: rgba(0,255,0,0.1); padding: 2px 5px; border-radius: 4px;">
+                    used to</span>
+                    
+                    
+                    
+                    
+                
+                     live in a small house.
+                    
+                    
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        data-auto-animate
+        
+        
+    >
+        <div class="slide-canvas">
+    <!-- Cinematic Overlay -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%); z-index: -1;">
+    </div>
+
+    <div style="text-align: center; width: 100%; max-width: 1200px; margin: auto;">
+        
+        <div data-id="impact-badge" class="mission-badge" style="display: inline-block; margin-bottom: 20px; min-width: auto; padding: 10px 30px;">
+            <span style="font-weight: 800; letter-spacing: 2px;">EXPLANATION</span>
+        </div>
+        
+
+        <h1 data-id="header-title"
+            style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 20px;">
+            ACTIONS <i class='fa-solid fa-table-tennis-paddle-ball'></i>
+        </h1>
+        
+        <div data-id="impact-text-box" style="background: rgba(0,0,0,0.6); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <p style="font-size: var(--ped-lead-in-size); color: white; line-height: 1.4; margin: 0;">
+                Both options are correct for actions!<br><br><i data-id='tennis-ball' class='fa-solid fa-circle' style='color: #FFD700; margin-right: 15px;'></i> I <b>would</b> / <b>used to</b> play tennis.
+            </p>
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Introduce the task or discussion.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-color="#8B1538"
+        
+    
+
+        data-auto-animate
+        
+        
+    >
+        <div class="slide-canvas">
+    <!-- Cinematic Overlay -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%); z-index: -1;">
+    </div>
+
+    <div style="text-align: center; width: 100%; max-width: 1200px; margin: auto;">
+        
+        <div data-id="impact-badge" class="mission-badge" style="display: inline-block; margin-bottom: 20px; min-width: auto; padding: 10px 30px;">
+            <span style="font-weight: 800; letter-spacing: 2px;">EXPLANATION</span>
+        </div>
+        
+
+        <h1 data-id="header-title"
+            style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 20px;">
+            ACTIONS <i class='fa-solid fa-table-tennis-paddle-ball'></i>
+        </h1>
+        
+        <div data-id="impact-text-box" style="background: rgba(0,0,0,0.6); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <p style="font-size: var(--ped-lead-in-size); color: white; line-height: 1.4; margin: 0;">
+                Both options are correct for actions!<br><br>I <b>split_table</b> / <b>used to</b> play tennis. <i data-id='tennis-ball' class='fa-solid fa-circle' style='color: #FFD700; margin-left: 15px;'></i>
+            </p>
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Introduce the task or discussion.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas">
+    <!-- Cinematic Overlay -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%); z-index: -1;">
+    </div>
+
+    <div style="text-align: center; width: 100%; max-width: 1200px; margin: auto;">
+        
+        <div data-id="impact-badge" class="mission-badge" style="display: inline-block; margin-bottom: 20px; min-width: auto; padding: 10px 30px;">
+            <span style="font-weight: 800; letter-spacing: 2px;">CHECK</span>
+        </div>
+        
+
+        <h1 data-id="header-title"
+            style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 20px;">
+            IS IT A STATE?
+        </h1>
+        
+        <div data-id="impact-text-box" style="background: rgba(0,0,0,0.6); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <p style="font-size: var(--ped-lead-in-size); color: white; line-height: 1.4; margin: 0;">
+                Can you see it moving? No? It's a State!
+            </p>
+        </div>
+
+        
+
+        
+
+        
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;">
+            
+            <div data-id="point-0" class="mission-badge" style="min-width: 850px; flex-direction: row; text-align: left; padding: 10px 25px; gap: 25px;">
+                <i class="fas fa-solid fa-eye" style="font-size: 1.3em; color: #FFD700; width: 40px; text-align: center;"></i>
+                <span style="font-size: var(--ped-body-size); margin-top: 0;">ACTIONS: play, run, go, visit (Use 'Used to' or 'Would')</span>
+            </div>
+            
+            <div data-id="point-1" class="mission-badge" style="min-width: 850px; flex-direction: row; text-align: left; padding: 10px 25px; gap: 25px;">
+                <i class="fas fa-solid fa-heart" style="font-size: 1.3em; color: #FFD700; width: 40px; text-align: center;"></i>
+                <span style="font-size: var(--ped-body-size); margin-top: 0;">STATES: be, live, have, know, love (Use 'Used to' ONLY)</span>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Introduce the task or discussion.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                        
+                        
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-color="#8B1538"
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;"></div>
+    <h1 style="color: #FFD700; font-size: 3em; text-shadow: 2px 2px 15px rgba(0,0,0,1);">Task 2: The Replacement Challenge</h1>
+    
+</div>
+<aside class="notes">
+    Moving to next section.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+    
+    <h3 style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em;">TASK 2</h3>
+    
+    <h2 data-id="header-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">SUPER-SMART KIDS</h2>
+<div
+    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size);">
+    
+        <ul style="list-style: none; padding: 0; margin: 0;">
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-solid fa-magnifying-glass" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Decide if <b>used to</b> can be replaced with <b>would</b>. If it's a state verb, you can't!</span>
+            </li>
+        
+        </ul>
+    
+</div>
+
+
+    
+</div>
+
+<aside class="notes">
+    Discuss the strategy with students.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas"
+    style="display: grid; grid-template-columns: 1fr; gap: 10px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+    <div
+        style="padding: 20px 40px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+        
+        <div class="mission-badge" style="display: inline-block; margin-bottom: 10px; min-width: auto; padding: 5px 20px;">
+            <span style="font-weight: 800; letter-spacing: 2px; font-size: 0.7em;">TASK 2</span>
+        </div>
+        
+
+        
+        <h1 style="font-size: 1.1em; margin-bottom: 8px; line-height: 1.1; text-shadow: 2px 2px 4px black; color: #FFD700 !important;">THE REPLACEMENT CHALLENGE (PART 1)</h1>
+        
+
+        
+
+        <div class="table-container" style="font-size: var(--ped-body-size); line-height: 1.3; flex-grow: 1;">
+            <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left;'><div style='padding-right: 15px; border-right: 1px solid gold; line-height: 1.6;'>Taylor Wilson (1) <b>used to dream</b> about space. He (2) <b>used to read</b> books about science all the time. He (3) <b>didn't use to spend</b> much time playing games. He (4) <b>used to go</b> around talking to people about his ideas. Taylor (5) <b>used to live</b> in Arkansas before he moved to a bigger city.</div><div><table style='width: 100%;'><tr><td>1. <span class="fragment" style="color: #FFD700; font-weight: bold;">---</span></td></tr><tr><td>2. <span class="fragment" style="color: #FFD700; font-weight: bold;">would</span></td></tr><tr><td>3. <span class="fragment" style="color: #FFD700; font-weight: bold;">wouldn't</span></td></tr><tr><td>4. <span class="fragment" style="color: #FFD700; font-weight: bold;">would</span></td></tr><tr><td>5. <span class="fragment" style="color: #FFD700; font-weight: bold;">---</span></td></tr></table></div></div>
+        </div>
+
+        
+
+        
+        <div class="timer-container" style="margin-top: 20px; justify-content: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; gap: 30px;">
+            <div class="timer-display" id="timer-420-display"
+                style="font-size: 2.2em; font-family: monospace; color: #FFD700; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                
+                07:00
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="timer-btn"
+                    onclick="toggleTimer(420, 'timer-420-display', this)">START</button>
+                <button class="timer-btn reset"
+                    onclick="resetTimer(420, 'timer-420-display')">RESET</button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Monitor student progress.
+</aside>
+
+<style>
+    .table-container p, .table-container div {
+        font-size: 0.75em !important;
+        line-height: 1.4 !important;
+        margin-bottom: 8px !important;
+    }
+    .table-container table {
+        width: 100% !important;
+        font-size: var(--ped-body-size) !important;
+        border-collapse: collapse !important;
+    }
+    .table-container th {
+        font-size: 0.8em !important;
+        padding: 8px !important;
+    }
+    .table-container td {
+        padding: 8px !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+    }
+</style>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas"
+    style="display: grid; grid-template-columns: 1fr; gap: 10px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+    <div
+        style="padding: 20px 40px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+        
+        <div class="mission-badge" style="display: inline-block; margin-bottom: 10px; min-width: auto; padding: 5px 20px;">
+            <span style="font-weight: 800; letter-spacing: 2px; font-size: 0.7em;">TASK 2</span>
+        </div>
+        
+
+        
+        <h1 style="font-size: 1.1em; margin-bottom: 8px; line-height: 1.1; text-shadow: 2px 2px 4px black; color: #FFD700 !important;">THE REPLACEMENT CHALLENGE (PART 2)</h1>
+        
+
+        
+
+        <div class="table-container" style="font-size: var(--ped-body-size); line-height: 1.3; flex-grow: 1;">
+            <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left;'><div style='padding-right: 15px; border-right: 1px solid gold; line-height: 1.6;'>Brittany Wenger's parents (6) <b>used to tell</b> her she was too young to be a scientist. She (7) <b>used to spend</b> time looking at computer code every evening. She (8) <b>didn't use to ignore</b> her schoolwork, but she (9) <b>used to get</b> better grades in science than in history. Brittany (10) <b>used to live</b> in Ohio.</div><div><table style='width: 100%;'><tr><td>6. <span class="fragment" style="color: #FFD700; font-weight: bold;">would</span></td></tr><tr><td>7. <span class="fragment" style="color: #FFD700; font-weight: bold;">would</span></td></tr><tr><td>8. <span class="fragment" style="color: #FFD700; font-weight: bold;">wouldn't</span></td></tr><tr><td>9. <span class="fragment" style="color: #FFD700; font-weight: bold;">would</span></td></tr><tr><td>10. <span class="fragment" style="color: #FFD700; font-weight: bold;">---</span></td></tr></table></div></div>
+        </div>
+
+        
+
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Monitor student progress.
+</aside>
+
+<style>
+    .table-container p, .table-container div {
+        font-size: 0.75em !important;
+        line-height: 1.4 !important;
+        margin-bottom: 8px !important;
+    }
+    .table-container table {
+        width: 100% !important;
+        font-size: var(--ped-body-size) !important;
+        border-collapse: collapse !important;
+    }
+    .table-container th {
+        font-size: 0.8em !important;
+        padding: 8px !important;
+    }
+    .table-container td {
+        padding: 8px !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+    }
+</style>
+    </section>
+
+            
+                
+                
+                    
+                    
+                        
+                        
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-color="#8B1538"
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;"></div>
+    <h1 style="color: #FFD700; font-size: 3em; text-shadow: 2px 2px 15px rgba(0,0,0,1);">Task 3: Repairing Sentences</h1>
+    
+</div>
+<aside class="notes">
+    Moving to next section.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+    
+    <h3 style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em;">TASK 3</h3>
+    
+    <h2 data-id="header-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">REPAIR THE SENTENCES</h2>
+<div
+    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size);">
+    
+        <ul style="list-style: none; padding: 0; margin: 0;">
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-solid fa-hammer" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Complete the sentences. Watch out for 'be' and 'live'!</span>
+            </li>
+        
+        </ul>
+    
+</div>
+
+
+    
+</div>
+
+<aside class="notes">
+    Discuss the strategy with students.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas"
+    style="display: grid; grid-template-columns: 1fr; gap: 10px; align-items: center; height: 100%; max-width: 1200px; margin: auto; text-align: left;">
+
+    <div
+        style="padding: 20px 40px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+        
+        <div class="mission-badge" style="display: inline-block; margin-bottom: 10px; min-width: auto; padding: 5px 20px;">
+            <span style="font-weight: 800; letter-spacing: 2px; font-size: 0.7em;">TASK 3</span>
+        </div>
+        
+
+        
+        <h1 style="font-size: 1.1em; margin-bottom: 8px; line-height: 1.1; text-shadow: 2px 2px 4px black; color: #FFD700 !important;">SENTENCE REPAIR</h1>
+        
+
+        
+
+        <div class="table-container" style="font-size: var(--ped-body-size); line-height: 1.3; flex-grow: 1;">
+            <ol style='font-size: 0.8em; text-align: left;'><li>In the summer, the kids <span class="fragment" style="color: #FFD700; font-weight: bold;">would / used to</span> often stay up late.</li><li>The students <span class="fragment" style="color: #FFD700; font-weight: bold;">used to</span> be strangers.</li><li>I <span class="fragment" style="color: #FFD700; font-weight: bold;">used to</span> cycle to school.</li><li>My dad <span class="fragment" style="color: #FFD700; font-weight: bold;">used to</span> work as a lawyer.</li><li>We <span class="fragment" style="color: #FFD700; font-weight: bold;">used to</span> live in a house.</li></ol>
+        </div>
+
+        
+
+        
+        <div class="timer-container" style="margin-top: 20px; justify-content: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; gap: 30px;">
+            <div class="timer-display" id="timer-300-display"
+                style="font-size: 2.2em; font-family: monospace; color: #FFD700; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                
+                05:00
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="timer-btn"
+                    onclick="toggleTimer(300, 'timer-300-display', this)">START</button>
+                <button class="timer-btn reset"
+                    onclick="resetTimer(300, 'timer-300-display')">RESET</button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Monitor student progress.
+</aside>
+
+<style>
+    .table-container p, .table-container div {
+        font-size: 0.75em !important;
+        line-height: 1.4 !important;
+        margin-bottom: 8px !important;
+    }
+    .table-container table {
+        width: 100% !important;
+        font-size: var(--ped-body-size) !important;
+        border-collapse: collapse !important;
+    }
+    .table-container th {
+        font-size: 0.8em !important;
+        padding: 8px !important;
+    }
+    .table-container td {
+        padding: 8px !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+    }
+</style>
+    </section>
+
+            
+                
+                
+                    
+                    
+                        
+                        
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-color="#8B1538"
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;"></div>
+    <h1 style="color: #FFD700; font-size: 3em; text-shadow: 2px 2px 15px rgba(0,0,0,1);">Task 4: Your Past Habits</h1>
+    
+</div>
+<aside class="notes">
+    Moving to next section.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div class="slide-canvas">
+    <!-- Cinematic Overlay -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%); z-index: -1;">
+    </div>
+
+    <div style="text-align: center; width: 100%; max-width: 1200px; margin: auto;">
+        
+        <div data-id="impact-badge" class="mission-badge" style="display: inline-block; margin-bottom: 20px; min-width: auto; padding: 10px 30px;">
+            <span style="font-weight: 800; letter-spacing: 2px;">PRODUCTION</span>
+        </div>
+        
+
+        <h1 data-id="header-title"
+            style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 20px;">
+            MY LIFE, THEN AND NOW
+        </h1>
+        
+        <div data-id="impact-text-box" style="background: rgba(0,0,0,0.6); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <p style="font-size: var(--ped-lead-in-size); color: white; line-height: 1.4; margin: 0;">
+                Think of a major change in your life. Write 3 sentences about your habits and states before the change using <b>used to</b> and <b>would</b>.
+            </p>
+        </div>
+
+        
+
+        
+        <div class="timer-container" style="margin-top: 20px; justify-content: center; gap: 30px;">
+            <div class="timer-display" id="timer-480-display"
+                style="font-size: 2.5em; font-family: monospace; color: #FFD700; text-shadow: 0 0 15px rgba(0,0,0,0.9);">
+                
+                08:00
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="timer-btn"
+                    onclick="toggleTimer(480, 'timer-480-display', this)">START</button>
+                <button class="timer-btn reset"
+                    onclick="resetTimer(480, 'timer-480-display')">RESET</button>
+            </div>
+        </div>
+        
+
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Introduce the task or discussion.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        
+    >
+        <div style="width: 1000px; margin: auto; text-align: left;">
+    <h2 data-id="matching-title" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.9); font-size: 1.0em;">TASK 4: STUDENT COLLABORATION</h2>
+
+    <div style="margin-top: 30px; font-size: 0.9em;">
+        
+            <p>Share your sentences with your group. Check for correct use of <b>used to</b> (states/habits) and <b>would</b> (actions only).</p>
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Review the answers with the class.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                        
+                        
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-color="#000000"
+        
+    
+
+        
+        
+        
+    >
+        <!-- Cinematic Overlay for Video Legibility - Softened for 80% visibility -->
+<div
+    style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); z-index: -1;">
+</div>
+
+<div class="slide-canvas" style="padding: 30px; width: 100%; text-align: center;">
+    <img src="images/ACT.png" class="inset-media" style="height: 120px; margin-bottom: 20px;">
+    <h4 style="color: var(--accent); letter-spacing: 2px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">ASSUMPTION
+        COLLEGE MATHAYOM</h4>
+    <h1 style="font-size: 3.5em; margin: 10px 0; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">MISSION ACCOMPLISHED</h1>
+    <h3 style="opacity: 0.8; font-weight: normal; color: #FFD700; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">Well Done, Language Masters!</h3>
+</div>
+
+<aside class="notes">
+    
+</aside>
+    </section>
+
+            
+        </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // AUDIO PLAYER COMPONENT
+        class AudioPlayer extends HTMLElement {
+            constructor() {
+                super();
+                this.audio = new Audio();
+                this.isPlaying = false;
+            }
+
+            connectedCallback() {
+                const src = this.getAttribute('src');
+                if (!src) return;
+                this.audio.src = src;
+
+                this.innerHTML = `
+                    <div class="audio-player">
+                        <button class="audio-play-btn"><i class="fas fa-play"></i></button>
+                        <div class="audio-scrubber-container">
+                            <input type="range" class="audio-scrubber" value="0" min="0" max="100">
+                            <div class="audio-time">
+                                <span class="current">00:00</span>
+                                <span class="separator" style="opacity: 0.5;">/</span>
+                                <span class="total">00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                this.playBtn = this.querySelector('.audio-play-btn');
+                this.scrubber = this.querySelector('.audio-scrubber');
+                this.currentTimeDisplay = this.querySelector('.current');
+                this.totalTimeDisplay = this.querySelector('.total');
+
+                this.playBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    this.togglePlay();
+                };
+
+                this.scrubber.oninput = (e) => {
+                    if (this.audio.duration) {
+                        const time = (this.scrubber.value / 100) * this.audio.duration;
+                        this.audio.currentTime = time;
+                    }
+                };
+
+                this.audio.ontimeupdate = () => {
+                    if (this.audio.duration) {
+                        const progress = (this.audio.currentTime / this.audio.duration) * 100;
+                        this.scrubber.value = progress || 0;
+                        this.currentTimeDisplay.textContent = this.formatTime(this.audio.currentTime);
+                    }
+                };
+
+                this.audio.onloadedmetadata = () => {
+                    this.totalTimeDisplay.textContent = this.formatTime(this.audio.duration);
+                };
+
+                this.audio.onended = () => {
+                    this.isPlaying = false;
+                    this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                };
+            }
+
+            togglePlay() {
+                if (this.isPlaying) {
+                    this.audio.pause();
+                    this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                } else {
+                    this.audio.play();
+                    this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+                this.isPlaying = !this.isPlaying;
+            }
+
+            formatTime(seconds) {
+                if (isNaN(seconds)) return "00:00";
+                const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+                const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+                return `${m}:${s}`;
+            }
+        }
+        customElements.define('audio-player', AudioPlayer);
+
+        const AudioFX = {
+            blip: new Audio('audio/blip.mp3'),
+            bell: new Audio('audio/bell.mp3'),
+            heartbeat: new Audio('audio/30-seconds.mp3'),
+            init() {
+                this.blip.load(); this.bell.load(); this.heartbeat.load();
+            }
+        };
+
+        const TimerRegistry = {};
+
+        function toggleTimer(durationSeconds, displayId, btn) {
+            if (TimerRegistry[displayId] && TimerRegistry[displayId].interval) {
+                clearInterval(TimerRegistry[displayId].interval);
+                TimerRegistry[displayId].interval = null;
+                btn.textContent = 'START';
+            } else {
+                btn.textContent = 'PAUSE';
+                const display = document.getElementById(displayId);
+                AudioFX.init();
+                AudioFX.blip.play().catch(e => console.warn(e));
+
+                if (!TimerRegistry[displayId]) {
+                    TimerRegistry[displayId] = { original: durationSeconds, current: durationSeconds };
+                }
+
+                const tick = () => {
+                    let timer = --TimerRegistry[displayId].current;
+                    let minutes = parseInt(timer / 60, 10);
+                    let seconds = parseInt(timer % 60, 10);
+                    display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+
+                    if (timer <= 0) {
+                        clearInterval(TimerRegistry[displayId].interval);
+                        TimerRegistry[displayId].interval = null;
+                        btn.textContent = 'START';
+                        AudioFX.bell.play().catch(e => console.warn(e));
+                        display.textContent = "DONE!";
+                    } else if (timer === 30) {
+                        AudioFX.heartbeat.play().catch(e => console.warn(e));
+                    } else if (timer < 10 && timer >= 0) {
+                        AudioFX.blip.play().catch(e => console.warn(e));
+                    }
+                };
+
+                // Run once immediately, then start interval
+                tick();
+                TimerRegistry[displayId].interval = setInterval(tick, 1000);
+            }
+        }
+
+        function resetTimer(durationSeconds, displayId) {
+            if (TimerRegistry[displayId]) {
+                clearInterval(TimerRegistry[displayId].interval);
+            }
+            const display = document.getElementById(displayId);
+            // Reset button text in the same slide
+            const section = display.closest('section');
+            const startBtn = section.querySelector('.timer-btn:not(.reset)');
+            if (startBtn) startBtn.textContent = 'START';
+
+            let minutes = parseInt(durationSeconds / 60, 10);
+            let seconds = parseInt(durationSeconds % 60, 10);
+            display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+            TimerRegistry[displayId] = { original: durationSeconds, current: durationSeconds, interval: null };
+        }
+
+        Reveal.initialize({
+            hash: true,
+            width: 1280,
+            height: 720,
+            margin: 0.05,
+            center: true,
+            autoAnimateDuration: 1.2,
+            autoAnimateEasing: 'ease-in-out',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>
