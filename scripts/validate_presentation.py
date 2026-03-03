@@ -42,7 +42,7 @@ ALLOWED_LAYOUTS = {
     "matching", "answer", "video", "impact", "vocab",
     "mission", "split_table", "video_answer", "checklist", 
     "table", "match_reorder", "answer_list", "answer_detail", "image",
-    "audio_experience", "cross_out", "schema_activation"
+    "audio_experience", "cross_out", "schema_activation", "editing"
 }
 
 # Required fields per layout (answer slides may not require some fields)

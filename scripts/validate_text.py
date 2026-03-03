@@ -1,16 +1,34 @@
+import sys
+import os
+import re
 
-text = """
-On a bitterly cold New Year's Eve, a young girl wandered the frozen streets, barefoot and shivering. She was tasked with selling matches, but not a single soul had purchased a box all day. Fearing her father’s certain wrath if she returned empty-handed, she sought refuge in a narrow alleyway. To ward off the terminal chill, she struck a single match against the brick wall. 
+if len(sys.argv) < 2:
+    print("Usage: python validate_text.py <file.typ>")
+    sys.exit(1)
 
-In its fleeting glow, she experienced a series of wondrous visions: a warm iron stove, a succulent roast goose, and a magnificent Christmas tree. Each vision vanished as soon as the flame flickered out. When she glimpsed her late grandmother in the next spark, the girl frantically struck the remaining matches to sustain the apparition. 
+file_path = sys.argv[1]
 
-The old woman, radiant and kind, took the girl into her arms. Together, they soared into a realm where cold, hunger, and fear were non-existent. The following morning, townspeople discovered the girl’s frozen body, a serene smile gracing her lips. While they pitied her tragic end, they remained oblivious to the beautiful splendors she had witnessed before her gentle departure from the mortal world.
-"""
+if not os.path.exists(file_path):
+    print(f"File not found: {file_path}")
+    sys.exit(1)
+
+with open(file_path, 'r', encoding='utf-8') as f:
+    text = f.read()
+
+# Remove Typst comments
+clean_text = re.sub(r'//.*', '', text)
+clean_text = re.sub(r'/\*.*?\*/', '', clean_text, flags=re.DOTALL)
+
+# Basic removal of Typst commands
+clean_text = re.sub(r'#[a-zA-Z0-9_-]+', '', clean_text)
+clean_text = re.sub(r'[*_=+]', '', clean_text)
+clean_text = re.sub(r'\[|\]|\(|\)', ' ', clean_text)
 
 def count_words(text):
-    return len(text.split())
+    words = re.findall(r'\b\w+\b', text)
+    return len(words)
 
-print(f"Word Count: {count_words(text)}")
+print(f"Word Count (Approximate): {count_words(clean_text)}")
 print("---TEXT START---")
-print(text.strip())
+print(clean_text.strip())
 print("---TEXT END---")

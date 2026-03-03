@@ -40,7 +40,7 @@ Every slide MUST follow this flat structure. **BANNED**: No nested `"data": {}` 
 | Key | Type | Description |
 | :--- | :--- | :--- |
 | `slide_id` | string | Unique identifier for the slide. |
-| `layout` | Enum | `title` \| `mission` \| `segue` \| `strategy` \| `impact` \| `vocab` \| `answer` \| `answer_detail` |
+| `layout` | Enum | `title` \| `mission` \| `segue` \| `strategy` \| `impact` \| `vocab` \| `answer` \| `answer_detail` \| `editing` |
 | `background` | object | `{ "type": "video|image|color", "src": "path/to/asset", "retain_from_previous": bool }` |
 | `animation` | object | `{ "type": "auto-animate|fade|none", "duration": float }` |
 | `content` | object | Layout-specific content keys. |
