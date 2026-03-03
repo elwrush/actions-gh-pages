@@ -169,7 +169,7 @@
       "layout": "impact",
       "badge": "EXPLANATION",
       "title": "ACTIONS <i class='fa-solid fa-table-tennis-paddle-ball'></i>",
-      "text": "Both options are correct for actions!<br><br>I <b>split_table</b> / <b>used to</b> play tennis. <i data-id='tennis-ball' class='fa-solid fa-circle' style='color: #FFD700; margin-left: 15px;'></i>",
+      "text": "Both options are correct for actions!<br><br>I <b>would</b> / <b>used to</b> play tennis. <i data-id='tennis-ball' class='fa-solid fa-circle' style='color: #FFD700; margin-left: 15px;'></i>",
       "animation": { "type": "auto-animate" },
       "background": { "retain_from_previous": true }
     },

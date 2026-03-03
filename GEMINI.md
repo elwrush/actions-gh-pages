@@ -50,11 +50,12 @@ Automated validation is enforced via `.gemini/hooks/`:
 5.  **Code Assembly**: Generate `presentation.json` and build standalone bundle.
 
 ### 3. Repository Hygiene & The 'Published' Law
-- **Self-Containment**: Every lesson in `inputs/[lesson-name]/published/` MUST be a standalone bundle including its own `dist/`, `plugin/`, and `fontawesome/` folders.
+- **The 'Lib' Legacy Law**: The local `/lib/` folder is **DELETED and LEGACY**. You MUST NOT assume local library files exist.
+- **Typst Consultation Law**: Never "guess" Typst syntax. You MUST consult the official Typst GitHub repo via **Skill 16** (`16-consulting-global-repos`) for all syntax, pedagogical templates, and branding patterns.
+- **Self-Containment**: Every lesson in `inputs/[lesson-name]/published/` MUST be a standalone bundle including its own `dist/`, `plugin/`, and `fontawesome/` folders (automatically managed by the build system via GitHub acquisition).
 - **The File Separation Law**: The source `.typ` files MUST remain in the root of the lesson folder. ONLY compiled `.pdf` files and the final presentation HTML/assets go into the `published/` folder.
 - **Strict Naming Standard**: Lesson plans must be named `DD-MM-YYYY-[LEVEL]-[TITLE]-LP.typ` (and `.pdf`). Worksheets must be `DD-MM-YYYY-[LEVEL]-[TITLE]-WS.typ` (and `.pdf`).
 - **URL-Friendly Naming**: Lesson folders MUST use lowercase alphanumeric characters and hyphens only (e.g., `28jan-listening-wb-p9`). **Spaces and underscores are FORBIDDEN**.
-- **Typst Consultation Law**: Never "guess" Typst syntax. You MUST consult the official Typst GitHub repo and the local library (`lib/typst/lib.typ`) every 30 minutes via `15-consulting-typst-repo`. All `.typ` Lesson Plans MUST start by importing the standard template components via `#import "../../skills/02-writing-lesson-plans/templates/lesson-plan-components.typ": *`.
 - **Root-Relative Imports**: All Typst files and presentation logic must use root-relative pathing (`/images/`, `/skills/`) to support project-level automation.
 - **Worksheet Permission Gate**: DO NOT create worksheets automatically as part of the lesson planning phase. You MUST ask for explicit permission before initiating the `03-producing-educational-materials` skill.
 

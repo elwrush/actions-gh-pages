@@ -27,5 +27,5 @@ This document defines the high-density Typst production standards for profession
 ## 4. Visual Elements
 - **Cinematic Headers**: Use full-width banners with overlay text.
 - **Branding**: 
-    - **Bell**: Assets in `C:\Users\elwru\AppData\Roaming\typst\packages\local\bell-sheets\0.1.0\images\`.
-    - **Intensive**: Use specific branded straps as requested.
+    - **Bell**: Assets in `/lib/typst/images/`.
+    - **Intensive**: Use specific branded straps found in the local library.

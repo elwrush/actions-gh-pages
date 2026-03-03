@@ -5,24 +5,14 @@ description: Handles the entire lifecycle of educational material creation: cons
 
 # Producing Educational Materials
 
-## Core Principles: Agentic TDD
-This skill operates on a strict **Test-Driven Development (TDD)** model inspired by professional software engineering practices. We do not guess; we verify.
-
-1.  **"Run the Tests First"**: Before making any changes, we run our validation suite to understand the baseline. This prevents altering an already-broken state.
-2.  **"Red, Green, Refactor"**:
-    *   **RED**: We first create programmatic tests that capture the user's requirements and would fail on the current output (e.g., a layout test that detects illegal page breaks).
-    *   **GREEN**: We then write the minimal code required to make the test pass.
-    *   **REFACTOR**: Finally, we codify the successful change into the skill's permanent rules and documentation to prevent future regressions.
-
-This entire process is now anchored by the `validate_worksheet_layout.py` script, our primary testing tool.
-
 ## Purpose
 Guide the transition from raw educational requirements to print-ready, professionally branded PDF worksheets. Consolidates pedagogical design with high-density Typst production.
 
 ### 🛑 MANDATORY: ZERO HALLUCINATION POLICY
-**You MUST NOT guess Typst syntax.** Before you write or edit any `.typ` file (Phase 4), if you are unsure of a layout, table, or list implementation, you **MUST** use the `consult_repo` tool (from skill 16) to check the official Typst repository (`typst:crates/typst-library/src/`).
+**You MUST NOT guess Typst syntax.** Before you write or edit any `.typ` file (Phase 4), if you are unsure of a layout, table, or list implementation, you **MUST** consult the official repositories using **Skill 16**:
+`python skills/16-consulting-global-repos/scripts/gh_fetch.py typst:crates/typst-library/src/...`
 
-## STRICT RULE: NEVER abbreviate, change, or truncate source text. Professional materials must maintain 100% instructional integrity.**
+## STRICT RULE: NEVER abbreviate, change, or truncate source text. Professional materials must maintain 100% instructional integrity.
 
 ## Workflow Visualization
 ```mermaid
@@ -52,20 +42,11 @@ graph TD
         ID --> SP[Strict Spacing: 0.55em Body / 0.9cm Writing]
     end
 
-    subgraph "Phase 4: Production & Validation (TDD Cycle)"
+    subgraph "Phase 4: Production & Validation"
         SP --> TE[Typst Execution: Markup Eval]
-        TE --> VAL_LAYOUT["RED: Run Layout Test (validate_worksheet_layout.py)"]
-        VAL_LAYOUT -->|Fails| FIX[GREEN: Apply Minimum Code Fix]
-        FIX --> TE
-        VAL_LAYOUT -->|Passes| VAL_CONTENT["Validate Content (validate_text.py)"]
-        VAL_CONTENT --> LG[🏁 Link Gate & Approval]
+        TE --> VAL[Validation: Code & Content Audit]
+        VAL --> LG[🏁 Link Gate & Approval]
     end
-
-    style PH fill:#f9f,stroke:#333,stroke-width:2px
-    style MS fill:#f9f,stroke:#333,stroke-width:2px
-    style LP fill:#bbf,stroke:#333,stroke-width:2px
-    style DP fill:#bbf,stroke:#333,stroke-width:2px
-    style VAL_LAYOUT fill:#d4edda,stroke:#155724,stroke-width:2px
 ```
 
 ---
@@ -78,79 +59,44 @@ You MUST consult with the user on these core constraints:
 - **Skill/System**: Reading, Listening, Writing, Speaking, Grammar, Vocabulary, or Pronunciation.
 - **Duration**: Target lesson length.
 - **Program Selection**: **CRITICAL**. Prompt user to choose between **Bell** and **Intensive**.
-  - *Assets Location*: Branded straps found in `C:\Users\elwru\AppData\Roaming\typst\packages\local\bell-sheets\0.1.0\images\`.
+  - *Assets*: Standard straps found in `/lib/typst/images/`.
 - **Hero Image Requirement**: **MANDATORY**. Every worksheet MUST have a hero image.
   - Ask the user for keywords to search Pixabay.
   - If Pixabay search fails or is unsuitable, prompt the user to provide a manual image path.
 - **Badge Choice**: **MANDATORY**. Always include exactly three badges: CEFR Level, Skill, and Topic.
   - *Format*: Maroon rectangles with white bold text.
-  - *Constraint*: Never include lesson duration in a badge.
 - **Mission Mandate (The 'Cambridge Hook')**:
     -   **Headline**: MUST be "YOUR MISSION" in maroon bold.
-    -   **Intro Text**: MUST explain the relevance to a specific Cambridge exam (e.g., "In your PET for Schools exam, you often have to...").
+    -   **Intro Text**: MUST explain the relevance to a specific Cambridge exam (PET/First).
     -   **Structure**: A light pink block with a maroon border.
     -   **Icons**: 3 distinct boxes/columns for objectives, each with a relevant icon.
 - **Writing/Critical Thinking Choice**: **MANDATORY**. Prompt user: *"Would you like to include an extension writing or critical thinking task? (Yes/No)"*.
-  - **Action**: If "Yes", you MUST design a task aligned with the CEFR profile. If "No", do NOT invent any personal response or analysis tasks.
-  - **Action**: If "Yes", you MUST execute Step 2 (Deterministic Gate).
 
-### Step 2: Deterministic Data Gate (If Quiz is 'Yes')
-To prevent LLM "probabilistic laziness" in option placement:
-1. **Script First**: Write and run a Python script to generate randomized answer keys (e.g., `[1, 0, 1, 1...]`) and select anchor quotes from the text.
-2. **Injunction**: Force the LLM to write questions where the correct answer **MUST** align with the indices provided by the script.
-
-### Step 3: Dependency Discovery (Pre-Production)
+### Step 2: Dependency Discovery (Pre-Production)
 Before writing any code, you MUST verify the environment:
-- **Library Audit**: You MUST use the **GitHub API (Skill 16)** to consult the official Typst repository (`typst/typst`) for syntax verification. For the local project library, use `read_file` on `lib/typst/lib.typ`.
-- **Path Verification**: Ensure images are downloaded using Pixabay Skill: `C:\PROJECTS\LESSONS AND SLIDESHOWS 2\skills\04-searching-pixabay\scripts\download_image.py`.
+- **Autonomous Library Acquisition**: You MUST fetch necessary branding syntax and logic from the global source of truth using **Skill 16**.
+- **Path Verification**: Ensure images are downloaded using Pixabay Skill: `python skills/04-searching-pixabay/scripts/download_image.py`. All paths MUST be root-relative.
 
-### Step 4: Content & Layout Strategy
-- **Rule: Verbatim Mandate**: **CRITICAL**. You MUST use the source text EXACTLY as provided in the raw files.
-- **Rule: Meander for Maps & Visuals**: **MANDATORY**. You MUST use the **Meander (Skill 08)** package to insert maps or large hero images into the worksheet. This ensures text wraps professionally around the visual and provides maximum visibility for student reference.
-- **Rule: Task & Content Integrity**: **MANDATORY**. Task headers and their corresponding instructions/content MUST be wrapped in a non-breakable block (`#block(breakable: false, [...])`) to prevent them from being separated by page breaks.
-- **Rule: Aligned Answer Lines**: **MANDATORY**. For numbered answer lines, especially in columns, use a grid and enum. Create the line using `#box(width: 3cm, stroke: (bottom: 0.75pt + black), outset: (bottom: 2pt))[#hide[a]]`. The `[#hide[a]]` is critical to give the box the exact baseline and metrics of standard text so the line does not float in the middle or drop to the next line. Example: `+ #box(width: 3cm, stroke: (bottom: 0.75pt + black), outset: (bottom: 2pt))[#hide[a]]`
-- **Rule: No Illegal Page Breaks**: **MANDATORY**. Do NOT put a manual page break (`#pagebreak()`) before small tasks (e.g., Task 3, Task 4) unless they truly require a new page. Let the content flow naturally.
-- **Rule: Proper Enumeration**: **MANDATORY**. Use Typst's native enum syntax for tasks with lettered options (a, b, c). Example: `#set enum(numbering: "a)")` followed by `+ Item`. NEVER manually type `a)`.
-- **Rule: Double Spacing for Handwriting**: **MANDATORY**. Tasks requiring student handwriting (gap-fills, dialogues) MUST be double-spaced or have significantly increased leading. Use `#set par(leading: 1.2em)` or `#v(0.8cm)` between lines.
-- **Rule: ID Block Logic**: **CRITICAL**. 
-    - ONLY include the `#identity_block()` if there is a **submitted writing task**. 
-    - If the user explicitly stated "No" to a writing task (e.g., in Step 1 consultation), you MUST NOT include the ID block. 
-    - Note-taking or roleplay prep (like Task 5) does NOT count as a submitted writing task.
-- **Rule: Paragraph Numbering**: **MANDATORY**. 
-  - All reading texts MUST have numbered paragraphs to facilitate classroom reference.
-  - Prefix every paragraph with a bold, maroon number: `#text(fill: maroon, weight: "bold")[[1]]`.
-- **Rule: Multiple Choice Formatting**: **MANDATORY**. 
-  - NEVER use run-on lines for choices. Use vertical enums or 2-column grids.
-- **Rule: Question-Answer Integrity**: **MANDATORY**.
-  - Questions and their corresponding ruled lines MUST be wrapped in a non-breakable block (e.g., `#block(breakable: false, [...])`) to prevent them from being separated by page breaks.
-- **Rule: Handwriting Space**: **MANDATORY**.
-  - All ruled lines for handwriting MUST have a minimum vertical clearance of 0.8cm (`#v(0.8cm)`).
-- **Rule: Dynamic Writing Lines**: **MANDATORY**.
-  - Writing tasks MUST use the library function `#writing_lines_dynamic()` which utilizes the `layout(size => ...)` engine.
-  - NEVER attempt to calculate remaining space manually using `page.margin` math. The `size.height` provided by the `layout` block is the only source of truth for available vertical space.
-  - The line count formula is strictly $n = \text{int}(H/S) + 1$ to ensure the last line reaches the bottom margin.
-- **Rule: Single-Column & Natural Flow (Starting State)**: **MANDATORY**. 
-  - ALWAYS start the first draft with a **single-column layout**.
+### Step 3: Content & Layout Strategy
+- **Rule: Verbatim Mandate**: **CRITICAL**. You MUST use the source text EXACTLY as provided.
+- **Rule: Meander for Maps & Visuals**: **MANDATORY**. Use **Meander (Skill 08)** for maps or large hero images to ensure professional text wrapping.
+- **Rule: Task Integrity**: **MANDATORY**. Wrap task headers and content in `#block(breakable: false, [...])` to prevent illegal page breaks.
+- **Rule: ID Block Logic**: **CRITICAL**. ONLY include the `#identity_block()` if there is a **submitted writing task**. Place it immediately before the writing task, preceded by a `#pagebreak()`.
+- **Rule: Paragraph Numbering**: **MANDATORY**. All reading texts MUST have bold, maroon paragraph numbers: `#text(fill: maroon, weight: "bold")[[1]]`.
+- **Rule: Writing Lines (The Spacing Law)**:
+  - **Dynamic**: For writing tasks spanning the rest of the page, use `#writing_lines_dynamic()`.
+  - **Fixed**: For short, specific space needs (e.g., 5 lines), use `#writing_lines_fixed(5)`.
+  - **Handwriting Space**: Minimum 0.8cm clearance (`#v(0.8cm)`) for all handwritten response areas.
+- **Rule: Grid Answer Lines**: Use `#box(width: 3cm, stroke: (bottom: 0.75pt + black), outset: (bottom: 2pt))[#hide[a]]` for numbered answer lines in grids.
 
-### Step 5: Design Strategy & Styling
-For detailed typography, spacing, and branding standards, refer to **[styling.md](references/styling.md)**.
-
-### Step 6: Rendering & Validation
+### Step 4: Rendering & Validation
 1.  **Compile**:
     ```powershell
-    typst compile "inputs/[folder]/[filename].typ" "inputs/[folder]/published/[versioned-filename].pdf" --root "."
+    typst compile "inputs/[folder]/[filename].typ" "inputs/[folder]/published/[filename].pdf" --root "."
     ```
-2.  **Test (Validate)**:
-    ```powershell
-    # This is the primary gate. It must pass before proceeding.
-    python skills/03-producing-educational-materials/scripts/validate_worksheet_layout.py "inputs/[folder]/[filename].typ"
-    
-    # Secondary check for content integrity.
-    python skills/03-producing-educational-materials/scripts/validate_text.py "path/to/source.typ"
-    ```
-3.  **Bypass Cache on Failure**: If layout tests fail and a fix is applied, compile the PDF to a new, versioned filename (e.g., `...-FIXED-v2.pdf`) to ensure the user does not see a cached, broken version.
+2.  **Validate**: Run `python .gemini/hooks/typst_guard.py` to check for syntax regressions and layout violations.
 
-### Step 7: 🏁 THE LINK GATE
+### Step 5: 🏁 THE LINK GATE
 > [!CRITICAL]
 > **YOU MUST PROVIDE A CLICKABLE LINK TO THE PDF.**
 > Post the link using the `file:///` protocol. Do NOT proceed until the user approves the visual output.
@@ -158,7 +104,6 @@ For detailed typography, spacing, and branding standards, refer to **[styling.md
 ---
 
 ## Reference Material
-- **Skill Architecture Standard**: `C:\PROJECTS\LESSONS AND SLIDESHOWS 2\knowledge_base\using-skills.md`
-- **Visualization Tool**: `C:\PROJECTS\LESSONS AND SLIDESHOWS 2\skills\rendering-prompts-into-mermaid\SKILL.md`
-- **Styling Guide**: `C:\PROJECTS\LESSONS AND SLIDESHOWS 2\skills\producing-educational-materials\references\styling.md`
-- **Typst Library**: `C:\Users\elwru\AppData\Roaming\typst\packages\local\bell-sheets\0.1.0\lib.typ`
+- **Skill Architecture Standard**: `/knowledge_base/using-skills.md`
+- **Styling Guide**: `/skills/03-producing-educational-materials/references/styling.md`
+- **Official Typst Source**: `https://github.com/typst/typst` (Consult via Skill 16)

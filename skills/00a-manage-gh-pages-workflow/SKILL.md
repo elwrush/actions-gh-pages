@@ -13,9 +13,11 @@ This skill manages the deployment of **standalone presentation bundles** to the 
 
 ## Core Mandates
 1.  **Target Repository**: Must push to `https://github.com/elwrush/actions-gh-pages.git` (remote: `origin`).
-2.  **Standalone Bundle Law**: Every presentation folder MUST contain its own `dist/`, `plugin/`, and `fontawesome/` folders. 
-3.  **Incremental Updates**: Deployments only affect the specific lesson folder and the global `index.html` dashboard.
-4.  **Zero Overwrite**: Lessons reside in unique subfolders to prevent cross-lesson interference.
+2.  **Standalone Bundle Law**: Every presentation folder MUST contain its own `dist/` and `plugin/` folders. The `fontawesome/` folder is OPTIONAL if the FA6 CDN is utilized.
+3.  **The CDN-First Asset Architecture**: Core UI assets (Reveal.js, FontAwesome) are fetched from global repositories or CDNs during build. The local `/lib/` folder is legacy and must not be used.
+4.  **Root-Relative Media Standard**: All shared media references in `presentation.json` MUST use `/images/` (root-relative) to support centralized asset serving on GitHub Pages.
+5.  **Incremental Updates**: Deployments only affect the specific lesson folder and the global `index.html` dashboard.
+6.  **Zero Overwrite**: Lessons reside in unique subfolders to prevent cross-lesson interference.
 
 ## Workflow
 
