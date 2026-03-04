@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ root_path }}dist/reset.css">
     <link rel="stylesheet" href="{{ root_path }}dist/reveal.css">
     <link rel="stylesheet" href="{{ root_path }}dist/theme/black.css" id="theme">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ root_path }}fontawesome/css/all.min.css">
 
     <style>
         :root {
@@ -22,9 +22,15 @@
             
             --ped-lead-in-size: 1.5em;  /* Impact / Prompt Text */
             --ped-body-size: 1.1em;     /* Dialogue / Exercise Text */
+            --ped-table-size: 0.85em;    /* Table Content */
             --ped-note-size: 0.8em;     /* Rationales / Footnotes */
             
             --r-block-margin: 20px;
+        }
+
+        /* AUTO-SCALE TABLE CONTENT */
+        .reveal table {
+            font-size: var(--ped-table-size) !important;
         }
 
         .reveal .slides {
@@ -100,7 +106,6 @@
             width: 95%;
             margin-left: auto;
             margin-right: auto;
-            font-size: 1.2em;
             background: rgba(0, 0, 0, 0.3);
             text-align: left;
         }
@@ -193,6 +198,21 @@
             justify-content: space-between;
             width: 100%;
             margin-top: 2px;
+        }
+
+        /* FRAGMENT HIGHLIGHTS */
+        .reveal .slides section .fragment.highlight-gold {
+            opacity: 1;
+            visibility: inherit;
+        }
+        .reveal .slides section .fragment.highlight-gold.visible {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        
+        .reveal u {
+            text-decoration: underline;
+            text-underline-offset: 4px;
         }
     </style>
 </head>
@@ -384,6 +404,32 @@
             autoAnimateEasing: 'ease-in-out',
             plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
         });
+
+        // VERTICAL SCALE GUARD (LAW 21)
+        function applyScaleGuard() {
+            const currentSlide = Reveal.getCurrentSlide();
+            if (!currentSlide) return;
+
+            const containers = currentSlide.querySelectorAll('.slide-canvas, .table-container');
+            const MAX_HEIGHT = 680; // 720 minus margin
+
+            containers.forEach(container => {
+                let fontSize = parseFloat(window.getComputedStyle(container).fontSize);
+                let attempts = 0;
+                
+                // Reset to default before measuring
+                // container.style.fontSize = ''; 
+
+                while (container.scrollHeight > MAX_HEIGHT && attempts < 10) {
+                    fontSize *= 0.95;
+                    container.style.fontSize = fontSize + 'px';
+                    attempts++;
+                }
+            });
+        }
+
+        Reveal.on('ready', applyScaleGuard);
+        Reveal.on('slidetransitionend', applyScaleGuard);
     </script>
 </body>
 

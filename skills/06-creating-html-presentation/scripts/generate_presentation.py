@@ -99,7 +99,9 @@ def generate_presentation(json_path):
                 src = alt_src
 
         if src.exists():
-            shutil.copytree(src, dst, ignore=shutil.ignore_patterns(".git", "node_modules"), dirs_exist_ok=True)
+            if dst.exists():
+                shutil.rmtree(dst)
+            shutil.copytree(src, dst, ignore=shutil.ignore_patterns(".git", "node_modules"))
         else:
             if folder == "fontawesome":
                 print(f"  [WARN] fontawesome not found in {reveal_source} or {project_root / 'lib' / 'fontawesome'}. UI icons might be missing.")

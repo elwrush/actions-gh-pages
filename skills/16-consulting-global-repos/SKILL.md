@@ -10,11 +10,11 @@ description: >
 
 This skill enables precise, API-driven discovery of code patterns and documentation from external repositories. It utilizes the `GITHUB_MCP_PAT` for authenticated, high-rate-limit access.
 
-## 🛑 MANDATORY: THE "SOURCE OF TRUTH" LAW
-You MUST NOT guess architectural patterns or library syntax. If the local project refers to an external standard (like Typst or Reveal.js), you MUST consult the official repository using this skill before implementation.
+## 🛑 MANDATORY: THE "LIB LEGACY" LAW
+The local `/lib/` folder is **DELETED and LEGACY**. You MUST NOT assume local library files exist. You **MUST** consult the official repositories using this skill for ALL Typst syntax, pedagogical templates (Bell/Intensive), and branding components before implementation.
 
 ## 🛠️ The Tool: `gh_fetch.py`
-The engine for this skill is located at `skills/16-consulting-global-repos/scripts/gh_fetch.py`.
+The engine for this skill is located at `skills/16-consulting-global-repos/scripts/gh_fetch.py`. It automatically logs consultations to satisfy the `typst_guard` hook.
 
 ### Usage Patterns
 Run via `run_shell_command`:

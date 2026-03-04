@@ -1,0 +1,305 @@
+{
+  "meta": {
+    "title": "Someone I Admire",
+    "subtitle": "Writing Skills",
+    "theme": "noir",
+    "mode": "intensive"
+  },
+  "slides": [
+    {
+      "slide_id": "lp_title",
+      "layout": "title",
+      "background": {
+        "type": "video",
+        "src": "images/title_bg.mp4"
+      },
+      "animation": {
+        "type": "fade"
+      },
+      "title": "Someone I Admire",
+      "subtitle": "Writing Skills",
+      "video_loop": true
+    },
+    {
+      "slide_id": "lp_mission",
+      "layout": "mission",
+      "background": {
+        "type": "video",
+        "src": "/images/mission_bg_clipped.mp4"
+      },
+      "animation": {
+        "type": "auto-animate"
+      },
+      "title": "YOUR MISSION",
+      "items": [
+        {
+          "icon": "fa-user-check",
+          "title": "Subject",
+          "text": "Select an admirable hero"
+        },
+        {
+          "icon": "fa-pen-fancy",
+          "title": "Style",
+          "text": "Write with attitude adverbs"
+        },
+        {
+          "icon": "fa-database",
+          "title": "Proof",
+          "text": "Support every opinion with facts"
+        }
+      ],
+      "main_text": "Your mission today is to draft a 225-word formal description of someone you admire. You must use specific writing techniques to prove your points."
+    },
+    {
+      "slide_id": "lp_leadin",
+      "layout": "schema_activation",
+      "title": "Who is a hero?",
+      "badge": "WARMER",
+      "items": [
+        {
+          "text": "Fictional: Katniss Everdeen",
+          "image": "images/katniss.png"
+        },
+        {
+          "text": "Historical: Nelson Mandela",
+          "image": "images/mandela.png"
+        },
+        {
+          "text": "Athlete: Lionel Messi",
+          "image": "images/messi.png"
+        }
+      ],
+      "question": "Brainstorm two adjectives for each person.",
+      "notes": "Teacher Scaffolding: Elicit adjectives to board. Ask CCQs about why these specific figures are admired.",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_segue_prep",
+      "layout": "segue",
+      "title": "The Admirable Profile",
+      "video_loop": true,
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      },
+      "transition": "zoom"
+    },
+    {
+      "slide_id": "lp_modeling_lisa",
+      "layout": "impact",
+      "badge": "MODELING",
+      "animation": {
+        "type": "auto-animate"
+      },
+      "title": "How to build a profile",
+      "text": "Before you start, look at this example:",
+      "points": [
+        {
+          "text": "Subject: Lisa (Blackpink)",
+          "image": "/images/hero_lisa.png"
+        },
+        {
+          "text": "Admirable Trait: [HIGHLIGHT: Hard-working]"
+        },
+        {
+          "text": "Supporting Fact: She trained for [HIGHLIGHT: 5,300 hours] before her debut."
+        }
+      ],
+      "notes": "Pedagogy: Model how to connect an abstract trait (Hard-working) to a concrete, provable fact (5,300 hours).",
+      "background": {
+        "type": "color",
+        "src": "#556b2f",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_prep",
+      "layout": "split_table",
+      "badge": "TASK 1",
+      "title": "The Admirable Profile",
+      "content": "<table><tr><th>Step</th><th>Instruction</th></tr><tr><td>1</td><td>Choose your person.</td></tr><tr><td>2</td><td>List 3 admirable traits.</td></tr><tr><td>3</td><td>Provide 1 supporting fact for each trait.</td></tr></table>",
+      "timer": 480,
+      "notes": "Circulate and assist students in finding specific facts for their subjects.",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_segue_vocab",
+      "layout": "segue",
+      "title": "Let's learn some words",
+      "video_loop": true,
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      },
+      "transition": "zoom"
+    },
+    {
+      "slide_id": "lp_vocab_4",
+      "layout": "vocab",
+      "word": "Fortunately",
+      "phoneme": "/\u02c8f\u0254\u02d0.t\u0283\u0259n.\u0259t.li/",
+      "context_sentence": "<span style='color: #FFD700;'>Fortunately</span>, I caught the last train before the station closed.",
+      "background": {
+        "type": "image",
+        "src": "images/fortunately_bg_v2.jpg",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_vocab_6",
+      "layout": "vocab",
+      "word": "Surprisingly",
+      "phoneme": "/s\u0259\u02c8pra\u026a.z\u026a\u014b.li/",
+      "context_sentence": "<span style='color: #FFD700;'>Surprisingly</span>, the small boy finished the giant pizza by himself.",
+      "background": {
+        "type": "image",
+        "src": "images/surprisingly_bg_v2.jpg",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_vocab_1",
+      "layout": "vocab",
+      "word": "Amazingly",
+      "phoneme": "/\u0259\u02c8me\u026a.z\u026a\u014b.li/",
+      "context_sentence": "<span style='color: #FFD700;'>Amazingly</span>, the seed grew into a giant tree in just one week.",
+      "background": {
+        "type": "image",
+        "src": "images/amazingly_bg_v2.jpg",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_vocab_5",
+      "layout": "vocab",
+      "word": "Clearly",
+      "phoneme": "/\u02c8kl\u026a\u0259.li/",
+      "context_sentence": "<span style='color: #FFD700;'>Clearly</span>, he will not be able to lift 200kg.",
+      "background": {
+        "type": "image",
+        "src": "images/clearly_bg_v2.jpg",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_vocab_2",
+      "layout": "vocab",
+      "word": "Remarkably",
+      "phoneme": "/r\u026a\u02c8m\u0251\u02d0.k\u0259.bli/",
+      "context_sentence": "<span style='color: #FFD700;'>Remarkably</span>, the cat found its way home from 100 miles away.",
+      "background": {
+        "type": "image",
+        "src": "images/remarkably_bg_v2.jpg",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_vocab_3",
+      "layout": "vocab",
+      "word": "Generously",
+      "phoneme": "/\u02c8d\u0292en.\u0259r.\u0259s.li/",
+      "context_sentence": "<span style='color: #FFD700;'>Generously</span>, he shared his only sandwich with the hungry dog.",
+      "background": {
+        "type": "image",
+        "src": "images/generously_bg_v2.jpg",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_vocab_task_1",
+      "layout": "split_table",
+      "badge": "TASK 2 (Part 1)",
+      "title": "Attitude Check",
+      "content": "<table><tr><th>Situation</th><th>Attitude Adverb</th></tr><tr><td>She won the gold medal despite her injury.</td><td>[REVEAL: Amazingly]</td></tr><tr><td>He survived the crash without any scratches.</td><td>[REVEAL: Remarkably]</td></tr><tr><td>They decided to donate all their money to charity.</td><td>[REVEAL: Generously]</td></tr></table>",
+      "timer": 180,
+      "notes": "Concept Check: Ask students why each adverb fits the specific situation.",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_vocab_task_2",
+      "layout": "split_table",
+      "badge": "TASK 2 (Part 2)",
+      "title": "Attitude Check",
+      "content": "<table><tr><th>Situation</th><th>Attitude Adverb</th></tr><tr><td>He found his missing passport just before the flight.</td><td>[REVEAL: Fortunately]</td></tr><tr><td>The team managed to win the game in the final minute.</td><td>[REVEAL: Clearly]</td></tr><tr><td>She has written ten books by the age of twenty.</td><td>[REVEAL: Surprisingly]</td></tr></table>",
+      "timer": 180,
+      "notes": "Discuss why 'Clearly' and 'Surprisingly' fit these final cases.",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_segue_strategy",
+      "layout": "segue",
+      "title": "Why do we need facts?",
+      "video_loop": true,
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      },
+      "transition": "zoom"
+    },
+    {
+      "slide_id": "lp_strategy",
+      "layout": "strategy",
+      "badge": "STRATEGY",
+      "animation": {
+        "type": "auto-animate"
+      },
+      "title": "Supporting Your Opinion",
+      "strategy_items": [
+        { "text": "Opinion: Messi is a great player.", "icon": "fa-comment" },
+        { "text": "Fact: Messi has won 8 Ballon d'Ors.", "icon": "fa-trophy" }
+      ],
+      "main_text": "When you express an opinion, [HIGHLIGHT: give real-life examples and facts to support it].",
+      "notes": "Compare 'Messi is good' vs 'Messi has won 8 Ballon d'Ors.' Which proves greatness?",
+      "background": {
+        "type": "color",
+        "src": "#556b2f",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_task",
+      "layout": "split_table",
+      "badge": "TASK 3",
+      "title": "First Draft (225 words)",
+      "content": "<table><tr><th>Point</th><th>Checklist</th></tr><tr><td>Opinion</td><td>State your opinion clearly</td></tr><tr><td>Adverbs</td><td>Use attitude adverbs correctly</td></tr><tr><td>Facts</td><td>Support every point with a fact</td></tr></table>",
+      "timer": 900,
+      "notes": "Assist with active use of adverbs. Help with relative clauses.",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": false
+      }
+    },
+    {
+      "slide_id": "lp_wrapup",
+      "layout": "segue",
+      "title": "Read your closing statement to a partner.",
+      "video_loop": true,
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      },
+      "transition": "zoom"
+    }
+  ]
+}

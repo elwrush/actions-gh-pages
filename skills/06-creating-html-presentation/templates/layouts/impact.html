@@ -12,12 +12,12 @@
         {% endif %}
 
         <h1 data-id="header-title"
-            style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 20px;">
+            style="color: #FFD700; font-size: 1.6em; text-shadow: 2px 2px 10px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 20px;">
             {{ slide.title | safe }}
         </h1>
         
-        <div data-id="impact-text-box" style="background: rgba(0,0,0,0.6); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
-            <p style="font-size: var(--ped-lead-in-size); color: white; line-height: 1.4; margin: 0;">
+        <div data-id="impact-text-box" style="background: rgba(0,0,0,0.6); padding: 20px 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <p style="font-size: var(--ped-body-size); color: white; line-height: 1.4; margin: 0;">
                 {{ (slide.text | default(slide.main_text)) | parse_directives | safe }}
             </p>
         </div>
@@ -30,16 +30,16 @@
 
         {% if slide.timer %}
         <div class="timer-container" style="margin-top: 20px; justify-content: center; gap: 30px;">
-            <div class="timer-display" id="timer-{{ slide.timer }}-display"
+            <div class="timer-display" id="timer-{{ slide.slide_id }}-display"
                 style="font-size: 2.5em; font-family: monospace; color: #FFD700; text-shadow: 0 0 15px rgba(0,0,0,0.9);">
                 {% set mins = (slide.timer / 60) | int %}{% set secs = (slide.timer % 60) | int %}
                 {{ "%02d"|format(mins) }}:{{ "%02d"|format(secs) }}
             </div>
             <div style="display: flex; gap: 10px;">
                 <button class="timer-btn"
-                    onclick="toggleTimer({{ slide.timer }}, 'timer-{{ slide.timer }}-display', this)">START</button>
+                    onclick="toggleTimer({{ slide.timer }}, 'timer-{{ slide.slide_id }}-display', this)">START</button>
                 <button class="timer-btn reset"
-                    onclick="resetTimer({{ slide.timer }}, 'timer-{{ slide.timer }}-display')">RESET</button>
+                    onclick="resetTimer({{ slide.timer }}, 'timer-{{ slide.slide_id }}-display')">RESET</button>
             </div>
         </div>
         {% endif %}
@@ -48,7 +48,7 @@
         <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px;">
             {% for point in slide.points %}
             <div data-id="point-{{ loop.index0 }}" class="mission-badge" style="min-width: 850px; flex-direction: row; text-align: left; padding: 10px 25px; gap: 25px;">
-                <i class="fas {{ point.icon | default('fa-check') }}" style="font-size: 1.3em; color: #FFD700; width: 40px; text-align: center;"></i>
+                <i class="fas {{ point.icon | default('fa-check') }}" style="font-size: 1.1em; color: #FFD700; width: 40px; text-align: center;"></i>
                 <span style="font-size: var(--ped-body-size); margin-top: 0;">{{ point.text | parse_directives | safe }}</span>
             </div>
             {% endfor %}

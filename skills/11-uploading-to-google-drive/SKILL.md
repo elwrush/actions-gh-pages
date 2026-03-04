@@ -1,29 +1,37 @@
 ---
 name: 11-uploading-to-google-drive
-description: Uploads files to a specified Google Drive folder using service account credentials. Use when the user requests to upload PDFs, lesson plans, or other artifacts to Google Drive.
+description: Uploads files to a specified Google Drive folder or creates subfolders using Application Default Credentials (ADC).
 ---
 
-# Uploading to Google Drive
+# Uploading to Google Drive (ADC Implementation)
 
 ## Purpose
-This skill automates the process of uploading local files to a specific Google Drive folder using the Google Drive API and a service account.
+This skill automates the process of uploading local files to Google Drive or creating subfolders. It uses **Application Default Credentials (ADC)** for secure, flexible authentication.
 
 ## Workflow
-1. **Identify the File**: Determine the path of the file to be uploaded (e.g., a recently compiled PDF).
-2. **Identify the Folder ID**: Extract the Folder ID from the Google Drive link provided by the user.
-   - Example Link: `https://drive.google.com/drive/folders/1YoiHmadJku4FkB4qov6QLGIKQTfLiYmW`
-   - Folder ID: `1YoiHmadJku4FkB4qov6QLGIKQTfLiYmW`
-3. **Execute Upload**: Use the `upload_to_drive.py` script to perform the upload.
+1. **Identify Target Root**: Read `knowledge_base/folder-links.md` and prompt for a choice.
+2. **Create Subfolder (Optional)**: If requested, create a subfolder within the root and get the new ID.
+3. **Identify File(s)**: Locate the paths of the material to be uploaded.
+4. **Execute Operation**: Use the `upload_to_drive.py` script (ADC-powered).
 
 ## Commands
+
+### Upload a File
 ```powershell
-python skills/uploading-to-google-drive/scripts/upload_to_drive.py "[FILE_PATH]" "[FOLDER_ID]" --creds ".credentials/GDocs-credentials.json"
+python skills/11-uploading-to-google-drive/scripts/upload_to_drive.py upload "[FILE_PATH]" "[FOLDER_ID]"
+```
+
+### Create a Folder
+```powershell
+python skills/11-uploading-to-google-drive/scripts/upload_to_drive.py create-folder "[FOLDER_NAME]" "[PARENT_ID]"
 ```
 
 ## Prerequisites
-- Service account credentials JSON must be present at `.credentials/GDocs-credentials.json`.
-- Python libraries required: `google-api-python-client`, `google-auth-httplib2`, `google-auth-oauthlib`.
+- The environment must be configured for ADC:
+  - **Option A (Recommended)**: Run `gcloud auth application-default login` to authenticate as your user.
+  - **Option B**: Set `$env:GOOGLE_APPLICATION_CREDENTIALS="C:\path\to\service-account.json"`.
+- Python libraries: `google-auth`, `google-api-python-client`.
 
 ## Error Handling
-- If the credentials file is missing, inform the user.
-- If the upload fails due to missing permissions, ensure the service account email has been shared with the target Google Drive folder.
+- If `DefaultCredentialsError` occurs, guide the user to the `gcloud` login command or environment variable setup.
+- If a `404` error occurs, ensure the authenticated identity (User or Service Account) has "Editor" access to the target folder.

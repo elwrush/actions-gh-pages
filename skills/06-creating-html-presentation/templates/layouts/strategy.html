@@ -4,36 +4,38 @@
     {% endif %}
     <h2 data-id="header-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">{{
         slide.title | parse_directives | safe }}</h2>
+
+{% if slide.strategy_items %}
 <div
-    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size);">
-    {% if slide.strategy_items %}
+    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size); margin-bottom: 30px;">
         <ul style="list-style: none; padding: 0; margin: 0;">
         {% for item in slide.strategy_items %}
             <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
-                <i class="fas {{ item.icon }}" style="color: #FFD700; font-size: 1.2em;"></i>
+                <i class="fas {{ item.icon | default('fa-lightbulb') }}" style="color: #FFD700; font-size: 1.2em;"></i>
                 <span>{{ item.text | parse_directives | safe }}</span>
             </li>
         {% endfor %}
         </ul>
-    {% endif %}
-</div>
-
-{% if slide.content or slide.table %}
-<div style="margin-top: 30px; font-size: var(--ped-body-size);">
-    {{ (slide.content if slide.content else slide.table) | parse_directives | safe }}
 </div>
 {% endif %}
+
+{% if slide.content or slide.table or slide.main_text %}
+<div style="font-size: var(--ped-body-size); line-height: 1.6;">
+    {{ (slide.content if slide.content else (slide.table if slide.table else slide.main_text)) | parse_directives | safe }}
+</div>
+{% endif %}
+
     {% if slide.timer %}
     <div class="timer-container" style="margin-top: 20px; justify-content: flex-start;">
-        <div class="timer-display" id="timer-{{ slide.timer }}-display"
+        <div class="timer-display" id="timer-{{ slide.slide_id }}-display"
             style="font-size: 2.2em; font-family: monospace; color: #FFD700; text-shadow: 0 0 10px rgba(0,0,0,0.8); margin-right: 20px;">
             {% set mins = (slide.timer / 60) | int %}{% set secs = (slide.timer % 60) | int %}
             {{ "%02d"|format(mins) }}:{{ "%02d"|format(secs) }}
         </div>
         <button class="timer-btn"
-            onclick="toggleTimer({{ slide.timer }}, 'timer-{{ slide.timer }}-display', this)">START</button>
+            onclick="toggleTimer({{ slide.timer }}, 'timer-{{ slide.slide_id }}-display', this)">START</button>
         <button class="timer-btn reset"
-            onclick="resetTimer({{ slide.timer }}, 'timer-{{ slide.timer }}-display')">RESET</button>
+            onclick="resetTimer({{ slide.timer }}, 'timer-{{ slide.slide_id }}-display')">RESET</button>
     </div>
     {% endif %}
 </div>

@@ -11,7 +11,7 @@ description: >
 This skill guides you through a strictly interactive 7-step workflow to create professional, pedagogically robust lesson plans.
 
 ## 🛑 MANDATORY: ZERO HALLUCINATION POLICY
-**You MUST NOT guess Typst syntax.** Before you write or edit any `.typ` file (Step 6), if you are unsure of a layout, table, or list implementation, you **MUST** use the **GitHub API (Skill 16)** to consult the official Typst repository (`typst/typst`). For the local project library, use `read_file` on `lib/typst/lib.typ`. 
+**You MUST NOT guess Typst syntax.** Before you write or edit any `.typ` file (Step 6), if you are unsure of a layout, table, or list implementation, you **MUST** use the **GitHub API (Skill 16)** to consult the official Typst repository (`typst/typst`) or the pedagogical reference repo (`elwrush/lesson-plan-references`). The local `/lib/` folder is **DELETED and LEGACY**.
 
 ## 🛑 THE INTERACTIVE WORKFLOW (MANDATORY)
 
@@ -34,27 +34,20 @@ You must use the `ask_user` tool to complete the following steps in sequence. Do
 3.  **Shape Selection**: 
     - First, **output an enumerated list** of shapes (1-10) as defined in `REFERENCE.md` in your text response.
     - Then, use `ask_user` (type: 'text') to ask for the selected shape number or letter.
-    - **Shapes**:
-        1. **A**: Text-based Presentation
-        2. **B**: Language Practice
-        3. **C**: Test-Teach-Test (TTT)
-        4. **D**: Situational Presentation (PPP)
-        5. **E**: Receptive Skills
-        6. **F**: Productive Skills
-        7. **G**: Task-Based Learning (TBL)
-        8. **H**: SCR Receptive Skills
-        9. **I**: SCR Systems
-        10. **J**: SCR Productive Skills
-4.  **Material Source**: Use `ask_user` (type: 'choice') to establish if the lesson is **bespoke** (created from scratch) or **based on materials** (e.g., a specific textbook page or YouTube transcript).
+4.  **Phase 1: Ingestion (MANDATORY GATE)**:
+    - Use `ask_user` to ask for the location of the source materials.
+    - **YOU MUST EXTRACT ALL SOURCE TEXT to a `SOURCE_TEXT.md` file in the lesson folder BEFORE proceeding.** 
+    - **VERIFICATION TAGS**: You MUST include `(Count: X)` tags in the `SOURCE_TEXT.md` for any numbered tasks, sentences, or response areas (e.g., `### Task 7 (Count: 6 sentences)`). This enables the programmatic integrity hook.
 5.  **Metadata Check**: Use `ask_user` (type: 'text') to collect or confirm:
     - Teacher Name
     - Date of Lesson
     - CEFR Level
     - Duration (Minutes)
     - Materials
-6.  **Lesson Generation**: Write the lesson plan according to the selected shape and metadata. Use the "Gold Standard" principle to model the plan on high-quality existing examples.
-    - **MANDATORY**: You MUST include the `#slideshow_link("https://elwrush.github.io/actions-gh-pages/[lesson-name]/")` function in every lesson plan (placed between the differentiation box and the stage table).
-    - **MANDATORY**: Do NOT proceed to create worksheets automatically. You MUST ask the user for explicit permission before invoking the `03-producing-educational-materials` skill.
+6.  **Lesson Generation**: Write the lesson plan according to the selected shape and metadata. 
+    - **MANDATORY ITEMIZATION**: You MUST explicitly itemize every single task or exercise number from the source materials.
+    - **LP-WS CROSS-REFERENCING**: Every stage MUST prominently reference the corresponding Worksheet Task and Workbook Exercise (e.g., "*Stage 2: Preparation (WS Task 1 / Workbook Task 4)*").
+    - **MANDATORY**: You MUST include the `#slideshow_link("https://elwrush.github.io/actions-gh-pages/[lesson-name]/")` function.
 7.  **User Review**: Present the plan (or a summary) and ask for final approval before finalizing files.
 8.  **Finalization & Publishing (MANDATORY)**:
     - Create a `published/` subdirectory inside the lesson folder.

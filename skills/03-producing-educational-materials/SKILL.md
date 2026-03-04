@@ -10,7 +10,7 @@ Guide the transition from raw educational requirements to print-ready, professio
 
 ### 🛑 MANDATORY: ZERO HALLUCINATION POLICY
 **You MUST NOT guess Typst syntax.** Before you write or edit any `.typ` file (Phase 4), if you are unsure of a layout, table, or list implementation, you **MUST** consult the official repositories using **Skill 16**:
-`python skills/16-consulting-global-repos/scripts/gh_fetch.py typst:crates/typst-library/src/...`
+`python skills/16-consulting-global-repos/scripts/gh_fetch.py typst:crates/typst-library/src/...` or `python skills/16-consulting-global-repos/scripts/gh_fetch.py reference:path/to/template`. The local `/lib/` folder is **DELETED and LEGACY**.
 
 ## STRICT RULE: NEVER abbreviate, change, or truncate source text. Professional materials must maintain 100% instructional integrity.
 
@@ -25,7 +25,7 @@ graph TD
     end
 
     subgraph "Phase 2: Dependency & Logic"
-        LP --> DP[Dependency Discovery: Verify lib.typ & Paths]
+        LP --> DP[Dependency Discovery: Verify Skill 16 Consultation]
         DP --> DG{Quiz/Writing Required?}
         DG -->|Yes| DK[Deterministic Gate: Scripted Keys/Anchors/Prompts]
         DG -->|No| IM
@@ -53,7 +53,15 @@ graph TD
 
 ## Workflow
 
-### Step 1: Requirements Gathering & Consultation
+### Step 1: Requirements Gathering & Consultation (PRE-FLIGHT GATE)
+Before generating any layout or Typst code, you MUST complete this pre-flight gate:
+
+1.  **Locate Source Materials**: Ask for the source material location.
+2.  **Verify Ingestion**: Ensure `SOURCE_TEXT.md` exists with `(Count: X)` tags.
+3.  **Read the Lesson Plan**: Read the associated `-LP.typ` file to ensure pedagogical alignment and re-order tasks if necessary to match the lesson flow.
+4.  **THE TRUNCATION LAW**: **ZERO TOLERANCE**. Every task, sentence, and exercise from `SOURCE_TEXT.md` MUST appear in the final worksheet. Check the `(Count: X)` tags meticulously.
+5.  **Multi-Page Writing Mandate**: If a writing task is > 150 words (e.g., Task 8's 225-word draft), you MUST provide a full extra page of writing lines.
+
 You MUST consult with the user on these core constraints:
 - **CEFR Level**: A1-C2 (mandatory).
 - **Skill/System**: Reading, Listening, Writing, Speaking, Grammar, Vocabulary, or Pronunciation.
@@ -81,13 +89,24 @@ Before writing any code, you MUST verify the environment:
 - **Rule: Verbatim Mandate**: **CRITICAL**. You MUST use the source text EXACTLY as provided.
 - **Rule: Meander for Maps & Visuals**: **MANDATORY**. Use **Meander (Skill 08)** for maps or large hero images to ensure professional text wrapping.
 - **Rule: Task Integrity**: **MANDATORY**. Wrap task headers and content in `#block(breakable: false, [...])` to prevent illegal page breaks.
+- **Rule: No Task Page Breaks**: **STRICT**. You MUST NOT include `#pagebreak()` before any task EXCEPT for the final optional writing task (usually Task 4 or 5).
 - **Rule: ID Block Logic**: **CRITICAL**. ONLY include the `#identity_block()` if there is a **submitted writing task**. Place it immediately before the writing task, preceded by a `#pagebreak()`.
 - **Rule: Paragraph Numbering**: **MANDATORY**. All reading texts MUST have bold, maroon paragraph numbers: `#text(fill: maroon, weight: "bold")[[1]]`.
 - **Rule: Writing Lines (The Spacing Law)**:
-  - **Dynamic**: For writing tasks spanning the rest of the page, use `#writing_lines_dynamic()`.
+  - **Dynamic (Fill-to-Bottom)**: For the final writing task, use a fractional block to fill the remaining page space. This is the **OFFICIAL 2026 PATTERN**:
+    ```typst
+    #block(width: 100%, height: 1fr)[
+      #grid(
+        columns: (100%),
+        rows: (1.1cm), // Standard handwriting spacing
+        stroke: (bottom: 0.5pt + gray),
+        ..for _ in range(25) { ([ ],) } // Oversupply rows; 1fr block handles clipping
+      )
+    ]
+    ```
   - **Fixed**: For short, specific space needs (e.g., 5 lines), use `#writing_lines_fixed(5)`.
   - **Handwriting Space**: Minimum 0.8cm clearance (`#v(0.8cm)`) for all handwritten response areas.
-- **Rule: Grid Answer Lines**: Use `#box(width: 3cm, stroke: (bottom: 0.75pt + black), outset: (bottom: 2pt))[#hide[a]]` for numbered answer lines in grids.
+- **Rule: Grid Answer Lines**: Use `#box(width: 3cm, stroke: (bottom: 0.75pt + black), outset: (bottom: 2pt), baseline: 15%)[#hide[a]]` for numbered answer lines in grids to ensure stroke alignment with text.
 
 ### Step 4: Rendering & Validation
 1.  **Compile**:

@@ -1,0 +1,153 @@
+# Lesson Manifest: Someone I Admire (Version 1.1)
+
+meta:
+  title: "Someone I Admire"
+  subtitle: "Writing Skills"
+  topic: "Heroes"
+  cefr: "B1"
+  teacher: "Ed Rush"
+  date: "04-03-2026"
+  duration: 45
+  program: "Intensive"
+  focus: "Productive Writing"
+  materials: "OFD3 Unit 4 Writing, WB p. 41"
+  hero_image: "images/hero.jpg"
+  badges:
+    - { label: "B1", type: "level" }
+    - { label: "WRITING", type: "skill" }
+    - { label: "HEROES", type: "topic" }
+
+pedagogy:
+  mission:
+    title: "YOUR MISSION"
+    text: "Draft a 225-word description of someone you admire using attitude adverbs and supporting facts."
+    exam_hook: "B1 Preliminary (PET)"
+    objectives:
+      - { icon: "fa-bullseye", title: "Identify", text: "Admirable traits" }
+      - { icon: "fa-pen-nib", title: "Use", text: "Attitude adverbs" }
+      - { icon: "fa-chart-bar", title: "Support", text: "With facts" }
+
+  stages:
+    - id: 1
+      name: "Lead-in"
+      time: 6
+      aim: "To engage students and activate schema regarding 'admirable' figures."
+      interaction: "T-Ss / Ss-Ss"
+      workbook_tasks: [4]
+      slides:
+        - id: "lp_title"
+          layout: "title"
+          background: { type: "video", src: "videos/title_bg.mp4" }
+        - id: "lp_mission"
+          layout: "mission"
+          background: { type: "video", src: "videos/mission_bg_clipped.mp4" }
+        - id: "lp_leadin"
+          layout: "schema_activation"
+          title: "Who is a hero?"
+          badge: "WARMER"
+          items:
+            - { text: "Fictional: Katniss Everdeen", image: "images/katniss.png" }
+            - { text: "Historical: Nelson Mandela", image: "images/mandela.png" }
+            - { text: "Athlete: Lionel Messi", image: "images/messi.png" }
+          question: "Brainstorm two adjectives for each person."
+          notes: "Elicit adjectives to board. Ask CCQs about why these figures are admired."
+
+    - id: 2
+      name: "Preparation"
+      time: 10
+      aim: "To brainstorm and plan the content of the description."
+      interaction: "Indiv"
+      workbook_tasks: [4, 5, 6]
+      worksheet_task: 1
+      slides:
+        - id: "lp_prep"
+          layout: "impact"
+          badge: "TASK 1"
+          title: "The Admirable Profile"
+          text: "Plan your content in your Workbook before you start."
+          points:
+            - { text: "Step 1: Choose your person." }
+            - { text: "Step 2: List 3 admirable traits." }
+            - { text: "Step 3: Provide 1 supporting fact for each trait." }
+          timer: 8
+          notes: "Circulate and assist students in finding specific facts for their subjects."
+
+    - id: 3
+      name: "Preparation"
+      time: 10
+      aim: "To introduce the 'Supporting your opinion' strategy and 'Attitude Adverbs' focus."
+      interaction: "T-Ss / Indiv"
+      workbook_tasks: [6, 7]
+      worksheet_task: 2
+      slides:
+        - id: "lp_segue_strategy"
+          layout: "segue"
+          title: "Why do we need facts?"
+        - id: "lp_strategy"
+          layout: "strategy"
+          badge: "STRATEGY"
+          title: "Supporting Your Opinion"
+          main_text: "When you express an opinion, [HIGHLIGHT: give real-life examples and facts to support it]."
+          notes: "Compare 'Messi is good' vs 'Messi has won 8 Ballon d'Ors.' Which proves greatness?"
+        - id: "lp_segue_vocab"
+          layout: "segue"
+          title: "Let's learn some words"
+        - id: "lp_vocab_1"
+          layout: "vocab"
+          word: "Amazingly"
+          phoneme: "/əˈmeɪ.zɪŋ.li/"
+          context: "<span style='color: #FFD700;'>Amazingly</span>, she won the gold medal despite her injury."
+        - id: "lp_vocab_2"
+          layout: "vocab"
+          word: "Remarkably"
+          phoneme: "/rɪˈmɑː.kə.bli/"
+          context: "<span style='color: #FFD700;'>Remarkably</span>, he survived the crash without any scratches."
+        - id: "lp_vocab_3"
+          layout: "vocab"
+          word: "Generously"
+          phoneme: "/ˈdʒen.ər.əs.li/"
+          context: "<span style='color: #FFD700;'>Generously</span>, they decided to donate all their money to charity."
+        - id: "lp_vocab_4"
+          layout: "vocab"
+          word: "Fortunately"
+          phoneme: "/ˈfɔː.tʃən.ət.li/"
+          context: "<span style='color: #FFD700;'>Fortunately</span>, he found his missing passport just before the flight."
+        - id: "lp_vocab_5"
+          layout: "vocab"
+          word: "Clearly"
+          phoneme: "/ˈklɪə.li/"
+          context: "<span style='color: #FFD700;'>Clearly</span>, the team managed to win the game in the final minute."
+
+    - id: 4
+      name: "Task"
+      time: 19
+      aim: "To produce the 225-word first draft using the models and language from Stages 2-3."
+      interaction: "Indiv / Ss-Ss"
+      workbook_tasks: [8]
+      worksheet_task: 3
+      slides:
+        - id: "lp_task"
+          layout: "impact"
+          badge: "TASK 3"
+          title: "First Draft (225 words)"
+          text: "Produce your description using the plan."
+          points:
+            - { text: "State your opinion clearly" }
+            - { text: "Use attitude adverbs correctly" }
+            - { text: "Support every point with a fact" }
+          timer: 15
+          notes: "Assist with active use of adverbs. Help with relative clauses."
+        - id: "lp_wrapup"
+          layout: "segue"
+          title: "Read your closing statement to a partner."
+
+content:
+  task_2_sentences:
+    - "She won the gold medal despite her injury."
+    - "He survived the crash without any scratches."
+    - "They decided to donate all their money to charity."
+    - "He found his missing passport just before the flight."
+    - "The team managed to win the game in the final minute."
+    - "She has written ten books by the age of twenty."
+  draft_word_count: 225
+  draft_pages: 2

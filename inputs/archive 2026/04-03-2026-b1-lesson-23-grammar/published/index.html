@@ -1,0 +1,2287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>The Heroic Journey</title>
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            /* FIXED FONT MATRIX */
+            --r-main-font-size: 40px;
+            --r-heading1-size: 2.4em;   /* Main Titles */
+            --r-heading2-size: 1.6em;   /* Section Headers */
+            --r-heading3-size: 1.1em;   /* Badges / Small Headers */
+            --r-heading4-size: 1.0em;
+            
+            --ped-lead-in-size: 1.5em;  /* Impact / Prompt Text */
+            --ped-body-size: 1.1em;     /* Dialogue / Exercise Text */
+            --ped-note-size: 0.8em;     /* Rationales / Footnotes */
+            
+            --r-block-margin: 20px;
+        }
+
+        .reveal .slides {
+            text-align: center;
+        }
+
+        .reveal .slides section {
+            font-size: var(--r-main-font-size);
+        }
+
+        /* TIMER UI - Native Styling */
+        .timer-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 5px auto;
+        }
+
+        .timer-display {
+            font-family: monospace;
+            font-size: 2.5em;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .timer-btn {
+            background: #FFD700;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 5px;
+            font-size: 0.8em;
+        }
+
+        .timer-btn.reset {
+            background: #444;
+            color: white;
+        }
+
+        /* Mission Badge Styling - Square, 10% smaller */
+        .mission-badge {
+            background-color: rgba(255, 215, 0, 0.15);
+            border: 2px solid #FFD700;
+            padding: 15px;
+            border-radius: 4px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin: 10px;
+            width: 320px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .mission-badge i {
+            font-size: 2em;
+            color: #FFD700;
+        }
+
+        /* Contrast Shadow for maximum pop on dimmed backgrounds */
+
+        /* Native Table Styling - Constrained */
+        .reveal table {
+            margin-top: 10px;
+            border-collapse: collapse;
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.2em;
+            background: rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        .reveal table th,
+        .reveal table td {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            text-align: left;
+        }
+
+        .reveal table th {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+        }
+
+        /* AUDIO PLAYER - Gold Standard Scrubber */
+        .audio-player {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #FFD700;
+            padding: 10px 15px;
+            /* Slightly tighter padding */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 95%;
+            /* Responsive width */
+            max-width: 600px;
+            margin: 10px auto;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+            /* Prevent padding from expanding width */
+            overflow: hidden;
+        }
+
+        .audio-play-btn {
+            background: #FFD700;
+            color: black;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+
+        .audio-play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-scrubber-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .audio-scrubber {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .audio-scrubber::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #FFD700;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px #FFD700;
+        }
+
+        .audio-time {
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #FFD700;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 2px;
+        }
+
+        /* FRAGMENT HIGHLIGHTS */
+        .reveal .slides section .fragment.highlight-gold {
+            opacity: 1;
+            visibility: inherit;
+        }
+        .reveal .slides section .fragment.highlight-gold.visible {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        
+        .reveal u {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            
+                
+                
+                    
+                    
+                        
+                        
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-video="images/antique_book_opening.mp4" data-background-video-loop data-background-video-muted
+        
+    
+
+        
+        
+        id="slide-title"
+    >
+        <!-- Cinematic Overlay for Video Legibility - Softened for 80% visibility -->
+<div
+    style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); z-index: -1;">
+</div>
+
+<div class="slide-canvas" style="padding: 30px; width: 100%; text-align: center;">
+    <img src="images/ACT.png" class="inset-media" style="height: 120px; margin-bottom: 20px;">
+    <h4 style="color: var(--accent); letter-spacing: 2px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">ASSUMPTION
+        COLLEGE MATHAYOM</h4>
+    <h1 style="font-size: 3.5em; margin: 10px 0; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">The Heroic Journey</h1>
+    <h3 style="opacity: 0.8; font-weight: normal; color: #FFD700; text-shadow: 2px 2px 8px rgba(0,0,0,0.9);">Relative Clauses & Emergency Essentials</h3>
+</div>
+
+<aside class="notes">
+    
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                        
+                        
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+        
+            data-background-video="images/mission_bg_clipped.mp4" data-background-video-loop data-background-video-muted
+        
+    
+
+        
+        
+        id="slide-mission"
+    >
+        <div class="slide-canvas">
+    <!-- Cinematic Overlay for Video Legibility -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%); z-index: -1;">
+    </div>
+
+    <div style="position: relative; z-index: 2; padding: 40px; width: 100%; text-align: center;">
+        <h1
+            style="font-family: 'Outfit', sans-serif; color: white; margin-bottom: 40px; text-shadow: 2px 2px 15px rgba(0,0,0,1); font-size: 2.5em; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">
+            YOUR MISSION</h1>
+
+        
+        <!-- HORIZONTAL STACKING -->
+        <div
+            style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px; width: 100%;">
+            
+            <div class="mission-badge">
+                <i class="fas fa-brain"></i>
+                <div style="color: white; font-size: 1.1em; line-height: 1.3; margin-top: 10px; text-align: center;">
+                    
+                    Identify the correct relative pronouns for people, things, and time.
+                </div>
+            </div>
+            
+            <div class="mission-badge">
+                <i class="fas fa-pencil"></i>
+                <div style="color: white; font-size: 1.1em; line-height: 1.3; margin-top: 10px; text-align: center;">
+                    
+                    Master vocabulary for emergencies and heroic actions.
+                </div>
+            </div>
+            
+            <div class="mission-badge">
+                <i class="fas fa-link"></i>
+                <div style="color: white; font-size: 1.1em; line-height: 1.3; margin-top: 10px; text-align: center;">
+                    
+                    Combine complex sentences to describe historical and fictional heroes.
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<aside class="notes">
+    
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="slide-schema"
+    >
+        <!-- SLIDE: SCHEMA ACTIVATION -->
+<section  data-auto-animate>
+
+    <div class="slide-canvas">
+        <div
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%; padding: 40px 0;">
+
+            <!-- Legacy Icon Handling -->
+            
+
+            <!-- New Items Handling (Minimalist Images + Text) -->
+            
+            <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 40px; margin-bottom: 20px; width: 100%;">
+                
+                <div style="display: flex; flex-direction: column; align-items: center; width: 300px;">
+                    
+                    <!-- Minimalist Image Law: No wrapper boxes, 1px contrasting border -->
+                    <img src="images/hero_harry.png" style="width: 280px; height: 280px; object-fit: cover; border: 1px solid #FFD700; margin-bottom: 15px;">
+                    
+                    
+                    
+                    <p style="font-size: 0.8em; color: white; line-height: 1.2; text-shadow: 2px 2px 4px black; margin: 0; text-align: center; font-weight: bold;">
+                        Harry Potter
+                    </p>
+                    
+                </div>
+                
+                <div style="display: flex; flex-direction: column; align-items: center; width: 300px;">
+                    
+                    <!-- Minimalist Image Law: No wrapper boxes, 1px contrasting border -->
+                    <img src="images/hero_rosa.png" style="width: 280px; height: 280px; object-fit: cover; border: 1px solid #FFD700; margin-bottom: 15px;">
+                    
+                    
+                    
+                    <p style="font-size: 0.8em; color: white; line-height: 1.2; text-shadow: 2px 2px 4px black; margin: 0; text-align: center; font-weight: bold;">
+                        Rosa Parks
+                    </p>
+                    
+                </div>
+                
+                <div style="display: flex; flex-direction: column; align-items: center; width: 300px;">
+                    
+                    <!-- Minimalist Image Law: No wrapper boxes, 1px contrasting border -->
+                    <img src="images/hero_lisa.png" style="width: 280px; height: 280px; object-fit: cover; border: 1px solid #FFD700; margin-bottom: 15px;">
+                    
+                    
+                    
+                    <p style="font-size: 0.8em; color: white; line-height: 1.2; text-shadow: 2px 2px 4px black; margin: 0; text-align: center; font-weight: bold;">
+                        Lisa
+                    </p>
+                    
+                </div>
+                
+            </div>
+            
+
+            
+            <div
+                style="background: rgba(0,0,0,0.7); padding: 20px 40px; border-radius: 15px; margin-top: 20px; border-left: 10px solid var(--accent); max-width: 80%;">
+                <h2 style="color: white; margin: 0; font-size: 1.5em; text-transform: uppercase;">HERO OR NOT?</h2>
+                <p
+                    style="color: var(--accent); margin: 5px 0 0 0; font-size: 1.2em; font-weight: bold;">Which of these people are REAL heroes? Why?</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <aside class="notes">
+        Elicit student interest using the visual prompts.
+    </aside>
+</section>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="segue-storyteller"
+    >
+        <div class="slide-canvas">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE 1</div>
+    <h1 style="color: #FFD700; font-size: 3em; text-shadow: 2px 2px 15px rgba(0,0,0,1);">The Wise Storyteller</h1>
+    
+    <h2 style="font-size: 1.5em; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,1);">Relative Clauses in context</h2>
+    
+</div>
+<aside class="notes">
+    Moving to next section.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="task-1-intro"
+    >
+        <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+    
+    <h3 style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em;">TASK 1</h3>
+    
+    <h2 data-id="header-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">THE WISE STORYTELLER</h2>
+<div
+    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size);">
+    
+        <ul style="list-style: none; padding: 0; margin: 0;">
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-book-open" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Read the story of Nasreddin Hodja.</span>
+            </li>
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-pencil" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Choose the correct relative pronouns. (Workbook Page 37)</span>
+            </li>
+        
+        </ul>
+    
+</div>
+
+
+    
+    <div class="timer-container" style="margin-top: 20px; justify-content: flex-start;">
+        <div class="timer-display" id="timer-task-1-intro-display"
+            style="font-size: 2.2em; font-family: monospace; color: #FFD700; text-shadow: 0 0 10px rgba(0,0,0,0.8); margin-right: 20px;">
+            
+            05:00
+        </div>
+        <button class="timer-btn"
+            onclick="toggleTimer(300, 'timer-task-1-intro-display', this)">START</button>
+        <button class="timer-btn reset"
+            onclick="resetTimer(300, 'timer-task-1-intro-display')">RESET</button>
+    </div>
+    
+</div>
+
+<aside class="notes">
+    Discuss the strategy with students.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="task-1-reveal-pt1"
+    >
+        <div class="slide-canvas">
+    <!-- Cinematic Overlay -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%); z-index: -1;">
+    </div>
+
+    <div style="text-align: center; width: 100%; max-width: 1200px; margin: auto;">
+        
+        <div data-id="impact-badge" class="mission-badge" style="display: inline-block; margin-bottom: 20px; min-width: auto; padding: 10px 30px;">
+            <span style="font-weight: 800; letter-spacing: 2px;">TASK 1 (PART 1)</span>
+        </div>
+        
+
+        <h1 data-id="header-title"
+            style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 20px;">
+            NASREDDIN'S STORY
+        </h1>
+        
+        <div data-id="impact-text-box" style="background: rgba(0,0,0,0.6); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <p style="font-size: var(--ped-lead-in-size); color: white; line-height: 1.4; margin: 0;">
+                <div style="font-size: 0.85em; text-align: left;">Nasreddin Hodja was a wise man and storyteller <u><span class="fragment highlight-gold">who</span></u> / <u>which</u> lived in the 13th century. He's famous because there are thousands of stories <u><span class="fragment highlight-gold">where</span></u> / <u>which</u> he's a kind of comic hero. In one story, he searches for a ring <u><span class="fragment highlight-gold">which</span></u> / <u>who</u> he had lost in his house. After searching briefly inside the house, <u><span class="fragment highlight-gold">where</span></u> / <u>which</u> he's sure the ring is, he goes to look outside.</div>
+            </p>
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Introduce the task or discussion.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="task-1-reveal-pt2"
+    >
+        <div class="slide-canvas">
+    <!-- Cinematic Overlay -->
+    <div
+        style="position: absolute; top: -100vh; left: -100vw; width: 300vw; height: 300vh; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%); z-index: -1;">
+    </div>
+
+    <div style="text-align: center; width: 100%; max-width: 1200px; margin: auto;">
+        
+        <div data-id="impact-badge" class="mission-badge" style="display: inline-block; margin-bottom: 20px; min-width: auto; padding: 10px 30px;">
+            <span style="font-weight: 800; letter-spacing: 2px;">TASK 1 (PART 2)</span>
+        </div>
+        
+
+        <h1 data-id="header-title"
+            style="color: #FFD700; font-size: 2.2em; text-shadow: 2px 2px 15px rgba(0,0,0,1); text-transform: uppercase; margin-bottom: 20px;">
+            NASREDDIN'S STORY
+        </h1>
+        
+        <div data-id="impact-text-box" style="background: rgba(0,0,0,0.6); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <p style="font-size: var(--ped-lead-in-size); color: white; line-height: 1.4; margin: 0;">
+                <div style="font-size: 0.85em; text-align: left;">Nasreddin answers, 'Because this is <u>when</u> / <u><span class="fragment highlight-gold">where</span></u> the light is the best!' Why do we call someone <u>which</u> / <u><span class="fragment highlight-gold">who</span></u> makes such a silly mistake a hero? Because even at times <u>who</u> / <u><span class="fragment highlight-gold">when</span></u> he makes silly mistakes, he believes in himself. Comic heroes manage to show us the funny side of situations <u><span class="fragment highlight-gold">which</span></u> / <u>where</u> make most people angry or upset.</div>
+            </p>
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+<aside class="notes">
+    Introduce the task or discussion.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="segue-emergencies"
+    >
+        <div class="slide-canvas">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE 2</div>
+    <h1 style="color: #FFD700; font-size: 3em; text-shadow: 2px 2px 15px rgba(0,0,0,1);">Emergency Essentials</h1>
+    
+    <h2 style="font-size: 1.5em; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,1);">Vocabulary for heroes</h2>
+    
+</div>
+<aside class="notes">
+    Moving to next section.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="task-2-intro"
+    >
+        <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+    
+    <h3 style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em;">TASK 2</h3>
+    
+    <h2 data-id="header-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">EMERGENCY RESPONSE</h2>
+<div
+    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size);">
+    
+        <ul style="list-style: none; padding: 0; margin: 0;">
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-book-open" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Match the emergency phrases (1-5) to their definitions (a-e).</span>
+            </li>
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-comments" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Work with your partner. Ready?</span>
+            </li>
+        
+        </ul>
+    
+</div>
+
+
+    
+    <div class="timer-container" style="margin-top: 20px; justify-content: flex-start;">
+        <div class="timer-display" id="timer-task-2-intro-display"
+            style="font-size: 2.2em; font-family: monospace; color: #FFD700; text-shadow: 0 0 10px rgba(0,0,0,0.8); margin-right: 20px;">
+            
+            03:00
+        </div>
+        <button class="timer-btn"
+            onclick="toggleTimer(180, 'timer-task-2-intro-display', this)">START</button>
+        <button class="timer-btn reset"
+            onclick="resetTimer(180, 'timer-task-2-intro-display')">RESET</button>
+    </div>
+    
+</div>
+
+<aside class="notes">
+    Discuss the strategy with students.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="task-2-match-1"
+    >
+        <section data-background="" data-background-opacity="0.5"  data-auto-animate>
+
+    <div
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: start; height: 100%; max-width: 1200px; margin: auto; text-align: left; padding-top: 20px;">
+
+        <!-- Container -->
+        <div
+            style="padding: 10px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+
+            
+            <div data-id="task-badge">
+                <h3
+                    style="color: #FFD700; margin-bottom: 10px; font-size: 1.2em; border-bottom: 2px solid #FFD700; display: inline-block;">
+                    TASK 2</h3>
+            </div>
+            
+
+            <h1 data-id="task-title"
+                style="font-size: 1.2em; margin-bottom: 10px; line-height: 1.1; text-shadow: 2px 2px 4px black;">
+                MATCH THE DEFINITIONS
+            </h1>
+
+            
+
+            <!-- Columns - GOLD STANDARD RATIO (350px / 1fr) -->
+            <div style="display: grid; grid-template-columns: 350px 1fr; gap: 30px; font-size: 0.95em; align-items: center;">
+
+                <!-- Left Column (The ones that move) -->
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-1. got into trouble"
+                        style="padding: 15px; background: rgba(0, 77, 64, 0.9); border: 2px solid var(--primary); border-radius: 8px; text-align: left; color: white; box-shadow: 4px 4px 10px rgba(0,0,0,0.3);">
+                        1. got into trouble
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-2. got lost"
+                        style="padding: 15px; background: rgba(0, 77, 64, 0.9); border: 2px solid var(--primary); border-radius: 8px; text-align: left; color: white; box-shadow: 4px 4px 10px rgba(0,0,0,0.3);">
+                        2. got lost
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-3. severe weather"
+                        style="padding: 15px; background: rgba(0, 77, 64, 0.9); border: 2px solid var(--primary); border-radius: 8px; text-align: left; color: white; box-shadow: 4px 4px 10px rgba(0,0,0,0.3);">
+                        3. severe weather
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-4. went missing"
+                        style="padding: 15px; background: rgba(0, 77, 64, 0.9); border: 2px solid var(--primary); border-radius: 8px; text-align: left; color: white; box-shadow: 4px 4px 10px rgba(0,0,0,0.3);">
+                        4. went missing
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-5. crowd"
+                        style="padding: 15px; background: rgba(0, 77, 64, 0.9); border: 2px solid var(--primary); border-radius: 8px; text-align: left; color: white; box-shadow: 4px 4px 10px rgba(0,0,0,0.3);">
+                        5. crowd
+                    </div>
+                    
+                </div>
+
+                <!-- Right Column (Static Definitions) -->
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-a. very bad" style="padding: 15px; 
+                               background: rgba(30,30,30,0.8); 
+                               border: 1px solid rgba(255,255,255,0.2); 
+                               color: white;
+                               border-radius: 8px; text-align: left; line-height: 1.2;">
+                        a. very bad
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-b. had problems" style="padding: 15px; 
+                               background: rgba(30,30,30,0.8); 
+                               border: 1px solid rgba(255,255,255,0.2); 
+                               color: white;
+                               border-radius: 8px; text-align: left; line-height: 1.2;">
+                        b. had problems
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-c. large group of people" style="padding: 15px; 
+                               background: rgba(30,30,30,0.8); 
+                               border: 1px solid rgba(255,255,255,0.2); 
+                               color: white;
+                               border-radius: 8px; text-align: left; line-height: 1.2;">
+                        c. large group of people
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-d. were absent" style="padding: 15px; 
+                               background: rgba(30,30,30,0.8); 
+                               border: 1px solid rgba(255,255,255,0.2); 
+                               color: white;
+                               border-radius: 8px; text-align: left; line-height: 1.2;">
+                        d. were absent
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-e. couldn't find the way" style="padding: 15px; 
+                               background: rgba(30,30,30,0.8); 
+                               border: 1px solid rgba(255,255,255,0.2); 
+                               color: white;
+                               border-radius: 8px; text-align: left; line-height: 1.2;">
+                        e. couldn't find the way
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Monitor student progress.
+    </aside>
+</section>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        data-auto-animate
+        
+        id="task-2-match-2"
+    >
+        <section data-background="" data-background-opacity="0.5"  data-auto-animate>
+
+    <div
+        style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: start; height: 100%; max-width: 1200px; margin: auto; text-align: left; padding-top: 20px;">
+
+        <!-- Container -->
+        <div
+            style="padding: 10px; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-start;">
+
+            
+            <div data-id="task-badge">
+                <h3
+                    style="color: #FFD700; margin-bottom: 10px; font-size: 1.2em; border-bottom: 2px solid #FFD700; display: inline-block;">
+                    TASK 2</h3>
+            </div>
+            
+
+            <h1 data-id="task-title"
+                style="font-size: 1.2em; margin-bottom: 10px; line-height: 1.1; text-shadow: 2px 2px 4px black;">
+                MATCH THE DEFINITIONS
+            </h1>
+
+            
+
+            <!-- Columns - GOLD STANDARD RATIO (350px / 1fr) -->
+            <div style="display: grid; grid-template-columns: 350px 1fr; gap: 30px; font-size: 0.95em; align-items: center;">
+
+                <!-- Left Column (The ones that move) -->
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-1. got into trouble"
+                        style="padding: 15px; background: rgba(0, 77, 64, 0.9); border: 2px solid var(--primary); border-radius: 8px; text-align: left; color: white; box-shadow: 4px 4px 10px rgba(0,0,0,0.3);">
+                        1. got into trouble
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-2. got lost"
+                        style="padding: 15px; background: rgba(0, 77, 64, 0.9); border: 2px solid var(--primary); border-radius: 8px; text-align: left; color: white; box-shadow: 4px 4px 10px rgba(0,0,0,0.3);">
+                        2. got lost
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-3. severe weather"
+                        style="padding: 15px; background: rgba(0, 77, 64, 0.9); border: 2px solid var(--primary); border-radius: 8px; text-align: left; color: white; box-shadow: 4px 4px 10px rgba(0,0,0,0.3);">
+                        3. severe weather
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-4. went missing"
+                        style="padding: 15px; background: rgba(0, 77, 64, 0.9); border: 2px solid var(--primary); border-radius: 8px; text-align: left; color: white; box-shadow: 4px 4px 10px rgba(0,0,0,0.3);">
+                        4. went missing
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="left-5. crowd"
+                        style="padding: 15px; background: rgba(0, 77, 64, 0.9); border: 2px solid var(--primary); border-radius: 8px; text-align: left; color: white; box-shadow: 4px 4px 10px rgba(0,0,0,0.3);">
+                        5. crowd
+                    </div>
+                    
+                </div>
+
+                <!-- Right Column (Static Definitions) -->
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-b. had problems" style="padding: 15px; 
+                               background: rgba(30,30,30,0.8); 
+                               border: 1px solid rgba(255,255,255,0.2); 
+                               color: white;
+                               border-radius: 8px; text-align: left; line-height: 1.2;">
+                        b. had problems
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-e. couldn't find the way" style="padding: 15px; 
+                               background: rgba(30,30,30,0.8); 
+                               border: 1px solid rgba(255,255,255,0.2); 
+                               color: white;
+                               border-radius: 8px; text-align: left; line-height: 1.2;">
+                        e. couldn't find the way
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-a. very bad" style="padding: 15px; 
+                               background: rgba(30,30,30,0.8); 
+                               border: 1px solid rgba(255,255,255,0.2); 
+                               color: white;
+                               border-radius: 8px; text-align: left; line-height: 1.2;">
+                        a. very bad
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-d. were absent" style="padding: 15px; 
+                               background: rgba(30,30,30,0.8); 
+                               border: 1px solid rgba(255,255,255,0.2); 
+                               color: white;
+                               border-radius: 8px; text-align: left; line-height: 1.2;">
+                        d. were absent
+                    </div>
+                    
+                    
+                    
+                    
+                    
+
+                    <div data-id="right-c. large group of people" style="padding: 15px; 
+                               background: rgba(30,30,30,0.8); 
+                               border: 1px solid rgba(255,255,255,0.2); 
+                               color: white;
+                               border-radius: 8px; text-align: left; line-height: 1.2;">
+                        c. large group of people
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <aside class="notes">
+        Monitor student progress.
+    </aside>
+</section>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="segue-comma-rule"
+    >
+        <div class="slide-canvas">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE 3</div>
+    <h1 style="color: #FFD700; font-size: 3em; text-shadow: 2px 2px 15px rgba(0,0,0,1);">The Comma Rule</h1>
+    
+    <h2 style="font-size: 1.5em; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,1);">When to use extra information</h2>
+    
+</div>
+<aside class="notes">
+    Moving to next section.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="comma-pedagogical-bridge"
+    >
+        <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+    
+    <h3 style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em;">GRAMMAR BRIDGE</h3>
+    
+    <h2 data-id="header-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">COMMAS & EXTRA INFO</h2>
+<div
+    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size);">
+    
+        <ul style="list-style: none; padding: 0; margin: 0;">
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-exclamation-circle" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span><span style="color: #FFD700; font-weight: bold;">Defining</span>: Necessary info. No commas! (e.g., The man who lived next door.)</span>
+            </li>
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-comment-dots" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span><span style="color: #FFD700; font-weight: bold;">Non-defining</span>: Extra info. Use commas! (e.g., Rosa Parks, who was brave, sat down.)</span>
+            </li>
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-ghost" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span><span style="color: #FFD700; font-weight: bold;">Omission</span>: You can hide the pronoun in <span style="color: #FFD700; font-weight: bold;">Defining</span> clauses only.</span>
+            </li>
+        
+        </ul>
+    
+</div>
+
+
+    
+</div>
+
+<aside class="notes">
+    Discuss the strategy with students.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="task-3-intro"
+    >
+        <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+    
+    <h3 style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em;">TASK 3</h3>
+    
+    <h2 data-id="header-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">THE HEROIC CONNECTION</h2>
+<div
+    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size);">
+    
+        <ul style="list-style: none; padding: 0; margin: 0;">
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-link" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Combine the sentences using non-defining relative clauses.</span>
+            </li>
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-pencil" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Remember: Use commas for extra information!</span>
+            </li>
+        
+        </ul>
+    
+</div>
+
+
+    
+    <div class="timer-container" style="margin-top: 20px; justify-content: flex-start;">
+        <div class="timer-display" id="timer-task-3-intro-display"
+            style="font-size: 2.2em; font-family: monospace; color: #FFD700; text-shadow: 0 0 10px rgba(0,0,0,0.8); margin-right: 20px;">
+            
+            05:00
+        </div>
+        <button class="timer-btn"
+            onclick="toggleTimer(300, 'timer-task-3-intro-display', this)">START</button>
+        <button class="timer-btn reset"
+            onclick="resetTimer(300, 'timer-task-3-intro-display')">RESET</button>
+    </div>
+    
+</div>
+
+<aside class="notes">
+    Discuss the strategy with students.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="task-3-ans-1"
+    >
+        <div class="slide-canvas">
+    <div data-id="answer-detail-main" class="answer-detail-container">
+
+        <!-- Badge at TOP -->
+        
+        <div data-id="impact-badge" class="badge-container badge-top">
+            <span class="gold-badge" style="font-size: var(--r-heading3-size);">TASK 3</span>
+        </div>
+        
+
+        <!-- Icon-only Answer Table -->
+        <table class="answer-table" style="font-size: var(--ped-body-size);">
+            <tbody>
+                <!-- Row 1: QUESTION -->
+                <tr class="question-row">
+                    <td class="icon-cell" style="color: #FFD700; font-weight: 800; font-size: 1.4em; text-align: center;">
+                        ?
+                    </td>
+                    <td class="content-cell">
+                        <p class="question-text">Rosa Parks refused to give up her seat. She is known as 'the first lady of civil rights'.</p>
+                    </td>
+                </tr>
+
+                <!-- Row 2: THE ANSWER -->
+                <tr class="answer-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-thumbs-up"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="answer-text">Rosa Parks, <span style="color: #FFD700; font-weight: bold;">who is known as 'the first lady of civil rights'</span>, refused to give up her seat.</p>
+                    </td>
+                </tr>
+
+                <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                <tr class="evidence-row-inline">
+                    <td class="icon-cell" colspan="2">
+                        
+                        <span class="evidence-inline" style="font-size: var(--ped-note-size);">Text snippet or excerpt...</span>
+                    </td>
+                </tr>
+
+                <!-- Row 4: EXPLANATION -->
+                <tr class="explanation-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-lightbulb"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="explanation-text">She is a symbol of courage and equality.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<aside class="notes">
+    Discuss the answer with the class.
+</aside>
+
+<style>
+    .answer-detail-container {
+        width: 95%;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .answer-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        font-size: 0.9em;
+        text-align: left;
+    }
+
+    .answer-table tr {
+        vertical-align: top;
+        text-align: left;
+    }
+
+    .icon-cell {
+        width: 50px;
+        padding: 12px;
+        text-align: left;
+        border-radius: 8px 0 0 8px;
+        vertical-align: middle;
+    }
+
+    .icon-cell i {
+        font-size: 1.6em;
+    }
+
+    .content-cell {
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        text-align: left;
+    }
+
+    /* Question Row */
+    .question-row .icon-cell {
+        background: rgba(255, 215, 0, 0.2);
+    }
+
+    .question-row .content-cell {
+        background: rgba(255, 215, 0, 0.1);
+        border-left: 3px solid #FFD700;
+    }
+
+    .question-row .icon-cell i {
+        color: #FFD700;
+    }
+
+    .question-text {
+        font-size: 0.9em;
+        font-weight: normal;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Answer Row */
+    .answer-row .icon-cell {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .answer-row .content-cell {
+        background: rgba(255, 255, 255, 0.1);
+        border-left: 3px solid #FFFFFF;
+    }
+
+    .answer-row .icon-cell i {
+        color: #FFFFFF;
+    }
+
+    .answer-text {
+        font-size: 0.9em;
+        font-weight: bold;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Evidence Row Inline (no box) */
+    .evidence-row-inline {
+        margin: 8px 0;
+    }
+
+    .evidence-row-inline .icon-cell {
+        background: transparent;
+        padding: 4px 8px;
+        border-radius: 0;
+    }
+
+    .evidence-inline {
+        font-style: italic;
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: #87CEEB;
+    }
+
+    .para-badge {
+        background: rgba(255, 215, 0, 0.3);
+        color: #FFD700;
+        font-size: 0.9em;
+        font-weight: bold;
+        margin-right: 8px;
+        font-style: normal;
+    }
+
+    /* Explanation Row */
+    .explanation-row .icon-cell {
+        background: rgba(255, 152, 0, 0.25);
+    }
+
+    .explanation-row .content-cell {
+        background: rgba(255, 152, 0, 0.15);
+        border-left: 3px solid #FF9800;
+    }
+
+    .explanation-row .icon-cell i {
+        color: #FF9800;
+    }
+
+    .explanation-text {
+        margin: 0;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    /* Badge styling */
+    .badge-container {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .badge-top {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .gold-badge {
+        color: #FFD700;
+        font-size: 0.9em;
+        border-bottom: 2px solid #FFD700;
+        padding-bottom: 3px;
+        display: inline-block;
+    }
+
+    /* Check mark - Green */
+    .check-symbol {
+        color: #4CAF50;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    /* Cross mark - Red */
+    .cross-symbol {
+        color: #F44336;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+</style>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="task-3-ans-2"
+    >
+        <div class="slide-canvas">
+    <div data-id="answer-detail-main" class="answer-detail-container">
+
+        <!-- Badge at TOP -->
+        
+        <div data-id="impact-badge" class="badge-container badge-top">
+            <span class="gold-badge" style="font-size: var(--r-heading3-size);">TASK 3</span>
+        </div>
+        
+
+        <!-- Icon-only Answer Table -->
+        <table class="answer-table" style="font-size: var(--ped-body-size);">
+            <tbody>
+                <!-- Row 1: QUESTION -->
+                <tr class="question-row">
+                    <td class="icon-cell" style="color: #FFD700; font-weight: 800; font-size: 1.4em; text-align: center;">
+                        ?
+                    </td>
+                    <td class="content-cell">
+                        <p class="question-text">Shakespeare is one of the world's most famous playwrights. His plays influenced the English language.</p>
+                    </td>
+                </tr>
+
+                <!-- Row 2: THE ANSWER -->
+                <tr class="answer-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-thumbs-up"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="answer-text">Shakespeare, <span style="color: #FFD700; font-weight: bold;">whose plays influenced the English language</span>, is a world-famous playwright.</p>
+                    </td>
+                </tr>
+
+                <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                <tr class="evidence-row-inline">
+                    <td class="icon-cell" colspan="2">
+                        
+                        <span class="evidence-inline" style="font-size: var(--ped-note-size);">Text snippet or excerpt...</span>
+                    </td>
+                </tr>
+
+                <!-- Row 4: EXPLANATION -->
+                <tr class="explanation-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-lightbulb"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="explanation-text">His work is still studied globally today.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<aside class="notes">
+    Discuss the answer with the class.
+</aside>
+
+<style>
+    .answer-detail-container {
+        width: 95%;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .answer-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        font-size: 0.9em;
+        text-align: left;
+    }
+
+    .answer-table tr {
+        vertical-align: top;
+        text-align: left;
+    }
+
+    .icon-cell {
+        width: 50px;
+        padding: 12px;
+        text-align: left;
+        border-radius: 8px 0 0 8px;
+        vertical-align: middle;
+    }
+
+    .icon-cell i {
+        font-size: 1.6em;
+    }
+
+    .content-cell {
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        text-align: left;
+    }
+
+    /* Question Row */
+    .question-row .icon-cell {
+        background: rgba(255, 215, 0, 0.2);
+    }
+
+    .question-row .content-cell {
+        background: rgba(255, 215, 0, 0.1);
+        border-left: 3px solid #FFD700;
+    }
+
+    .question-row .icon-cell i {
+        color: #FFD700;
+    }
+
+    .question-text {
+        font-size: 0.9em;
+        font-weight: normal;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Answer Row */
+    .answer-row .icon-cell {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .answer-row .content-cell {
+        background: rgba(255, 255, 255, 0.1);
+        border-left: 3px solid #FFFFFF;
+    }
+
+    .answer-row .icon-cell i {
+        color: #FFFFFF;
+    }
+
+    .answer-text {
+        font-size: 0.9em;
+        font-weight: bold;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Evidence Row Inline (no box) */
+    .evidence-row-inline {
+        margin: 8px 0;
+    }
+
+    .evidence-row-inline .icon-cell {
+        background: transparent;
+        padding: 4px 8px;
+        border-radius: 0;
+    }
+
+    .evidence-inline {
+        font-style: italic;
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: #87CEEB;
+    }
+
+    .para-badge {
+        background: rgba(255, 215, 0, 0.3);
+        color: #FFD700;
+        font-size: 0.9em;
+        font-weight: bold;
+        margin-right: 8px;
+        font-style: normal;
+    }
+
+    /* Explanation Row */
+    .explanation-row .icon-cell {
+        background: rgba(255, 152, 0, 0.25);
+    }
+
+    .explanation-row .content-cell {
+        background: rgba(255, 152, 0, 0.15);
+        border-left: 3px solid #FF9800;
+    }
+
+    .explanation-row .icon-cell i {
+        color: #FF9800;
+    }
+
+    .explanation-text {
+        margin: 0;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    /* Badge styling */
+    .badge-container {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .badge-top {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .gold-badge {
+        color: #FFD700;
+        font-size: 0.9em;
+        border-bottom: 2px solid #FFD700;
+        padding-bottom: 3px;
+        display: inline-block;
+    }
+
+    /* Check mark - Green */
+    .check-symbol {
+        color: #4CAF50;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    /* Cross mark - Red */
+    .cross-symbol {
+        color: #F44336;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+</style>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="task-3-ans-3"
+    >
+        <div class="slide-canvas">
+    <div data-id="answer-detail-main" class="answer-detail-container">
+
+        <!-- Badge at TOP -->
+        
+        <div data-id="impact-badge" class="badge-container badge-top">
+            <span class="gold-badge" style="font-size: var(--r-heading3-size);">TASK 3</span>
+        </div>
+        
+
+        <!-- Icon-only Answer Table -->
+        <table class="answer-table" style="font-size: var(--ped-body-size);">
+            <tbody>
+                <!-- Row 1: QUESTION -->
+                <tr class="question-row">
+                    <td class="icon-cell" style="color: #FFD700; font-weight: 800; font-size: 1.4em; text-align: center;">
+                        ?
+                    </td>
+                    <td class="content-cell">
+                        <p class="question-text">Marie Curie was the first woman to win a Nobel Prize. She won the prize in 1903.</p>
+                    </td>
+                </tr>
+
+                <!-- Row 2: THE ANSWER -->
+                <tr class="answer-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-thumbs-up"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="answer-text">Marie Curie, <span style="color: #FFD700; font-weight: bold;">who won the Nobel Prize in 1903</span>, was the first woman to win a Nobel Prize.</p>
+                    </td>
+                </tr>
+
+                <!-- Row 3: EVIDENCE with Paragraph Number (inline) -->
+                <tr class="evidence-row-inline">
+                    <td class="icon-cell" colspan="2">
+                        
+                        <span class="evidence-inline" style="font-size: var(--ped-note-size);">Text snippet or excerpt...</span>
+                    </td>
+                </tr>
+
+                <!-- Row 4: EXPLANATION -->
+                <tr class="explanation-row">
+                    <td class="icon-cell">
+                        <i class="fas fa-lightbulb"></i>
+                    </td>
+                    <td class="content-cell">
+                        <p class="explanation-text">She discovered radioactivity.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<aside class="notes">
+    Discuss the answer with the class.
+</aside>
+
+<style>
+    .answer-detail-container {
+        width: 95%;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .answer-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        font-size: 0.9em;
+        text-align: left;
+    }
+
+    .answer-table tr {
+        vertical-align: top;
+        text-align: left;
+    }
+
+    .icon-cell {
+        width: 50px;
+        padding: 12px;
+        text-align: left;
+        border-radius: 8px 0 0 8px;
+        vertical-align: middle;
+    }
+
+    .icon-cell i {
+        font-size: 1.6em;
+    }
+
+    .content-cell {
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        text-align: left;
+    }
+
+    /* Question Row */
+    .question-row .icon-cell {
+        background: rgba(255, 215, 0, 0.2);
+    }
+
+    .question-row .content-cell {
+        background: rgba(255, 215, 0, 0.1);
+        border-left: 3px solid #FFD700;
+    }
+
+    .question-row .icon-cell i {
+        color: #FFD700;
+    }
+
+    .question-text {
+        font-size: 0.9em;
+        font-weight: normal;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Answer Row */
+    .answer-row .icon-cell {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .answer-row .content-cell {
+        background: rgba(255, 255, 255, 0.1);
+        border-left: 3px solid #FFFFFF;
+    }
+
+    .answer-row .icon-cell i {
+        color: #FFFFFF;
+    }
+
+    .answer-text {
+        font-size: 0.9em;
+        font-weight: bold;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    /* Evidence Row Inline (no box) */
+    .evidence-row-inline {
+        margin: 8px 0;
+    }
+
+    .evidence-row-inline .icon-cell {
+        background: transparent;
+        padding: 4px 8px;
+        border-radius: 0;
+    }
+
+    .evidence-inline {
+        font-style: italic;
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: #87CEEB;
+    }
+
+    .para-badge {
+        background: rgba(255, 215, 0, 0.3);
+        color: #FFD700;
+        font-size: 0.9em;
+        font-weight: bold;
+        margin-right: 8px;
+        font-style: normal;
+    }
+
+    /* Explanation Row */
+    .explanation-row .icon-cell {
+        background: rgba(255, 152, 0, 0.25);
+    }
+
+    .explanation-row .content-cell {
+        background: rgba(255, 152, 0, 0.15);
+        border-left: 3px solid #FF9800;
+    }
+
+    .explanation-row .icon-cell i {
+        color: #FF9800;
+    }
+
+    .explanation-text {
+        margin: 0;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    /* Badge styling */
+    .badge-container {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .badge-top {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .gold-badge {
+        color: #FFD700;
+        font-size: 0.9em;
+        border-bottom: 2px solid #FFD700;
+        padding-bottom: 3px;
+        display: inline-block;
+    }
+
+    /* Check mark - Green */
+    .check-symbol {
+        color: #4CAF50;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    /* Cross mark - Red */
+    .cross-symbol {
+        color: #F44336;
+        font-weight: bold;
+        margin-right: 8px;
+    }
+</style>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="segue-production"
+    >
+        <div class="slide-canvas">
+    <div style="opacity: 0.6; letter-spacing: 5px; font-weight: 800;">PHASE 4</div>
+    <h1 style="color: #FFD700; font-size: 3em; text-shadow: 2px 2px 15px rgba(0,0,0,1);">My Real-Life Hero</h1>
+    
+    <h2 style="font-size: 1.5em; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,1);">Your turn to describe a hero</h2>
+    
+</div>
+<aside class="notes">
+    Moving to next section.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="task-4-intro"
+    >
+        <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+    
+    <h3 style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em;">TASK 4</h3>
+    
+    <h2 data-id="header-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">MY REAL-LIFE HERO</h2>
+<div
+    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size);">
+    
+        <ul style="list-style: none; padding: 0; margin: 0;">
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-user-shield" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Who is a hero in your life? Describe them.</span>
+            </li>
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-pen-fancy" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Use at least three relative clauses (who, which, where, when, or whose).</span>
+            </li>
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-heart" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Is it their courage, intelligence, or kindness?</span>
+            </li>
+        
+        </ul>
+    
+</div>
+
+
+    
+    <div class="timer-container" style="margin-top: 20px; justify-content: flex-start;">
+        <div class="timer-display" id="timer-task-4-intro-display"
+            style="font-size: 2.2em; font-family: monospace; color: #FFD700; text-shadow: 0 0 10px rgba(0,0,0,0.8); margin-right: 20px;">
+            
+            08:00
+        </div>
+        <button class="timer-btn"
+            onclick="toggleTimer(480, 'timer-task-4-intro-display', this)">START</button>
+        <button class="timer-btn reset"
+            onclick="resetTimer(480, 'timer-task-4-intro-display')">RESET</button>
+    </div>
+    
+</div>
+
+<aside class="notes">
+    Discuss the strategy with students.
+</aside>
+    </section>
+
+            
+                
+                
+                    
+                    
+                
+                
+                
+
+
+    <section 
+        
+    
+
+        
+        
+        id="consolidation"
+    >
+        <div class="slide-canvas" style="text-align: left; max-width: 1100px; margin: auto;">
+    
+    <h3 style="color: #FFD700; margin-bottom: 10px; font-size: 1.0em;">CONSOLIDATION</h3>
+    
+    <h2 data-id="header-title" style="font-size: 1.4em; margin-bottom: 30px; text-shadow: 2px 2px 8px black; color: white !important;">FINAL THOUGHTS</h2>
+<div
+    style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; border-left: 10px solid #FFD700; width: 100%; box-sizing: border-box; backdrop-filter: blur(5px); font-size: var(--ped-body-size);">
+    
+        <ul style="list-style: none; padding: 0; margin: 0;">
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-comments" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>What are the different ways someone can be a hero?</span>
+            </li>
+        
+            <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 20px;">
+                <i class="fas fa-question-circle" style="color: #FFD700; font-size: 1.2em;"></i>
+                <span>Is being a hero about what you DO or who you ARE?</span>
+            </li>
+        
+        </ul>
+    
+</div>
+
+
+    
+    <div class="timer-container" style="margin-top: 20px; justify-content: flex-start;">
+        <div class="timer-display" id="timer-consolidation-display"
+            style="font-size: 2.2em; font-family: monospace; color: #FFD700; text-shadow: 0 0 10px rgba(0,0,0,0.8); margin-right: 20px;">
+            
+            02:00
+        </div>
+        <button class="timer-btn"
+            onclick="toggleTimer(120, 'timer-consolidation-display', this)">START</button>
+        <button class="timer-btn reset"
+            onclick="resetTimer(120, 'timer-consolidation-display')">RESET</button>
+    </div>
+    
+</div>
+
+<aside class="notes">
+    Discuss the strategy with students.
+</aside>
+    </section>
+
+            
+        </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // AUDIO PLAYER COMPONENT
+        class AudioPlayer extends HTMLElement {
+            constructor() {
+                super();
+                this.audio = new Audio();
+                this.isPlaying = false;
+            }
+
+            connectedCallback() {
+                const src = this.getAttribute('src');
+                if (!src) return;
+                this.audio.src = src;
+
+                this.innerHTML = `
+                    <div class="audio-player">
+                        <button class="audio-play-btn"><i class="fas fa-play"></i></button>
+                        <div class="audio-scrubber-container">
+                            <input type="range" class="audio-scrubber" value="0" min="0" max="100">
+                            <div class="audio-time">
+                                <span class="current">00:00</span>
+                                <span class="separator" style="opacity: 0.5;">/</span>
+                                <span class="total">00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                this.playBtn = this.querySelector('.audio-play-btn');
+                this.scrubber = this.querySelector('.audio-scrubber');
+                this.currentTimeDisplay = this.querySelector('.current');
+                this.totalTimeDisplay = this.querySelector('.total');
+
+                this.playBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    this.togglePlay();
+                };
+
+                this.scrubber.oninput = (e) => {
+                    if (this.audio.duration) {
+                        const time = (this.scrubber.value / 100) * this.audio.duration;
+                        this.audio.currentTime = time;
+                    }
+                };
+
+                this.audio.ontimeupdate = () => {
+                    if (this.audio.duration) {
+                        const progress = (this.audio.currentTime / this.audio.duration) * 100;
+                        this.scrubber.value = progress || 0;
+                        this.currentTimeDisplay.textContent = this.formatTime(this.audio.currentTime);
+                    }
+                };
+
+                this.audio.onloadedmetadata = () => {
+                    this.totalTimeDisplay.textContent = this.formatTime(this.audio.duration);
+                };
+
+                this.audio.onended = () => {
+                    this.isPlaying = false;
+                    this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                };
+            }
+
+            togglePlay() {
+                if (this.isPlaying) {
+                    this.audio.pause();
+                    this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                } else {
+                    this.audio.play();
+                    this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+                this.isPlaying = !this.isPlaying;
+            }
+
+            formatTime(seconds) {
+                if (isNaN(seconds)) return "00:00";
+                const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+                const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+                return `${m}:${s}`;
+            }
+        }
+        customElements.define('audio-player', AudioPlayer);
+
+        const AudioFX = {
+            blip: new Audio('audio/blip.mp3'),
+            bell: new Audio('audio/bell.mp3'),
+            heartbeat: new Audio('audio/30-seconds.mp3'),
+            init() {
+                this.blip.load(); this.bell.load(); this.heartbeat.load();
+            }
+        };
+
+        const TimerRegistry = {};
+
+        function toggleTimer(durationSeconds, displayId, btn) {
+            if (TimerRegistry[displayId] && TimerRegistry[displayId].interval) {
+                clearInterval(TimerRegistry[displayId].interval);
+                TimerRegistry[displayId].interval = null;
+                btn.textContent = 'START';
+            } else {
+                btn.textContent = 'PAUSE';
+                const display = document.getElementById(displayId);
+                AudioFX.init();
+                AudioFX.blip.play().catch(e => console.warn(e));
+
+                if (!TimerRegistry[displayId]) {
+                    TimerRegistry[displayId] = { original: durationSeconds, current: durationSeconds };
+                }
+
+                const tick = () => {
+                    let timer = --TimerRegistry[displayId].current;
+                    let minutes = parseInt(timer / 60, 10);
+                    let seconds = parseInt(timer % 60, 10);
+                    display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+
+                    if (timer <= 0) {
+                        clearInterval(TimerRegistry[displayId].interval);
+                        TimerRegistry[displayId].interval = null;
+                        btn.textContent = 'START';
+                        AudioFX.bell.play().catch(e => console.warn(e));
+                        display.textContent = "DONE!";
+                    } else if (timer === 30) {
+                        AudioFX.heartbeat.play().catch(e => console.warn(e));
+                    } else if (timer < 10 && timer >= 0) {
+                        AudioFX.blip.play().catch(e => console.warn(e));
+                    }
+                };
+
+                // Run once immediately, then start interval
+                tick();
+                TimerRegistry[displayId].interval = setInterval(tick, 1000);
+            }
+        }
+
+        function resetTimer(durationSeconds, displayId) {
+            if (TimerRegistry[displayId]) {
+                clearInterval(TimerRegistry[displayId].interval);
+            }
+            const display = document.getElementById(displayId);
+            // Reset button text in the same slide
+            const section = display.closest('section');
+            const startBtn = section.querySelector('.timer-btn:not(.reset)');
+            if (startBtn) startBtn.textContent = 'START';
+
+            let minutes = parseInt(durationSeconds / 60, 10);
+            let seconds = parseInt(durationSeconds % 60, 10);
+            display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+            TimerRegistry[displayId] = { original: durationSeconds, current: durationSeconds, interval: null };
+        }
+
+        Reveal.initialize({
+            hash: true,
+            width: 1280,
+            height: 720,
+            margin: 0.05,
+            center: true,
+            autoAnimateDuration: 1.2,
+            autoAnimateEasing: 'ease-in-out',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>

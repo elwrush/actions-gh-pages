@@ -1,0 +1,7 @@
+[package]
+name = "bell-sheets"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Ed Rush", "Antigravity"]
+license = "MIT-0"
+description = "Global component library for Bell Language Centre worksheets."

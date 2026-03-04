@@ -8,6 +8,8 @@
         {{ render_background(current_bg) }}
         {% if slide.animation and slide.animation.type == 'auto-animate' %}data-auto-animate{% endif %}
         {% if slide.animation and slide.animation.duration %}data-auto-animate-duration="{{ slide.animation.duration }}"{% endif %}
+        {% if slide.transition %}data-transition="{{ slide.transition }}"{% endif %}
+        {% if slide.transition_speed %}data-transition-speed="{{ slide.transition_speed }}"{% endif %}
         {% if slide.slide_id %}id="{{ slide.slide_id }}"{% endif %}
     >
         {% include 'layouts/' + slide.layout + '.html' %}

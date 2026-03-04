@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "title": "The Heroic Journey",
+    "teacher": "Ed Rush",
+    "date": "04-03-2026",
+    "cefr": "B1",
+    "theme": "thai-heritage"
+  },
+  "slides": [
+    {
+      "slide_id": "slide-title",
+      "layout": "title",
+      "title": "The Heroic Journey",
+      "subtitle": "Relative Clauses & Emergency Essentials",
+      "background": {
+        "type": "video",
+        "src": "/images/antique_book_opening.mp4",
+        "retain_from_previous": false
+      },
+      "video_loop": true
+    },
+    {
+      "slide_id": "slide-mission",
+      "layout": "mission",
+      "title": "YOUR MISSION",
+      "background": {
+        "type": "video",
+        "src": "/images/mission_bg_clipped.mp4",
+        "retain_from_previous": false
+      },
+      "video_loop": true,
+      "items": [
+        { "icon": "fa-brain", "text": "Identify the correct relative pronouns for people, things, and time." },
+        { "icon": "fa-pencil", "text": "Master vocabulary for emergencies and heroic actions." },
+        { "icon": "fa-link", "text": "Combine complex sentences to describe historical and fictional heroes." }
+      ]
+    },
+    {
+      "slide_id": "slide-schema",
+      "layout": "schema_activation",
+      "title": "HERO OR NOT?",
+      "question": "Which of these people are REAL heroes? Why?",
+      "items": [
+        { "image": "/images/hero_harry.png", "text": "Harry Potter" },
+        { "image": "/images/hero_rosa.png", "text": "Rosa Parks" },
+        { "image": "/images/hero_lisa.png", "text": "Lisa" }
+      ]
+    },
+    {
+      "slide_id": "segue-storyteller",
+      "layout": "segue",
+      "phase": "PHASE 1",
+      "title": "The Wise Storyteller",
+      "subtitle": "Relative Clauses in context",
+      "background_gradient": "radial-gradient(circle, #1a1a2e 0%, #0f0f1a 100%)"
+    },
+    {
+      "slide_id": "task-1-intro",
+      "layout": "strategy",
+      "badge": "TASK 1",
+      "title": "THE WISE STORYTELLER",
+      "strategy_items": [
+        { "icon": "fa-book-open", "text": "Read the story of Nasreddin Hodja." },
+        { "icon": "fa-pencil", "text": "Choose the correct relative pronouns. (Workbook Page 37)" }
+      ],
+      "timer": 300
+    },
+    {
+      "slide_id": "task-1-reveal-pt1",
+      "layout": "impact",
+      "badge": "TASK 1 (PART 1)",
+      "title": "NASREDDIN'S STORY",
+      "text": "<div style=\"font-size: 0.85em; text-align: left;\">Nasreddin Hodja was a wise man and storyteller <u><span class=\"fragment highlight-gold\">who</span></u> / <u>which</u> lived in the 13th century. He's famous because there are thousands of stories <u><span class=\"fragment highlight-gold\">where</span></u> / <u>which</u> he's a kind of comic hero. In one story, he searches for a ring <u><span class=\"fragment highlight-gold\">which</span></u> / <u>who</u> he had lost in his house. After searching briefly inside the house, <u><span class=\"fragment highlight-gold\">where</span></u> / <u>which</u> he's sure the ring is, he goes to look outside.</div>",
+      "timer": 0
+    },
+    {
+      "slide_id": "task-1-reveal-pt2",
+      "layout": "impact",
+      "badge": "TASK 1 (PART 2)",
+      "title": "NASREDDIN'S STORY",
+      "text": "<div style=\"font-size: 0.85em; text-align: left;\">Nasreddin answers, 'Because this is <u>when</u> / <u><span class=\"fragment highlight-gold\">where</span></u> the light is the best!' Why do we call someone <u>which</u> / <u><span class=\"fragment highlight-gold\">who</span></u> makes such a silly mistake a hero? Because even at times <u>who</u> / <u><span class=\"fragment highlight-gold\">when</span></u> he makes silly mistakes, he believes in himself. Comic heroes manage to show us the funny side of situations <u><span class=\"fragment highlight-gold\">which</span></u> / <u>where</u> make most people angry or upset.</div>",
+      "timer": 0
+    },
+    {
+      "slide_id": "segue-emergencies",
+      "layout": "segue",
+      "phase": "PHASE 2",
+      "title": "Emergency Essentials",
+      "subtitle": "Vocabulary for heroes",
+      "background_gradient": "radial-gradient(circle, #1a1a2e 0%, #0f0f1a 100%)"
+    },
+    {
+      "slide_id": "task-2-intro",
+      "layout": "strategy",
+      "badge": "TASK 2",
+      "title": "EMERGENCY RESPONSE",
+      "strategy_items": [
+        { "icon": "fa-book-open", "text": "Match the emergency phrases (1-5) to their definitions (a-e)." },
+        { "icon": "fa-comments", "text": "Work with your partner. Ready?" }
+      ],
+      "timer": 180
+    },
+    {
+      "slide_id": "task-2-match-1",
+      "layout": "match_reorder",
+      "badge": "TASK 2",
+      "title": "MATCH THE DEFINITIONS",
+      "left_items": ["1. got into trouble", "2. got lost", "3. severe weather", "4. went missing", "5. crowd"],
+      "right_items": ["a. very bad", "b. had problems", "c. large group of people", "d. were absent", "e. couldn't find the way"]
+    },
+    {
+      "slide_id": "task-2-match-2",
+      "layout": "match_reorder",
+      "badge": "TASK 2",
+      "title": "MATCH THE DEFINITIONS",
+      "animation": { "type": "auto-animate" },
+      "left_items": ["1. got into trouble", "2. got lost", "3. severe weather", "4. went missing", "5. crowd"],
+      "right_items": ["b. had problems", "e. couldn't find the way", "a. very bad", "d. were absent", "c. large group of people"]
+    },
+    {
+      "slide_id": "segue-comma-rule",
+      "layout": "segue",
+      "phase": "PHASE 3",
+      "title": "The Comma Rule",
+      "subtitle": "When to use extra information",
+      "background_gradient": "radial-gradient(circle, #8B0000 0%, #000000 100%)"
+    },
+    {
+      "slide_id": "comma-pedagogical-bridge",
+      "layout": "strategy",
+      "badge": "GRAMMAR BRIDGE",
+      "title": "COMMAS & EXTRA INFO",
+      "strategy_items": [
+        { "icon": "fa-exclamation-circle", "text": "[HIGHLIGHT: Defining]: Necessary info. No commas! (e.g., The man who lived next door.)" },
+        { "icon": "fa-comment-dots", "text": "[HIGHLIGHT: Non-defining]: Extra info. Use commas! (e.g., Rosa Parks, who was brave, sat down.)" },
+        { "icon": "fa-ghost", "text": "[HIGHLIGHT: Omission]: You can hide the pronoun in [HIGHLIGHT: Defining] clauses only." }
+      ]
+    },
+    {
+      "slide_id": "task-3-intro",
+      "layout": "strategy",
+      "badge": "TASK 3",
+      "title": "THE HEROIC CONNECTION",
+      "strategy_items": [
+        { "icon": "fa-link", "text": "Combine the sentences using non-defining relative clauses." },
+        { "icon": "fa-pencil", "text": "Remember: Use commas for extra information!" }
+      ],
+      "timer": 300
+    },
+    {
+      "slide_id": "task-3-ans-1",
+      "layout": "answer_detail",
+      "badge": "TASK 3",
+      "title": "ROSA PARKS",
+      "question": "Rosa Parks refused to give up her seat. She is known as 'the first lady of civil rights'.",
+      "answer": "Rosa Parks, [HIGHLIGHT: who is known as 'the first lady of civil rights'], refused to give up her seat.",
+      "explanation": "She is a symbol of courage and equality."
+    },
+    {
+      "slide_id": "task-3-ans-2",
+      "layout": "answer_detail",
+      "badge": "TASK 3",
+      "title": "SHAKESPEARE",
+      "question": "Shakespeare is one of the world's most famous playwrights. His plays influenced the English language.",
+      "answer": "Shakespeare, [HIGHLIGHT: whose plays influenced the English language], is a world-famous playwright.",
+      "explanation": "His work is still studied globally today."
+    },
+    {
+      "slide_id": "task-3-ans-3",
+      "layout": "answer_detail",
+      "badge": "TASK 3",
+      "title": "MARIE CURIE",
+      "question": "Marie Curie was the first woman to win a Nobel Prize. She won the prize in 1903.",
+      "answer": "Marie Curie, [HIGHLIGHT: who won the Nobel Prize in 1903], was the first woman to win a Nobel Prize.",
+      "explanation": "She discovered radioactivity."
+    },
+    {
+      "slide_id": "segue-production",
+      "layout": "segue",
+      "phase": "PHASE 4",
+      "title": "My Real-Life Hero",
+      "subtitle": "Your turn to describe a hero",
+      "background_gradient": "radial-gradient(circle, #1a1a2e 0%, #0f0f1a 100%)"
+    },
+    {
+      "slide_id": "task-4-intro",
+      "layout": "strategy",
+      "badge": "TASK 4",
+      "title": "MY REAL-LIFE HERO",
+      "strategy_items": [
+        { "icon": "fa-user-shield", "text": "Who is a hero in your life? Describe them." },
+        { "icon": "fa-pen-fancy", "text": "Use at least three relative clauses (who, which, where, when, or whose)." },
+        { "icon": "fa-heart", "text": "Is it their courage, intelligence, or kindness?" }
+      ],
+      "timer": 480
+    },
+    {
+      "slide_id": "consolidation",
+      "layout": "strategy",
+      "badge": "CONSOLIDATION",
+      "title": "FINAL THOUGHTS",
+      "strategy_items": [
+        { "icon": "fa-comments", "text": "What are the different ways someone can be a hero?" },
+        { "icon": "fa-question-circle", "text": "Is being a hero about what you DO or who you ARE?" }
+      ],
+      "timer": 120
+    }
+  ]
+}

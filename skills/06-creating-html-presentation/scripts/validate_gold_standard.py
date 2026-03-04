@@ -114,6 +114,13 @@ def validate_gold_standard(json_path):
                         errors.append(f"Slide {i+1} (editing): TIMER PROHIBITION VIOLATION. Explanation-focused editing slides must NOT have a 'timer'.")
                 elif not slide.get("timer") and not is_listening_slide and not prev_has_timer:
                     errors.append(f"Slide {i+1} ({layout}): TIMER MANDATE VIOLATION. Tasks must have a 'timer' (int).")
+                
+                # Timer Integrity Law
+                timer_val = slide.get("timer")
+                if timer_val and timer_val < 60:
+                    task_title = (slide.get("title") or "").lower()
+                    if any(word in task_title for word in ["draft", "write", "writing", "essay", "paragraph", "letter"]):
+                         errors.append(f"Slide {i+1} ({layout}): TIMER INTEGRITY VIOLATION. '{timer_val}' seconds is too short for a productive writing task. Use total seconds (e.g., 900 for 15 mins).")
             
             if layout == "impact":
                 if is_work_slide and not is_explanation_slide and not slide.get("timer") and not is_listening_slide:
@@ -209,6 +216,15 @@ def validate_gold_standard(json_path):
     # 4. Vocab Styling Mandates
     for slide in slides:
         if slide.get("layout") == "vocab":
+            # Vocab Background Law
+            bg = slide.get("background")
+            if not bg:
+                errors.append(f"Vocab slide '{slide.get('word')}': Missing mandatory 'background' image (Vocab Background Law).")
+            elif isinstance(bg, dict) and bg.get("type") != "image":
+                errors.append(f"Vocab slide '{slide.get('word')}': 'background' type MUST be 'image' (Vocab Background Law).")
+            elif not bg.get("src"):
+                 errors.append(f"Vocab slide '{slide.get('word')}': 'background' object MUST have a 'src' path (Vocab Background Law).")
+
             context = slide.get("context_sentence", "") or slide.get("example", "")
             if "<span style='color: #FFD700;'>" not in context and "<span style=\"color: #FFD700;\">" not in context:
                 errors.append(f"Vocab slide '{slide.get('word')}' MUST use Gold (#FFD700) highlighting for the target word.")

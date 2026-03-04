@@ -1,0 +1,445 @@
+{
+  "meta": {
+    "title": "What Makes a Hero?",
+    "theme": "black"
+  },
+  "slides": [
+    {
+      "slide_id": "title",
+      "layout": "title",
+      "background": {
+        "type": "video",
+        "src": "/images/hero_title_bg.mp4",
+        "retain_from_previous": false
+      },
+      "title": "What Makes a Hero?",
+      "subtitle": "Unsung Heroes & The Power of Facts"
+    },
+    {
+      "slide_id": "mission",
+      "layout": "mission",
+      "background": {
+        "type": "video",
+        "src": "/images/mission_bg_clipped.mp4",
+        "retain_from_previous": false
+      },
+      "title": "YOUR MISSION",
+      "items": [
+        {
+          "icon": "fa-brain",
+          "text": "Identify [HIGHLIGHT: vocabulary] related to heroic actions."
+        },
+        {
+          "icon": "fa-eye",
+          "text": "Scan the text to match [HIGHLIGHT: unsung heroes] to achievements."
+        },
+        {
+          "icon": "fa-heart",
+          "text": "Separate [HIGHLIGHT: fact] from [HIGHLIGHT: opinion] in stories."
+        }
+      ]
+    },
+    {
+      "slide_id": "schema",
+      "layout": "warmer_image",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": false
+      },
+      "badge": "WARM UP",
+      "title": "HERO OR NOT?",
+      "image": "/images/unsung_heroes_trio.png",
+      "text": "Which of these people are [HIGHLIGHT: REAL] heroes? Why?"
+    },
+    {
+      "slide_id": "segue-vocab",
+      "layout": "segue",
+      "transition": "zoom",
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      },
+      "phase": "PHASE 1",
+      "title": "Let's learn some words",
+      "subtitle": "Barrier Removal"
+    },
+    {
+      "slide_id": "vocab-1",
+      "layout": "vocab",
+      "background": {
+        "type": "image",
+        "src": "/images/vocab_recognition.jpg",
+        "retain_from_previous": false
+      },
+      "badge": "TASK 1",
+      "word": "recognition",
+      "phoneme": "/ˌrek.əɡˈnɪʃ.ən/",
+      "example": "After saving the child from the fire, the young man received <span style='color: #FFD700;'>recognition</span> from the mayor and was featured on the news.",
+      "icon": "fas fa-award"
+    },
+    {
+      "slide_id": "vocab-2",
+      "layout": "vocab",
+      "background": {
+        "type": "image",
+        "src": "/images/vocab_determination.jpg",
+        "retain_from_previous": false
+      },
+      "badge": "TASK 1",
+      "word": "determination",
+      "phoneme": "/dɪˌtɜː.mɪˈneɪ.ʃən/",
+      "example": "Even though her legs were tired and it was raining, her <span style='color: #FFD700;'>determination</span> kept her running until she reached the finish line.",
+      "icon": "fas fa-fist-raised"
+    },
+    {
+      "slide_id": "vocab-3",
+      "layout": "vocab",
+      "background": {
+        "type": "image",
+        "src": "/images/vocab_expedition.jpg",
+        "retain_from_previous": false
+      },
+      "badge": "TASK 1",
+      "word": "expedition",
+      "phoneme": "/ˌek.spəˈdɪʃ.ən/",
+      "example": "The scientists packed their heavy gear and began their three-month <span style='color: #FFD700;'>expedition</span> to the Amazon to study rare plants.",
+      "icon": "fas fa-map-marked-alt"
+    },
+    {
+      "slide_id": "vocab-4",
+      "layout": "vocab",
+      "background": {
+        "type": "image",
+        "src": "/images/vocab_courageous.jpg",
+        "retain_from_previous": false
+      },
+      "badge": "TASK 1",
+      "word": "courageous",
+      "phoneme": "/kəˈreɪ.dʒəs/",
+      "example": "It was <span style='color: #FFD700;'>courageous</span> of him to stand up to the bullies and tell them to stop, even though he was outnumbered.",
+      "icon": "fas fa-shield-alt"
+    },
+    {
+      "slide_id": "vocab-5",
+      "layout": "vocab",
+      "background": {
+        "type": "image",
+        "src": "/images/vocab_achievement.jpg",
+        "retain_from_previous": false
+      },
+      "badge": "TASK 1",
+      "word": "achievement",
+      "phoneme": "/əˈtʃiːv.mənt/",
+      "example": "She has many <span style='color: #FFD700;'>achievements</span>, including being the first woman in space and being fluent in 10 languages.",
+      "icon": "fas fa-trophy"
+    },
+    {
+      "slide_id": "vocab-match-jumbled",
+      "layout": "match_reorder",
+      "animation": { "type": "auto-animate" },
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": false
+      },
+      "badge": "TASK 1",
+      "title": "MATCH THE DEFINITIONS",
+      "left_items": [
+        "recognition",
+        "determination",
+        "expedition",
+        "courageous",
+        "achievement"
+      ],
+      "right_items": [
+        "organized journey for a purpose",
+        "public praise or thanks",
+        "brave; having courage",
+        "successfully done",
+        "ability to continue despite difficulty"
+      ],
+      "timer": 300
+    },
+    {
+      "slide_id": "vocab-match-solved",
+      "layout": "match_reorder",
+      "animation": { "type": "auto-animate" },
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": true
+      },
+      "badge": "TASK 1",
+      "title": "MATCH THE DEFINITIONS",
+      "left_items": [
+        "recognition",
+        "determination",
+        "expedition",
+        "courageous",
+        "achievement"
+      ],
+      "right_items": [
+        "public praise or thanks",
+        "ability to continue despite difficulty",
+        "organized journey for a purpose",
+        "brave; having courage",
+        "successfully done"
+      ]
+    },
+    {
+      "slide_id": "segue-gist",
+      "layout": "segue",
+      "transition": "zoom",
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      },
+      "phase": "PHASE 2",
+      "title": "The Speed Scan",
+      "subtitle": "Finding the Heroes"
+    },
+    {
+      "slide_id": "gist-strategy",
+      "layout": "strategy",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": false
+      },
+      "badge": "TASK 2 (PART 1)",
+      "title": "THE MAIN IDEA",
+      "strategy_items": [
+        {
+          "icon": "fa-heading",
+          "text": "Focus on the [HIGHLIGHT: Title] and the [HIGHLIGHT: First Paragraph]."
+        },
+        {
+          "icon": "fa-filter",
+          "text": "Ignore the details for now. What is the [HIGHLIGHT: general] topic?"
+        }
+      ],
+      "timer": 60
+    },
+    {
+      "slide_id": "gist-task-choice",
+      "layout": "impact",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": true
+      },
+      "badge": "TASK 2 (PART 1)",
+      "title": "WHAT IS THE TOPIC?",
+      "text": "<div style='text-align: left; margin-top: 20px;'><p>1. People who did nothing special.</p><p>2. Heroes who are not very famous [REVEAL: <i class='fas fa-check-circle' style='color: #4CAF50;'></i>]</p><p>3. Qualities every hero should have.</p></div>"
+    },
+    {
+      "slide_id": "gist-answer",
+      "layout": "answer_detail",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": true
+      },
+      "badge": "TASK 2",
+      "number": "G",
+      "question": "What is the article about?",
+      "answer": "Option 2: Heroes who are not famous.",
+      "explanation": "The text calls them [HIGHLIGHT: unsung heroes].",
+      "evidence": "[Para 1] Unsung heroes... don't receive much recognition for their actions."
+    },
+    {
+      "slide_id": "scan-strategy",
+      "layout": "strategy",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": false
+      },
+      "badge": "TASK 2 (PART 2)",
+      "title": "SPEED SCANNING",
+      "strategy_items": [
+        {
+          "icon": "fa-bolt",
+          "text": "Look for [HIGHLIGHT: Capital Letters] (Names) and [HIGHLIGHT: HEADINGS]."
+        },
+        {
+          "icon": "fa-clock",
+          "text": "You have [HIGHLIGHT: 120 seconds]! Find the heroes and their fields."
+        }
+      ],
+      "timer": 120
+    },
+    {
+      "slide_id": "scan-task-impact",
+      "layout": "impact",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": true
+      },
+      "badge": "TASK 2 (PART 2)",
+      "title": "WHO'S WHO?",
+      "text": "Match the hero to their field!",
+      "points": [
+        { "icon": "fa-mountain", "text": "Junko Tabei: [REVEAL: Mountain]" },
+        { "icon": "fa-user-astronaut", "text": "Svetlana Savitskaya: [REVEAL: Space]" },
+        { "icon": "fa-mouse-pointer", "text": "Scott Fahlman: [REVEAL: Internet]" }
+      ]
+    },
+    {
+      "slide_id": "segue-detail",
+      "layout": "segue",
+      "transition": "zoom",
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      },
+      "phase": "PHASE 3",
+      "title": "The Deep Dive",
+      "subtitle": "Facts vs. Opinions"
+    },
+    {
+      "slide_id": "fact-opinion-strategy",
+      "layout": "strategy",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": false
+      },
+      "badge": "TASK 3",
+      "title": "FACT VS OPINION",
+      "strategy_items": [
+        {
+          "icon": "fa-check-circle",
+          "text": "A [HIGHLIGHT: FACT] can be proven with evidence."
+        },
+        {
+          "icon": "fa-question-circle",
+          "text": "An [HIGHLIGHT: OPINION] is a belief or feeling."
+        }
+      ],
+      "content": "Read the sentences on your worksheet. Mark [HIGHLIGHT: F] or [HIGHLIGHT: O].",
+      "timer": 480
+    },
+    {
+      "slide_id": "ans-fact-1",
+      "layout": "answer_detail",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": true
+      },
+      "badge": "TASK 3",
+      "number": "1",
+      "para": "3",
+      "question": "Svetlana Savitskaya set 23 world records for speed.",
+      "answer": "FACT",
+      "explanation": "This can be proven with evidence from her aviation training.",
+      "evidence": "[Para 3] and eventually set 23 world records for speed."
+    },
+    {
+      "slide_id": "ans-fact-2",
+      "layout": "answer_detail",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": true
+      },
+      "badge": "TASK 3",
+      "number": "2",
+      "para": "2",
+      "question": "Junko Tabei was the first woman to climb Mount Everest.",
+      "answer": "FACT",
+      "explanation": "This is true and can be proven with historical evidence.",
+      "evidence": "[Para 2] In 1975, she became the first woman to climb Mount Everest..."
+    },
+    {
+      "slide_id": "ans-fact-3",
+      "layout": "answer_detail",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": true
+      },
+      "badge": "TASK 3",
+      "number": "3",
+      "para": "4",
+      "question": "Scott Fahlman is a hero of modern communication.",
+      "answer": "OPINION",
+      "explanation": "This is what the writer [HIGHLIGHT: thinks] or feels.",
+      "evidence": "[Para 4] I think this makes him a hero of modern communication."
+    },
+    {
+      "slide_id": "ans-fact-4",
+      "layout": "answer_detail",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": true
+      },
+      "badge": "TASK 3",
+      "number": "4",
+      "para": "3",
+      "question": "Svetlana is more incredible than other astronauts.",
+      "answer": "OPINION",
+      "explanation": "This is based on a point of view or belief.",
+      "evidence": "[Para 3] More people should know about this incredible woman..."
+    },
+    {
+      "slide_id": "ans-fact-5",
+      "layout": "answer_detail",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": true
+      },
+      "badge": "TASK 3",
+      "number": "5",
+      "para": "2",
+      "question": "Junko Tabei's life in the mountains was amazing.",
+      "answer": "OPINION",
+      "explanation": "This is what the writer believes.",
+      "evidence": "[Para 2] and her life in the mountains was amazing."
+    },
+    {
+      "slide_id": "segue-production",
+      "layout": "segue",
+      "transition": "zoom",
+      "background": {
+        "type": "color",
+        "src": "#8B1538",
+        "retain_from_previous": false
+      },
+      "phase": "PHASE 4",
+      "title": "Your Turn",
+      "subtitle": "My Real-Life Hero"
+    },
+    {
+      "slide_id": "production-strategy",
+      "layout": "strategy",
+      "background": {
+        "type": "color",
+        "src": "#1a1a1a",
+        "retain_from_previous": false
+      },
+      "badge": "PRODUCTION",
+      "title": "MY UNSUNG HERO",
+      "strategy_items": [
+        {
+          "icon": "fa-users",
+          "text": "Discuss with your partner."
+        },
+        {
+          "icon": "fa-lightbulb",
+          "text": "Who is an unsung hero in your life? Why?"
+        }
+      ],
+      "content": "Use [HIGHLIGHT: determination] or [HIGHLIGHT: courageous]!",
+      "timer": 420
+    }
+  ]
+}

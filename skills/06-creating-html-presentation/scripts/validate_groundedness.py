@@ -24,67 +24,69 @@ def validate_groundedness(json_path, source_text_path):
     
     # Text cleaning for comparison
     def clean(text):
-        return re.sub(r'[^\w\s]', '', str(text)).lower()
+        # Remove HTML tags and bracketed directives first
+        text = re.sub(r'<[^>]+>', '', str(text))
+        text = re.sub(r'\[(REVEAL|STRIKE|HIGHLIGHT):\s*(.*?)\]', r'\2', text)
+        return re.sub(r'[^\w\s]', '', text).lower()
+
+    def check_text(text, slide_info, threshold=0.7):
+        nonlocal errors
+        if not text: return
+        
+        cleaned = clean(text)
+        # Filter for significant words to avoid noise from stop words
+        words = [w for w in cleaned.split() if len(w) > 3]
+        if not words: return
+
+        found_count = sum(1 for w in words if w in source_text_lower)
+        ratio = found_count / len(words)
+        
+        if ratio < threshold:
+            print(f"❌ {slide_info}: Text not grounded in SOURCE_TEXT (Found {found_count}/{len(words)} key words).")
+            print(f"   Sample: \"{text[:100]}...\"")
+            errors += 1
 
     print(f"--- GROUNDEDNESS AUDIT: {json_path} ---")
     
     if not answer_key_text:
         print("❌ [FATAL ERROR] No '## Answer Key' section found in SOURCE_TEXT.md.")
-        print("🛑 STOP: You MUST provide an Answer Key at the end of SOURCE_TEXT.md before proceeding.")
         return False
 
     for i, slide in enumerate(slides):
-        # We check specific fields for factual grounding
-        # If it's an answer_detail slide, check 'answer' and 'explanation' and 'evidence' against the answer key and source
-        if slide.get('layout') == 'answer_detail':
-            answer = str(slide.get('answer', ''))
-            explanation = str(slide.get('explanation', ''))
-            evidence = str(slide.get('evidence', ''))
-            
-            # Check explanation
-            if explanation:
-                cleaned_exp = clean(explanation)
-                words = [w for w in cleaned_exp.split() if len(w) > 4]
-                found_count = sum(1 for w in words if w in source_text_lower)
-                # Lower threshold for explanation as it might be paraphrased, but still need some grounding
-                if words and (found_count / len(words)) < 0.2:
-                    print(f"❌ Slide {i} ('answer_detail'): Explanation might be hallucinated. Not found in SOURCE_TEXT.")
-                    print(f"   Explanation: {explanation}")
-                    errors += 1
-            
-            # Check evidence
-            if evidence:
-                # Remove [Para X] or [Line X] and HTML tags
-                clean_evidence = re.sub(r'\[.*?\]', '', evidence)
-                clean_evidence = re.sub(r'<[^>]+>', '', clean_evidence)
-                clean_evidence = clean(clean_evidence)
-                
-                words = [w for w in clean_evidence.split() if len(w) > 4]
-                found_count = sum(1 for w in words if w in source_text_lower)
-                # Evidence MUST be verbatim or extremely close
-                if words and (found_count / len(words)) < 0.7:  
-                    print(f"❌ Slide {i} ('answer_detail'): Evidence appears hallucinated or incorrectly quoted.")
-                    print(f"   Evidence: {evidence}")
-                    errors += 1
+        layout = slide.get('layout')
+        slide_id = slide.get('slide_id', f"Slide {i+1}")
+        
+        # 1. Answer Detail Layout
+        if layout == 'answer_detail':
+            check_text(slide.get('answer'), f"{slide_id} (answer)")
+            check_text(slide.get('explanation'), f"{slide_id} (explanation)", threshold=0.3) # Loose for explanation
+            check_text(slide.get('evidence'), f"{slide_id} (evidence)", threshold=0.8) # Strict for evidence
 
-        # Check 'vocab' slide context sentences
-        elif slide.get('layout') == 'vocab':
-            context = str(slide.get('context_sentence', ''))
-            if context:
-                clean_context = re.sub(r'<[^>]+>', '', context)
-                clean_context = clean(clean_context)
-                words = [w for w in clean_context.split() if len(w) > 4]
-                found_count = sum(1 for w in words if w in source_text_lower)
-                if words and (found_count / len(words)) < 0.8:
-                    print(f"❌ Slide {i} ('vocab'): Context sentence not found in SOURCE_TEXT.")
-                    print(f"   Context: {context}")
-                    errors += 1
+        # 2. Vocab Layout
+        elif layout == 'vocab':
+            check_text(slide.get('context_sentence'), f"{slide_id} (vocab context)", threshold=0.8)
+
+        # 3. Tables and Content Layouts (NEW: Broad Scan)
+        elif layout in ['split_table', 'impact', 'strategy']:
+            content = slide.get('content', '') or slide.get('main_text', '') or slide.get('text', '')
+            # Extract items from lists or points
+            if slide.get('points'):
+                for p in slide.get('points'):
+                    content += " " + p.get('text', '')
+            if slide.get('strategy_items'):
+                for s in slide.get('strategy_items'):
+                    content += " " + s.get('text', '')
+            
+            # Check the consolidated text
+            if content:
+                # We specifically look for sentences that look like task items (e.g. including [REVEAL:])
+                check_text(content, f"{slide_id} ({layout} content)", threshold=0.6)
 
     if errors == 0:
-        print("✅ [PASS] All answers and evidence are grounded in the Answer Key and Source Text.")
+        print("✅ [PASS] All slide content is grounded in the Answer Key or Source Text.")
         return True
     else:
-        print(f"❌ [FAIL] {errors} ungrounded/hallucinated items found. You MUST consult the 'Answer Key' in SOURCE_TEXT.md.")
+        print(f"❌ [FAIL] {errors} ungrounded/hallucinated items found. Fix your manifest or update SOURCE_TEXT.md.")
         return False
 
 if __name__ == "__main__":

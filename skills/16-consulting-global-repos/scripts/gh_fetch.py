@@ -3,14 +3,17 @@ import requests
 import sys
 import base64
 import json
+import time
+from pathlib import Path
 
 # Configuration for Global Reference Repositories
+# Updated 2026-03-04: Fixed 'reference' mapping to elwrush/lesson-plan-agent
 REPOS = {
     "typst": "typst/typst",
     "typst-packages": "typst/packages",
     "revealjs": "hakimel/reveal.js",
     "fontawesome": "FortAwesome/Font-Awesome",
-    "reference": "elwrush/lesson-plan-references",
+    "reference": "elwrush/lesson-plan-agent",
     "meander": "Vanille-N/meander.typ",
 }
 
@@ -23,33 +26,36 @@ def get_headers():
         "User-Agent": "Gemini-CLI-Repo-Reader"
     }
     if TOKEN:
+        # Fine-grained tokens work better with 'Bearer'
         auth_prefix = "Bearer" if TOKEN.startswith("github_pat_") else "token"
         headers["Authorization"] = f"{auth_prefix} {TOKEN}"
     return headers
 
 def search_gh_content(alias, query):
+    """
+    Searches for code within a specific repository.
+    """
     repo = REPOS.get(alias)
     if not repo:
-        return f"Error: Alias '{alias}' not found."
+        return f"Error: Alias '{alias}' not found. Available: {', '.join(REPOS.keys())}"
     
+    # Use the GitHub Search API
     url = f"https://api.github.com/search/code?q={query}+repo:{repo}"
     headers = get_headers()
     
     try:
         response = requests.get(url, headers=headers)
-        if response.status_code == 401 and TOKEN:
-            del headers["Authorization"]
-            response = requests.get(url, headers=headers)
-            
         if response.status_code == 200:
             data = response.json()
             items = data.get("items", [])
             if not items:
-                return "No results found."
-            output = []
-            for item in items[:10]: # Return top 10 matches
-                output.append(f"FILE: {item['path']}")
+                return f"No results found for '{query}' in {repo}."
+            output = [f"[OK] Found {len(items)} results (showing top 10):"]
+            for item in items[:10]:
+                output.append(f"  - FILE: {item['path']}")
             return "\n".join(output)
+        elif response.status_code == 403:
+            return "Error: 403 Forbidden. This might be a search API rate limit. Authenticated search is limited to 30 requests per minute."
         else:
             return f"Error: {response.status_code} - {response.text}"
     except Exception as e:
@@ -64,51 +70,36 @@ def get_gh_content(alias_path):
         return f"Error: Usage must be <alias>:<path>. Available aliases: {', '.join(REPOS.keys())}"
 
     alias, path = alias_path.split(":", 1)
-    repo = REPOS.get(alias)
+    # Strip leading slashes from path
+    path = path.lstrip("/")
     
+    repo = REPOS.get(alias)
     if not repo:
         return f"Error: Alias '{alias}' not found in REPOS mapping."
     
-    # Construct API URL
     url = f"https://api.github.com/repos/{repo}/contents/{path}"
     headers = get_headers()
     
     try:
         response = requests.get(url, headers=headers)
-        
-        # If 401, try one last time without auth (for public repos)
-        if response.status_code == 401 and TOKEN:
-            del headers["Authorization"]
-            response = requests.get(url, headers=headers)
-
         if response.status_code == 200:
             data = response.json()
-            
-            # Handle Directory listing
             if isinstance(data, list):
-                output = []
+                output = [f"[DIR] {repo}/{path}"]
                 for item in data:
                     item_type = "DIR " if item['type'] == 'dir' else "FILE"
-                    output.append(f"{item_type} {item['path']}")
+                    output.append(f"  {item_type} {item['path']}")
                 return "\n".join(output)
             
-            # Handle Single File
             if data.get("encoding") == "base64":
-                # Decode base64 content
                 content = base64.b64decode(data['content']).decode('utf-8')
                 return content
             
             return f"Error: Unexpected response format from GitHub API."
-            
         elif response.status_code == 404:
-            return f"Error: 404 Not Found ({repo}/{path})"
-        elif response.status_code == 401:
-            return f"Error: 401 Unauthorized. Check your GITHUB_MCP_PAT."
+            return f"Error: 404 Not Found ({repo}/{path})."
         else:
             return f"Error: {response.status_code} - {response.text}"
-            
-    except requests.exceptions.RequestException as e:
-        return f"Error during request: {str(e)}"
     except Exception as e:
         return f"Unexpected Error: {str(e)}"
 
@@ -116,7 +107,6 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python gh_fetch.py <alias>:<path>")
         print("       python gh_fetch.py search <alias> <query>")
-        print(f"Available Aliases: {', '.join(REPOS.keys())}")
         sys.exit(1)
         
     if sys.argv[1] == "search" and len(sys.argv) >= 4:

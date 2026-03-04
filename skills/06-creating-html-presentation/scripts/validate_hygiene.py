@@ -1,7 +1,20 @@
 import json
 import sys
 import os
+import subprocess
 from pathlib import Path
+
+def get_video_duration(file_path):
+    """Uses ffprobe to get video duration in seconds."""
+    cmd = [
+        "ffprobe", "-v", "error", "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1:nokey=1", str(file_path)
+    ]
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        return float(result.stdout.strip())
+    except Exception:
+        return None
 
 def validate_hygiene(json_path):
     if not os.path.exists(json_path):
@@ -10,23 +23,28 @@ def validate_hygiene(json_path):
 
     lesson_dir = os.path.dirname(json_path)
     images_dir = os.path.join(lesson_dir, "images")
-    
+
     errors = []
 
-    # 1. Local Asset Size Check (< 1MB)
+    # 1. Local Asset Size & Duration Check
     if os.path.exists(images_dir):
         for img in os.listdir(images_dir):
             img_path = os.path.join(images_dir, img)
             if os.path.isfile(img_path):
                 # Ignore system files
                 if img.lower() == 'desktop.ini': continue
-                
+
+                # Size Check (< 10MB)
                 size = os.path.getsize(img_path)
                 if size > 10 * 1024 * 1024:
                     errors.append(f"File too large: {img} ({size/1024/1024:.2f}MB). Assets must be < 10MB.")
-                
-                # 2. Heavy Media Size Check (videos must also be < 10MB)
-                # (Removed strict ban on .mp4 in lesson folder per new standard)
+
+                # Video Duration Check (STRICT 7s LAW)
+                if img.lower().endswith(('.mp4', '.mov', '.avi', '.webm')):
+                    duration = get_video_duration(img_path)
+                    if duration is not None and duration > 7.5: # 0.5s buffer for encoding drift
+                        errors.append(f"RAW VIDEO DETECTED: {img} is {duration:.2f}s long. Background videos MUST be trimmed to 7 seconds using ffmpeg.")
+
 
 
     # 3. JSON Background Check

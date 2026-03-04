@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "title": "Someone I Admire",
+    "subtitle": "Writing Skills",
+    "topic": "Heroes",
+    "cefr": "B1",
+    "teacher": "Ed Rush",
+    "date": "04-03-2026",
+    "duration": 45,
+    "program": "Intensive",
+    "focus": "Productive Writing",
+    "materials": "OFD3 Unit 4 Writing, WB p. 41",
+    "hero_image": "images/hero.jpg",
+    "badges": [
+      { "label": "B1", "type": "level" },
+      { "label": "WRITING", "type": "skill" },
+      { "label": "HEROES", "type": "topic" }
+    ]
+  },
+  "pedagogy": {
+    "mission": {
+      "title": "YOUR MISSION",
+      "text": "Your mission today is to draft a 225-word formal description of someone you admire. You must use specific writing techniques to prove your points.",
+      "exam_hook": "B1 Preliminary (PET) Writing",
+      "objectives": [
+        { "icon": "fa-user-check", "title": "Subject", "text": "Select an admirable hero" },
+        { "icon": "fa-pen-fancy", "title": "Style", "text": "Write with attitude adverbs" },
+        { "icon": "fa-database", "title": "Proof", "text": "Support every opinion with facts" }
+      ]
+    },
+    "stages": [
+      {
+        "id": 1,
+        "name": "Lead-in",
+        "time": 6,
+        "aim": "To engage students and activate schema regarding 'admirable' figures.",
+        "interaction": "T-Ss / Ss-Ss",
+        "workbook_tasks": [4],
+        "slides": [
+          {
+            "slide_id": "lp_title",
+            "layout": "title",
+            "background": { "type": "video", "src": "images/title_bg.mp4" },
+            "animation": { "type": "fade" }
+          },
+          {
+            "slide_id": "lp_mission",
+            "layout": "mission",
+            "background": { "type": "video", "src": "/images/mission_bg_clipped.mp4" },
+            "animation": { "type": "auto-animate" }
+          },
+          {
+            "slide_id": "lp_leadin",
+            "layout": "schema_activation",
+            "title": "Who is a hero?",
+            "badge": "WARMER",
+            "items": [
+              { "text": "Fictional: Katniss Everdeen", "image": "images/katniss.png" },
+              { "text": "Historical: Nelson Mandela", "image": "images/mandela.png" },
+              { "text": "Athlete: Lionel Messi", "image": "images/messi.png" }
+            ],
+            "question": "Brainstorm two adjectives for each person.",
+            "notes": "Teacher Scaffolding: Elicit adjectives to board. Ask CCQs about why these specific figures are admired."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Preparation",
+        "time": 10,
+        "aim": "To brainstorm and plan the content of the description.",
+        "interaction": "Indiv",
+        "workbook_tasks": [4, 5, 6],
+        "worksheet_task": 1,
+        "slides": [
+          {
+            "slide_id": "lp_segue_prep",
+            "layout": "segue",
+            "title": "The Admirable Profile"
+          },
+          {
+            "slide_id": "lp_modeling_lisa",
+            "layout": "impact",
+            "badge": "MODELING",
+            "animation": { "type": "auto-animate" },
+            "title": "How to build a profile",
+            "text": "Before you start, look at this example:",
+            "points": [
+              { "text": "Subject: Lisa (Blackpink)", "image": "/images/hero_lisa.png" },
+              { "text": "Admirable Trait: [HIGHLIGHT: Hard-working]" },
+              { "text": "Supporting Fact: She trained for [HIGHLIGHT: 5,300 hours] before her debut." }
+            ],
+            "notes": "Pedagogy: Model how to connect an abstract trait (Hard-working) to a concrete, provable fact (5,300 hours)."
+          },
+          {
+            "slide_id": "lp_prep",
+            "layout": "split_table",
+            "badge": "TASK 1",
+            "title": "The Admirable Profile",
+            "content": "<table><tr><th>Step</th><th>Instruction</th></tr><tr><td>1</td><td>Choose your person.</td></tr><tr><td>2</td><td>List 3 admirable traits.</td></tr><tr><td>3</td><td>Provide 1 supporting fact for each trait.</td></tr></table>",
+            "timer": 480,
+            "notes": "Circulate and assist students in finding specific facts for their subjects."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Preparation",
+        "time": 10,
+        "aim": "To introduce the 'Supporting your opinion' strategy and 'Attitude Adverbs' focus.",
+        "interaction": "T-Ss / Indiv",
+        "workbook_tasks": [6, 7],
+        "worksheet_task": 2,
+        "slides": [
+          {
+            "slide_id": "lp_segue_vocab",
+            "layout": "segue",
+            "title": "Let's learn some words"
+          },
+          {
+            "slide_id": "lp_vocab_1",
+            "layout": "vocab",
+            "word": "Amazingly",
+            "phoneme": "/əˈmeɪ.zɪŋ.li/",
+            "context_sentence": "<span style='color: #FFD700;'>Amazingly</span>, she won the gold medal despite her injury."
+          },
+          {
+            "slide_id": "lp_vocab_2",
+            "layout": "vocab",
+            "word": "Remarkably",
+            "phoneme": "/rɪˈmɑː.kə.bli/",
+            "context_sentence": "<span style='color: #FFD700;'>Remarkably</span>, he survived the crash without any scratches."
+          },
+          {
+            "slide_id": "lp_vocab_3",
+            "layout": "vocab",
+            "word": "Generously",
+            "phoneme": "/ˈdʒen.ər.əs.li/",
+            "context_sentence": "<span style='color: #FFD700;'>Generously</span>, they decided to donate all their money to charity."
+          },
+          {
+            "slide_id": "lp_vocab_4",
+            "layout": "vocab",
+            "word": "Fortunately",
+            "phoneme": "/ˈfɔː.tʃən.ət.li/",
+            "context_sentence": "<span style='color: #FFD700;'>Fortunately</span>, he found his missing passport just before the flight."
+          },
+          {
+            "slide_id": "lp_vocab_5",
+            "layout": "vocab",
+            "word": "Clearly",
+            "phoneme": "/ˈklɪə.li/",
+            "context_sentence": "<span style='color: #FFD700;'>Clearly</span>, the team managed to win the game in the final minute."
+          },
+          {
+            "slide_id": "lp_segue_strategy",
+            "layout": "segue",
+            "title": "Why do we need facts?"
+          },
+          {
+            "slide_id": "lp_strategy",
+            "layout": "strategy",
+            "badge": "STRATEGY",
+            "animation": { "type": "auto-animate" },
+            "title": "Supporting Your Opinion",
+            "main_text": "When you express an opinion, [HIGHLIGHT: give real-life examples and facts to support it].",
+            "notes": "Compare 'Messi is good' vs 'Messi has won 8 Ballon d'Ors.' Which proves greatness?"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Task",
+        "time": 19,
+        "aim": "To produce the 225-word first draft using the models and language from Stages 2-3.",
+        "interaction": "Indiv / Ss-Ss",
+        "workbook_tasks": [8],
+        "worksheet_task": 3,
+        "slides": [
+          {
+            "slide_id": "lp_task",
+            "layout": "split_table",
+            "badge": "TASK 3",
+            "title": "First Draft (225 words)",
+            "content": "<table><tr><th>Point</th><th>Checklist</th></tr><tr><td>Opinion</td><td>State your opinion clearly</td></tr><tr><td>Adverbs</td><td>Use attitude adverbs correctly</td></tr><tr><td>Facts</td><td>Support every point with a fact</td></tr></table>",
+            "timer": 15,
+            "notes": "Assist with active use of adverbs. Help with relative clauses."
+          },
+          {
+            "slide_id": "lp_wrapup",
+            "layout": "segue",
+            "title": "Read your closing statement to a partner."
+          }
+        ]
+      }
+    ]
+  },
+  "content": {
+    "task_2_sentences": [
+      "She won the gold medal despite her injury.",
+      "He survived the crash without any scratches.",
+      "They decided to donate all their money to charity.",
+      "He found his missing passport just before the flight.",
+      "The team managed to win the game in the final minute.",
+      "She has written ten books by the age of twenty."
+    ],
+    "draft_word_count": 225,
+    "draft_pages": 2
+  }
+}
