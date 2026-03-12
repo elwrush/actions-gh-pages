@@ -1,0 +1,108 @@
+:root {
+    /* FIXED FONT MATRIX */
+    --r-main-font-size: 40px;
+    --r-heading1-size: 2.2em;
+    --r-heading2-size: 1.5em;
+    --r-heading3-size: 1.1em;
+    --accent: #FFD700;
+}
+
+/* GLOBAL RESET FOR REVEAL */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal p {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.2 !important;
+}
+
+.reveal .slides section {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 15px;
+    /* THE ONLY GAP */
+    height: 100% !important;
+}
+
+/* CUSTOM ELEMENT DISPLAY FIX */
+timer-pill,
+mission-badge {
+    display: block !important;
+    margin: 0 !important;
+}
+
+.stage-badge {
+    background: var(--accent);
+    color: black;
+    padding: 2px 10px;
+    font-weight: 800;
+    font-size: 0.5em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.mission-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    width: 320px;
+    text-align: center;
+}
+
+.mission-badge i {
+    color: var(--accent) !important;
+    font-size: 4em;
+    margin-bottom: 10px;
+}
+
+.mission-badge span {
+    font-size: 1.1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.highlight {
+    color: var(--accent) !important;
+    font-weight: bold;
+}
+
+.gold {
+    color: var(--accent) !important;
+}
+
+
+/* IMAGE CONSTRAINTS - Tight centering */
+.media-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.media-container img {
+    max-height: 280px !important;
+    width: auto;
+    border: 1px solid var(--accent);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* AUTOMATIC CINEMATIC OVERLAY */
+.reveal .slides section.cinematic::before {
+    content: "";
+    position: absolute;
+    top: -100vh;
+    left: -100vw;
+    width: 300vw;
+    height: 300vh;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 100%);
+    z-index: -1;
+}

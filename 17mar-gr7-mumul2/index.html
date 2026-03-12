@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lesson Presentation</title>
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/pedagogy.css">
+    <script src="js/slide-components.js"></script>
+</head>
+<body>
+    <div style="display: none;">
+        <audio id="audio-blip" src="audio/blip.mp3" preload="auto"></audio>
+        <audio id="audio-bell" src="audio/bell.mp3" preload="auto"></audio>
+        <audio id="audio-warning" src="audio/30-seconds.mp3" preload="auto"></audio>
+    </div>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown 
+                     data-separator="^\n\n---\n\n" 
+                     data-separator-vertical="^\n\n--\n\n" 
+                     data-separator-notes="^Note:">
+                <textarea data-template>
+# Mumu: The Final Chapter
+
+---
+
+<!-- .slide: data-background="videos/gerasim_clipped.mp4" -->
+
+## Mumu: The Final Chapter
+
+<img src="images/ACT.png" class="title-logo" style="height: 120px; margin-bottom: 20px;">
+
+### Thinking and talking about a sad Russian story
+
+Note:
+Slide 1: Welcome & The Secret Return. Setting the mood with Gerasim's arrival. Content enters with a 1s delay (handled by CSS pedagogy.css in production).
+
+---
+
+<!-- .slide: data-background="videos/mission_teens_clipped.mp4" -->
+
+## The Setup
+
+<div style="display: flex; justify-content: center; gap: 40px;">
+  <div class="mission-badge"><i class="fas fa-pen-fancy"></i><br>Read 3 peer endings</div>
+  <div class="mission-badge"><i class="fas fa-microphone-alt"></i><br>Find the most surprising</div>
+  <div class="mission-badge"><i class="fas fa-gavel"></i><br>Get ready for your final pitch</div>
+</div>
+
+Note:
+Slide 2: Gallery Walk. Students read their peers' predictions. Keep it simple and visual.
+
+---
+
+<!-- .slide: data-background="radial-gradient(circle, #8B1538 0%, #000000 70%)" -->
+
+## The Turning Point
+
+### The Lady's Breakdown
+
+Was the bark really a threat, or just an excuse?
+
+<img src="images/evil-lady.png" style="height: 400px; border: 2px solid #FFD700;">
+
+Note:
+Slide 3: Use the red radial gradient to signal her nervous breakdown. Elicit setting vocab: countryside, peasants, master.
+
+---
+
+<!-- .slide: data-background="#000" data-auto-animate data-auto-animate-id="river-boat" -->
+
+## The Choice
+
+<i class="fas fa-ship" data-id="boat-icon" style="font-size: 5em; color: #8B1538; position: absolute; left: 10%; top: 40%;"></i>
+
+Note:
+Slide 4a: Transitioning to the river. The boat is at the shore.
+
+---
+
+<!-- .slide: data-background="videos/river.mp4" data-auto-animate data-auto-animate-id="river-boat" -->
+
+## The Sacrifice
+
+<i class="fas fa-ship" data-id="boat-icon" style="font-size: 5em; color: #8B1538; position: absolute; left: 50%; top: 40%;"></i>
+
+<div class="text-lead" style="margin-top: 300px; color: white; text-shadow: 2px 2px 10px black;">He tied a rope with heavy bricks...</div>
+
+Note:
+Slide 4b: The boat moves to the middle of the river. The text appears. Let them feel the weight.
+
+---
+
+<!-- .slide: data-background="images/graveyard.jpg" -->
+
+## The Silent Escape
+
+### Gerasim's New Rules
+
+- No more Moscow. <!-- .element: class="fragment fade-up" -->
+- No more women. <!-- .element: class="fragment fade-up" -->
+- No more dogs. <!-- .element: class="fragment fade-up" -->
+
+Note:
+Slide 5: Fragments reveal the rules one by one as he walks home.
+
+---
+
+<!-- .slide: data-background="radial-gradient(circle, #556b2f 0%, #000000 70%)" -->
+
+## Preparing Your Pitch
+
+- Summary: What happened in the real ending?
+- Opinion: Did you like it? Why?
+- Peer Nominee: Who had the best alternative ending?
+
+<timer-pill duration="10"></timer-pill>
+
+<fieldset style="border: 1px solid #FFD700; border-radius: 8px; padding: 10px;">
+  <legend style="color: #FFD700;">Helping Hand</legend>
+  <span style="color: #fff;">heartbreaking</span> | <span style="color: #fff;">courageous</span>
+</fieldset>
+
+Note:
+Slide 6: Planning phase. 10-minute timer and some elective vocab support.
+
+---
+
+<!-- .slide: data-background="radial-gradient(circle, #8B1538 0%, #000000 70%)" -->
+
+## The Final Verdict
+
+### Was the Lady truly the villain?
+
+<div style="display: flex; justify-content: center; gap: 20px;">
+  <img src="images/gerasim.png" style="height: 150px; border: 1px solid #FFD700;">
+  <img src="images/evil-lady.png" style="height: 150px; border: 1px solid #FFD700;">
+  <img src="images/mumu.png" style="height: 150px; border: 1px solid #FFD700;">
+</div>
+
+Note:
+Slide 7: Wrap-up discussion. Bring it all full circle.
+                </textarea>
+            </section>
+        </div>
+    </div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            width: 1280,
+            height: 720,
+            margin: 0.05,
+            center: true,
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+</html>
